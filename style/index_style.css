@@ -1,0 +1,119 @@
+/** Wrap layout **/
+
+.wrap {
+  max-width: 1980px;
+  margin: 0 auto;
+}
+
+.wide {
+  width: 100%;
+}
+
+header .wrap {
+  padding: 8px 200px;
+  min-width: 800px;
+}
+
+.banner-top .wrap,
+.banner-bottom .wrap {
+  min-width: 1080px;
+}
+
+main .wrap {
+  padding: 0 52px;
+}
+
+.feature-card .wrap {
+  min-width: 800px;
+}
+
+footer .wrap {
+  padding: 28px 52px;
+  min-width: 800px;
+}
+
+/** header **/
+
+header .img-lg {
+  height: 52px;
+}
+
+header .btn-link-login {
+  width: 128px;
+  height: 48px;
+  padding: 12px 44px;
+  border-radius: 8px;
+}
+
+/** banner-top & banner-bottom **/
+
+.banner-top,
+.banner-bottom {
+  height: 540px;
+}
+
+.banner-top-description {
+  gap: 32px;
+}
+
+.btn-link-trades {
+  width: 360px;
+  height: 56px;
+  line-height: 28px;
+  padding: 12px 120px;
+  border-radius: 40px;
+}
+
+/** features **/
+
+.feature-card {
+  margin: 140px 0;
+}
+
+.feature-card,
+.feature-img,
+.feature-description {
+  height: 440px;
+}
+
+.feature-card .feature-description {
+  padding: 52px;
+}
+
+.feature-description {
+  gap: 12px;
+}
+
+.feature-description h1 {
+  margin: 0;
+}
+
+.feature-sub-description {
+  margin-top: 12px;
+}
+
+/** footer **/
+
+footer {
+  height: 160px;
+}
+
+footer .privacy-links > a {
+  height: 32px;
+  text-decoration: none;
+}
+
+.privacy-links {
+  gap: 28px;
+}
+
+.sns-links {
+  gap: 12px;
+}
+
+/** pseudo-class **/
+
+.btn-link-login:hover,
+.btn-link-trades:hover {
+  background-color: #1967d6; /* dark */
+}
