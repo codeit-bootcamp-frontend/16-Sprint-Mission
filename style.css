@@ -111,18 +111,12 @@ header{
   align-items: center; 
 }
 
-.logo{
-  height: 51px;
-}
 
 .logo a{
   display: inline-block;
   height: 100%;
 }
 
-.logo img{
-  height: 100%;
-}
 
 /* main */
 /* main */
@@ -139,14 +133,17 @@ header{
 .hero-inner{
   max-width: 1110px; 
   width: 100%;
-  height: 340px;
   display: flex;
   justify-content: space-between;
   align-items: center; 
-  background-image: url(images/Img_hero.svg);
-  background-repeat: no-repeat; 
-  background-position: bottom right;
-  background-size: contain;
+}
+
+.hero .img-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 746px;
+  width: 100%;
 }
 
 
@@ -179,15 +176,11 @@ header{
 
 .features .img-box{
   max-width: 579px;
-  height: auto;
   display: flex;
+  justify-content: center;
   align-items: center;
-
 }
 
-/* .features img{
-  height: 100%;
-} */
 
 .features .text-box{
   flex: 1;
@@ -228,16 +221,15 @@ header{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-image: url(images/Img_footer-banner.svg);
-  background-repeat: no-repeat; 
-  background-position: bottom right ;
-  background-size: contain;
 }
 
-.footer-banner-heading{
-  flex: 1;
+.footer-banner .img-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 746px;
+  width: 100%;
 }
-
 
 footer{
   height: 160px;
@@ -267,9 +259,7 @@ footer ul{
 }
 
 .sns-link{
-  width: 20px;
-  height: 20px;
-  display: block;
+  display: inline-block;
 }
 
 
