@@ -20,11 +20,11 @@ html{
   font-size: 62.5%;
 }
 /* Font size + line-height */
-.Text-4xl  { font-size: 4rem;   line-height: 5.2rem; }
-.Text-2xl  { font-size: 2.4rem; line-height: 3.2rem; }
-.Text-xl   { font-size: 2rem;   line-height: 3.2rem; }
-.Text-2lg  { font-size: 1.8rem; line-height: 2.6rem; }
-.Text-lg   { font-size: 1.6rem; line-height: 2.6rem; }
+.text-40  { font-size: 4rem;   line-height: 5.2rem; }
+.text-2xl  { font-size: 2.4rem; line-height: 3.2rem; }
+.text-xl   { font-size: 2rem;   line-height: 3.2rem; }
+.text-lg  { font-size: 1.8rem; line-height: 2.6rem; }
+.text-base   { font-size: 1.6rem; line-height: 2.6rem; }
 
 /* Font weight */
 .font-bold      { font-weight: 700; }
