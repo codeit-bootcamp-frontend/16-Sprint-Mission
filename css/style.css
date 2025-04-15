@@ -1,100 +1,4 @@
-@font-face {
-  font-family: 'Pretendard-Regular';
-  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-}
-
-/* reset */
-* {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  text-decoration: none;
-  box-sizing: border-box;
-  color: inherit;
-  font-family: 'Pretendard-Regular';
-}
-
-html {
-  font-size: 62.5%;
-}
-
-/* Font size + line-height */
-.text-40 {
-  font-size: 4rem;
-  line-height: 5.2rem;
-}
-.text-2xl {
-  font-size: 2.4rem;
-  line-height: 3.2rem;
-}
-.text-xl {
-  font-size: 2rem;
-  line-height: 3.2rem;
-}
-.text-lg {
-  font-size: 1.8rem;
-  line-height: 2.6rem;
-}
-.text-base {
-  font-size: 1.6rem;
-  line-height: 2.6rem;
-}
-
-/* Font weight */
-.font-bold {
-  font-weight: 700;
-}
-.font-semibold {
-  font-weight: 600;
-}
-.font-medium {
-  font-weight: 500;
-}
-.font-regular {
-  font-weight: 400;
-}
-
-/* color */
-:root {
-  --primary-color-100: #3692ff;
-  --secondary-color-gray900: #111827;
-  --secondary-color-gray700: #1f2937;
-  --secondary-color-gray400: #9ca3af;
-  --secondary-color-gray200: #e5e7eb;
-  --secondary-color-gray100: #f3f4f6;
-  --secondary-color-gray50: #f9fafb;
-  --background-color: #cfe5ff;
-  --border-color: #dfdfdf;
-}
-
-h2,
-p {
-  color: var(--secondary-color-gray700);
-}
-
-.badge {
-  color: var(--primary-color-100);
-}
-
-footer p {
-  color: var(--secondary-color-gray400);
-}
-footer a {
-  color: var(--secondary-color-gray200);
-}
-
-img {
-  max-width: 100%;
-  display: block;
-  height: auto;
-}
-
-a {
-  cursor: pointer;
-}
-
+/* btn */
 .login-btn {
   width: 128px;
   height: 48px;
@@ -279,6 +183,13 @@ footer ul {
 
 .sns-link {
   display: inline-block;
+}
+
+footer p {
+  color: var(--secondary-color-gray400);
+}
+footer a {
+  color: var(--secondary-color-gray200);
 }
 
 /* 1280px ~ 1919px */
