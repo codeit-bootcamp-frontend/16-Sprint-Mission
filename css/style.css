@@ -25,11 +25,16 @@
 /* header */
 /* header */
 header {
-  height: 1920px;
+  width: 100vw;
   height: 70px;
   padding: 9px 400px 9px 400px;
+  position: fixed;
+  top: 0;
+  left: 0;
   border-bottom: 1px solid var(--border-color);
+  background-color: #ffffff;
 }
+
 .header-inner {
   max-width: 1120px;
   width: 100%;
@@ -47,7 +52,9 @@ header {
 
 /* main */
 /* main */
-
+main {
+  margin-top: 70px;
+}
 /* hero */
 .hero {
   height: 540px;
