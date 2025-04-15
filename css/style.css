@@ -9,25 +9,62 @@ body {
   box-sizing: border-box;
 }
 
+:root {
+  --color-primary: #3692FF;
+  --color-secondary: #374151;
+  --color-secondary400: #9CA3AF;
+  --color-secondary200: #E5E7EB;
+  --colot-text-white: #F3F4F6;
+  --color-background-dark: #111827;
+  --color-background-banner: #CFE5FF;
+  
+  --font-family-base: 'Pretendard-Regular', sans-serif;
+  --font-family-heading: 'Noto Sans KR', sans-serif;
+
+  --font-size-xs: 16px;
+  --font-size-sm: 18px;
+  --font-size-md: 20px;
+  --font-size-lg: 24px;
+  --font-size-xl: 40px;
+
+  --font-weight-rg: 400;
+  --font-weight-md: 500;
+  --font-weight-bd: 600;
+
+  --container-width: 1120px;
+  --header-height: 70px;
+  --footer-height: 160px;
+  
+  --spacing-xs: 12px;
+  --spacing-sm: 24px;
+  --spacing-md: 32px;
+  --spacing-lg: 60px;
+  --spacing-xl: 138px;
+}
+
+
  h1 {
-  font-size: 40px;
-  font-weight: 600;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bd);
+  line-height: 140%;
   letter-spacing: 2%;
-  color: #374151;
+  color: var(--color-secondary);
 }
 
 p {
   font-size: 24px;
-  line-height: 32px;  
+  line-height: var( --spacing-md);  
+  margin-top: var(--spacing-sm);
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1920px;      
+  max-width: 1920px;
+  height: var(--header-height);      
   padding: 9.5px 200px;       
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .logo {
@@ -38,18 +75,17 @@ nav {
   padding: 12px 23px;
   text-align: center;
   text-decoration: none;
-  background-color: #3692FF;
-  width: auto;
+  background-color: var(--color-primary);
   border-radius: 8px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: var(--font-size-xs);
   line-height: 26px;
-  font-weight: 500;
-  color: #F3F4F6;
+  font-weight: var(--font-weight-md);
+  color: var( --colot-text-white);
 }
 
 .banner-container {
-  background-color: #CFE5FF;
+  background-color: var( --color-background-banner);
   width: 100%;
 }
 
@@ -63,7 +99,6 @@ nav {
 
 .banner-image > img {
   max-width:100%; 
-  height:auto;
 }
 
 .banner-text {
@@ -77,10 +112,11 @@ nav {
 .banner-btn {
   text-align: center;
   text-decoration: none;
-  background-color: #3692FF;
+  background-color: var(--color-primary);
   border-radius: 40px;
   padding: 12px 124px;
-  font-weight: 500;
+  margin-top: var(--spacing-md);
+  font-weight: var(--font-weight-md);
   line-height: 32px;
   font-size: 20px;
   color: #F9FAFB;
@@ -89,7 +125,6 @@ nav {
 
 section > img {
   max-width:100%; 
-  height:auto;
 }
 
 .section {
@@ -97,10 +132,12 @@ section > img {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  margin: 138px auto;
-  background-color: #FCFCFC;
+  margin: 0 auto;
+  gap: 30px;
+  padding: 138px 0;
   border-radius: 12px;
-  width: fit-content; 
+  max-width: 1200px;
+  width: 100%;
 }
 
 .description {
@@ -108,13 +145,14 @@ section > img {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 0 40px 0 40px;
+  padding: 0 40px;
 }
 
 .description > h2 {
-  font-size: 18px;
-  font-weight: 600;
-  color:#3692FF;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bd);
+  margin-bottom: var(--spacing-sm);
+  color:var(  --color-primary);
 }
 
 .section.search .description {
@@ -127,14 +165,12 @@ section > img {
   justify-content: center;
   align-items: flex-end;
   flex-wrap: wrap;
-  background-color: #CFE5FF;
-  height: auto;
+  background-color: var( --color-background-banner);
   padding-top: 100px;
 }
 
 .footer-banner > img {
   max-width:100%; 
-  height:auto;
 }
 
 .footer-text {
@@ -142,16 +178,16 @@ section > img {
 }
 
 .footer-info {
-  background-color: #111827;
-  height: auto;
+  background-color: var(--color-background-dark);
+  height: var(--footer-height);
 }
 
 .info-container {
   display: flex;
   justify-content: space-around;
   place-items: center;
-  color:#F3F4F6;
-  padding: 32px 0 108px;
+  color:var(--color-secondary400);
+  padding: 32px 0;
 }
 
 .footer-menu {
@@ -165,7 +201,7 @@ section > img {
 .faq {
   text-decoration: none;
   cursor: pointer;
-  color: #E5E7EB;
+  color: var(--color-secondary200);
 }
 
 .social-media {
