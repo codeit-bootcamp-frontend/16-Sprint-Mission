@@ -30,10 +30,27 @@
   --btn-white-color: var(--primary-color);
   --btn-white-bg: #f9fafb;
 
+  /* header */
+  --header-side-pd: 200px;
+
   /* footer */
   --footer-bg: var(--dark-bg);
 
   /* main */
   --main-banner-bg: var(--primary-bg);
   --service-cat-color: var(--primary-color);
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  :root {
+    /* header */
+    --header-side-pd: 24px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  :root {
+    /* header */
+    --header-side-pd: 16px;
+  }
 }

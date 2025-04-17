@@ -95,7 +95,7 @@
   justify-content: center;
   height: 70px;
   background: var(--white);
-  padding: 0 200px;
+  padding: 0 var(--header-side-pd);
 }
 
 #header .inner {
@@ -145,18 +145,6 @@
 #footer .sns_link ul a {
   display: block;
   padding: 0 6px;
-}
-
-@media screen and (max-width: 1200px) {
-  #header {
-    padding: 0 50px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  #header {
-    padding: 0 16px;
-  }
 }
 
 @media screen and (max-width: 480px) {
