@@ -1,5 +1,5 @@
 header {
-  padding: 9.5px 0;
+  padding: 0.59375rem 0;
   background-color: white;
   position: sticky;
   top: 0;
@@ -10,7 +10,7 @@ header {
   background-color: var(--color-primary-100);
   text-decoration: none;
   color: var(--color-secondary-100);
-  padding: 12px 20px;
+  padding: 0.75rem 1.25rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,7 +33,7 @@ header {
 }
 
 .header__content {
-  padding: 0 200px;
+  padding: 0 1.25rem;
   max-width: 1520px;
   margin: 0 auto;
   color: #ffffff;
@@ -52,11 +52,11 @@ header {
 
 .banner__content {
   max-width: 1110px;
-  padding-top: 200px;
+  padding-top: 12.5rem;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: center;
 }
 
 .banner__content__text {
@@ -78,17 +78,17 @@ header {
 }
 
 .feature {
-  padding: 138px 0;
+  padding: 4.375rem 0;
 }
 
 .feature__content {
   max-width: 988px;
   margin: 0 auto;
-  background-color: #fcfcfc;
   border-radius: var(--border-radius-md);
   display: flex;
   align-items: center;
   gap: 64px;
+  flex-direction: column;
 }
 
 .feature__content__img {
@@ -122,40 +122,39 @@ header {
   color: var(--color-secondary-700);
 }
 
-.text-right {
+.feature__content__reverse {
+  flex-direction: column-reverse;
+}
+
+.search-text {
   text-align: right;
 }
 
 /* 하단 배너 */
-.bottom__banner {
+.promotion__banner {
   background-color: var(--color-background-blue);
 }
 
-.bottom__banner__content {
+.promotion__banner__content {
   max-width: 1110px;
-  padding-top: 143px;
+  padding-top: 8.9375rem;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: center;
 }
 
-.bottom__banner__content__img {
-  max-width: 746px;
-  width: 80%;
-}
-
-.bottom__banner__content__title {
+.promotion__banner__content__title {
   font-size: var(--font-size-4xl);
   font-weight: 700;
   color: var(--color-secondary-700);
-  padding-bottom: 172px;
+  padding-bottom: 10.75rem;
 }
 
 /* 푸터 */
 footer {
   background-color: #111827;
-  padding: 32px 0 108px;
+  padding: 2rem 0 6.75rem;
 }
 
 .footer__content {
@@ -168,7 +167,6 @@ footer {
 
 .footer__content__copyright {
   font-size: var(--font-size-lg);
-  font-weight: 400;
   color: #9ca3af;
 }
 
@@ -176,7 +174,6 @@ footer {
   text-decoration: none;
   color: #e5e7eb;
   font-size: var(--font-size-lg);
-  font-weight: 400;
 }
 
 .footer__content__link {
@@ -202,14 +199,12 @@ footer {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  min-width: 100vw;
 }
 
 .form__container .signup__form {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 100vw;
 }
 
 .form__container__content {
@@ -239,10 +234,6 @@ footer {
 }
 
 .form__container__input {
-  padding: 16px 20px;
-  border-radius: 12px;
-  background-color: var(--color-secondary-100);
-  height: 56px;
   flex-grow: 1;
 }
 
@@ -265,7 +256,7 @@ footer {
 .form__container__banner {
   background-color: var(--color-background-light-blue);
   border-radius: 8px;
-  padding: 16px 23px;
+  padding: 1rem 1.4375rem;
   font-size: var(--font-size-2lg);
   font-weight: 500;
   color: var(--color-secondary-800);
@@ -293,32 +284,30 @@ footer {
   color: var(--color-primary-100);
 }
 
-@media all and (max-width: 1023px) {
-  .header__content {
-    padding: 0 20px;
-  }
-
-  .banner__content {
-    flex-direction: column;
-    align-items: center;
-  }
-
+/* 태블릿 사이즈 이상에서 반영 */
+@media screen and (min-width: 768px) {
   .feature {
-    padding: 70px 0;
+    padding: 8.625rem 0;
+  }
+
+  .header__content {
+    padding: 0 12.5rem;
   }
 
   .feature__content {
-    align-items: center;
-    background: none;
-    flex-direction: column;
+    flex-direction: row;
+    background-color: #fcfcfc;
   }
 
-  .feature__content__reverse {
-    flex-direction: column-reverse;
+  .banner__content {
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-direction: row;
   }
 
-  .bottom__banner__content {
-    flex-direction: column;
-    align-items: center;
+  .promotion__banner__content {
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-direction: row;
   }
 }

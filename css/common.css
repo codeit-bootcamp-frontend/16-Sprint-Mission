@@ -40,15 +40,3 @@ body {
 a {
   cursor: pointer;
 }
-
-input::placeholder {
-  color: var(--color-secondary-400);
-  font-size: var(--font-size-lg);
-  font-weight: 400;
-}
-
-input {
-  color: var(--color-secondary-800);
-  font-size: var(--font-size-lg);
-  font-weight: 400;
-}
