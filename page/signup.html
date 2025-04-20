@@ -7,7 +7,7 @@
     <title>회원가입</title>
   </head>
   <body>
-    <section class="AuthContainer sign-up">
+    <section class="auth-container sign-up">
       <h1 class="title">
         <a href="../index.html">
           <img src="../images/logo_sub_page.png" alt="판다마켓로고" />
@@ -22,7 +22,8 @@
           name="email"
           required
           class="input"
-          placeholder="codeit@email.com"
+          autocomplete="email"
+          placeholder="이메일을 입력해주세요"
         />
 
         <label class="label" for="nickname">닉네임</label>
@@ -32,15 +33,26 @@
           name="nickname"
           required
           class="input"
-          placeholder=""
+          placeholder="닉네임을 입력해주세요"
         />
 
         <label class="label" for="pw">비밀번호</label>
         <div class="pw-wrap">
-          <input type="password" id="pw" name="pw" required class="input" />
-          <span class="eye-icon"></span>
+          <input
+            type="password"
+            id="pw"
+            name="pw"
+            required
+            class="input"
+            placeholder="비밀번호를 입력해주세요"
+          />
+          <span
+            class="eye-icon"
+            aria-label="비밀번호 표시"
+            ,aria-pressed="false"
+          ></span>
         </div>
-        <label class="label" for="pw-chk">비밀번호</label>
+        <label class="label" for="pw-chk">비밀번호 확인</label>
         <div class="pw-wrap">
           <input
             type="password"
@@ -48,6 +60,7 @@
             name="pw-chk"
             required
             class="input"
+            placeholder="비밀번호를 다시 한 번 입력해주세요"
           />
           <span class="eye-icon"></span>
         </div>

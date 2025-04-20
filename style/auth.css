@@ -1,36 +1,37 @@
 /* 로그인 & 회원가입 */
-.AuthContainer {
-  width: 640px;
+.auth-container {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   height: 100%;
   justify-content: center;
   align-items: center;
-  padding: 100px 0;
+  padding: 80px 16px 0;
+  max-width: 400px;
 }
-.AuthContainer.sign-up {
-  height: 100%;
+
+.auth-container.sign-up {
+  padding: 24px 16px 180px;
 }
-.AuthContainer .title {
-  width: 396px;
+.auth-container .title {
+  width: 198px;
 }
-.AuthContainer .title img {
+.auth-container .title img {
   width: 100%;
 }
 
-.AuthContainer .form-wrap {
+.auth-container .form-wrap {
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding-top: 40px;
+  padding-top: 31px;
 }
-.AuthContainer .form-wrap .label {
+.auth-container .form-wrap .label {
   padding-bottom: 16px;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
 }
-.AuthContainer .form-wrap .input {
+.auth-container .form-wrap .input {
   position: relative;
   height: 56px;
   background-color: var(--gray100);
@@ -40,14 +41,17 @@
   color: var(--gray800);
   width: 100%;
 }
-.AuthContainer .form-wrap .pw-wrap {
+.auth-container .form-wrap .input::placeholder {
+  font-weight: 300;
+}
+.auth-container .form-wrap .pw-wrap {
   position: relative;
   margin-bottom: 24px;
 }
-.AuthContainer .form-wrap .pw-wrap .input {
+.auth-container .form-wrap .pw-wrap .input {
   margin: 0;
 }
-.AuthContainer .form-wrap .pw-wrap .eye-icon {
+.auth-container .form-wrap .pw-wrap .eye-icon {
   content: "";
   display: block;
   background-image: url(../images/eyes_close.png);
@@ -62,20 +66,23 @@
   transform: translateY(-50%);
   cursor: pointer;
 }
-.AuthContainer .form-wrap .pw-wrap .eye-icon.on {
+.auth-container .form-wrap .pw-wrap .eye-icon.on {
   background-image: url(../images/eyes.png);
 }
-.AuthContainer .form-wrap .input::placeholder {
+.auth-container .form-wrap .input::placeholder {
   color: var(--gray400);
 }
-.AuthContainer .form-wrap .form-btn {
-  background-color: var(--main-color);
+.auth-container .form-wrap .form-btn {
+  background-color: var(--gray400);
   color: #fff;
   height: 56px;
   border-radius: 50px;
   font-size: 20px;
 }
-.AuthContainer .easy-login-wrap {
+.auth-container .form-wrap .form-btn.on {
+  background-color: var(--main-color);
+}
+.auth-container .easy-login-wrap {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -85,21 +92,75 @@
   padding: 16px 24px;
   margin-top: 24px;
 }
-.AuthContainer .easy-login-wrap .easy-login {
+.auth-container .easy-login-wrap .easy-login {
   display: flex;
   gap: 16px;
 }
-.AuthContainer .easy-login-wrap .easy-login .login-btn {
+.auth-container .easy-login-wrap .easy-login .login-btn {
   width: 42px;
 }
-.AuthContainer .signup-wrap {
+.auth-container .signup-wrap {
   margin-top: 24px;
   font-size: 14px;
 }
-.AuthContainer .signup-wrap .goto-signup {
+.auth-container .signup-wrap .goto-signup {
   color: var(--main-color);
   text-decoration: underline;
 }
-.AuthContainer .signup-wrap .goto-signup:visited {
+.auth-container .signup-wrap .goto-signup:visited {
   color: var(--main-color);
+}
+
+@media (min-width: 768px) {
+  .auth-container {
+    width: 640px;
+    padding: 100px 0;
+    max-width: unset;
+  }
+  .auth-container.sign-up {
+    padding: 48px 16px 243px;
+  }
+  .auth-container .title {
+    width: 396px;
+  }
+  .auth-container .form-wrap {
+    padding-top: 40px;
+  }
+  .auth-container .form-wrap .label {
+    padding-bottom: 16px;
+    font-size: 18px;
+  }
+  .auth-container .form-wrap .pw-wrap {
+    position: relative;
+    margin-bottom: 24px;
+  }
+  .auth-container .form-wrap .pw-wrap .input {
+    margin: 0;
+  }
+  .auth-container .form-wrap .pw-wrap .eye-icon {
+    content: "";
+    display: block;
+    background-image: url(../images/eyes_close.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 50%;
+    right: 24px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  .auth-container .signup-wrap {
+    margin-top: 24px;
+    font-size: 14px;
+  }
+  .auth-container .signup-wrap .goto-signup {
+    color: var(--main-color);
+    text-decoration: underline;
+  }
+  .auth-container .signup-wrap .goto-signup:visited {
+    color: var(--main-color);
+  }
 }
