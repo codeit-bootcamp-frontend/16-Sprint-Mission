@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>판다마켓</title>
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
+    />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="commod.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="gnb">
+        <div class="gnb-inner">
+          <a href="/" aria-label="홈으로 이동" rel="noopener noreferrer">
+            <img src="img/logo.png" alt="판다마켓 로고" />
+          </a>
+          <button
+            class="login"
+            type="button"
+            onclick="location.href='/login'"
+            aria-label="로그인 페이지로 이동"
+            rel="noopener noreferrer"
+          >
+            로그인
+          </button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <!-- section01 -->
+      <section>
+        <div class="background-blue">
+          <div class="top">
+            <h1>
+              일상의 모든 물건을<br />
+              거래해 보세요
+            </h1>
+
+            <button
+              type="button"
+              onclick="location.href='/items'"
+              aria-label="구경하기로 이동"
+              rel="noopener noreferrer"
+            >
+              구경하러 가기
+            </button>
+          </div>
+          <img
+            class="home-top"
+            src="img/Img_home_top.png"
+            alt="동네 한 중심에 있는 판다가 손 흔들고 있는 이미지"
+          />
+        </div>
+      </section>
+
+      <!-- section02 -->
+      <section class="content-box">
+        <div class="content">
+          <img
+            src="img/Img_home_01.png"
+            alt="두 판다가 셔츠를 구경하고 있는 이미지"
+          />
+          <div class="section-text">
+            <h2>Hot item</h2>
+            <h1>
+              인기 상품을<br />
+              확인해 보세요
+            </h1>
+            <p>
+              가장 HOT한 중고거래 물품을<br />
+              판다 마켓에서 확인해보세요
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- section03 -->
+      <section class="content-box">
+        <div class="content">
+          <div class="section-text" id="section03-text">
+            <h2>Search</h2>
+            <h1>
+              구매를 원하는<br />
+              상품을 검색하세요
+            </h1>
+            <p>
+              구매하고 싶은 물품은 검색해서<br />
+              쉽게 찾아보세요!
+            </p>
+          </div>
+          <img
+            src="img/Img_home_02.png"
+            alt="돋보기로 상품을 검색하고 있는 이미지"
+          />
+        </div>
+      </section>
+
+      <!--section04-->
+      <section class="content-box" id="content-lastbox">
+        <div class="content">
+          <img
+            src="img/Img_home_03.png"
+            alt="판매상품을 요술봉으로 등록하고 있는 모습"
+          />
+          <div class="section-text">
+            <h2>Register</h2>
+            <h1>
+              판매를 원하는<br />
+              상품을 등록하세요
+            </h1>
+            <p>
+              어떤 물건이든 판매하고 싶은 상품을<br />
+              쉽게 등록하세요
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!--section05-->
+      <section>
+        <div class="background-blue">
+          <h1>
+            믿을 수 있는<br />
+            판다마켓 중고거래
+          </h1>
+          <img
+            class="home-bottom"
+            src="img/Img_home_bottom.png"
+            alt="동네 한 가운데에서 두 판다가 정보를 공유하고 있는 이미지"
+          />
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="fct">
+        <p>&copy;codeit - 2024</p>
+        <div class="fnav">
+          <button type="button" onclick="location.href='/privacy'">
+            Privacy Policy
+          </button>
+          <button type="button" onclick="location.href='/faq'">FAQ</button>
+        </div>
+        <ul>
+          <li>
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="img/ic_facebook.png" alt="페이스북 로고" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="img/Vector.png" alt="트위터 로고" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="img/ic_youtube.png" alt="유튜브 로고" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="img/ic_instagram.png" alt="인스타 로고" />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

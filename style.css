@@ -1,0 +1,183 @@
+button {
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+body {
+  background-color: #fff;
+  font-family: "Pretendard Variable", sans-serif;
+  color: #374151;
+  overflow-x: hidden;
+}
+
+section {
+  width: 100vw;
+}
+
+.gnb {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: center; /* 내부 gnb-inner 중앙 정렬 */
+  position: fixed; /* 상단바 고정 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* 다른 요소보다 위에 보이도록 */
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.gnb-inner {
+  width: 100%;
+  max-width: 1520px; /* 1920 - 400(양쪽 여백) */
+  padding-left: clamp(40px, 10vw, 200px);
+  padding-right: clamp(40px, 10vw, 200px);
+
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gnb img {
+  height: 40px;
+  display: block;
+}
+
+.login {
+  background-color: #3399ff;
+  padding: 11px 43px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.login:hover {
+  background-color: #1b62a9;
+}
+
+.background-blue {
+  background-color: #cfe5ff;
+  height: 540px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.background-blue h1 {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.background-blue button {
+  padding: 12px 124px;
+  background-color: #3399ff;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 40px;
+  margin-top: 32px;
+}
+
+.background-blue button:hover {
+  background-color: #1b62a9;
+}
+
+.home-top {
+  margin-top: 200px;
+  overflow: hidden;
+}
+
+main {
+  background-color: #fcfcfc;
+}
+
+.content-box {
+  padding-top: 138px;
+  background-color: #fff;
+}
+
+#content-lastbox {
+  margin-bottom: 138px;
+}
+
+.content {
+  display: flex;
+  width: 988px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 12px;
+  background-color: #fcfcfc;
+  justify-content: space-around;
+}
+
+#section03-text {
+  text-align: right;
+}
+
+.section-text h1 {
+  margin-top: 12px;
+  margin-bottom: 24px;
+  font-size: clamp(24px, 2.6vw, 40px);
+  font-weight: 700;
+}
+
+.section-text h2 {
+  margin-top: 103px;
+  color: #3399ff;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.section-text p {
+  font-weight: 500;
+  font-size: clamp(18px, 1.5vw, 24px);
+}
+
+.home-bottom {
+  margin-top: 145px;
+  overflow: hidden;
+}
+
+footer {
+  height: 160px;
+  width: 100vw;
+  background-color: #111827;
+}
+
+.fct {
+  width: 1120px;
+  padding-top: 32.5px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.fct p {
+  color: #8b929e;
+  font-size: clamp(12px, 1vw, 16px);
+  font-weight: 400;
+}
+
+.fnav {
+  display: flex;
+  background-color: inherit;
+  color: #fff;
+  gap: 30px;
+}
+
+.fnav button {
+  background-color: inherit;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.fct ul {
+  display: flex;
+  gap: 12px;
+}
+
+.fct li {
+  overflow: hidden;
+  width: 20px;
+  height: 20px;
+}
