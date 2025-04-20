@@ -58,21 +58,6 @@ html {
   --border-color: #dfdfdf;
 }
 
-h2,
-p {
-  color: var(--secondary-color-gray700);
-}
-
 .badge {
   color: var(--primary-color-100);
-}
-
-img {
-  max-width: 100%;
-  display: block;
-  height: auto;
-}
-
-a {
-  cursor: pointer;
 }

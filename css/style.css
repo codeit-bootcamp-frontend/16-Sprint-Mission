@@ -55,6 +55,12 @@ header {
 main {
   margin-top: 70px;
 }
+
+h2,
+p {
+  color: var(--secondary-color-gray700);
+}
+
 /* hero */
 .hero {
   height: 540px;
