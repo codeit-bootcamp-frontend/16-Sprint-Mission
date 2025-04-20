@@ -1,0 +1,85 @@
+input:focus {
+  outline-color: var(--primary-color-100);
+}
+
+.content {
+  max-width: 640px;
+  width: 100%;
+  margin: 120px auto 0;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 24px;
+}
+
+form {
+  width: 100%;
+  margin-top: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.content input {
+  width: 100%;
+  height: 56px;
+  padding: 0 20px;
+  border-radius: 12px;
+  background-color: var(--secondary-color-gray100);
+}
+
+.password-input-box {
+  position: relative;
+}
+
+#password {
+  padding: 0 40px 0 20px;
+}
+
+.btn-submit {
+  width: 100%;
+  height: 56px;
+  border-radius: 40px;
+  background-color: var(--primary-color-100);
+  color: #fff;
+}
+
+.sns-login {
+  width: 100%;
+  height: 74px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-radius: 8px;
+  background-color: #e6f2ff;
+}
+
+.sns-login-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.visivility-btn {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.visivility-btn-on {
+  display: none;
+}
+
+.sign-up {
+  font-size: 1.4rem;
+}
+
+.sign-up a {
+  text-decoration: underline;
+  color: var(--primary-color-100);
+}
