@@ -76,13 +76,15 @@ header .img-lg {
 header .btn-link-login {
   width: 128px;
   height: 48px;
-  padding: 12px 44px;
+  display: inline-block;
+  padding: 12px;
   border-radius: 8px;
   font-size: 16px;
-  line-height: 26px;
+  line-height: 24px;
   font-weight: 600;
   color: var(--color-gray100);
   background-color: var(--color-pri100);
+  text-align: center;
   text-decoration: none;
 }
 
@@ -114,10 +116,11 @@ header .btn-link-login {
 }
 
 .btn-link-trades {
+  display: inline-block;
   width: 360px;
   height: 56px;
   line-height: 28px;
-  padding: 12px 120px;
+  padding: 12px;
   border-radius: 40px;
   font-size: 20px;
   line-height: 32px;
@@ -243,6 +246,7 @@ footer .privacy-links > a {
 
   .main-banner .wrap {
     margin-top: 84px;
+    justify-content: center;
   }
 
   .sub-banner .wrap {
@@ -380,7 +384,6 @@ footer .privacy-links > a {
   .btn-link-trades {
     width: 240px;
     height: 48px;
-    padding: 12px 68px;
     font-size: 18px;
     line-height: 24px;
     font-weight: 600;
