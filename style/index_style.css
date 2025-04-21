@@ -1,7 +1,6 @@
-/** wrap layout **/
-
 .wrap {
   max-width: var(--container-width);
+  min-width: var(--content-width);
   margin: 0 auto;
 }
 
@@ -11,23 +10,26 @@
 
 header .wrap {
   padding: 8px 200px;
-  min-width: var(--content-width);
 }
 
 .banner {
-  height: 540px;
   display: flex;
-  align-items: flex-end;
+  justify-content: flex-start;
+  align-items: center;
+  height: 540px;
 }
 
 .banner .wrap {
-  min-width: var(--content-width);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .banner .banner-description {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-width: 400px;
 }
 
 main .wrap {
@@ -39,10 +41,6 @@ main .wrap {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-}
-
-.feature-card .wrap {
-  min-width: var(--content-width);
 }
 
 .feature-description {
@@ -59,7 +57,6 @@ footer .wrap {
   display: flex;
   justify-content: space-between;
   padding: 28px 52px;
-  min-width: var(--content-width);
 }
 
 /** header **/
@@ -92,6 +89,18 @@ header .btn-link-login {
   background-color: var(--color-pri50);
 }
 
+.main-banner {
+  background-image: url("../img/Img_home_top.png");
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.sub-banner {
+  background-image: url("../img/Img_home_bottom.png");
+  background-repeat: no-repeat;
+  background-position: 60% 100%;
+}
+
 .banner-description {
   gap: var(--spacing-xxl);
 }
@@ -122,17 +131,9 @@ header .btn-link-login {
   margin: 140px 0;
 }
 
-.feature-card,
-.feature-img,
 .feature-description {
   height: 440px;
-}
-
-.feature-card .feature-description {
   padding: 52px;
-}
-
-.feature-description {
   background-color: var(--color-gray30);
   gap: var(--spacing-xs);
 }
