@@ -68,6 +68,11 @@ header {
   right: 0;
 }
 
+header .img-lg {
+  width: 156px;
+  height: 52px;
+}
+
 header .btn-link-login {
   width: 128px;
   height: 48px;
@@ -296,7 +301,7 @@ footer .privacy-links > a {
   }
 
   .feature-description .feature-title {
-    font-size: 18;
+    font-size: 18px;
     line-height: 26px;
   }
 
@@ -318,5 +323,121 @@ footer .privacy-links > a {
 
   .feature-card:nth-child(2n) .feature-description {
     align-items: flex-end;
+  }
+}
+
+/** media: mobile **/
+
+@media (max-width: 767px) {
+  /** layout **/
+
+  header .wrap {
+    padding: 8px 16px;
+  }
+
+  main .wrap {
+    padding: 0 16px;
+  }
+
+  .main-banner,
+  .sub-banner {
+    height: 40vh;
+  }
+
+  .main-banner .wrap {
+    margin-top: 48px;
+  }
+
+  .sub-banner .wrap {
+    margin-top: 120px;
+  }
+
+  /** header **/
+  header .img-lg {
+    width: auto;
+    height: auto;
+  }
+
+  /** banner **/
+
+  .main-banner {
+    background-size: clamp(500px, 100vw, 80%);
+  }
+
+  .sub-banner {
+    background-size: clamp(400px, 100vw, 60%);
+  }
+
+  .banner-description h1 {
+    font-size: 32px;
+    line-height: 140%;
+  }
+
+  .btn-link-trades {
+    width: 240px;
+    height: 48px;
+    padding: 12px 68px;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 600;
+  }
+
+  /** features **/
+
+  .features .feature-card {
+    padding: 20px 0;
+  }
+
+  .features .feature-card:first-child {
+    margin-top: 32px;
+  }
+
+  .features .feature-card:last-child {
+    margin-bottom: 32px;
+  }
+
+  .feature-description .feature-sub-description {
+    width: 70%;
+  }
+
+  .feature-description .feature-title {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .feature-description .feature-main-description {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .feature-description .feature-sub-description {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  footer .wrap {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 32px;
+  }
+
+  footer ul {
+    flex-basis: 50%;
+    order: 0;
+  }
+
+  footer p {
+    order: 1;
+    margin-top: 20px;
+  }
+
+  footer .privacy-links {
+    justify-content: start;
+    align-items: start;
+  }
+
+  footer .sns-links {
+    justify-content: end;
+    align-items: start;
   }
 }
