@@ -125,14 +125,17 @@ main {
   }
 
   .login-form {
+    max-width: 400px;
     width: 100%;
   }
 
   .login-form input {
+    max-width: 400px;
     width: 100%;
   }
 
   .oauth {
+    max-width: 400px;
     width: 100%;
   }
 }

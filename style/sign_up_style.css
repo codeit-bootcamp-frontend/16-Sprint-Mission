@@ -126,14 +126,17 @@ main {
   }
 
   .sign-up-form {
+    max-width: 400px;
     width: 100%;
   }
 
   .sign-up-form input {
+    max-width: 400px;
     width: 100%;
   }
 
   .oauth {
+    max-width: 400px;
     width: 100%;
   }
 }
