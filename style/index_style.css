@@ -14,8 +14,6 @@ header .wrap {
 
 .banner {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
   height: 540px;
 }
 
@@ -208,4 +206,117 @@ footer .privacy-links > a {
 .btn-link-login:active,
 .btn-link-trades:active {
   background-color: var(--color-pri300);
+}
+
+/** media: tablet **/
+
+@media (max-width: 1199px) {
+  /** layout **/
+  .wrap {
+    min-width: initial;
+  }
+
+  header .wrap {
+    padding: 8px 24px;
+  }
+
+  main .wrap {
+    padding: 0 24px;
+  }
+
+  .banner {
+    flex-direction: column;
+  }
+
+  .main-banner {
+    height: 60vh;
+  }
+
+  .sub-banner {
+    height: 75vh;
+  }
+
+  .main-banner .wrap {
+    margin-top: 84px;
+  }
+
+  .sub-banner .wrap {
+    margin-top: 200px;
+  }
+
+  .feature-card .wrap {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .feature-card .feature-description {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 0;
+  }
+
+  footer .wrap {
+    padding: 32px 104px;
+  }
+
+  /** banner **/
+
+  .banner .banner-description {
+    max-width: initial;
+    text-align: center;
+    align-items: center;
+  }
+
+  .main-banner,
+  .sub-banner {
+    background-position: bottom;
+  }
+
+  /** features **/
+
+  .features .feature-card {
+    width: 100%;
+    margin: 0;
+    padding: 24px 0;
+  }
+
+  .feature-description {
+    padding: 24px 0;
+    background-color: var(--color-white);
+  }
+
+  .feature-img,
+  .feature-description {
+    width: 100%;
+  }
+
+  .feature-description .feature-sub-description {
+    width: 50%;
+  }
+
+  .feature-description .feature-title {
+    font-size: 18;
+    line-height: 26px;
+  }
+
+  .feature-description .feature-main-description {
+    font-size: 32px;
+    line-height: 42px;
+  }
+
+  .feature-description .feature-sub-description {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  /** pseudo class **/
+
+  .feature-card:nth-child(2n) .wrap {
+    flex-direction: column-reverse;
+  }
+
+  .feature-card:nth-child(2n) .feature-description {
+    align-items: flex-end;
+  }
 }
