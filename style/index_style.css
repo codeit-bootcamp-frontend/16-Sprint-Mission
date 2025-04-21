@@ -101,7 +101,7 @@ header .btn-link-login {
 .sub-banner {
   background-image: url("../img/Img_home_bottom.png");
   background-repeat: no-repeat;
-  background-position: 60% 100%;
+  background-position: 70% 100%;
 }
 
 .banner-description {
@@ -366,6 +366,10 @@ footer .privacy-links > a {
 
   .sub-banner {
     background-size: clamp(400px, 100vw, 60%);
+  }
+
+  .main-banner .wrap {
+    width: 80%;
   }
 
   .banner-description h1 {
