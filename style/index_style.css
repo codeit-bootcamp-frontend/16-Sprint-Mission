@@ -92,7 +92,7 @@ header .btn-link-login {
 .main-banner {
   background-image: url("../img/Img_home_top.png");
   background-repeat: no-repeat;
-  background-position: bottom;
+  background-position: 70% 100%;
 }
 
 .sub-banner {
