@@ -213,12 +213,12 @@ footer {
 }
 
 /* 로그인 화면, 회원가입 공통 */
-
 .form__container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  padding: 16px;
 }
 
 .form__container .signup__form {
@@ -231,7 +231,8 @@ footer {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  max-width: 640px;
+  max-width: 400px;
+  width: 100%;
 }
 
 .form__container__content a {
@@ -241,6 +242,7 @@ footer {
 
 .form__container__logo {
   margin-bottom: 20px;
+  max-width: 198px;
 }
 
 .form__container__label {
@@ -271,6 +273,7 @@ footer {
 
 .form__container button {
   margin-bottom: 24px;
+  width: 100%;
 }
 
 .form__container__banner {
@@ -304,7 +307,7 @@ footer {
   color: var(--color-primary-100);
 }
 
-/* 태블릿 사이즈 이상에서 반영 */
+/* 태블릿 사이즈 이상에서 반응형 */
 @media screen and (min-width: 768px) {
   .header__content__logo {
     width: 153px;
@@ -372,8 +375,17 @@ footer {
   .footer__content__menu {
     flex-direction: row;
   }
+  /* 태블릿 회원가입,로그인 화면 반응형 CSS */
+  .form__container__logo {
+    max-width: 396px;
+  }
+
+  .form__container__content {
+    max-width: 640px;
+  }
 }
 
+/* PC 반응형 */
 @media screen and (min-width: 1200px) {
   .banner__content {
     padding-top: 200px;
@@ -454,5 +466,14 @@ footer {
 
   .footer__content__menu {
     gap: 366.5px;
+  }
+
+  /* PC 회원가입,로그인 화면 반응형 CSS */
+  .form__container {
+    padding: 0;
+  }
+
+  .form__container__content {
+    max-width: 640px;
   }
 }
