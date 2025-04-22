@@ -11,6 +11,7 @@ const password_typeErr = '비밀번호를 8자 이상 입력해주세요';
 const password_valid = '';
 
 const password_verify_mismatch = '비밀번호가 일치하지 않습니다';
+const password_verify_blank = '비밀번호를 입력해주세요';
 const password_verify_typeErr = '비밀번호를 8자 이상 입력해주세요';
 const password_verify_valid = '';
 
@@ -44,8 +45,10 @@ export default function inputInfoTextSelector(val, inputType) {
     }
   } else if (inputType === 'password_verify') {
     switch (val) {
-      case -1:
+      case -2:
         return password_verify_mismatch;
+      case -1:
+        return password_verify_blank;
       case 0:
         return password_verify_typeErr;
       case 1:

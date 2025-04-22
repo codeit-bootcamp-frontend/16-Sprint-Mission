@@ -29,11 +29,14 @@ export function passwordValidator(passwordText) {
 }
 
 export function passwordMatchValidator(passwordText, verifyPasswordText) {
-  // 불일치 : -1
+  // 불일치 : -2
+  // 빈칸 : -1
   // 비밀번호 형식 아님: 0
   // 비밀번호 형식: 1
 
   if (verifyPasswordText.length < 8 && verifyPasswordText.length > 0) return 0;
-  else if (passwordText !== verifyPasswordText) return -1;
-  else if (passwordText === verifyPasswordText) return 1;
+  else if (verifyPasswordText.length === 0) return -1;
+  else if (passwordText !== verifyPasswordText) return -2;
+  else if (passwordText === verifyPasswordText && verifyPasswordText.length > 0)
+    return 1;
 }
