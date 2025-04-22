@@ -111,31 +111,27 @@ input {
 } */
 
 /* 테블릿 사이즈 적용시 반응형 CSS 스타일 적용 */
-@media(max-width : 1199px) {
-  body {
+@media (max-width: 1199px) {
+  .form-section {
+    width: 100%;
     padding: 0 16px;
   }
 
-  .form-section{
-    width: 100%;
-  }
-
   .form-signup {
-    position:static
+    position: static;
   }
 
-  .input{
+  .input {
     width: 100%;
   }
 
-  .social-section{
+  .social-section {
+    padding: 0 16px;
     width: 100%;
   }
 
-  .social-login{
+  .social-login {
     width: 100%;
-    padding : 0 20px
+    padding: 0 20px;
   }
-
-
 }
