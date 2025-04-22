@@ -16,11 +16,11 @@
   --gray900: #111827;
 
   /* space */
-  --space-1: 8px;
-  --space-2: 16px;
-  --space-3: 24px;
-  --space-4: 32px;
-  --space-5: 40px;
+  --space-xxs: 8px;
+  --space-xs: 16px;
+  --space-sm: 24px;
+  --space-md: 32px;
+  --space-lg: 40px;
 
   /* btn */
   --btn-default-bg: var(--primary-color);
