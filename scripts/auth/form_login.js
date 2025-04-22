@@ -1,5 +1,5 @@
 import { emailValidator, passwordValidator } from './modules/validators.js';
-import onFocusOut from './focusOutHandler.js';
+import onFocusOut from './modules/focusOutHandler.js'
 
 const inputEmail = document.querySelector('#e-mail .form-input');
 const inputEmailContainer = document.querySelector('#e-mail .form-input-container');

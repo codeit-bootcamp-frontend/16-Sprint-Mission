@@ -1,5 +1,5 @@
 import { emailValidator, nicknameValidator, passwordValidator, passwordMatchValidator } from './modules/validators.js';
-import onFocusOut from './focusOutHandler.js';
+import onFocusOut from './modules/focusOutHandler.js'
 
 const inputEmail = document.querySelector('#e-mail .form-input');
 const inputEmailContainer = document.querySelector('#e-mail .form-input-container');
@@ -54,13 +54,7 @@ function onPasswordFocusOut(e) {
 // 비밀번호 확인 input 태그 focusout 이벤트
 function onVerifyPasswordFocusOut(e) {
   const statusKey = 'passwordVerify';
-  let eventElement;
-  if(e === undefined){
-    eventElement = inputVerifyPassword;
-  }else {
-    eventElement = e.target;
-  }
-  inputStatus[statusKey] = passwordMatchValidator(inputPassword.value,eventElement.value);
+  inputStatus[statusKey] = passwordMatchValidator(inputPassword.value,inputVerifyPassword.value);
   onFocusOut(inputStatus,statusKey,inputVerifyPasswordContainer,spanStatusVerifyPassword,formButton);
 }
 
