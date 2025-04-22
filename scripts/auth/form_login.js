@@ -1,14 +1,14 @@
-import { emailValidator, passwordValidator } from './modules/validator.js';
-import inputContainerStyleSelector from './modules/inputContainerStyleSelector.js';
-import inputInfoTextSelector from './modules/inputInfoTextSelector.js';
+import { emailValidator, passwordValidator } from './modules/validators.js';
+import { inputContainerStyleSelector, inputStatusStyleSelector } from './modules/styleSelectors.js';
+import inputStatusTextSelector from './modules/inputStatusTextSelector.js';
 
 const inputEmail = document.querySelector('#e-mail .form-input');
 const inputEmailContainer = document.querySelector('#e-mail .form-input-container');
-const spanEmail = document.querySelector('#e-mail .form-input-info');
+const spanStatusEmail = document.querySelector('#e-mail .form-status-info');
 
 const inputPassword = document.querySelector('#password .form-input');
 const inputPasswordContainer = document.querySelector('#password .form-input-container');
-const spanPassword = document.querySelector('#password .form-input-info');
+const spanStatusPassword = document.querySelector('#password .form-status-info');
 
 const imgPasswordVisible = document.querySelector('.form-icon-password');
 
@@ -22,20 +22,18 @@ const inputStatus = {
 function onEmailFocusOut(e) {
   inputStatus.email = emailValidator(e.target.value);
   const val = inputStatus.email;
+  spanStatusEmail.textContent = inputStatusTextSelector(val, 'e-mail');
   inputContainerStyleSelector(val, inputEmailContainer);
-  spanEmail.textContent = inputInfoTextSelector(val, 'e-mail');
-  if (val === 1) spanEmail.classList.add('inVisible');
-  else if (val <= 0) spanEmail.classList.remove('inVisible');
+  inputStatusStyleSelector(val,spanStatusEmail);
   checkValidateInputs();
 }
 
 function onPasswordFocusOut(e) {
   inputStatus.password = passwordValidator(e.target.value);
   const val = inputStatus.password;
+  spanStatusPassword.textContent = inputStatusTextSelector(val, 'password');
   inputContainerStyleSelector(val, inputPasswordContainer);
-  spanPassword.textContent = inputInfoTextSelector(val, 'password');
-  if (val === 1) spanPassword.classList.add('inVisible');
-  else if (val <= 0) spanPassword.classList.remove('inVisible');
+  inputStatusStyleSelector(val,spanStatusPassword);
   checkValidateInputs();
 }
 
