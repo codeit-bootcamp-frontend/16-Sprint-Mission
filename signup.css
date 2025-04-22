@@ -14,7 +14,6 @@
   align-items: center;
 } */
 
-
 header .logo img {
   margin-top: 250px;
   margin-bottom: 50px;
@@ -118,24 +117,21 @@ input {
   cursor: pointer;
 }
 
-
 /* 테블릿 사이즈 적용시 반응형 CSS 스타일 적용 */
-@media(max-width : 1199px) {
-
+@media (max-width: 1199px) {
   .icon-eye {
-  /* position: absolute; */
-  top: 53%;
-  /* transform: translateY(-50%);
+    /* position: absolute; */
+    top: 53%;
+    /* transform: translateY(-50%);
   right: 30px;
   cursor: pointer; */
-}
+  }
 
-.icon-eye2 {
-  /* position: absolute; */
-  top: 65%;
-  /* transform: translateY(-50%);
+  .icon-eye2 {
+    /* position: absolute; */
+    top: 65%;
+    /* transform: translateY(-50%);
   right: 30px;
   cursor: pointer; */
-}
-
+  }
 }
