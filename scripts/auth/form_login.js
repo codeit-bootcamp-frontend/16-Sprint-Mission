@@ -3,15 +3,11 @@ import inputContainerStyleSelector from './modules/inputContainerStyleSelector.j
 import inputInfoTextSelector from './modules/inputInfoTextSelector.js';
 
 const inputEmail = document.querySelector('#e-mail .form-input');
-const inputEmailContainer = document.querySelector(
-  '#e-mail .form-input-container'
-);
+const inputEmailContainer = document.querySelector('#e-mail .form-input-container');
 const spanEmail = document.querySelector('#e-mail .form-input-info');
 
 const inputPassword = document.querySelector('#password .form-input');
-const inputPasswordContainer = document.querySelector(
-  '#password .form-input-container'
-);
+const inputPasswordContainer = document.querySelector('#password .form-input-container');
 const spanPassword = document.querySelector('#password .form-input-info');
 
 const imgPasswordVisible = document.querySelector('.form-icon-password');
@@ -44,12 +40,7 @@ function onPasswordFocusOut(e) {
 }
 
 function checkValidateInputs() {
-  const isValidateInputs = Object.values(inputStatus).every((v) => v === 1);
-  if (isValidateInputs) {
-    formButton.disabled = false;
-  } else {
-    formButton.disabled = true;
-  }
+  formButton.disabled = !Object.values(inputStatus).every((v) => v === 1);
 }
 
 function onPasswordIcon(e) {
