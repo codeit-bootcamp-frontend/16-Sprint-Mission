@@ -53,6 +53,14 @@ body {
   align-items: center;
 }
 
+.form-input-container.inValid {
+  border: 1px solid var(--color-error);
+}
+
+.form-input-container.valid {
+  border: 1px solid var(--color-blue400);
+}
+
 .form-input {
   height: 100%;
   font-size: var(--font-size-base);
@@ -69,19 +77,30 @@ body {
   color: var(--color-gray400);
 }
 
-.form-icon-password-invisible,
-.form-icon-password-visible {
+.form-input-info {
+  display: inline-block;
+  margin: 8px 0 0 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-error);
+}
+
+.form-input-info.inVisible {
+  display: none;
+}
+
+.form-icon-password {
   width: 20.47px;
-  margin-right: 25.8px;
-}
-
-.form-icon-password-invisible {
-  height: 18.07px;
-}
-
-.form-icon-password-visible {
   height: 14px;
+  margin-right: 25.8px;
+  content: url("../images/icon_password_visible.png");
 }
+
+.form-icon-password.inVisible {
+  height: 18.07px;
+  content: url("../images/icon_password_invisible.png");
+}
+
 
 .form-btn {
   height: 56px;

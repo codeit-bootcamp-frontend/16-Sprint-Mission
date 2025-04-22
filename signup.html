@@ -32,63 +32,63 @@
       <span class="form-logo-text">판다마켓</span>
     </a>
     <form class="form-container" method="post">
-      <label class="form-label"
+      <label id="e-mail" class="form-label"
         >이메일
         <div class="form-input-container">
           <input
             class="form-input"
-            id="e-mail"
             name="e-mail"
             autocomplete="email"
             aria-label="이메일 입력 칸"
             placeholder="이메일을 입력해주세요"
           />
         </div>
+        <span class="form-input-info inVisible"></span>
       </label>
-      <label class="form-label"
+      <label id="nickname" class="form-label"
         >닉네임
         <div class="form-input-container">
           <input
             class="form-input"
-            id="nickname"
             name="nickname"
             aria-label="닉네임 입력 칸"
-            placeholder="닉네임을을 입력해주세요"
+            placeholder="닉네임을 입력해주세요"
           />
         </div>
+        <span class="form-input-info inVisible"></span>
       </label>
-      <label class="form-label"
+      <label id="password" class="form-label"
         >비밀번호
         <div class="form-input-container">
           <input
             class="form-input"
-            id="password"
             name="password"
             type="password"
             aria-label="비밀번호 입력 칸"
             placeholder="비밀번호를 입력해주세요"
           />
           <img
-            class="form-icon-password-invisible"
+            class="form-icon-password inVisible"
             src="images/icon_password_invisible.png"
           />
         </div>
+        <span class="form-input-info inVisible"></span>
       </label>
-      <label class="form-label"
+      <label id="verify_password" class="form-label"
         >비밀번호 확인
         <div class="form-input-container">
           <input
             class="form-input"
-            id="verify_password"
             name="verify_password"
             aria-label="비밀번호 확인 입력 칸"
             placeholder="비밀번호를 다시 한 번 입력해주세요"
           />
           <img
-            class="form-icon-password-invisible"
+            class="form-icon-password inVisible"
             src="images/icon_password_invisible.png"
           />
         </div>
+        <span class="form-input-info inVisible"></span>
       </label>
       <button
         class="form-btn btn disabled"
@@ -131,4 +131,5 @@
       </span>
     </form>
   </body>
+  <script src="./scripts/form_signup.js" type="module"></script>
 </html>
