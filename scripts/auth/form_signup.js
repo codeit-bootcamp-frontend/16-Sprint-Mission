@@ -48,12 +48,19 @@ function onPasswordFocusOut(e) {
   const statusKey = 'password';
   inputStatus[statusKey] = passwordValidator(e.target.value);
   onFocusOut(inputStatus,statusKey,inputPasswordContainer,spanStatusPassword,formButton);
+  if (inputVerifyPasswordContainer.classList.length > 1) onVerifyPasswordFocusOut();
 }
 
-// 비밀번호호 input 태그 focusout 이벤트
+// 비밀번호 확인 input 태그 focusout 이벤트
 function onVerifyPasswordFocusOut(e) {
   const statusKey = 'passwordVerify';
-  inputStatus[statusKey] = passwordMatchValidator(inputPassword.value,e.target.value);
+  let eventElement;
+  if(e === undefined){
+    eventElement = inputVerifyPassword;
+  }else {
+    eventElement = e.target;
+  }
+  inputStatus[statusKey] = passwordMatchValidator(inputPassword.value,eventElement.value);
   onFocusOut(inputStatus,statusKey,inputVerifyPasswordContainer,spanStatusVerifyPassword,formButton);
 }
 
