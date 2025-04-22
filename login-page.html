@@ -1,28 +1,38 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>판다마켓</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-  <link rel="stylesheet" href="reset.css">
-  <link rel="stylesheet" href="common.css"> 
-</head>
-<body class="login-signup-page">
-  <header class="login-signup-page-logo">
-    <a class="homepage" href="/">
-      <img class="logo" src="image/logo_lg.png" alt="판다마켓로고">
-    </a>
-  </header>
-  <main class="login-signup">
-    <form class="login-signup-form">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>판다마켓</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+    <link rel="stylesheet" href="style/reset.css" />
+    <link rel="stylesheet" href="style/common.css" />
+    <link rel="stylesheet" href="style/login-signup-page.css" />
+  </head>
+  <body class="login-signup-page">
+    <header class="login-signup-page-logo">
+      <a class="homepage" href="/">
+        <img class="logo" src="image/logo_lg.png" alt="판다마켓로고" />
+      </a>
+    </header>
+    <main class="login-signup">
+      <form class="login-signup-form">
         <div class="user-info">
-            <label for="login-email">이메일</label>
-            <input type="text" id="login-email" name="email" required>
+          <label for="login-email">이메일</label>
+          <input
+            type="text"
+            id="login-email"
+            name="email"
+            autocomplete="email"
+            required
+          />
         </div>
         <div class="user-info">
-            <label for="password">비밀번호</label>
-            <input type="password" id="password" name="password" required>
+          <label for="password">비밀번호</label>
+          <input type="password" id="password" name="password" required />
         </div>
         <div class="login-signup-button flex-center">
           <span>로그인</span>
@@ -31,10 +41,10 @@
           <p>간편 로그인하기</p>
           <div class="sns-logo">
             <a href="https://www.google.com/" rel="noopener noreferrer">
-              <img src="image/googleBg.png" alt="간편로그인_구글">
+              <img src="image/googleBg.png" alt="간편로그인_구글" />
             </a>
             <a href="https://www.kakaocorp.com/page/" rel="noopener noreferrer">
-              <img src="image/kakao.png" alt="간편로그인_카카오">
+              <img src="image/kakao.png" alt="간편로그인_카카오" />
             </a>
           </div>
         </div>
@@ -42,7 +52,7 @@
           이미 회원이신가요?
           <a href="/login">로그인</a>
         </footer>
-    </form>
-  </main>
-</body>
+      </form>
+    </main>
+  </body>
 </html>

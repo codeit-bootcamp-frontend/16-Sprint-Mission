@@ -1,0 +1,32 @@
+/* Define global CSS variables */
+:root {
+  --color-primary: #3692ff;
+  --color-text: #374151;
+  --color-text-light: #9ca3af;
+  --color-text-dark: #1f2937;
+  --color-background: #ffffff;
+  --color-background-dark: #111827;
+  --color-background-light: #e5e7eb;
+  --color-background-banner: #cfe5ff;
+  --color-background-alt: #f3f4f6;
+
+  --font-family-base: "Pretendard-Regular", sans-serif;
+  --font-family-heading: "Noto Sans KR", sans-serif;
+
+  --container-width: 1120px;
+  --header-height: 70px;
+  --footer-height: 160px;
+
+  --spacing-xs: 12px;
+  --spacing-sm: 24px;
+  --spacing-md: 32px;
+  --spacing-lg: 60px;
+  --spacing-xl: 138px;
+}
+
+/* Utility Classes */
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

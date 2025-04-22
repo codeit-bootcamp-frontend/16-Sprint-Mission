@@ -1,38 +1,5 @@
-/* Define global CSS variables */
-:root {
-  --color-primary: #3692FF;
-  --color-text: #374151;
-  --color-text-light: #9CA3AF;
-  --color-text-dark: #1F2937;
-  --color-background: #FFFFFF; 
-  --color-background-dark: #111827;
-  --color-background-light: #E5E7EB;
-  --color-background-banner: #CFE5FF;
-  --color-background-alt: #F3F4F6;
-  
-  --font-family-base: 'Pretendard-Regular', sans-serif;
-  --font-family-heading: 'Noto Sans KR', sans-serif;
-  
-  --container-width: 1120px;
-  --header-height: 70px;
-  --footer-height: 160px;
-  
-  --spacing-xs: 12px;
-  --spacing-sm: 24px;
-  --spacing-md: 32px;
-  --spacing-lg: 60px;
-  --spacing-xl: 138px;
-}
-
-/* Utility Classes */
-.flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .login-signup-page {
-  font-family: 'pretendard', sans-serif;
+  font-family: "pretendard", sans-serif;
   width: 100%;
   max-width: 640px;
   height: auto;
@@ -111,7 +78,7 @@
   align-items: center;
   padding: 16px 23px 16px 23px;
   border-radius: 8px;
-  background-color: #E6F2FF;
+  background-color: #e6f2ff;
 }
 
 .sns-logo a {
