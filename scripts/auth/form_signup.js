@@ -1,6 +1,5 @@
 import { emailValidator, nicknameValidator, passwordValidator, passwordMatchValidator } from './modules/validators.js';
-import { inputContainerStyleSelector, inputStatusStyleSelector } from './modules/styleSelectors.js';
-import inputStatusTextSelector from './modules/inputStatusTextSelector.js';
+import onFocusOut from './focusOutHandler.js';
 
 const inputEmail = document.querySelector('#e-mail .form-input');
 const inputEmailContainer = document.querySelector('#e-mail .form-input-container');
@@ -30,44 +29,32 @@ const inputStatus = {
   passwordVerify: 0,
 };
 
+// 이메일 input 태그 focusout 이벤트
 function onEmailFocusOut(e) {
-  inputStatus.email = emailValidator(e.target.value);
-  const val = inputStatus.email;
-  spanStatusEmail.textContent = inputStatusTextSelector(val, 'e-mail');
-  inputContainerStyleSelector(val, inputEmailContainer);
-  inputStatusStyleSelector(val,spanStatusEmail);
-  checkValidateInputs();
+  const statusKey = 'email';
+  inputStatus[statusKey] = emailValidator(e.target.value);
+  onFocusOut(inputStatus,statusKey,inputEmailContainer,spanStatusEmail,formButton);
 }
 
+// 닉네임 input 태그 focusout 이벤트
 function onNicknameFocusOut(e) {
-  inputStatus.nickname = nicknameValidator(e.target.value);
-  const val = inputStatus.nickname;
-  spanStatusNickname.textContent = inputStatusTextSelector(val, 'nickname');
-  inputContainerStyleSelector(val, inputNicknameContainer);
-  inputStatusStyleSelector(val,spanStatusNickname);
-  checkValidateInputs();
+  const statusKey = 'nickname';
+  inputStatus[statusKey] = nicknameValidator(e.target.value);
+  onFocusOut(inputStatus,statusKey,inputNicknameContainer,spanStatusNickname,formButton);
 }
 
+// 비밀번호 input 태그 focusout 이벤트
 function onPasswordFocusOut(e) {
-  inputStatus.password = passwordValidator(e.target.value);
-  const val = inputStatus.password;
-  spanStatusPassword.textContent = inputStatusTextSelector(val, 'password');
-  inputContainerStyleSelector(val, inputPasswordContainer);
-  inputStatusStyleSelector(val,spanStatusPassword);
-  checkValidateInputs();
+  const statusKey = 'password';
+  inputStatus[statusKey] = passwordValidator(e.target.value);
+  onFocusOut(inputStatus,statusKey,inputPasswordContainer,spanStatusPassword,formButton);
 }
 
+// 비밀번호호 input 태그 focusout 이벤트
 function onVerifyPasswordFocusOut(e) {
-  inputStatus.passwordVerify = passwordMatchValidator(inputPassword.value,e.target.value);
-  const val = inputStatus.passwordVerify;
-  spanStatusVerifyPassword.textContent = inputStatusTextSelector(val,'password_verify');
-  inputContainerStyleSelector(val, inputVerifyPasswordContainer);
-  inputStatusStyleSelector(val,spanStatusVerifyPassword);
-  checkValidateInputs();
-}
-
-function checkValidateInputs() {
-  formButton.disabled = !Object.values(inputStatus).every((v) => v === 1);
+  const statusKey = 'passwordVerify';
+  inputStatus[statusKey] = passwordMatchValidator(inputPassword.value,e.target.value);
+  onFocusOut(inputStatus,statusKey,inputVerifyPasswordContainer,spanStatusVerifyPassword,formButton);
 }
 
 function onPasswordIcon(e) {

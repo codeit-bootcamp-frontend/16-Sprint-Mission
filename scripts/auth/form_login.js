@@ -1,6 +1,5 @@
 import { emailValidator, passwordValidator } from './modules/validators.js';
-import { inputContainerStyleSelector, inputStatusStyleSelector } from './modules/styleSelectors.js';
-import inputStatusTextSelector from './modules/inputStatusTextSelector.js';
+import onFocusOut from './focusOutHandler.js';
 
 const inputEmail = document.querySelector('#e-mail .form-input');
 const inputEmailContainer = document.querySelector('#e-mail .form-input-container');
@@ -19,26 +18,18 @@ const inputStatus = {
   password: 0,
 };
 
+// 이메일 input 태그 focusout 이벤트
 function onEmailFocusOut(e) {
-  inputStatus.email = emailValidator(e.target.value);
-  const val = inputStatus.email;
-  spanStatusEmail.textContent = inputStatusTextSelector(val, 'e-mail');
-  inputContainerStyleSelector(val, inputEmailContainer);
-  inputStatusStyleSelector(val,spanStatusEmail);
-  checkValidateInputs();
+  const statusKey = 'email';
+  inputStatus[statusKey] = emailValidator(e.target.value);
+  onFocusOut(inputStatus,statusKey,inputEmailContainer,spanStatusEmail,formButton);
 }
 
+// 비밀번호 input 태그 focusout 이벤트
 function onPasswordFocusOut(e) {
-  inputStatus.password = passwordValidator(e.target.value);
-  const val = inputStatus.password;
-  spanStatusPassword.textContent = inputStatusTextSelector(val, 'password');
-  inputContainerStyleSelector(val, inputPasswordContainer);
-  inputStatusStyleSelector(val,spanStatusPassword);
-  checkValidateInputs();
-}
-
-function checkValidateInputs() {
-  formButton.disabled = !Object.values(inputStatus).every((v) => v === 1);
+  const statusKey = 'password';
+  inputStatus[statusKey] = passwordValidator(e.target.value);
+  onFocusOut(inputStatus,statusKey,inputPasswordContainer,spanStatusPassword,formButton);
 }
 
 function onPasswordIcon(e) {

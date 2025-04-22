@@ -16,7 +16,7 @@ const password_verify_typeErr = '비밀번호를 8자 이상 입력해주세요'
 const password_verify_valid = '';
 
 export default function inputStatusTextSelector(val, inputType) {
-  if (inputType === 'e-mail') {
+  if (inputType === 'email') {
     switch (val) {
       case -1:
         return email_blank;
@@ -43,7 +43,7 @@ export default function inputStatusTextSelector(val, inputType) {
       case 1:
         return password_valid;
     }
-  } else if (inputType === 'password_verify') {
+  } else if (inputType === 'passwordVerify') {
     switch (val) {
       case -2:
         return password_verify_mismatch;
