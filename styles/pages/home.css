@@ -114,12 +114,12 @@ main {
 
 .feature__contents {
   flex: 1;
-  padding-right: auto;
+  margin-right: auto;
   text-align: left;
 }
 
 .feature--reverse .feature__contents {
-  padding-left: auto;
+  margin-left: auto;
   text-align: right;
 }
 
