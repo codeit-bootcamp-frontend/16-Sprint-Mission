@@ -1,13 +1,13 @@
 import { emailValidator, nicknameValidator, passwordValidator, passwordMatchValidator } from './modules/validators.js';
 import onFocusOut from './modules/focusOutHandler.js'
 
-const inputEmail = document.querySelector('#e-mail .form-input');
+const inputEmail = document.querySelector('#email .form-input');
 const inputNickname = document.querySelector('#nickname .form-input');
 const inputPassword = document.querySelector('#password .form-input');
-const inputVerifyPassword = document.querySelector('#verify_password .form-input');
+const inputPasswordVerify = document.querySelector('#passwordVerify .form-input');
 
 const imgPasswordVisible = document.querySelector('#password .form-icon-password');
-const imgVerifyPasswordVisible = document.querySelector('#verify_password .form-icon-password');
+const imgPasswordVerifyVisible = document.querySelector('#passwordVerify .form-icon-password');
 
 const formButton = document.querySelector('.form-btn');
 
@@ -21,8 +21,8 @@ const inputStatus = {
 // 이메일 input 태그 focusout 이벤트
 function onEmailFocusOut(e) {
   const statusKey = 'email';
-  const inputEmailContainer = document.querySelector('#e-mail .form-input-container');
-  const spanStatusEmail = document.querySelector('#e-mail .form-status-info');
+  const inputEmailContainer = document.querySelector(`#${statusKey} .form-input-container`);
+  const spanStatusEmail = document.querySelector(`#${statusKey} .form-status-info`);
   inputStatus[statusKey] = emailValidator(e.target.value);
   onFocusOut(inputStatus,statusKey,inputEmailContainer,spanStatusEmail,formButton);
 }
@@ -30,8 +30,8 @@ function onEmailFocusOut(e) {
 // 닉네임 input 태그 focusout 이벤트
 function onNicknameFocusOut(e) {
   const statusKey = 'nickname';
-  const inputNicknameContainer = document.querySelector('#nickname .form-input-container');
-  const spanStatusNickname = document.querySelector('#nickname .form-status-info');
+  const inputNicknameContainer = document.querySelector(`#${statusKey} .form-input-container`);
+  const spanStatusNickname = document.querySelector(`#${statusKey} .form-status-info`);
   inputStatus[statusKey] = nicknameValidator(e.target.value);
   onFocusOut(inputStatus,statusKey,inputNicknameContainer,spanStatusNickname,formButton);
 }
@@ -39,20 +39,20 @@ function onNicknameFocusOut(e) {
 // 비밀번호 input 태그 focusout 이벤트
 function onPasswordFocusOut(e) {
   const statusKey = 'password';
-  const inputPasswordContainer = document.querySelector('#password .form-input-container');
-  const spanStatusPassword = document.querySelector('#password .form-status-info');
+  const inputPasswordContainer = document.querySelector(`#${statusKey} .form-input-container`);
+  const spanStatusPassword = document.querySelector(`#${statusKey} .form-status-info`);
   inputStatus[statusKey] = passwordValidator(e.target.value);
   onFocusOut(inputStatus,statusKey,inputPasswordContainer,spanStatusPassword,formButton);
-  if (inputStatus.passwordVerify !== -1) onVerifyPasswordFocusOut();
+  if (inputStatus.passwordVerify !== -1) onPasswordVerifyFocusOut();
 }
 
 // 비밀번호 확인 input 태그 focusout 이벤트
-function onVerifyPasswordFocusOut(e) {
+function onPasswordVerifyFocusOut(e) {
   const statusKey = 'passwordVerify';
-  const inputVerifyPasswordContainer = document.querySelector('#verify_password .form-input-container');
-  const spanStatusVerifyPassword = document.querySelector('#verify_password .form-status-info');
-  inputStatus[statusKey] = passwordMatchValidator(inputPassword.value,inputVerifyPassword.value);
-  onFocusOut(inputStatus,statusKey,inputVerifyPasswordContainer,spanStatusVerifyPassword,formButton);
+  const inputPasswordVerifyContainer = document.querySelector(`#${statusKey} .form-input-container`);
+  const spanStatusPasswordVerify = document.querySelector(`#${statusKey} .form-status-info`);
+  inputStatus[statusKey] = passwordMatchValidator(inputPassword.value,inputPasswordVerify.value);
+  onFocusOut(inputStatus,statusKey,inputPasswordVerifyContainer,spanStatusPasswordVerify,formButton);
 }
 
 function onPasswordIconClick(e) {
@@ -61,10 +61,10 @@ function onPasswordIconClick(e) {
   else inputPassword.type = 'text';
 }
 
-function onVerifyPasswordIconClick(e) {
+function onPasswordVerifyIconClick(e) {
   e.target.classList.toggle('inVisible');
-  if (e.target.classList.contains('inVisible')) inputVerifyPassword.type = 'password';
-  else inputVerifyPassword.type = 'text';
+  if (e.target.classList.contains('inVisible')) inputPasswordVerify.type = 'password';
+  else inputPasswordVerify.type = 'text';
 }
 
 function onSignupButtonClick(e) {
@@ -75,7 +75,7 @@ function onSignupButtonClick(e) {
 inputEmail.addEventListener('focusout', onEmailFocusOut);
 inputNickname.addEventListener('focusout', onNicknameFocusOut);
 inputPassword.addEventListener('focusout', onPasswordFocusOut);
-inputVerifyPassword.addEventListener('focusout', onVerifyPasswordFocusOut);
+inputPasswordVerify.addEventListener('focusout', onPasswordVerifyFocusOut);
 imgPasswordVisible.addEventListener('click', onPasswordIconClick);
-imgVerifyPasswordVisible.addEventListener('click', onVerifyPasswordIconClick);
+imgPasswordVerifyVisible.addEventListener('click', onPasswordVerifyIconClick);
 formButton.addEventListener('click', onSignupButtonClick);
