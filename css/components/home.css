@@ -162,3 +162,8 @@
 .home-footer-group_sns img {
   margin-left: 10px;
 }
+
+
+.button:hover {
+  background-color: var(--primary-300);
+}

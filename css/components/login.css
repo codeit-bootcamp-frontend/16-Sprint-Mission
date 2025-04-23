@@ -49,14 +49,13 @@
   background-color: var(--secondary-100);
   border: none;
   border-radius: 12px;
-  outline: none;
 }
 
 .input-icon {
   position: absolute;
   border: none;
   font-size: 24px;
-  bottom: 14px;
+  top: 48px;
   right: var(--spacing-lg);
   background-color: transparent;
   color: var(--secondary-500);
@@ -104,4 +103,32 @@
 .login-form_signup a {
   text-decoration: underline;
   color: var(--primary-100);
+}
+
+.button.disabled {
+  font-size: var(--font-size-xs);
+  background-color: var(--secondary-400);
+}
+
+input::placeholder {
+  color: var(--secondary-400);
+}
+
+.login-form_form-input input:focus {
+  outline: auto;
+  outline-color: var(--primary-100);
+}
+
+.login-form_form-input input.input-error {
+  display: block;
+  border: 2px solid #f74747;
+}
+
+.error-msg {
+  color: #f74747;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 18px;
+  margin-top: 8px;
+  padding-left: 16px;
 }
