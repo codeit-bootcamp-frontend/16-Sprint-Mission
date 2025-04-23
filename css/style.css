@@ -3,6 +3,7 @@
 body {
   font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   margin: 0 auto;
+  margin-top: 70px;
 }
 
 * {
@@ -10,13 +11,19 @@ body {
 }
 
 :root {
-  --color-primary: #3692FF;
-  --color-secondary: #374151;
-  --color-secondary400: #9CA3AF;
-  --color-secondary200: #E5E7EB;
-  --colot-text-white: #F3F4F6;
+  --color-blue: #3692FF;
+  --color-gray900: #1f2937;
+  --color-gray700: #374151;
+  --color-gray600: #4b5563;
+  --color-gray500: #6b7280;
+  --color-gray400: #9CA3AF;
+  --color-gray200: #E5E7EB;
+  --color-gray100: #f3f4f6;
+  --color-gray50: #f9fafb;
+  --color-white: #FFFFFF;
   --color-background-dark: #111827;
   --color-background-banner: #CFE5FF;
+  --color-backgroud-lightb
   
   --font-family-base: 'Pretendard-Regular', sans-serif;
   --font-family-heading: 'Noto Sans KR', sans-serif;
@@ -42,13 +49,12 @@ body {
   --spacing-xl: 138px;
 }
 
-
  h1 {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bd);
   line-height: 140%;
   letter-spacing: 2%;
-  color: var(--color-secondary);
+  color: var(--color-gray700);
 }
 
 p {
@@ -61,8 +67,11 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1920px;
-  height: var(--header-height);      
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-white);
   padding: 9.5px 200px;       
   margin: 0 auto;
 }
@@ -75,13 +84,13 @@ nav {
   padding: 12px 23px;
   text-align: center;
   text-decoration: none;
-  background-color: var(--color-primary);
+  background-color: var(--color-blue);
   border-radius: 8px;
   cursor: pointer;
   font-size: var(--font-size-xs);
   line-height: 26px;
   font-weight: var(--font-weight-md);
-  color: var( --colot-text-white);
+  color: var( --color-white);
 }
 
 .banner-container {
@@ -112,7 +121,7 @@ nav {
 .banner-btn {
   text-align: center;
   text-decoration: none;
-  background-color: var(--color-primary);
+  background-color: var(--color-blue);
   border-radius: 40px;
   padding: 12px 124px;
   margin-top: var(--spacing-md);
@@ -152,7 +161,7 @@ section > img {
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-bd);
   margin-bottom: var(--spacing-sm);
-  color:var(  --color-primary);
+  color:var(  --color-blue);
 }
 
 .section.search .description {
@@ -186,7 +195,7 @@ section > img {
   display: flex;
   justify-content: space-around;
   place-items: center;
-  color:var(--color-secondary400);
+  color:var(--color-gray400);
   padding: 32px 0;
 }
 
@@ -201,7 +210,7 @@ section > img {
 .faq {
   text-decoration: none;
   cursor: pointer;
-  color: var(--color-secondary200);
+  color: var(--color-gray200);
 }
 
 .social-media {
