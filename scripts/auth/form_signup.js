@@ -1,5 +1,5 @@
 import { emailValidator, nicknameValidator, passwordValidator, passwordMatchValidator } from './modules/validators.js';
-import focusOutHandler from './modules/focusOutHandler.js'
+import { focusOutHandler, inputStatus } from './modules/focusOutHandler.js'
 
 const inputEmail = document.querySelector('#email .form-input');
 const inputNickname = document.querySelector('#nickname .form-input');
@@ -11,32 +11,31 @@ const imgPasswordVerifyVisible = document.querySelector('#passwordVerify .form-i
 
 const formButton = document.querySelector('.form-btn');
 
-const inputStatus = {
-  email: -1,
-  nickname: -1,
-  password: -1,
-  passwordVerify: -1,
-};
+//inputStatus 초기화
+inputStatus.email = -1;
+inputStatus.nickname = -1;
+inputStatus.password = -1;
+inputStatus.passwordVerify = -1;
 
 // 이메일 input 태그 focusout 이벤트
 function onEmailFocusOut(e) {
   const statusKey = 'email';
   inputStatus[statusKey] = emailValidator(inputEmail.value);
-  focusOutHandler(inputStatus,statusKey,formButton);
+  focusOutHandler(statusKey,formButton);
 }
 
 // 닉네임 input 태그 focusout 이벤트
 function onNicknameFocusOut(e) {
   const statusKey = 'nickname';
   inputStatus[statusKey] = nicknameValidator(inputNickname.value);
-  focusOutHandler(inputStatus,statusKey,formButton);
+  focusOutHandler(statusKey,formButton);
 }
 
 // 비밀번호 input 태그 focusout 이벤트
 function onPasswordFocusOut(e) {
   const statusKey = 'password';
   inputStatus[statusKey] = passwordValidator(inputPassword.value);
-  focusOutHandler(inputStatus,statusKey,formButton);
+  focusOutHandler(statusKey,formButton);
   if (inputStatus.passwordVerify !== -1) onPasswordVerifyFocusOut();
 }
 
@@ -44,7 +43,7 @@ function onPasswordFocusOut(e) {
 function onPasswordVerifyFocusOut(e) {
   const statusKey = 'passwordVerify';
   inputStatus[statusKey] = passwordMatchValidator(inputPassword.value,inputPasswordVerify.value);
-  focusOutHandler(inputStatus,statusKey,formButton);
+  focusOutHandler(statusKey,formButton);
 }
 
 function onPasswordIconClick(e) {
