@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
 }
+
 .login__container {
   margin-top: var(--container-top-margin);
   max-width: var(--auth-container-max-width);
@@ -11,6 +12,7 @@
   align-items: center;
   gap: var(--spacing-lg);
 }
+
 .login__form {
   display: flex;
   flex-direction: column;
@@ -18,12 +20,14 @@
   gap: var(--spacing-md);
   width: 100%;
 }
+
 .login__signup {
   font-size: 14px;
   color: var(--secondary-800);
   text-align: center;
   font-weight: 500;
 }
+
 .login__signup-link {
   color: var(--primary-100);
   text-decoration: underline;

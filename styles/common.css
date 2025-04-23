@@ -4,10 +4,12 @@
 * {
   box-sizing: border-box;
 }
+
 html {
   font-family: var(--font-family-base);
   font-size: clamp(12px, 1.6vw, 16px);
 }
+
 body {
   margin: 0;
 }

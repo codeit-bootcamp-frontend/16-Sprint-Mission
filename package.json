@@ -6,12 +6,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write \"**/*.{html,css,js,md,json}\"",
-    "format:check": "prettier --check \"**/*.{html,css,js,md,json}\""
+    "format:check": "prettier --check \"**/*.{html,css,js,md,json}\"",
+    "lint:css": "stylelint \"styles/**/*.css\" --fix"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "prettier": "^3.5.3"
+    "prettier": "^3.5.3",
+    "stylelint": "^16.18.0",
+    "stylelint-config-standard": "^38.0.0",
+    "stylelint-order": "^7.0.0",
+    "stylelint-prettier": "^5.0.3"
   }
 }

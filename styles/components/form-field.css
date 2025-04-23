@@ -4,11 +4,13 @@
   align-items: start;
   gap: var(--spacing-md);
 }
+
 .form-field__label {
   font-size: var(--font-label);
   font-weight: 700;
   color: var(--gray-800);
 }
+
 .form-field__input {
   width: 100%;
   height: 56px;
@@ -18,10 +20,12 @@
   padding-left: var(--spacing-sm);
   padding-right: var(--spacing-lg);
 }
+
 .form-field__group {
   position: relative;
   width: 100%;
 }
+
 .form-field__toggle-password {
   position: absolute;
   top: 50%;

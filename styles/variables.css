@@ -1,4 +1,5 @@
 /* variables.css */
+
 /* 디자인 변수를 정의합니다. */
 :root {
   /* Font */
@@ -6,6 +7,7 @@
   --font-title: 2.5rem;
   --font-content: 1.5rem;
   --font-label: 1.125rem;
+
   /* Color */
   --background-skyblue: #cfe5ff;
   --background-litegray: #fcfcfc;
@@ -14,7 +16,6 @@
   --secondary-400: #9ca3af;
   --secondary-700: #374151;
   --secondary-900: #111827;
-
   --gray-50: #f9fafb;
   --gray-100: #f3f4f6;
   --gray-200: #e5e7eb;
@@ -31,18 +32,20 @@
   --spacing-md: 1.5rem;
   --spacing-lg: 2.5rem;
   --spacing-xl: 8rem;
+
   /* Layout */
   --container-max-width: 1920px;
   --container-padding: 200px;
   --container-top-margin: 231px;
   --auth-container-max-width: 640;
+
   /* Border-radious */
   --radius-button: 40px;
 }
 
 /* font-face */
 @font-face {
-  font-family: 'Pretendard';
+  font-family: Pretendard;
   src: url('../assets/fonts/Pretendard-Light.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
@@ -50,7 +53,7 @@
 }
 
 @font-face {
-  font-family: 'Pretendard';
+  font-family: Pretendard;
   src: url('../assets/fonts/Pretendard-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
@@ -58,7 +61,7 @@
 }
 
 @font-face {
-  font-family: 'Pretendard';
+  font-family: Pretendard;
   src: url('../assets/fonts/Pretendard-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
@@ -66,7 +69,7 @@
 }
 
 @font-face {
-  font-family: 'Pretendard';
+  font-family: Pretendard;
   src: url('../assets/fonts/Pretendard-SemiBold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
@@ -74,7 +77,7 @@
 }
 
 @font-face {
-  font-family: 'Pretendard';
+  font-family: Pretendard;
   src: url('../assets/fonts/Pretendard-Thin.woff2') format('woff2');
   font-weight: 100;
   font-style: normal;
