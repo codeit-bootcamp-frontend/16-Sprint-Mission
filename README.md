@@ -42,16 +42,13 @@
 
 ### 피드백 수정사항
 
-- [x] `html lang` 오타 수정
-- [x] 접근성 향상을 위해 `aria-label` 및 `role` 사용
-- [x] 클래스 이름에 위치, 색상, 순서 등의 키워드 자제
-- [x] `index.html`의 34번 라인 `wrap reverse` 로 수정
-- [x] CSS 파일 분리(reset.css, common.css)
-- [x] 컬러, 레이아웃, 여백을 변수로 선언
-- [x] @font-face 를 활용한 로컬 폰트 적용
-- [x] prettier을 활용해 포맷팅 자동화
+- [x] `.gitignore`에 `.DS_Store` 추가
+- [] CSS 파일 페이지 단위로 분리
+- [] CSS 블락들 사이에 공백 라인 추가
+- [] CSS 변수 정리
+- [] 관심사 분리 원칙에 따른 variables.css 파일 분리
 
-> ref: https://github.com/codeit-bootcamp-frontend/16-Sprint-Mission/pull/33
+> ref: https://github.com/codeit-bootcamp-frontend/16-Sprint-Mission/pull/92
 
 ## 프로젝트 구조
 
