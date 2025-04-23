@@ -13,15 +13,6 @@ header {
     background-color: var(--color-surface-primary);
 }
 
-nav {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 70px;
-    background: var(--color-surface-primary);
-    color: var(--color-surface-primary);
-}
-
 a {
     text-decoration: none;
 }
@@ -38,6 +29,15 @@ a:visited {
     border: none;
     border-radius: 8px;
     cursor: pointer;
+}
+
+/* banner background-img */
+#hero {
+    background-image: url(/images/Img_home_top.png);
+}
+
+#closing-banner {
+    background-image: url(/images/Img_home_bottom.png);
 }
 
 /* footer section */

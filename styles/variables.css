@@ -21,4 +21,39 @@
     --secondary-700: #374151;
     --secondary-800: #1F2937;
     --secondary-900: #111827;
+
+    /* nav padding-left,right */
+    --padding-horizontal: 16px;
+
+    /* nav height */
+    --nav-height: 70px;
+
+    /* wrapper width */
+    --wrapper-width: 375px;
+
+    /* wrapper narrow width */
+    --wrapper-narrow-width: 344px;
+
+    /* banner height */
+    --banner-height: 540px;
 }
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1199px) {
+    :root {
+      --padding-horizontal: 24px;
+      --wrapper-width: 991px;
+      --wrapper-narrow-width: 961px;
+      --banner-height: 771px;
+    }
+  }
+  
+  /* Desktop */
+  @media (min-width: 1200px) {
+    :root {
+      --padding-horizontal: 200px;
+      --wrapper-width: 1200px;
+      --wrapper-narrow-width: 988px;
+      --banner-height: 540px;
+    }
+  }

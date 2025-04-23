@@ -1,0 +1,255 @@
+/* Mobile */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--nav-height);
+    background: var(--color-surface-primary);
+    color: var(--color-surface-primary);
+    padding: 0 var(--padding-horizontal);
+}
+
+.wrapper {
+    width: 100%;
+    max-width: var(--wrapper-width);
+    margin: 0 auto;
+}
+
+.wrapper--narrow {
+    max-width: var(--wrapper-narrow-width)
+}
+
+
+.banner {
+    display: flex;
+    background-position: bottom;
+    background-size: 90%;
+    background-repeat: no-repeat;
+    height: var(--banner-height);
+    background-color: var(--color-surface-accent);
+    text-align: center;
+    padding-top: 48px;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--secondary-700);
+    line-height: 1.4;
+    margin-bottom: 18px;
+}
+
+.btn {
+    background-color: var(--brand-blue);
+    color: var(--secondary-50);
+    border: none;
+    padding: 12px 71px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.features {
+    padding-bottom: 18px;
+}
+
+.feature {
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    margin: 0 16px;
+    text-align: left;
+    gap: 16px;
+}
+
+.feature-content {
+    flex: 1;
+}
+
+.feature:nth-of-type(even) .feature-content {
+    text-align: right;
+}
+
+.feature h1 br {
+    display: none;
+}
+
+.feature h1 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+}
+
+.feature-tag {
+    color: var(--brand-blue);
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.feature-description {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 140%;
+    letter-spacing: 0.08em;
+}
+
+footer {
+    padding: 32px 16px 42px 16px;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+@media (max-width: 470px) {
+    .footer-copyright {
+        order: 3;
+        width: 100%;
+        /* 줄바꿈 되게 함 */
+        margin-top: 16px;
+    }
+
+    #footer--menu {
+        order: 1;
+    }
+
+    #footer--sns {
+        order: 2;
+    }
+}
+
+/* Mobile End */
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1199px) {
+    nav {
+        padding: 0 var(--padding-horizontal);
+    }
+
+    .banner {
+        height: 771px;
+        background-position: bottom;
+    }
+
+    .banner {
+        height: var(--banner-height);
+        padding-top: 84px;
+    }
+
+    h1 {
+        font-size: 40px;
+        font-weight: 700;
+        color: var(--secondary-700);
+        line-height: 1.4;
+        margin-bottom: 32px;
+    }
+
+    .btn {
+        padding: 16px 124px;
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .features {
+        padding-bottom: 52px;
+    }
+
+    .feature {
+        padding: 52px 0;
+        margin: 0 24px;
+        gap: 24px;
+    }
+
+    .feature-tag {
+        font-size: 18px;
+        line-height: 25px;
+        margin-bottom: 12px;
+    }
+
+    .feature-description {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 120%;
+        letter-spacing: 0.08em;
+    }
+
+}
+
+/* Tablet End */
+
+/* Desktop */
+@media(min-width: 1200px) {
+    nav {
+        padding: 0 var(--padding-horizontal);
+    }
+
+    .wrapper {
+        max-width: var(--wrapper-width);
+    }
+
+    .wrapper--narrow {
+        max-width: var(--wrapper-narrow-width);
+    }
+
+    .banner {
+        background-position: 80% bottom;
+        background-size: 55%;
+        height: var(--banner-height);
+        align-items: center;
+        padding: 0 30px;
+        /* 텍스트 왼쪽으로 배치 */
+        text-align: left;
+    }
+
+    .feature h1 br {
+        display: block;
+    }
+
+    h1 {
+        font-size: 40px;
+        font-weight: 700;
+        color: var(--secondary-700);
+        line-height: 1.4;
+        margin-bottom: 32px;
+    }
+
+    .btn {
+        padding: 16px 124px;
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    /* features section */
+    .feature {
+        padding: 138px 0;
+        flex-direction: row;
+        align-items: center;
+        gap: 5%;
+    }
+
+    .feature:nth-of-type(even) {
+        flex-direction: row-reverse;
+    }
+
+    .feature-tag {
+        font-size: 18px;
+        line-height: 25px;
+        margin-bottom: 12px;
+    }
+
+    .feature img {
+        width: 55%;
+    }
+
+    .feature-description {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 120%;
+        letter-spacing: 0.08em;
+        margin-top: 24px;
+    }
+}
+
+/* Desktop End */

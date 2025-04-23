@@ -9,23 +9,21 @@
     <meta property="og:title" content="판다 마켓" />
     <meta property="og:description" content="일상의 모든 물건을 거래해보세요" />
     <meta property="og:image" content="/images/og_img.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="판다 마켓" />
-    <meta name="twitter:description" content="일상의 모든 물건을 거래해보세요" />
-    <meta name="twitter:image" content="/images/og_img.png" />
     <link rel="stylesheet" as="style" crossorigin
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" />
     <title>판다마켓</title>
     <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/variables.css">
-    <link rel="stylesheet" href="styles/mobile.css" media="(max-width: 767px)">
-    <link rel="stylesheet" href="styles/tablet.css" media="(min-width: 768px) and (max-width: 1199px)">
-    <link rel="stylesheet" href="styles/desktop.css" media="(min-width: 1200px)">
+    <link rel="stylesheet" href="styles/index.css">
 </head>
 
+
 <body>
+    <!-- header start -->
     <header>
+
+        <!-- navigation start -->
         <nav>
             <a href="/" aria-label="홈으로 이동">
                 <picture>
@@ -35,7 +33,12 @@
             </a>
             <a href="/login.html" class="btn-small-40" aria-label="로그인으로 이동">로그인</a>
         </nav>
+        <!-- navigation end -->
+
     </header>
+    <!-- header end -->
+
+    <!-- main start -->
     <main>
         <section id="hero" class="banner">
             <div class="wrapper">
@@ -55,12 +58,12 @@
                 </div>
             </div>
             <div class="feature">
+                <img src="images/Img_home_02.png" alt="아이템 콘텐츠 이미지">
                 <div class="feature-content">
                     <p class="feature-tag">Search</p>
                     <h1>구매를 원하는<br>상품을 검색하세요</h1>
                     <p class="feature-description">구매하고 싶은 물품은 검색해서<br>쉽게 찾아보세요</p>
                 </div>
-                <img src="images/Img_home_02.png" alt="아이템 콘텐츠 이미지">
             </div>
             <div class="feature">
                 <img src="images/Img_home_03.png" alt="아이템 콘텐츠 이미지" />
@@ -78,8 +81,11 @@
             </div>
         </section>
     </main>
+    <!-- main end -->
+
+    <!-- footer start -->
     <footer>
-        <div  class="footer-copyright">© codeit - 2024</div>
+        <div class="footer-copyright">© codeit - 2024</div>
         <div id="footer--menu">
             <a href="/privacy.html" aria-label="Privacy Policy로 이동">Privacy Policy</a>
             <a href="/faq.html" aria-label="FAQ로 이동">FAQ</a>
@@ -91,6 +97,7 @@
             <a href="https://www.instagram.com/" aria-label="인스타그램으로 이동"><img src="/images/ic_instagram.svg"></a>
         </div>
     </footer>
+    <!-- footer end -->
 </body>
 
 </html>
