@@ -8,23 +8,23 @@
   --font-content: 1.5rem;
   --font-label: 1.125rem;
 
-  /* Color */
-  --background-skyblue: #cfe5ff;
-  --background-litegray: #fcfcfc;
-  --primary-100: #3692ff;
-  --secondary-200: #e5e7eb;
-  --secondary-400: #9ca3af;
-  --secondary-700: #374151;
-  --secondary-900: #111827;
-  --gray-50: #f9fafb;
-  --gray-100: #f3f4f6;
-  --gray-200: #e5e7eb;
-  --gray-400: #9ca3af;
-  --gray-500: #6b7280;
-  --gray-600: #4b5563;
-  --gray-700: #374151;
-  --gray-800: #1f2937;
-  --gray-900: #111827;
+  /* Color - Primary */
+  --color-primary-100: #3692ff;
+
+  /* Color -Secondary */
+  --color-secondary-50: #fcfcfc;
+  --color-secondary-100: #cfe5ff;
+
+  /* Color -Neutral */
+  --color-neutral-50: #f9fafb;
+  --color-neutral-100: #f3f4f6;
+  --color-neutral-200: #e5e7eb;
+  --color-neutral-400: #9ca3af;
+  --color-neutral-500: #6b7280;
+  --color-neutral-600: #4b5563;
+  --color-neutral-700: #374151;
+  --color-neutral-800: #1f2937;
+  --color-neutral-900: #111827;
 
   /* Spacing */
   --spacing-xs: 1rem;

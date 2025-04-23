@@ -23,12 +23,12 @@
 
 .login__signup {
   font-size: 14px;
-  color: var(--secondary-800);
+  color: var(--color-neutral-800);
   text-align: center;
   font-weight: 500;
 }
 
 .login__signup-link {
-  color: var(--primary-100);
+  color: var(--color-primary-100);
   text-decoration: underline;
 }

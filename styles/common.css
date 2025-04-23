@@ -24,8 +24,8 @@ body {
 .button {
   width: 100%;
   border-radius: var(--radius-button);
-  background-color: var(--primary-100);
-  color: var(--gray-100);
+  background-color: var(--color-primary-100);
+  color: var(--color-neutral-100);
   font-size: 1.25rem;
   padding: var(--spacing-xs) clamp(80px, 6.46vw, 124px);
 }
@@ -42,15 +42,15 @@ body {
 .form-field__label {
   font-size: var(--font-label);
   font-weight: 700;
-  color: var(--gray-800);
+  color: var(--color-neutral-800);
 }
 
 .form-field__input {
   width: 100%;
   height: 56px;
   border-radius: 12px;
-  background-color: var(--gray-100);
-  color: var(--gray-800);
+  background-color: var(--color-neutral-100);
+  color: var(--color-neutral-800);
   padding-left: var(--spacing-sm);
   padding-right: var(--spacing-lg);
 }
@@ -80,13 +80,13 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: #e6f2ff;
+  background-color: var(--color-secondary-100);
   border-radius: 8px;
   padding: var(--spacing-xs) var(--spacing-md);
 }
 
 .social-login__label {
-  color: var(--secondary-800);
+  color: var(--color-neutral-800);
   size: 1rem;
   font-weight: 500;
 }

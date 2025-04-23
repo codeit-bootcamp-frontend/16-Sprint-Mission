@@ -23,7 +23,7 @@
 }
 
 .header__login-link {
-  background-color: var(--primary-100);
+  background-color: var(--color-primary-100);
   color: white;
   padding: 12px 23px;
   border: none;
@@ -44,7 +44,7 @@ main {
 
 .hero {
   position: relative;
-  background-color: #cfe5ff;
+  background-color: var(--color-secondary-100);
   width: 100%;
   height: 540px;
   display: flex;
@@ -96,7 +96,7 @@ main {
   justify-content: center;
   align-items: center;
   gap: 50px;
-  background-color: var(--background-litegray);
+  background-color: var(--color-secondary-50);
   border-radius: 12px;
   max-width: 988px;
   width: 100%;
@@ -125,13 +125,13 @@ main {
 
 .feature__category {
   font-size: 1.2rem;
-  color: var(--primary-100);
+  color: var(--color-primary-100);
   font-weight: 700;
 }
 
 .feature__title {
   font-size: var(--font-title);
-  color: var(--secondary-700);
+  color: var(--color-neutral-700);
   font-weight: 700;
   letter-spacing: 2%;
   line-height: 140%;
@@ -139,7 +139,7 @@ main {
 
 .feature__content {
   font-size: var(--font-content);
-  color: var(--secondary-700);
+  color: var(--color-neutral-700);
   font-weight: 500;
 }
 
@@ -147,7 +147,7 @@ main {
 
 .cta {
   position: relative;
-  background-color: #cfe5ff;
+  background-color: var(--color-secondary-100);
   width: 100%;
   height: 540px;
   display: flex;
@@ -166,7 +166,7 @@ main {
 }
 
 .cta__title {
-  color: var(--secondary-700);
+  color: var(--color-neutral-700);
   font-size: var(--font-title);
   font-weight: 700;
   letter-spacing: 140%;
@@ -181,7 +181,7 @@ main {
 /* footer */
 
 .footer {
-  background: var(--secondary-900);
+  background: var(--color-neutral-900);
   width: 100%;
   height: 160px;
   font-size: 1rem;
@@ -199,7 +199,7 @@ main {
 }
 
 .footer__copyright {
-  color: var(--secondary-400);
+  color: var(--color-neutral-400);
 }
 
 .footer__links {
@@ -211,7 +211,7 @@ main {
 
 .footer__links a {
   text-decoration: none;
-  color: var(--secondary-200);
+  color: var(--color-neutral-200);
   font-weight: 400;
 }
 
