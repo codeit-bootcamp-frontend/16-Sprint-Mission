@@ -96,3 +96,24 @@
   font-size: 14px;
   color: var(--color-primary);
 }
+
+@media all and (min-width: 375px) and (max-width: 767px) {
+  .login-box {
+    margin-top: 25px;
+  }
+  .login-box.inner {
+    padding: 0 16px;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .logo-img.login {
+    width: 52px;
+    height: 52px;
+  }
+
+  .logo.title.login {
+    font-weight: 700;
+    font-size: 33.17px;
+  }
+}
