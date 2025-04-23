@@ -45,7 +45,7 @@
 - [x] `.gitignore`에 `.DS_Store` 추가
 - [x] CSS 파일 페이지 단위로 분리
 - [x] CSS 블락들 사이에 공백 라인 추가
-- [] CSS 변수 정리
+- [x] CSS 변수 정리
 - [] 관심사 분리 원칙에 따른 variables.css 파일 분리
 
 > ref: https://github.com/codeit-bootcamp-frontend/16-Sprint-Mission/pull/92
@@ -64,10 +64,7 @@
   - `reset.css`
   - `common.css`
   - `variables.css`
-  - `/components`
-    - `button.css`
-    - `form-field.css`
-    - `social-login.css`
+
   - `/pages`
     - `home.css`
     - `signup.css`
@@ -89,10 +86,12 @@
 - 웹 폰트에서 압축률이 좋은 `woff2` 로컬 폰트로 변경했습니다.
 - layout, color, font-size, space 등을 전역 변수로 관리하도록 수정했습니다.
 - 접근성 향상을 위해 `aria-label`을 지정했습니다.
-- 인터렉티브 콘텐츠(`<a>, <button>`)안에 블록 요소(`<div>`)를 제거했습니다.
+
 - 보다 나은 클래스 구조화를 위해, **BEM 네이밍 방법론**과 **보조 클래스**를 사용했습니다.
+- `stylelint`를 사용하여 BEM 네이밍 및 스타일을 검사합니다.
 - `prettier`을 사용하여 포맷팅을 자동화했습니다.
-- 자주 사용되는 구조는 css에서 컴포넌트로 분리하여 재사용 가능하도록 제작하였습니다.
+- 자주 사용되는 구조는 css에서 common.css에서 사용하도록 하였습니다.
+- 컬러 변수 네이밍을 시멘틱하게 변경했습니다.
 
 ### 랜딩 페이지 (index.html)
 
@@ -107,10 +106,6 @@
 ### 회원가입 및 로그인 페이지
 
 - 주요 내용은 `form`필드 내에 구성하였습니다.
-- 자주 사용하는 항목은 css만 컴포넌트로 분리하여 제작하였습니다.
+- 자주 사용하는 항목은 common.css에서 재사용합니다.
 
 ## 질문
-
-- css는 자주 사용하는 요소를 컴포넌트로 묶어 관리했는데, HTML도 비슷하게 해야했는지 고민입니다. 디렉토리가 복잡해질까 불안했습니다.
-
-- css의 추상화는 어느 정도까지 진행해야 하는지 어려웠습니다. 재사용성을 많이 고민할수록 제작 시간이 길어지는 느낌이였습니다.
