@@ -11,7 +11,7 @@ const imgPasswordVerifyVisible = document.querySelector('#passwordVerify .form-i
 
 const formButton = document.querySelector('.form-btn');
 
-//inputStatus 초기화
+// inputStatus 초기화
 inputStatus.email = -1;
 inputStatus.nickname = -1;
 inputStatus.password = -1;
@@ -46,18 +46,21 @@ function onPasswordVerifyFocusOut(e) {
   focusOutHandler(statusKey,formButton);
 }
 
+// 비밀번호 눈 아이콘 클릭 이벤트
 function onPasswordIconClick(e) {
   e.target.classList.toggle('inVisible');
   if (e.target.classList.contains('inVisible')) inputPassword.type = 'password';
   else inputPassword.type = 'text';
 }
 
+// 비밀번호 확인 눈 아이콘 클릭 이벤트
 function onPasswordVerifyIconClick(e) {
   e.target.classList.toggle('inVisible');
   if (e.target.classList.contains('inVisible')) inputPasswordVerify.type = 'password';
   else inputPasswordVerify.type = 'text';
 }
 
+// 회원가입 버튼 클릭 이벤트
 function onSignupButtonClick(e) {
   e.preventDefault();
   location.href = 'login.html';

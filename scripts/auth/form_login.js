@@ -8,7 +8,7 @@ const imgPasswordVisible = document.querySelector('.form-icon-password');
 
 const formButton = document.querySelector('.form-btn');
 
-//inputStatus 초기화
+// inputStatus 초기화
 inputStatus.email = -1;
 inputStatus.password = -1;
 
@@ -26,12 +26,14 @@ function onPasswordFocusOut(e) {
   focusOutHandler(statusKey,formButton);
 }
 
+// 비밀번호 눈 아이콘 클릭 이벤트
 function onPasswordIconClick(e) {
   e.target.classList.toggle('inVisible');
   if (e.target.classList.contains('inVisible')) inputPassword.type = 'password';
   else inputPassword.type = 'text';
 }
 
+// 로그인 버튼 클릭 이벤트
 function onLoginButtonClick(e) {
   e.preventDefault();
   location.href = 'items.html';
