@@ -88,7 +88,7 @@ function handleLoginForm(event) {
       const passwordConfirm = input.value;
       const passwordConfirmMsg = document.getElementById("passwordComfirmMsg");
 
-      isPasswordConfirmValid = passwordConfirm === passwordInput.value && passwordConfirm !== '' && passwordConfirm >= 8
+      isPasswordConfirmValid = passwordConfirm === passwordInput.value && passwordConfirm !== '' && passwordConfirm.length >= 8
 
       passwordConfirmInput.classList.toggle("input-error", !isPasswordConfirmValid);
       passwordConfirmMsg.textContent = isPasswordConfirmValid ? "" : "비밀번호가 일치하지 않습니다."
@@ -99,7 +99,7 @@ function handleLoginForm(event) {
   const isFormValid = emailInput.value !== "" && isEmailValid 
   && nicknameInput.value!==''&& isNicknameValid 
   && passwordInput.value !== "" && isPasswordValid
-  && passwordConfirmInput.value !=='' && isPasswordConfirmValid;
+  && passwordConfirmInput.value !=='' && isPasswordConfirmValid && passwordConfirmInput.value.length >= 8;
 
   
   submitBtn.disabled = !isFormValid;
