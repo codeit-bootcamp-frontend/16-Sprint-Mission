@@ -68,7 +68,6 @@ function handleLoginForm(event) {
   }
   const isFormValid = emailInput.value !== "" && isEmailValid && passwordInput.value !== "" && isPasswordValid;
 
-  // 폼 유효성 상태에 따라 버튼의 disabled 속성과 클래스 제어
   submitBtn.disabled = !isFormValid;
   submitBtn.classList.toggle("disabled", !isFormValid);
 }
