@@ -1,59 +1,58 @@
 :root {
-    --color-surface-primary: #FFFFFF;
-    --color-surface-accent: #CFE5FF;
-    --color-social-login-bg: #E6F2FF;
-    --brand-blue: #3692FF;
-    --border-color: #DFDFDF;
+    /* Design Tokens */
+    --color-white: #FFFFFF;
+    --color-blue-50: #E6F2FF;
+    --color-blue-100: #CFE5FF;
+    --color-blue-200: #3692FF;
+    --color-blue-300: #1967D6;
+    --color-blue-400: #1251AA;
+    --color-gray-50: #F9FAFB;
+    --color-gray-100: #F3F4F6;
+    --color-gray-200: #E5E7EB;
+    --color-gray-400: #9CA3AF;
+    --color-gray-500: #6B7280;
+    --color-gray-600: #4B5563;
+    --color-gray-700: #374151;
+    --color-gray-800: #1F2937;
+    --color-gray-900: #111827;
+    --color-border: #DFDFDF;
+    /* Semantic Tokens */
+    --bg-primary: var(--color-white);
+    --bg-accent: var(--color-blue-100);
+    --bg-social-login: var(--color-blue-50);
+    --bg-footer: var(--color-gray-900);
+    --text-primary: var(--color-gray-800);
+    --text-secondary: var(--color-gray-500);
+    --text-muted: var(--color-gray-400);
+    --brand-blue: var(--color-blue-200);
+    --button-primary-bg: var(--brand-blue);
+    --button-primary-text: var(--color-gray-100);
+    --border-default: var(--color-border);
 
-    --primary-100: #1967D6;
-    --primary-200: #1967D6;
-    --primary-300: #1251AA;
-    --primary-400: #9CA3AF;
+    /* FONT SIZE */
+    --font-size-sm: 14px;
+    --font-size-base: 16px;
+    --font-size-md: 18px;
+    --font-size-lg: 24px;
+    --font-size-xl: 32px;
+    --font-size-2xl: 40px;
+    --font-button-lg: 18px;
+    /* FONT WEIGHT */
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-button: 600;
+    --font-weight-bold: 700;
+    /* LETTER SPACING */
+    --font-spacing-regular: 0;
+    --font-spacing-medium: 8%;
+    /* FONT HEIGHT */
+    --line-height-tight: 1.2;
+    --line-height-normal: 1.4;
+    --line-height-relaxed: 1.6;
+    /* BUTTON */
+    --button-padding-lg: 12px 71px;
+    --button-padding-sm-40: 12px 24px;
+    --button-radius-sm-40: 8px;
+    --button-radius-lg: 40px;
 
-    --cool-gray-400: #9CA3AF;
-
-    --secondary-50: #F9FAFB;
-    --secondary-100: #F3F4F6;
-    --secondary-200: #E5E7EB;
-    --secondary-400: #9CA3AF;
-    --secondary-500: #6B7280;
-    --secondary-600: #4B5563;
-    --secondary-700: #374151;
-    --secondary-800: #1F2937;
-    --secondary-900: #111827;
-
-    /* nav padding-left,right */
-    --padding-horizontal: 16px;
-
-    /* nav height */
-    --nav-height: 70px;
-
-    /* wrapper width */
-    --wrapper-width: 375px;
-
-    /* wrapper narrow width */
-    --wrapper-narrow-width: 344px;
-
-    /* banner height */
-    --banner-height: 540px;
 }
-
-/* Tablet */
-@media (min-width: 768px) and (max-width: 1199px) {
-    :root {
-      --padding-horizontal: 24px;
-      --wrapper-width: 991px;
-      --wrapper-narrow-width: 961px;
-      --banner-height: 771px;
-    }
-  }
-  
-  /* Desktop */
-  @media (min-width: 1200px) {
-    :root {
-      --padding-horizontal: 200px;
-      --wrapper-width: 1200px;
-      --wrapper-narrow-width: 988px;
-      --banner-height: 540px;
-    }
-  }
