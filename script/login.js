@@ -1,5 +1,5 @@
 "use strict";
-import { validateEmail, validatePassword } from "./util/validators.js";
+import { validateInput } from "./util/validators.js";
 
 const form = document.querySelector(".form");
 const emailInput = document.querySelector("#userEmail");
@@ -12,11 +12,13 @@ function createLoginValidator() {
   let passwordValid = false;
 
   return function formValidate(e) {
-    if (e.target.id === "userEmail") {
-      emailValid = validateEmail(emailInput);
-    }
-    if (e.target.id === "userPassword") {
-      passwordValid = validatePassword(passwordInput);
+    switch (e.target.id) {
+      case "userEmail":
+        emailValid = validateInput(emailInput);
+        break;
+      case "userPassword":
+        passwordValid = validateInput(passwordInput);
+        break;
     }
 
     loginBtn.disabled = !(emailValid && passwordValid);
