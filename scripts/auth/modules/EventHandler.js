@@ -1,4 +1,4 @@
-// 상태관리변수
+// input 상태관리 변수
 export const inputValidState = {
   email: { isValid: true, message: '' },
   nickname: { isValid: true, message: '' },
@@ -58,6 +58,7 @@ const validators = {
   },
 };
 
+//inputValidState값에 따른 스타일 업데이트
 const updateUIByState = (stateKey, inputContainerElement, spanStateElement) => {
   if (inputValidState[stateKey].isValid) {
     inputContainerElement.classList.add('valid');

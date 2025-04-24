@@ -2,10 +2,16 @@ import { InputEventHandler, inputValidState, onPasswordIconClick } from './modul
 
 const formButton = document.querySelector('.form-btn');
 
-// 로그인 버튼 클릭 이벤트
-const onLoginButtonClick = (e) => {
-  e.preventDefault();
-  location.href = 'items.html';
+// 버튼 클릭 이벤트
+const onButtonClick = (e) => {
+  const formType = document.querySelector(".form-container").dataset.mode;
+  if(formType==="login"){
+    e.preventDefault();
+    location.href = 'items.html';
+  }else if(formType==="signup"){
+    e.preventDefault();
+    location.href = 'login.html';
+  }
 }
 
 // 이벤트 일괄 등록
@@ -14,7 +20,7 @@ for (const stateKey in inputValidState) {
   if(inputElement) {
     // inputValidState 초기화
     inputValidState[stateKey].isValid = false;
-    
+
     // InputEventHandler 모듈 함수 할당
     inputElement.addEventListener('input', () => InputEventHandler(stateKey));
     inputElement.addEventListener('focusout', () => InputEventHandler(stateKey));
@@ -25,4 +31,4 @@ for (const stateKey in inputValidState) {
   if(togglePasswordIcon) togglePasswordIcon.addEventListener('click', (e) => onPasswordIconClick(e, stateKey));
 }
 
-formButton.addEventListener('click', onLoginButtonClick);
+formButton.addEventListener('click', onButtonClick);
