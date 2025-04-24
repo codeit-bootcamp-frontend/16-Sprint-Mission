@@ -32,18 +32,20 @@
               type="email"
               name="email"
               id="email"
-              placeholder="codeit@email.com"
+              placeholder="이메일을 입력해주세요"
               required
               aria-required="true"
               autocomplete="email"
             />
           </div>
+          <div id="email-error" class="input-error"></div>
           <div class="input-box">
             <label class="input-title" for="password">비밀번호</label>
             <input
               type="password"
               name="password"
               id="password"
+              placeholder="비밀번호를 입력해주세요"
               required
               aria-required="true"
             />
@@ -55,11 +57,10 @@
               alt="패스워드 이미지"
             />
           </div>
+          <div id="password-error" class="input-error"></div>
         </form>
         <section class="login-button">
-          <button class="long-btn login" onclick="location.href='/login.html'">
-            로그인
-          </button>
+          <button class="long-btn login disabled">로그인</button>
         </section>
         <section class="simple-login">
           <div class="simple-text">간편 로그인 하기</div>
@@ -94,5 +95,6 @@
         </section>
       </div>
     </div>
+    <script src="/src/login.js"></script>
   </body>
 </html>
