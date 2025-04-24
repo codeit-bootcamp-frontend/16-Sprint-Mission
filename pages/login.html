@@ -17,59 +17,57 @@
     <link rel="stylesheet" href="../css/login.css" />
   </head>
   <body>
-    <div class="container">
-      <div class="content">
-        <h1 class="logo">
-          <a href="/" aria-label="메인 페이지로 이동">
-            <img src="../images/Property-1=lg@3x.svg" alt="로고 이미지" width="396px" height="132px" />
-          </a>
-        </h1>
-        <form action="#" method="post">
-          <label for="username" class="text-lg font-bold">이메일</label>
-          <input
-            id="username"
-            name="username"
-            type="email"
-            placeholder="codeit@email.com"
-            class="text-base font-regular"
-            required
-            autofocus />
-          <label for="password" class="text-lg font-bold">비밀번호</label>
-          <div class="password-input-box">
-            <input id="password" type="password" class="text-base font-regular" required />
-            <button class="visivility-btn" aria-label="비밀번호 보기 버튼">
-              <img
-                class="visivility-btn-off"
-                src="../images/visivility_off.svg"
-                alt="비밀번호 숨기기 아이콘"
-                width="24px"
-                height="24px" />
-              <img
-                class="visivility-btn-on"
-                src="../images/visivility_on.svg"
-                alt="비밀번호 보기 아이콘"
-                width="24px"
-                height="24px" />
-            </button>
-          </div>
-          <button type="submit" class="btn-submit text-xl font-semibold">로그인</button>
-        </form>
-        <div class="sns-login">
-          <p class="text-base font-medium">간편 로그인하기</p>
-          <span class="sns-login-link">
-            <a href="https://www.google.com/" aria-label="구글 페이지로 이동">
-              <img src="../images/ic_login_google.svg" alt="구글 아이콘" width="42px" height="42px" />
-            </a>
-            <a href="https://www.kakaocorp.com/page/" aria-label="카카오 페이지로 이동">
-              <img src="../images/ic_login_kakao.svg" alt="카카오 아이콘" width="42px" height="42px" />
-            </a>
-          </span>
+    <div class="content">
+      <h1 class="logo">
+        <a href="/" aria-label="메인 페이지로 이동">
+          <img src="../images/Property-1=lg@3x.svg" alt="로고 이미지" width="396px" height="132px" />
+        </a>
+      </h1>
+      <form action="#" method="post">
+        <label for="username" class="text-lg font-bold">이메일</label>
+        <input
+          id="username"
+          name="username"
+          type="email"
+          placeholder="codeit@email.com"
+          class="text-base font-regular"
+          required
+          autofocus />
+        <label for="password" class="text-lg font-bold">비밀번호</label>
+        <div class="password-input-box">
+          <input id="password" type="password" class="text-base font-regular" required />
+          <button class="visibility-btn" aria-label="비밀번호 보기 버튼">
+            <img
+              class="visibility-btn-off"
+              src="../images/visibility_off.svg"
+              alt="비밀번호 숨기기"
+              width="24px"
+              height="24px" />
+            <img
+              class="visibility-btn-on"
+              src="../images/visibility_on.svg"
+              alt="비밀번호 보기"
+              width="24px"
+              height="24px" />
+          </button>
         </div>
-        <p class="sign-up">
-          판다마켓이 처음이신가요?
-          <a href="/signup.html" aria-label="회원가입 페이지 이동">회원가입</a>
-        </p>
+        <button type="submit" class="btn-submit text-xl font-semibold">로그인</button>
+      </form>
+      <div class="sns-login">
+        <p class="text-base font-medium">간편 로그인하기</p>
+        <span class="sns-login-link">
+          <a href="https://www.google.com/" aria-label="구글 페이지로 이동">
+            <img src="../images/ic_login_google.svg" alt="구글 아이콘" width="42px" height="42px" />
+          </a>
+          <a href="https://www.kakaocorp.com/page/" aria-label="카카오 페이지로 이동">
+            <img src="../images/ic_login_kakao.svg" alt="카카오 아이콘" width="42px" height="42px" />
+          </a>
+        </span>
       </div>
+      <p class="sign-up">
+        판다마켓이 처음이신가요?
+        <a href="signup.html" aria-label="회원가입 페이지 이동">회원가입</a>
+      </p>
     </div>
   </body>
 </html>
