@@ -1,12 +1,12 @@
 "use strict";
 import { validateEmail, validatePassword } from "./util/validators.js";
+import togglePasswordHandler from "./util/togglePassword.js";
 
 const form = document.querySelector(".form");
 const emailInput = document.querySelector("#userEmail");
 const passwordInput = document.querySelector("#userPassword");
 const loginBtn = document.querySelector("#loginBtn");
 
-/* 로그인 폼 유효성 검사 */
 function createFormValidator() {
   let emailValid = false;
   let passwordValid = false;
@@ -27,6 +27,9 @@ function createFormValidator() {
 
 const formValidate = createFormValidator();
 form.addEventListener("focusout", formValidate);
+
+/* 비밀번호 토글 */
+togglePasswordHandler(form);
 
 /* UX: 로그인 페이지 진입 시 첫번째 input focus 처리 */
 window.addEventListener("DOMContentLoaded", () => {

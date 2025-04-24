@@ -5,6 +5,7 @@ import {
   validatePasswordChk,
   validateNickname,
 } from "./util/validators.js";
+import togglePasswordHandler from "./util/togglePassword.js";
 
 const form = document.querySelector(".form");
 const emailInput = document.querySelector("#userEmail");
@@ -46,6 +47,9 @@ function createFormValidator() {
 
 const formValidate = createFormValidator();
 form.addEventListener("focusout", formValidate);
+
+/* 비밀번호 토글 */
+togglePasswordHandler(form);
 
 /* UX: 페이지 진입 시 첫번째 input focus 처리 */
 window.addEventListener("DOMContentLoaded", () => {
