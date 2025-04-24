@@ -51,9 +51,17 @@ form.addEventListener("focusout", formValidate);
 /* 비밀번호 토글 */
 togglePasswordHandler(form);
 
-/* UX: 페이지 진입 시 첫번째 input focus 처리 */
+/* 페이지 진입 UX */
 window.addEventListener("DOMContentLoaded", () => {
-  emailInput.focus();
+  // 첫번째 input focus 처리
+  form.querySelector(".form-input").focus();
+
+  // 페이지 진입 시, 폼 자동완성 되어있으면 버튼 활성화
+  signupBtn.disabled =
+    emailInput.value.length === 0 &&
+    nickName.value.length === 0 &&
+    passwordInput.value.length === 0 &&
+    passwordChkInput.value.length === 0;
 });
 
 /* 회원가입 버튼 클릭 시 'login'으로 이동 */
