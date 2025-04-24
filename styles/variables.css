@@ -15,8 +15,10 @@
   --color-primary-100: #3692ff;
 
   /* Color -Secondary */
+
   --color-secondary-50: #fcfcfc;
-  --color-secondary-100: #cfe5ff;
+  --color-secondary-100: #e6f2ff;
+  --color-secondary-200: #cfe5ff;
 
   /* Color -Neutral */
   --color-neutral-50: #f9fafb;
@@ -41,7 +43,9 @@
   --container-padding: 200px;
   --container-padding-tablet: 104px;
   --container-top-margin: 231px;
+  --container-top-margin-sm: 80px;
   --auth-container-max-width: 640px;
+  --auth-container-max-width-sm: 400px;
   --tablet-max-width: 1199px;
   --mobile-max-width: 767px;
 

@@ -13,11 +13,17 @@
     <main class="signup">
       <div class="signup__container">
         <a href="/index.html" aria-label="홈페이지로 이동">
-          <img
-            class="signup__img"
-            src="/assets/logo/logo_lg.png"
-            alt="판다마켓 로고 이미지"
-          />
+          <picture>
+            <source
+              media="(max-width: 767px)"
+              srcset="/assets/logo/logo_sm.png"
+            />
+            <img
+              class="login__img"
+              src="/assets/logo/logo_lg.png"
+              alt="판다마켓 로고 이미지"
+            />
+          </picture>
         </a>
         <form class="signup__form" action="/signup" method="post">
           <div class="form-field">

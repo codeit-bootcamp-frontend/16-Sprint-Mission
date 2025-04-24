@@ -4,7 +4,7 @@
 }
 
 .signup__container {
-  margin-top: var(--container-top-margin);
+  margin: var(--container-top-margin) 1rem 0;
   max-width: var(--auth-container-max-width);
   width: 100%;
   display: flex;
@@ -31,4 +31,11 @@
 .signup__login-link {
   color: var(--color-primary-100);
   text-decoration: underline;
+}
+
+@media (width <= 767px) {
+  .signup__container {
+    margin-top: var(--container-top-margin-sm);
+    max-width: var(--auth-container-max-width-sm);
+  }
 }
