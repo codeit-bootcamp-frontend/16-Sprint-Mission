@@ -25,8 +25,7 @@ function createFormValidator() {
   };
 }
 
-const formValidate = createFormValidator();
-form.addEventListener("focusout", formValidate);
+form.addEventListener("focusout", createFormValidator());
 
 /* 비밀번호 토글 */
 togglePasswordHandler(form);
