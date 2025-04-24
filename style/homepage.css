@@ -1,3 +1,14 @@
+/* 데스크탑 사이즈 */
+:root {
+  --header-padding: 200px;
+  --banner-height: auto;
+  --banner-font-size: 3rem;
+  --heading-font-size: 2rem;
+  --label-font-size: 1.2rem;
+  --button-font-size: 1.5rem;
+  --heading-padding-top: 3rem;
+}
+  
 header {
   background-color: var(--color-background);
   width: 100%;
@@ -43,10 +54,6 @@ header {
 }
 
 .main-banner {
-  /* height: 540px;
-  display: flex;
-  width: 100%;
-  max-width: 1920px; */
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -57,15 +64,10 @@ header {
 .main-banner-text {
   position: relative;
   bottom: 100px;
-  /* width: 100%;
-  max-width: 357px;
-  height: auto;
-  position: relative;
-  top: 240px;
-  left: 405px; */
 }
 
 .main-banner-description {
+  width: 300px;
   color: var(--color-text);
   font-size: 40px;
   font-weight: 700;
@@ -96,6 +98,13 @@ header {
   gap: 10px;
 }
 
+.sub-contents {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-color: var(--color-background-banner);
+}
+
 .sub-banner {
   display: flex;
   justify-content: center;
@@ -109,7 +118,6 @@ header {
   font-size: 40px;
   font-weight: 700;
   line-height: 140%;
-  vertical-align: middle;
   margin-bottom: 172.5px;
 }
 
@@ -166,6 +174,10 @@ header {
   vertical-align: middle;
 }
 
+.responsive-br {
+  display: inline;
+}
+
 .card-description {
   font-weight: 500;
   font-size: 24px;
@@ -185,7 +197,7 @@ header {
 footer {
   background-color: var(--color-background-dark);
   width: 100%;
-  height: 160px;
+  height: auto;
 }
 
 .footer-button {
@@ -203,6 +215,12 @@ footer {
   font-size: 16px;
   font-weight: 400;
   line-height: 100%;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
 }
 
 .homepage-button {
@@ -225,4 +243,217 @@ footer {
   margin-left: 10px;
   cursor: pointer;
   text-decoration: none;
+}
+
+/* Tablet size */
+@media (max-width: 1199px) {
+  :root {
+    --banner-height: 777px;
+    --banner-font-size: 2.5rem;
+    --heading-font-size: 1.75rem;
+    --label-font-size: 1.1rem;
+    --button-font-size: 1.25rem;
+    --heading-padding-top: 5rem;
+  }
+
+  header {
+    z-index: 1;
+  }
+
+  .logo-login {
+    padding: 0 24px;
+  }
+
+  .main-contents {
+    margin-top: var(--header-height);
+    height: var(--banner-height);
+  }
+
+  .main-banner,
+  .sub-banner {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    height: auto;
+  }
+
+  .main-banner-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    bottom: 188px
+  }
+  
+  .main-banner-description {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .sub-contents {
+    height: 927px;
+  }
+
+  .sub-banner-description {
+    text-align: center;
+  }
+  
+  .cards {
+    padding: 24px 24px 0 24px;
+  }
+
+  .card:nth-child(odd) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    margin-top: 0;
+    margin-bottom: 52px;
+  }
+
+  .card:nth-child(even) {
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    gap: 24px;
+    margin-top: 0;
+    margin-bottom: 52px;
+  }
+  
+  .card-title {
+    height: 80px;
+  }
+
+  .card-text {
+    gap: 16px;
+  }
+
+  .responsive-br {
+    display: none;
+  }
+
+  .card img {
+    max-width: 100%;
+    border-radius: 12px;
+  }
+
+  .footer-button {
+    padding-top: 2rem;
+    width: 100%;
+  }
+
+  .company {
+    color: var(--color-background-light);
+  }
+}
+
+/* Mobile size */
+@media (max-width: 767px)  {
+  :root{
+    /* 기본 레이아웃 변수 (모바일 기준) */
+    --header-padding: 1.875rem;
+    --content-margin: 7%;
+    --content-padding: 0;
+    --footer-padding: 2rem 2rem 0;
+    
+    /* 배너 및 콘텐츠 크기 */
+    --banner-height: 540px;
+    --content-width: 96%;
+    
+    /* 폰트 크기 관련 변수 */
+    --banner-font-size: 2rem;
+    --heading-font-size: 1.5rem;
+    --label-font-size: 1rem;
+    --button-font-size: 1.125rem;
+    
+    /* 여백 및 간격 */
+    --heading-padding-top: 3rem;
+    --content-padding-bottom: 2rem;
+  }
+
+  .logo-login {
+    padding: 0 16px;
+  }
+
+  .main-contents {
+    height: var(--banner-height);
+  }
+
+  .main-banner {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    height: 100%;
+  }
+
+  .main-banner-text {
+    position: absolute;
+    top: 48px;
+    text-align: center;
+    width: 240px;
+  }
+
+  .main-banner-description,
+  .sub-banner-description {
+    font-size: var(--banner-font-size);
+    margin-bottom: 18px;
+  }
+
+  .main-banner img {
+    min-height: 204px;
+    object-fit: cover;
+  }
+
+  .go-to-see {
+    padding: 12px 24px;
+    font-size: 1rem;
+    width: 240px;
+  }
+
+  .card-text {
+    gap: 0.5rem;
+  }
+    
+  .card-title {
+    height: 34px;
+    font-size: 1.25rem;
+  }
+
+  .card-description {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .sub-contents {
+    position: relative;
+    height: 540px;
+  }
+
+  .sub-banner-description {
+    position: absolute;
+    top: 20%;
+  }
+
+  .sub-banner img {
+    object-fit: cover;
+    min-height: 198px;
+  }
+
+  .footer-button {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 60px;
+    padding: 32px;
+  }
+
+  .buttons {
+    width: 100%;
+  }
+
+  .homepage-button {
+    justify-content: space-between;
+    width: 50%;
+    gap: 0;
+  }
 }
