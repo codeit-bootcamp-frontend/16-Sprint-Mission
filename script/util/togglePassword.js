@@ -1,19 +1,15 @@
 "use strict";
 
-export default function togglePasswordHandler(area = "body") {
+export default function togglePasswordHandler(area = document.body) {
   area.addEventListener("click", (e) => {
-    const targetInput = e.target.parentNode.querySelector(".form-input");
+    const toggleBtn = e.target.closest(".btn-password-visible");
+    if (!toggleBtn) return;
 
-    if (!e.target.classList.contains("btn-password-visible")) return;
+    const targetInput = toggleBtn.parentNode.querySelector(".form-input");
+    if (!targetInput) return;
 
-    if (!e.target.classList.contains("on")) {
-      e.target.classList.add("on");
-      targetInput.type = "text";
-      targetInput.setAttribute("aria-pressed", "true");
-    } else {
-      e.target.classList.remove("on");
-      targetInput.type = "password";
-      targetInput.setAttribute("aria-pressed", "false");
-    }
+    const isVisible = toggleBtn.classList.toggle("on");
+    targetInput.type = isVisible ? "text" : "password";
+    targetInput.setAttribute("aria-pressed", `${isVisible}`);
   });
 }
