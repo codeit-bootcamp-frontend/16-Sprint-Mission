@@ -96,7 +96,7 @@ function pwCheckEvent(event) {
   isSignup();
 }
 
-function pwImgEvent(event) {
+function pwImgEvent() {
   if (pw.getAttribute('type') === 'password') {
     pw.setAttribute('type', 'text');
     pwImg.setAttribute('src', 'images/Icon_pwopen.png');
@@ -106,7 +106,7 @@ function pwImgEvent(event) {
   }
 }
 
-function pwImgCheckEvent(event) {
+function pwImgCheckEvent() {
   if (pwCheck.getAttribute('type') === 'password') {
     pwCheck.setAttribute('type', 'text');
     pwCheckImg.setAttribute('src', 'images/Icon_pwopen.png');

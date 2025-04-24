@@ -62,7 +62,7 @@ function pwEvent(event) {
   isLogin();
 }
 
-function pwImgEvent(event) {
+function pwImgEvent() {
   if (pw.getAttribute('type') === 'password') {
     pw.setAttribute('type', 'text');
     pwImg.setAttribute('src', 'images/Icon_pwopen.png');
