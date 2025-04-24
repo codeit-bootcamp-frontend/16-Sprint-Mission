@@ -1,20 +1,21 @@
 /* 로그인 & 회원가입 */
 .auth-container {
+  width: var(--auth-container-width);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   height: 100%;
   justify-content: center;
   align-items: center;
-  padding: 80px 16px 0;
-  max-width: 400px;
+  padding: var(--auth-container-padding);
+  max-width: var(--auth-container-max-width);
 }
 
 .auth-container.sign-up {
-  padding: 24px 16px 180px;
+  padding: var(--auth-container--sign-up);
 }
 .auth-container .title {
-  width: 198px;
+  width: var(--auth-container-title);
 }
 .auth-container .title img {
   width: 100%;
@@ -24,7 +25,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding-top: 31px;
+  padding-top: var(--auth-container-form-wrap);
 }
 .auth-container .form-wrap .label {
   padding-bottom: 16px;
@@ -109,58 +110,4 @@
 }
 .auth-container .signup-wrap .goto-signup:visited {
   color: var(--main-color);
-}
-
-@media (min-width: 768px) {
-  .auth-container {
-    width: 640px;
-    padding: 100px 0;
-    max-width: unset;
-  }
-  .auth-container.sign-up {
-    padding: 48px 16px 243px;
-  }
-  .auth-container .title {
-    width: 396px;
-  }
-  .auth-container .form-wrap {
-    padding-top: 40px;
-  }
-  .auth-container .form-wrap .label {
-    padding-bottom: 16px;
-    font-size: 18px;
-  }
-  .auth-container .form-wrap .pw-wrap {
-    position: relative;
-    margin-bottom: 24px;
-  }
-  .auth-container .form-wrap .pw-wrap .input {
-    margin: 0;
-  }
-  .auth-container .form-wrap .pw-wrap .eye-icon {
-    content: "";
-    display: block;
-    background-image: url(../images/eyes_close.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    width: 24px;
-    height: 24px;
-    position: absolute;
-    top: 50%;
-    right: 24px;
-    transform: translateY(-50%);
-    cursor: pointer;
-  }
-  .auth-container .signup-wrap {
-    margin-top: 24px;
-    font-size: 14px;
-  }
-  .auth-container .signup-wrap .goto-signup {
-    color: var(--main-color);
-    text-decoration: underline;
-  }
-  .auth-container .signup-wrap .goto-signup:visited {
-    color: var(--main-color);
-  }
 }

@@ -60,7 +60,14 @@
           <figure>
             <img
               class="key-visual"
-              src="./images/kv.png?width=746"
+              srcset="
+                ./images/kv@0.5.png   373w,
+                ./images/kv@0.75.png  560w,
+                ./images/kv@1.png     746w,
+                ./images/kv@1.5.png  1119w,
+                ./images/kv@2.png    1492w
+              "
+              sizes="(min-width: 767px) 746px, 746px"
               alt="판다마켓 메인 판다 캐릭터 이미지"
             />
             <figcaption class="sr-only">
@@ -73,7 +80,19 @@
         <div class="banner-inner">
           <article class="card hot-item">
             <div class="img-wrap">
-              <img src="./images/bannerImg01.png" alt="인기 상품 소개 배너" />
+              <img
+                src="./images/Img_home_01@1.jpg"
+                srcset="
+                  ./images/Img_home_01@0.5.jpg  290w,
+                  ./images/Img_home_01@1.jpg    579w,
+                  ./images/Img_home_01@1.5.jpg  869w,
+                  ./images/Img_home_01@2.jpg   1159w
+                "
+                sizes="(max-width: 1199px) 746px, 579px"
+                alt="인기 상품 소개 배너"
+                width="580"
+                loading="lazy"
+              />
             </div>
             <div class="card-info">
               <div class="badge">Hot Item</div>
@@ -87,8 +106,17 @@
           <article class="card search-item">
             <div class="img-wrap">
               <img
-                src="./images/bannerImg02.png"
+                src="./images/Img_home_02@1.jpg"
+                srcset="
+                  ./images/Img_home_02@0.5.jpg  290w,
+                  ./images/Img_home_02@1.jpg    579w,
+                  ./images/Img_home_02@1.5.jpg  869w,
+                  ./images/Img_home_02@2.jpg   1159w
+                "
+                sizes="(max-width: 1199px) 746px, 579px"
                 alt="상품검색 안내를 위한 이미지"
+                width="580"
+                loading="lazy"
               />
             </div>
 
@@ -101,8 +129,17 @@
           <article class="card sell-item">
             <div class="img-wrap">
               <img
-                src="./images/bannerImg03.png"
+                src="./images/Img_home_03@1.jpg"
+                srcset="
+                  ./images/Img_home_03@0.5.jpg  290w,
+                  ./images/Img_home_03@1.jpg    579w,
+                  ./images/Img_home_03@1.5.jpg  869w,
+                  ./images/Img_home_03@2.jpg   1159w
+                "
+                sizes="(max-width: 1199px) 746px, 579px"
                 alt="상품 판매등록에 대한 이미지"
+                width="580"
+                loading="lazy"
               />
             </div>
 
@@ -125,8 +162,17 @@
         <figure>
           <img
             class="panda-image"
-            src="./images/bottomBanner.png?width=746"
+            src="./images/Img_home_bottom@1.png"
+            srcset="
+              ./images/Img_home_bottom@0.5.png   373w,
+              ./images/Img_home_bottom@0.75.png  560w,
+              ./images/Img_home_bottom@1.png     746w,
+              ./images/Img_home_bottom@1.5.png  1119w,
+              ./images/Img_home_bottom@2.png    1492w
+            "
+            sizes="(min-width: 767px) 746px"
             alt="판다마켓 판다 캐릭터 이미지"
+            loading="lazy"
           />
           <figcaption class="sr-only">판다마켓 판다 캐릭터 이미지</figcaption>
         </figure>
