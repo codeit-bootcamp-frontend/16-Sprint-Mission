@@ -27,6 +27,25 @@
   color: var(--gray800);
 }
 
+.form__input-box .error-msg {
+  margin-top: var(--space-xxs);
+  padding: 0 var(--space-xs);
+  font-size: 14px;
+}
+
+/* validation 실패시 */
+.form__input-box.isError .input {
+  border-color: var(--error);
+}
+.form__input-box.isError .error-msg {
+  color: var(--error);
+}
+
+/* validation 통과시 */
+.form__input-box.isPass .input {
+  border-color: var(--primary-color);
+}
+
 /* 비밀번호 인풋박스박스 */
 .form__input-box-pw .input-box__input {
   position: relative;
