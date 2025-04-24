@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>판다마켓</title>
+
+    <meta name="description" content="판다마켓 회원가입 - 일상의 모든 물건을 거래하는 중고거래 플랫폼" />
+    <meta property="og:title" content="판다마켓 회원가입" />
+    <meta property="og:description" content="일상의 모든 물건을 거래하는 중고거래 플랫폼" />
+    <meta property="og:image" content="/images/og-panda.svg" />
+
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
+
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/login.css" />
+  </head>
+  <body>
+    <div class="content">
+      <h1 class="logo">
+        <a href="/" aria-label="메인 페이지로 이동">
+          <img src="../images/Property-1=lg@3x.svg" alt="로고 이미지" width="396px" height="132px" />
+        </a>
+      </h1>
+      <form action="#" method="post">
+        <label for="username" class="text-lg font-bold">이메일</label>
+        <input
+          id="username"
+          name="username"
+          type="email"
+          placeholder="codeit@email.com"
+          class="text-base font-regular"
+          required
+          autofocus />
+        <label for="nickname" class="text-lg font-bold">닉네임</label>
+        <input type="text" id="nickname" name="nickname" placeholder="판다" class="text-base font-regular" required />
+        <label for="password" class="text-lg font-bold">비밀번호</label>
+        <div class="password-input-box">
+          <input id="password" type="password" class="text-base font-regular" required />
+          <button class="visibility-btn" aria-label="비밀번호 보기 버튼">
+            <img
+              class="visibility-btn-off"
+              src="../images/visibility_off.svg"
+              alt="비밀번호 숨기기"
+              width="24px"
+              height="24px" />
+            <img
+              class="visibility-btn-on"
+              src="../images/visibility_on.svg"
+              alt="비밀번호 보기"
+              width="24px"
+              height="24px" />
+          </button>
+        </div>
+        <label for="password-check" class="text-lg font-bold">비밀번호 확인</label>
+        <div class="password-input-box">
+          <input id="password-check" type="password" class="text-base font-regular" required />
+          <button class="visibility-btn" aria-label="비밀번호 보기 버튼">
+            <img
+              class="visibility-btn-off"
+              src="../images/visibility_off.svg"
+              alt="비밀번호 숨기기 아이콘"
+              width="24px"
+              height="24px" />
+            <img
+              class="visibility-btn-on"
+              src="../images/visibility_on.svg"
+              alt="비밀번호 보기 아이콘"
+              width="24px"
+              height="24px" />
+          </button>
+        </div>
+        <button type="submit" class="btn-submit text-xl font-semibold">회원가입</button>
+      </form>
+      <div class="sns-login">
+        <p class="text-base font-medium">간편 로그인하기</p>
+        <span class="sns-login-link">
+          <a href="https://www.google.com/" aria-label="구글 페이지로 이동">
+            <img src="../images/ic_login_google.svg" alt="구글 아이콘" width="42px" height="42px" />
+          </a>
+          <a href="https://www.kakaocorp.com/page/" aria-label="카카오 페이지로 이동">
+            <img src="../images/ic_login_kakao.svg" alt="카카오 아이콘" width="42px" height="42px" />
+          </a>
+        </span>
+      </div>
+      <p class="login">
+        이미 회원이신가요?
+        <a href="login.html" aria-label="로그인 페이지 이동">로그인</a>
+      </p>
+    </div>
+  </body>
+</html>
