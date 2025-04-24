@@ -13,8 +13,8 @@ body {
 
 
 .login-page {
-  margin: 0 auto;
   width: 640px;
+  margin: 50px auto;
 }
 
 .login-logo {
@@ -26,17 +26,29 @@ body {
   display: flex;
   flex-direction: column;
   padding-top: 40px;
+  color: var(--color-gray900);
 }
 
 .login-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: ;
+  background-color: var(--color-lightblue);
+  height: 74px;
+  border-radius: 8px;
+  padding: 16px 23px;
+  color: var(--color-gray900);
+  font-weight: var(--font-weight-md);
+  margin: 24px 0;
 }
 
 .login-signup {
   text-align: center;
+}
+
+.logo-img {
+  display: flex;
+  gap: 16px;
 }
 
 #username, #password {
@@ -45,6 +57,9 @@ body {
   border-radius: 12px;
   height: 56px;
   margin: 16px 0 24px;
+  padding-left: 16px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-rg);
 }
 
 label {
@@ -60,5 +75,5 @@ label {
   padding: 16px 124px 16px;
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-bd);
-
 }
+
