@@ -1,10 +1,31 @@
 // input 상태관리 변수
-export const inputValidState = {
+const inputValidState = {
   email: { isValid: true, message: '' },
   nickname: { isValid: true, message: '' },
   password: { isValid: true, message: '' },
   passwordVerify: { isValid: true, message: '' },
 };
+
+/**
+ * input 상태관리 변수 값을 불러오는 함수
+ * @param {string} [stateKey]
+ * @returns 기본값: inputValidState 객체 return / stateKey 지정 시 : stateKey에 해당하는 상태객체 반환
+ */
+export const getState = (stateKey) => {
+  if(stateKey) return inputValidState[stateKey];
+  else return inputValidState;
+}
+
+/**
+ * 
+ * @param {*} changedStateKey 변경 할 stateKey 지정
+ * @param {*} changedStateObject 변경 할 stateKey의 값을 객체로 지정({isvalid: true/false, message: ''})
+ */
+export const setState = (changedStateKey, changedStateObject) => {
+  for(const changeditem in changedStateObject){
+    inputValidState[changedStateKey][changeditem] = changedStateObject[changeditem];
+  }
+}
 
 /**
  * inputEventHandler: form의 input에서 focusout 이벤트 발생 시 관련 요소의 정보를 입력받아 이벤트를 처리하는 함수
@@ -77,7 +98,7 @@ const updateUIByState = (stateKey, inputContainerElement, spanStateElement) => {
 const passwordMatchHandler = (stateKey) => {
   const inputpasswordVerify = document.querySelector(`#passwordVerify .form-input`);
   if (inputpasswordVerify){
-    if (stateKey === 'password' && inputpasswordVerify.value) InputEventHandler('passwordVerify');
+    if (stateKey === 'password' && inputpasswordVerify.value) inputEventHandler('passwordVerify');
   }
 }
 

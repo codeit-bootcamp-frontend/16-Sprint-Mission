@@ -1,4 +1,4 @@
-import { inputEventHandler, inputValidState, onPasswordIconClick } from './modules/EventHandler.js';
+import { getState, setState, inputEventHandler, onPasswordIconClick } from './modules/EventHandler.js';
 
 const formButton = document.querySelector('.form-btn');
 
@@ -14,12 +14,15 @@ const onButtonClick = (e) => {
   }
 }
 
+const inputState = getState();
+
 // 이벤트 일괄 등록
-for (const stateKey in inputValidState) {
+for (const stateKey in inputState) {
   const inputElement = document.querySelector(`#${stateKey} .form-input`);
   if(inputElement) {
     // inputValidState 초기화
-    inputValidState[stateKey].isValid = false;
+    setState(stateKey,{isValid: false})
+    //inputValidState[stateKey].isValid = false;
 
     // inputEventHandler 모듈 함수 할당
     inputElement.addEventListener('input', () => inputEventHandler(stateKey));
