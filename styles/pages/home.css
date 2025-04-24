@@ -22,20 +22,6 @@
   margin: 0 auto;
 }
 
-/* Tablet: 768px ~ 1199px */
-@media (width >= 768px) and (width <= 1199px) {
-  .header__container {
-    padding: 9px var(--spacing-md);
-  }
-}
-
-/* Mobile: 375px ~ 767px  */
-@media (width >= 375px) and (width <= 767px) {
-  .header__container {
-    padding: 9px var(--spacing-xs);
-  }
-}
-
 .header__login-link {
   background-color: var(--color-primary-100);
   color: white;
@@ -234,4 +220,109 @@ main {
   justify-content: center;
   align-items: center;
   gap: 12px;
+}
+
+/* Tablet: 768px ~ 1199px */
+@media (width >= 768px) and (width <= 1199px) {
+  /* header */
+  .header__container {
+    padding: 9px var(--spacing-md);
+  }
+
+  /* hero */
+  .hero {
+    height: 771px;
+  }
+
+  .hero__container {
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+  }
+
+  .hero__contents {
+    padding-top: 84px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 0;
+    gap: var(--spacing-md);
+  }
+
+  .hero__title {
+    margin: 0;
+  }
+
+  .hero__title br {
+    display: none;
+  }
+
+  .hero__img {
+    max-width: var(--tablet-max-width);
+    width: 100%;
+    height: auto;
+  }
+
+  /* feature */
+  .feature {
+    padding: var(--spacing-lg);
+  }
+
+  .feature__container {
+    flex-direction: column;
+    background: none;
+  }
+
+  .feature--reverse .feature__container {
+    flex-direction: column;
+  }
+
+  .feature--reverse .feature__contents {
+    margin-right: 0;
+  }
+
+  .feature__title br {
+    display: none;
+  }
+
+  .feature__img {
+    max-width: var(--tablet-max-width);
+  }
+
+  /* cta */
+  .cta {
+    height: 927px;
+  }
+
+  .cta__container {
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+  }
+
+  .cta__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+  }
+
+  .cta__img {
+    max-width: var(--tablet-max-width);
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Mobile: 375px ~ 767px  */
+@media (width >= 375px) and (width <= 767px) {
+  .header__container {
+    padding: 9px var(--spacing-xs);
+  }
 }

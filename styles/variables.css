@@ -37,7 +37,9 @@
   --container-max-width: 1920px;
   --container-padding: 200px;
   --container-top-margin: 231px;
-  --auth-container-max-width: 640;
+  --auth-container-max-width: 640px;
+  --tablet-max-width: 1199px;
+  --mobile-max-width: 767px;
 
   /* Border-radious */
   --radius-button: 40px;
