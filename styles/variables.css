@@ -5,7 +5,10 @@
   /* Font */
   --font-family-base: 'Pretendard', sans-serif;
   --font-title: 2.5rem;
+  --font-title-sm: 2rem;
+  --font-title-xs: 1.5rem;
   --font-content: 1.5rem;
+  --font-content-sm: 1rem;
   --font-label: 1.125rem;
 
   /* Color - Primary */
@@ -36,6 +39,7 @@
   /* Layout */
   --container-max-width: 1920px;
   --container-padding: 200px;
+  --container-padding-tablet: 104px;
   --container-top-margin: 231px;
   --auth-container-max-width: 640px;
   --tablet-max-width: 1199px;

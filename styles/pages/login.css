@@ -32,3 +32,8 @@
   color: var(--color-primary-100);
   text-decoration: underline;
 }
+
+@media (width <= 767px) {
+  .login__container {
+  }
+}

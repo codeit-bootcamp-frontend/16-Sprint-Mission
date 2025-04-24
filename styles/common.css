@@ -7,7 +7,7 @@
 
 html {
   font-family: var(--font-family-base);
-  font-size: clamp(12px, 2vw, 16px);
+  font-size: 16px;
 }
 
 body {
@@ -26,7 +26,14 @@ body {
   background-color: var(--color-primary-100);
   color: var(--color-neutral-100);
   font-size: 1.25rem;
-  padding: var(--spacing-xs) clamp(80px, 15vw, 124px);
+  padding: var(--spacing-xs) clamp(71px, 15vw, 124px);
+}
+
+@media (width <= 767px) {
+  .button {
+    font-size: 1.125rem;
+    padding: 0.75rem 71px;
+  }
 }
 
 /* form-field 클래스 */
