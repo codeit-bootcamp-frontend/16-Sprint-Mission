@@ -109,6 +109,17 @@ a[class*="btn"] {
   font-size: 16px;
   line-height: 26px;
 }
+.form-input.invalid {
+  border: 1px solid var(--error-color);
+}
+
+.form-input-hint {
+  display: block;
+  margin: 8px 0 0 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--error-color);
+}
 
 .visible-wrap .form-input {
   padding-right: 60px;
