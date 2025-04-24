@@ -20,13 +20,15 @@ function validateEmail(input) {
   if (input.value.trim().length === 0) {
     setInvalid(input, "이메일을 입력해주세요.");
     return false;
-  } else if (!input.checkValidity()) {
+  }
+
+  if (!input.checkValidity()) {
     setInvalid(input, "잘못된 이메일 형식입니다.");
     return false;
-  } else {
-    setValid(input);
-    return true;
   }
+
+  setValid(input);
+  return true;
 }
 
 function validatePassword(input, chkInput) {
@@ -43,33 +45,35 @@ function validatePassword(input, chkInput) {
   if (input.value.trim().length === 0) {
     setInvalid(input, "비밀번호를 입력해주세요.");
     return false;
-  } else if (input.value.trim().length < 8) {
+  }
+
+  if (input.value.trim().length < 8) {
     setInvalid(input, "비밀번호를 8자 이상 입력해주세요.");
     return false;
-  } else {
-    setValid(input);
-    return true;
   }
+
+  setValid(input);
+  return true;
 }
 
 function validatePasswordChk(input, chkInput) {
   if (input.value !== chkInput.value) {
     setInvalid(chkInput, "비밀번호가 일치하지 않습니다.");
     return false;
-  } else {
-    setValid(chkInput);
-    return true;
   }
+
+  setValid(chkInput);
+  return true;
 }
 
 function validateNickname(input) {
   if (input.value.trim().length === 0) {
     setInvalid(input, "닉네임을 입력해주세요.");
     return false;
-  } else {
-    setValid(input);
-    return true;
   }
+
+  setValid(input);
+  return true;
 }
 
 export {
