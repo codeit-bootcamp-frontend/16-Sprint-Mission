@@ -57,6 +57,7 @@ body {
 #password-check {
   background-color: var(--color-gray100);
   border: none;
+  width: 640px;
   border-radius: 12px;
   height: 56px;
   margin: 16px 0 24px;
@@ -80,3 +81,16 @@ label {
   font-weight: var(--font-weight-bd);
 }
 
+.password-wrapper,
+.password-check-wrapper {
+  position: relative;
+}
+
+#show-eye,
+#hide-eye,
+#show-check-eye,
+#hide-check-eye  {
+  position: absolute;
+  right: 20px;
+  bottom: 35px;
+}

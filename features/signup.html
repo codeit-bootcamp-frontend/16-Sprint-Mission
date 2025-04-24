@@ -24,9 +24,25 @@
       <label for="nickname">닉네임</label>
       <input id="nickname" name="nickname" type="text" placeholder="판다">
       <label for="password">비밀번호</label>
-      <input id="password" name="password" type="password">
+      <div class="password-wrapper">
+        <input id="password" name="password" type="password">
+        <div id="show-eye">
+          <img src="../image/Property 1=Default.svg">
+        </div>
+        <div id="hide-eye">
+          <img src="../image/Property 1=Variant2.svg">
+        </div>
+      </div>
       <label for="password-check">비밀번호 확인</label>
-      <input id="password-check" name="password-check" type="password">
+      <div class="password-check-wrapper">
+        <input id="password-check" name="password-check" type="password">
+        <div id="show-check-eye">
+          <img src="../image/Property 1=Default.svg">
+        </div>
+        <div id="hide-check-eye">
+          <img src="../image/Property 1=Variant2.svg">
+        </div>
+      </div>
       <button id="signup-form_btn">회원가입</button>
     </form>
     <div class="signup-footer">
@@ -45,5 +61,6 @@
       <a href="login.html">로그인</a>
     </div>
   </div>
+  <script src="../signupscript.js"></script>
 </body>
 </html>
