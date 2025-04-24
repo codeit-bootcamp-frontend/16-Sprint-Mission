@@ -12,24 +12,24 @@ body {
 }
 
 
-.login-page {
+.signup-page {
   width: 640px;
   margin: 50px auto;
 }
 
-.login-logo {
+.signup-logo {
   display: flex;
   justify-content: center;
 }
 
-.login-form {
+.signup-form {
   display: flex;
   flex-direction: column;
   padding-top: 40px;
   color: var(--color-gray900);
 }
 
-.login-footer {
+.signup-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,7 +42,7 @@ body {
   margin: 24px 0;
 }
 
-.login-signup {
+.signup-login {
   text-align: center;
 }
 
@@ -52,7 +52,9 @@ body {
 }
 
 #username, 
-#password {
+#nickname, 
+#password, 
+#password-check {
   background-color: var(--color-gray100);
   border: none;
   border-radius: 12px;
@@ -68,7 +70,7 @@ label {
   font-weight: var(--font-weight-bd);
 }
 
-#login-form_btn {
+#signup-form_btn {
   background-color: var(--color-blue);
   color: var(--color-gray100);
   border: none;
