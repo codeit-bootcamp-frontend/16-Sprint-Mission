@@ -109,7 +109,7 @@ if (signupConfirm) {
   signupConfirm.addEventListener("focusout", validateSignupConfirm);
 }
 
-//심화
+//미션 심화부분
 const visibilityBtn = document.querySelector(".btn_visibility");
 const visibilityBtnCheck = document.querySelector(".check");
 
