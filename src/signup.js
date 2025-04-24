@@ -30,7 +30,8 @@ function isSignup() {
 }
 
 function emailEvent(event) {
-  if (event.target.value === '') {
+  const data = event.target.value;
+  if (data === '') {
     event.target.classList.add('error');
     email.focus();
     emailError.innerHTML = '이메일을 입력해주세요.';
