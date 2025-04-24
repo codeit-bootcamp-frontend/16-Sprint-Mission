@@ -92,3 +92,22 @@ footer {
 footer>a {
   color: var(--primary-color);
 }
+
+@media (max-width: 767px) {
+  header {
+    margin-top: 80px;
+  }
+
+  header>a>img {
+    width: 198px;
+  }
+
+  main {
+    width: calc(100% - 32px);
+  }
+
+  form,
+  label {
+    width: 100%;
+  }
+}

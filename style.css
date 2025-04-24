@@ -7,11 +7,12 @@ header {
   background-color: #fff;
   width: 100%;
   height: 70px;
-  padding: 9px;
-  display: flex;
-  justify-content: center;
   position: fixed;
   top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 header img {
@@ -21,7 +22,6 @@ header img {
 
 .nav-content {
   width: 1120px;
-  margin: 0px 200px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -35,6 +35,7 @@ header img {
   border: 0;
   color: #fff;
   cursor: pointer;
+  margin-left: auto;
 }
 
 .hero {
@@ -51,10 +52,21 @@ header img {
   justify-content: center;
 }
 
+.hero-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-info>a {
+  text-decoration-line: none;
+}
+
 .hero-text {
   font-weight: 700;
   font-size: 40px;
   line-height: 140%;
+  word-break: keep-all;
 }
 
 .hero-button {
@@ -68,6 +80,8 @@ header img {
   font-size: 20px;
   line-height: 32px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .hero img {
@@ -79,6 +93,7 @@ header img {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 52px;
 }
 
 .feature {
@@ -91,6 +106,10 @@ header img {
   padding: 0px 12px;
 }
 
+.feature-rev {
+  flex-direction: row-reverse;
+}
+
 .feature-content {
   display: flex;
   flex-direction: column;
@@ -99,21 +118,19 @@ header img {
 }
 
 .feature-content-rev {
-  display: flex;
   text-align: end;
-  flex-direction: column;
-  margin-left: 24px;
-  width: 350px;
 }
 
-.feature span {
+.feature span,
+.feature-rev span {
   color: var(--primary-color);
   font-size: 18px;
   font-weight: 700;
   line-height: 26px;
 }
 
-.feature h2 {
+.feature h2,
+.feature-rev h2 {
   font-weight: 700;
   font-size: 40px;
   line-height: 140%;
@@ -121,11 +138,13 @@ header img {
   margin: 0;
 }
 
-.feature p {
+.feature p,
+.feature-rev p {
   font-weight: 500;
   font-size: 24px;
   line-height: 32px;
 }
+
 
 footer {
   display: flex;
@@ -180,6 +199,11 @@ footer {
   gap: 30px;
 }
 
+.footer-menu>a {
+  text-decoration-line: none;
+  color: #fff;
+}
+
 .footer-social {
   display: flex;
   gap: 12px;
@@ -187,4 +211,143 @@ footer {
 
 .footer-social img {
   cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .nav-content {
+    width: 100%;
+    margin: 0px 24px;
+  }
+
+  .hero {
+    height: 771px;
+
+  }
+
+  .hero-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-info {
+    margin-bottom: 150px;
+  }
+
+  .feature {
+    height: 708px;
+    flex-direction: column;
+    align-items: start;
+    gap: 16px;
+  }
+
+  .feature-rev {
+    align-items: end;
+  }
+
+
+  .feature h2,
+  .feature-rev h2 {
+    font-weight: 700;
+    font-size: 32px;
+    margin: 0;
+  }
+
+  .feature p,
+  .feature-rev p {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .footer-content {
+    width: 100%;
+    height: 927px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footer-info-content {
+    margin: 32px 104px 64px 104px;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .nav-content {
+    width: 100%;
+    margin: 0px 16px;
+  }
+
+  .hero {
+    height: 540px;
+  }
+
+  .hero-content {
+    width: 60%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-content>img {
+    height: 186px;
+    object-fit: cover;
+  }
+
+  .hero-info {
+    margin-bottom: 10px;
+  }
+
+
+  .hero-button {
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+  }
+
+  .feature {
+    height: 708px;
+    flex-direction: column;
+    align-items: start;
+    gap: 16px;
+  }
+
+  .feature>img {
+    width: 100%;
+  }
+
+  .feature-rev {
+    align-items: end;
+  }
+
+
+  .feature h2,
+  .feature-rev h2 {
+    font-weight: 700;
+    font-size: 32px;
+    margin: 0;
+  }
+
+  .feature p,
+  .feature-rev p {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .footer-content {
+    width: 100%;
+    height: 540px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footer-content>img {
+    height: 204px;
+  }
+
+  .footer-info-content {
+    margin: 32px 104px 64px 104px;
+  }
 }
