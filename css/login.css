@@ -57,6 +57,7 @@ body {
   border: none;
   border-radius: 12px;
   height: 56px;
+  width: 640px;
   margin: 16px 0 24px;
   padding-left: 16px;
   font-size: var(--font-size-xs);
@@ -78,3 +79,13 @@ label {
   font-weight: var(--font-weight-bd);
 }
 
+.password-wrapper {
+  position: relative;
+}
+
+#show-eye,
+#hide-eye {
+  position: absolute;
+  right: 20px;
+  bottom: 35px;
+}
