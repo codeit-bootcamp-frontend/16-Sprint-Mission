@@ -18,7 +18,13 @@
           aria-label="랜딩 페이지로 이동"
           class="header__logo pointer"
         >
-          <img src="./assets/logo/logo_sm.png" alt="판다마켓 로고" />
+          <picture>
+            <source
+              media="(max-width: 767px)"
+              srcset="./assets/logo/logo_typo.png"
+            />
+            <img src="./assets/logo/logo_sm.png" alt="판다마켓 로고" />
+          </picture>
         </a>
         <a href="/pages/login.html" class="header__login-link pointer">
           로그인
