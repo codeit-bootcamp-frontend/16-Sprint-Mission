@@ -1,4 +1,4 @@
-import { InputEventHandler, inputValidState, onPasswordIconClick } from './modules/EventHandler.js';
+import { inputEventHandler, inputValidState, onPasswordIconClick } from './modules/EventHandler.js';
 
 const formButton = document.querySelector('.form-btn');
 
@@ -21,9 +21,9 @@ for (const stateKey in inputValidState) {
     // inputValidState 초기화
     inputValidState[stateKey].isValid = false;
 
-    // InputEventHandler 모듈 함수 할당
-    inputElement.addEventListener('input', () => InputEventHandler(stateKey));
-    inputElement.addEventListener('focusout', () => InputEventHandler(stateKey));
+    // inputEventHandler 모듈 함수 할당
+    inputElement.addEventListener('input', () => inputEventHandler(stateKey));
+    inputElement.addEventListener('focusout', () => inputEventHandler(stateKey));
   }
   
   // 눈 모양 아이콘 모듈 함수 할당

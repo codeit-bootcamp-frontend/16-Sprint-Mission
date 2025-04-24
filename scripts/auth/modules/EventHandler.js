@@ -7,10 +7,10 @@ export const inputValidState = {
 };
 
 /**
- * InputEventHandler: form의 input에서 focusout 이벤트 발생 시 관련 요소의 정보를 입력받아 이벤트를 처리하는 함수
+ * inputEventHandler: form의 input에서 focusout 이벤트 발생 시 관련 요소의 정보를 입력받아 이벤트를 처리하는 함수
  * @param {string} statusKey inputStatus 중 이벤트가 발생한 input 요소의 key
  */
-export const InputEventHandler = (stateKey) => {
+export const inputEventHandler = (stateKey) => {
   const inputElement = document.querySelector(`#${stateKey} .form-input`);
   const inputContainerElement = document.querySelector(`#${stateKey} .form-input-container`);
   const spanStateElement = document.querySelector(`#${stateKey} .form-status-info`);
