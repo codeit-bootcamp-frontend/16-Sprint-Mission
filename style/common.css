@@ -208,6 +208,7 @@ footer {
 
 .foot-box {
   max-width: 1120px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -257,12 +258,21 @@ input {
   }
 }
 
+/* 
+  PC: 1200px 이상
+  반응형 페이지 작성할 때 CSS variable 활용
+ */
+@media (min-width: 1200px) {
+  :root {
+  }
+}
+
 /* PC: 1200px 이상 */
-@media all and (min-width: 1200px) {
+@media screen and (min-width: 1200px) {
 }
 
 /* Tablet: 768px 이상 ~ 1199px 이하 */
-@media all and (min-width: 768px) and (max-width: 1199px) {
+@media screen and (min-width: 768px) and (max-width: 1199px) {
   nav {
     padding: 0 24px;
   }
@@ -286,6 +296,7 @@ input {
     width: 100%;
     font-size: 40px;
     text-align: center;
+    word-break: keep-all;
   }
 
   .card {
@@ -324,7 +335,7 @@ input {
 }
 
 /* Mobile: 375px 이상 ~ 767px 이하 */
-@media all and (min-width: 375px) and (max-width: 767px) {
+@media screen and (min-width: 375px) and (max-width: 767px) {
   nav {
     padding: 0 16px;
   }
