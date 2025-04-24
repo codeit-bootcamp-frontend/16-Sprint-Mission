@@ -1,5 +1,5 @@
 "use strict";
-import { validateInput } from "./util/validators.js";
+import { validateEmail, validatePassword } from "./util/validators.js";
 
 const form = document.querySelector(".form");
 const emailInput = document.querySelector("#userEmail");
@@ -7,17 +7,17 @@ const passwordInput = document.querySelector("#userPassword");
 const loginBtn = document.querySelector("#loginBtn");
 
 /* 로그인 폼 유효성 검사 */
-function createLoginValidator() {
+function createFormValidator() {
   let emailValid = false;
   let passwordValid = false;
 
   return function formValidate(e) {
     switch (e.target.id) {
       case "userEmail":
-        emailValid = validateInput(emailInput);
+        emailValid = validateEmail(emailInput);
         break;
       case "userPassword":
-        passwordValid = validateInput(passwordInput);
+        passwordValid = validatePassword(passwordInput);
         break;
     }
 
@@ -25,8 +25,8 @@ function createLoginValidator() {
   };
 }
 
-const loginValidate = createLoginValidator();
-form.addEventListener("focusout", loginValidate);
+const formValidate = createFormValidator();
+form.addEventListener("focusout", formValidate);
 
 /* UX: 로그인 페이지 진입 시 첫번째 input focus 처리 */
 window.addEventListener("DOMContentLoaded", () => {

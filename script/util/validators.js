@@ -31,10 +31,12 @@ function validateEmail(input) {
 
 function validatePassword(input, chkInput) {
   // 비밀번호 체크 연동
-  if (input.value !== chkInput.value) {
-    validatePasswordChk(input, chkInput);
-  } else {
-    setValid(chkInput);
+  if (chkInput) {
+    if (input.value !== chkInput.value) {
+      validatePasswordChk(input, chkInput);
+    } else {
+      setValid(chkInput);
+    }
   }
 
   // 비밀번호 유효성 검사
