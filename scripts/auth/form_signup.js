@@ -1,62 +1,26 @@
-import { emailValidator, nicknameValidator, passwordValidator, passwordMatchValidator } from './modules/validators.js';
-import { focusOutHandler, inputStatus } from './modules/focusOutHandler.js'
-
-const inputEmail = document.querySelector('#email .form-input');
-const inputNickname = document.querySelector('#nickname .form-input');
-const inputPassword = document.querySelector('#password .form-input');
-const inputPasswordVerify = document.querySelector('#passwordVerify .form-input');
+import { InputEventHandler, inputValidState } from './modules/InputEventHandler.js';
 
 const imgPasswordVisible = document.querySelector('#password .form-icon-password');
 const imgPasswordVerifyVisible = document.querySelector('#passwordVerify .form-icon-password');
 
 const formButton = document.querySelector('.form-btn');
 
-// inputStatus 초기화
-inputStatus.email = -1;
-inputStatus.nickname = -1;
-inputStatus.password = -1;
-inputStatus.passwordVerify = -1;
-
-// 이메일 input 태그 focusout 이벤트
-function onEmailFocusOut(e) {
-  const statusKey = 'email';
-  inputStatus[statusKey] = emailValidator(inputEmail.value);
-  focusOutHandler(statusKey,formButton);
-}
-
-// 닉네임 input 태그 focusout 이벤트
-function onNicknameFocusOut(e) {
-  const statusKey = 'nickname';
-  inputStatus[statusKey] = nicknameValidator(inputNickname.value);
-  focusOutHandler(statusKey,formButton);
-}
-
-// 비밀번호 input 태그 focusout 이벤트
-function onPasswordFocusOut(e) {
-  const statusKey = 'password';
-  inputStatus[statusKey] = passwordValidator(inputPassword.value);
-  focusOutHandler(statusKey,formButton);
-  if (inputStatus.passwordVerify !== -1) onPasswordVerifyFocusOut();
-}
-
-// 비밀번호 확인 input 태그 focusout 이벤트
-function onPasswordVerifyFocusOut(e) {
-  const statusKey = 'passwordVerify';
-  inputStatus[statusKey] = passwordMatchValidator(inputPassword.value,inputPasswordVerify.value);
-  focusOutHandler(statusKey,formButton);
-}
+//inputValidState에서 사용할 Key 선택
+const useValidState = ['email', 'nickname', 'password', 'passwordVerify'];
 
 // 비밀번호 눈 아이콘 클릭 이벤트
-function onPasswordIconClick(e) {
-  e.target.classList.toggle('inVisible');
-  if (e.target.classList.contains('inVisible')) inputPassword.type = 'password';
+function onPasswordIconClick() {
+  imgPasswordVisible.classList.toggle('inVisible');
+  const inputPassword = document.querySelector(`#password .form-input`);
+  if (imgPasswordVisible.classList.contains('inVisible')) inputPassword.type = 'password';
   else inputPassword.type = 'text';
 }
 
 // 비밀번호 확인 눈 아이콘 클릭 이벤트
-function onPasswordVerifyIconClick(e) {
-  e.target.classList.toggle('inVisible');
-  if (e.target.classList.contains('inVisible')) inputPasswordVerify.type = 'password';
+function onPasswordVerifyIconClick() {
+  imgPasswordVerifyVisible.classList.toggle('inVisible');
+  const inputPasswordVerify = document.querySelector(`#passwordVerify .form-input`);
+  if (imgPasswordVerifyVisible.classList.contains('inVisible')) inputPasswordVerify.type = 'password';
   else inputPasswordVerify.type = 'text';
 }
 
@@ -66,10 +30,16 @@ function onSignupButtonClick(e) {
   location.href = 'login.html';
 }
 
-inputEmail.addEventListener('focusout', onEmailFocusOut);
-inputNickname.addEventListener('focusout', onNicknameFocusOut);
-inputPassword.addEventListener('focusout', onPasswordFocusOut);
-inputPasswordVerify.addEventListener('focusout', onPasswordVerifyFocusOut);
+// input focusout 이벤트 일괄 등록
+for (const stateKey of useValidState) {
+  // inputValidState 초기화
+  inputValidState[stateKey].isValid = false;
+  const inputElement = document.querySelector(`#${stateKey} .form-input`);
+  // InputEventHandler 모듈 함수 할당
+  inputElement.addEventListener('input', () => InputEventHandler(stateKey));
+  inputElement.addEventListener('focusout', () => InputEventHandler(stateKey));
+}
+
 imgPasswordVisible.addEventListener('click', onPasswordIconClick);
 imgPasswordVerifyVisible.addEventListener('click', onPasswordVerifyIconClick);
 formButton.addEventListener('click', onSignupButtonClick);

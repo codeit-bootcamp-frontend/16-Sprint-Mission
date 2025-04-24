@@ -1,35 +1,14 @@
-import { emailValidator, passwordValidator } from './modules/validators.js';
-import { focusOutHandler, inputStatus } from './modules/focusOutHandler.js'
-
-const inputEmail = document.querySelector('#email .form-input');
-const inputPassword = document.querySelector('#password .form-input');
+import { InputEventHandler, inputValidState } from './modules/InputEventHandler.js';
 
 const imgPasswordVisible = document.querySelector('.form-icon-password');
-
 const formButton = document.querySelector('.form-btn');
-
-// inputStatus 초기화
-inputStatus.email = -1;
-inputStatus.password = -1;
-
-// 이메일 input 태그 focusout 이벤트
-function onEmailFocusOut(e) {
-  const statusKey = 'email';
-  inputStatus[statusKey] = emailValidator(inputEmail.value);
-  focusOutHandler(statusKey,formButton);
-}
-
-// 비밀번호 input 태그 focusout 이벤트
-function onPasswordFocusOut(e) {
-  const statusKey = 'password';
-  inputStatus[statusKey] = passwordValidator(inputPassword.value);
-  focusOutHandler(statusKey,formButton);
-}
+const useValidState = ['email', 'password'];
 
 // 비밀번호 눈 아이콘 클릭 이벤트
 function onPasswordIconClick(e) {
-  e.target.classList.toggle('inVisible');
-  if (e.target.classList.contains('inVisible')) inputPassword.type = 'password';
+  imgPasswordVisible.classList.toggle('inVisible');
+  const inputPassword = document.querySelector(`#password .form-input`);
+  if (imgPasswordVisible.contains('inVisible')) inputPassword.type = 'password';
   else inputPassword.type = 'text';
 }
 
@@ -39,8 +18,15 @@ function onLoginButtonClick(e) {
   location.href = 'items.html';
 }
 
-inputEmail.addEventListener('focusout', onEmailFocusOut);
-inputPassword.addEventListener('focusout', onPasswordFocusOut);
-imgPasswordVisible.addEventListener('click', onPasswordIconClick);
+// input focusout 이벤트 일괄 등록
+for (const stateKey of useValidState) {
+  // inputValidState 초기화
+  inputValidState[stateKey].isValid = false;
+  const inputElement = document.querySelector(`#${stateKey} .form-input`);
+  // InputEventHandler 모듈 함수 할당
+  inputElement.addEventListener('input', () => InputEventHandler(stateKey));
+  inputElement.addEventListener('focusout', () => InputEventHandler(stateKey));
+}
 
+imgPasswordVisible.addEventListener('click', onPasswordIconClick);
 formButton.addEventListener('click', onLoginButtonClick);
