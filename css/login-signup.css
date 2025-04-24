@@ -5,7 +5,7 @@ input:focus {
 .content {
   max-width: 640px;
   width: 100%;
-  margin: 120px auto 0;
+  margin: 120px auto;
   padding: 0 20px;
   display: flex;
   justify-content: center;
@@ -64,22 +64,30 @@ form {
   gap: 16px;
 }
 
-.visivility-btn {
+.visibility-btn {
   position: absolute;
   right: 16px;
   top: 50%;
   transform: translateY(-50%);
 }
 
-.visivility-btn-on {
+.visibility-btn-on {
   display: none;
 }
 
-.sign-up {
+.sign-up,
+.login {
   font-size: 1.4rem;
 }
 
-.sign-up a {
+.sign-up a,
+.login a {
   text-decoration: underline;
   color: var(--primary-color-100);
+}
+
+@media (min-width: 768px) {
+  .content {
+    padding: 0;
+  }
 }
