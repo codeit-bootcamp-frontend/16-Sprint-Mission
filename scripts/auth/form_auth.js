@@ -21,8 +21,8 @@ for (const stateKey in inputState) {
   const inputElement = document.querySelector(`#${stateKey} .form-input`);
   if(inputElement) {
     // inputValidState 초기화
-    setState(stateKey,{isValid: false})
-    //inputValidState[stateKey].isValid = false;
+    setState(stateKey, { isValid: false })
+    // inputValidState[stateKey].isValid = false;
 
     // inputEventHandler 모듈 함수 할당
     inputElement.addEventListener('input', () => inputEventHandler(stateKey));
