@@ -1,5 +1,6 @@
 // 에러 메세지 생성 함수
 const formEl = document.querySelector(".member-box__form");
+const submitBtn = document.querySelector(".member-box__form .form__submitBtn");
 
 const VALIDATION_RULE = {
   nickname: {
@@ -65,9 +66,6 @@ function changeInputReset(e) {
 // 페이지내의 전체 input validation 통과했는지 확인
 function checkAllPass() {
   const inputs = document.querySelectorAll(".member-box__form .input");
-  const submitBtn = document.querySelector(
-    ".member-box__form .form__submitBtn"
-  );
   const isAllPass = Array.from(inputs).every((input) =>
     input.closest(".form__input-box").classList.contains("isPass")
   );
@@ -152,6 +150,11 @@ function togglePassword(e) {
   }
 }
 
+function movePage(e) {
+  location.href = e.target.dataset.moveLink;
+}
+
 formEl.addEventListener("input", changeInputReset);
 formEl.addEventListener("focusout", checkValidation);
 formEl.addEventListener("click", togglePassword);
+submitBtn.addEventListener("click", movePage);

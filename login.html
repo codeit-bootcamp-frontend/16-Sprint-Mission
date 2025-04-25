@@ -20,7 +20,7 @@
           </a>
         </h1>
         <!-- form :: S -->
-        <form class="member-box__form" action="/items.html">
+        <form class="member-box__form">
           <div class="form__input-box">
             <label for="email" class="input-box__label">이메일</label>
             <div class="input-box__input">
@@ -57,7 +57,14 @@
               </button>
             </div>
           </div>
-          <button class="btn lg form__submitBtn" disabled>로그인</button>
+          <button
+            type="button"
+            class="btn lg form__submitBtn"
+            disabled
+            data-move-link="/items.html"
+          >
+            로그인
+          </button>
         </form>
         <!-- form :: E -->
         <!-- sns-box :: S -->
