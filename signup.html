@@ -20,7 +20,7 @@
           </a>
         </h1>
         <!-- form :: S -->
-        <form class="member-box__form">
+        <form class="member-box__form" action="/login.html">
           <div class="form__input-box">
             <label for="email" class="input-box__label">이메일</label>
             <div class="input-box__input">
@@ -46,12 +46,12 @@
             </div>
           </div>
           <div class="form__input-box form__input-box-pw">
-            <label for="pw" class="input-box__label">비밀번호</label>
+            <label for="password" class="input-box__label">비밀번호</label>
             <div class="input-box__input">
               <input
                 type="password"
-                name="pw"
-                id="pw"
+                name="password"
+                id="password"
                 class="input"
                 placeholder="비밀번호를 입력해주세요."
               />
@@ -69,14 +69,14 @@
             </div>
           </div>
           <div class="form__input-box form__input-box-pw">
-            <label for="confirm_pw" class="input-box__label"
+            <label for="passwordConfirm" class="input-box__label"
               >비밀번호 확인</label
             >
             <div class="input-box__input pw_show">
               <input
                 type="password"
-                name="confirm_pw"
-                id="confirm_pw"
+                name="passwordConfirm"
+                id="passwordConfirm"
                 class="input"
                 placeholder="비밀번호를 한번 더 입력해주세요."
               />
@@ -93,7 +93,7 @@
               </button>
             </div>
           </div>
-          <button class="btn lg form__submitBtn">회원가입</button>
+          <button class="btn lg form__submitBtn" disabled>회원가입</button>
         </form>
         <!-- form :: E -->
         <!-- sns-box :: S -->
@@ -136,5 +136,6 @@
         </p>
       </div>
     </div>
+    <script src="./assets/js/member.js"></script>
   </body>
 </html>
