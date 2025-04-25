@@ -114,6 +114,7 @@ header {
 }
 
 .sub-banner-description {
+  width: 100%;
   color: var(--color-text);
   font-size: 40px;
   font-weight: 700;
