@@ -139,5 +139,19 @@ function checkValidation({ target }) {
   checkAllPass();
 }
 
+function togglePassword(e) {
+  if (!e.target.closest(".input-box__toggle")) return;
+  const pwBox = e.target.closest(".input-box__input");
+  const inputBox = pwBox.querySelector(".input");
+  if (pwBox.classList.contains("pw_show")) {
+    pwBox.classList.remove("pw_show");
+    inputBox.setAttribute("type", "password");
+  } else {
+    pwBox.classList.add("pw_show");
+    inputBox.setAttribute("type", "input");
+  }
+}
+
 formEl.addEventListener("input", changeInputReset);
 formEl.addEventListener("focusout", checkValidation);
+formEl.addEventListener("click", togglePassword);
