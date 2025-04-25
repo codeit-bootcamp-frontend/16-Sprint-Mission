@@ -1,0 +1,33 @@
+:root {
+  /* color */
+  --primary-color-100: #3692ff;
+  --secondary-color-gray900: #111827;
+  --secondary-color-gray700: #1f2937;
+  --secondary-color-gray400: #9ca3af;
+  --secondary-color-gray200: #e5e7eb;
+  --secondary-color-gray100: #f3f4f6;
+  --secondary-color-gray50: #f9fafb;
+  --background-color: #cfe5ff;
+  --border-color: #dfdfdf;
+
+  /* Font size */
+  --text-base: 1.6rem; /* 16px */
+  --text-lg: 1.8rem; /* 18px */
+  --text-xl: 2rem; /* 20px */
+  --text-2xl: 2.4rem; /* 24px */
+  --text-3xl: 3.2rem; /* 32px */
+  --text-4xl: 4rem; /* 40px */
+
+  /* Line-height */
+  --leading-base: 2.6rem;
+  --leading-xl: 3.2rem;
+  --leading-2xl: 3.2rem;
+  --leading-3xl: 4rem;
+  --leading-4xl: 5.2rem;
+
+  /* Font weight (tailwind-style names) */
+  --font-normal: 400; /* font-normal */
+  --font-medium: 500; /* font-medium */
+  --font-semibold: 600; /* font-semibold */
+  --font-bold: 700; /* font-bold */
+}
