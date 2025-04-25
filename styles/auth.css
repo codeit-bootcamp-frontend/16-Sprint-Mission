@@ -50,8 +50,6 @@ header{
     display: flex;
     justify-content: center;
     flex-direction: column;
-    gap: 16px;
-
 }
 
 input {
@@ -59,8 +57,8 @@ input {
     height: 56px;
     border: none;
     border-radius: 12px;
-    background-color: var(--secondary-100, #1967D6);
-    color: var(--secondary-800, #1F2937);
+    background-color: var(--bg-input);
+    color: var(--text-muted);
     font-size: 16px;
     font-weight: 400;
     padding: 8px 16px;
@@ -72,7 +70,7 @@ input {
 
 .toggle-password {
     position: absolute;
-    right: 20px;
+    right: 16px;
     top: 50%;
     transform: translateY(-50%);
     background: none;
@@ -80,6 +78,12 @@ input {
     cursor: pointer;
     display: none;
 }
+
+.toggle-password img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 
 .input-wrapper:focus-within .toggle-password {
     display: block;
@@ -90,19 +94,23 @@ input {
     padding: 16px;
     border: none;
     border-radius: 40px;
-    background-color: var(--cool-gray-400, #9CA3AF);
-    /* background-color: var(--brand-blue, #3692FF); */
-    color: var(--secondary-100);
+    background-color: var(--text-muted);
+    color: var(--button-primary-text);
     font-size: 20px;
     font-weight: 600;
     line-height: 32px;
+}
+
+.btn-active {
+    background-color: #3692FF !important;
+    color: #ffffff;
 }
 
 .social-login {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--color-social-login-bg, #E6F2FF);
+    background-color: var(--bg-social-login);
     width: 100%;
     border: none;
     border-radius: 8px;
@@ -132,7 +140,45 @@ input {
     line-height: 24px;
 }
 
+.error-message {
+    color: #FF4D4F; /* 실무에서 자주 쓰는 빨간색 */
+    font-size: 13px;
+    margin-top: 4px;
+    height: 18px;
+}
+
+.input-error {
+    border: 1px solid #FF4D4F !important; /* 명확한 테두리 표시 */
+}
+
+.btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
 .signup-link a {
     line-height: 1;
     color: var(--brand-blue, #3692FF)
+}
+@media (min-width: 375px) and (max-width: 767px) {
+    .wrapper {
+        padding: 0 16px;
+        /* 좌우 여백 16px */
+    }
+    
+    .login-logo {
+        width: 198px;
+    }
+    
+    label {
+        font-size: 14px;
+    }
+    
+    input,
+    .btn,
+    .input-field,
+    .social-login {
+        width: 100%; /* 다시 명시!(auth.css에 이미 있음) */
+        max-width: 400px;
+    } 
 }
