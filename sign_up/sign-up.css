@@ -2,25 +2,24 @@
 @import url(../login/login.css);
 
 .main__sign-up {
+  margin: 24px auto;
+  max-width: 400px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  gap: 40px;
-  width: 640px;
-  margin: 231px auto;
+  gap: 24px;
 }
 
 .sign-up__logo img {
-  width: 396px;
+  width: 198px;
 }
 
 .sign-up__form {
   width: 100%;
 }
 
-/*비밀번호 보이기 안보이기*/
-label[for="toggle-visibility-pw"],
 label[for="toggle-visibility-pwcheck"] {
   position: absolute;
   right: 24px;
@@ -33,19 +32,19 @@ label[for="toggle-visibility-pwcheck"] {
 }
 
 label[for="toggle-visibility-pw"] {
-  top: 304px;
+  top: 258px;
 }
 
 label[for="toggle-visibility-pwcheck"] {
-  top: 424px;
-}
-
-#toggle-visibility-pwcheck:checked~label[for="toggle-visibility-pwcheck"] {
-  background-image: url(./img/pw_show.png);
+  top: 360px;
 }
 
 #toggle-visibility-pwcheck {
   display: none;
+}
+
+#toggle-visibility-pwcheck:checked~label[for="toggle-visibility-pwcheck"] {
+  background-image: url(./img/pw_show.png);
 }
 
 .sign-up__alert {
@@ -78,4 +77,30 @@ label[for="toggle-visibility-pwcheck"] {
 .sign-up__login a {
   text-decoration: underline;
   color: var(--primary-color);
+}
+
+@media screen and (min-width:768px) {
+  .main__sign-up {
+    max-width: 640px;
+    margin-top: 48px;
+    gap: 40px;
+  }
+
+  .sign-up__logo img {
+    width: 396px;
+  }
+
+  label[for="toggle-visibility-pw"] {
+    top: 304px;
+  }
+
+  label[for="toggle-visibility-pwcheck"] {
+    top: 424px;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .main__sign-up {
+    margin-top: 60px;
+  }
 }
