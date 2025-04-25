@@ -16,11 +16,11 @@
   --gray900: #111827;
 
   /* space */
-  --space-1: 8px;
-  --space-2: 16px;
-  --space-3: 24px;
-  --space-4: 32px;
-  --space-5: 40px;
+  --space-xxs: 8px;
+  --space-xs: 16px;
+  --space-sm: 24px;
+  --space-md: 32px;
+  --space-lg: 40px;
 
   /* btn */
   --btn-default-bg: var(--primary-color);
@@ -30,10 +30,27 @@
   --btn-white-color: var(--primary-color);
   --btn-white-bg: #f9fafb;
 
+  /* header */
+  --header-side-pd: 200px;
+
   /* footer */
   --footer-bg: var(--dark-bg);
 
   /* main */
   --main-banner-bg: var(--primary-bg);
   --service-cat-color: var(--primary-color);
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  :root {
+    /* header */
+    --header-side-pd: 24px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  :root {
+    /* header */
+    --header-side-pd: 16px;
+  }
 }

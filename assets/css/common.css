@@ -53,7 +53,7 @@
 .btn.lg {
   min-width: 357px;
   height: 56px;
-  font-size: 18px;
+  font-size: 20px;
   border-radius: 40px;
 }
 
@@ -72,7 +72,7 @@
   display: block;
   width: 100%;
   height: 56px;
-  padding: 0 var(--space-3);
+  padding: 0 var(--space-sm);
   border: 1px solid var(--gray100);
   font-size: 16px;
   font-weight: 400;
@@ -95,7 +95,7 @@
   justify-content: center;
   height: 70px;
   background: var(--white);
-  padding: 0 200px;
+  padding: 0 var(--header-side-pd);
 }
 
 #header .inner {
@@ -108,6 +108,10 @@
 
 #header .logo a {
   display: block;
+}
+
+#header .link_area .link {
+  min-width: 128px;
 }
 
 /* footer */
@@ -147,19 +151,23 @@
   padding: 0 6px;
 }
 
-@media screen and (max-width: 1200px) {
-  #header {
-    padding: 0 50px;
+@media screen and (max-width: 1199px) {
+  .inner {
+    max-width: none;
+    width: calc(100% - 48px);
+  }
+
+  #footer .inner {
+    padding: 0 104px;
+    width: auto;
   }
 }
 
-@media screen and (max-width: 768px) {
-  #header {
-    padding: 0 16px;
+@media screen and (max-width: 767px) {
+  .inner {
+    width: calc(100% - 32px);
   }
-}
 
-@media screen and (max-width: 480px) {
   .btn.sm {
     min-width: 128px;
     font-size: 16px;
@@ -171,15 +179,27 @@
     font-size: 18px;
   }
 
+  #header .logo a {
+    width: 103px;
+  }
+
   #footer {
-    padding: 32px 0 65px;
+    padding: 32px 0 30px;
   }
 
   #footer .inner {
-    position: relative;
-    align-items: flex-start;
-    flex-direction: column-reverse;
-    gap: 25px;
+    flex-wrap: wrap;
+    gap: 60px 0;
+    padding: 0 32px;
+  }
+
+  #footer .copy {
+    order: 3;
+    width: 100%;
+  }
+
+  #footer .foot_link {
+    order: 1;
   }
 
   #footer .foot_link ul {
@@ -191,8 +211,6 @@
   }
 
   #footer .sns_link {
-    position: absolute;
-    top: 0;
-    right: 0;
+    order: 2;
   }
 }

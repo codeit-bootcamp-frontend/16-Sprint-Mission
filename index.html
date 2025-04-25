@@ -3,6 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- meta og :: 카카오톡 -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://codeit-sprint-ltg.netlify.app/" />
+    <meta property="og:title" content="판다 마켓" />
+    <meta
+      property="og:image"
+      content="https://codeit-sprint-ltg.netlify.app/assets/images/common/meta_img.png"
+    />
+    <meta property="og:description" content="일상의 모든 물건을 거래해보세요" />
+
+    <!-- meta og :: 트위터/디스코드 -->
+    <meta name="twitter:title" content="판다 마켓" />
+    <meta
+      name="twitter:description"
+      content="일상의 모든 물건을 거래해보세요"
+    />
+    <meta
+      name="twitter:image"
+      content="https://codeit-sprint-ltg.netlify.app/assets/images/common/meta_img.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
     <title>판다마켓</title>
     <link
       rel="stylesheet"
@@ -18,19 +40,25 @@
       <header id="header">
         <div class="inner">
           <h1 class="logo">
-            <a href="/" aria-label="판다마켓 홈으로 이동"
-              ><img
-                src="assets/images/common/logo.svg"
+            <a href="/" aria-label="판다마켓 홈으로 이동">
+              <img
+                srcset="
+                  assets/images/common/logo_small.svg 103w,
+                  assets/images/common/logo.svg       306w
+                "
+                sizes="(max-width: 767px) 103px, 306px"
                 alt="판다마켓 로고"
+                src="assets/images/common/logo.svg"
                 width="153"
                 height="51"
-            /></a>
+              />
+            </a>
           </h1>
           <div class="link_area">
             <a
               href="/login.html"
               aria-label="로그인 페이지로 이동"
-              class="btn sm h40 link"
+              class="btn sm link"
               >로그인</a
             >
           </div>
@@ -50,14 +78,17 @@
                 >구경하러 가기</a
               >
             </div>
-            <figure>
-              <img
-                src="assets/images/main/main_visual_img.png"
-                alt="메인 비쥬얼 캐릭터 이미지"
-                width="746"
-                height="340"
-              />
-            </figure>
+            <img
+              srcset="
+                assets/images/main/main_visual_img_mo.png 750w,
+                assets/images/main/main_visual_img.png    746w
+              "
+              sizes="(max-width: 767px) 750px, 746px"
+              src="assets/images/main/main_visual_img.png"
+              alt="메인 비쥬얼 캐릭터 이미지"
+              width="746"
+              height="340"
+            />
           </div>
         </section>
         <!-- main_visual_sec :: E -->
@@ -65,16 +96,22 @@
 
         <section class="service_sec">
           <div class="inner">
-            <article class="service_article">
+            <article class="service_article service_article_hot">
               <div class="service_cont">
                 <figure class="service_img">
                   <img
+                    srcset="
+                      assets/images/main/main_service_hotItem_mo.png 696w,
+                      assets/images/main/main_service_hotItem.png    580w
+                    "
+                    sizes="(max-width: 767px) 696px, 580px"
                     src="assets/images/main/main_service_hotItem.png"
                     alt="Hot item 서비스 이미지"
                     width="580"
                     height="444"
                   />
                 </figure>
+
                 <div class="text_box">
                   <span class="category">Hot item</span>
                   <h2 class="main_title">인기 상품을 <br />확인해 보세요</h2>
@@ -84,10 +121,15 @@
                 </div>
               </div>
             </article>
-            <article class="service_article">
+            <article class="service_article service_article_search">
               <div class="service_cont">
                 <figure class="service_img">
                   <img
+                    srcset="
+                      assets/images/main/main_service_search_mo.png 696w,
+                      assets/images/main/main_service_search.png    579w
+                    "
+                    sizes="(max-width: 767px) 696px, 579px"
                     src="assets/images/main/main_service_search.png"
                     alt="search 서비스 이미지"
                     width="579"
@@ -105,10 +147,15 @@
                 </div>
               </div>
             </article>
-            <article class="service_article">
+            <article class="service_article service_article_register">
               <div class="service_cont">
                 <figure class="service_img">
                   <img
+                    srcset="
+                      assets/images/main/main_service_register_mo.png 696w,
+                      assets/images/main/main_service_register.png    572w
+                    "
+                    sizes="(max-width: 767px) 696px, 572px"
                     src="assets/images/main/main_service_register.png"
                     alt="register 서비스 이미지"
                     width="572"
