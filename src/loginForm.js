@@ -1,80 +1,63 @@
-const EMAIL_REGEXP = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+import { 
+  validateEmail , 
+  validatePassword, 
+  updateInputState,
+  updateSubmitButton,
+  togglePasswordVisibility 
+} from "./Validation/formValidation.js"; 
 
+document.addEventListener('DOMContentLoaded', () => {
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("password");
+  const passwordIcon = document.querySelector('.input-icon');
+  const submitBtn = document.querySelector('button[type="submit"]');
+  const emailMsg = document.getElementById("emailMsg");
+  const passwordMsg = document.getElementById("passwordMsg");
 
+  const message = {
+    email: {
+      empty: "이메일을 입력해주세요.",
+      invalid: "잘못된 이메일 형식입니다.",
+    },
+    password: {
+      empty: "비밀번호를 입력해주세요.",
+      invalid: "비밀번호를 8자 이상 입력해주세요.",
+    },
+  };
 
-const loginForm = document.getElementById("login-form");
+  let isEmailValid = false;
+  let isPasswordValid = false;
 
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
-
-const passwordIcon = document.querySelector('.input-icon')
-const submitBtn = document.querySelector('button[type="submit"]');
-
-passwordIcon.addEventListener('click',handlePasswordIcon)
-loginForm.addEventListener("input", handleLoginForm);
-
-function handlePasswordIcon(event) {
-  const eyeIcon = this.querySelector('i');
-  const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-  passwordInput.setAttribute('type', type);
-
-
-  if (type === 'password') {
-    eyeIcon.classList.remove('fa-eye');
-    eyeIcon.classList.add('fa-eye-slash');
-  } else {
-    eyeIcon.classList.remove('fa-eye-slash');
-    eyeIcon.classList.add('fa-eye');
+  function validateEmailInput() {
+    isEmailValid = validateEmail(emailInput.value);
+    updateInputState(emailInput, emailMsg, isEmailValid, message.email);
+    updateSubmitButtonState()//해당 코드를 중복해서 사용하지 않고싶은데 이외의 방법을 못찾겠습니다.
   }
-}
+  emailInput.addEventListener('input', validateEmailInput);
 
-function handleLoginForm(event) {
-  const input = event.target;
-  let isEmailValid = true;
-  let isPasswordValid = true;
+  function validatePasswordInput() {
+    isPasswordValid = validatePassword(passwordInput.value);
+    updateInputState(passwordInput, passwordMsg, isPasswordValid, message.password);
+    updateSubmitButtonState()
+  }
+  passwordInput.addEventListener('input', validatePasswordInput);
 
-  switch (input.name) {
-    case "email": {
-      const email = input.value;
-      const emailMsg = document.getElementById("emailMsg");
+  function updateSubmitButtonState() {
+    const isFormValid = isEmailValid && isPasswordValid;
+    updateSubmitButton(submitBtn, isFormValid);
+  }
 
-      isEmailValid = EMAIL_REGEXP.test(email);
+  if (passwordIcon) {
+    passwordIcon.addEventListener('click', function() {
+      const eyeIcon = this.querySelector('i');
+      togglePasswordVisibility(passwordInput, eyeIcon);
+    });
+  }
 
-      emailInput.classList.toggle("input-error", !isEmailValid);
-      emailMsg.textContent =
-        email === ""
-          ? "이메일을 입력해주세요."
-          : !isEmailValid
-          ? "잘못된 이메일 형식입니다."
-          : "";
-      break;
+  submitBtn.addEventListener('click', function(event) {
+    event.preventDefault();
+    if (!this.disabled) {
+      window.location.href = '/items.html';
     }
-    case "password": {
-      const password = input.value;
-      const passwordMsg = document.getElementById("passwordMsg");
-
-      isPasswordValid = password.length >= 8;
-
-      passwordInput.classList.toggle("input-error", !isPasswordValid);
-      passwordMsg.textContent =
-        password === ""
-          ? "비밀번호를 입력해주세요."
-          : !isPasswordValid
-          ? "비밀번호를 8자 이상 입력해주세요."
-          : "";
-      break;
-    }
-    
-  }
-  const isFormValid = emailInput.value !== "" && isEmailValid && passwordInput.value !== "" && isPasswordValid;
-
-  submitBtn.disabled = !isFormValid;
-  submitBtn.classList.toggle("disabled", !isFormValid);
-}
-submitBtn.addEventListener('click', function(event) {
-  event.preventDefault();
-
-  if (!this.disabled) {
-    window.location.href = '/items.html'; 
-  }
+  });
 });
