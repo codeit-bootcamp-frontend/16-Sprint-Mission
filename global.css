@@ -8,6 +8,7 @@
 
 body {
     font-family: 'Pretendard-Regular', sans-serif;
+    word-break: keep-all;
 }
 
 :root {
@@ -27,4 +28,5 @@ body {
     --secondary-gray200: #E5E7EB;
     --secondary-gray100: #F3f4f6;
     --secondary-gray50: #f9fafb;
+    --footer-text:#CFCFCF;
 }
