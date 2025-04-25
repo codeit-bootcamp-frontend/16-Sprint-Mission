@@ -113,10 +113,14 @@ nav {
 
 footer .section2 {
   background-color: #000000;
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   height: 200px;
   padding-top: 50px;
+}
+
+footer .section2 div {
+  text-align: center;
 }
 
 .licence {
@@ -137,4 +141,90 @@ footer .section2 {
   height: 20px;
   width: auto;
   margin-left: 10px;
+}
+
+/* 테블릿 사이즈 적용시 반응형 CSS 스타일 적용 */
+@media(max-width : 1199px) {
+  .navbar {
+    padding: 0 24px;
+  }
+
+  .hero-section {
+    height: 560px;
+  }
+
+  .hero-container {
+    height: 600px;
+    flex-direction: column;
+  }
+
+  .hero-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-button .btn {
+    width: 200px
+  }
+
+  main .hero-container .hero-text-block .text {
+    display: flex;
+    flex-direction: row;
+    gap: 5px
+  }
+
+  .section2 {
+    padding: 0 16px;
+    margin-bottom: 50px
+  }
+
+  .section2-div .part1,
+  .section2-div .part2,
+  .section2-div .part3 {
+    flex-direction: column;
+  }
+
+  .section2-div .part1,
+  .section2-div .part3 {
+    align-items: self-start;
+    /* justify-content: center; */
+  }
+
+  .section2-div .part2 {
+    align-items: self-end;
+  }
+
+  .subImage {
+    height: auto;
+    width: 100%;
+  }
+
+
+
+}
+
+/* 모바일 사이즈 적용시 반응형 CSS 스타일 적용 */
+@media(max-width : 767px) {
+  main .hero-container .hero-text-block .text {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  footer .section2 {
+    background-color: #000000;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: 200px;
+    padding-top: 50px;
+  }
+
+  footer .section2 .licence {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+
+
 }

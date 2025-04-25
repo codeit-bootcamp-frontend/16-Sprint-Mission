@@ -90,9 +90,48 @@ input {
   background-color: yellow;
 }
 
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
 .icon-eye {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 30px;
+  cursor: pointer;
+}
+
+/* .icon-eye {
   display: inline;
   position: relative;
   top: -60px;
   right: -580px;
+} */
+
+/* 테블릿 사이즈 적용시 반응형 CSS 스타일 적용 */
+@media (max-width: 1199px) {
+  .form-section {
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  .form-signup {
+    position: static;
+  }
+
+  .input {
+    width: 100%;
+  }
+
+  .social-section {
+    padding: 0 16px;
+    width: 100%;
+  }
+
+  .social-login {
+    width: 100%;
+    padding: 0 20px;
+  }
 }

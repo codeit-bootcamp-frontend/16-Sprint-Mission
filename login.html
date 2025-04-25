@@ -26,43 +26,46 @@
           autocomplete="email"
         />
         <label for="password" class="label">비밀번호</label>
-        <input
-          id="password-field"
-          type="password"
-          class="input password"
-          name="password"
-          aria-label="비밀번호 표시"
-          aria-pressed="false"
-        />
-        <div class="icon-eye btn--click">
-          <svg
-            id="eye-icon"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="feather feather-eye-off"
-          >
-            <path
-              d="M17.94 17.94A10.93 10.93 0 0 1 12 20c-5 0-9.27-3.11-11-7.5a11.07
-      11.07 0 0 1 5.17-5.94M1 1l22 22"
-            ></path>
-            <path
-              d="M9.53 9.53A3.5 3.5 0 0 0 12 15.5a3.5 3.5 0 0 0 2.47-5.97"
-            ></path>
-            <path
-              d="M12 4.5c2.54 0 4.81 1.11 6.4 2.85a11.07 11.07 0 0 1 2.6 4.15 11.05
-      11.05 0 0 1-1.67 2.6"
-            ></path>
-          </svg>
-          <!-- <span class="toggle-password" onclick="togglePasswordVisibility()">
-            👁️
-          </span> -->
+        <div class="input-wrapper">
+            <input
+            id="password-field"
+            type="password"
+            class="input password"
+            name="password"
+            aria-label="비밀번호 표시"
+            aria-pressed="false"
+          />
+          <div class="icon-eye btn--click">
+            <svg
+              id="eye-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-eye-off"
+            >
+              <path
+                d="M17.94 17.94A10.93 10.93 0 0 1 12 20c-5 0-9.27-3.11-11-7.5a11.07
+        11.07 0 0 1 5.17-5.94M1 1l22 22"
+              ></path>
+              <path
+                d="M9.53 9.53A3.5 3.5 0 0 0 12 15.5a3.5 3.5 0 0 0 2.47-5.97"
+              ></path>
+              <path
+                d="M12 4.5c2.54 0 4.81 1.11 6.4 2.85a11.07 11.07 0 0 1 2.6 4.15 11.05
+        11.05 0 0 1-1.67 2.6"
+              ></path>
+            </svg>
+            <!-- <span class="toggle-password" onclick="togglePasswordVisibility()">
+              👁️
+            </span> -->
+          </div>
         </div>
+        
 
         <button class="signup-button">로그인</button>
       </form>
