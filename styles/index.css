@@ -1,7 +1,8 @@
 /******************* Mobile Start *******************/
+
 :root {
     /* wrapper width */
-    --wrapper-width: 375px;
+    --wrapper-width: 767px;
     /* wrapper narrow width */
     --wrapper-narrow-width: 344px;
     /* wrapper gap */
@@ -14,6 +15,9 @@
     /* banner line break */
     --banner-line-break: block;
 
+    /* hero title gap */
+    --hero-title-gap: 18px;
+
     /* features padding bottom */
     --features-padding-bottom: 18px;
 
@@ -23,6 +27,8 @@
     --feature-margin: 0 16px;
     /* feature gap */
     --feature-gap: 24px;
+    /* feature h1 font size */
+    --feature-font-header: var(--font-size-lg);
 
     /* feature content line break */
     --feature-content-line-break: block;
@@ -31,14 +37,38 @@
 }
 
 .banner {
+    position: relative;
     display: flex;
-    background-position: bottom;
-    background-size: 90%;
-    background-repeat: no-repeat;
-    height: var(--banner-height);
-    background-color: var(--bg-accent);
+    justify-content: center;
+    align-items: flex-end;
     text-align: center;
+    width: 100%;
+    height: var(--banner-height);
+    overflow: hidden;
+    background-color: var(--bg-accent);
+}
+
+.banner .wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     padding-top: var(--banner-padding-top);
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: bottom;
+}
+
+.banner .hero-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--hero-title-gap); 
 }
 
 .banner .heading-line-break {
@@ -85,7 +115,7 @@ h1 {
 }
 
 .feature h1 {
-    font-size: var(--font-size-lg);
+    font-size: var(--feature-font-header);
     font-weight: var(--font-weight-bold);
     line-height: var(--line-height-normal);
 }
@@ -127,7 +157,7 @@ h1 {
     :root {
         --button-padding-lg: 12px 124px;
 
-        --wrapper-width: 991px;
+        --wrapper-width: 1199px;
         --wrapper-narrow-width: 961px;
         --wrapper-gap: 24px;
 
@@ -135,15 +165,17 @@ h1 {
         --banner-line-break: inline;
         --banner-height: 771px;
 
+        --hero-title-gap: 24px;
+
         --font-button-lg: 18px;
 
         --features-padding-bottom: 52px;
 
+        --feature-font-header: var(--font-size-xl);
         --feature-padding: 52px 0;
         --feature-margin: 0 24px;
 
         --feature-content-gap: 24px;
-
     }
 
     h1 {
@@ -170,30 +202,47 @@ h1 {
 /******************** Desktop Start ********************/
 @media(min-width: 1200px) {
     :root {
-        --wrapper-width: 1200px;
+        --wrapper-width: 1920px;
         --wrapper-narrow-width: 988px;
         --wrapper-gap: 7px;
 
         --banner-padding-top: 30px;
         --banner-height: 540px;
+        --hero-title-gap: 24px;
 
         --button-padding-lg: 12px 124px;
 
         --features-padding-bottom: 138px;
 
+        --feature-font-header: var(--font-size-2xl);
         --feature-padding: 138px 0;
         --feature-margin: 0 24px;
         --feature-gap: 10px;
-
     }
 
     .banner {
-        background-position: 80% bottom;
-        background-size: 55%;
-        align-items: center;
-        padding-bottom: 30px;
-        /* 텍스트 왼쪽으로 배치 */
         text-align: left;
+        height: var(--banner-height);
+    }
+
+    .banner .wrapper {
+        max-width: 1200px;
+        flex-direction: row; /* 가로 정렬로 변경 */
+        padding-top: var(--banner-padding-top);
+        position: relative;
+    }
+    
+    .banner img {
+        position: absolute;
+        bottom: 0;
+        right: 0;         
+        height: 70%;
+        width: auto; 
+    }
+
+    .banner .hero-title {
+        align-items: flex-start; /* 텍스트 왼쪽 정렬 */
+        gap: var(--hero-title-gap, 24px);
     }
 
     .feature-content .heading-line-break {
