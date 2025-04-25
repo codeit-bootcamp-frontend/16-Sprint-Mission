@@ -98,6 +98,7 @@ section>article img {
 /* main-hero */
 .main__hero {
     background-color: var(--background-color);
+    overflow-x: hidden;
 }
 
 .hero__content {
