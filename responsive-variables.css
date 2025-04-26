@@ -1,0 +1,150 @@
+:root {
+    /* 모바일 변수 */
+    /* 공통 */
+    --container-width: 343px;
+    --container-margin: 0 auto;
+    --container-title-margin-top: 8px;
+    --container-title-line-height: 32px;
+    --container-title-font-size: 24px;
+    --container-paragraph-line-height: 26px;
+    --container-paragraph-margin-top: 16px;
+    /* nav */
+    --nav-margin: 0 16px;
+    /* hero */
+    --hero-padding-top: 48px;
+    --hero-height: 540px;
+    --hero-text-width: 240px;
+    --hero-text-title-font-size: 32px;
+    --hero-text-align: center;
+    --hero-button-padding: 11px 71px;
+    --hero-button-height: 48px;
+    --hero-button-margin-top: 18px;
+    --hero-button-font-size: 18px;
+    --hero-button-line-height: 26px;
+    --hero-img-width: 448px;
+    --hero-img-height: 204px;
+    /* section-article공통 */
+    --section-img-width: 344px;
+    --section-img-height: 259px;
+    --section-img-radius: 12px;
+    --section-card-margin-top: 40px;
+    --article-card-gap: 24px;
+    /* hot-item */
+    --hot-item-margin-top: 52px;
+    --hot-item-text-width: 250px;
+    --hot-item-paragraph-margin-right: 57px;
+    /* search */
+    --search-text-width: 316px;
+    --search-text-order: 1;
+    --search-paragraph-margin-left: 78px;
+    /* register */
+    --register-text-width: 315px;
+    --register-paragraph-margin-right: 68px;
+    /* banner */
+    --banner-margin-top: 83px;
+    --banner-text-margin-top: 121px;
+    --banner-text-font-size: 32px;
+    --banner-text-align: center;
+    --banner-img-width: 375px;
+    --banner-img-height: 198px;
+    --banner-img-margin-top: 131px;
+    /* footer */
+    --footer-padding: 32px 32px 30px;
+    --footer-flex-basis: 181.11px;
+}
+
+/* 태블릿 */
+@media screen and (min-width : 768px) {
+    :root {
+        /* 태블릿 변수(모바일 덮어씌우기 용도)*/
+        /* 공통 */
+        --container-width: 696px;
+        --container-title-margin-top: 16px;
+        --container-title-line-height: 42px;
+        --container-title-font-size: 32px;
+        --container-paragraph-font-size: 18px;
+        /* nav */
+        --nav-margin: 0 24px;
+        /* hero */
+        --hero-padding-top: 84px;
+        --hero-height: 717px;
+        --hero-text-width: 512px;
+        --hero-text-title-font-size: 40px;
+        --hero-button-padding: 12px 124px;
+        --hero-button-height: 56px;
+        --hero-button-margin-top: 24px;
+        --hero-button-font-size: 20px;
+        --hero-button-line-height: 32px;
+        --hero-img-width: 744px;
+        --hero-img-height: 340px;
+        /* section-article공통 */
+        --section-img-width: 100%;
+        --section-img-height: auto;
+        --section-card-margin-top: 52px;
+        /* hot-item */
+        --hot-item-margin-top: 24px;
+        --hot-item-text-width: 329px;
+        --hot-item-paragraph-margin-right: 113px;
+        /* search */
+        --search-text-width: 420px;
+        --search-paragraph-margin-left: 194px;
+        /* register */
+        --register-text-width: 420px;
+        --register-paragraph-margin-right: 159px;
+        /* banner */
+        --banner-margin-top: 56px;
+        --banner-text-margin-top: 201px;
+        --banner-text-font-size: 40px;
+        --banner-img-width: 744px;
+        --banner-img-height: 397px;
+        --banner-img-margin-top: 217px;
+        /* footer */
+        --footer-padding: 32px 104px 108px;
+    }
+
+}
+
+/* PC */
+@media screen and (min-width : 1200px) {
+    :root {
+        /* PC변수 */
+        /* 공통 */
+        --container-width: 1120px;
+        --container-title-margin-top: 12px;
+        --container-title-line-height: 140%;
+        --container-title-font-size: 40px;
+        --container-paragraph-font-size: 24px;
+        --container-paragraph-line-height: 32px;
+        --container-paragraph-margin-top: 24px;
+        /* nav */
+        --nav-margin: 0 200px;
+        /* hero */
+        --hero-padding-top: 200px;
+        --hero-height: auto;
+        --hero-text-width: 357px;
+        --hero-text-align: left;
+        --hero-img-width: 746px;
+        /* section-article공통 */
+        --section-img-width: 579px;
+        --section-img-height: 444px;
+        --section-img-radius: 0;
+        --section-card-margin-top: 0;
+        --article-card-gap: 64px;
+        /* hot-item */
+        --hot-item-paragraph-margin-right: 23px;
+        /* search */
+        --search-text-order: 0;
+        --search-paragraph-margin-left: 29px;
+        /* register */
+        --register-paragraph-margin-right: 0;
+        /* banner */
+        --banner-margin-top: 138px;
+        --banner-text-margin-top: 0;
+        --banner-text-align: left;
+        --banner-img-width: 746px;
+        --banner-img-margin-top: 0;
+        /* footer */
+        --footer-padding: 32px 0;
+        --footer-flex-basis: 159px;
+    }
+}
