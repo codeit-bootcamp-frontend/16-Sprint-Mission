@@ -177,3 +177,47 @@ passwordCheckFieldInput.addEventListener("focusout", (e) => {
 })
 
 // 비밀번호 검증 끝
+
+const passwordEyeInput = document.querySelector("#password-field")
+const eyeIconWrapper = document.querySelector(".icon-eye")
+const eyeIcon = document.querySelector("#eye-icon")
+const togglePasswordSpan = document.querySelector(".toggle-password")
+togglePasswordSpan.style.display = "none"
+
+eyeIconWrapper.addEventListener("click", () => {
+  const isPasswordVisible = passwordEyeInput.type === "text"
+
+  if (isPasswordVisible) {
+    // 비밀번호 감추기
+    passwordEyeInput.type = "password"
+    eyeIcon.style.display = "block"
+    togglePasswordSpan.style.display = "none"
+  } else {
+    // 비밀번호 보이기
+    passwordEyeInput.type = "text"
+    eyeIcon.style.display = "none"
+    togglePasswordSpan.style.display = "inline" // span은 inline
+  }
+})
+
+const passwordCheckEyeInput = document.querySelector("#password-check-field")
+const eye2IconWrapper = document.querySelector(".icon-eye2")
+const eye2Icon = document.querySelector("#eye-icon2")
+const toggleCheckPasswordSpan = document.querySelector(".toggle-check-password")
+toggleCheckPasswordSpan.style.display = "none"
+
+eye2IconWrapper.addEventListener("click", () => {
+  const isPasswordVisible = passwordCheckEyeInput.type === "text"
+
+  if (isPasswordVisible) {
+    // 비밀번호 감추기
+    passwordCheckEyeInput.type = "password"
+    eye2Icon.style.display = "block"
+    toggleCheckPasswordSpan.style.display = "none"
+  } else {
+    // 비밀번호 보이기
+    passwordCheckEyeInput.type = "text"
+    eye2Icon.style.display = "none"
+    toggleCheckPasswordSpan.style.display = "inline" // span은 inline
+  }
+})
