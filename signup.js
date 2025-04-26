@@ -40,7 +40,7 @@ emailInput.addEventListener("focusout", (e) => {
     warningMessage1.textContent = result.message
     emailOk = true
 
-    if (emailOk && passwordOk && passwordOk && passwordCheckOk) {
+    if (emailOk && nicknameOk && passwordOk && passwordCheckOk) {
       signUpButton.disabled = false
       signUpButton.style.backgroundColor = "#3692FF"
     }
@@ -80,9 +80,9 @@ nicknameInput.addEventListener("focusout", (e) => {
     warningMessage2.style.display = result.messageStyle.display
     nicknameInput.style.border = result.inputBorder
     warningMessage2.textContent = result.message
-    passwordOk = true
+    nicknameOk = true
 
-    if (emailOk && passwordOk && passwordOk && passwordCheckOk) {
+    if (emailOk && nicknameOk && passwordOk && passwordCheckOk) {
       signUpButton.disabled = false
       signUpButton.style.backgroundColor = "#3692FF"
     }
@@ -124,7 +124,7 @@ passwordFieldInput.addEventListener("focusout", (e) => {
     warningMessage3.textContent = result.message
     passwordOk = true
 
-    if (emailOk && passwordOk && passwordOk && passwordCheckOk) {
+    if (emailOk && nicknameOk && passwordOk && passwordCheckOk) {
       signUpButton.disabled = false
       signUpButton.style.backgroundColor = "#3693FF"
     }
@@ -169,7 +169,7 @@ passwordCheckFieldInput.addEventListener("focusout", (e) => {
     warningMessage4.textContent = result.message
     passwordCheckOk = true
 
-    if (emailOk && passwordOk && passwordOk && passwordCheckOk) {
+    if (emailOk && nicknameOk && passwordOk && passwordCheckOk) {
       signUpButton.disabled = false
       signUpButton.style.backgroundColor = "#3693FF"
     }
