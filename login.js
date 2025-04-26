@@ -80,3 +80,25 @@ passwordInput.addEventListener("focusout", (e) => {
     }
   }
 })
+
+const passwordEyeInput = document.querySelector("#password-field")
+const eyeIconWrapper = document.querySelector(".icon-eye")
+const eyeIcon = document.querySelector("#eye-icon")
+const togglePasswordSpan = document.querySelector(".toggle-password")
+togglePasswordSpan.style.display = "none"
+
+eyeIconWrapper.addEventListener("click", () => {
+  const isPasswordVisible = passwordEyeInput.type === "text"
+
+  if (isPasswordVisible) {
+    // 비밀번호 감추기
+    passwordEyeInput.type = "password"
+    eyeIcon.style.display = "block"
+    togglePasswordSpan.style.display = "none"
+  } else {
+    // 비밀번호 보이기
+    passwordEyeInput.type = "text"
+    eyeIcon.style.display = "none"
+    togglePasswordSpan.style.display = "inline" // span은 inline
+  }
+})
