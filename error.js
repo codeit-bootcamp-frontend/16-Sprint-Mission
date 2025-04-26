@@ -64,5 +64,43 @@ export function ErrorCheck(code, data = "") {
             inputBorder,
           }
     }
+  } else if (code == "nickname") {
+    return data.length >= 1
+      ? {
+          error: false,
+          message: "",
+          messageStyle: {
+            color: "",
+            funtSize: "",
+            marginTop: "",
+          },
+          inputBorder: "",
+        }
+      : {
+          error: true,
+          message: "닉네임을 입력해주세요.",
+          messageStyle,
+          inputBorder,
+        }
+  } else if (code == "passwordCheck") {
+    console.log(data)
+
+    return data["password1"] === data["password2"]
+      ? {
+          error: false,
+          message: "",
+          messageStyle: {
+            color: "",
+            funtSize: "",
+            marginTop: "",
+          },
+          inputBorder: "",
+        }
+      : {
+          error: true,
+          message: "비밀번호가 일치하지 않습니다",
+          messageStyle,
+          inputBorder,
+        }
   }
 }
