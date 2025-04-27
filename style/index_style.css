@@ -58,7 +58,6 @@ footer .wrap {
 }
 
 /** header **/
-
 header {
   background-color: var(--color-white);
   position: sticky;
@@ -90,7 +89,6 @@ header .btn-link-login {
 }
 
 /** banner **/
-
 .banner {
   background-color: var(--color-pri50);
 }
@@ -133,7 +131,6 @@ header .btn-link-login {
 }
 
 /** features **/
-
 .feature-card {
   margin: 140px 0;
 }
@@ -170,7 +167,6 @@ header .btn-link-login {
 }
 
 /** footer **/
-
 footer {
   background-color: var(--color-pri500);
 }
@@ -206,7 +202,6 @@ footer .privacy-links > a {
 }
 
 /** pseudo-class **/
-
 .btn-link-login:hover,
 .btn-link-trades:hover {
   background-color: var(--color-pri200);
@@ -218,7 +213,6 @@ footer .privacy-links > a {
 }
 
 /** media: tablet **/
-
 @media (max-width: 1199px) {
   /** layout **/
   .wrap {
@@ -271,7 +265,6 @@ footer .privacy-links > a {
   }
 
   /** banner **/
-
   .banner .banner-description {
     max-width: initial;
     text-align: center;
@@ -284,7 +277,6 @@ footer .privacy-links > a {
   }
 
   /** features **/
-
   .features .feature-card {
     width: 100%;
     margin: 0;
@@ -321,7 +313,6 @@ footer .privacy-links > a {
   }
 
   /** pseudo class **/
-
   .feature-card:nth-child(2n) .wrap {
     flex-direction: column-reverse;
   }
@@ -332,10 +323,8 @@ footer .privacy-links > a {
 }
 
 /** media: mobile **/
-
 @media (max-width: 767px) {
   /** layout **/
-
   header .wrap {
     padding: 8px 16px;
   }
@@ -364,7 +353,6 @@ footer .privacy-links > a {
   }
 
   /** banner **/
-
   .main-banner {
     background-size: clamp(500px, 100vw, 80%);
   }
@@ -391,7 +379,6 @@ footer .privacy-links > a {
   }
 
   /** features **/
-
   .features .feature-card {
     padding: 20px 0;
   }
