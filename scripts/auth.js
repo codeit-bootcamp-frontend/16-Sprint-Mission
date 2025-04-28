@@ -5,7 +5,7 @@ import {
   debounce,
 } from "./utils.js";
 /**
- * 변수들 정의
+ * 변수 정의
  */
 const inputArr = document.querySelectorAll("[data-validate]");
 const submitBtn = document.querySelector(".btn");
@@ -14,8 +14,10 @@ const form = document.querySelector(".auth-form");
 const debouncedCheckAll = debounce(() => {
   checkAllInputsValid(inputArr, submitBtn);
 }, 120);
-
-// 엘리멘트에 함수 등록
+/**
+ * 이벤트 리스너 
+ */
+// 입력란(input)
 form.addEventListener("input", (e) => {
   const input = e.target.closest("[data-validate]");
   if (!input) return;
@@ -32,12 +34,10 @@ form.addEventListener(
   },
   true
 );
-
 // 패스워드 토글
 togglePasswordBtns.forEach((button) => {
   button.addEventListener("click", () => togglePasswordVisibility(button));
 });
-
 // submit
 submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
