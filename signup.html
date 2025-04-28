@@ -17,7 +17,7 @@
     <main class="wrapper">
         <!-- 로고 -->
         <header class="header">
-            <a href="/"  aria-label="홈으로 이동">
+            <a href="/" aria-label="홈으로 이동">
                 <img src="/images/Property 1=lg.png" alt="판다마켓 로고" class="login-logo" width="396px" />
             </a>
         </header>
@@ -27,19 +27,19 @@
             <form class="login-form">
                 <div class="input-field">
                     <label for="email">이메일</label>
-                    <input type="email" id="email" name="email" required placeholder="이메일을 입력해주세요."/>
+                    <input type="email" id="email" name="email" required placeholder="이메일을 입력해주세요." />
                     <span class="error-message" id="email-error"></span>
                 </div>
                 <div class="input-field">
                     <label for="nickname">닉네임</label>
-                    <input type="text" id="nickname" name="text" required placeholder="닉네임을 입력해주세요." />
+                    <input type="text" id="nickname" name="nickname" required placeholder="닉네임을 입력해주세요." />
                     <span class="error-message" id="nickname-error"></span>
                 </div>
                 <div class="input-field">
                     <label for="password">비밀번호</label>
                     <div class="input-wrapper">
-                        <input type="password" id="password" name="password" required placeholder="비밀번호를 입력해주세요."/>
-                        <button type="button"  class="toggle-password" data-target="password">
+                        <input type="password" id="password" name="password" required placeholder="비밀번호를 입력해주세요." />
+                        <button type="button" class="toggle-password" data-target="password">
                             <img src="/images/btn_none_visibility_on_24px.png" alt="패스워드 보이지 않음" width="24" height="24">
                         </button>
                     </div>
@@ -48,34 +48,35 @@
                 <div class="input-field">
                     <label for="confirm-password">비밀번호 확인</label>
                     <div class="input-wrapper">
-                        <input type="text" id="confirm-password" name="password" required placeholder="비밀번호를 다시 한 번 입력해주세요." />
-                        <button type="button"  class="toggle-password" data-target="confirm-password">
+                        <input type="text" id="confirmPassword" name="confirmPassword" required
+                            placeholder="비밀번호를 다시 한 번 입력해주세요." />
+                        <button type="button" class="toggle-password" data-target="confirm-password">
                             <img src="/images/btn_visibility_on_24px.png" alt="패스워드 보임" width="24" height="24">
                         </button>
                     </div>
-                    <span class="error-message" id="confirm-error"></span>
+                    <span class="error-message" id="confirmPassword-error"></span>
                 </div>
-                <button type="submit" class="btn">회원가입</button>
+                <button type="submit" class="btn" disabled>회원가입</button>
             </form>
 
             <!-- 간편 로그인 -->
             <div class="social-login">
                 <p>간편 로그인하기</p>
                 <div class="social-buttons">
-                    <a href="https://www.google.co.kr/?hl=ko"  aria-label="구글로 이동해서 로그인 하기"><img src="/images/Component 2.png" width="42"
-                            height="42" /></a>
-                    <a href="https://www.kakaocorp.com/page/service/service/KakaoTalk"  aria-label="카카오로 이동해서 로그인 하기"><img
-                            src="/images/Component 3.png" width="42" height="42" /></a>
+                    <a href="https://www.google.co.kr/?hl=ko" aria-label="구글로 이동해서 로그인 하기"><img
+                            src="/images/Component 2.png" width="42" height="42" /></a>
+                    <a href="https://www.kakaocorp.com/page/service/service/KakaoTalk"
+                        aria-label="카카오로 이동해서 로그인 하기"><img src="/images/Component 3.png" width="42" height="42" /></a>
                 </div>
             </div>
 
             <!-- 회원가입 유도 -->
             <div class="signup-link">
-                <p>이미 회원이신가요?</p><a href="/login.html"  aria-label="로그인으로 이동">로그인</a>
+                <p>이미 회원이신가요?</p><a href="/login.html" aria-label="로그인으로 이동">로그인</a>
             </div>
         </section>
     </main>
-    <script src="/scripts/signUp.js"></script>
+    <script type="module" src="/scripts/auth.js"></script>
 </body>
 
 </html>
