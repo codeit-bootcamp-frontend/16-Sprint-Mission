@@ -1,5 +1,17 @@
 import { validators } from "./validators.js";
 /**
+ * debounce code
+ */
+export function debounce(fn, delay = 300) {
+  let timer;
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn.apply(this, args);
+    }, delay);
+  };
+};
+/**
  *  toggle password
  */
 export const togglePasswordVisibility = (button) => {
@@ -40,6 +52,9 @@ export const validateInputs = (inputEl) => {
  * 모든 입력값이 유효한지 확인하는 함수
  */
 export const checkAllInputsValid = (inputArr, submitBtn) => {
-  const allValid = Array.from(inputArr).every((input) => validateInputs(input));
+  // 1) 모든 필드에 대해 validateInputs 호출 → 에러 메시지 업데이트
+  const results = Array.from(inputArr).map((input) => validateInputs(input));
+  // 2) map 결과로만 버튼 활성화/비활성화 결정
+  const allValid = results.every(Boolean);
   submitBtn.disabled = !allValid;
 };

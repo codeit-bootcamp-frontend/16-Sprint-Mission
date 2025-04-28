@@ -2,33 +2,36 @@ import {
   validateInputs,
   checkAllInputsValid,
   togglePasswordVisibility,
+  debounce,
 } from "./utils.js";
-
-// 변수 정의
+/**
+ * 변수들 정의
+ */
 const inputArr = document.querySelectorAll("[data-validate]");
 const submitBtn = document.querySelector(".btn");
 const togglePasswordBtns = document.querySelectorAll(".toggle-password");
-const passwordInput = document.getElementById("password");
-const confirmPasswordInput = document.getElementById("confirmPassword");
+const form = document.querySelector(".auth-form");
+const debouncedCheckAll = debounce(() => {
+  checkAllInputsValid(inputArr, submitBtn);
+}, 120);
 
-// input마다 이벤트 등록
-inputArr.forEach((input) => {
-  input.addEventListener("input", () => {
-    validateInputs(input);
-    checkAllInputsValid(inputArr, submitBtn);
-  });
-  input.addEventListener("focusOut", () => {
-    validateInputs(input);
-    checkAllInputsValid(inputArr, submitBtn);
-  });
+// 엘리멘트에 함수 등록
+form.addEventListener("input", (e) => {
+  const input = e.target.closest("[data-validate]");
+  if (!input) return;
+  validateInputs(input);
+  debouncedCheckAll();
 });
-// 비밀번호 입력시 확인칸도 검사
-if (passwordInput && confirmPasswordInput) {
-  passwordInput.addEventListener("input", () => {
-    validateInputs(confirmPasswordInput);
+form.addEventListener(
+  "blur",
+  (e) => {
+    const input = e.target.closest("[data-validate]");
+    if (!input) return;
+    validateInputs(input);
     checkAllInputsValid(inputArr, submitBtn);
-  });
-}
+  },
+  true
+);
 
 // 패스워드 토글
 togglePasswordBtns.forEach((button) => {
