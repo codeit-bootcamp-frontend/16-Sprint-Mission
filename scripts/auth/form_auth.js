@@ -1,17 +1,21 @@
-import { getState, setState, setValidation } from './modules/EventHandler.js';
+import {
+  deleteState,
+  getState,
+  setValidation,
+} from './modules/EventHandler.js';
 
 const formButton = document.querySelector('.form-btn');
 
 const inputEventHandler = (stateKey) => {
   const inputValidState = getState();
   setValidation(stateKey);
-  updateUIByState(stateKey);
   if (
     stateKey === 'password' &&
-    inputValidState['passwordVerify'].isExist &&
+    !!inputValidState['passwordVerify'] &&
     inputValidState['passwordVerify'].isValid !== null
   )
     inputEventHandler('passwordVerify');
+  updateUIByState(stateKey);
   setButtonState();
 };
 
@@ -64,14 +68,13 @@ const setButtonState = () => {
 for (const stateKey in getState()) {
   const inputElement = document.querySelector(`#${stateKey} .form-input`);
   if (inputElement) {
-    // inputValidState 초기화
-    setState(stateKey, { isExist: true, isValid: null });
-
     // inputEventHandler 모듈 함수 할당
     //prettier-ignore
     inputElement.addEventListener('input', () => inputEventHandler(stateKey));
     //prettier-ignore
     inputElement.addEventListener('focusout', () => inputEventHandler(stateKey));
+  } else {
+    deleteState(stateKey);
   }
 
   // 눈 모양 아이콘 모듈 함수 할당

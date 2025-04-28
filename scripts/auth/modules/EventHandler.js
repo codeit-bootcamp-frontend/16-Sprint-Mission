@@ -1,9 +1,9 @@
 // input 상태관리 변수
 const inputValidState = {
-  email: { isValid: true, isExist: false, message: '' },
-  nickname: { isValid: true, isExist: false, message: '' },
-  password: { isValid: true, isExist: false, message: '' },
-  passwordVerify: { isValid: true, isExist: false, message: '' },
+  email: { isValid: null, message: '' },
+  nickname: { isValid: null, message: '' },
+  password: { isValid: null, message: '' },
+  passwordVerify: { isValid: null, message: '' },
 };
 
 const messageObject = {
@@ -97,4 +97,8 @@ export const setState = (changedStateKey, changedStateObject) => {
     inputValidState[changedStateKey][changeditem] =
       changedStateObject[changeditem];
   }
+};
+
+export const deleteState = (stateKey) => {
+  delete inputValidState[stateKey];
 };
