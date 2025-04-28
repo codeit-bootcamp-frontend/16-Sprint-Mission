@@ -27,18 +27,18 @@
             <form class="login-form">
                 <div class="input-field">
                     <label for="email">이메일</label>
-                    <input type="email" id="email" name="email" required placeholder="이메일을 입력해주세요." />
+                    <input type="email" id="email" name="email" data-validate="email" required placeholder="이메일을 입력해주세요." />
                     <span class="error-message" id="email-error"></span>
                 </div>
                 <div class="input-field">
                     <label for="nickname">닉네임</label>
-                    <input type="text" id="nickname" name="nickname" required placeholder="닉네임을 입력해주세요." />
+                    <input type="text" id="nickname" data-validate="nickname" name="nickname" required placeholder="닉네임을 입력해주세요." />
                     <span class="error-message" id="nickname-error"></span>
                 </div>
                 <div class="input-field">
                     <label for="password">비밀번호</label>
                     <div class="input-wrapper">
-                        <input type="password" id="password" name="password" required placeholder="비밀번호를 입력해주세요." />
+                        <input type="password" id="password" data-validate="password" name="password" required placeholder="비밀번호를 입력해주세요." />
                         <button type="button" class="toggle-password" data-target="password">
                             <img src="/images/btn_none_visibility_on_24px.png" alt="패스워드 보이지 않음" width="24" height="24">
                         </button>
@@ -48,10 +48,10 @@
                 <div class="input-field">
                     <label for="confirm-password">비밀번호 확인</label>
                     <div class="input-wrapper">
-                        <input type="password" id="confirmPassword" name="confirmPassword" required
+                        <input type="password" id="confirmPassword" data-validate="confirmPassword" name="confirmPassword" required
                             placeholder="비밀번호를 다시 한 번 입력해주세요." />
                         <button type="button" class="toggle-password" data-target="confirmPassword">
-                            <img src="/images/btn_visibility_on_24px.png" alt="패스워드 보임" width="24" height="24">
+                            <img src="/images/btn_none_visibility_on_24px.png" alt="패스워드 보임" width="24" height="24">
                         </button>
                     </div>
                     <span class="error-message" id="confirmPassword-error"></span>

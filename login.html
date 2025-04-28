@@ -27,13 +27,13 @@
             <form class="login-form">
                 <div class="input-field">
                     <label for="email">이메일</label>
-                    <input type="email" id="email" name="email" required placeholder="이메일을 입력해주세요." />
+                    <input type="email" id="email" name="email" data-validate="email" required placeholder="이메일을 입력해주세요." />
                     <span class="error-message" id="email-error"></span>
                 </div>
                 <div class="input-field">
                     <label for="password">비밀번호</label>
                     <div class="input-wrapper">
-                        <input type="password" id="password" name="password" required placeholder="패스워드를 입력해주세요." />
+                        <input type="password" id="password" data-validate="password" name="password" required placeholder="패스워드를 입력해주세요." />
                         <button type="button" class="toggle-password" data-target="password">
                             <img src="/images/btn_none_visibility_on_24px.png" alt="패스워드 보이지 않음" width="24" height="24">
                         </button>

@@ -58,7 +58,7 @@ input {
     border: none;
     border-radius: 12px;
     background-color: var(--bg-input);
-    color: var(--text-muted);
+    color: var(--text-primary);
     font-size: 16px;
     font-weight: 400;
     padding: 8px 16px;
@@ -99,11 +99,6 @@ input {
     font-size: 20px;
     font-weight: 600;
     line-height: 32px;
-}
-
-.btn-active {
-    background-color: #3692FF !important;
-    color: #ffffff;
 }
 
 .social-login {
@@ -151,8 +146,14 @@ input {
     border: 1px solid #FF4D4F !important; /* 명확한 테두리 표시 */
 }
 
+.btn:enabled {
+    background-color: var(--brand-blue) !important;
+    color: var(--bg-input);
+}
+
 .btn:disabled {
-    background-color: #cccccc;
+    background-color: var(--text-muted);
+    color: var(--button-primary-text);
     cursor: not-allowed;
 }
 
