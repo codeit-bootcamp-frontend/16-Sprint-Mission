@@ -261,6 +261,7 @@ input {
 /* 
   PC: 1200px 이상
   반응형 페이지 작성할 때 CSS variable 활용
+  추후 추가예정
  */
 @media (min-width: 1200px) {
   :root {
