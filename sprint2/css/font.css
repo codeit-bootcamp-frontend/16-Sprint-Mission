@@ -1,0 +1,42 @@
+/* 
+  2025 04 11
+  폰트 설정
+*/
+
+/* Pretendard */
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: 
+    url('../font/Pretendard-Bold.woff2') format('woff2'),
+    url('../font/Pretendard-Bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: 
+    url('../font/Pretendard-SemiBold.woff2') format('woff2'),
+    url('../font/Pretendard-SemiBold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: 
+    url('../font/Pretendard-Medium.woff2') format('woff2'),
+    url('../font/Pretendard-Medium.woff') format('woff');
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: 
+    url('../font/Pretendard-Regular.woff2') format('woff2'),
+    url('../font/Pretendard-Regular.woff') format('woff');
+}

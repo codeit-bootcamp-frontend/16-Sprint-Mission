@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>판다마켓</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="auth-page">
+    <header class="auth__header">
+      <div class="auth__logo">
+        <a href="index.html" aria-label="홈으로 이동">
+          <img class="auth__logo-img" src="images/img_login.png" alt="판다마켓">
+        </a>
+      </div>
+    </header>
+    <main class="auth">
+      <form class="auth__form" action="#">
+        <div class="auth__input-group">
+          <label class="auth__label" for="email">이메일</label>
+          <input class="auth__input input--email" type="text" id="email" name="email" />
+        </div>
+        <div class="auth__input-group">
+          <label class="auth__label" for="password">비밀번호</label>
+          <input class="auth__input input--password visibility__img--off" type="password" id="password" name="password" />
+        </div>
+        <button type="submit" class="auth__btn--login btn btn--large btn--color1 mb24">로그인</button>
+      </form>
+      <div class="auth__simple-login mb24">
+        <p class="auth__simple-login-title">간편 로그인하기</p>
+        <a href="https://www.google.com/" class="auth__social-btn" aria-label="구글 로그인" target="_blank" rel="noopener noreferrer">
+          <img src="images/ic_google.png" alt="구글 로그인 버튼">
+        </a>
+        <a href="https://www.kakaocorp.com/page/" class="auth__social-btn" aria-label="카카오톡 로그인" target="_blank" rel="noopener noreferrer">
+          <img src="images/ic_kakao.png" alt="카카오톡 로그인 버튼"> 
+        </a>
+      </div>
+      <div class="auth__signup">
+        <span class="auth__signup-text">판다마켓이 처음이신가요?</span>
+        <a href="signup.html" class="auth__signup-button">회원가입</a>
+      </div>    
+    </main>
+  </div>
+</body>
+</html>
