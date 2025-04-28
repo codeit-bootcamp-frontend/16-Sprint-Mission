@@ -63,11 +63,11 @@
 
 ### 피드백 수정사항
 
-- [x] `.gitignore`에 `.DS_Store` 추가
-- [x] CSS 파일 페이지 단위로 분리
-- [x] CSS 블락들 사이에 공백 라인 추가
-- [x] CSS 변수 정리
-- [x] 관심사 분리 원칙에 따른 variables.css 파일 분리
+- [ ] 공통 스타일 정리
+- [ ] 미디어 쿼리 작성 순서 변경 및 문법 수정
+- [ ] 반응형 이미지 최적화
+- [ ] husky 도입
+- [ ] 디렉토리 구조 변경
 
 > ref: https://github.com/codeit-bootcamp-frontend/16-Sprint-Mission/pull/92
 
@@ -85,6 +85,7 @@
   - `reset.css`
   - `common.css`
   - `variables.css`
+  - `font.css`
   - `/pages`
     - `home.css`
     - `signup.css`
