@@ -13,7 +13,7 @@
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
 
     <link rel="stylesheet" href="../css/reset.css" />
-    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="../css/variables.css" />
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/login-signup.css" />
   </head>
@@ -25,20 +25,19 @@
         </a>
       </h1>
       <form action="#" method="post">
-        <label for="username" class="text-lg font-bold">이메일</label>
+        <label for="username">이메일</label>
         <input
           id="username"
           name="username"
           type="email"
           placeholder="codeit@email.com"
-          class="text-base font-regular"
           required
           autofocus />
-        <label for="nickname" class="text-lg font-bold">닉네임</label>
-        <input type="text" id="nickname" name="nickname" placeholder="판다" class="text-base font-regular" required />
-        <label for="password" class="text-lg font-bold">비밀번호</label>
+        <label for="nickname">닉네임</label>
+        <input type="text" id="nickname" name="nickname" placeholder="판다" required />
+        <label for="password">비밀번호</label>
         <div class="password-input-box">
-          <input id="password" type="password" class="text-base font-regular" required />
+          <input id="password" type="password" aria-labelledby="password-label" required />
           <button class="visibility-btn" aria-label="비밀번호 보기 버튼" type="button">
             <img
               class="visibility-btn-off"
@@ -54,9 +53,9 @@
               height="24px" />
           </button>
         </div>
-        <label for="password-check" class="text-lg font-bold">비밀번호 확인</label>
+        <label for="password-check" id="password-check-label">비밀번호 확인</label>
         <div class="password-input-box">
-          <input id="password-check" type="password" class="text-base font-regular" required />
+          <input id="password-check" type="password" aria-labelledby="password-check-label" required />
           <button class="visibility-btn" aria-label="비밀번호 보기 버튼" type="button">
             <img
               class="visibility-btn-off"
@@ -72,10 +71,10 @@
               height="24px" />
           </button>
         </div>
-        <button type="submit" class="btn-submit text-xl font-semibold">회원가입</button>
+        <button type="submit" class="btn-submit">회원가입</button>
       </form>
       <div class="sns-login">
-        <p class="text-base font-medium">간편 로그인하기</p>
+        <p>간편 로그인하기</p>
         <span class="sns-login-link">
           <a href="https://www.google.com/" aria-label="구글 페이지로 이동">
             <img src="../images/ic_login_google.svg" alt="구글 아이콘" width="42px" height="42px" />
