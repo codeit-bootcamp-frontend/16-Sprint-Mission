@@ -391,7 +391,7 @@ span {
     height: 100%;
   }
 
-  .line-break-main {
+  .line-break {
     display: none;
   }
 
@@ -404,6 +404,12 @@ span {
   .banner-text {
     margin-top: 84px;
     margin-bottom: 24px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .line-break-main {
+    display: none;
   }
 
   .button {
@@ -525,6 +531,10 @@ span {
     flex-direction: column;
     height: 927px;
     margin-top: 0;
+  }
+
+  .banner5_left {
+    text-align: center;
   }
 
   .banner5_container {
