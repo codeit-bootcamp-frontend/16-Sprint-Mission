@@ -30,13 +30,17 @@ body {
     
 }
 @media (max-width: 1920px) {
-    .top {
+    .navigationBar {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
-        
-        margin-left: 200px;
-        margin-right: 200px;
+        position:fixed;  /*미션2 추가 사항 */
+        width: 100%;
+        z-index: 2;
+        background-color: #FFFFFF;
+        top: 0;
+        left: 0;
+        padding: 0 clamp(1rem, 20vw, 3rem);
     }
 }
 
