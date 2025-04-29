@@ -49,7 +49,7 @@ function createErrorMsg(text, inputBox) {
   inputBox.append(msg);
 }
 
-// input에 값 입력시 isError / isPass 초기화
+// input에 값 입력시 isError / isValid 초기화
 function changeInputReset(e) {
   const inputBox = e.target.closest(".form__input-box");
 
@@ -58,8 +58,8 @@ function changeInputReset(e) {
     inputBox.querySelector(".error-msg").remove();
   }
 
-  if (inputBox.classList.contains("isPass")) {
-    inputBox.classList.remove("isPass");
+  if (inputBox.classList.contains("isValid")) {
+    inputBox.classList.remove("isValid");
   }
 }
 
@@ -67,7 +67,7 @@ function changeInputReset(e) {
 function checkAllPass() {
   const inputs = document.querySelectorAll(".member-box__form .input");
   const isAllPass = Array.from(inputs).every((input) =>
-    input.closest(".form__input-box").classList.contains("isPass")
+    input.closest(".form__input-box").classList.contains("isValid")
   );
 
   submitBtn.disabled = !isAllPass;
@@ -132,7 +132,7 @@ function checkValidation({ target }) {
     createErrorMsg(VALIDATION_RULE[targetId].validation.msg, inputBox);
   } else {
     // 항목별 validation 통과시
-    inputBox.classList.add("isPass");
+    inputBox.classList.add("isValid");
   }
   checkAllPass();
 }

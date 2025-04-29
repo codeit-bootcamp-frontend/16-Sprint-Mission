@@ -42,7 +42,7 @@
 }
 
 /* validation 통과시 */
-.form__input-box.isPass .input {
+.form__input-box.isValid .input {
   border-color: var(--primary-color);
 }
 
