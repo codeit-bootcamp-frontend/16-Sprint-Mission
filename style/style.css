@@ -1,6 +1,7 @@
 @font-face {
   font-family: "Pretendard-Regular";
-  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
 }
 
 header {
@@ -58,7 +59,7 @@ header img {
   align-items: center;
 }
 
-.hero-info>a {
+.hero-info > a {
   text-decoration-line: none;
 }
 
@@ -145,7 +146,6 @@ header img {
   line-height: 32px;
 }
 
-
 footer {
   display: flex;
   flex-direction: column;
@@ -199,7 +199,7 @@ footer {
   gap: 30px;
 }
 
-.footer-menu>a {
+.footer-menu > a {
   text-decoration-line: none;
   color: #fff;
 }
@@ -221,7 +221,6 @@ footer {
 
   .hero {
     height: 771px;
-
   }
 
   .hero-content {
@@ -243,7 +242,6 @@ footer {
   .feature-rev {
     align-items: end;
   }
-
 
   .feature h2,
   .feature-rev h2 {
@@ -272,7 +270,6 @@ footer {
   }
 }
 
-
 @media (max-width: 767px) {
   .nav-content {
     width: 100%;
@@ -289,7 +286,7 @@ footer {
     align-items: center;
   }
 
-  .hero-content>img {
+  .hero-content > img {
     height: 186px;
     object-fit: cover;
   }
@@ -297,7 +294,6 @@ footer {
   .hero-info {
     margin-bottom: 10px;
   }
-
 
   .hero-button {
     padding: 16px 32px;
@@ -312,14 +308,13 @@ footer {
     gap: 16px;
   }
 
-  .feature>img {
+  .feature > img {
     width: 100%;
   }
 
   .feature-rev {
     align-items: end;
   }
-
 
   .feature h2,
   .feature-rev h2 {
@@ -343,7 +338,7 @@ footer {
     align-items: center;
   }
 
-  .footer-content>img {
+  .footer-content > img {
     height: 204px;
   }
 

@@ -1,56 +1,94 @@
 <!DOCTYPE html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/login.css" />
+    <link rel="stylesheet" href="./style/global.css" />
+    <title>판다마켓</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="login.css" />
-  <link rel="stylesheet" href="global.css" />
-  <title>판다마켓</title>
-</head>
+  <body>
+    <script src="./script/login.js" type="module"></script>
+    <div id="wrapper">
+      <header>
+        <a href="index.html">
+          <img src="image/logo_big.png" width="396px" alt="판다마켓 로고" />
+        </a>
+      </header>
+      <main>
+        <section>
+          <form id="login-form" action="items.html">
+            <label for="email">
+              <span>이메일</span>
+              <input
+                type="email"
+                name="email"
+                placeholder="codeit@email.com"
+                autocomplete="on"
+                id="email-input"
+              />
+            </label>
+            <span class="warning-message">이메일을 입력해주세요.</span>
+            <span class="warning-message">잘못된 이메일 형식입니다.</span>
+            <label for="password">
+              <span>비밀번호</span>
+              <div class="password-container">
+                <input
+                  type="password"
+                  name="password"
+                  id="password-input"
+                  placeholder="비밀번호"
+                />
+                <button
+                  class="password-show-button"
+                  type="button"
+                  id="pw-visible"
+                >
+                  <img
+                    src="image/btn_visibility_off_24px.png"
+                    alt="비밀번호 가리기"
+                  />
+                </button>
+              </div>
+            </label>
+            <span class="warning-message">비밀번호를 입력해주세요.</span>
+            <span class="warning-message"
+              >비밀번호를 8자 이상 입력해주세요.</span
+            >
+            <button
+              class="login-button"
+              id="login-button"
+              type="submit"
+              disabled
+            >
+              로그인
+            </button>
+          </form>
+        </section>
+        <section class="easy-login-container">
+          <span>간편 로그인하기</span>
+          <div class="easy-login-icon">
+            <a
+              href="https://www.google.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><img src="image/Component 2.png" alt="간편로그인 구글"
+            /></a>
 
-<body>
-  <div id="wrapper">
-    <header>
-      <a href="index.html">
-        <img src="image/logo_big.png" width="396px" alt="판다마켓 로고">
-      </a>
-    </header>
-    <main>
-      <section>
-        <form>
-          <label for="email">
-            <span>이메일</span>
-            <input type="email" name="email" placeholder="codeit@email.com" autocomplete="on">
-          </label>
-          <label for="password">
-            <span>비밀번호</span>
-            <div class="password-container">
-              <input type="password" name="password" placeholder="비밀번호">
-              <button type="button" id="pw-visible">
-                <img src="image/btn_visibility_off_24px.png" alt="비밀번호 가리기">
-              </button>
-            </div>
-          </label>
-          <button type="submit">로그인</button>
-        </form>
-      </section>
-      <section class="easy-login-container">
-        <span>간편 로그인하기</span>
-        <div class="easy-login-icon">
-          <a href="https://www.google.com/" target="_blank" rel="noopener noreferrer"><img src="image/Component 2.png"
-              alt="간편로그인 구글"></a>
-
-          <a href="https://www.kakaocorp.com/page/" target="_blank" rel="noopener noreferrer"><img
-              src="image/Component 3.png" alt="간편로그인 카카오"></a>
-        </div>
-      </section>
-    </main>
-    <footer>
-      <span>판다마켓이 처음이신가요?</span>
-      <a href="signup.html">회원가입</a>
-    </footer>
-  </div>
-</body>
-
+            <a
+              href="https://www.kakaocorp.com/page/"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><img src="image/Component 3.png" alt="간편로그인 카카오"
+            /></a>
+          </div>
+        </section>
+      </main>
+      <footer>
+        <span>판다마켓이 처음이신가요?</span>
+        <a href="signup.html">회원가입</a>
+      </footer>
+    </div>
+  </body>
 </html>
