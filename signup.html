@@ -27,7 +27,7 @@
             <form class="auth-form">
                 <div class="input-field">
                     <label for="email">이메일</label>
-                    <input type="email" id="email" name="email" data-validate="email" required placeholder="이메일을 입력해주세요." />
+                    <input type="email" id="email" name="email" data-validate="email" autocomplete="email" required placeholder="이메일을 입력해주세요." />
                     <span class="error-message" id="email-error"></span>
                 </div>
                 <div class="input-field">
@@ -38,7 +38,7 @@
                 <div class="input-field">
                     <label for="password">비밀번호</label>
                     <div class="input-wrapper">
-                        <input type="password" id="password"  name="password" data-validate="password" required placeholder="비밀번호를 입력해주세요." />
+                        <input type="password" id="password"  name="password" data-validate="password" autocomplete="new-password" required placeholder="비밀번호를 입력해주세요." />
                         <button type="button" class="toggle-password" data-target="password" >
                             <img src="/images/btn_none_visibility_on_24px.png" alt="패스워드 보이지 않음" width="24" height="24">
                         </button>
@@ -48,7 +48,7 @@
                 <div class="input-field">
                     <label for="confirmPassword">비밀번호 확인</label>
                     <div class="input-wrapper">
-                        <input type="password" id="confirmPassword" name="confirmPassword" data-validate="confirmPassword"  required
+                        <input type="password" id="confirmPassword" name="confirmPassword" autocomplete="new-password" data-validate="confirmPassword"  required
                             placeholder="비밀번호를 다시 한 번 입력해주세요." />
                         <button type="button" class="toggle-password" data-target="confirmPassword">
                             <img src="/images/btn_none_visibility_on_24px.png" alt="패스워드 보임" width="24" height="24">
