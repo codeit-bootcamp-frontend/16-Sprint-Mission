@@ -13,6 +13,7 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
     />
+    <script defer src="/src/signup.js"></script>
   </head>
   <body>
     <div class="login-box">
@@ -39,7 +40,7 @@
               autocomplete="email"
             />
           </div>
-          <div id="email-error" class="input-error"></div>
+          <p id="email-error" class="input-error"></p>
           <div class="input-box">
             <label class="input-title" for="nickname">닉네임</label>
             <input
@@ -51,7 +52,7 @@
               placeholder="판다"
             />
           </div>
-          <div id="nickname-error" class="input-error"></div>
+          <p id="nickname-error" class="input-error"></p>
           <div class="input-box">
             <label class="input-title" for="password">비밀번호</label>
             <input
@@ -69,7 +70,7 @@
               alt="패스워드 이미지"
             />
           </div>
-          <div id="password-error" class="input-error"></div>
+          <p id="password-error" class="input-error"></p>
           <div class="input-box">
             <label class="input-title" for="password-check"
               >비밀번호 확인</label
@@ -89,7 +90,7 @@
               alt="패스워드 이미지"
             />
           </div>
-          <div id="pwcheck-error" class="input-error"></div>
+          <p id="pwcheck-error" class="input-error"></p>
         </form>
         <section class="login-button">
           <button class="long-btn login disabled">회원가입</button>
@@ -127,6 +128,5 @@
         </section>
       </div>
     </div>
-    <script src="/src/signup.js"></script>
   </body>
 </html>
