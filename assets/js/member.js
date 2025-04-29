@@ -141,13 +141,9 @@ function togglePassword(e) {
   if (!e.target.closest(".input-box__toggle")) return;
   const pwBox = e.target.closest(".input-box__input");
   const inputBox = pwBox.querySelector(".input");
-  if (pwBox.classList.contains("pw_show")) {
-    pwBox.classList.remove("pw_show");
-    inputBox.setAttribute("type", "password");
-  } else {
-    pwBox.classList.add("pw_show");
-    inputBox.setAttribute("type", "input");
-  }
+  const isShow = pwBox.classList.contains("pw_show");
+  pwBox.classList.toggle("pw_show");
+  inputBox.setAttribute("type", isShow ? "password" : "text");
 }
 
 function movePage(e) {
