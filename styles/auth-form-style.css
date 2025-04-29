@@ -85,7 +85,7 @@ body {
   color: var(--color-error);
 }
 
-.form-status-info.inVisible {
+.form-status-info.hidden {
   display: none;
 }
 
@@ -93,14 +93,13 @@ body {
   width: 20.47px;
   height: 14px;
   margin-right: 25.8px;
-  content: url("../images/icon_password_visible.png");
+  content: url('../images/icon_password_visible.png');
 }
 
-.form-icon-password.inVisible {
+.form-icon-password.hidden {
   height: 18.07px;
-  content: url("../images/icon_password_invisible.png");
+  content: url('../images/icon_password_invisible.png');
 }
-
 
 .form-btn {
   height: 56px;

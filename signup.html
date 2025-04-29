@@ -31,7 +31,7 @@
       />
       <span class="form-logo-text">판다마켓</span>
     </a>
-    <form class="form-container" method="post" data-mode="signup">
+    <form class="form-container" method="post" id="form-signup">
       <label id="email" class="form-label"
         >이메일
         <div class="form-input-container">
@@ -43,7 +43,7 @@
             placeholder="이메일을 입력해주세요"
           />
         </div>
-        <span class="form-status-info inVisible"></span>
+        <span class="form-status-info hidden"></span>
       </label>
       <label id="nickname" class="form-label"
         >닉네임
@@ -55,7 +55,7 @@
             placeholder="닉네임을 입력해주세요"
           />
         </div>
-        <span class="form-status-info inVisible"></span>
+        <span class="form-status-info hidden"></span>
       </label>
       <label id="password" class="form-label"
         >비밀번호
@@ -68,11 +68,11 @@
             placeholder="비밀번호를 입력해주세요"
           />
           <img
-            class="form-icon-password inVisible"
+            class="form-icon-password hidden"
             src="images/icon_password_invisible.png"
           />
         </div>
-        <span class="form-status-info inVisible"></span>
+        <span class="form-status-info hidden"></span>
       </label>
       <label id="passwordVerify" class="form-label"
         >비밀번호 확인
@@ -85,11 +85,11 @@
             placeholder="비밀번호를 다시 한 번 입력해주세요"
           />
           <img
-            class="form-icon-password inVisible"
+            class="form-icon-password hidden"
             src="images/icon_password_invisible.png"
           />
         </div>
-        <span class="form-status-info inVisible"></span>
+        <span class="form-status-info hidden"></span>
       </label>
       <button
         class="form-btn btn disabled"
@@ -132,5 +132,5 @@
       </span>
     </form>
   </body>
-  <script src="./scripts/auth/form_auth.js" type="module"></script>
+  <script src="./scripts/auth/form_signup.js" type="module"></script>
 </html>
