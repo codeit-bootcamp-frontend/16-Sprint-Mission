@@ -16,7 +16,7 @@
     />
   </head>
   <body>
-    <section class="form__container">
+    <section class="form__container signup__container">
       <form class="form__container__content">
         <a href="/">
           <img
@@ -36,6 +36,7 @@
             placeholder="입력"
             autocomplete="email"
           />
+          <div class="email__msg msg"></div>
         </label>
 
         <label for="nickname" class="form__container__label">
@@ -47,6 +48,7 @@
             class="form__container__input"
             placeholder="입력"
           />
+          <div class="nickname__msg msg"></div>
         </label>
 
         <label for="password" class="form__container__label">
@@ -58,16 +60,17 @@
               type="password"
               class="form__container__input"
               placeholder="비밀번호를 입력해주세요"
+              autocomplete="off"
             />
             <img
-            src="img/btn_visibility_off.svg"
-            width="24px"
-            class="visibility__icon"
-            aria-label="비밀번호 표시"
-            aria-pressed="false"
-        >
+              src="img/btn_visibility_off.svg"
+              width="24px"
+              class="visibility__icon"
+              aria-label="비밀번호 표시"
+              aria-pressed="false"
+            />
           </div>
-          </input>
+          <div class="password__msg msg"></div>
         </label>
 
         <label for="passwordCheck" class="form__container__label">
@@ -79,18 +82,20 @@
               type="password"
               class="form__container__input"
               placeholder="비밀번호를 입력해주세요"
+              autocomplete="off"
             />
             <img
-            src="img/btn_visibility_off.svg"
-            width="24px"
-            class="visibility__icon"
-        >
+              src="img/btn_visibility_off.svg"
+              width="24px"
+              class="visibility__icon"
+              aria-label="비밀번호 표시"
+              aria-pressed="false"
+            />
           </div>
-          </input>
+          <div class="password__check__msg msg"></div>
         </label>
 
-
-        <button class="btn btn-large">회원가입</button>
+        <button disabled="true" class="btn btn-large">회원가입</button>
         <div class="form__container__banner">
           간편 로그인하기
           <div class="form__container__banner__icon">
@@ -104,5 +109,6 @@
         </div>
       </form>
     </section>
+    <script type="module" src="js/signup.js"></script>
   </body>
 </html>
