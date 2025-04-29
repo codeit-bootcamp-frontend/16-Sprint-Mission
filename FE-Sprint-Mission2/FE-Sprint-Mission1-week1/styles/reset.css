@@ -140,6 +140,7 @@ table {
   --gray-50: #f9fafb;
   --blue: #3692ff;
   --skyBlue: #e6f2ff;
+  --error: #f74747;
 }
 
 * {

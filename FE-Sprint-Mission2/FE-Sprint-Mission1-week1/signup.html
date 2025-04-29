@@ -27,24 +27,31 @@
         <div class="form__user-info">
           <label for="form__email">이메일</label>
           <input id="form__email" name = "inpo__email" placeholder="이메일을 입력하세요." type="email">
+          <div id="form__email--message" class="error__message">이메일을 입력해주세요.</div>
+          <div id="form__email--invalid-message" class="error__message">잘못된 이메일 형식입니다.</div>
 
-          <label for="nickName">닉네임</label>
-          <input id="nickName" name = "inpo__nickName" placeholder="판다" type="text">
+          <label for="form__nickName">닉네임</label>
+          <input id="form__nickName" name = "inpo__nickName" placeholder="판다" type="text">
+          <div id="form__nickName--invalid-message" class="error__message">닉네임을 입력해주세요.</div>
+
 
           <div class="form__password--wrapper">
             <label for="form__password">비밀번호</label>
             <img class="input-icon" src="images/btn_visibility_on_24px.png" alt="숨김 아이콘">
             <input id="form__password" name = "inpo__password" placeholder="비밀번호를 입력하세요." type="password">
+            <div id="form__password--message" class="error__message">비밀번호를 입력해주세요.</div>
+            <div id="form__password--invalid-message" class="error__message">비밀번호를 8자 이상 입력해주세요.</div>
           </div>
 
           <div class="form__password--wrapper">
             <label for="passwordCheck">비밀번호 확인</label>
-            <img class="input-icon" src="images/btn_visibility_on_24px 2.png" alt="숨김 아이콘">
-            <input id="passwordCheck" name = "inpo__passwordCheck" placeholder="비밀번호 확인" type="text">
+            <img class="input-icon" src="images/btn_visibility_on_24px.png" alt="숨김 아이콘">
+            <input id="passwordCheck" name = "inpo__passwordCheck" placeholder="비밀번호 확인" type="password">
+            <div id="passwordCheck--message" class="error__message">비밀번호가 일치하지 않습니다.</div>
           </div>
         </div>
-        <a>
-          <button class="button flex-center" type="button" aria-label="회원가입">
+        <a href="/FE-Sprint-Mission2/FE-Sprint-Mission1-week1/login.html">
+          <button id="signup-button" class="button button--disabled flex-center" type="button" aria-label="회원가입" disabled>
           회원가입
           </button>
         </a>
@@ -67,6 +74,6 @@
         </div>
       </form> 
     </div>
-    
+    <script type="module" src="/FE-Sprint-Mission2/FE-Sprint-Mission1-week1/signup.js"></script>
   </body>
 </html>
