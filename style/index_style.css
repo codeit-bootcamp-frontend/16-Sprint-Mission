@@ -17,17 +17,16 @@ header .wrap {
   height: 540px;
 }
 
-.banner .wrap {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
 .banner .banner-description {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 400px;
+  flex: 0 0 400px;
+}
+
+.banner img {
+  align-self: flex-end;
+  flex: 0 1 768px;
 }
 
 main .wrap {
@@ -68,11 +67,6 @@ header {
   box-shadow: 0px 1px 8px 1px #808080;
 }
 
-header .img-lg {
-  width: 156px;
-  height: 52px;
-}
-
 header .btn-link-login {
   width: 128px;
   height: 48px;
@@ -91,18 +85,6 @@ header .btn-link-login {
 /** banner **/
 .banner {
   background-color: var(--color-pri50);
-}
-
-.main-banner {
-  background-image: url("../img/Img_home_top.png");
-  background-repeat: no-repeat;
-  background-position: 70% 100%;
-}
-
-.sub-banner {
-  background-image: url("../img/Img_home_bottom.png");
-  background-repeat: no-repeat;
-  background-position: 70% 100%;
 }
 
 .banner-description {
@@ -227,25 +209,26 @@ footer .privacy-links > a {
     padding: 0 24px;
   }
 
-  .banner {
+  .banner .wrap {
+    width: 100%;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .banner .banner-description {
+    max-width: initial;
+    text-align: center;
+    align-items: center;
+    flex: 1 0 0;
   }
 
   .main-banner {
-    height: 60vh;
+    height: 772px;
   }
 
   .sub-banner {
-    height: 75vh;
-  }
-
-  .main-banner .wrap {
-    margin-top: 84px;
-    justify-content: center;
-  }
-
-  .sub-banner .wrap {
-    margin-top: 200px;
+    height: 928px;
   }
 
   .feature-card .wrap {
@@ -265,15 +248,12 @@ footer .privacy-links > a {
   }
 
   /** banner **/
-  .banner .banner-description {
-    max-width: initial;
-    text-align: center;
-    align-items: center;
-  }
-
-  .main-banner,
-  .sub-banner {
-    background-position: bottom;
+  .banner img {
+    align-self: initial;
+    flex: 1 1 0;
+    width: 100%;
+    object-fit: contain;
+    object-position: bottom;
   }
 
   /** features **/
@@ -335,15 +315,11 @@ footer .privacy-links > a {
 
   .main-banner,
   .sub-banner {
-    height: 40vh;
+    height: auto;
   }
 
-  .main-banner .wrap {
-    margin-top: 48px;
-  }
-
-  .sub-banner .wrap {
-    margin-top: 120px;
+  .banner img {
+    width: 110%;
   }
 
   /** header **/
@@ -353,16 +329,9 @@ footer .privacy-links > a {
   }
 
   /** banner **/
-  .main-banner {
-    background-size: clamp(500px, 100vw, 80%);
-  }
-
-  .sub-banner {
-    background-size: clamp(400px, 100vw, 60%);
-  }
-
-  .main-banner .wrap {
-    width: 80%;
+  .banner-description {
+    margin-top: max(50px);
+    margin-bottom: max(50px);
   }
 
   .banner-description h1 {
