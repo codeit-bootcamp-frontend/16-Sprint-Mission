@@ -43,7 +43,7 @@ label[for="toggle-visibility-pwcheck"] {
   display: none;
 }
 
-#toggle-visibility-pwcheck:checked~label[for="toggle-visibility-pwcheck"] {
+#toggle-visibility-pwcheck:checked ~ label[for="toggle-visibility-pwcheck"] {
   background-image: url(./img/pw_show.png);
 }
 
@@ -79,7 +79,7 @@ label[for="toggle-visibility-pwcheck"] {
   color: var(--primary-color);
 }
 
-@media screen and (min-width:768px) {
+@media screen and (min-width: 768px) {
   .main__sign-up {
     max-width: 640px;
     margin-top: 48px;
@@ -99,7 +99,7 @@ label[for="toggle-visibility-pwcheck"] {
   }
 }
 
-@media screen and (min-width:1200px) {
+@media screen and (min-width: 1200px) {
   .main__sign-up {
     margin-top: 60px;
   }

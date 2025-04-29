@@ -43,7 +43,7 @@ label[for="toggle-visibility-pw"] {
   cursor: pointer;
 }
 
-#toggle-visibility-pw:checked~label[for="toggle-visibility-pw"] {
+#toggle-visibility-pw:checked ~ label[for="toggle-visibility-pw"] {
   background-image: url(./img/pw_show.png);
 }
 
@@ -119,7 +119,7 @@ button:hover {
   color: var(--primary-color);
 }
 
-@media screen and (min-width:768px) {
+@media screen and (min-width: 768px) {
   .main__login {
     max-width: 640px;
     margin-top: 190px;
@@ -145,7 +145,7 @@ button:hover {
   }
 }
 
-@media screen and (min-width:1200px) {
+@media screen and (min-width: 1200px) {
   .main__login {
     margin-top: 231px;
   }
