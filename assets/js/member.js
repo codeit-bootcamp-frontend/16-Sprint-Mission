@@ -2,38 +2,43 @@
 const formEl = document.querySelector(".member-box__form");
 const submitBtn = document.querySelector(".member-box__form .form__submitBtn");
 
+// 빈값일 때 메세지 지정
+const EMPTY_MSG = {
+  nickname: "닉네임을 입력해주세요.",
+  email: "이메일을 입력해주세요.",
+  password: "비밀번호를 입력해주세요.",
+  passwordConfirm: "비밀번호를 입력해주세요.",
+};
+
+// validation 규칙
 const VALIDATION_RULE = {
   nickname: {
-    isEmpty: {
-      msg: "닉네임을 입력해주세요.",
+    isValid: function (value) {
+      return !!value.length;
     },
+    failedMsg: null,
   },
   email: {
-    isEmpty: {
-      msg: "이메일을 입력해주세요.",
+    isValid: function (value) {
+      const PATTERN =
+        /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+      return PATTERN.test(value);
     },
-    validation: {
-      pattern:
-        /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/,
-      msg: "잘못된 이메일 형식입니다.",
-    },
+    failedMsg: "잘못된 이메일 형식입니다.",
   },
   password: {
-    isEmpty: {
-      msg: "비밀번호를 입력해주세요.",
+    isValid: function (value) {
+      const PATTERN = /^[0-9a-zA-Z]{8}/;
+      return PATTERN.test(value);
     },
-    validation: {
-      pattern: /^[0-9a-zA-Z]{8}/,
-      msg: "비밀번호를 8자 이상 입력해주세요.",
-    },
+    failedMsg: "비밀번호를 8자 이상 입력해주세요.",
   },
   passwordConfirm: {
-    isEmpty: {
-      msg: "비밀번호를 입력해주세요.",
+    isValid: function (value) {
+      const password = document.querySelector("#password");
+      return password.value === value;
     },
-    validation: {
-      msg: "비밀번호가 일치하지 않습니다.",
-    },
+    failedMsg: "비밀번호가 일치하지 않습니다.",
   },
 };
 
@@ -73,67 +78,43 @@ function checkAllPass() {
   submitBtn.disabled = !isAllPass;
 }
 
-// 항목별 validation 검사 :: 닉네임
-function checkValidationNickname(value) {
-  if (value.length) return true;
-  return false;
-}
+// 빈값 검사
+function checkEmpty(name, inputBox) {
+  if (!EMPTY_MSG[name]) return; // EMPTY_MSG에 유효한 값이 있는지 확인
 
-// 항목별 validation 검사 :: 이메일
-function checkValidationEmail(value) {
-  return VALIDATION_RULE.email.validation.pattern.test(value);
-}
-
-// 항목별 validation 검사 :: 패스워드
-function checkValidationPassword(value) {
-  return VALIDATION_RULE.password.validation.pattern.test(value);
-}
-
-// 항목별 validation 검사 :: 패스워드 확인
-function checkValidationPasswordConfirm(value) {
-  const password = document.querySelector("#password");
-  return password.value === value;
+  createErrorMsg(EMPTY_MSG[name], inputBox);
 }
 
 // validation 검사
-function checkValidation({ target }) {
-  if (!target.classList.contains("input")) return;
-  const targetValue = target.value;
-  const targetId = target.id;
-  const inputBox = target.closest(".form__input-box");
-  let isValidation;
+function checkValidation(value, name, inputBox) {
+  if (!VALIDATION_RULE[name]) return; // VALIDATION_RULE에 유효한 값이 있는지 확인
 
-  // 값이 없는지 확인
-  if (!target.value.length) {
-    // 값이 없으면,
-    createErrorMsg(VALIDATION_RULE[targetId].isEmpty.msg, inputBox);
-    checkAllPass();
-    return;
-  }
+  const isValid = VALIDATION_RULE[name].isValid(value); // isValid 검사
 
-  // 항목별 validation 검사
-  switch (targetId) {
-    case "nickname":
-      isValidation = checkValidationNickname(targetValue);
-      break;
-    case "email":
-      isValidation = checkValidationEmail(targetValue);
-      break;
-    case "password":
-      isValidation = checkValidationPassword(targetValue);
-      break;
-    case "passwordConfirm":
-      isValidation = checkValidationPasswordConfirm(targetValue);
-      break;
-  }
-
-  if (!isValidation) {
+  if (!isValid) {
     // 항목별 validation 실패시
-    createErrorMsg(VALIDATION_RULE[targetId].validation.msg, inputBox);
+    createErrorMsg(VALIDATION_RULE[name].failedMsg, inputBox);
   } else {
     // 항목별 validation 통과시
     inputBox.classList.add("isValid");
   }
+}
+
+// focusout 핸들링 함수
+function handleFocusOut({ target }) {
+  if (!target.classList.contains("input")) return;
+  const { value, name } = target;
+  const inputBox = target.closest(".form__input-box");
+
+  if (!value.length) {
+    // 값이 없으면,
+    checkEmpty(name, inputBox);
+  } else {
+    // 값이 있으면,
+    checkValidation(value, name, inputBox);
+  }
+
+  // 전체 input 유효성 통과헀는지 검사
   checkAllPass();
 }
 
@@ -151,6 +132,6 @@ function movePage(e) {
 }
 
 formEl.addEventListener("input", changeInputReset);
-formEl.addEventListener("focusout", checkValidation);
+formEl.addEventListener("focusout", handleFocusOut);
 formEl.addEventListener("click", togglePassword);
 submitBtn.addEventListener("click", movePage);
