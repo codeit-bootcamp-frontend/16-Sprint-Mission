@@ -4,12 +4,12 @@ const submitBtn = document.querySelector(".member-box__form .form__submitBtn");
 
 const VALIDATION_RULE = {
   nickname: {
-    noValue: {
+    isEmpty: {
       msg: "닉네임을 입력해주세요.",
     },
   },
   email: {
-    noValue: {
+    isEmpty: {
       msg: "이메일을 입력해주세요.",
     },
     validation: {
@@ -19,7 +19,7 @@ const VALIDATION_RULE = {
     },
   },
   password: {
-    noValue: {
+    isEmpty: {
       msg: "비밀번호를 입력해주세요.",
     },
     validation: {
@@ -28,7 +28,7 @@ const VALIDATION_RULE = {
     },
   },
   passwordConfirm: {
-    noValue: {
+    isEmpty: {
       msg: "비밀번호를 입력해주세요.",
     },
     validation: {
@@ -106,7 +106,7 @@ function checkValidation({ target }) {
   // 값이 없는지 확인
   if (!target.value.length) {
     // 값이 없으면,
-    createErrorMsg(VALIDATION_RULE[targetId].noValue.msg, inputBox);
+    createErrorMsg(VALIDATION_RULE[targetId].isEmpty.msg, inputBox);
     checkAllPass();
     return;
   }
