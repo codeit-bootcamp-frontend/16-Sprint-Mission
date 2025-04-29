@@ -57,7 +57,7 @@
   cursor: pointer;
 }
 
-.login-button {
+.form-button {
   width: 100%;
   margin: 20px;
 }
@@ -113,6 +113,22 @@
   font-weight: 500;
   font-size: 14px;
   color: var(--color-primary);
+}
+
+.error#email {
+  border: 3px solid var(--color-red);
+}
+
+.error#password {
+  border: 3px solid var(--color-red);
+}
+
+.error#nickname {
+  border: 3px solid var(--color-red);
+}
+
+.error#password-check {
+  border: 3px solid var(--color-red);
 }
 
 .error#email:focus {

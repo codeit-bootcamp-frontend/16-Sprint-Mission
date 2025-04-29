@@ -12,7 +12,7 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
     />
-    <script defer src="/src/login.js"></script>
+    <script type="module" defer src="/src/member.js"></script>
   </head>
   <body>
     <div class="login-box">
@@ -60,8 +60,8 @@
           </div>
           <p id="password-error" class="input-error"></p>
         </form>
-        <section class="login-button">
-          <button class="long-btn login disabled">로그인</button>
+        <section class="form-button">
+          <button id="login-btn" class="long-btn login disabled">로그인</button>
         </section>
         <section class="simple-login">
           <div class="simple-text">간편 로그인 하기</div>

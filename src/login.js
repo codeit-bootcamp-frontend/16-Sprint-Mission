@@ -1,3 +1,5 @@
+import { validators } from './validation.js';
+
 const email = document.querySelector('#email');
 const emailError = document.querySelector('#email-error');
 const pw = document.querySelector('#password');
