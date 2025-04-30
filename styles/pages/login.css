@@ -78,7 +78,7 @@
 
 .social-login__label {
   color: var(--color-neutral-800);
-  size: 1rem;
+  font-size: 1rem;
   font-weight: 500;
 }
 

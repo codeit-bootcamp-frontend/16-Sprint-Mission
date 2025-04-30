@@ -131,4 +131,7 @@
 
 ## 질문
 
-1. 현제 스펙 웹사이트의 디렉토리 구조 관리 방법이 궁금합니다.
+1.이전 피드백에서 캡슐화 되지 않은 css만을 component화 해서 분리하는건 불필요한 비용을 증가시킨다는 피드백을 받았던걸로 기억합니다.
+common.css에서 전역 스타일만 관리한다면, 전역 스타일이 아니거나 완벽히 독립적인 UI 단위가 아닌 경우 클래스가 중복되더라도 page-level에서 관리하는게 나은 선택인가요?
+
+> ref:https://github.com/codeit-bootcamp-frontend/16-Sprint-Mission/pull/118#discussion_r2062968663
