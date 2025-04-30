@@ -69,7 +69,9 @@ function navigateOnFormSuccess(e) {
 }
 
 function focusFirstInput() {
-  form.querySelector(".form-input").focus();
+  const firstInput = form.querySelector(".form-input");
+  if (!firstInput) return;
+  firstInput.focus();
 }
 
 function init() {
