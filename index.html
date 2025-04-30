@@ -4,6 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>판다마켓</title>
+    <meta name="description" content="일상의 모든 물건을 거래해보세요" />
+
+    <!-- Open Graph 메타태그 (페북, 카카오톡, 디스코드 등등) -->
+    <meta property="og:title" content="판다 마켓" />
+    <meta property="og:description" content="일상의 모든 물건을 거래해보세요" />
+    <meta property="og:image" content="https://picsum.photos/1200/630" />
+    <meta property="og:url" content="https://sprint3-lje.netlify.app/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="판다 마켓" />
+
+    <!-- Twitter 메타태그 -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="판다 마켓" />
+    <meta name="twitter:url" content="https://sprint3-lje.netlify.app/" />
+    <meta
+      name="twitter:description"
+      content="일상의 모든 물건을 거래해보세요"
+    />
+    <meta name="twitter:image" content="https://picsum.photos/1200/630" />
+
     <link
       rel="stylesheet"
       as="style"
@@ -15,8 +35,12 @@
   <body class="container">
     <header>
       <h1 class="logo">
-        <a href="./"
-          ><img src="./images/logo.png" alt="판다마켓" aria-hidden="true" />
+        <a href="./">
+          <picture>
+            <source media="(max-width: 768px)" srcset="./images/mo_logo.png" />
+            <source media="(min-width: 767px)" srcset="./images/logo.png" />
+            <img src="./images/mo_logo.png" alt="판다마켓" aria-hidden="true" />
+          </picture>
           <span class="sr-only">판다마켓</span>
         </a>
       </h1>
@@ -36,7 +60,14 @@
           <figure>
             <img
               class="key-visual"
-              src="./images/kv.png?width=746"
+              srcset="
+                ./images/kv@0.5.png   373w,
+                ./images/kv@0.75.png  560w,
+                ./images/kv@1.png     746w,
+                ./images/kv@1.5.png  1119w,
+                ./images/kv@2.png    1492w
+              "
+              sizes="(min-width: 767px) 746px, 746px"
               alt="판다마켓 메인 판다 캐릭터 이미지"
             />
             <figcaption class="sr-only">
@@ -49,7 +80,19 @@
         <div class="banner-inner">
           <article class="card hot-item">
             <div class="img-wrap">
-              <img src="./images/bannerImg01.png" alt="인기 상품 소개 배너" />
+              <img
+                src="./images/Img_home_01@1.jpg"
+                srcset="
+                  ./images/Img_home_01@0.5.jpg  290w,
+                  ./images/Img_home_01@1.jpg    579w,
+                  ./images/Img_home_01@1.5.jpg  869w,
+                  ./images/Img_home_01@2.jpg   1159w
+                "
+                sizes="(max-width: 1199px) 746px, 579px"
+                alt="인기 상품 소개 배너"
+                width="580"
+                loading="lazy"
+              />
             </div>
             <div class="card-info">
               <div class="badge">Hot Item</div>
@@ -63,8 +106,17 @@
           <article class="card search-item">
             <div class="img-wrap">
               <img
-                src="./images/bannerImg02.png"
+                src="./images/Img_home_02@1.jpg"
+                srcset="
+                  ./images/Img_home_02@0.5.jpg  290w,
+                  ./images/Img_home_02@1.jpg    579w,
+                  ./images/Img_home_02@1.5.jpg  869w,
+                  ./images/Img_home_02@2.jpg   1159w
+                "
+                sizes="(max-width: 1199px) 746px, 579px"
                 alt="상품검색 안내를 위한 이미지"
+                width="580"
+                loading="lazy"
               />
             </div>
 
@@ -77,17 +129,23 @@
           <article class="card sell-item">
             <div class="img-wrap">
               <img
-                src="./images/bannerImg03.png"
+                src="./images/Img_home_03@1.jpg"
+                srcset="
+                  ./images/Img_home_03@0.5.jpg  290w,
+                  ./images/Img_home_03@1.jpg    579w,
+                  ./images/Img_home_03@1.5.jpg  869w,
+                  ./images/Img_home_03@2.jpg   1159w
+                "
+                sizes="(max-width: 1199px) 746px, 579px"
                 alt="상품 판매등록에 대한 이미지"
+                width="580"
+                loading="lazy"
               />
             </div>
 
             <div class="card-info">
               <div class="badge">Register</div>
-              <h2 class="title">
-                판매를 원하는<br />
-                상품을 등록하세요
-              </h2>
+              <h2 class="title">판매를 원하는 상품을 등록하세요</h2>
               <p class="desc">
                 어떤 물건이든 판매하고 싶은 상품을<br />
                 쉽게 등록하세요
@@ -104,8 +162,17 @@
         <figure>
           <img
             class="panda-image"
-            src="./images/bottomBanner.png?width=746"
+            src="./images/Img_home_bottom@1.png"
+            srcset="
+              ./images/Img_home_bottom@0.5.png   373w,
+              ./images/Img_home_bottom@0.75.png  560w,
+              ./images/Img_home_bottom@1.png     746w,
+              ./images/Img_home_bottom@1.5.png  1119w,
+              ./images/Img_home_bottom@2.png    1492w
+            "
+            sizes="(min-width: 767px) 746px"
             alt="판다마켓 판다 캐릭터 이미지"
+            loading="lazy"
           />
           <figcaption class="sr-only">판다마켓 판다 캐릭터 이미지</figcaption>
         </figure>
@@ -116,6 +183,8 @@
         <li class="footer-item copyright">©codeit - 2024</li>
         <li class="footer-item support-content">
           <a href="./page/privacy.html">Privacy Policy</a>
+        </li>
+        <li class="footer-item faq-wrap">
           <a href="./page/faq.html">FAQ</a>
         </li>
         <li class="footer-item icons-wrap">
