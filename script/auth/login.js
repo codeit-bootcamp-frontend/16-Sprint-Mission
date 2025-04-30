@@ -1,7 +1,7 @@
 "use strict";
-import { validateEmail, validatePassword } from "./util/validators.js";
-import { updateValidationUI } from "./util/updateValidationUI.js";
-import togglePasswordHandler from "./util/togglePassword.js";
+import { validateEmail, validatePassword } from "../util/validators.js";
+import { updateValidationUI } from "../util/updateValidationUI.js";
+import togglePasswordVisible from "./togglePasswordVisible.js";
 
 const form = document.querySelector("#loginForm");
 const emailInput = document.querySelector("#userEmail");
@@ -23,6 +23,8 @@ const inputValidatorMap = {
 const FORM_SUBMIT_BUTTON = loginBtn;
 
 const REDIRECT_TARGET = "/items.html";
+
+const PASSWORD_TOGGLE_BUTTONS = form.querySelectorAll(".btn-password-visible");
 
 // 각 키의 유효성 검사값 초기화: [input.id, false]
 const validatorKey = Object.keys(inputValidatorMap);
@@ -75,7 +77,7 @@ function init() {
   delegateFormValidation();
 
   /* 비밀번호 토글 */
-  togglePasswordHandler(form);
+  togglePasswordVisible(PASSWORD_TOGGLE_BUTTONS);
 
   /* 첫번째 input focus 처리 */
   focusFirstInput();
