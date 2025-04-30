@@ -1,0 +1,460 @@
+/* 데스크탑 사이즈 */
+:root {
+  --header-padding: 200px;
+  --banner-height: auto;
+  --banner-font-size: 3rem;
+  --heading-font-size: 2rem;
+  --label-font-size: 1.2rem;
+  --button-font-size: 1.5rem;
+  --heading-padding-top: 3rem;
+}
+  
+header {
+  background-color: var(--color-background);
+  width: 100%;
+  height: var(--header-height);
+  border-bottom: 1px;
+  padding: 10px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.logo-login {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 200px;
+}
+
+.logo-login a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.logo img {
+  width: 153px;
+  height: 51px;
+}
+
+.login {
+  padding: 12px 23px;
+  gap: 10px;
+  color: #ffffff;
+  width: 128px;
+  height: 48px;
+  background: var(--color-primary);
+  border-radius: 8px;
+}
+
+.main-contents {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-color: var(--color-background-banner);
+}
+
+.main-banner {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 540px;
+  gap: 5px;
+}
+
+.main-banner-text {
+  position: relative;
+  bottom: 100px;
+}
+
+.main-banner-description {
+  width: 300px;
+  color: var(--color-text);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 140%;
+  vertical-align: middle;
+  margin-bottom: 32px;
+}
+
+.main-banner-text a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.main-banner img {
+  width: 100%;
+  max-width: 746px;
+  aspect-ratio: 746 / 340;
+}
+
+.go-to-see {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  width: 100%;
+  max-width: 357px;
+  height: auto;
+  border-radius: 40px;
+  padding: 16px 124px;
+  gap: 10px;
+}
+
+.sub-contents {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-color: var(--color-background-banner);
+}
+
+.sub-banner {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 540px;
+  gap: 69px;
+}
+
+.sub-banner-description {
+  width: 100%;
+  color: var(--color-text);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 140%;
+  margin-bottom: 172.5px;
+}
+
+.sub-banner img {
+  width: 100%;
+  aspect-ratio: 746 / 397;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-background);
+}
+
+.card {
+  gap: 64px;
+  width: 100%;
+  max-width: 988px;
+  height: auto;
+  background-color: #fcfcfc;
+  margin: 138px 466px;
+  border-radius: 12px;
+}
+
+.card:nth-child(even) {
+  text-align: right;
+}
+
+.card-text {
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.card-small-title {
+  width: 100%;
+  height: 26px;
+  font-weight: 700;
+  color: var(--color-primary);
+  font-size: 18px;
+  line-height: 26px;
+  vertical-align: middle;
+}
+
+.card-title {
+  height: 112px;
+  font-weight: 700;
+  font-size: 40px;
+  color: var(--color-text);
+  line-height: 140%;
+  letter-spacing: 2%;
+  vertical-align: middle;
+}
+
+.responsive-br {
+  display: inline;
+}
+
+.card-description {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  vertical-align: middle;
+}
+
+.card img {
+  width: 100%;
+  max-width: 579px;
+  aspect-ratio: 579 / 444;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+footer {
+  background-color: var(--color-background-dark);
+  width: 100%;
+  height: auto;
+}
+
+.footer-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 1120px;
+  padding-top: 32.5px;
+  padding-bottom: 108.5px;
+}
+.company {
+  color: var(--color-text-light);
+  width: 112px;
+  height: 19px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 100%;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.homepage-button {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  display: flex;
+  gap: 30px;
+}
+
+.homepage-button a {
+  color: var(--color-background-light);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.sns-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Tablet size */
+@media (max-width: 1199px) {
+  :root {
+    --banner-height: 777px;
+    --banner-font-size: 2.5rem;
+    --heading-font-size: 1.75rem;
+    --label-font-size: 1.1rem;
+    --button-font-size: 1.25rem;
+    --heading-padding-top: 5rem;
+  }
+
+  header {
+    z-index: 1;
+  }
+
+  .logo-login {
+    padding: 0 24px;
+  }
+
+  .main-contents {
+    margin-top: var(--header-height);
+    height: var(--banner-height);
+  }
+
+  .main-banner,
+  .sub-banner {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    height: auto;
+  }
+
+  .main-banner-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    bottom: 188px
+  }
+  
+  .main-banner-description {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .sub-contents {
+    height: 927px;
+  }
+
+  .sub-banner-description {
+    text-align: center;
+  }
+  
+  .cards {
+    padding: 24px 24px 0 24px;
+  }
+
+  .card:nth-child(odd) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    margin-top: 0;
+    margin-bottom: 52px;
+  }
+
+  .card:nth-child(even) {
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    gap: 24px;
+    margin-top: 0;
+    margin-bottom: 52px;
+  }
+  
+  .card-title {
+    height: 80px;
+  }
+
+  .card-text {
+    gap: 16px;
+  }
+
+  .responsive-br {
+    display: none;
+  }
+
+  .card img {
+    max-width: 100%;
+    border-radius: 12px;
+  }
+
+  .footer-button {
+    padding-top: 2rem;
+    width: 100%;
+  }
+
+  .company {
+    color: var(--color-background-light);
+  }
+}
+
+/* Mobile size */
+@media (max-width: 767px)  {
+  :root{
+    /* 기본 레이아웃 변수 (모바일 기준) */
+    --header-padding: 1.875rem;
+    --content-margin: 7%;
+    --content-padding: 0;
+    --footer-padding: 2rem 2rem 0;
+    
+    /* 배너 및 콘텐츠 크기 */
+    --banner-height: 540px;
+    --content-width: 96%;
+    
+    /* 폰트 크기 관련 변수 */
+    --banner-font-size: 2rem;
+    --heading-font-size: 1.5rem;
+    --label-font-size: 1rem;
+    --button-font-size: 1.125rem;
+    
+    /* 여백 및 간격 */
+    --heading-padding-top: 3rem;
+    --content-padding-bottom: 2rem;
+  }
+
+  .logo-login {
+    padding: 0 16px;
+  }
+
+  .main-contents {
+    height: var(--banner-height);
+  }
+
+  .main-banner {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    height: 100%;
+  }
+
+  .main-banner-text {
+    position: absolute;
+    top: 48px;
+    text-align: center;
+    width: 240px;
+  }
+
+  .main-banner-description,
+  .sub-banner-description {
+    font-size: var(--banner-font-size);
+    margin-bottom: 18px;
+  }
+
+  .main-banner img {
+    min-height: 204px;
+    object-fit: cover;
+  }
+
+  .go-to-see {
+    padding: 12px 24px;
+    font-size: 1rem;
+    width: 240px;
+  }
+
+  .card-text {
+    gap: 0.5rem;
+  }
+    
+  .card-title {
+    height: 34px;
+    font-size: 1.25rem;
+  }
+
+  .card-description {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .sub-contents {
+    position: relative;
+    height: 540px;
+  }
+
+  .sub-banner-description {
+    position: absolute;
+    top: 20%;
+  }
+
+  .sub-banner img {
+    object-fit: cover;
+    min-height: 198px;
+  }
+
+  .footer-button {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 60px;
+    padding: 32px;
+  }
+
+  .buttons {
+    width: 100%;
+  }
+
+  .homepage-button {
+    justify-content: space-between;
+    width: 50%;
+    gap: 0;
+  }
+}

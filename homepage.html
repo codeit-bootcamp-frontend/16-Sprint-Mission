@@ -1,118 +1,141 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>판다마켓</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-  <link rel="stylesheet" href="reset.css">
-  <!-- common.css 파일은 미션 수행하며 코드 옮길 예정입니다. -->
-  <link rel="stylesheet" href="common.css"> 
-  <link rel="stylesheet" href="homepage.css">
-  <!-- moonpanda-market.netlify.app -->
-</head>
-<body>
-  <header>
-    <nav class="logo-login">
-      <a class="logo" href="/">
-        <img src="/image/logo.png" alt=" 판다마켓 로고">
-      </a>
-      <a href="/login" class="login flex-center">로그인</a>
-    </nav>
-  </header>
-  <main>
-    <section class="main-contents">
-      <div class="main-banner">
-        <div class="main-banner-text">
-          <div class="main-banner-description">
-            일상의 모든 물건을<br>
-            거래해 보세요
-          </div> 
-          <a href="/items">
-            <div class="go-to-see flex-center">구경하러 가기</div>
-          </a>
-        </div>      
-        <img src="/image/거래가는판다.png" alt="구경하는판다">
-      </div>
-    </section>
-    <section class="cards">
-      <article class="card flex-center">
-        <img src="/image/hot_item.png" art="hot-item">
-        <div class="card-text">
-          <div class="card-small-title">Hot item</div>
-          <div class="card-title">
-            인기 상품을<br>
-            확인해 보세요
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="판다 마켓">
+    <meta property="og:description" content="일상의 모든 물건을 거래해보세요">
+    <meta property="og:image" content="https://delightful-shortbread-7de40a.netlify.app/image/meta_img.jpg">
+    <meta property="og:url" content="https://delightful-shortbread-7de40a.netlify.app/">
+    <meta property="og:type" content="website">
+    <title>판다마켓</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+    <link rel="stylesheet" href="style/reset.css" />
+    <link rel="stylesheet" href="style/common.css" />
+    <link rel="stylesheet" href="style/homepage.css" />
+
+  </head>
+  <body>
+    <header>
+      <nav class="logo-login">
+        <a class="logo" href="/">
+          <img src="/image/logo.png" alt=" 판다마켓 로고" />
+        </a>
+        <a href="/login" class="login flex-center">로그인</a>
+      </nav>
+    </header>
+    <main>
+      <section class="main-contents">
+        <div class="main-banner">
+          <div class="main-banner-text">
+            <div class="main-banner-description">
+              일상의 모든 물건을
+              거래해 보세요
+            </div>
+            <a href="/items">
+              <div class="go-to-see flex-center">구경하러 가기</div>
+            </a>
           </div>
-          <div class="card-description">
-            가장 HOT한 중고거래 물품을<br>
-            판다 마켓에서 확인해 보세요
+          <img src="/image/거래가는판다.png" alt="구경하는판다" />
+        </div>
+      </section>
+      <section class="cards">
+        <article class="card flex-center">
+          <img src="/image/hot_item.webp" art="hot-item" />
+          <div class="card-text">
+            <div class="card-small-title">Hot item</div>
+            <div class="card-title">
+              인기 상품을<br class="responsive-br"/>
+              확인해 보세요
+            </div>
+            <div class="card-description">
+              가장 HOT한 중고거래 물품을<br />
+              판다 마켓에서 확인해 보세요
+            </div>
+          </div>
+        </article>
+        <article class="card flex-center">
+          <div class="card-text">
+            <div class="card-small-title">Search</div>
+            <div class="card-title">
+              구매를 원하는<br class="responsive-br"/>
+              상품을 검색하세요
+            </div>
+            <div class="card-description">
+              구매하고 싶은 물품은 검색해서<br />
+              쉽게 찾아보세요
+            </div>
+          </div>
+          <img src="/image/search.webp" alt="search" />
+        </article>
+        <article class="card flex-center">
+          <img id="register-img" src="/image/register.webp" alt="register" />
+          <div class="card-text">
+            <div class="card-small-title">Register</div>
+            <div class="card-title">
+              판매를 원하는<br class="responsive-br"/>
+              상품을 등록하세요
+            </div>
+            <div class="card-description">
+              어떤 물건이든 판매하고 싶은 상품을<br />
+              쉽게 등록하세요
+            </div>
+          </div>
+        </article>
+      </section>
+      <section class="sub-contents">
+        <div class="sub-banner">
+          <div class="sub-banner-description">
+            믿을 수 있는<br />
+            판다마켓 중고 거래
+          </div>
+          <img src="/image/거래하는판다.png" alt="거래하는 판다" />
+        </div>
+      </section>
+    </main>
+    <footer class="flex-center">
+      <div class="footer-button">
+        <div class="company">©codeit - 2024</div>
+        <div class="buttons">
+          <div class="homepage-button">
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/faq">FAQ</a>
+          </div>
+          <div class="sns-button">
+            <a
+              class="sns-icon"
+              href="https://www.facebook.com/?locale=ko_KR"
+              rel="noopener noreferrer"
+            >
+              <img src="/image/ic_facebook.png" alt="facebook" />
+            </a>
+            <a
+              class="sns-icon"
+              href="https://x.com/?lang=ko"
+              rel="noopener noreferrer"
+            >
+              <img src="/image/ic_twitter.png" alt="twitter" />
+            </a>
+            <a
+              class="sns-icon"
+              href="https://www.youtube.com/"
+              rel="noopener noreferrer"
+            >
+              <img src="/image/ic_youtube.png" alt="youtube" />
+            </a>
+            <a
+              class="sns-icon"
+              href="https://www.instagram.com/"
+              rel="noopener noreferrer"
+            >
+              <img src="/image/ic_instagram.png" alt="instagram" />
+            </a>
           </div>
         </div>
-      </article>
-      <article class="card flex-center">
-        <div class="card-text">
-          <div class="card-small-title">Search</div>
-          <div class="card-title">
-            구매를 원하는<br>
-            상품을 검색하세요
-          </div>
-          <div class="card-description">
-            구매하고 싶은 물품은 검색해서<br>
-            쉽게 찾아보세요
-          </div>
-        </div>    
-        <img src="/image/search.png" alt="search">
-      </article>
-      <article class="card flex-center">
-        <img id="register-img" src="/image/register.png" alt="register">
-        <div class="card-text">
-          <div class="card-small-title">Register</div>
-          <div class="card-title">
-            판매를 원하는<br>
-            상품을 등록하세요
-          </div>
-          <div class="card-description">
-            어떤 물건이든 판매하고 싶은 상품을<br>
-            쉽게 등록하세요
-          </div>
-        </div>
-      </article>
-    </section>
-    <section class="main-contents">
-      <div class="sub-banner">
-        <div class="sub-banner-description">
-          믿을 수 있는<br>
-          판다마켓 중고 거래
-        </div>
-        <img src="/image/거래하는판다.png" alt="거래하는 판다" width="746" height="397">
-      </div>  
-    </section>
-  </main>
-  <footer class="flex-center">
-    <div class="footer-button">
-      <div class="company">
-        ©codeit - 2024
       </div>
-      <div class="homepage-button">
-        <a href="/privacy">Privacy Policy</a>
-        <a href="/faq">FAQ</a>
-      </div>
-      <div class="sns-button">
-        <a class="sns-icon" href="https://www.facebook.com/?locale=ko_KR" rel="noopener noreferrer">
-          <img src="/image/ic_facebook.png" alt="facebook">
-        </a>
-        <a class="sns-icon" href="https://x.com/?lang=ko" rel="noopener noreferrer">
-          <img src="/image/ic_twitter.png" alt="twitter">
-        </a>
-        <a class="sns-icon" href="https://www.youtube.com/" rel="noopener noreferrer">
-        <img src="/image/ic_youtube.png" alt="youtube">
-        </a>
-        <a class="sns-icon" href="https://www.instagram.com/" rel="noopener noreferrer">
-        <img src="/image/ic_instagram.png" alt="instagram">
-        </a>
-      </div>
-    </div>
-  </footer>
-</body>
+    </footer>
+  </body>
 </html>

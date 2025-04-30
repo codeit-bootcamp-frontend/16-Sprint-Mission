@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-lock.yaml
+dist/
+build/
+
+# 환경 변수 파일
+.env
+.env.local
+.env.*.local
+
+# IDE 관련
+.vscode/
+.idea/
+
+# 로그
+*.log
+
+# 테스트 커버리지
+coverage/
