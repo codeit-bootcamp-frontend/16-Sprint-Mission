@@ -58,10 +58,10 @@ function handleFormInputValidation(input) {
 // 제출 버튼 상태 변경
 function updateSubmitButtonState() {
   const isAllValid = [...validStateMap.values()].every(Boolean);
-  loginBtn.disabled = !isAllValid;
+  FORM_SUBMIT_BUTTON.disabled = !isAllValid;
 }
 
-function navigateOnFormSuccess() {
+function navigateOnFormSuccess(e) {
   e.preventDefault();
   location.href = REDIRECT_TARGET;
 }
@@ -77,7 +77,7 @@ function init() {
   /* 비밀번호 토글 */
   togglePasswordHandler(form);
 
-  /* UX: 첫번째 input focus 처리 */
+  /* 첫번째 input focus 처리 */
   focusFirstInput();
 
   /* 폼 제출 성공 시 페이지 이동 */
