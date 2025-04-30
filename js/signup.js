@@ -64,7 +64,7 @@ function validatePassword() {
 }
 
 function validatePasswordMatch() {
-  if (pwcheckInput.value !== pwInput.value && pwcheckInput !== '') {
+  if (pwcheckInput.value === '' || pwcheckInput.value !== pwInput.value) {
     showError(pwcheckInput, '비밀번호가 일치하지 않습니다..');
   } else {
     clearError(pwcheckInput);
