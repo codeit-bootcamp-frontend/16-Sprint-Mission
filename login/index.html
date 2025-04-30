@@ -7,6 +7,7 @@
     <link rel="icon" href="../images/favi.ico">
     <link rel="stylesheet" href="../reset.css">
     <link rel="stylesheet" href="./login.css" />
+    <script src="./login-main.js" type="module"></script>
   </head>
   <body>
     <main>
@@ -16,7 +17,7 @@
             <img src="../images/logo-title.png" alt="판다마켓 로고" />
           </a>
         </div>
-        <form class="login__form" method="POST" action="../items/">
+        <form class="login__form" method="get" action="../items/">
           <fieldset>
             <label for="user-email">이메일</label>
             <input type="text" id="user-email" name="user-email" placeholder="이메일을 입력해주세요"/>
@@ -45,7 +46,5 @@
         </form>
       </section>
     </main>
-    <script src="./toggle-visibility-pw.js"></script>
-    <script src="./validation.js"></script>
   </body>
 </html>
