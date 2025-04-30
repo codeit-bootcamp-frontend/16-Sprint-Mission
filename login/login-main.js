@@ -1,4 +1,4 @@
-import { createValidRule, ruleObj, emailInput, passwordInput } from '/modules/validationRule.mjs';
+import { createValidRule, ruleObj, emailInput, passwordInput } from '/modules/validation-rule.mjs';
 import { initValidation } from '/modules/validate.mjs';
 import { initPasswordVisibility, visibilityPw } from '/modules/toggle-visibility-pw.mjs';
 
