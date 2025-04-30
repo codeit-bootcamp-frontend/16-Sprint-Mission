@@ -11,44 +11,48 @@
       crossorigin
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
     />
-    <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="styles/reset.css" />
     <link rel="stylesheet" href="styles/login.css" />
   </head>
 
-  <body class="page-wrapper" class="flex-center"> 
-    <div class="container__logo">
-      <div class="logoBox flex-center">
+  <body class="flex-center"> 
+    <div class="form__social-login--mobile">
+      <div class="header__logo flex-center">
         <a href="/FE-Sprint-Mission2/FE-Sprint-Mission1-week1/index.html" aria-label="홈으로 이동">
           <img src="images/logo/panda-market-logo.png">
         </a>
       </div>
-      <form class="flex-center">
-        <div class="getInformation">
-          <label for="getEmail">이메일</label>
-          <input id="getEmail" name = "inpo__email" placeholder="이메일을 입력하세요." type="email">
-          <div class="wrapper">
-            <label for="password">비밀번호</label>
+      <form class="form flex-center">
+        <div class="form__user-info">
+          <label for="form__email">이메일</label>
+          <input id="form__email" name = "inpo__email" placeholder="이메일을 입력하세요." type="email">
+          <div id="form__email--message" class="error__message">이메일을 입력해주세요.</div>
+          <div id="form__email--invalid-message" class="error__message">잘못된 이메일 형식입니다.</div>
+          <div class="form__password--wrapper">
+            <label for="form__password">비밀번호</label>
             <img class="input-icon" src="images/btn_visibility_on_24px.png" alt="숨김 아이콘">
-            <input id="password" name = "inpo__password" placeholder="비밀번호를 입력하세요." type="password">
+            <input id="form__password" name = "inpo__password" placeholder="비밀번호를 입력하세요." type="password">
+            <div id="form__password--message" class="error__message">비밀번호를 입력해주세요.</div>
+            <div id="form__password--invalid-message" class="error__message">비밀번호를 8자 이상 입력해주세요.</div>
           </div>
         </div>
         <a href="/login" aria-label="로그인">
-          <button type="button">
+          <button id="login-button" class="button button--disabled flex-center" type="button" disabled>
           로그인
           </button>
         </a>
-        <div class="social-login">
+        <div class="form__social-login">
           간편 로그인하기
-          <div class="social">
-            <a href=“https://www.google.com/” aria-label="카카오톡 아이디로 간편 로그인">
+          <div class="form__signup-link">
+            <a href=“https://www.google.com/” aria-label="카카오톡 아이디로 간편 로그인" rel="noopener noreferrer">
               <img src="images/social/Component 2.png">
             </a>
-            <a href=“https://www.kakaocorp.com/page/” aria-label="구글아이디로 간편 로그인">
+            <a href=“https://www.kakaocorp.com/page/” aria-label="구글아이디로 간편 로그인" rel="noopener noreferrer">
               <img src="images/social/Component 3.png">
             </a>
           </div>
         </div>
-        <div class="goToSingup">
+        <div class="form__signup-link">
           판다마켓이 처음이신가요?
           <a href="/FE-Sprint-Mission2/FE-Sprint-Mission1-week1/signup.html" aria-label="회원가입페이지로 이동">
             회원가입
@@ -56,5 +60,6 @@
         </div>
       </form> 
     </div>
+    <script type="module" src="/FE-Sprint-Mission2/FE-Sprint-Mission1-week1/login.js"></script>
   </body>
 </html>

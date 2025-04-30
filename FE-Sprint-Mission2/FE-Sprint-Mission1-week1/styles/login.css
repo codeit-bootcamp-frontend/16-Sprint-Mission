@@ -1,24 +1,16 @@
-.page-wrapper {
-  flex-direction: column;
-  height: 100vh;
-}
-
-.container__logo {
-  display: flex;
-  flex-direction: column;
-}
-
-.logoBox {
+.header__logo {
   margin: 0 122px 40px;
+  display: flex;
+  justify-content: center;
 }
 
-form {
+.form {
   width: 640px;
   margin: 40px auto 0px;
   flex-direction: column;
 }
 
-.getInformation {
+.form__user-info {
   width: 640px;
   display: flex;
   flex-direction: column;
@@ -36,7 +28,7 @@ input {
   height: 56px;
   margin: 16px auto 24px;
   background-color: var(--gray-100);
-  border: 1px solid --gray-100;
+  border: 1px solid var(--gray-100);
   border-radius: 12px;
   border: none;
   outline: none;
@@ -45,38 +37,53 @@ input {
   font-weight: 400;
 }
 
-.wrapper {
+.form__password--wrapper {
   position: relative;
+  width: 100%;
 }
 
 .input-icon {
   position: absolute;
-  left: 600px;
+  right: 16px;
   top: 54px;
 }
 
-button {
+.button {
   width: 640px;
   height: 56px;
   margin: 0 auto;
-  padding: 16px 124px;
-  border: 1px solid var(--blru);
+  padding: 16px;
+  border: 1px solid var(--blue);
   border-radius: 40px;
-  background-color: var(--blru);
+  background-color: var(--blue);
   color: var(--gray-100);
   font-size: 20px;
   font-weight: 600;
   line-height: 32px;
 }
 
-.social-login {
+.button--disabled {
+  background-color: var(--gray-400);
+  width: 640px;
+  height: 56px;
+  margin: 0 auto;
+  padding: 16px;
+  border: 1px solid var(--gray-400);
+  border-radius: 40px;
+  color: var(--gray-100);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+.form__social-login {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 24px auto;
   padding: 16px 23px;
-  border: 1px solid #e6f2ff;
-  background-color: #e6f2ff;
+  border: 1px solid var(--skyBlue);
+  background-color: var(--skyBlue);
   border-radius: 8px;
   width: 100%;
   height: 74px;
@@ -86,18 +93,59 @@ button {
   color: var(--gray-800);
 }
 
-.social {
+.form__social-login {
   gap: 16px;
 }
 
-.goToSingup {
+.form__signup-link {
   font-size: 14px;
   font-weight: 500;
   line-height: 24px;
   color: var(--gray-800);
 }
 
+.error__message {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--error);
+  display: none;
+  margin: 0 16px 18px;
+}
+
 a {
-  color: var(--blru);
+  color: var(--blue);
   text-decoration: underline;
+}
+
+@media (max-width: 1199px) {
+  .form__social-login--mobile {
+    width: 100%;
+    padding: 0 1.5rem;
+  }
+  .header__logo {
+    margin: 0 1.5rem;
+  }
+
+  .header__logo img {
+    width: 100%;
+  }
+
+  .form,
+  .button,
+  .form__user-info,
+  a,
+  body,
+  input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .form__social-login--mobile {
+    padding: 0 1rem;
+  }
+
+  .header__logo {
+    margin: 0 1rem;
+  }
 }
