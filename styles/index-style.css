@@ -270,6 +270,7 @@ body {
   /* cards 배경색 설정 */
   --cards-background-color: var(--color-gray050);
 }
+
 /* Tablet */
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   :root {
@@ -379,6 +380,7 @@ body {
     line-height: 32px;
   }
 }
+
 /* 폰트 반응형 스타일 적용 */
 @supports (font-size: clamp(1rem, 2vw, 3rem)) {
   :root {
