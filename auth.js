@@ -11,16 +11,42 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector("form");
   const loginButton = form.querySelector("button[type='submit']");
 
+  const togglePasswordIcon = document.getElementById("togglePassword");
+  const togglePasswordRepeatIcon = document.getElementById("togglePassword-repeat");
+
+  if (togglePasswordIcon && passwordInput) {
+    togglePasswordIcon.addEventListener("click", () => {
+      const isHidden = passwordInput.type === "password";
+
+      passwordInput.type = isHidden ? "text" : "password";
+
+      togglePasswordIcon.src = isHidden
+        ? "images/btn_visibility.png"
+        : "images/btn_unvisibility.png"; 
+    });
+  }
+  if (togglePasswordRepeatIcon && repeatInput) {
+    togglePasswordRepeatIcon.addEventListener("click", () => {
+      const isHidden = repeatInput.type === "password";
+
+      repeatInput.type = isHidden ? "text" : "password";
+
+      togglePasswordRepeatIcon.src = isHidden
+        ? "images/btn_visibility.png"
+        : "images/btn_unvisibility.png"; 
+    });
+  }
+
   loginButton.disabled = true;
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const state = {
     emailValid : false,
-    usernameValid: false,
+    usernameValid: !!usernameInput,
     passwordValid: false,
-    repeatValid: false
-  };
+    repeatValid: !!repeatInput
+  }
 
   function validateEmail() {
     const emailValue = emailInput.value.trim();
@@ -98,23 +124,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   function updateButtonState() {
-    loginButton.disabled = !(state.emailValid && state.passwordValid && state.usernameValid && state.repeatValid);
+    const isSignup = usernameInput && repeatInput;
+    if (isSignup) {
+      loginButton.disabled = !(state.emailValid && state.passwordValid && state.usernameValid && state.repeatValid);
+    } else {
+      loginButton.disabled = !(state.emailValid && state.passwordValid);
+    }
   }
 
   emailInput.addEventListener("focusout", validateEmail);
   passwordInput.addEventListener("focusout", validatePassword);
-  usernameInput.addEventListener("focusout", validateUsername);
-  repeatInput.addEventListener("focusout", validatePasswordRepeat);
+
+  if (usernameInput && repeatInput) {
+    usernameInput.addEventListener("focusout", validateUsername);
+    repeatInput.addEventListener("focusout", validatePasswordRepeat);
+  }
+
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    if (usernameInput && repeatInput) {
-      // 회원가입 페이지
-      loginButton.disabled = !(state.emailValid && state.passwordValid && state.usernameValid && state.repeatValid);
-      window.location.href = "/items";
-    } else {
-      // 로그인 페이지
-      loginButton.disabled = !(state.emailValid && state.passwordValid);
+    updateButtonState();
+
+    if (!loginButton.disabled) {
       window.location.href = "/items";
     }
   });
