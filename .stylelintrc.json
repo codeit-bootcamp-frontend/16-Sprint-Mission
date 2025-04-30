@@ -1,0 +1,14 @@
+{
+  "extends": ["stylelint-config-standard", "stylelint-prettier/recommended"],
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "selector-class-pattern": [
+      "^[a-z][a-z0-9-]*(?:__[a-z0-9-]+)*(?:--[a-z0-9-]+)*$",
+      {
+        "message": "클래스 패턴에는 BEM (block__element--modifier), kebab-case(user-profile)만을 사용해야 합니다."
+      }
+    ],
+
+    "custom-property-pattern": null
+  }
+}

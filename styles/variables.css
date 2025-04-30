@@ -1,29 +1,35 @@
 /* variables.css */
+
 /* 디자인 변수를 정의합니다. */
 :root {
   /* Font */
   --font-family-base: 'Pretendard', sans-serif;
   --font-title: 2.5rem;
+  --font-title-sm: 2rem;
+  --font-title-xs: 1.5rem;
   --font-content: 1.5rem;
+  --font-content-sm: 1rem;
   --font-label: 1.125rem;
-  /* Color */
-  --background-skyblue: #cfe5ff;
-  --background-litegray: #fcfcfc;
-  --primary-100: #3692ff;
-  --secondary-200: #e5e7eb;
-  --secondary-400: #9ca3af;
-  --secondary-700: #374151;
-  --secondary-900: #111827;
 
-  --gray-50: #f9fafb;
-  --gray-100: #f3f4f6;
-  --gray-200: #e5e7eb;
-  --gray-400: #9ca3af;
-  --gray-500: #6b7280;
-  --gray-600: #4b5563;
-  --gray-700: #374151;
-  --gray-800: #1f2937;
-  --gray-900: #111827;
+  /* Color - Primary */
+  --color-primary-100: #3692ff;
+
+  /* Color -Secondary */
+
+  --color-secondary-50: #fcfcfc;
+  --color-secondary-100: #e6f2ff;
+  --color-secondary-200: #cfe5ff;
+
+  /* Color -Neutral */
+  --color-neutral-50: #f9fafb;
+  --color-neutral-100: #f3f4f6;
+  --color-neutral-200: #e5e7eb;
+  --color-neutral-400: #9ca3af;
+  --color-neutral-500: #6b7280;
+  --color-neutral-600: #4b5563;
+  --color-neutral-700: #374151;
+  --color-neutral-800: #1f2937;
+  --color-neutral-900: #111827;
 
   /* Spacing */
   --spacing-xs: 1rem;
@@ -31,52 +37,18 @@
   --spacing-md: 1.5rem;
   --spacing-lg: 2.5rem;
   --spacing-xl: 8rem;
+
   /* Layout */
   --container-max-width: 1920px;
   --container-padding: 200px;
+  --container-padding-tablet: 104px;
   --container-top-margin: 231px;
-  --auth-container-max-width: 640;
+  --container-top-margin-sm: 80px;
+  --auth-container-max-width: 640px;
+  --auth-container-max-width-sm: 400px;
+  --tablet-max-width: 1199px;
+  --mobile-max-width: 767px;
+
   /* Border-radious */
   --radius-button: 40px;
-}
-
-/* font-face */
-@font-face {
-  font-family: 'Pretendard';
-  src: url('../assets/fonts/Pretendard-Light.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Pretendard';
-  src: url('../assets/fonts/Pretendard-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Pretendard';
-  src: url('../assets/fonts/Pretendard-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Pretendard';
-  src: url('../assets/fonts/Pretendard-SemiBold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Pretendard';
-  src: url('../assets/fonts/Pretendard-Thin.woff2') format('woff2');
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
 }

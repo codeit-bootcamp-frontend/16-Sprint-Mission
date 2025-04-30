@@ -4,11 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>판다마켓</title>
-    <link rel="stylesheet" href="/styles/reset.css" />
-    <link rel="stylesheet" href="/styles/variables.css" />
-    <link rel="stylesheet" href="/styles/common.css" />
-    <link rel="stylesheet" href="/styles/components/button.css" />
-    <link rel="stylesheet" href="/styles/pages/home.css" />
+    <meta name="description" content="일상의 모든 물건을 거래해보세요" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://gentle-lamington-bbd035.netlify.app/"
+    />
+    <meta property="og:title" content="판다 마켓" />
+    <meta property="og:description" content="일상의 모든 물건을 거래해보세요" />
+    <meta
+      property="og:image"
+      content="https://gentle-lamington-bbd035.netlify.app/assets/img/Img_home_top.png"
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:url"
+      content="https://gentle-lamington-bbd035.netlify.app/"
+    />
+    <meta name="twitter:title" content="판다 마켓" />
+    <meta
+      name="twitter:description"
+      content="일상의 모든 물건을 거래해보세요"
+    />
+    <meta
+      name="twitter:image"
+      content="https://gentle-lamington-bbd035.netlify.app/assets/img/logo-lg.png"
+    />
+    <meta property="og:title" content="판다 마켓" />
+    <meta property="og:description" content="일상의 모든 물건을 거래해보세요" />
+
+    <link rel="stylesheet" href="styles/reset.css" />
+    <link rel="stylesheet" href="styles/font.css" />
+    <link rel="stylesheet" href="styles/variables.css" />
+    <link rel="stylesheet" href="styles/common.css" />
+    <link rel="stylesheet" href="styles/pages/home.css" />
   </head>
   <body>
     <header class="header">
@@ -18,7 +51,13 @@
           aria-label="랜딩 페이지로 이동"
           class="header__logo pointer"
         >
-          <img src="./assets/logo/logo_sm.png" alt="판다마켓 로고" />
+          <picture>
+            <source
+              media="(max-width: 767px)"
+              srcset="./assets/logo/logo_typo.png"
+            />
+            <img src="./assets/logo/logo_sm.png" alt="판다마켓 로고" />
+          </picture>
         </a>
         <a href="/pages/login.html" class="header__login-link pointer">
           로그인
@@ -30,7 +69,7 @@
         <div class="hero__container">
           <div class="hero__contents">
             <p class="hero__title">
-              일상의 모든 물건을<br />
+              일상의 모든 물건을 <br />
               거래해 보세요
             </p>
             <a
@@ -54,11 +93,11 @@
           <img
             src="./assets/img/Img_home_01.png"
             alt="home1"
-            class="featrue__img"
+            class="feature__img"
           />
           <div class="feature__contents right">
             <p class="feature__category">Hot item</p>
-            <p class="feature__title">인기 상품을<br />확인해 보세요</p>
+            <p class="feature__title">인기 상품을 <br />확인해 보세요</p>
             <p class="feature__content">
               가장 HOT한 중고거래 물품을<br />판다 마켓에서 확인해 보세요
             </p>
@@ -75,7 +114,9 @@
           />
           <div class="feature__contents">
             <p class="feature__category">Search</p>
-            <p class="feature__title">구매를 원하는<br />상품을 검색해보세요</p>
+            <p class="feature__title">
+              구매를 원하는 <br />상품을 검색해보세요
+            </p>
             <p class="feature__content">
               구매하고 싶은 물품은 검색해서<br />쉽게 찾아보세요
             </p>
@@ -92,7 +133,7 @@
           />
           <div class="feature__contents">
             <p class="feature__category">Register</p>
-            <p class="feature__title">판매를 원하는<br />상품을 등록하세요</p>
+            <p class="feature__title">판매를 원하는 <br />상품을 등록하세요</p>
             <p class="feature__content">
               어떤 물건이든 판매하고 싶은 상품을<br />쉽게 등록하세요
             </p>
