@@ -113,6 +113,20 @@
   text-decoration: underline;
 }
 
+input.invalid {
+  border-color: red;
+}
+
+.password-container input.invalid {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
 @media (min-width: 375px) and (max-width: 767px) {
 
   .auth-contents {
@@ -122,6 +136,7 @@
     margin: 0 auto;
     gap: 24px;
   }
+
   .auth-logo {
     gap: 8px;
   }
@@ -130,6 +145,7 @@
     width: 40px;
     height: 40px;
   }
+
   .auth-logo a {
     font-size: 45px;
   }
@@ -139,6 +155,7 @@
     max-width: 400px;
     margin: 0 auto;
   }
+
   form,
   input,
   .auth-button,
@@ -147,9 +164,9 @@
     max-width: 400px;
     gap: 12px;
   }
+
   label,
   input {
     font-size: var(--text-sm);
   }
-
 }

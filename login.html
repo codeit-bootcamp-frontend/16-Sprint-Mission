@@ -22,15 +22,17 @@
     <div class="login-content">
       <form>
         <div>
-          <label for="login-email">이메일</label>
-          <input id="login-email" name="email" type="email" placeholder="이메일을 입력해주세요">
+          <label for="email">이메일</label>
+          <input id="email" name="email" type="email" placeholder="이메일을 입력해주세요">
+          <div id="email-error" class="error-message"></div>
         </div>
         <div>
-          <label for="login-password">비밀번호</label>
+          <label for="password">비밀번호</label>
           <div class="password-container">
-            <input id="login-password" name="password" type="password" placeholder="비밀번호를 입력해주세요">
+            <input id="password" name="password" type="password" placeholder="비밀번호를 입력해주세요">
             <img src="images/btn_unvisibility.png" id="togglePassword">
           </div>
+          <div id="password-error" class="error-message"></div>
         </div>
         <button class="button auth-button" type="submit">
           로그인
@@ -57,5 +59,6 @@
       </div>
     </div>
   </div>
+  <script src="auth.js"></script>
 </body>
 </html>
