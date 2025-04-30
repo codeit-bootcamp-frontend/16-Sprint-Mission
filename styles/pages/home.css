@@ -223,7 +223,7 @@ main {
 }
 
 /* Tablet: 768px ~ 1199px ------------------- */
-@media (width <= 1199px) {
+@media (max-width: 1199px) {
   /* header */
   .header__container {
     padding: 9px var(--spacing-md);
@@ -326,7 +326,7 @@ main {
 }
 
 /* Mobile: 375px ~ 767px  ------------ */
-@media (width <= 767px) {
+@media (max-width: 767px) {
   /* header */
   .header__container {
     padding: 9px var(--spacing-xs);

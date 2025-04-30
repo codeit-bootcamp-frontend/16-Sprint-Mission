@@ -107,7 +107,7 @@
   text-decoration: underline;
 }
 
-@media (width <= 767px) {
+@media (max-width: 767px) {
   .signup__container {
     margin-top: var(--container-top-margin-sm);
     max-width: var(--auth-container-max-width-sm);
