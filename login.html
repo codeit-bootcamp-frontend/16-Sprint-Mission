@@ -12,6 +12,7 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
     />
+    <script type="module" defer src="/src/member.js"></script>
   </head>
   <body>
     <div class="login-box">
@@ -32,18 +33,20 @@
               type="email"
               name="email"
               id="email"
-              placeholder="codeit@email.com"
+              placeholder="이메일을 입력해주세요"
               required
               aria-required="true"
               autocomplete="email"
             />
           </div>
+          <p id="email-error" class="input-error"></p>
           <div class="input-box">
             <label class="input-title" for="password">비밀번호</label>
             <input
               type="password"
               name="password"
               id="password"
+              placeholder="비밀번호를 입력해주세요"
               required
               aria-required="true"
             />
@@ -55,11 +58,10 @@
               alt="패스워드 이미지"
             />
           </div>
+          <p id="password-error" class="input-error"></p>
         </form>
-        <section class="login-button">
-          <button class="long-btn login" onclick="location.href='/login.html'">
-            로그인
-          </button>
+        <section class="form-button">
+          <button id="login-btn" class="long-btn login disabled">로그인</button>
         </section>
         <section class="simple-login">
           <div class="simple-text">간편 로그인 하기</div>

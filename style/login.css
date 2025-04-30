@@ -47,9 +47,17 @@
   position: absolute;
   bottom: 22px;
   right: 22px;
+  cursor: pointer;
 }
 
-.login-button {
+.img-password.check {
+  position: absolute;
+  bottom: 22px;
+  right: 22px;
+  cursor: pointer;
+}
+
+.form-button {
   width: 100%;
   margin: 20px;
 }
@@ -62,6 +70,16 @@
   font-weight: 600;
   font-size: 20px;
   cursor: pointer;
+}
+
+.long-btn.login.disabled {
+  width: 100%;
+  height: 56px;
+  border-radius: 40px;
+  background-color: var(--color-gray-400);
+  color: var(--color-white);
+  font-weight: 600;
+  font-size: 20px;
 }
 
 .simple-login {
@@ -95,6 +113,45 @@
   font-weight: 500;
   font-size: 14px;
   color: var(--color-primary);
+}
+
+.error#email {
+  border: 3px solid var(--color-red);
+}
+
+.error#password {
+  border: 3px solid var(--color-red);
+}
+
+.error#nickname {
+  border: 3px solid var(--color-red);
+}
+
+.error#password-check {
+  border: 3px solid var(--color-red);
+}
+
+.error#email:focus {
+  outline-color: var(--color-red);
+}
+
+.error#password:focus {
+  outline-color: var(--color-red);
+}
+
+.error#nickname:focus {
+  outline-color: var(--color-red);
+}
+
+.error#password-check:focus {
+  outline-color: var(--color-red);
+}
+
+.input-error {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-red);
+  padding: 14px 0;
 }
 
 @media screen and (min-width: 375px) and (max-width: 767px) {

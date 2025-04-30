@@ -13,6 +13,7 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
     />
+    <script type="module" defer src="/src/member.js"></script>
   </head>
   <body>
     <div class="login-box">
@@ -39,6 +40,7 @@
               autocomplete="email"
             />
           </div>
+          <p id="email-error" class="input-error"></p>
           <div class="input-box">
             <label class="input-title" for="nickname">닉네임</label>
             <input
@@ -50,6 +52,7 @@
               placeholder="판다"
             />
           </div>
+          <p id="nickname-error" class="input-error"></p>
           <div class="input-box">
             <label class="input-title" for="password">비밀번호</label>
             <input
@@ -67,28 +70,30 @@
               alt="패스워드 이미지"
             />
           </div>
+          <p id="password-error" class="input-error"></p>
           <div class="input-box">
             <label class="input-title" for="password-check"
               >비밀번호 확인</label
             >
             <input
-              type="text"
-              name="password-check"
+              type="password"
+              name="passwordCheck"
               id="password-check"
               required
               aria-required="true"
             />
             <img
-              class="img-password"
+              class="img-password check"
               width="20px"
               height="14px"
-              src="images/Icon_pwopen.png"
+              src="images/Icon_pwclose.png"
               alt="패스워드 이미지"
             />
           </div>
+          <p id="pwcheck-error" class="input-error"></p>
         </form>
-        <section class="login-button">
-          <button class="long-btn login" onclick="location.href='/signup.html'">
+        <section class="form-button">
+          <button id="signup-btn" class="long-btn login disabled">
             회원가입
           </button>
         </section>
