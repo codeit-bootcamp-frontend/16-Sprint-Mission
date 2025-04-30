@@ -14,7 +14,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .btn-small {
@@ -26,14 +26,13 @@ header {
 
 .btn-large {
   border-radius: var(--border-radius-lg);
-  min-width: 150px;
-  height: 56px;
-  width: 100%;
-  font-size: var(--font-size-xl);
+  width: 240px;
+  height: 48px;
+  font-size: var(--font-size-2lg);
 }
 
 .header__content {
-  padding: 0 200px;
+  padding: 0 24px;
   max-width: 1520px;
   margin: 0 auto;
   color: #ffffff;
@@ -43,7 +42,8 @@ header {
 }
 
 .header__content__logo {
-  width: 153px;
+  width: 103px;
+  vertical-align: middle;
 }
 
 .banner {
@@ -52,48 +52,49 @@ header {
 
 .banner__content {
   max-width: 1110px;
-  padding-top: 200px;
+  padding-top: 48px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: center;
 }
 
 .banner__content__text {
   display: flex;
   flex-direction: column;
-  margin-bottom: 100px;
+  margin-bottom: 132px;
+  text-align: center;
+  align-items: center;
 }
 
 .banner__content__text__title {
-  font-size: var(--font-size-4xl);
+  font-size: var(--font-size-3xl);
   font-weight: 700;
-  margin-bottom: 32px;
+  margin-bottom: 18px;
   color: var(--color-secondary-700);
 }
 
 .banner__content__img {
   max-width: 746px;
-  width: 80%;
+  width: 120%;
 }
 
 .feature {
-  padding: 138px 0;
+  padding: 52px 16px 43px;
 }
 
 .feature__content {
   max-width: 988px;
   margin: 0 auto;
-  background-color: #fcfcfc;
   border-radius: var(--border-radius-md);
   display: flex;
-  align-items: center;
-  gap: 64px;
+  gap: 24px;
+  flex-direction: column;
+  margin-bottom: 40px;
 }
 
 .feature__content__img {
-  max-width: 579px;
-  width: 60%;
+  width: 100%;
 }
 
 .feature__content__text {
@@ -103,80 +104,96 @@ header {
 }
 
 .feature__content__text__point {
-  font-size: var(--font-size-2lg);
+  font-size: var(--font-size-lg); /* 16px */
   font-weight: 700;
   color: var(--color-primary-100);
 }
 
 .feature__content__text__title {
-  font-size: var(--font-size-4xl);
+  font-size: var(--font-size-2xl); /* 24px */
   font-weight: 700;
   color: var(--color-secondary-700);
-  margin-top: 12px;
-  margin-bottom: 24px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.feature__content__text__title br {
+  display: inline-block;
+  content: " ";
 }
 
 .feature__content__text__subtitle {
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-2lg); /* 18px */
   font-weight: 500;
   color: var(--color-secondary-700);
 }
 
-.text-right {
+.feature__content__reverse {
+  flex-direction: column-reverse;
+}
+
+.search-text {
   text-align: right;
 }
 
 /* 하단 배너 */
-.bottom__banner {
+.promotion__banner {
   background-color: var(--color-background-blue);
 }
 
-.bottom__banner__content {
+.promotion__banner__content {
   max-width: 1110px;
-  padding-top: 143px;
+  padding-top: 121px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: center;
 }
 
-.bottom__banner__content__img {
-  max-width: 746px;
-  width: 80%;
-}
-
-.bottom__banner__content__title {
-  font-size: var(--font-size-4xl);
+.promotion__banner__content__title {
+  font-size: var(--font-size-3xl); /* 32px */
   font-weight: 700;
   color: var(--color-secondary-700);
-  padding-bottom: 172px;
+  margin-bottom: 131px;
+  text-align: center;
+}
+
+.promotion__banner__content__img {
+  max-width: 746px;
+  width: 100%;
 }
 
 /* 푸터 */
 footer {
   background-color: #111827;
-  padding: 32px 0 108px;
+  padding: 32px 32px 30px 32px;
+  height: 160px;
 }
 
 .footer__content {
-  max-width: 1120px;
+  max-width: 311px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
+}
+
+.footer__content__menu {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+  gap: 60px;
+  font-size: var(--font-size-lg);
 }
 
 .footer__content__copyright {
-  font-size: var(--font-size-lg);
-  font-weight: 400;
   color: #9ca3af;
 }
 
 .footer__content__link a {
   text-decoration: none;
   color: #e5e7eb;
-  font-size: var(--font-size-lg);
-  font-weight: 400;
 }
 
 .footer__content__link {
@@ -196,27 +213,26 @@ footer {
 }
 
 /* 로그인 화면, 회원가입 공통 */
-
 .form__container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  min-width: 100vw;
+  min-height: 100dvh;
+  padding: 16px;
 }
 
 .form__container .signup__form {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 100vw;
 }
 
 .form__container__content {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  max-width: 640px;
+  max-width: 400px;
+  width: 100%;
 }
 
 .form__container__content a {
@@ -226,6 +242,7 @@ footer {
 
 .form__container__logo {
   margin-bottom: 20px;
+  max-width: 198px;
 }
 
 .form__container__label {
@@ -239,10 +256,6 @@ footer {
 }
 
 .form__container__input {
-  padding: 16px 20px;
-  border-radius: 12px;
-  background-color: var(--color-secondary-100);
-  height: 56px;
   flex-grow: 1;
 }
 
@@ -260,6 +273,7 @@ footer {
 
 .form__container button {
   margin-bottom: 24px;
+  width: 100%;
 }
 
 .form__container__banner {
@@ -293,32 +307,173 @@ footer {
   color: var(--color-primary-100);
 }
 
-@media all and (max-width: 1023px) {
-  .header__content {
-    padding: 0 20px;
+/* 태블릿 사이즈 이상에서 반응형 */
+@media screen and (min-width: 768px) {
+  .header__content__logo {
+    width: 153px;
+  }
+
+  .btn-large {
+    min-width: 357px;
+    height: 56px;
+    font-size: var(--font-size-xl);
   }
 
   .banner__content {
-    flex-direction: column;
-    align-items: center;
+    padding-top: 84px;
+  }
+
+  .banner__content__text__title {
+    font-size: var(--font-size-4xl);
+    margin-bottom: 24px;
+  }
+
+  .banner__content__text {
+    margin-bottom: 211px;
+  }
+
+  /* 첫번째 배너 br 태그 기능 없애기 */
+  .banner__content br {
+    display: inline-block;
+    content: " ";
   }
 
   .feature {
-    padding: 70px 0;
+    padding: 24px 24px 4px;
   }
 
   .feature__content {
-    align-items: center;
-    background: none;
-    flex-direction: column;
+    margin-bottom: 52px;
   }
 
-  .feature__content__reverse {
-    flex-direction: column-reverse;
+  .feature__content__text__point {
+    font-size: var(--font-size-2lg);
   }
 
-  .bottom__banner__content {
-    flex-direction: column;
+  .feature__content__text__title {
+    font-size: var(--font-size-3xl);
+    margin-top: 16px;
+    margin-bottom: 24px;
+  }
+
+  .promotion__banner__content {
+    padding-top: 217px;
+  }
+
+  .promotion__banner__content__title {
+    font-size: var(--font-size-4xl);
+  }
+
+  .footer {
+    padding: 32px 104px 104px 108px;
+  }
+
+  .footer__content {
+    max-width: 536px;
+  }
+
+  .footer__content__menu {
+    flex-direction: row;
+  }
+  /* 태블릿 회원가입,로그인 화면 반응형 CSS */
+  .form__container__logo {
+    max-width: 396px;
+  }
+
+  .form__container__content {
+    max-width: 640px;
+  }
+}
+
+/* PC 반응형 */
+@media screen and (min-width: 1200px) {
+  .banner__content {
+    padding-top: 200px;
+  }
+
+  .banner__content__text {
+    margin-bottom: 100px;
+    align-items: start;
+  }
+
+  /* 첫번째 배너 br 태그 다시 추가 */
+  .header__content__logo {
+    width: 153px;
+  }
+
+  .banner__content br {
+    display: block;
+  }
+
+  .header__content {
+    padding: 0 200px;
+  }
+
+  .feature {
+    padding: 138px 0px 0px 0px;
+  }
+
+  .feature__content {
+    flex-direction: row;
+    background-color: #fcfcfc;
     align-items: center;
+    margin: 0 auto 276px auto;
+    gap: 64px;
+  }
+
+  .feature__content__text__title br {
+    display: block;
+  }
+
+  .feature__content__text__title {
+    margin-top: 12px;
+    font-size: var(--font-size-4xl);
+  }
+
+  .feature__content__text__subtitle {
+    font-size: var(--font-size-2xl);
+  }
+
+  .feature__content__img {
+    max-width: 579px;
+  }
+
+  .banner__content {
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-direction: row;
+  }
+
+  .banner__content__text {
+    text-align: left;
+  }
+
+  .promotion__banner__content {
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-direction: row;
+    padding-top: 143px;
+  }
+
+  .promotion__banner__content__title {
+    margin-bottom: 172.5px;
+    text-align: left;
+  }
+
+  .footer__content {
+    max-width: 1120px;
+  }
+
+  .footer__content__menu {
+    gap: 366.5px;
+  }
+
+  /* PC 회원가입,로그인 화면 반응형 CSS */
+  .form__container {
+    padding: 0;
+  }
+
+  .form__container__content {
+    max-width: 640px;
   }
 }
