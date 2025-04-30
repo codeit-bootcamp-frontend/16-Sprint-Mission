@@ -4,8 +4,8 @@
 }
 
 .login__container {
-  margin: var(--container-top-margin) 1rem 0;
-  max-width: var(--auth-container-max-width);
+  margin: var(--container-top-margin-sm) 1rem 0;
+  max-width: var(--auth-container-max-width-sm);
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -107,9 +107,9 @@
   text-decoration: underline;
 }
 
-@media (max-width: 767px) {
+@media (min-width: 768px) {
   .login__container {
-    margin-top: var(--container-top-margin-sm);
-    max-width: var(--auth-container-max-width-sm);
+    margin-top: var(--container-top-margin);
+    max-width: var(--auth-container-max-width);
   }
 }
