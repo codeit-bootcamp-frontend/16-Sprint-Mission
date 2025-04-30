@@ -1,42 +1,87 @@
 "use strict";
 import { validateEmail, validatePassword } from "./util/validators.js";
+import { updateValidationUI } from "./util/updateValidationUI.js";
 import togglePasswordHandler from "./util/togglePassword.js";
 
-const form = document.querySelector(".form");
+const form = document.querySelector("#loginForm");
 const emailInput = document.querySelector("#userEmail");
 const passwordInput = document.querySelector("#userPassword");
 const loginBtn = document.querySelector("#loginBtn");
 
-function createFormValidator() {
-  let emailValid = false;
-  let passwordValid = false;
+// 상수 정의
+const FORM_INPUT_IDS = {
+  EMAIL: emailInput.id,
+  PASSWORD: passwordInput.id,
+};
 
-  return function formValidate(e) {
-    switch (e.target.id) {
-      case "userEmail":
-        emailValid = validateEmail(emailInput);
-        break;
-      case "userPassword":
-        passwordValid = validatePassword(passwordInput);
-        break;
-    }
+// DOM과 유효성 검사기 연결
+const inputValidatorMap = {
+  [FORM_INPUT_IDS.EMAIL]: validateEmail,
+  [FORM_INPUT_IDS.PASSWORD]: validatePassword,
+};
 
-    loginBtn.disabled = !(emailValid && passwordValid);
-  };
+const FORM_SUBMIT_BUTTON = loginBtn;
+
+const REDIRECT_TARGET = "/items.html";
+
+// 각 키의 유효성 검사값 초기화: [input.id, false]
+const validatorKey = Object.keys(inputValidatorMap);
+const validStateMap = new Map(validatorKey.map((id) => [id, false]));
+
+// form에 유효성 검사 위임
+function delegateFormValidation() {
+  form.addEventListener("focusout", handleFormValidation);
 }
 
-form.addEventListener("focusout", createFormValidator());
+// 유효성 검사 전, 검사 대상 필터
+function handleFormValidation(e) {
+  const input = e.target;
+  if (!validatorKey.includes(input.id)) return;
 
-/* 비밀번호 토글 */
-togglePasswordHandler(form);
+  handleFormInputValidation(input);
+}
 
-/* UX: 첫번째 input focus 처리 */
-window.addEventListener("DOMContentLoaded", () => {
-  form.querySelector(".form-input").focus();
-});
+// 유효성 검사
+function handleFormInputValidation(input) {
+  const validationFunc = inputValidatorMap[input.id];
 
-/* 로그인 버튼 클릭 시 'items'로 이동 */
-loginBtn.addEventListener("click", (e) => {
+  if (!validationFunc) return;
+
+  const validationResult = validationFunc(input);
+  updateValidationUI(input, validationResult);
+
+  // 변경된 유효성 상태 업데이트
+  validStateMap.set(input.id, validationResult.isValid);
+  updateSubmitButtonState();
+}
+
+// 제출 버튼 상태 변경
+function updateSubmitButtonState() {
+  const isAllValid = [...validStateMap.values()].every(Boolean);
+  loginBtn.disabled = !isAllValid;
+}
+
+function navigateOnFormSuccess() {
   e.preventDefault();
-  location.href = "/items.html";
-});
+  location.href = REDIRECT_TARGET;
+}
+
+function focusFirstInput() {
+  form.querySelector(".form-input").focus();
+}
+
+function init() {
+  /* 폼 유효성 검사 */
+  delegateFormValidation();
+
+  /* 비밀번호 토글 */
+  togglePasswordHandler(form);
+
+  /* UX: 첫번째 input focus 처리 */
+  focusFirstInput();
+
+  /* 폼 제출 성공 시 페이지 이동 */
+  FORM_SUBMIT_BUTTON.addEventListener("click", navigateOnFormSuccess);
+}
+
+window.addEventListener("DOMContentLoaded", init);
