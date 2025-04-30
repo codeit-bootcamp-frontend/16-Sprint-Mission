@@ -1,0 +1,35 @@
+body {
+  font-family: 'Pretendard', sans-serif;
+  margin: 10px 0 0;
+  box-sizing: border-box;
+  min-width: 375px;
+}
+
+/*Variable*/
+:root {
+  --primary-color: #3692ff;
+  --primary-light: #e6f2ff;
+  --text-primary: #374151;
+  --text-secondary: #9ca3af;
+  --text-light: #e5e7eb;
+  --background-primary: #fcfcfc;
+  --background-secondary: #cfe5ff;
+  --background-dark: #111827;
+  --text-on-primary: #f3f4f6;
+  --text-input: #1f2937;
+  --input-icon-color: #4b5563;
+  /*#E5E7EB*/
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-base: 140%;
+  --line-height-tight: 100%;
+
+  --container-width: 1120px;
+  --content-width: 988px;
+  --border-radius-sm: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-xl: 40px;
+}

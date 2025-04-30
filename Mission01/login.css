@@ -1,0 +1,94 @@
+/*Layout*/
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 640px;
+  margin: 30px auto;
+}
+
+.login-page {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.password-field {
+  position: relative;
+}
+
+/*form*/
+.input-label {
+  color: var(--text-input);
+  font-weight: var(--font-weight-bold);
+  font-size: 18px;
+  line-height: 26px;
+}
+
+.input-blank {
+  height: 56px;
+  width: 100%;
+  background-color: var(--text-on-primary);
+  border-radius: var(--border-radius-lg);
+  border-style: none;
+  margin: 15px 0;
+  padding: 3px 53px 3px 17px;
+}
+
+.btn-login {
+  border-radius: var(--border-radius-xl);
+  color: var(--text-on-primary);
+  background-color: var(--primary-color);
+}
+
+/*typo*/
+.footer {
+  color: var(--text-input);
+  font-weight: var(--font-weight-medium);
+}
+
+.signup {
+  text-decoration: underline;
+  color: var(--primary-color);
+  font-weight: var(--font-weight-medium);
+}
+
+/*component*/
+.main-logo {
+  width: 396px;
+  height: 132px;
+  margin: 0 auto 40px;
+}
+
+.password-toggle {
+  position: absolute;
+  bottom: 33px;
+  right: 20px;
+}
+
+.social-login {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0;
+  padding: 16px 23px;
+  background-color: var(--primary-light);
+  color: var(--text-input);
+  font-size: 16px;
+  font-weight: var(--font-weight-regular);
+  border-radius: var(--border-radius-sm);
+}
+
+.social-login-list {
+  display: flex;
+  gap: 16px;
+}
+
+.social-login-icon {
+  width: 42px;
+  height: auto;
+}
+
+/*utility*/
+.is-clickable {
+  cursor: pointer;
+}

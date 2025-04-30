@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입 - 판다마켓</title>
+  <link rel="stylesheet" as="style" crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="signup.css">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <a href="index.html" aria-label="홈으로 이동"><img src="Icon/Pandan-logo-lg.png" class="main-logo" alt="판다마켓 로고"></a>
+    </header>
+    <main class="signup-page">
+      <form action="#" method="post" name="signupForm">
+        <label for="email" class="input-label">이메일</label>
+        <input type="email" id="email" name="email" autocomplete="email" class="input-blank" placeholder="이메일을 입력하세요"
+          required>
+        <label for="nickname" class="input-label">닉네임</label>
+        <input type="text" id="nickname" name="nickname" class="input-blank" placeholder="닉네임을 입력하세요" required>
+        <label for="password" class="input-label">비밀번호</label>
+        <div class="password-field">
+          <input type="password" id="password" name="password" autocomplete="new-password" class="input-blank"
+            placeholder="비밀번호를 입력하세요" required>
+          <button type="button" class="password-toggle is-clickable"><img src="Icon/btn_visibility_off.png"
+              alt="비밀번호 보기"></button>
+        </div>
+        <label for="password-confirm" class="input-label">비밀번호 확인</label>
+        <div class="password-field">
+          <input type="password" id="password-confirm" name="password-confirm" class="input-blank"
+            placeholder="비밀번호를 입력하세요" required>
+          <button type="button" class="password-toggle is-clickable"><img src="Icon/btn_visibility_on.png"
+              alt="비밀번호 가리기"></button>
+        </div>
+        <input type="submit" class="input-blank btn-signup is-clickable" value="회원가입" aria-label="회원가입 버튼">
+      </form>
+      <section class="social-signup">
+        <p>간편 회원가입하기</p>
+        <ul class="social-signup-list">
+          <li>
+            <a href="https://www.google.com/" target="_blank" aria-label="구글 계정으로 회원가입하기"><img src="Icon/ic_google.png"
+                class="social-signup-icon" alt="구글"></a>
+          </li>
+          <li>
+            <a href="https://www.kakaocorp.com/page/" target="_blank" aria-label="카카오톡 계정으로 회원가입하기"><img
+                src="Icon/ic_kakao.png" class="social-signup-icon" alt="카카오톡"></a>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer>
+      <p>이미 회원이신가요? <a href="login.html" class="login">로그인</a></p>
+    </footer>
+  </div>
+</body>
+
+</html>
