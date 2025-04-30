@@ -1,0 +1,54 @@
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #f3f4f6;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  height: 56px;
+}
+
+.signup-btn {
+  width: 100%;
+  height: 56px;
+  background-color: #3692ff;
+  color: #f3f4f6;
+  padding: 12px;
+  border: none;
+  border-radius: 40px;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.signup-btn:hover {
+  background-color: #02499f;
+}
+
+.social-login img {
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+}
+
+.social-login a {
+  width: 42px;
+  height: 42px;
+}
+
+.login-link {
+  margin-top: 24px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+.login-link a {
+  color: #3b82f6;
+  margin-left: 4px;
+}

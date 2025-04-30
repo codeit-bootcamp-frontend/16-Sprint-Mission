@@ -19,6 +19,13 @@ section {
   height: 70px;
   display: flex;
   justify-content: center; /* 내부 gnb-inner 중앙 정렬 */
+  position: fixed; /* 상단바 고정 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* 다른 요소보다 위에 보이도록 */
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .gnb-inner {
   width: 100%;
@@ -43,6 +50,8 @@ section {
   border-radius: 8px;
   font-size: 16px;
   font-weight: 600;
+  color: white;
+
 }
 
 .login:hover {
