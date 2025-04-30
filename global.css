@@ -1,30 +1,33 @@
 @font-face {
-    /*Pretendard폰트*/
-    font-family: 'Pretendard-Regular';
-    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
+  /*Pretendard폰트*/
+  font-family: "Pretendard-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
 }
 
 body {
-    font-family: 'Pretendard-Regular', sans-serif;
+  font-family: "Pretendard-Regular", sans-serif;
+  word-break: keep-all;
 }
 
 :root {
-    /* 색상 변수 */
-    --primary-color: #3692FF;
-    --primary-hover: #1251AA;
-    --article-background-color: #FCFCFC;
-    --background-color: #CFE5FF;
-    --text-color: #374151;
-    --white-color: #fff;
-    --secondary-gray900: #111827;
-    --secondary-gray800: #1f2937;
-    --secondary-gray700: #374151;
-    --secondary-gray600: #4b5563;
-    --secondary-gray500: #6b7280;
-    --secondary-gray400: #9ca3af;
-    --secondary-gray200: #E5E7EB;
-    --secondary-gray100: #F3f4f6;
-    --secondary-gray50: #f9fafb;
+  /* 색상 변수 */
+  --primary-color: #3692ff;
+  --primary-hover: #1251aa;
+  --article-background-color: #fcfcfc;
+  --background-color: #cfe5ff;
+  --text-color: #374151;
+  --white-color: #fff;
+  --secondary-gray900: #111827;
+  --secondary-gray800: #1f2937;
+  --secondary-gray700: #374151;
+  --secondary-gray600: #4b5563;
+  --secondary-gray500: #6b7280;
+  --secondary-gray400: #9ca3af;
+  --secondary-gray200: #e5e7eb;
+  --secondary-gray100: #f3f4f6;
+  --secondary-gray50: #f9fafb;
+  --footer-text: #cfcfcf;
 }
