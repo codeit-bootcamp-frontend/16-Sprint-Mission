@@ -30,6 +30,7 @@
             placeholder="이메일을 입력해주세요"
             required
           />
+          <div class="error-message"></div>
         </div>
         <div class="user-info">
           <label for="password">비밀번호</label>
@@ -40,10 +41,11 @@
             placeholder="비밀번호를 입력해주세요"
             required 
           />
+          <div class="error-message"></div>
         </div>
-        <div class="login-signup-button flex-center">
+        <button type="button" id="login-btn" class="login-signup-button flex-center" disabled>
           <span>로그인</span>
-        </div>
+        </button>
         <div class="sns-login">
           <p>간편 로그인하기</p>
           <div class="sns-logo">
@@ -61,5 +63,6 @@
         </footer>
       </form>
     </main>
+    <script src="js/login.js"></script>
   </body>
 </html>
