@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector("form");
   const loginButton = form.querySelector("button[type='submit']");
 
+  const isSignup = usernameInput && repeatInput;
+
   const togglePasswordIcon = document.getElementById("togglePassword");
   const togglePasswordRepeatIcon = document.getElementById("togglePassword-repeat");
 
@@ -124,7 +126,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   function updateButtonState() {
-    const isSignup = usernameInput && repeatInput;
     if (isSignup) {
       loginButton.disabled = !(state.emailValid && state.passwordValid && state.usernameValid && state.repeatValid);
     } else {
@@ -146,7 +147,11 @@ document.addEventListener("DOMContentLoaded", () => {
     updateButtonState();
 
     if (!loginButton.disabled) {
-      window.location.href = "/items";
+      if(isSignup) {
+        window.location.href = "login.html";
+      } else {
+        window.location.href = "/items";
+      }
     }
   });
 });
