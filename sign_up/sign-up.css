@@ -31,12 +31,9 @@ label[for="toggle-visibility-pwcheck"] {
   cursor: pointer;
 }
 
-label[for="toggle-visibility-pw"] {
-  top: 258px;
-}
-
+label[for="toggle-visibility-pw"],
 label[for="toggle-visibility-pwcheck"] {
-  top: 360px;
+  top: 46px;
 }
 
 #toggle-visibility-pwcheck {
@@ -90,12 +87,9 @@ label[for="toggle-visibility-pwcheck"] {
     width: 396px;
   }
 
-  label[for="toggle-visibility-pw"] {
-    top: 304px;
-  }
-
+  label[for="toggle-visibility-pw"],
   label[for="toggle-visibility-pwcheck"] {
-    top: 424px;
+    top: 58px;
   }
 }
 

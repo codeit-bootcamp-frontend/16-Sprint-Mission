@@ -16,14 +16,16 @@
             <img src="../images/logo-title.png" alt="판다마켓 로고" />
           </a>
         </div>
-        <form class="login__form" method="POST">
+        <form class="login__form" method="POST" action="../items/">
           <fieldset>
             <label for="user-email">이메일</label>
             <input type="text" id="user-email" name="user-email" placeholder="이메일을 입력해주세요"/>
-            <label for="user-password">비밀번호</label>
-            <input id="user-password" type="password" name="user-password" placeholder="비밀번호를 입력해주세요"/>
-            <input id="toggle-visibility-pw" type="checkbox"/>
-            <label aria-label="비밀번호 표시 여부" aria-checked="false" for="toggle-visibility-pw"></label>
+            <div class="container__position-relative">
+                <label for="user-password">비밀번호</label>
+                <input id="user-password" type="password" name="user-password" placeholder="비밀번호를 입력해주세요"/>
+                <input id="toggle-visibility-pw" type="checkbox"/>
+                <label aria-label="비밀번호 표시 여부" aria-checked="false" for="toggle-visibility-pw"></label>
+            </div>
             <button type="submit">로그인</button>
           </fieldset>
           <div class="login__alert">
@@ -43,5 +45,7 @@
         </form>
       </section>
     </main>
+    <script src="./toggle-visibility-pw.js"></script>
+    <script src="./validation.js"></script>
   </body>
 </html>
