@@ -1,7 +1,7 @@
 @charset "utf-8";
 @import "./global/reset.css";
-@import "./global/common.css";
 @import "./global/variables.css";
+@import "./global/common.css";
 
 /*================ 메인 ================*/
 /* section */
