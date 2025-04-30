@@ -2,6 +2,7 @@
   /** layout **/
   --container-width: 1980px;
   --content-width: 1080px;
+  --banner-description-width: 400px;
 
   /** colors **/
   --color-black: #000000;

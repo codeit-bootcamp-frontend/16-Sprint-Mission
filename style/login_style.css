@@ -108,3 +108,34 @@ main {
   color: #9ca3af;
   font-weight: 400;
 }
+
+@media (max-width: 767px) {
+  main .wrap {
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  .logo {
+    text-align: center;
+  }
+
+  .logo > img {
+    width: 75%;
+    height: auto;
+  }
+
+  .login-form {
+    max-width: 400px;
+    width: 100%;
+  }
+
+  .login-form input {
+    max-width: 400px;
+    width: 100%;
+  }
+
+  .oauth {
+    max-width: 400px;
+    width: 100%;
+  }
+}

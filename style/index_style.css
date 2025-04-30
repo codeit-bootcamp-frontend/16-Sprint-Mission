@@ -1,7 +1,6 @@
-/** wrap layout **/
-
 .wrap {
   max-width: var(--container-width);
+  min-width: var(--content-width);
   margin: 0 auto;
 }
 
@@ -11,23 +10,23 @@
 
 header .wrap {
   padding: 8px 200px;
-  min-width: var(--content-width);
 }
 
 .banner {
-  height: 540px;
   display: flex;
-  align-items: flex-end;
-}
-
-.banner .wrap {
-  min-width: var(--content-width);
+  height: 540px;
 }
 
 .banner .banner-description {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  flex: 0 0 400px;
+}
+
+.banner img {
+  align-self: flex-end;
+  flex: 0 1 768px;
 }
 
 main .wrap {
@@ -39,10 +38,6 @@ main .wrap {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-}
-
-.feature-card .wrap {
-  min-width: var(--content-width);
 }
 
 .feature-description {
@@ -59,11 +54,9 @@ footer .wrap {
   display: flex;
   justify-content: space-between;
   padding: 28px 52px;
-  min-width: var(--content-width);
 }
 
 /** header **/
-
 header {
   background-color: var(--color-white);
   position: sticky;
@@ -71,23 +64,25 @@ header {
   top: 0;
   left: 0;
   right: 0;
+  box-shadow: 0px 1px 8px 1px #808080;
 }
 
 header .btn-link-login {
   width: 128px;
   height: 48px;
-  padding: 12px 44px;
+  display: inline-block;
+  padding: 12px;
   border-radius: 8px;
   font-size: 16px;
-  line-height: 26px;
+  line-height: 24px;
   font-weight: 600;
   color: var(--color-gray100);
   background-color: var(--color-pri100);
+  text-align: center;
   text-decoration: none;
 }
 
 /** banner **/
-
 .banner {
   background-color: var(--color-pri50);
 }
@@ -102,10 +97,11 @@ header .btn-link-login {
 }
 
 .btn-link-trades {
+  display: inline-block;
   width: 360px;
   height: 56px;
   line-height: 28px;
-  padding: 12px 120px;
+  padding: 12px;
   border-radius: 40px;
   font-size: 20px;
   line-height: 32px;
@@ -117,22 +113,13 @@ header .btn-link-login {
 }
 
 /** features **/
-
 .feature-card {
   margin: 140px 0;
 }
 
-.feature-card,
-.feature-img,
 .feature-description {
   height: 440px;
-}
-
-.feature-card .feature-description {
   padding: 52px;
-}
-
-.feature-description {
   background-color: var(--color-gray30);
   gap: var(--spacing-xs);
 }
@@ -162,7 +149,6 @@ header .btn-link-login {
 }
 
 /** footer **/
-
 footer {
   background-color: var(--color-pri500);
 }
@@ -198,7 +184,6 @@ footer .privacy-links > a {
 }
 
 /** pseudo-class **/
-
 .btn-link-login:hover,
 .btn-link-trades:hover {
   background-color: var(--color-pri200);
@@ -207,4 +192,216 @@ footer .privacy-links > a {
 .btn-link-login:active,
 .btn-link-trades:active {
   background-color: var(--color-pri300);
+}
+
+/** media: tablet **/
+@media (max-width: 1199px) {
+  /** layout **/
+  .wrap {
+    min-width: initial;
+  }
+
+  header .wrap {
+    padding: 8px 24px;
+  }
+
+  main .wrap {
+    padding: 0 24px;
+  }
+
+  .banner .wrap {
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .banner .banner-description {
+    max-width: initial;
+    text-align: center;
+    align-items: center;
+    flex: 1 0 0;
+  }
+
+  .main-banner {
+    height: 772px;
+  }
+
+  .sub-banner {
+    height: 928px;
+  }
+
+  .feature-card .wrap {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .feature-card .feature-description {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 0;
+  }
+
+  footer .wrap {
+    padding: 32px 104px;
+  }
+
+  /** banner **/
+  .banner img {
+    align-self: initial;
+    flex: 1 1 0;
+    width: 100%;
+    object-fit: contain;
+    object-position: bottom;
+  }
+
+  /** features **/
+  .features .feature-card {
+    width: 100%;
+    margin: 0;
+    padding: 24px 0;
+  }
+
+  .feature-description {
+    padding: 24px 0;
+    background-color: var(--color-white);
+  }
+
+  .feature-img,
+  .feature-description {
+    width: 100%;
+  }
+
+  .feature-description .feature-sub-description {
+    width: 50%;
+  }
+
+  .feature-description .feature-title {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .feature-description .feature-main-description {
+    font-size: 32px;
+    line-height: 42px;
+  }
+
+  .feature-description .feature-sub-description {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  /** pseudo class **/
+  .feature-card:nth-child(2n) .wrap {
+    flex-direction: column-reverse;
+  }
+
+  .feature-card:nth-child(2n) .feature-description {
+    align-items: flex-end;
+  }
+}
+
+/** media: mobile **/
+@media (max-width: 767px) {
+  /** layout **/
+  header .wrap {
+    padding: 8px 16px;
+  }
+
+  main .wrap {
+    padding: 0 16px;
+  }
+
+  .main-banner,
+  .sub-banner {
+    height: auto;
+  }
+
+  .banner img {
+    width: 110%;
+  }
+
+  /** header **/
+  header .img-lg {
+    width: auto;
+    height: auto;
+  }
+
+  /** banner **/
+  .banner-description {
+    margin-top: max(50px);
+    margin-bottom: max(50px);
+  }
+
+  .banner-description h1 {
+    font-size: 32px;
+    line-height: 140%;
+  }
+
+  .btn-link-trades {
+    width: 240px;
+    height: 48px;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 600;
+  }
+
+  /** features **/
+  .features .feature-card {
+    padding: 20px 0;
+  }
+
+  .features .feature-card:first-child {
+    margin-top: 32px;
+  }
+
+  .features .feature-card:last-child {
+    margin-bottom: 32px;
+  }
+
+  .feature-description .feature-sub-description {
+    width: 70%;
+  }
+
+  .feature-description .feature-title {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .feature-description .feature-main-description {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .feature-description .feature-sub-description {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  footer .wrap {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 32px;
+  }
+
+  footer ul {
+    flex-basis: 50%;
+    order: 0;
+  }
+
+  footer p {
+    order: 1;
+    margin-top: 20px;
+  }
+
+  footer .privacy-links {
+    justify-content: start;
+    align-items: start;
+  }
+
+  footer .sns-links {
+    justify-content: end;
+    align-items: start;
+  }
 }
