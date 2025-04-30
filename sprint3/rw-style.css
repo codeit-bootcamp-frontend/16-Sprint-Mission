@@ -1,0 +1,411 @@
+button {
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.gnb {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: center; /* 내부 gnb-inner 중앙 정렬 */
+  position: fixed; /* 상단바 고정 */
+  top: 0;
+  left: 0;
+  z-index: 1000; /* 다른 요소보다 위에 보이도록 */
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.gnb-inner {
+  width: 100%;
+  /* 1920 - 400(양쪽 여백) */
+  max-width: 1520px;
+  padding-left: clamp(40px, 10vw, 200px);
+  padding-right: clamp(40px, 10vw, 200px);
+
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gnb img {
+  height: 40px;
+  display: block;
+}
+
+.login {
+  background-color: #3399ff;
+  padding: 11px 43px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+}
+
+.login:hover {
+  background-color: #1b62a9;
+}
+
+.background-blue {
+  background-color: #cfe5ff;
+  height: 540px;
+}
+
+.background-blue h1 {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.background-blue button {
+  padding: 12px 124px;
+  background-color: #3399ff;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 40px;
+  margin-top: 32px;
+}
+
+.background-blue button:hover {
+  background-color: #1b62a9;
+}
+
+.top {
+  z-index: 1;
+}
+
+.home-top {
+  margin-top: 200px;
+  max-width: 746px;
+}
+
+main {
+  background-color: #fcfcfc;
+}
+
+.content-box {
+  padding-top: 138px;
+  background-color: #fff;
+}
+
+#content-lastbox {
+  margin-bottom: 138px;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  max-width: 988px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 12px;
+  background-color: #fcfcfc;
+  justify-content: space-around;
+}
+
+#section03-text {
+  text-align: right;
+}
+
+.section-text h1 {
+  margin-top: 12px;
+  margin-bottom: 24px;
+  font-size: clamp(24px, 2.6vw, 40px);
+  font-weight: 700;
+}
+
+.section-text h2 {
+  margin-top: 103px;
+  color: #3399ff;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.section-text p {
+  font-weight: 500;
+  font-size: clamp(18px, 1.5vw, 24px);
+}
+
+.home-bottom {
+  margin-top: 145px;
+  overflow: hidden;
+}
+
+footer {
+  height: 160px;
+  width: 100vw;
+  background-color: #111827;
+}
+
+.fct {
+  width: 100%;
+  max-width: 1120px;
+  padding-top: 32.5px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fct p {
+  color: #8b929e;
+  font-size: clamp(12px, 1vw, 16px);
+  font-weight: 400;
+  order: 0;
+}
+
+.fnav {
+  display: flex;
+  background-color: inherit;
+  color: #fff;
+  gap: 30px;
+}
+
+.fnav button {
+  background-color: inherit;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.fct ul {
+  display: flex;
+  gap: 12px;
+}
+
+.fct li {
+  overflow: hidden;
+  width: 20px;
+  height: 20px;
+}
+
+.fct a {
+  display: block;
+}
+
+@media (min-width: 375px) and (max-width: 767px) {
+  .section {
+    width: 100%;
+  }
+
+  .login {
+    height: 48px;
+    line-height: 27px;
+  }
+
+  /* 헤더 좌우 여백 */
+  .gnb-inner {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .gnb-inner img {
+    content: url("img/mobile-logo.png");
+    height: 53px;
+  }
+
+  #section-top {
+    margin-top: 70px;
+    height: 540px;
+  }
+
+  .top {
+    margin-top: 48px;
+  }
+
+  /* background-blue 영역: 버튼이 이미지 위 */
+  .background-blue {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+  }
+
+  .background-blue .home-top {
+    margin-top: 24px;
+    width: 80%;
+  }
+
+  #section-bottom h1 {
+    margin-top: 121px;
+  }
+
+  .home-bottom {
+    margin-top: 0;
+    width: 80%;
+  }
+
+  .background-blue button {
+    margin-top: 16px;
+    padding: 12px 90px;
+  }
+
+  /* 콘텐츠 세로 정렬 */
+  .content {
+    flex-direction: column;
+    /* align-items: center; */
+    padding: 0 16px;
+    /* text-align: center; */
+  }
+
+  #content-reverse {
+    flex-direction: column-reverse;
+  }
+
+  .content img {
+    width: 100%;
+    margin-top: 24px;
+  }
+
+  .section-text h1 {
+    font-size: 2.5rem;
+    margin-top: 16px;
+  }
+
+  .section-text h2 {
+    font-size: 1.5rem;
+    margin-top: 24px;
+  }
+
+  .section-text p {
+    font-size: 1.6rem;
+    margin-top: 24px;
+  }
+
+  footer {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Footer 간격 축소 */
+  .fct {
+    flex-wrap: wrap;
+    gap: 28px;
+    padding: 40px;
+    text-align: center;
+    justify-content: flex-start;
+  }
+
+  .fct button {
+    font-size: 2rem;
+  }
+
+  .fnav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 80px;
+    justify-content: center;
+  }
+
+  .fct ul {
+    padding-left: 34px;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .fct li {
+    width: 40px;
+    height: 40px;
+  }
+
+  .fct img {
+    height: 40px;
+    width: 40px;
+  }
+
+  .fct p {
+    font-size: 2rem;
+    order: 3; /* 글자가 맨 밑에 오도록 */
+    color: #8b929e;
+  }
+}
+
+/* 태블릿 */
+/* (min-width: 768px) and */
+@media (min-width: 768px) and (max-width: 1199px) {
+  section {
+    width: 100%;
+  }
+  h1 > br {
+    display: none;
+  }
+
+  #section-top {
+    margin-top: 70px;
+    height: 770px;
+  }
+
+  .section-text h1 {
+    font-size: 2.5rem;
+    margin-top: 16px;
+  }
+
+  .section-text h2 {
+    font-size: 1.5rem;
+    margin-top: 24px;
+  }
+
+  .section-text p {
+    font-size: 1.6rem;
+    margin-top: 24px;
+  }
+
+  #section-bottom {
+    height: 927px;
+  }
+
+  #section-bottom > img {
+    margin-top: 217px;
+  }
+
+  .gnb-inner {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .gnb img {
+    height: 50px;
+  }
+
+  .background-blue button {
+    margin-top: 16px;
+    padding: 12px 60px;
+  }
+
+  .content {
+    flex-direction: column;
+    padding: 0 24px;
+    text-align: left;
+  }
+
+  .content img {
+    width: 100%;
+    margin-top: 24px;
+  }
+
+  #content-reverse {
+    flex-direction: column-reverse;
+  }
+
+  .flex-content {
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: center;
+  }
+
+  .onlyPC {
+    display: block;
+  }
+
+  .fct {
+    padding-top: 24px;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .fnav {
+    gap: 20px;
+  }
+}

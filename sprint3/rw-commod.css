@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
+  background-color: #fff;
+  font-family: "Pretendard Variable", sans-serif;
+  color: #374151;
+  overflow-x: hidden;
+}
+
+.flex-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+section {
+  width: 100vw;
+}
+
+:root {
+  --color-primary: #3399ff;
+  --color-primary-dark: #1b62a9;
+  --color-text: #374151;
+  --color-text-light: #8b929e;
+  --color-background: #fcfcfc;
+  --color-background-dark: #111827;
+  --color-banner: #cfe5ff;
+
+  --container-width: 1120px;
+  --header-height: 70px;
+  --footer-height: 160px;
+
+  --spacing-xs: 12px;
+  --spacing-sm: 24px;
+  --spacing-md: 32px;
+  --spacing-lg: 60px;
+  --spacing-xl: 138px;
+}
+
+/* 공통 버튼 스타일 */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 40px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+}
