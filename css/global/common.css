@@ -14,16 +14,19 @@ body {
   font-family: "Pretendard";
   font-weight: 400;
   src: url("/fonts/Pretendard-Regular.woff2") format("woff2");
+  font-display: swap;
 }
 @font-face {
   font-family: "Pretendard";
   font-weight: 500;
   src: url("/fonts/Pretendard-Medium.woff2") format("woff2");
+  font-display: swap;
 }
 @font-face {
   font-family: "Pretendard";
   font-weight: 700;
   src: url("/fonts/Pretendard-Bold.woff2") format("woff2");
+  font-display: swap;
 }
 
 /* layout */
@@ -31,15 +34,7 @@ body {
   padding-top: 70px;
 }
 
-/* input */
-input {
-  font-family: "Pretendard", sans-serif;
-}
-
 /* button */
-button {
-  font-family: "Pretendard", sans-serif;
-}
 button:disabled {
   cursor: default;
   background-color: var(--gray400);
