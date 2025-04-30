@@ -29,7 +29,7 @@ function updateFailStyle(e, validRule) {
         validator.input.classList.add("error-Line");
         const err = document.createElement("span");
         err.classList.add("error-message");
-        err.innerText = validator.createMsg();
+        err.textContent = validator.createMsg();
         validator.input.insertAdjacentElement("afterend", err);
         validator.passed = false;
     } else {

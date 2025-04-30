@@ -2,8 +2,6 @@ import { createValidRule, ruleObj, emailInput, passwordInput, nameInput, passwor
 import { initValidation } from '/modules/validate.mjs';
 import { initPasswordVisibility, visibilityPw, visibilityPwCheck } from '/modules/toggle-visibility-pw.mjs';
 
-window.addEventListener('DOMContentLoaded', () => {
-    const validRule = createValidRule({ emailInput, passwordInput, nameInput, passwordCheckInput }, ruleObj);
-    initValidation(validRule);
-    initPasswordVisibility(visibilityPw, visibilityPwCheck);
-});
+const validRule = createValidRule({ emailInput, passwordInput, nameInput, passwordCheckInput }, ruleObj);
+initValidation(validRule);
+initPasswordVisibility(visibilityPw, visibilityPwCheck);
