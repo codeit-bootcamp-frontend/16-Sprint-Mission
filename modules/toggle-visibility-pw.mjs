@@ -8,7 +8,6 @@ export const visibilityPwCheck = document.querySelector("#toggle-visibility-pwch
 const visibilityPwCheckLabel = document.querySelector("label[for='toggle-visibility-pwcheck']");
 const pwCheckInput = document.querySelector("#user-password-check");
 
-
 function toggleVisibilityPw() {
     let isShowing = visibilityPw.checked;
     if (isShowing) {
