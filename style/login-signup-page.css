@@ -103,6 +103,17 @@
   color: var(--color-primary);
 }
 
+/* Error  발생 시 */
+input.error {
+  border: 2px solid red;
+}
+
+.error-message {
+  padding-left: 16px;
+  font-size: 14px;
+  color: red;
+}
+
 /* Mobile size */
 @media (max-width: 767px)  {
   .login-signup-page {

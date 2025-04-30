@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>판다마켓</title>
+    <title>판다마켓 - 회원가입</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
@@ -35,6 +35,7 @@
             placeholder="이메일을 입력해주세요"
             required
           />
+          <div class="error-message"></div>
         </div>
         <div class="user-info">
           <label for="nickname">닉네임</label>
@@ -45,6 +46,7 @@
             placeholder="닉네임을 입력해주세요"
             required 
           />
+          <div class="error-message"></div>
         </div>
         <div class="user-info">
           <label for="password">비밀번호</label>
@@ -55,6 +57,7 @@
             placeholder="비밀번호를 입력해주세요"
             required 
           />
+          <div class="error-message"></div>
         </div>
         <div class="user-info">
           <label for="password-check">비밀번호 확인</label>
@@ -65,6 +68,7 @@
             placeholder="비밀번호를 재입력해주세요"
             required
           />
+          <div class="error-message"></div>
         </div>
         <div class="login-signup-button flex-center">
           <span>회원가입</span>
@@ -86,5 +90,6 @@
         </footer>
       </form>
     </main>
+    <script src="js/signup.js"></script>
   </body>
 </html>
