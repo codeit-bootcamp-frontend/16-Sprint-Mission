@@ -7,20 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>판다마켓</title>
     <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/signup.css">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   </head>
 </head>
 <body>
-  <div class="login-page">
-    <div class="login-logo">
+  <div class="signup-page">
+    <div class="signup-logo">
       <a href="../index.html" aria-label="홈으로 이동">
-        <img src="../image/property 1=lg.svg" alt="로그인페이지 판다마켓 로고">
+        <img src="../image/property 1=lg.svg" alt="회원가입 페이지 판다마켓 로고">
       </a>
     </div>
-    <form class="login-form">
+    <form class="signup-form">
       <label for="username">이메일</label>
       <input id="username" name="email" type="email" placeholder="codeit@email.com">
+      <label for="nickname">닉네임</label>
+      <input id="nickname" name="nickname" type="text" placeholder="판다">
       <label for="password">비밀번호</label>
       <div class="password-wrapper">
         <input id="password" name="password" type="password">
@@ -30,10 +32,20 @@
         <div id="hide-eye">
           <img src="../image/Property 1=Variant2.svg">
         </div>
+      </div>
+      <label for="password-check">비밀번호 확인</label>
+      <div class="password-check-wrapper">
+        <input id="password-check" name="password-check" type="password">
+        <div id="show-check-eye">
+          <img src="../image/Property 1=Default.svg">
         </div>
-      <button id="login-form_btn">로그인</button>
+        <div id="hide-check-eye">
+          <img src="../image/Property 1=Variant2.svg">
+        </div>
+      </div>
+      <button id="signup-form_btn">회원가입</button>
     </form>
-    <div class="login-footer">
+    <div class="signup-footer">
       <div>간편 로그인하기</div>
       <div class="logo-img">
         <a class="google" href="https://www.google.com/" target="_blank" rel="noopener noreferrer">
@@ -44,13 +56,11 @@
         </a>
       </div>
     </div>
-    <div class="login-signup">
-      <span>판다마켓이 처음이신가요?</span>
-      <a href="signup.html">회원가입</a>
+    <div class="signup-login">
+      <span>이미 회원이신가요?</span>
+      <a href="login.html">로그인</a>
     </div>
-
   </div>
-
-<script src="../loginscript.js"></script>
+  <script src="../signupscript.js"></script>
 </body>
 </html>

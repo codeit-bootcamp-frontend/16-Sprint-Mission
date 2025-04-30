@@ -1,0 +1,91 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+@import 'style.css';
+
+body {
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  margin: 0 auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+.login-page {
+  width: 640px;
+  margin: 50px auto;
+}
+
+.login-logo {
+  display: flex;
+  justify-content: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  padding-top: 40px;
+  color: var(--color-gray900);
+}
+
+.login-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-lightblue);
+  height: 74px;
+  border-radius: 8px;
+  padding: 16px 23px;
+  color: var(--color-gray900);
+  font-weight: var(--font-weight-md);
+  margin: 24px 0;
+}
+
+.login-signup {
+  text-align: center;
+}
+
+.logo-img {
+  display: flex;
+  gap: 16px;
+}
+
+#username, 
+#password {
+  background-color: var(--color-gray100);
+  border: none;
+  border-radius: 12px;
+  height: 56px;
+  width: 640px;
+  margin: 16px 0 24px;
+  padding-left: 16px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-rg);
+}
+
+label {
+  font-size: var(--spacing-sm);
+  font-weight: var(--font-weight-bd);
+}
+
+#login-form_btn {
+  background-color: var(--color-blue);
+  color: var(--color-gray100);
+  border: none;
+  border-radius: 40px;
+  padding: 16px 124px 16px;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bd);
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+#show-eye,
+#hide-eye {
+  position: absolute;
+  right: 20px;
+  bottom: 35px;
+}
