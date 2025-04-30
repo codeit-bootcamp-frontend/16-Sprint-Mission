@@ -14,7 +14,7 @@
     <title>로그인 - 판다마켓</title>
   </head>
   <body>
-    <main class="login-form">
+    <main id="login-form" class="login-form">
       <a href="/index.html"
         ><img
           class="login-form-img"
@@ -28,9 +28,10 @@
             type="email"
             name="email"
             id="email"
-            placeholder="codeit@email.com"
+            placeholder="이메일을 입력해주세요"
             aria-required="true"
           />
+          <span id="emailMsg" class="error-msg"></span>
         </div>
         <div class="login-form_form-input">
           <label for="password">비밀번호</label>
@@ -38,15 +39,22 @@
             type="password"
             name="password"
             id="password"
-            placeholder="••••••••"
+            placeholder="비밀번호를 입력해주세요"
             aria-required="true"
           />
+          <span id="passwordMsg" class="error-msg"></span>
           <button class="input-icon" type="button">
             <i class="fa-regular fa-eye-slash"></i>
           </button>
         </div>
 
-        <button class="login-form_form_btn button" type="submit">로그인</button>
+        <button
+          class="login-form_form_btn button disabled"
+          type="submit"
+          disabled
+        >
+          로그인
+        </button>
         <div class="login-form_oath">
           <p>간편 로그인하기</p>
           <div class="login-form_oath-img">
@@ -71,5 +79,6 @@
       src="https://kit.fontawesome.com/2cb872ecbb.js"
       crossorigin="anonymous"
     ></script>
+    <script src="/src/loginForm.js" type="module"></script>
   </body>
 </html>

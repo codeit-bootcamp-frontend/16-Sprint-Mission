@@ -14,7 +14,7 @@
     <title>회원가입 - 판다마켓</title>
   </head>
   <body>
-    <main class="login-form signup-form">
+    <main id="signup-form" class="login-form signup-form">
       <a href="/index.html"
         ><img
           class="login-form-img"
@@ -28,9 +28,10 @@
             type="email"
             name="email"
             id="email"
-            placeholder="codeit@email.com"
+            placeholder="이메일을 입력해주세요"
             aria-required="true"
           />
+          <span id="emailMsg" class="error-msg"></span>
         </div>
         <div class="login-form_form-input">
           <label for="nickname">닉네임</label>
@@ -38,9 +39,10 @@
             type="text"
             name="nickname"
             id="nickname"
-            placeholder="판다"
+            placeholder="닉네임을 입력해주세요"
             aria-required="true"
           />
+          <span id="nicknameMsg" class="error-msg"></span>
         </div>
         <div class="login-form_form-input">
           <label for="password">비밀번호</label>
@@ -48,9 +50,10 @@
             type="password"
             name="password"
             id="password"
-            placeholder="••••••••"
+            placeholder="비밀번호를 입력해주세요"
             aria-required="true"
           />
+          <span id="passwordMsg" class="error-msg"></span>
           <button class="input-icon" type="button">
             <i class="fa-regular fa-eye-slash"></i>
           </button>
@@ -59,17 +62,22 @@
           <label for="password-comfirm">비밀번호 확인</label>
           <input
             type="password"
-            name="비밀번호"
+            name="password-comfirm"
             id="password-comfirm"
-            placeholder="••••••••"
+            placeholder="비밀번호를 다시 한 번 입력해주세요"
             aria-required="true"
           />
+          <span id="passwordComfirmMsg" class="error-msg"></span>
           <button class="input-icon" type="button">
-            <i class="fa-regular fa-eye"></i>
+            <i class="fa-regular fa-eye-slash"></i>
           </button>
         </div>
 
-        <button class="login-form_form_btn button" type="submit">
+        <button
+          class="login-form_form_btn button disabled"
+          type="submit"
+          disabled
+        >
           회원가입
         </button>
         <div class="login-form_oath">
@@ -97,4 +105,5 @@
     src="https://kit.fontawesome.com/2cb872ecbb.js"
     crossorigin="anonymous"
   ></script>
+  <script src="/src/signupForm.js" type="module"></script>
 </html>
