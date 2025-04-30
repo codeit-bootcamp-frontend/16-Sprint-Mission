@@ -15,7 +15,7 @@ body {
 
 .form-container-logo {
   width: 369px;
-  height: 132px;
+  height: 100%;
 }
 
 .form-content {
@@ -78,4 +78,21 @@ body {
 
 a {
   color: var(--color-blue)
+}
+
+@media (max-width: 767px) {
+  .form-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 80px auto;
+  }
+
+  .form-container-logo {
+    width: 198px;
+    height: 100%;
+  }
+
+  .form-content-label {
+    font-size: 14px;
+  }
 }

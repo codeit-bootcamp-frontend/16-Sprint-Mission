@@ -36,12 +36,18 @@ body {
   width: 100%;
 }
 
+.imageSet {
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  display: block; 
+}
+
 .login {
-  padding: 16px 34px;
-  border-radius: 10px;
+  padding: 12px 41px;
+  border-radius: 8px;
   color: #f3f4f6;
   margin: 0;
-  flex-shrink: 0;
 }
 
 .title-helper {
@@ -49,7 +55,7 @@ body {
   justify-content: space-between;
   align-items: flex-end;
   margin: 0 auto;
-  width: 1110px;
+  /* max-width: 1110px; */
 }
 
 .title {
@@ -68,37 +74,37 @@ body {
 }
 
 .subtitle {
-  font-size: 40px;
+  font-size: clamp(32px, 4vw, 40px);
   font-weight: 700;
   margin-bottom: 40px;
 }
-
-
-.home {
-  flex-shrink: 0;
-}
-
 
 section {
   margin: 0 auto;
 }
 
 .badge {
-  font-size: 18px;
+  font-size: clamp(16px, 4vw, 18px);
   font-weight: 700;
   color: #3692ff;
   line-height: 26px;
+  width: 100%;
+}
+
+.section-content {
+  padding-right: 24px;
 }
 
 .section-title {
-  font-size: 40px;
+  white-space: normal;
+  word-break: keep-all;
+  font-size: clamp(24px, 4vw, 40px);
   font-weight: 700;
   line-height: 140%;
-  margin: 0 64px;
 }
 
 .section-subtitle {
-  font-size: 24px;
+  font-size: clamp(16px, 4vw, 24px);
   font-weight: 500;
   line-height: 32px;
 }
@@ -156,6 +162,7 @@ footer {
   padding-top: 40px;
   margin: 0 auto;
   max-width: 1110px;
+  flex-wrap: wrap;
 }
 
 .link {
@@ -167,19 +174,53 @@ footer a {
   padding: 0 10px;
 }
 
+@media (max-width: 1199px) {
+  body {
+    background-color: #fcfcfc;
+  }
 
-@media all and (max-width: 1110px) {
   .nav-inner {
-    padding: 0 20px;
+    padding: 0 24px;
   }
 
   .title-helper {
     flex-direction: column;
     align-items: center;
   }
+  
+  .title-p {
+    text-align: center;
+  }
+
+  .main-container {
+    gap: 52px;
+  }
 
   .main-content {
     flex-direction: column;
-   
+    align-items: normal;
+    width: 100%;
+    padding: 24px;
+  }
+
+  .footer-name {
+    color: var(--color-gray200);
+  }
+}
+
+@media (max-width: 767px) {
+  .nav-inner {
+    padding: 0 16px;
+  }
+  
+  .footer {
+    padding: 40 16px
+  }
+
+  .footer-name {
+    order: 3;
+    width: 100%;
+    text-align: left;
+    margin-top: 60px;
   }
 }

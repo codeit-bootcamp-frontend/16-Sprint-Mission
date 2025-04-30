@@ -16,10 +16,10 @@
 }
 
 .button {
-  background-color: #3692ff;
+  background-color: var(--color-blue);
   padding: 16px 124px;
   border-radius: 9999px;
-  color: #f9fafb;
+  color: var(--color-gray50);
   text-decoration: none;
   font-size: 16px;
   border: none;
