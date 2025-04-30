@@ -14,7 +14,7 @@ export function validatePassword(input, chkInput) {
   // 비밀번호 체크 연동
   if (chkInput) {
     if (input.value !== chkInput.value) {
-      validatePasswordChk(input, chkInput);
+      validatePasswordCheck(input, chkInput);
     } else {
       return { isValid: true, message: "" };
     }
@@ -31,7 +31,7 @@ export function validatePassword(input, chkInput) {
 }
 
 /* 비밀번호 확인 유효성 */
-export function validatePasswordChk(input, chkInput) {
+export function validatePasswordCheck(input, chkInput) {
   if (input.value !== chkInput.value) {
     return { isValid: false, message: "비밀번호가 일치하지 않습니다." };
   }

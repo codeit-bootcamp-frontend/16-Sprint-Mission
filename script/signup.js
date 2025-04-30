@@ -2,61 +2,102 @@
 import {
   validateEmail,
   validatePassword,
-  validatePasswordChk,
+  validatePasswordCheck,
   validateNickname,
 } from "./util/validators.js";
+import { updateValidationUI } from "./util/updateValidationUI.js";
 import togglePasswordHandler from "./util/togglePassword.js";
 
-const form = document.querySelector(".form");
+const form = document.querySelector("#signupForm");
 const emailInput = document.querySelector("#userEmail");
 const nicknameInput = document.querySelector("#userNickname");
 const passwordInput = document.querySelector("#userPassword");
-const passwordChkInput = document.querySelector("#userPasswordChk");
+const passwordCheckInput = document.querySelector("#userPasswordChk");
 const signupBtn = document.querySelector("#signupBtn");
 
-function createFormValidator() {
-  let emailValid = false;
-  let nicknameValid = false;
-  let passwordValid = false;
-  let passwordChkValid = false;
+// 상수 정의
+const FORM_INPUT_IDS = {
+  EMAIL: emailInput.id,
+  PASSWORD: passwordInput.id,
+  PASSWORD_CHECK: passwordCheckInput.id,
+  NICKNAME: nicknameInput.id,
+};
 
-  return function formValidate(e) {
-    switch (e.target.id) {
-      case "userEmail":
-        emailValid = validateEmail(emailInput);
-        break;
-      case "userNickname":
-        nicknameValid = validateNickname(nicknameInput);
-        break;
-      case "userPassword":
-        passwordValid = validatePassword(passwordInput, passwordChkInput);
-        break;
-      case "userPasswordChk":
-        passwordChkValid = validatePasswordChk(passwordInput, passwordChkInput);
-        break;
-    }
+// DOM과 유효성 검사기 연결
+const inputValidatorMap = {
+  [FORM_INPUT_IDS.EMAIL]: validateEmail,
+  [FORM_INPUT_IDS.PASSWORD]: validatePassword,
+  [FORM_INPUT_IDS.PASSWORD_CHECK]: validatePasswordMatch,
+  [FORM_INPUT_IDS.NICKNAME]: validateNickname,
+};
 
-    signupBtn.disabled = !(
-      emailValid &&
-      nicknameValid &&
-      passwordValid &&
-      passwordChkValid
-    );
-  };
+const FORM_SUBMIT_BUTTON = signupBtn;
+
+const REDIRECT_TARGET = "/login.html";
+
+// 각 키의 유효성 검사값 초기화: [input.id, false]
+const validatorKey = Object.keys(inputValidatorMap);
+const validStateMap = new Map(validatorKey.map((id) => [id, false]));
+
+// 비밀번호 확인 유효성 검사 (비밀번호, 비밀번호 확인 value 연동)
+function validatePasswordMatch(input) {
+  return validatePasswordCheck(passwordInput, input);
 }
 
-form.addEventListener("focusout", createFormValidator());
+// form에 유효성 검사 위임
+function delegateFormValidation() {
+  form.addEventListener("focusout", handleFormValidation);
+}
 
-/* 비밀번호 토글 */
-togglePasswordHandler(form);
+// 유효성 검사 전, 검사 대상 필터
+function handleFormValidation(e) {
+  const input = e.target;
+  if (!validatorKey.includes(input.id)) return;
 
-/* UX: 첫번째 input focus 처리 */
-window.addEventListener("DOMContentLoaded", () => {
-  form.querySelector(".form-input").focus();
-});
+  handleFormInputValidation(input);
+}
 
-/* 회원가입 버튼 클릭 시 'login'으로 이동 */
-signupBtn.addEventListener("click", (e) => {
+// 유효성 검사
+function handleFormInputValidation(input) {
+  const validationFunc = inputValidatorMap[input.id];
+
+  if (!validationFunc) return;
+
+  const validationResult = validationFunc(input);
+  updateValidationUI(input, validationResult);
+
+  // 변경된 유효성 상태 업데이트
+  validStateMap.set(input.id, validationResult.isValid);
+  updateSubmitButtonState();
+}
+
+// 제출 버튼 상태 변경
+function updateSubmitButtonState() {
+  const isAllValid = [...validStateMap.values()].every(Boolean);
+  FORM_SUBMIT_BUTTON.disabled = !isAllValid;
+}
+
+function navigateOnFormSuccess(e) {
   e.preventDefault();
-  location.href = "/login.html";
-});
+  location.href = REDIRECT_TARGET;
+}
+
+function focusFirstInput() {
+  form.querySelector(".form-input").focus();
+}
+
+function init() {
+  /* 폼 유효성 검사 */
+  delegateFormValidation();
+
+  /* 비밀번호 토글 */
+  togglePasswordHandler(form);
+
+  /* 첫번째 input focus 처리 */
+  focusFirstInput();
+
+  /* 폼 제출 성공 시 페이지 이동 */
+  FORM_SUBMIT_BUTTON.addEventListener("click", navigateOnFormSuccess);
+}
+
+window.addEventListener("DOMContentLoaded", init);
