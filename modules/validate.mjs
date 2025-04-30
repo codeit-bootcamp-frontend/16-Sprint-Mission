@@ -1,16 +1,16 @@
 const userForm = document.querySelector("form");
 const submitBtn = document.querySelector("button");
 
-// 유효성 검사 전부 통과했나요?
+// 검사 통과 못한 거 있나요?
 function hasInvalidInput(validRule) {
-    return Object.values(validRule).some(validator => validator.passed == false)
+    return Object.values(validRule).some(validator => validator.passed === false);
 }
 
 //폼 전송 막기
 function preventInvalidSubmit(e, validRule) {
     //서브밋 누르면 통과 못한 인풋에 경고 보여줘
     Object.values(validRule).forEach((validator) => {
-        updateFailStyle({ currentTarget: validator.input }, validRule)
+        updateFailStyle({ currentTarget: validator.input }, validRule);
     });
 
     if (hasInvalidInput(validRule)) {
@@ -20,7 +20,7 @@ function preventInvalidSubmit(e, validRule) {
 
 //검사 실패 시 스타일 추가
 function updateFailStyle(e, validRule) {
-    const { name } = e.currentTarget
+    const { name } = e.currentTarget;
     const validator = validRule[name];
 
     document.querySelector(`#${name}+.error-message`)?.remove();
@@ -37,7 +37,7 @@ function updateFailStyle(e, validRule) {
         validator.passed = true;
     }
 
-    updateButton(validRule)
+    updateButton(validRule);
 }
 
 // 버튼 스타일 추가
@@ -45,7 +45,7 @@ function updateButton(validRule) {
     submitBtn.classList.toggle("pass-button", !hasInvalidInput(validRule));
 }
 
-///리스너 추가
+//리스너 추가
 export function initValidation(validRule) {
     for (let validator in validRule) {
         validRule[validator].input.addEventListener("focusout", e => updateFailStyle(e, validRule));
