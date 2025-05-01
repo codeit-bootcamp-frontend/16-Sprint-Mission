@@ -8,9 +8,11 @@ import {
 import togglePasswordVisible from "./togglePasswordVisible.js";
 import validateForm from "./validateForm.js";
 import focusFirstField from "../util/focusFirstField.js";
+import { REDIRECT_MAP } from "../constants.js";
 
 const form = document.querySelector("#signupForm");
 const formButton = document.querySelector("#signupBtn");
+const redirectUrl = REDIRECT_MAP[window.location.pathname];
 
 function init() {
   validateForm({
@@ -22,7 +24,7 @@ function init() {
       userPasswordChk: validatePasswordCheck,
       userNickname: validateNickname,
     },
-    onSubmitRedirectUrl: "/login.html",
+    onSubmitRedirectUrl: redirectUrl,
   });
   togglePasswordVisible(form);
   focusFirstField(form);

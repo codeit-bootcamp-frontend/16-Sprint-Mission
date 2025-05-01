@@ -38,7 +38,9 @@ export default function validateForm({
     updateSubmitButtonState();
 
     // 비밀번호, 비밀번호 확인 필드 유효성 검사 연동
+    if (e.target.id !== "userPassword") return;
     const inputPasswordCheck = form.querySelector("#userPasswordChk");
+
     if (inputPasswordCheck?.value) {
       const result = validatePasswordCheck(inputPasswordCheck);
       updateValidationUI(inputPasswordCheck, result);
