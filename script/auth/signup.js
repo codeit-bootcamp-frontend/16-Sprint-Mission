@@ -21,10 +21,7 @@ function init() {
     inputValidatorMap: {
       userEmail: validateEmail,
       userPassword: validatePassword,
-      userPasswordChk: (input) => {
-        const passwordInput = document.querySelector("#userPassword");
-        validatePasswordCheck(passwordInput, input);
-      },
+      userPasswordChk: validatePasswordCheck,
       userNickname: validateNickname,
     },
     onSubmitRedirectUrl: REDIRECT_URL,

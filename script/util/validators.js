@@ -10,11 +10,12 @@ export function validateEmail(input) {
 }
 
 /* 비밀번호 유효성 */
-export function validatePassword(input, chkInput) {
+export function validatePassword(input) {
+  const inputPasswordCheck = document.querySelector("#userPasswordChk");
   // 비밀번호 체크 연동
-  if (chkInput) {
-    if (input.value !== chkInput.value) {
-      validatePasswordCheck(input, chkInput);
+  if (inputPasswordCheck) {
+    if (input.value !== inputPasswordCheck.value) {
+      validatePasswordCheck(inputPasswordCheck);
     } else {
       return { isValid: true, message: "" };
     }
@@ -31,8 +32,9 @@ export function validatePassword(input, chkInput) {
 }
 
 /* 비밀번호 확인 유효성 */
-export function validatePasswordCheck(input, chkInput) {
-  if (input.value !== chkInput.value) {
+export function validatePasswordCheck(input) {
+  const inputPassword = document.querySelector("#userPassword");
+  if (inputPassword.value !== input.value) {
     return { isValid: false, message: "비밀번호가 일치하지 않습니다." };
   }
   return { isValid: true, message: "" };
