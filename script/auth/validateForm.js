@@ -15,7 +15,7 @@ export default function validateForm({
   // 폼 필드에 이벤트 리스너 등록
   function attachFieldsValidation() {
     const targetFields = validatorKey.map((key) =>
-      document.querySelector(`#${key}`)
+      form.querySelector(`#${key}`)
     );
 
     targetFields.forEach((field) => {
@@ -38,7 +38,7 @@ export default function validateForm({
     updateSubmitButtonState();
 
     // 비밀번호, 비밀번호 확인 필드 유효성 검사 연동
-    const inputPasswordCheck = document.querySelector("#userPasswordChk");
+    const inputPasswordCheck = form.querySelector("#userPasswordChk");
     if (inputPasswordCheck?.value) {
       const result = validatePasswordCheck(inputPasswordCheck);
       updateValidationUI(inputPasswordCheck, result);
