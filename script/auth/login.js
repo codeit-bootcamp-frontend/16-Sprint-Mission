@@ -6,8 +6,6 @@ import focusFirstField from "../util/focusFirstField.js";
 
 const form = document.querySelector("#loginForm");
 const formButton = document.querySelector("#loginBtn");
-const REDIRECT_URL = "/items.html";
-const PASSWORD_TOGGLE_BUTTONS = form.querySelectorAll(".btn-password-visible");
 
 function init() {
   validateForm({
@@ -17,9 +15,9 @@ function init() {
       userEmail: validateEmail,
       userPassword: validatePassword,
     },
-    onSubmitRedirectUrl: REDIRECT_URL,
+    onSubmitRedirectUrl: "/items.html",
   });
-  togglePasswordVisible(PASSWORD_TOGGLE_BUTTONS);
+  togglePasswordVisible(form);
   focusFirstField(form);
 }
 

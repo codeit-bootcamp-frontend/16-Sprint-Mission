@@ -1,6 +1,7 @@
 "use strict";
 
-export default function togglePasswordVisible(btns) {
+export default function togglePasswordVisible(form) {
+  const btns = form.querySelectorAll(".btn-password-visible");
   if (!btns) return;
 
   btns.forEach((btn) => {
