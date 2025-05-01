@@ -106,18 +106,19 @@ function authBtnValidity(){
   const singUpValidation = validationStatus.passwordConfirm && validationStatus.nickName;
 
   if(singUpInputPage != null){
+    // 회원가입
     DOM.authBtn.disabled = !(singInValidation && singUpValidation);
   }else{
-    console.log(singInValidation)
+    // 로그인
     DOM.authBtn.disabled = !(singInValidation);
   }
 }
 
 // 페이지 초기화 함수
 function initPage() {
-  const inputs = [DOM.emailInput, DOM.passwordInput];
-  if (DOM.passwordConfirmInput) inputs.push(DOM.passwordConfirmInput);
-  if (DOM.nickNameInput) inputs.push(DOM.nickNameInput);
+  const inputs = [DOM.emailInput, DOM.passwordInput]; // 로그인
+  if (DOM.passwordConfirmInput) inputs.push(DOM.passwordConfirmInput); // 회원가입: 비밀번호 확인
+  if (DOM.nickNameInput) inputs.push(DOM.nickNameInput); // 회원가입: 닉네임
 
   // input focus out 메세지 제어
   inputs.forEach(input => {
@@ -127,24 +128,21 @@ function initPage() {
   // 비밀번호 보이기 토글 기능 초기화
   visibilityPassword(DOM.form);
 
-  // 첫 번째 입력 필드에 포커스
+  // 첫 번째 input에 포커스
   DOM.form.querySelector('.auth__input').focus();
   // DOM.form.querySelector('.auth__input')?.focus();
 
   DOM.authBtn.addEventListener('click', (e) => {
-    e.preventDefault();
+    e.preventDefault(); // 유효성 검사를 위한 페이지를 새로 고침방지
     
-    // 모든 input 강제 검사
-    inputs.forEach(input => validateInput(input));
+    inputs.forEach(input => validateInput(input)); // 모든 input 검사
     
-    const singUpInputPage = DOM.passwordConfirmInput && DOM.nickNameInput;
-    const isValid = singUpInputPage
+    const isValid = singUpInputPage //비밀번호 확인 & 닉네임 존재 유무 확인 후 값 넘김
       ? validationStatus.email && validationStatus.password && validationStatus.passwordConfirm && validationStatus.nickName
       : validationStatus.email && validationStatus.password;
     
     if (isValid) {
-      // 페이지 이동 또는 폼 제출
-      location.href = "/items.html";
+      location.href = "/items.html"; // 페이지 이동
     }
   });
 }

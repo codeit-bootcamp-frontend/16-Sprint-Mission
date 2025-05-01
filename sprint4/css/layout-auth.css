@@ -1,5 +1,5 @@
 /* 
-  레이아웃 스타일
+  레이아웃 스타일 / 로그인 회원가입
   layout_login
 */
 
@@ -9,16 +9,21 @@ body {
 }
 
 .auth-page {
-  color: var(--color-gray800);
-  /* max-width: 640px; */
+  width: 100%;
   max-width: 400px;
   margin: 0 auto;
   padding-top: 150px;
+  color: var(--color-gray800);
 }
 
 /* 헤더와 헤더 로고 */
 .auth__header {
   margin-bottom: 40px;
+  text-align: center;
+}
+
+.auth__logo a {
+  display: inline-block;
 }
 
 .auth__logo-img {

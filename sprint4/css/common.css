@@ -10,7 +10,7 @@
   --spacing-left-right-16: 0 18px;
   
   /* 색상 */
-  --color-white: #ffffff;
+  --color-white: #fff;
   --color-Primary-100: #3692FF;
   --color-Primary-200: #1967D6;
   --color-Primary-300: #1251AA;
@@ -26,7 +26,7 @@
   --color-gray100: #F9FAFB;
   --color-background-skyblue: #CFE5FF;
   --color-background-content: #FCFCFC;
-  --color-background-white: #ffffff;
+  --color-background-white: #fff;
   
   /* 폰트 사이즈 */
   --font-size-xxs: 12px;
@@ -49,6 +49,24 @@
   --border-radius-md: 35px;
   --border-radius-sm: 13px;
   --border-radius-xs: 8px;
+}
+
+body {
+  font-family: 'Pretendard';
+  background-color: var(--color-background-white);
+  color: var(--color-gray700);
+}
+
+label {
+  font-weight: var(--font-weight-700);
+  font-size: var(--font-size-lg);
+}
+
+input {
+  padding: 14px 24px;
+  font-size: var(--font-size-md);
+  background-color: var(--color-gray200);
+  border-radius: var(--border-radius-sm);
 }
 
 input::placeholder {
@@ -110,39 +128,19 @@ button:disabled {
   text-align: right;
 }
 
-.fl{float: left}
-.fr{float: right}
-
 .mt0{margin-top:0}
 .mt10{margin-top:10px}
 .mt20{margin-top:20px}
-.mt30{margin-top:30px}
-.mt40{margin-top:40px}
-.mt50{margin-top:50px}
 
 .mb0{margin-bottom:0}
 .mb10{margin-bottom:10px}
 .mb20{margin-bottom:20px}
 .mb24{margin-bottom:24px}
-.mb30{margin-bottom:30px}
-.mb40{margin-bottom:40px}
-.mb50{margin-bottom:50px}
 
 .mr0{margin-right:0}
 .mr10{margin-right:10px}
 .mr20{margin-right:20px}
-.mr30{margin-right:30px}
-.mr40{margin-right:40px}
-.mr50{margin-right:50px}
 
 .ml0{margin-left:0}
 .ml10{margin-left:10px}
 .ml20{margin-left:20px}
-.ml30{margin-left:30px}
-.ml40{margin-left:40px}
-.ml50{margin-left:50px}
-
-.pt0{padding-top:0}
-.pl0{padding-left:0}
-.pr0{padding-right:0}
-.pb0{padding-bottom:0}

@@ -1,5 +1,4 @@
 /* 
-  2025 04 11
   스타일 초기화 
 */
 
@@ -23,10 +22,6 @@ body {
 body {
   line-height: 1.2; /* 1.5 */
   -webkit-font-smoothing: antialiased;
-  /* 추가 */
-  font-family: 'Pretendard';
-  background-color: var(--color-background-white);
-  color: var(--color-gray700);
 }
 
 img,
@@ -71,17 +66,7 @@ button {
   background-color: inherit;
 }
 
-/* label input */
-label {
-  font-weight: var(--font-weight-700);
-  font-size: var(--font-size-lg);
-}
-
 input {
   outline: none;
-  padding: 14px 24px;
-  font-size: var(--font-size-md);
-  background-color: var(--color-gray200);
   border: none;
-  border-radius: var(--border-radius-sm);
 }
