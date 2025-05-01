@@ -51,19 +51,8 @@
   --border-radius-xs: 8px;
 }
 
-/* 비밀번호 숨김, 보이기 이미지 */
-input.visibility__toggle--off {
-  padding: 14px 48px 14px 24px;
-  background-image: url(../images/btn_visibility_off_24px.png);
-  background-repeat: no-repeat;
-  background-position: calc(100% - 24px);
-}
-
-input.visibility__toggle--on {
-  padding: 14px 48px 14px 24px;
-  background-image: url(../images/btn_visibility_on_24px.png);
-  background-repeat: no-repeat;
-  background-position: calc(100% - 24px);
+input::placeholder {
+  color: var(--color-gray400);
 }
 
 /* 버튼 btn */
@@ -95,6 +84,11 @@ input.visibility__toggle--on {
 .btn--color1 {
   color: #ffffff;
   background-color: var(--color-Primary-100);
+}
+
+button:disabled {
+  background-color: var(--color-gray400);
+  cursor: auto;
 }
 
 /* 기본넓이 */
