@@ -7,7 +7,11 @@ const buttonElement = form.querySelector('.form-btn');
 const fieldMap = {
   email: validators.email,
   nickname: validators.nickname,
-  password: validators.password,
+  password: (passwordText) => {
+    //prettier-ignore
+    const passwordVerifyText = form.querySelector('#passwordVerify .form-input').value;
+    return validators.password(passwordText, passwordVerifyText);
+  },
   passwordVerify: (passwordVerifyText) => {
     const passwordText = form.querySelector('#password .form-input').value;
     return validators.passwordVerify(passwordVerifyText, passwordText);

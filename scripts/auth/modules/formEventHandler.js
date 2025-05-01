@@ -8,10 +8,9 @@ export const formEventHandler = ({
 
   const onInputFocusOut = (stateKey) => {
     const validResult = getValidResult(stateKey);
-    setState(stateKey, validResult);
-    updateUIByState(stateKey, validResult);
+    setState(validResult);
+    updateUIByState(validResult);
     updateButtonState();
-    updatePasswordVerify(stateKey);
   };
 
   const getValidResult = (stateKey) => {
@@ -20,39 +19,38 @@ export const formEventHandler = ({
     return validtorFunction(inputText);
   };
 
-  const setState = (stateKey, validResult) => {
-    inputState.set(stateKey, validResult.isValid);
+  const setState = (validResult) => {
+    for (const stateKey in validResult) {
+      if (inputState.get(stateKey) !== undefined) {
+        inputState.set(stateKey, validResult[stateKey].isValid);
+      }
+    }
   };
 
-  const updateUIByState = (stateKey, validResult) => {
-    //prettier-ignore
-    const inputContainerElement = form.querySelector(`#${stateKey} .form-input-container`);
-    //prettier-ignore
-    const spanStateElement = form.querySelector(`#${stateKey} .form-status-info`);
-    spanStateElement.textContent = validResult.message;
-    if (validResult.isValid) {
-      inputContainerElement.classList.add('valid');
-      inputContainerElement.classList.remove('inValid');
-      spanStateElement.classList.add('hidden');
-    } else {
-      inputContainerElement.classList.add('inValid');
-      inputContainerElement.classList.remove('valid');
-      spanStateElement.classList.remove('hidden');
+  const updateUIByState = (validResult) => {
+    for (const stateKey in validResult) {
+      if (inputState.get(stateKey) !== undefined) {
+        //prettier-ignore
+        const inputContainerElement = form.querySelector(`#${stateKey} .form-input-container`);
+        //prettier-ignore
+        const spanStateElement = form.querySelector(`#${stateKey} .form-status-info`);
+        spanStateElement.textContent = validResult[stateKey].message;
+        if (validResult[stateKey].isValid) {
+          inputContainerElement.classList.add('valid');
+          inputContainerElement.classList.remove('inValid');
+          spanStateElement.classList.add('hidden');
+        } else {
+          inputContainerElement.classList.add('inValid');
+          inputContainerElement.classList.remove('valid');
+          spanStateElement.classList.remove('hidden');
+        }
+      }
     }
   };
 
   const updateButtonState = () => {
     //prettier-ignore
     buttonElement.disabled = ![...inputState.values()].every((isValid) => isValid);
-  };
-
-  const updatePasswordVerify = (stateKey) => {
-    if (
-      stateKey === 'password' &&
-      inputState.get('passwordVerify') !== undefined &&
-      inputState.get('passwordVerify') !== null
-    )
-      onInputFocusOut('passwordVerify');
   };
 
   const onButtonClick = (e) => {
@@ -74,10 +72,8 @@ export const formEventHandler = ({
   for (const stateKey in fieldMap) {
     const inputElement = form.querySelector(`#${stateKey} .form-input`);
     inputElement.addEventListener('focusout', () => onInputFocusOut(stateKey));
-
-    const passwordIconElement = form.querySelector(
-      `#${stateKey} .form-icon-password`
-    );
+    //prettier-ignore
+    const passwordIconElement = form.querySelector(`#${stateKey} .form-icon-password`);
     if (passwordIconElement) {
       passwordIconElement.addEventListener('click', (e) =>
         onPasswordIconToggle(stateKey, e)
