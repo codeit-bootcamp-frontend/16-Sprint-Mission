@@ -23,12 +23,30 @@
 
     <form class="form-content">
       <label class="form-content-label" for="email">이메일</label>
-        <input class="form-content-input" id="email" name="email" placeholder="입력">
+        <input 
+          class="form-content-input" 
+          id="email" 
+          name="email" 
+          autocomplete="email"
+          placeholder="입력"
+        >
       
       <label class="form-content-label" for="password">비밀번호</label>
         <div class="input-wrapper">
-          <input class="form-content-input" id="password" name="password" type="password" placeholder="입력">
-          <img class="visibility-icon" src="/img/Property 1=Variant2.png">
+          <input 
+            class="form-content-input" 
+            id="password" 
+            name="password" 
+            type="password" 
+            autocomplete="current-password"
+            placeholder="입력"
+          >
+          <img 
+            class="visibility-icon" 
+            src="/img/Property 1=Variant2.png"
+            aria-label="비밀번호 표시"
+            aria-pressed="false"
+          >
         </div>
       <button class="button loginBtn">로그인</button>
     </form>

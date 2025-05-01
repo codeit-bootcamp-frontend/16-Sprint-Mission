@@ -23,21 +23,56 @@
 
     <form class="form-content">
       <label class="form-content-label" for="email">이메일</label>
-        <input class="form-content-input" id="email" name="email" placeholder="입력">
+        <input 
+          class="form-content-input" 
+          id="email" 
+          name="email" 
+          autocomplete="email"
+          placeholder="입력"
+        >
       
       <label class="form-content-label" for="username">닉네임</label>
-        <input class="form-content-input" id="username" name="username" placeholder="입력">
+        <input 
+          class="form-content-input" 
+          id="username" 
+          name="username"
+          autocomplete="username"
+          placeholder="입력"
+        >
       
       <label class="form-content-label" for="password">비밀번호</label>
         <div class="input-wrapper">
-          <input class="form-content-input" id="password" name="password" type="password" placeholder="입력">
-          <img class="visibility-icon" src="/img/Property 1=Variant2.png">
+          <input 
+            class="form-content-input" 
+            id="password" 
+            name="password" 
+            type="password" 
+            autocomplete="new-password"
+            placeholder="입력"
+          >
+          <img 
+            class="visibility-icon" 
+            src="/img/Property 1=Variant2.png"
+            aria-label="비밀번호 표시"
+            aria-pressed="false"
+          >
         </div>
 
       <label class="form-content-label" for="confirm-password">비밀번호 확인</label>
         <div class="input-wrapper">
-          <input class="form-content-input" id="confirm-password" name="confirm-password" placeholder="입력">
-          <img class="visibility-icon" src="/img/Property 1=Default.png">
+          <input 
+            class="form-content-input" 
+            id="confirm-password" 
+            name="confirm-password" 
+            autocomplete="new-password"
+            placeholder="입력"
+            >
+          <img 
+            class="visibility-icon" 
+            src="/img/Property 1=Default.png"
+            aria-label="비밀번호 표시"
+            aria-pressed="ture"
+          >
         </div>
 
       <button class="button">회원가입</button>
