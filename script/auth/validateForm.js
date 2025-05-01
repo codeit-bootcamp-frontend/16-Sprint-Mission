@@ -12,21 +12,20 @@ export default function validateForm({
   const validatorKey = Object.keys(inputValidatorMap);
   const validStateMap = new Map(validatorKey.map((id) => [id, false]));
 
-  // form에 유효성 검사 위임
-  function delegateFormValidation() {
-    form.addEventListener("focusout", handleFormValidation);
+  // 폼 필드에 이벤트 리스너 등록
+  function attachFieldsValidation() {
+    const targetFields = validatorKey.map((key) =>
+      document.querySelector(`#${key}`)
+    );
+
+    targetFields.forEach((field) => {
+      field.addEventListener("focusout", handleFieldValidation);
+    });
   }
 
-  // 유효성 검사 전, 검사 대상 필터
-  function handleFormValidation(e) {
+  // 폼 필드 유효성 검사
+  function handleFieldValidation(e) {
     const input = e.target;
-    if (!validatorKey.includes(input.id)) return;
-
-    handleFormInputValidation(input);
-  }
-
-  // 유효성 검사
-  function handleFormInputValidation(input) {
     const validationFunc = inputValidatorMap[input.id];
     if (!validationFunc) return;
 
@@ -62,7 +61,7 @@ export default function validateForm({
   }
 
   function init() {
-    delegateFormValidation();
+    attachFieldsValidation();
     formButton.addEventListener("click", handleSubmit);
   }
 
