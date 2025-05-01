@@ -7,7 +7,6 @@ import { REDIRECT_MAP } from "../constants.js";
 
 const form = document.querySelector("#loginForm");
 const formButton = document.querySelector("#loginBtn");
-const redirectUrl = REDIRECT_MAP[window.location.pathname];
 
 function init() {
   validateForm({
@@ -17,7 +16,7 @@ function init() {
       userEmail: validateEmail,
       userPassword: validatePassword,
     },
-    onSubmitRedirectUrl: redirectUrl,
+    onSubmitRedirectUrl: REDIRECT_MAP[window.location.pathname],
   });
   togglePasswordVisible(form);
   focusFirstField(form);
