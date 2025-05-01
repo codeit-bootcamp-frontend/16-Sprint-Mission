@@ -11,17 +11,6 @@ export function validateEmail(input) {
 
 /* 비밀번호 유효성 */
 export function validatePassword(input) {
-  const inputPasswordCheck = document.querySelector("#userPasswordChk");
-  // 비밀번호 체크 연동
-  if (inputPasswordCheck) {
-    if (input.value !== inputPasswordCheck.value) {
-      validatePasswordCheck(inputPasswordCheck);
-    } else {
-      return { isValid: true, message: "" };
-    }
-  }
-
-  // 비밀번호 유효성 검사
   if (input.value.trim().length === 0) {
     return { isValid: false, message: "비밀번호를 입력해주세요." };
   }

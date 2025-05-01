@@ -1,6 +1,6 @@
 "use strict";
-
 import { updateValidationUI } from "../util/updateValidationUI.js";
+import { validatePasswordCheck } from "../util/validators.js";
 
 export default function validateForm({
   form,
@@ -28,15 +28,25 @@ export default function validateForm({
   // 유효성 검사
   function handleFormInputValidation(input) {
     const validationFunc = inputValidatorMap[input.id];
-
     if (!validationFunc) return;
 
+    // 유효성 검사 UI 업데이트
     const validationResult = validationFunc(input);
     updateValidationUI(input, validationResult);
 
-    // 변경된 유효성 상태 업데이트
+    // 유효성 상태 업데이트
     validStateMap.set(input.id, validationResult.isValid);
     updateSubmitButtonState();
+
+    // 비밀번호, 비밀번호 확인 필드 유효성 검사 연동
+    const inputPasswordCheck = document.querySelector("#userPasswordChk");
+    if (inputPasswordCheck?.value) {
+      const result = validatePasswordCheck(inputPasswordCheck);
+      updateValidationUI(inputPasswordCheck, result);
+
+      // 비밀번호 확인 필드 유효성 상태도 업데이트
+      validStateMap.set(inputPasswordCheck.id, result.isValid);
+    }
   }
 
   // 제출 버튼 상태 변경
@@ -45,6 +55,7 @@ export default function validateForm({
     formButton.disabled = !isAllValid;
   }
 
+  // 모두 유효할 경우, 폼 제출
   function handleSubmit(e) {
     e.preventDefault();
     location.href = onSubmitRedirectUrl;
