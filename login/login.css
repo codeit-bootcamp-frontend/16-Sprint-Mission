@@ -3,6 +3,18 @@ html {
   font-family: 'Pretendard-Regular';
 }
 
+:root {
+  --container-max-width: 400px;
+  --container-padding: 0 16px;
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  :root {
+    --container-max-width: 640px;
+    --container-padding: 0 24px;
+  }
+}
+
 .page-wrapper {
   display: flex;
   align-items: center;

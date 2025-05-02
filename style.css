@@ -1,5 +1,17 @@
 @import '/style/index.css';
 
+:root {
+  --container-max-width: 400px;
+  --container-padding: 0 16px;
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  :root {
+    --container-max-width: 640px;
+    --container-padding: 0 24px;
+  }
+}
+
 header {
   position: sticky;
   top: 0;
@@ -138,6 +150,7 @@ header {
   line-height: 140%;
   height: 222px;
   height: 112px;
+  word-break: keep-all;
 }
 
 .hot_footer {
@@ -199,6 +212,7 @@ header {
   text-align: right;
   vertical-align: middle;
   margin-bottom: 24px;
+  word-break: keep-all;
 }
 
 .banner3-footer {
@@ -274,6 +288,7 @@ header {
   vertical-align: middle;
   margin-top: 12px;
   color: var(--text-color);
+  word-break: keep-all;
 }
 
 .banner4_footer {
@@ -374,7 +389,7 @@ span {
 
 /* 테블릿 화면 (최대 1199px)용 반응형 스타일 */
 
-@media (max-width: 1199px) and (min-width: 767px) {
+@media (min-width: 768px) and (max-width: 1199px) {
   .banner {
     height: 771px;
   }
@@ -481,6 +496,7 @@ span {
 
   .banner3-main {
     font-size: 32px;
+    word-break: keep-all;
   }
 
   .banner3-footer {
@@ -522,6 +538,7 @@ span {
     width: 100%;
     height: auto;
     font-size: 32px;
+    word-break: keep-all;
   }
 
   .banner4_footer {
@@ -680,6 +697,7 @@ span {
 
   .banner3-main {
     font-size: 24px;
+    word-break: keep-all;
   }
 
   .banner3-footer {
@@ -735,6 +753,7 @@ span {
     font-size: 24px;
     width: auto;
     height: auto;
+    word-break: keep-all;
   }
 
   .banner4_footer {
