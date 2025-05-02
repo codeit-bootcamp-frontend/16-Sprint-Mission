@@ -2,6 +2,7 @@
  * FormValidator 클래스
  * 로그인 및 회원가입 폼의 입력 유효성을 검사하고
  * 제출 버튼 활성/비활성 상태를 제어합니다.
+ * 로그인 폼은 제출 시 '/items'로 이동합니다.
  */
 import { validateEmail } from '../validators/emailValidator.js';
 import { validatePassword } from '../validators/passwordValidator.js';
@@ -19,21 +20,39 @@ export class FormValidator {
 
     this._attachEvents(); // 이벤트 리스너 연결
     this._setInitialButtonState(); // 초기 버튼 상태 설정
+    this.form.addEventListener('submit', (event) => this._handleSubmit(event));
+  }
+
+  /**
+   * 폼 제출 핸들러: 유효성 통과 시 '/items'로 이동
+   * @param {SubmitEvent} event
+   */
+  _handleSubmit(event) {
+    event.preventDefault();
+    const emailValid = this._validateEmailField();
+    const passwordValid = this._validatePasswordField();
+    if (emailValid && passwordValid) {
+      this._redirectToItems();
+    }
+  }
+
+  /**
+   * '/items' 경로로 이동합니다.
+   */
+  _redirectToItems() {
+    window.location.href = '/items';
   }
 
   /**
    * 폼 필드에 이벤트 리스너를 연결합니다.
    */
   _attachEvents() {
-    // focusout 시 유효성 검사 트리거
     this.emailInput.addEventListener('focusout', () =>
       this._validateEmailField()
     );
     this.passwordInput.addEventListener('focusout', () =>
       this._validatePasswordField()
     );
-
-    // input 이벤트로 버튼 상태 업데이트
     [this.emailInput, this.passwordInput].forEach((inputEl) => {
       inputEl.addEventListener('input', () => this._setSubmitButtonState());
     });
@@ -50,7 +69,7 @@ export class FormValidator {
   /**
    * 에러 메시지 요소를 생성하거나 기존 요소를 반환합니다.
    * @param {HTMLInputElement} inputEl
-   * @returns {HTMLElement} 에러 메시지 요소
+   * @returns {HTMLElement}
    */
   _getErrorMessageElement(inputEl) {
     let msgEl = inputEl.parentElement.querySelector(
@@ -65,7 +84,7 @@ export class FormValidator {
   }
 
   /**
-   * 에러 메시지를 렌더링합니다.
+   * 에러 메시지를 화면에 렌더링합니다.
    * @param {HTMLInputElement} inputEl
    * @param {string} message
    */
@@ -100,34 +119,30 @@ export class FormValidator {
 
   /**
    * 이메일 필드 유효성을 검사하고 에러를 처리합니다.
-   * @returns {boolean} 유효하면 true
+   * @returns {boolean}
    */
   _validateEmailField() {
     const value = this.emailInput.value.trim();
     const { valid, message } = validateEmail(value);
-
     if (!valid) {
       this._showError(this.emailInput, message);
       return false;
     }
-
     this._clearError(this.emailInput);
     return true;
   }
 
   /**
    * 비밀번호 필드 유효성을 검사하고 에러를 처리합니다.
-   * @returns {boolean} 유효하면 true
+   * @returns {boolean}
    */
   _validatePasswordField() {
     const value = this.passwordInput.value;
     const { valid, message } = validatePassword(value);
-
     if (!valid) {
       this._showError(this.passwordInput, message);
       return false;
     }
-
     this._clearError(this.passwordInput);
     return true;
   }
@@ -149,7 +164,6 @@ export class FormValidator {
     const emailIsValid = this._validateEmailField();
     const passwordIsValid = this._validatePasswordField();
     const formIsValid = emailIsValid && passwordIsValid;
-
     this.submitBtn.disabled = !formIsValid;
   }
 }
