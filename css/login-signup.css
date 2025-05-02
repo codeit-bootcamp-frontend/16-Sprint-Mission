@@ -1,0 +1,153 @@
+/* font style */
+/* form label (이메일 / 비밀번호) */
+form label {
+  display: block;
+  font-size: var(--text-lg);      
+  font-weight: var(--font-bold);   
+  margin-bottom: var(--space-xs);
+}
+
+/* form input 텍스트 */
+.content input {
+  font-size: var(--text-base);       
+  font-weight: var(--font-normal);  
+  color: var(--secondary-color-gray700);
+}
+
+/* visibility 버튼 아이콘 */
+.visibility-btn img {
+  width: 24px;
+  height: 24px;
+}
+
+/* 제출 버튼 */
+.btn-submit {
+  font-size: var(--text-xl);        
+  font-weight: var(--font-semibold);  
+  width: 100%;
+  height: 56px;
+  border-radius: 40px;
+  background-color: var(--primary-color-100);
+  color: #fff;
+}
+
+/* 간편 로그인 타이틀 */
+.sns-login p {
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);  
+  color: var(--secondary-color-gray700);
+}
+
+/* SNS 아이콘 링크 */
+.sns-login-link a img {
+  width: 42px;
+  height: 42px;
+}
+
+/* 회원가입 텍스트 */
+.sign-up {
+  font-size: var(--text-base);
+  font-weight: var(--font-normal);
+  color: var(--secondary-color-gray700);
+}
+.sign-up a {
+  font-weight: var(--font-semibold);
+  color: var(--primary-color-100);
+  text-decoration: underline;
+}
+
+
+
+input:focus {
+  outline-color: var(--primary-color-100);
+}
+
+.content {
+  max-width: 640px;
+  width: 100%;
+  margin: 120px auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 24px;
+}
+
+form {
+  width: 100%;
+  margin-top: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.content input {
+  width: 100%;
+  height: 56px;
+  padding: 0 20px;
+  border-radius: 12px;
+  background-color: var(--secondary-color-gray100);
+}
+
+.password-input-box {
+  position: relative;
+}
+
+#password {
+  padding: 0 40px 0 20px;
+}
+
+.btn-submit {
+  width: 100%;
+  height: 56px;
+  border-radius: 40px;
+  background-color: var(--primary-color-100);
+  color: #fff;
+}
+
+.sns-login {
+  width: 100%;
+  height: 74px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-radius: 8px;
+  background-color: #e6f2ff;
+}
+
+.sns-login-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.visibility-btn {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.visibility-btn-on {
+  display: none;
+}
+
+.sign-up,
+.login {
+  font-size: 1.4rem;
+}
+
+.sign-up a,
+.login a {
+  text-decoration: underline;
+  color: var(--primary-color-100);
+}
+
+@media (min-width: 768px) {
+  .content {
+    padding: 0;
+  }
+}
