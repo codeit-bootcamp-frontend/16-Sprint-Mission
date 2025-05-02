@@ -45,12 +45,27 @@ main {
   border-radius: 12px;
 }
 
-.login-form .toggle-visiblity {
+.login-form span {
+  position: relative;
+  margin-top: -8px;
+  margin-left: 16px;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 600;
+  color: var(--color-error);
+}
+
+.login-form .incorrect-input {
+  border: 1px solid var(--color-error);
+}
+
+.login-form .toggle-visibility {
   position: absolute;
   right: 20px;
   top: 56px;
   width: 24px;
   height: 24px;
+  cursor: pointer;
 }
 
 .login-form .login-btn {
@@ -96,12 +111,18 @@ main {
   text-decoration: underline;
 }
 
-.login-btn:hover {
+.login-form .login-btn:hover {
   background-color: var(--color-pri200);
 }
 
-.login-btn:active {
+.login-form .login-btn:active {
   background-color: var(--color-pri300);
+}
+
+.login-form .login-btn:disabled {
+  background-color: var(--color-gray400);
+  color: var(--color-white);
+  cursor: default;
 }
 
 .input-box input::placeholder {

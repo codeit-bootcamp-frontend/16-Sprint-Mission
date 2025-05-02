@@ -42,7 +42,26 @@
   border-radius: 12px;
 }
 
-.sign-up-form .toggle-visiblity {
+.sign-up-form span {
+  position: relative;
+  margin-top: -8px;
+  margin-left: 16px;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 600;
+  color: var(--color-error);
+}
+
+.sign-up-form .incorrect-input {
+  border: 1px solid var(--color-error);
+}
+
+.sign-up-form .correct-input {
+  border: 1px solid var(--color-pri100);
+}
+
+.sign-up-form .toggle-visibility,
+.sign-up-form .toggle-repeat-visibility {
   position: absolute;
   right: 20px;
   top: 56px;
@@ -93,12 +112,18 @@
   text-decoration: underline;
 }
 
-.sign-up-btn:hover {
+.sign-up-form .sign-up-btn:hover {
   background-color: var(--color-pri200);
 }
 
-.sign-up-btn:active {
+.sign-up-form .sign-up-btn:active {
   background-color: var(--color-pri300);
+}
+
+.sign-up-form .sign-up-btn:disabled {
+  background-color: var(--color-gray400);
+  color: var(--color-white);
+  cursor: default;
 }
 
 .input-box input::placeholder {
