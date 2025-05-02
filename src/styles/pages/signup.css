@@ -63,6 +63,16 @@
   color: transparent; /* 텍스트 없는 버튼 */
 }
 
+.form-field__input--error {
+  border-color: var(--color-error);
+}
+
+.form-field__error-message {
+  color: var(--color-error);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
 /* 소셜 로그인 클래스 */
 
 .social-login {

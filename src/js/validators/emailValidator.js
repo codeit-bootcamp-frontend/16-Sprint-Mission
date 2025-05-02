@@ -1,4 +1,5 @@
 //이메일 유효성을 검증하는 파일입니다.
+//adress@domain.domain2 형태 검증
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function validateEmail(value) {
