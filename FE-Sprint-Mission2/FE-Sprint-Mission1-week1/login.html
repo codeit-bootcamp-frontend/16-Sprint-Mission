@@ -26,14 +26,18 @@
         <div class="form__user-info">
           <label for="form__email">이메일</label>
           <input id="form__email" name = "inpo__email" placeholder="이메일을 입력하세요." type="email">
+          <div id="form__email--message" class="error__message">이메일을 입력해주세요.</div>
+          <div id="form__email--invalid-message" class="error__message">잘못된 이메일 형식입니다.</div>
           <div class="form__password--wrapper">
             <label for="form__password">비밀번호</label>
             <img class="input-icon" src="images/btn_visibility_on_24px.png" alt="숨김 아이콘">
             <input id="form__password" name = "inpo__password" placeholder="비밀번호를 입력하세요." type="password">
+            <div id="form__password--message" class="error__message">비밀번호를 입력해주세요.</div>
+            <div id="form__password--invalid-message" class="error__message">비밀번호를 8자 이상 입력해주세요.</div>
           </div>
         </div>
         <a href="/login" aria-label="로그인">
-          <button class="button flex-center" type="button">
+          <button id="login-button" class="button button--disabled flex-center" type="button" disabled>
           로그인
           </button>
         </a>
@@ -56,5 +60,6 @@
         </div>
       </form> 
     </div>
+    <script type="module" src="/FE-Sprint-Mission2/FE-Sprint-Mission1-week1/login.js"></script>
   </body>
 </html>
