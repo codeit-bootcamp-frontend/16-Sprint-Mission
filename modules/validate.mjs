@@ -2,26 +2,26 @@ const userForm = document.querySelector("form");
 const submitBtn = document.querySelector("button");
 
 // 검사 통과 못한 거 있나요?
-function hasInvalidInput(validRule) {
-    return Object.values(validRule).some(validator => validator.passed === false);
+function hasInvalidInput(validationState) {
+    return Object.values(validationState).some(validator => validator.passed === false);
 }
 
 //폼 전송 막기
-function preventInvalidSubmit(e, validRule) {
+function preventInvalidSubmit(e, validationState) {
     //서브밋 누르면 통과 못한 인풋에 경고 보여줘
-    Object.values(validRule).forEach((validator) => {
-        updateValidation({ currentTarget: validator.input }, validRule);
+    Object.values(validationState).forEach((validator) => {
+        updateValidation({ currentTarget: validator.input }, validationState);
     });
 
-    if (hasInvalidInput(validRule)) {
+    if (hasInvalidInput(validationState)) {
         e.preventDefault();
     }
 }
 
 //검사 실패 시 스타일 추가
-function updateValidation(e, validRule) {
+function updateValidation(e, validationState) {
     const { name } = e.currentTarget;
-    const validator = validRule[name];
+    const validator = validationState[name];
 
     removeMessage(name)
 
@@ -33,7 +33,7 @@ function updateValidation(e, validRule) {
         validator.passed = true;
     }
 
-    updateButton(validRule);
+    updateButton(validationState);
 }
 
 //존재하는 실패 메세지 삭제
@@ -57,22 +57,22 @@ function clearErr(validator) {
 }
 
 // 버튼 스타일 추가
-function updateButton(validRule) {
-    submitBtn.classList.toggle("pass-button", !hasInvalidInput(validRule));
+function updateButton(validationState) {
+    submitBtn.classList.toggle("pass-button", !hasInvalidInput(validationState));
 }
 
 //리스너 추가
-export function initValidation(validRule) {
-    for (let validator in validRule) {
-        validRule[validator].input.addEventListener("focusout", e => updateValidation(e, validRule));
+export function initValidation(validationState) {
+    for (let validator in validationState) {
+        validationState[validator].input.addEventListener("focusout", e => updateValidation(e, validationState));
     }
 
-    userForm.addEventListener("submit", e => preventInvalidSubmit(e, validRule));
+    userForm.addEventListener("submit", e => preventInvalidSubmit(e, validationState));
 
-    if (validRule['user-password-check']) {
-        validRule['user-password'].input.addEventListener("focusout", () => {
+    if (validationState['user-password-check']) {
+        validationState['user-password'].input.addEventListener("focusout", () => {
             // 비밀번호 변경되었을 때 비밀번호 확인도 같이 
-            updateValidation({ currentTarget: validRule['user-password-check'].input }, validRule);
+            updateValidation({ currentTarget: validationState['user-password-check'].input }, validationState);
         });
     }
 }

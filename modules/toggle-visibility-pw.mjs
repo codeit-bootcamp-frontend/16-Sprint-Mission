@@ -1,36 +1,22 @@
-// #toggle-visibility-pw 관련 변수
+// 비밀번호 보기 토글버튼들(chekBox)
 export const visibilityPw = document.querySelector("#toggle-visibility-pw");
-const visibilityPwLabel = document.querySelector("label[for='toggle-visibility-pw']");
-const passwordInput = document.querySelector("#user-password");
-
-// #toggle-visibility-pwcheck 관련 변수
 export const visibilityPwCheck = document.querySelector("#toggle-visibility-pwcheck");
-const visibilityPwCheckLabel = document.querySelector("label[for='toggle-visibility-pwcheck']");
-const pwCheckInput = document.querySelector("#user-password-check");
 
-function toggleVisibilityPw() {
-    const isShowing = visibilityPw.checked;
-    if (isShowing) {
-        passwordInput.type = "text";
-        visibilityPwLabel.setAttribute('aria-checked', 'true');
-    } else {
-        passwordInput.type = "password";
-        visibilityPwLabel.setAttribute('aria-checked', 'false');
-    }
+function togglePasswordVisibility(targetInput) {
+    const isPassword = targetInput.type === "password";
+    targetInput.type = isPassword ? "text" : "password";
+    targetInput.setAttribute('aria-checked', isPassword ? 'true' : 'false');
 }
 
-function toggleVisibilityPwCheck() {
-    const isShowing = visibilityPwCheck.checked;
-    if (isShowing) {
-        pwCheckInput.type = "text";
-        visibilityPwCheckLabel.setAttribute('aria-checked', 'true');
-    } else {
-        pwCheckInput.type = "password";
-        visibilityPwCheckLabel.setAttribute('aria-checked', 'false');
-    }
-}
+export function initPasswordVisibility(toggleBtns) {
+    Object.values(toggleBtns).forEach((toggleBtn) => {
+        if (!toggleBtn) return;
 
-export function initPasswordVisibility(visibilityPw, visibilityPwCheck){
-    visibilityPw.addEventListener("click", toggleVisibilityPw);
-    if (visibilityPwCheck) visibilityPwCheck.addEventListener("click", toggleVisibilityPwCheck);
+        const targetInput = toggleBtn.previousElementSibling;
+        if (!targetInput || targetInput.type !== "password") return;
+
+        toggleBtn.addEventListener("click", () => {
+            togglePasswordVisibility(targetInput);
+        });
+    });
 }

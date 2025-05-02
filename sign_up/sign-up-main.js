@@ -2,6 +2,6 @@ import { createValidRule, ruleObj, emailInput, passwordInput, nameInput, passwor
 import { initValidation } from '../modules/validate.mjs';
 import { initPasswordVisibility, visibilityPw, visibilityPwCheck } from '../modules/toggle-visibility-pw.mjs';
 
-const validRule = createValidRule({ emailInput, passwordInput, nameInput, passwordCheckInput }, ruleObj);
-initValidation(validRule);
-initPasswordVisibility(visibilityPw, visibilityPwCheck);
+const singUpValidationState = createValidRule({ emailInput, passwordInput, nameInput, passwordCheckInput }, ruleObj);
+initValidation(singUpValidationState);
+initPasswordVisibility({ visibilityPw, visibilityPwCheck });
