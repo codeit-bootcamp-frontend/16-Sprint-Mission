@@ -48,6 +48,9 @@ const passwordCheckValidate = () => {
   if (!passwordInput.value) {
     passwordCheckMsg.innerText = "비밀번호를 먼저 입력해주세요";
     isValid = false;
+  } else if (passwordCheckInput.value.length < 8) {
+    passwordCheckMsg.innerText = "비밀번호를 8자 이상 입력해주세요";
+    isValid = false;
   } else if (passwordCheckInput.value !== passwordInput.value) {
     passwordCheckMsg.innerText = "비밀번호가 일치하지 않습니다";
     isValid = false;
