@@ -1,0 +1,102 @@
+/* login, signup */
+.login-container,
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 100px 600px;
+}
+
+.header__login,
+.header__signup {
+  margin-bottom: 40px;
+}
+
+.form__login,
+.form__signup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form__label-email,
+.form__label-nickname,
+.form__label-password,
+.form__label-password-confirm {
+  color: var(--color-text-label);
+  margin-bottom: 20px;
+}
+
+.form__input-email,
+.form__input-nickname,
+.form__input-password,
+.form__input-password-confirm {
+  background-color: var(--color-surface-input);
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.form__input-email,
+.form__input-nickname {
+  margin-bottom: 20px;
+}
+
+.form__input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.form__toggle-password,
+.form__toggle-password-confirm {
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+}
+
+.form__input-button {
+  padding: 20px;
+  background-color: var(--color-primary);
+  color: var(--gray100);
+  border-radius: 40px;
+  cursor: pointer;
+  font-size: var(--font-size-large);
+  margin: 30px 0;
+  width: 100%;
+}
+
+.quick-login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: var(--color-primary-surface);
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.footer__link {
+  text-decoration: underline;
+  color: var(--color-primary);
+}
+
+/* login signup mobile */
+@media (min-width: 375px) and (max-width: 767px) {
+  .login-container,
+  .signup-container {
+    margin: 80px 16px 231px;
+    max-width: 400px;
+  }
+}
+
+/* login signup Tablet */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .login-container,
+  .signup-container {
+    margin: 0 52px;
+  }
+}
