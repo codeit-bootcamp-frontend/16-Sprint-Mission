@@ -9,7 +9,7 @@ const visibilityPwCheckLabel = document.querySelector("label[for='toggle-visibil
 const pwCheckInput = document.querySelector("#user-password-check");
 
 function toggleVisibilityPw() {
-    let isShowing = visibilityPw.checked;
+    const isShowing = visibilityPw.checked;
     if (isShowing) {
         passwordInput.type = "text";
         visibilityPwLabel.setAttribute('aria-checked', 'true');
@@ -20,7 +20,7 @@ function toggleVisibilityPw() {
 }
 
 function toggleVisibilityPwCheck() {
-    let isShowing = visibilityPwCheck.checked;
+    const isShowing = visibilityPwCheck.checked;
     if (isShowing) {
         pwCheckInput.type = "text";
         visibilityPwCheckLabel.setAttribute('aria-checked', 'true');
