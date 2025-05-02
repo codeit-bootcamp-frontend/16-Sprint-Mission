@@ -1,0 +1,293 @@
+@charset "utf-8";
+html {
+  font-size: 14px;
+}
+
+body {
+  font-family: "Pretendard", sans-serif;
+  background: var(--background-light);
+  overflow-x: hidden;
+}
+
+/* fonts */
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 400;
+  src: url("/fonts/Pretendard-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 500;
+  src: url("/fonts/Pretendard-Medium.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 700;
+  src: url("/fonts/Pretendard-Bold.woff2") format("woff2");
+  font-display: swap;
+}
+
+/* layout */
+.content {
+  padding-top: 70px;
+}
+
+/* button */
+button:disabled {
+  cursor: default;
+  background-color: var(--gray400);
+}
+button:disabled:hover {
+  background-color: var(--gray400);
+}
+
+.btn-lg {
+  padding: 12px;
+  border-radius: var(--border-radius-lg);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+.btn-sm {
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: var(--border-radius-xs);
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--primary-hover-color);
+}
+.btn-primary:active {
+  background: var(--primary-click-color);
+}
+
+a[class*="btn"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* form */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: var(--form-label-margin-bottom);
+  font-size: var(--form-label-font-size);
+  font-weight: 700;
+  color: var(--gray800);
+}
+
+.form-input {
+  width: 100%;
+  padding: 15px 24px;
+  background: var(--gray100);
+  border-radius: var(--border-radius-sm);
+  font-size: 16px;
+  line-height: 26px;
+}
+.form-input.invalid {
+  border: 1px solid var(--error-color);
+}
+
+.form-input-hint {
+  display: block;
+  margin: 8px 0 0 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--error-color);
+}
+
+.visible-wrap .form-input {
+  padding-right: 60px;
+}
+
+.form-logo img {
+  height: auto;
+}
+
+.form-contents {
+  display: flex;
+  flex-direction: column;
+  gap: var(--form-contents-gap);
+  width: 100%;
+}
+
+.visible-wrap {
+  position: relative;
+}
+
+.form .btn-lg {
+  width: 100%;
+}
+
+.btn-password-visible {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 24px;
+  width: 24px;
+  height: 24px;
+  z-index: 1;
+  background: url("/images/ic_visibility_off.svg") no-repeat center;
+}
+.btn-password-visible.on {
+  background: url("/images/ic_visibility_on.svg") no-repeat center;
+}
+
+/* header */
+.header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  padding: 0 var(--header-padding-lr);
+  z-index: 9;
+  background: #fff;
+  display: flex;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.714rem 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  display: none;
+  width: 40px;
+  margin-right: 8px;
+}
+
+.login-button {
+  width: 128px;
+  height: 48px;
+}
+
+/* footer */
+.footer {
+  background: var(--gray900);
+  color: var(--gray200);
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--footer-padding);
+  flex-wrap: wrap;
+  gap: 24px;
+  font-size: 16px;
+}
+
+.copyright {
+  order: 3;
+  width: 100%;
+  padding-top: 36px;
+  color: var(--gray400);
+}
+
+.footer-menu {
+  display: flex;
+  gap: 30px;
+}
+
+.sns {
+  display: flex;
+  gap: 12px;
+}
+
+/*================ 반응형 ================*/
+/* Tablet */
+@media (min-width: 640px) {
+  :root {
+    --footer-padding: 2rem 6.5rem 6.75rem;
+    --form-padding-top: 60px;
+    --form-label-margin-bottom: 1rem;
+    --form-contents-gap: 1.5rem;
+  }
+
+  .logo-img {
+    display: block;
+  }
+
+  .footer-container {
+    flex-wrap: initial;
+  }
+
+  .copyright {
+    order: initial;
+    width: auto;
+    padding-top: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --form-padding-top: 48px;
+    --header-padding-lr: 24px;
+  }
+
+  html {
+    font-size: 16px;
+  }
+}
+
+/* PC */
+@media (min-width: 1200px) {
+  :root {
+    --header-padding-lr: 12.5rem;
+  }
+
+  .form-container {
+    min-height: 100vh;
+  }
+
+  .header-container,
+  .footer-container {
+    width: var(--container-width);
+    margin: 0 auto;
+  }
+}
+
+/* wide PC */
+@media (min-width: 1921px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+/* 반응형 요소에 clamp() 적용 */
+@supports (font-size: clamp(1rem, 2vw, 3rem)) {
+  :root {
+    --heading-font-size: clamp(24px, 3vw, 40px);
+    --description-font-size: clamp(16px, 2vw, 24px);
+    --label-font-size: clamp(16px, 1.5vw, 18px);
+    --form-label-font-size: clamp(14px, 1.25vw, 18px);
+  }
+}

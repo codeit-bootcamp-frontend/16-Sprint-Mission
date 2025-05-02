@@ -10,7 +10,8 @@
       sizes="16x16"
       href="images/favicon-16x16.png"
     />
-    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="css/pages/auth.css" />
+    <script src="script/auth/login.js" type="module" defer></script>
   </head>
   <body>
     <main class="login auth">
@@ -38,6 +39,7 @@
                 placeholder="이메일"
                 required
               />
+              <span class="form-input-hint"></span>
             </div>
             <div class="form-control">
               <label class="form-label" for="userPassword">비밀번호</label>
@@ -53,14 +55,21 @@
                 />
                 <button
                   type="button"
-                  class="btn-password-visible off"
+                  class="btn-password-visible"
+                  id="passwordVisibleBtn"
                   title="비밀번호 표시/숨김"
                   aria-label="비밀번호 표시/숨김"
                   aria-pressed="false"
                 ></button>
               </div>
+              <span class="form-input-hint"></span>
             </div>
-            <button type="submit" class="btn-lg btn-primary" disabled>
+            <button
+              type="submit"
+              class="btn-lg btn-primary"
+              id="loginBtn"
+              disabled
+            >
               로그인
             </button>
             <div class="easy-login">

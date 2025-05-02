@@ -1,0 +1,82 @@
+@charset "utf-8";
+@import "../global/reset.css";
+@import "../global/common.css";
+@import "../global/variables.css";
+
+/*================ 로그인, 회원가입 ================*/
+.auth .form {
+  max-width: 400px;
+  padding: 0 16px;
+}
+
+.auth .form-logo {
+  width: 198px;
+  margin: 0 0 2.5rem;
+}
+
+.auth .form-footer {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.auth .form-footer-link {
+  text-decoration: underline;
+  color: var(--primary-color);
+  font-size: 14px;
+}
+
+.login .form-container {
+  padding-top: 80px;
+}
+
+.signup .form-container {
+  padding-top: var(--form-padding-top);
+  padding-bottom: 178px;
+}
+
+.easy-login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+  padding: 16px 24px;
+  border-radius: var(--border-radius-xs);
+  background: var(--background-blue-light);
+  font-size: 16px;
+  color: var(--gray800);
+}
+
+.easy-login-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+/*================ 반응형 ================*/
+/* Tablet */
+@media (min-width: 640px) {
+  .auth .form {
+    max-width: 640px;
+  }
+
+  .auth .form-logo {
+    width: 396px;
+  }
+
+  .easy-login {
+    margin: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .auth .form {
+    max-width: 40rem;
+  }
+}
+
+/* PC */
+@media (min-width: 1200px) {
+  .login .form-container {
+    padding-top: 0;
+  }
+}

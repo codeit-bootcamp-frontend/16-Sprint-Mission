@@ -10,7 +10,8 @@
       sizes="16x16"
       href="images/favicon-16x16.png"
     />
-    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="css/pages/auth.css" />
+    <script src="script/auth/signup.js" type="module" defer></script>
   </head>
   <body>
     <main class="signup auth">
@@ -38,6 +39,7 @@
                 placeholder="pandaMarket@email.com"
                 required
               />
+              <span class="form-input-hint"></span>
             </div>
             <div class="form-control">
               <label class="form-label" for="userNickname">닉네임</label>
@@ -49,6 +51,7 @@
                 placeholder="닉네임"
                 required
               />
+              <span class="form-input-hint"></span>
             </div>
             <div class="form-control">
               <label class="form-label" for="userPassword">비밀번호</label>
@@ -65,11 +68,13 @@
                 <button
                   type="button"
                   class="btn-password-visible off"
+                  id="passwordVisibleBtn"
                   title="비밀번호 표시/숨김"
                   aria-label="비밀번호 표시/숨김"
                   aria-pressed="false"
                 ></button>
               </div>
+              <span class="form-input-hint"></span>
             </div>
             <div class="form-control">
               <label class="form-label" for="userPasswordChk"
@@ -87,14 +92,21 @@
                 />
                 <button
                   type="button"
-                  class="btn-password-visible on"
+                  class="btn-password-visible"
+                  id="passwordChkVisibleBtn"
                   title="비밀번호 표시/숨김"
                   aria-label="비밀번호 표시/숨김"
-                  aria-pressed="true"
+                  aria-pressed="false"
                 ></button>
               </div>
+              <span class="form-input-hint"></span>
             </div>
-            <button type="submit" class="btn-lg btn-primary" disabled>
+            <button
+              type="submit"
+              class="btn-lg btn-primary"
+              id="signupBtn"
+              disabled
+            >
               회원가입
             </button>
             <div class="easy-login">
