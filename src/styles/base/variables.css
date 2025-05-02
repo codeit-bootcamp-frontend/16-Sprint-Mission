@@ -31,6 +31,9 @@
   --color-neutral-800: #1f2937;
   --color-neutral-900: #111827;
 
+  /* Color- Error */
+  --color-error: red;
+
   /* Spacing */
   --spacing-xs: 1rem;
   --spacing-sm: 1.125rem;
