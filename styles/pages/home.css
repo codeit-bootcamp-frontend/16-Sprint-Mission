@@ -22,6 +22,11 @@
   margin: 0 auto;
 }
 
+.header__logo-img {
+  max-width: none;
+  height: auto;
+}
+
 .header__login-link {
   background-color: var(--color-primary-100);
   color: white;
@@ -345,7 +350,7 @@ main {
   }
 
   .hero__container {
-    max-width: var(----container-max-width);
+    max-width: var(--container-max-width);
     padding: 0 var(--container-padding);
     flex-direction: row;
     align-items: end;
