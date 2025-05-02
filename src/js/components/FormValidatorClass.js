@@ -25,31 +25,34 @@ export class FormValidator {
    * 폼 필드에 이벤트 리스너를 연결합니다.
    */
   _attachEvents() {
-    // focusout 시 유효성 검사
+    // focusout 시 유효성 검사 트리거
     this.emailInput.addEventListener('focusout', () =>
-      this._handleEmailValidation()
+      this._validateEmailField()
     );
     this.passwordInput.addEventListener('focusout', () =>
-      this._handlePasswordValidation()
+      this._validatePasswordField()
     );
 
-    // 입력 변화 시 버튼 활성/비활성 상태 업데이트
-    const inputs = [this.emailInput, this.passwordInput];
-    inputs.forEach((input) => {
-      input.addEventListener('input', () => this._updateSubmitState());
+    // input 이벤트로 버튼 상태 업데이트
+    [this.emailInput, this.passwordInput].forEach((inputEl) => {
+      inputEl.addEventListener('input', () => this._setSubmitButtonState());
     });
   }
 
   /**
-   * 에러를 표시하기 위해 에러 클래스를 추가하여 에러 메시지를 보여줍니다.
-   * @param {HTMLInputElement} inputEl - 에러 스타일을 적용할 입력 요소
-   * @param {string} message - 표시할 에러 메시지
+   * 입력 요소에 에러 클래스를 추가합니다.
+   * @param {HTMLInputElement} inputEl
    */
-  _showError(inputEl, message) {
-    // 에러 클래스 추가
+  _addErrorClass(inputEl) {
     inputEl.classList.add('form-field__input--error');
+  }
 
-    // 에러 클래스를 없다면 생성
+  /**
+   * 에러 메시지 요소를 생성하거나 기존 요소를 반환합니다.
+   * @param {HTMLInputElement} inputEl
+   * @returns {HTMLElement} 에러 메시지 요소
+   */
+  _getErrorMessageElement(inputEl) {
     let msgEl = inputEl.parentElement.querySelector(
       '.form-field__error-message'
     );
@@ -58,75 +61,95 @@ export class FormValidator {
       msgEl.className = 'form-field__error-message';
       inputEl.parentElement.appendChild(msgEl);
     }
+    return msgEl;
+  }
+
+  /**
+   * 에러 메시지를 렌더링합니다.
+   * @param {HTMLInputElement} inputEl
+   * @param {string} message
+   */
+  _renderErrorMessage(inputEl, message) {
+    const msgEl = this._getErrorMessageElement(inputEl);
     msgEl.textContent = message;
   }
 
   /**
-   * 에러 스타일과 메시지를 제거합니다.
-   * @param {HTMLInputElement} inputEl - 스타일을 제거할 입력 요소
+   * 입력 필드에 에러를 표시합니다.
+   * @param {HTMLInputElement} inputEl
+   * @param {string} message
+   */
+  _showError(inputEl, message) {
+    this._addErrorClass(inputEl);
+    this._renderErrorMessage(inputEl, message);
+  }
+
+  /**
+   * 입력 필드의 에러 스타일과 메시지를 제거합니다.
+   * @param {HTMLInputElement} inputEl
    */
   _clearError(inputEl) {
-    inputEl.classList.remove('input--error');
-    const msgEl = inputEl.parentElement.querySelector('.error-message');
+    inputEl.classList.remove('form-field__input--error');
+    const msgEl = inputEl.parentElement.querySelector(
+      '.form-field__error-message'
+    );
     if (msgEl) {
       msgEl.remove();
     }
   }
 
   /**
-   * 이메일 유효성을 검사하고 에러를 처리합니다.
-   * @returns {boolean} - 유효함 === true
+   * 이메일 필드 유효성을 검사하고 에러를 처리합니다.
+   * @returns {boolean} 유효하면 true
    */
-  _handleEmailValidation() {
+  _validateEmailField() {
     const value = this.emailInput.value.trim();
     const { valid, message } = validateEmail(value);
-    //유효하지 않는다면 에러 표시
+
     if (!valid) {
       this._showError(this.emailInput, message);
       return false;
     }
-    //에러 클래스 제거
+
     this._clearError(this.emailInput);
     return true;
   }
 
   /**
-   * 비밀번호 유효성을 검사하고 에러를 처리합니다.
-   * @returns {boolean} - 유효하면 true, 아니면 false
+   * 비밀번호 필드 유효성을 검사하고 에러를 처리합니다.
+   * @returns {boolean} 유효하면 true
    */
-  _handlePasswordValidation() {
+  _validatePasswordField() {
     const value = this.passwordInput.value;
     const { valid, message } = validatePassword(value);
-    //유효하지 않는다면 에러ㅓ 표시
+
     if (!valid) {
       this._showError(this.passwordInput, message);
       return false;
     }
-    //유효하면 에러 제거
+
     this._clearError(this.passwordInput);
     return true;
   }
 
   /**
-   * 초기 상태에서 제출 버튼의 활성/비활성 상태를 설정합니다.
+   * 초기 버튼 상태를 설정합니다.
    */
   _setInitialButtonState() {
     this._setSubmitButtonState();
   }
 
   /**
-   * 폼의 전체 유효성을 검사하여 제출 버튼 상태를 업데이트합니다.
+   * 전체 폼 유효성을 검사하여 제출 버튼 상태를 업데이트합니다.
    */
   _setSubmitButtonState() {
     if (!this.submitBtn) {
       return;
     }
-
     const emailIsValid = this._validateEmailField();
     const passwordIsValid = this._validatePasswordField();
     const formIsValid = emailIsValid && passwordIsValid;
 
-    // 버튼 활성/비활성 제어
     this.submitBtn.disabled = !formIsValid;
   }
 }
