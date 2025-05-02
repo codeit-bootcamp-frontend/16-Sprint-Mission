@@ -1,3 +1,4 @@
+//이메일 유효성을 검증하는 파일입니다.
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function validateEmail(value) {
