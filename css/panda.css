@@ -1,16 +1,11 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  } 
-a ,a > button {
-    cursor: pointer;
-}
 /* header */
 .header_top_container {
     height: 70px;
     display: flex;
     justify-content: center;
+    position: fixed;
+    background-color: white;
+    width: 100%;
 }
 .header_top_box {
     width: 55%;

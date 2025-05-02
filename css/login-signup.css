@@ -1,0 +1,108 @@
+.login-container,
+.signup-container {
+    width: 640px;
+    margin: 230px auto;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* 로그인이미지 */
+.login-img-box,
+.signup-img-box {
+    width: 400px;
+    height: 130px;
+}
+.login-img,
+.signup-img {
+    width: 100%;
+}
+
+/* 이메일,비번 signup 닉네임 비밀번호 확인 */
+.login-email-box,
+.login-password-box,
+.signup-email-box,
+.signup-password-box,
+.signup-nickname-box,
+.signup-ckpassword-box {
+    width: 100%;
+    justify-content: start;
+}
+
+.login-email-box h4,
+.login-password-box h4,
+.signup-email-box h4,
+.signup-password-box h4,
+.signup-nickname-box h4,
+.signup-ckpassword-box h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.login-email-input,
+.login-password-input,
+.signup-email-input,
+.signup-password-input,
+.signup-ckpassword-input,
+.signup-nickname-input {
+    background-color: #F3F4F6;
+    border: none;
+    height: 55px;
+    width: 100%;
+    padding-left: 30px;
+}
+
+/* 비밀번호 눈알 */
+
+/* 로그인버튼 */
+.login-button-box,
+.signup-button-box {
+    width: 100%;
+}
+
+.login-button,
+.signup-button {
+    width: 100%;
+    height: 55px;
+    background-color: #3692FF;
+    border-radius: 40px;
+    color: white;
+    border: none;
+}
+
+/* 간편로그인 */
+.login-ezlogin-box,
+.signup-ezlogin-box {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: #E6F2FF;
+    height: 74px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+}
+.login-ezlogin-box h4,
+.signup-ezlogin-box h4 {
+    font-weight: 400;
+}
+.logo {
+    width: 42px;
+    margin: 10px;
+}
+/* 판다마켓이 처음이신가요 */
+.login-footer,
+.signup-footer {
+    margin-top: 20px;
+}
+.login-footer h5,
+.signup-footer h5 {
+    font-weight: 500;
+}
+.login-footer a,
+.signup-footer a {
+    color: #3692FF;
+}

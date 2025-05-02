@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <title>로그인페이지</title>
+    <title>회원가입페이지</title>
     <meta charset="UTF-8">
     <link href="./css/common.css" rel="stylesheet" type="text/css" />
     <link href="./css/login-signup.css" rel="stylesheet" type="text/css" />
@@ -8,30 +8,38 @@
 <body>
     <article>
         <section>
-            <div class="login-container">
-                <div class="login-img-box">
+            <div class="signup-container">
+                <div class="signup-img-box">
                     <a href="/" aria-label="홈으로 이동">
-                        <img class="login-img" src="./images/main-page/logo.png" alt="logo">
+                        <img class="signup-img" src="./images/main-page/logo.png" alt="logo">
                     </a>
                 </div>
-                <div class="login-email-box">
+                <div class="signup-email-box">
                     <h4>이메일</h4>
-                    <input type="email" placeholder="codeit@gmail.com" class="login-email-input" required>
+                    <input type="email" placeholder="codeit@gmail.com" class="signup-email-input" required>
                 </div>
-                <div class="login-password-box">
+                <div class="signup-nickname-box">
+                    <h4>닉네임</h4>
+                    <input type="name" placeholder="판다" class="signup-nickname-input" required>
+                </div>
+                <div class="signup-password-box">
                     <h4>비밀번호</h4>
-                    <input type="password" class="login-password-input" required>
+                    <input type="password" class="signup-password-input" required>
                 </div>
-                <div class="login-button-box">
-                    <button class="login-button">
+                <div class="signup-ckpassword-box">
+                    <h4>비밀번호 확인</h4>
+                    <input type="password" class="signup-ckpassword-input" required>
+                </div>
+                <div class="signup-button-box">
+                    <button class="signup-button">
                         로그인
                     </button>
                 </div>
-                <div class="login-ezlogin-box">
-                    <div class="login-ezlogin">
+                <div class="signup-ezlogin-box">
+                    <div class="signup-ezlogin">
                         <h4>간편 로그인하기</h4>
                     </div>
-                    <div class="login-ezlogin-logos">
+                    <div class="signup-ezlogin-logos">
                         <a href="https://www.google.com" aria-label="구글로 이동" rel="noopener">
                             <img class="logo" src="./images/main-page/google-logo.png" alt="">
                         </a>
@@ -40,10 +48,10 @@
                         </a>
                     </div>
                 </div>
-                <div class="login-footer">
+                <div class="signup-footer">
                     <h5>
                         판다마켓이 처음이신가요?
-                        <a href="signup.html">회원가입</a>
+                        <a href="login.html">로그인</a>
                     </h5>
                 </div>
             </div>
