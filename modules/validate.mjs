@@ -1,8 +1,9 @@
+import { removeMessage, appendErr, clearErr, updateButton } from './validation-ui.mjs';
+
 const userForm = document.querySelector("form");
-const submitBtn = document.querySelector("button");
 
 // 검사 통과 못한 거 있나요?
-function hasInvalidInput(validationState) {
+export function hasInvalidInput(validationState) {
     return Object.values(validationState).some(validator => validator.passed === false);
 }
 
@@ -18,7 +19,7 @@ function preventInvalidSubmit(e, validationState) {
     }
 }
 
-//검사 실패 시 스타일 추가
+//스타일 추가할지 말지 판단
 function updateValidation(e, validationState) {
     const { name } = e.currentTarget;
     const validator = validationState[name];
@@ -33,32 +34,7 @@ function updateValidation(e, validationState) {
         validator.passed = true;
     }
 
-    updateButton(validationState);
-}
-
-//존재하는 실패 메세지 삭제
-function removeMessage(name) {
-    const msg = document.querySelector(`#${name}+.error-message`);
-    if (msg) msg.remove();
-}
-
-// 검사 실패 메세지 추가
-function appendErr(validator) {
-    validator.input.classList.add("error-Line");
-    const err = document.createElement("span");
-    err.classList.add("error-message");
-    err.textContent = validator.createMsg();
-    validator.input.insertAdjacentElement("afterend", err);
-}
-
-// 검사 실패 스타일 삭제
-function clearErr(validator) {
-    validator.input.classList.remove("error-Line");
-}
-
-// 버튼 스타일 추가
-function updateButton(validationState) {
-    submitBtn.classList.toggle("pass-button", !hasInvalidInput(validationState));
+    updateButton(validationState, hasInvalidInput);
 }
 
 //리스너 추가
