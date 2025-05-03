@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>판다마켓</title>
+    <link rel="icon" href="./images/meta_logo.svg" type="icon">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/veriable.css">
+    <link rel="stylesheet" href="./css/login.css">
+</head>
+<body>
+    <div id="wrap">
+        <div id="login_main">
+            <div class="container">
+                <div class="logo">
+                    <a href="./index.html" aria-label="홈으로 이동">
+                        <img src="./images/Property 1=lg.svg" alt="logo">
+                    </a>
+                </div>
+
+                <form id="login_form">
+                    <div class="contents">
+                        <div class="from_ctrl">
+                            <label for="useremail">이메일</label>
+                            <input type="email "id="usermail" name="usermail" placeholder="이메일" required>
+                        </div>
+                        <div class="from_ctrl">
+                            <label for="password" >비밀번호</label>
+                            <div class="ctrl_wrap">
+                                <input type="password" id="password" name="password" placeholder="비밀번호" >
+                                <button type="button" class="btn_on">
+                                    <img src="./images/btn_visibility_off.svg" alt="btn_visibility">
+                                </button>
+                            </div>    
+                        </div> 
+
+                        <button class="login_btn">로그인</button>  
+
+                        <div class="easy_login">
+                            <p>간편 로그인하기</p>
+                            <div class="easy_login_icon">
+                                <a href="https://www.google.com/" aria-label="구글 로그인" target="_blank">
+                                    <img src="./images/easy_google.svg" alt="google_icon">
+                                </a>
+                                <a href="https://www.kakaocorp.com/page/" aria-label="카카오 로그인" target="_blank">
+                                    <img src="./images/easy_kakao.svg" alt="kakao_icon">
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="first_signup">
+                            <p>판다마켓이 처음이신가요?</p>
+                            <a href="./signup.html">회원가입</a>
+                        </div>
+
+                    </div>    
+                </form>
+                
+            </div> <!-- container -->
+        </div> <!-- login_main -->
+    </div> <!-- wrap -->
+</body>
+</html>
