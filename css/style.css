@@ -1,9 +1,3 @@
-.flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 /* btn */
 .btn {
   display: inline-block;

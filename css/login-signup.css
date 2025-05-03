@@ -2,15 +2,15 @@
 /* form label (이메일 / 비밀번호) */
 form label {
   display: block;
-  font-size: var(--text-lg);      
-  font-weight: var(--font-bold);   
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
   margin-bottom: var(--space-xs);
 }
 
 /* form input 텍스트 */
 .content input {
-  font-size: var(--text-base);       
-  font-weight: var(--font-normal);  
+  font-size: var(--text-base);
+  font-weight: var(--font-normal);
   color: var(--secondary-color-gray700);
 }
 
@@ -22,8 +22,8 @@ form label {
 
 /* 제출 버튼 */
 .btn-submit {
-  font-size: var(--text-xl);        
-  font-weight: var(--font-semibold);  
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
   width: 100%;
   height: 56px;
   border-radius: 40px;
@@ -34,7 +34,7 @@ form label {
 /* 간편 로그인 타이틀 */
 .sns-login p {
   font-size: var(--text-base);
-  font-weight: var(--font-medium);  
+  font-weight: var(--font-medium);
   color: var(--secondary-color-gray700);
 }
 
@@ -56,8 +56,6 @@ form label {
   text-decoration: underline;
 }
 
-
-
 input:focus {
   outline-color: var(--primary-color-100);
 }
@@ -67,9 +65,6 @@ input:focus {
   width: 100%;
   margin: 120px auto;
   padding: 0 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
   gap: 24px;
 }
@@ -118,9 +113,6 @@ form {
 }
 
 .sns-login-link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 16px;
 }
 
