@@ -202,9 +202,100 @@ footer {
     height: 20px;
 }
 
-/* 로그인 부분 스타일 */
-
-.login_signup_logo  {
+/* 로그인, 회원가입 부분 스타일 시작 */
+.login_logo  {
     display: flex;
     justify-content: center;
+    margin-top: 150px;
+    margin-bottom: 10px;
 }
+
+.signup_logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+.login_signup_container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    font-family: sans-serif;
+  }
+  
+label {
+    display: block;
+    margin: 16px 0 6px;
+    font-weight: bold;
+  }
+  
+input[type = "email"],
+input[type = "password"],
+input[type = "text"] {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background-color: #f5f6f8;
+    border-radius: 6px;
+}
+
+.password_box {
+    position: relative;
+    width: 100%;
+    background-color: #f5f6f8;
+    border: none;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.eye_icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+}
+
+.login_signup_button {
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 12px;
+    background-color: #3692ff;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-weight: bold;
+}
+
+.easy_login_container {    
+    background-color: #E6F2FF;
+    padding: 16px 23px 16px 23px;
+    border-radius: 8px;
+    gap: 10px;
+    
+}
+
+.easy_login_form {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+}
+
+.easy_login_link_icon {
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.direction_text_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    gap: 5px;
+    font-size: 13px;
+    font-weight: bold;
+}
+/* 로그인, 회원가입 부분 스타일 끝 */
