@@ -201,3 +201,10 @@ footer {
     width: 116px;
     height: 20px;
 }
+
+/* 로그인 부분 스타일 */
+
+.login_signup_logo  {
+    display: flex;
+    justify-content: center;
+}
