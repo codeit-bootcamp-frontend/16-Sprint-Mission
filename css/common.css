@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
   } 
-a ,a > button {
+a ,a > button,button {
     cursor: pointer;
 }
 /* aa */

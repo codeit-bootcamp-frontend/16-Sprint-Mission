@@ -5,6 +5,8 @@
     <link href="./css/reset.css" rel="stylesheet" type="text/css" />
     <link href="./css/common.css" rel="stylesheet" type="text/css" />
     <link href="./css/login-signup.css" rel="stylesheet" type="text/css" />
+
+
 </head>
 <body>
     <article>
@@ -17,14 +19,16 @@
                 </div>
                 <div class="login-email-box">
                     <h4>이메일</h4>
-                    <input type="email" placeholder="codeit@gmail.com" class="login-email-input" required>
+                    <input type="email" placeholder="codeit@gmail.com" class="login-email-input LoginInput" required>
+                    <h4 class="error-msg" style="color: red; display: none; font-size: 12px;">이메일을 입력해주세요.</h4>
                 </div>
                 <div class="login-password-box">
                     <h4>비밀번호</h4>
-                    <input type="password" class="login-password-input" required>
+                    <input type="password" class="login-password-input LoginInput" required>
+                    <h4 class="error-msg" style="color: red; display: none; font-size: 12px;">비밀번호를 입력해주세요.</h4>
                 </div>
                 <div class="login-button-box">
-                    <button class="login-button">
+                    <button id="loginBtn" class="login-button" onclick="location.href='items.html'"  disabled style="cursor: default;">
                         로그인
                     </button>
                 </div>
@@ -50,6 +54,9 @@
             </div>
         </section>
     </article>
+
+
+    <script src="script/login-signup.js"></script>
 </body>
 
 </html>
