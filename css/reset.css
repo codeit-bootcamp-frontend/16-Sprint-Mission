@@ -8,7 +8,7 @@
 
 html,
 body {
-  font-family: 'Pretendard-Regular', sans-serif;
+  font-family: 'Pretendard-Regular', system-ui, sans-serif;
 }
 
 button {
