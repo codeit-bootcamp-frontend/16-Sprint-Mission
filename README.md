@@ -67,41 +67,48 @@
 - [x] 비밀번호 input에서 focus out 할 때, 값이 없을 경우 아래에 “비밀번호를 입력해주세요.” 에러 메세지를 보인다.
 - [x] 비밀번호 input에서 focus out 할 때, 값이 8자 미만일 경우 아래에 “비밀번호를 8자 이상 입력해주세요.” 에러 메세지를 보인다.
 - [x] input 에 빈 값이 있거나 에러 메세지가 있으면 ‘로그인’ 버튼은 비활성화 되고, Input 에 유효한 값을 입력하면 ‘로그인' 버튼이 활성화 된다.
+- [ ]눈 모양 아이콘 클릭시 비밀번호의 문자열이 보이기도 하고, 가려지기도 합니다.
+  비밀번호의 문자열이 가려질 때는 눈 모양 아이콘에는 사선이 그어져있고, 비밀번호의 문자열이 보일 때는 사선이 없는 눈 모양 아이콘이 보이도록 합니다.
 
 ### 피드백 수정사항
 
 - [x] 공통 스타일 정리
 - [x] 미디어 쿼리 작성 순서 변경 및 문법 수정
-- [ ] 반응형 이미지 최적화
+- [ ] 반응형 이미지 태그 최적화
 - [ ] husky 도입
 
 > ref: https://github.com/codeit-bootcamp-frontend/16-Sprint-Mission/pull/92
 
 ## 프로젝트 구조
 
-- `/assets`
+- `/src`
 
-  - `/icon`
-  - `/img`
-  - `/logo`
-  - `/fonts`
-
-- `/styles`
-
-  - `reset.css`
-  - `common.css`
-  - `variables.css`
-  - `font.css`
-  - `/pages`
-    - `home.css`
-    - `signup.css`
-    - `login.css`
-
-- `index.html`
+  - `/js` # Javascript
+    - `/constants`
+    - `/service`
+    - `/utils`
+    - `/components`
+      - `FormValidator.js` # 폼 유효성 스크립트 클래스
+    - `/validators` # 유효성 검증 스크립트 폴더
+    - `emailValidator.js`
+    - `passwordValidator.js`
+  - `/styles` # CSS
+    - `/base`
+      - `reset.css` # html 기본 스타일 초기화
+      - `variables.css` # css 전역 변수 지정
+      - `font.css` # fontface 지정
+    - `/pages`
+      - `home.css`
+      - `signup.css`
+      - `login.css`
+    - `common.css` # 공통 스타일
 
 - `/pages`
+
   - `signup.html`
   - `login.html`
+
+- `index.html`
 
 ## 구현 사항
 
