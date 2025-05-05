@@ -85,6 +85,10 @@ header {
   align-items: center;
 }
 
+.logo img {
+  max-width: 103px;
+}
+
 /* main */
 main {
   margin-top: 70px;
@@ -227,7 +231,9 @@ footer a {
 }
 
 /* 반응형 조절 */
-.pc,
-.tb {
-  display: none;
+
+@media (min-width: 768px) {
+  .logo img {
+    max-width: 153px;
+  }
 }
