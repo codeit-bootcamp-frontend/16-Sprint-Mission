@@ -2,10 +2,10 @@
 export const visibilityPw = document.querySelector("#toggle-visibility-pw");
 export const visibilityPwCheck = document.querySelector("#toggle-visibility-pwcheck");
 
-function togglePasswordVisibility(targetInput) {
+function togglePasswordVisibility(targetInput, targetLabel) {
     const isPassword = targetInput.type === "password";
     targetInput.type = isPassword ? "text" : "password";
-    targetInput.setAttribute('aria-checked', isPassword ? 'true' : 'false');
+    targetLabel.setAttribute('aria-checked', isPassword ? 'true' : 'false');
 }
 
 export function initPasswordVisibility(toggleBtns) {
@@ -13,10 +13,11 @@ export function initPasswordVisibility(toggleBtns) {
         if (!toggleBtn) return;
 
         const targetInput = toggleBtn.previousElementSibling;
+        const targetLabel = toggleBtn.nextElementSibling;
         if (!targetInput || targetInput.type !== "password") return;
 
         toggleBtn.addEventListener("click", () => {
-            togglePasswordVisibility(targetInput);
+            togglePasswordVisibility(targetInput, targetLabel);
         });
     });
 }
