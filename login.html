@@ -35,12 +35,12 @@
             </div>
           </div>
           <div class="form__input-box form__input-box-pw">
-            <label for="pw" class="input-box__label">비밀번호</label>
+            <label for="password" class="input-box__label">비밀번호</label>
             <div class="input-box__input">
               <input
                 type="password"
-                name="pw"
-                id="pw"
+                name="password"
+                id="password"
                 class="input"
                 placeholder="비밀번호를 입력해주세요."
               />
@@ -57,7 +57,14 @@
               </button>
             </div>
           </div>
-          <button class="btn lg form__submitBtn">로그인</button>
+          <button
+            type="button"
+            class="btn lg form__submitBtn"
+            disabled
+            data-move-link="/items.html"
+          >
+            로그인
+          </button>
         </form>
         <!-- form :: E -->
         <!-- sns-box :: S -->
@@ -100,5 +107,6 @@
         </p>
       </div>
     </div>
+    <script src="./assets/js/member.js"></script>
   </body>
 </html>
