@@ -19,6 +19,7 @@ export class InputFieldHandler {
     this.validateFn = validateFn;
     this.errorClass = errorClass;
     this.errorMsgClass = errorMsgClass;
+    this.formField = this.inputEl.closest('.form-field'); //가장 가까운 Form-field를 찾음
 
     this.inputEl.addEventListener('focusout', () => this.validate());
   }
@@ -42,16 +43,16 @@ export class InputFieldHandler {
 
   /** 에러 스타일 및 메시지 표시 */
   _showError(message) {
+    //에러 클래스 추가
     this.inputEl.classList.add(this.errorClass);
-
-    let msgEl = this.inputEl.parentElement.querySelector(
-      `.${this.errorMsgClass}`
-    );
+    //에러 엘리멘트 없다면 생성
+    let msgEl = this.formField.querySelector(`.${this.errorMsgClass}`);
     if (!msgEl) {
       msgEl = document.createElement('p');
       msgEl.className = this.errorMsgClass;
-      this.inputEl.parentElement.appendChild(msgEl);
+      this.formField.appendChild(msgEl);
     }
+    //텍스트 갱신
     msgEl.textContent = message;
   }
 
@@ -60,9 +61,7 @@ export class InputFieldHandler {
     //css 제거
     this.inputEl.classList.remove(this.errorClass);
     //요소 제거
-    const msgEl = this.inputEl.parentElement.querySelector(
-      `.${this.errorMsgClass}`
-    );
+    const msgEl = this.formField.querySelector(`.${this.errorMsgClass}`);
     //에러 요소가 존재한다면 제거합니다.
     if (msgEl) msgEl.remove();
   }

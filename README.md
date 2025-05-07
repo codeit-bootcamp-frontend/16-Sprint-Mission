@@ -84,14 +84,18 @@
 - `/src`
 
   - `/js` # Javascript
+
     - `/constants`
     - `/service`
     - `/utils`
+      - `redirector.js` # 페이지 이동 함수
     - `/components`
-      - `FormValidator.js` # 폼 유효성 스크립트 클래스
+      - `InputFieldHandler.js` # 입력 필드내 유효성 검증 및 에러 메시지 랜더링
+      - `FormValidator.js` # 폼 전체 필드 관리
     - `/validators` # 유효성 검증 스크립트 폴더
-    - `emailValidator.js`
-    - `passwordValidator.js`
+      - `emailValidator.js`
+      - `passwordValidator.js`
+
   - `/styles` # CSS
     - `/base`
       - `reset.css` # html 기본 스타일 초기화
@@ -112,43 +116,5 @@
 
 ## 구현 사항
 
-### 전역 설정
-
-- css를 `reset.css`, `common.css`, `variables.css`로 분리했습니다.
-- 자주 사용되는 구조는 css에서 common.css에서 사용하도록 하였습니다.
-- layout, color, font-size, space 등을 `variables.css`에서 전역 변수로 관리합니다.
-- 컬러 변수 네이밍을 시멘틱하게 변경했습니다.
-- `font-size: clamp(12px, 1.6vw, 16px)` 를 통해, 폰트 사이즈가 12px에서 16px 사이로 유연하게 조절됩니다.
-- 미디어 쿼리를 활용해 태블릿 및 모바일을 지원합니다.
-- mobile-first로 반응형 디자인을 적용했습니다.
-- 웹 폰트에서 압축률이 좋은 `woff2` 로컬 폰트를 사용합니다.
-- 접근성 향상을 위해 `aria-label`을 지정했습니다.
-- 보다 나은 클래스 구조화를 위해, **BEM 네이밍 방법론**과 **보조 클래스**를 사용했습니다.
-- `stylelint`를 사용하여 BEM 네이밍 및 스타일을 검사합니다.
-- `prettier`을 사용하여 포맷팅을 자동화했습니다.
-
-### 랜딩 페이지 (index.html)
-
-- 크게 header, main, footer 영역으로 나뉘어 있습니다.
-- `<main>` 의 각 `<section>` 안에는 hero, feature, cta 로 구성되어 있습니다.
-- `.hero`, `.cta` 클래스는 하위 박스인 `.container` 에서, 여백과 콘텐츠 관련 요구사항을 만족했습니다.
-- 링크로 연결되는 항목들은 `<a>`태그로 감싸서, 클릭시 특정 페이지들로 이동할 수 있습니다.
-- 폰트, 이미지, 몇몇 여백들은 `vw`를 활용해서 동적으로 크기가 조절됩니다.
-- 새 창으로 열리는 페이지들은 `target="_blank" rel="noopener"`속성을 사용하여, 보안상 취약점이 발생하고 퍼포먼스가 저하되는 문제를 해결했습니다.
-- 상단 GNB는 고정되도록 설정하였습니다.
-- OG와 twitter의 메타 정보를 등록했습니다.
-
-### 회원가입 및 로그인 페이지
-
-- 주요 내용은 `form`필드 내에 구성하였습니다.
-- 자주 사용하는 항목은 common.css에서 재사용합니다.
-- 단일 책임 원칙을 준수하도록 설계하였습니다.
-- 폼 유효성을 검증합니다.
-- 폼 제출 버튼의 활성화 상태를 제어합니다.
-
-## 질문
-
-1. 이전 피드백에서 캡슐화 되지 않은 css만을 component화 해서 분리하는건 불필요한 비용을 증가시킨다는 피드백을 받았던걸로 기억합니다.
-   common.css에서 전역 스타일만 관리한다면, 전역 스타일이 아니거나 완벽히 독립적인 UI 단위가 아닌 경우 클래스가 중복되더라도 page-level에서 관리하는게 나은 선택인가요?
-
-2. 오버헤드 방지를 위해 `<picture>`태그를 제거하고 `<img>`태그만으로 반응형 이미지 변경을 적용하려고 했지만, 다양한 방법으로 시도해봐도 적용되지 않습니다.
+- Javascript를 모듈화해서 가독성을 향상시켰습니다.
+- SOLID 원칙에 기반하여, 메서드와 클래스를 분리했습니다.
