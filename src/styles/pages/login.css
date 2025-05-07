@@ -68,6 +68,10 @@
   color: transparent; /* 텍스트 없는 버튼 */
 }
 
+.form-field__toggle-password--visible {
+  background: url('/assets/icon/btn_visibility_on.png') no-repeat center;
+}
+
 .form-field__error-message {
   color: var(--color-error);
   font-size: 0.875rem;

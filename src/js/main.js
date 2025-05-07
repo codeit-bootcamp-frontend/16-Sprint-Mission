@@ -1,11 +1,17 @@
 //main.js
-//todo: formValidator를 import 하여 login, signup form에 이벤트 연결
+
 import { FormValidator } from '/src/js/components/FormValidator.js';
+import { PasswordToggle } from '/src/js/components/PasswordToggle.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const loginForm = document.querySelector('.login__form');
-  if (loginForm) new FormValidator(loginForm);
+  // FormValidator 초기화
+  document.querySelectorAll('.login__form, .signup__form').forEach((form) => {
+    new FormValidator(form);
+  });
 
-  const signupForm = document.querySelector('.signup__form');
-  if (signupForm) new FormValidator(signupForm);
+  // PasswordToggle 초기화
+  document.querySelectorAll('.form-field__toggle-password').forEach((btn) => {
+    new PasswordToggle(btn);
+    //console.log(btn);
+  });
 });
