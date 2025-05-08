@@ -26,12 +26,17 @@
       </h1>
       <form action="#" method="post">
         <label for="username">이메일</label>
-        <input id="username" name="username" type="email" placeholder="codeit@email.com" required autofocus />
+        <input id="username" name="username" type="email" placeholder="이메일을 입력해주세요" required autofocus />
         <label for="nickname">닉네임</label>
-        <input type="text" id="nickname" name="nickname" placeholder="판다" required />
+        <input type="text" id="nickname" name="nickname" placeholder="닉네임을 입력해주세요" required />
         <label for="password">비밀번호</label>
         <div class="password-input-box">
-          <input id="password" type="password" aria-labelledby="password-label" required />
+          <input
+            id="password"
+            type="password"
+            aria-labelledby="password-label"
+            placeholder="비밀번호를 입력해주세요"
+            required />
           <button class="visibility-btn" aria-label="비밀번호 보기 버튼" type="button">
             <img
               class="visibility-btn-off"
@@ -49,7 +54,12 @@
         </div>
         <label for="password-check" id="password-check-label">비밀번호 확인</label>
         <div class="password-input-box">
-          <input id="password-check" type="password" aria-labelledby="password-check-label" required />
+          <input
+            id="password-check"
+            type="password"
+            aria-labelledby="password-check-label"
+            placeholder="비밀번호를 다시 한 번 입력해주세요"
+            required />
           <button type="button" class="visibility-btn" aria-label="비밀번호 보기" aria-pressed="false">
             <img
               class="visibility-btn-off"
