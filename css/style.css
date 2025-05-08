@@ -318,3 +318,109 @@ footer a {
     padding: 0px 104px;
   }
 }
+
+@media (min-width: 1200px) {
+  .word-nowrap {
+    white-space: nowrap;
+  }
+
+  .container {
+    max-width: 1120px;
+  }
+
+  /* font-size */
+  body {
+    font-size: var(--text-lg);
+    font-weight: var(--font-medium);
+  }
+
+  .more-btn {
+    font-size: var(--text-xl);
+    font-weight: var(--font-semibold);
+  }
+
+  .badge {
+    font-size: var(--text-lg);
+  }
+
+  .features h2 {
+    font-size: var(--text-4xl);
+    line-height: var(--leading-4xl);
+    font-weight: var(--font-bold);
+  }
+
+  .features p {
+    font-size: var(--text-2xl);
+    line-height: var(--leading-2xl);
+    font-weight: var(--font-medium);
+  }
+
+  /* 레이아웃 수정 */
+  header {
+    padding: 9px 200px;
+  }
+
+  .hero {
+    height: 540px;
+  }
+
+  .hero-inner {
+    max-width: 1110px;
+    flex-direction: row;
+  }
+
+  .hero-heading {
+    max-width: 357px;
+    text-align: left;
+  }
+  .hero .img-box {
+    height: 100%;
+    align-items: flex-end;
+  }
+
+  .features {
+    padding: 138px 0;
+    gap: 138px 0;
+  }
+
+  .feature {
+    max-width: 988px;
+    height: 444px;
+    flex-direction: row;
+    margin: 0 auto;
+    gap: 64px;
+    border-radius: 12px;
+    background-color: var(--secondary-color-gray50);
+  }
+
+  .feature:nth-child(2) {
+    flex-direction: row-reverse;
+  }
+
+  .features .img-box {
+    max-width: 579px;
+    border-radius: 0;
+  }
+
+  .features .text-box {
+    flex: 1;
+  }
+
+  .footer-banner {
+    height: 540px;
+    padding: 143px 0 0;
+  }
+
+  .footer-banner-inner {
+    max-width: 1110px;
+    flex-direction: row;
+  }
+
+  .footer-banner-heading {
+    text-align: left;
+  }
+
+  .footer-banner .img-box {
+    width: 746px;
+  }
+}
