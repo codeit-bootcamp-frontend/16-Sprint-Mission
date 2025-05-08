@@ -22,18 +22,11 @@
       <div class="header-inner">
         <h1 class="logo">
           <a href="/">
-            <img
-              src="images/logo_m.svg"
-              srcset="
-                images/logo_m.svg    103w,
-                images/logo_m.svg    206w,
-                images/logo_l_1x.svg 153w,
-                images/logo_l_2x.svg 306w
-              "
-              sizes="(max-width:767px) 103px, 153px"
-              alt="로고"
-              width="153"
-              height="51" />
+            <picture>
+              <source srcset="images/logo_l_2x.svg" media="(min-width: 1024px)" />
+              <source srcset="images/logo_l_1x.svg" media="(min-width: 768px)" />
+              <img src="images/logo_m.svg" alt="로고" width="153" height="51" />
+            </picture>
           </a>
         </h1>
         <a href="/pages/login.html" class="login-btn btn" role="button" aria-label="로그인 페이지로 이동">로그인</a>
