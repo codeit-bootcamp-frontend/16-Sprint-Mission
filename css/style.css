@@ -424,3 +424,10 @@ footer a {
     width: 746px;
   }
 }
+
+@media (min-width: 1920px) {
+  .header-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+}
