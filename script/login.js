@@ -40,6 +40,6 @@ formElements.loginBtn.addEventListener("click", (e) => {
   e.preventDefault();
   checkButtonActivation(formElements.loginBtn, "login");
   if (!formElements.loginBtn.disabled) {
-    window.location.href = "./signup.html";
+    window.location.href = "../page/items.html";
   }
 });
