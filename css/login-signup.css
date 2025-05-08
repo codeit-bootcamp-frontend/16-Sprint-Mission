@@ -125,6 +125,15 @@ form {
 
 @media (min-width: 768px) {
   .content {
+    max-width: 640px;
     padding: 0;
+  }
+
+  form {
+    gap: 24px;
+  }
+
+  .logo {
+    width: 369px;
   }
 }
