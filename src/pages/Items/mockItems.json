@@ -1,0 +1,140 @@
+[
+  {
+    "id": 226,
+    "name": "푸바오 찾아 떠나는 청두 여행!!",
+    "description": "제 딸 푸바오가 있는 쓰촨성 청두로 날아가 보세요!!!",
+    "price": 99999999,
+    "tags": ["푸바오", "러바오", "아이바오", "루이바오", "후이바오"],
+    "images": [
+      "https://image.hanatour.com/usr/cms/resize/800_0/2024/08/11/10000/687449d1-4e4f-4952-b6d1-5342465880f5.jpg"
+    ],
+    "ownerId": 177,
+    "favoriteCount": 45,
+    "createdAt": "2024-09-23T11:25:06.306Z",
+    "updatedAt": "2025-05-08T00:35:32.211Z"
+  },
+  {
+    "id": 629,
+    "name": "돌아와..너가 죽으면 안돼",
+    "description": "젠슨형 우리좀 꺼내줘",
+    "price": 113,
+    "tags": ["S&P 투자사"],
+    "images": [
+      "https://cdn.choicenews.co.kr/news/photo/202409/135215_98277_538.jpg"
+    ],
+    "ownerId": 895,
+    "favoriteCount": 18,
+    "createdAt": "2025-03-10T07:14:54.608Z",
+    "updatedAt": "2025-05-08T01:19:00.997Z"
+  },
+  {
+    "id": 199,
+    "name": "아이폰 16 pro",
+    "description": "따끈한 아이폰!",
+    "price": 1290000,
+    "tags": [],
+    "images": [
+      "https://sprint-fe-project.s3.ap-northeast-2.amazonaws.com/Sprint_Mission/user/98/1726837429259/iphone.jpg"
+    ],
+    "ownerId": 98,
+    "favoriteCount": 15,
+    "createdAt": "2024-09-20T13:03:49.397Z",
+    "updatedAt": "2025-04-27T08:34:36.366Z"
+  },
+  {
+    "id": 197,
+    "name": "갤럭시 버즈3",
+    "description": "버즈3 입니다~",
+    "price": 500000,
+    "tags": ["이어폰"],
+    "images": [
+      "https://sprint-fe-project.s3.ap-northeast-2.amazonaws.com/Sprint_Mission/user/107/1726730417522/buds.jpg"
+    ],
+    "ownerId": 107,
+    "favoriteCount": 13,
+    "createdAt": "2024-09-19T07:20:17.749Z",
+    "updatedAt": "2025-05-01T12:57:26.904Z"
+  },
+  {
+    "id": 644,
+    "name": "판다마켓...",
+    "description": "teststes",
+    "price": 1111111111,
+    "tags": ["판다", "졸림"],
+    "images": [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4fb9-Mrcz1_0IhrLpCFzG7zisGz8OvqzNog&s"
+    ],
+    "ownerId": 916,
+    "favoriteCount": 7,
+    "createdAt": "2025-03-14T02:53:34.608Z",
+    "updatedAt": "2025-04-25T17:30:18.213Z"
+  },
+  {
+    "id": 355,
+    "name": "단풍잎",
+    "description": "단풍잎 하나 사세요",
+    "price": 1000,
+    "tags": ["단풍", "단풍잎"],
+    "images": [
+      "https://sprint-fe-project.s3.ap-northeast-2.amazonaws.com/Sprint_Mission/user/36/1728454687724/leaf-6760484_640.jpg"
+    ],
+    "ownerId": 36,
+    "favoriteCount": 7,
+    "createdAt": "2024-10-09T06:18:33.271Z",
+    "updatedAt": "2025-02-27T01:46:49.928Z"
+  },
+  {
+    "id": 646,
+    "name": "판다",
+    "description": "판다판다",
+    "price": 2222222,
+    "tags": [],
+    "images": [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOHuLhMBf7IOIwUUZAjjKzV5AZbw3qIJZ_sA&s"
+    ],
+    "ownerId": 916,
+    "favoriteCount": 6,
+    "createdAt": "2025-03-14T02:59:35.707Z",
+    "updatedAt": "2025-04-28T01:38:11.166Z"
+  },
+  {
+    "id": 630,
+    "name": "상품",
+    "description": "상품 소개  수정1",
+    "price": 7701,
+    "tags": ["#게시글", "#게시판", "#상품"],
+    "images": ["https://placehold.co/300"],
+    "ownerId": 884,
+    "favoriteCount": 6,
+    "createdAt": "2025-03-10T07:16:02.104Z",
+    "updatedAt": "2025-03-16T09:17:57.410Z"
+  },
+  {
+    "id": 114,
+    "name": "갤럭시 탭 S7",
+    "description": "삼성 갤럭시 탭 S7",
+    "price": 350000,
+    "tags": [],
+    "images": [
+      "https://sprint-fe-project.s3.ap-northeast-2.amazonaws.com/Sprint_Mission/user/3/1721991844193/5146532.png"
+    ],
+    "ownerId": 1,
+    "favoriteCount": 6,
+    "createdAt": "2024-07-29T05:45:03.249Z",
+    "updatedAt": "2024-07-29T05:45:03.249Z"
+  },
+  {
+    "id": 107,
+    "name": "퀸사이즈 침대",
+    "description": "퀸사이즈 침대 프레임",
+    "price": 500000,
+    "tags": ["가구"],
+    "images": [
+      "https://sprint-fe-project.s3.ap-northeast-2.amazonaws.com/Sprint_Mission/user/3/1721991744735/2113.png"
+    ],
+    "ownerId": 1,
+    "favoriteCount": 6,
+    "createdAt": "2024-07-29T05:45:03.249Z",
+    "updatedAt": "2024-07-29T05:45:03.249Z"
+  }
+]

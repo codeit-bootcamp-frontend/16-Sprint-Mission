@@ -1,0 +1,59 @@
+.nav-container {
+  max-width: 1520px;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 var(--nav-padding-x);
+  border-bottom: 1px solid #dfdfdf;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.nav-logo-container {
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  gap: 8.59px;
+  align-items: center;
+}
+
+.nav-logo-img {
+  aspect-ratio: 40 / 40.14;
+  display: var(--display-logo-img);
+}
+
+.nav-logo-text {
+  font-weight: 700;
+  font-size: 25.63px;
+  line-height: 100%;
+  color: var(--color-blue400);
+  font-family: 'ROKAFSans';
+}
+
+.nav-button {
+  border-radius: 8px;
+  padding: 12px 43px;
+  line-height: 26px;
+  color: var(--color-gray100);
+}
+
+:root {
+  --nav-padding-x: 16px;
+  --display-logo-img: none;
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  :root {
+    --nav-padding-x: 24px;
+    --display-logo-img: inline;
+  }
+}
+/* PC */
+@media (min-width: 1200px) {
+  :root {
+    --nav-padding-x: 200px;
+    --display-logo-img: inline;
+  }
+}
