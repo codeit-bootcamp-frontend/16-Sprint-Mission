@@ -13,6 +13,7 @@
     url('../font/Pretendard-Bold.woff2') format('woff2'),
     url('../font/Pretendard-Bold.woff') format('woff');
 }
+
 @font-face {
   font-family: 'Pretendard';
   font-style: normal;
@@ -22,6 +23,7 @@
     url('../font/Pretendard-SemiBold.woff2') format('woff2'),
     url('../font/Pretendard-SemiBold.woff') format('woff');
 }
+
 @font-face {
   font-family: 'Pretendard';
   font-style: normal;
@@ -31,6 +33,7 @@
     url('../font/Pretendard-Medium.woff2') format('woff2'),
     url('../font/Pretendard-Medium.woff') format('woff');
 }
+
 @font-face {
   font-family: 'Pretendard';
   font-style: normal;

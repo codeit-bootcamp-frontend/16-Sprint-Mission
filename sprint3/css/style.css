@@ -8,4 +8,4 @@
 @import "reset.css"; /* 스타일 초기화 */
 @import "font.css"; /* 폰트 */
 @import "common.css"; /* 공통 전역 스타일 */
-@import "layout.css";  /* 레이아웃 스타일 */
+/* @import "layout.css";  레이아웃 스타일 */
