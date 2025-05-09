@@ -3,116 +3,136 @@ import './Header.css';
 import './Items.css';
 import { getItems } from '../../apis/api';
 import { useEffect, useState } from 'react';
-import debounce from './debounce';
 
 const ItemComponent = ({ id, imageUrl, name, price, favoriteCount }) => {
   return (
-    <div className={['item-container']}>
-      <img className={['item-image']} src={imageUrl} width={282} />
-      <div className={['item-context']}>
-        <h3 className={['item-title']}>{name}</h3>
-        <p className={['item-price']}>{price}</p>
-        <div className={['item-favorite-container']}>
+    <div className={'item-container'}>
+      <img className={'item-image'} src={imageUrl} width={282} />
+      <div className={'item-context'}>
+        <h3 className={'item-title'}>{name}</h3>
+        <p className={'item-price'}>{price}</p>
+        <div className={'item-favorite-container'}>
           <img
-            className={['item-favorite-image inactive']}
+            className={'item-favorite-image inactive'}
             src={'./images/img_favorite_inactive.png'}
             width={13.4}
           />
-          <p className={['item-favorite-count']}>{favoriteCount}</p>
+          <p className={'item-favorite-count'}>{favoriteCount}</p>
         </div>
       </div>
     </div>
   );
 };
 
+const updateDeviceType = (width) => {
+  if (width >= 1200) return 'lg';
+  else if (width >= 768) return 'md';
+  else return 'sm';
+};
+
+const getDataSizeBestItems = (type) => {
+  switch (type) {
+    case 'lg':
+      return 4;
+    case 'md':
+      return 2;
+    case 'sm':
+      return 1;
+  }
+};
+
+const getDataSizeAllItems = (type) => {
+  switch (type) {
+    case 'lg':
+      return 10;
+    case 'md':
+      return 6;
+    case 'sm':
+      return 4;
+  }
+};
+
 const Items = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [bestItems, setBestItems] = useState([]);
   const [allItems, setAllItems] = useState([]);
-  const [pageIndexList, setPageIndexList] = useState([]);
-  const [pagesCount, setPagesCount] = useState(0);
+  const [pageIndexList, setPageIndexList] = useState([1]);
+  const [pagesCount, setPagesCount] = useState(1);
   const [selectedPageIndex, setSelectedPageIndex] = useState(1);
   const [order, setOrder] = useState('recent');
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [pageSizes, setPageSizes] = useState({ bestItems: 1, allItems: 4 });
-
-  useEffect(() => {
-    if (windowWidth >= 1200) {
-      setPageSizes({ bestItems: 4, allItems: 10 });
-    } else if (windowWidth >= 768 && windowWidth < 1200) {
-      setPageSizes({ bestItems: 2, allItems: 6 });
-    } else if (windowWidth < 768) {
-      setPageSizes({ bestItems: 1, allItems: 4 });
-    }
-  }, [windowWidth]);
-
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    const debounceResize = debounce(handleResize, 200);
-    window.addEventListener('resize', debounceResize);
-    return () => {
-      window.removeEventListener('resize', debounceResize);
-    };
-  }, []);
+  const [deviceType, setDeviceType] = useState(
+    updateDeviceType(window.innerWidth)
+  );
 
   const loadBestItems = async (options) => {
     const results = await getItems(options);
     if (!results) return;
     const { list } = results;
-    setBestItems(list);
+    setBestItems((prev) => (list.every((v, i) => v === prev[i]) ? prev : list));
   };
 
   const loadAllItems = async (options) => {
     const results = await getItems(options);
     if (!results) return;
     const { totalCount, list } = results;
-    setAllItems(list);
-    setPagesCount(Math.ceil(totalCount / pageSizes.allItems));
+    setAllItems((prev) => (list.every((v, i) => v === prev[i]) ? prev : list));
+    setPagesCount(Math.ceil(totalCount / getDataSizeAllItems(deviceType)));
   };
 
   const handleSearchOrderChange = (e) => {
     setOrder(e.target.value);
+    setSelectedPageIndex(1);
   };
 
-  const handlePaginationButtonClick = (e) => {
-    setSelectedPageIndex(Number(e.target.value));
-  };
+  //prettier-ignore
+  const handlePaginationButtonClick = (e) => setSelectedPageIndex(Number(e.target.value));
+  const handlePaginationNext = () => setSelectedPageIndex((prev) => prev + 1);
+  const handlePaginationPrev = () => setSelectedPageIndex((prev) => prev - 1);
 
-  const handlePaginationNext = () => {
-    setSelectedPageIndex((prev) => prev + 1);
-  };
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
-  const handlePaginationPrev = () => {
-    setSelectedPageIndex((prev) => prev - 1);
-  };
+  useEffect(() => {
+    setDeviceType(updateDeviceType(windowWidth));
+  }, [windowWidth]);
 
   useEffect(() => {
     loadBestItems({
       page: 1,
-      pageSize: 4,
+      pageSize: getDataSizeBestItems(deviceType),
       orderBy: 'favorite',
     });
-  }, [pageSizes]);
+  }, [deviceType]);
 
   useEffect(() => {
     loadAllItems({
       page: selectedPageIndex,
-      pageSize: 10,
+      pageSize: getDataSizeAllItems(deviceType),
       orderBy: order,
     });
+  }, [deviceType, selectedPageIndex, order]);
+
+  useEffect(() => {
     const pageGroupStartIndex = Math.floor((selectedPageIndex - 1) / 5) * 5 + 1;
     const pageGroupSize =
       pagesCount - pageGroupStartIndex + 1 < 5
         ? pagesCount - pageGroupStartIndex + 1
         : 5;
-    setPageIndexList(
-      new Array(pageGroupSize).fill(pageGroupStartIndex).map((v, i) => v + i)
+    //prettier-ignore
+    const newPageList = new Array(pageGroupSize).fill(pageGroupStartIndex).map((v, i) => v + i);
+    setPageIndexList((prev) =>
+      JSON.stringify(prev) === JSON.stringify(newPageList) ? prev : newPageList
     );
-  }, [selectedPageIndex, order, pagesCount, pageSizes]);
+  }, [pagesCount, selectedPageIndex]);
 
   const prevItemExist = selectedPageIndex > 1;
   const nextItemExist = selectedPageIndex < pagesCount;
 
-  //const bestItems = mockItems.slice(0, 4);
   return (
     <>
       <header className={'page-header'}>
