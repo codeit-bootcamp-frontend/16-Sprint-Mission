@@ -20,6 +20,7 @@
       <form action="post" method="post" class="form-signup">
         <label for="email" class="label">이메일</label>
         <input
+          id="email-field"
           type="email"
           class="input email"
           name="email"
@@ -27,7 +28,7 @@
         />
         <label for="password" class="label">비밀번호</label>
         <div class="input-wrapper">
-            <input
+          <input
             id="password-field"
             type="password"
             class="input password"
@@ -60,14 +61,19 @@
         11.05 0 0 1-1.67 2.6"
               ></path>
             </svg>
-            <!-- <span class="toggle-password" onclick="togglePasswordVisibility()">
+            <span class="toggle-password" onclick="togglePasswordVisibility()">
               👁️
-            </span> -->
+            </span>
           </div>
         </div>
-        
 
-        <button class="signup-button">로그인</button>
+        <button
+          type="button"
+          onclick="location.href='/item.html'"
+          class="signup-button"
+        >
+          로그인
+        </button>
       </form>
     </section>
     <section class="social-section">
@@ -93,4 +99,6 @@
       </p>
     </section>
   </body>
+  <script type="module" src="./error.js"></script>
+  <script type="module" src="./login.js"></script>
 </html>

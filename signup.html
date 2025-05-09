@@ -2,7 +2,10 @@
 <html lang="kr">
   <head>
     <meta charset="UTF-8" />
-    <meta property="og:imge" content="https://pub-bf130692c499474c8e98eecfee92a734.r2.dev/panda_market_img.png" />
+    <meta
+      property="og:imge"
+      content="https://pub-bf130692c499474c8e98eecfee92a734.r2.dev/panda_market_img.png"
+    />
     <meta property="og:title" content="판다마켓" />
     <meta property="og:description" content="일상의 모든 물건을 거래해보세요" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,9 +26,14 @@
     <section class="form-section">
       <form action="post" method="post" class="form-signup">
         <label for="email" class="label">이메일</label>
-        <input type="email" class="input email" name="email" />
+        <input id="email-field" type="email" class="input email" name="email" />
         <label for="nickname" class="label">닉네임</label>
-        <input type="nickname" class="input nickname" name="nickname" />
+        <input
+          id="nickname-field"
+          type="nickname"
+          class="input nickname"
+          name="nickname"
+        />
         <label for="password" class="label">비밀번호</label>
         <input
           id="password-field"
@@ -58,20 +66,22 @@
       11.05 0 0 1-1.67 2.6"
             ></path>
           </svg>
-          <!-- <span class="toggle-password" onclick="togglePasswordVisibility()">
+          <span class="toggle-password" onclick="togglePasswordVisibility()">
             👁️
-          </span> -->
+          </span>
         </div>
-        <label for="password-check" class="label">비밀번호 확인</label>
+        <label for="password" id="password-check" class="label"
+          >비밀번호 확인</label
+        >
         <input
           id="password-check-field"
-          type="password-check"
+          type="password"
           class="input password-check"
           name="password-check"
         />
         <div class="icon-eye2 btn--click">
           <svg
-            id="eye-icon"
+            id="eye-icon2"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
@@ -94,11 +104,20 @@
       11.05 0 0 1-1.67 2.6"
             ></path>
           </svg>
-          <!-- <span class="toggle-password" onclick="togglePasswordVisibility()">
+          <span
+            class="toggle-check-password"
+            onclick="togglePasswordVisibility()"
+          >
             👁️
-          </span> -->
+          </span>
         </div>
-        <button class="signup-button">회원가입</button>
+        <button
+          type="button"
+          onclick="location.href='/index.html'"
+          class="signup-button"
+        >
+          회원가입
+        </button>
       </form>
     </section>
     <section class="social-section">
@@ -122,4 +141,6 @@
       <p class="signup">이미 회원이신가요? <a href="./login.html">로그인</a></p>
     </section>
   </body>
+  <script type="module" src="./error.js"></script>
+  <script type="module" src="./signup.js"></script>
 </html>
