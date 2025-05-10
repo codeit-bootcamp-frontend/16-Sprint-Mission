@@ -1,4 +1,15 @@
-const a = [1, 2, 3, 4, 5];
-const b = [1, 2, 3, 4, 5];
+const getItems = async () => {
+  const response = await fetch(
+    'https://panda-market-api.vercel.app/products?page=1&pageSize=1'
+  );
+  const body = await response.json();
+  return body;
+};
 
-console.log(a.every((v, i) => v === b[i]) ? 'a' : 'b');
+const consoleResult = async () => {
+  const result = await getItems();
+  console.log(result);
+};
+
+consoleResult();
+console.log('Finished!');

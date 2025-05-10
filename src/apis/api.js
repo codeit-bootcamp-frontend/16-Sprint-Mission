@@ -1,11 +1,17 @@
 const BASE_URL = 'https://panda-market-api.vercel.app';
 
 export const getItems = async ({
-  page,
+  offset,
   pageSize,
   orderBy = 'recent',
   keyword = '',
 }) => {
+  //pc: 10개, 태블릿: 6개, 모바일: 4개
+  //offset이 11이면 : page는? pc: 2, 태블릿: 2, 모바일: 3
+  //offset이 8이면 : page는? pc: 1, 태블릿: 2, 모바일: 2
+
+  const page = Math.ceil(offset / pageSize);
+  console.log(offset, pageSize, page);
   const query = `page=${page}&pageSize=${pageSize}&orderBy=${orderBy}&keyword=${keyword}`;
 
   const response = await fetch(`${BASE_URL}/products?${query}`);
