@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import './header.css';
+import './Header.css';
 import { useIsLogin } from '../../contexts/LoginStateContext';
 
 const Header = ({ currentSection }) => {
