@@ -6,7 +6,6 @@ import { useDeviceType } from '../../hooks/useDeviceType';
 import { formatPriceKRW } from '../../modules/formatPrice';
 import { useNavigate } from 'react-router';
 import Header from '../components/header';
-import { useIsLogin } from '../../contexts/LoginStateContext';
 
 const ItemComponent = ({
   id,
@@ -89,7 +88,6 @@ const getCurrentPageState = (
 };
 
 const Items = () => {
-  const isLogin = useIsLogin();
   const { deviceType } = useDeviceType();
 
   const [offset, setOffset] = useState(1);
@@ -185,7 +183,7 @@ const Items = () => {
 
   return (
     <>
-      <Header currentSection={'items'} />
+      <Header currentSection={'board'} />
       <main className={'items-page-main'}>
         <section id={'cards-best'} className={'cards-section'}>
           <div className={'section-header-container'}>

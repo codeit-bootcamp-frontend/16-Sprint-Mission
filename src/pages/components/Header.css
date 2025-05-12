@@ -11,7 +11,7 @@
   justify-content: space-between;
   padding: 0 var(--nav-padding-x);
   margin: 0 auto;
-  gap: 32px;
+  gap: var(--nav-conatiner-gap);
 }
 
 .nav-logo-container {
@@ -43,7 +43,7 @@
 
 .nav-link {
   display: inline-block;
-  padding: 21px 15px;
+  padding: 21px var(--nav-link-padding-x);
   text-decoration: none;
   color: var(--color-gray600);
   font-weight: 600;
@@ -65,6 +65,8 @@
 :root {
   --nav-padding-x: 16px;
   --display-logo-img: none;
+  --nav-conatiner-gap: 4px;
+  --nav-link-padding-x: 4px;
 }
 
 /* Tablet */
@@ -72,6 +74,8 @@
   :root {
     --nav-padding-x: 24px;
     --display-logo-img: inline;
+    --nav-conatiner-gap: 20px;
+    --nav-link-padding-x: 15px;
   }
 }
 /* PC */
@@ -79,5 +83,7 @@
   :root {
     --nav-padding-x: 200px;
     --display-logo-img: inline;
+    --nav-conatiner-gap: 32px;
+    --nav-link-padding-x: 15px;
   }
 }
