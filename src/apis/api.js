@@ -11,13 +11,12 @@ export const getItems = async ({
   //offset이 8이면 : page는? pc: 1, 태블릿: 2, 모바일: 2
 
   const page = Math.ceil(offset / pageSize);
-  console.log(offset, pageSize, page);
   const query = `page=${page}&pageSize=${pageSize}&orderBy=${orderBy}&keyword=${keyword}`;
 
   const response = await fetch(`${BASE_URL}/products?${query}`);
   if (!response.ok) {
     throw new Error('품목을 불러오지 못했습니다.');
   }
-  const body = response.json();
+  const body = await response.json();
   return body;
 };

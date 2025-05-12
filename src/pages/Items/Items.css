@@ -154,11 +154,13 @@
 .item-favorite-container {
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 3.35px;
 }
 
 .item-favorite-image {
-  aspect-ratio: 13.4 / 11.65;
+  aspect-ratio: 1/1;
+  width: 16px;
 }
 
 .item-favorite-count {

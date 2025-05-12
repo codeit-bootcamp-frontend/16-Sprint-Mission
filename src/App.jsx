@@ -5,6 +5,7 @@ import Signup from './pages/Auth/Signup';
 import Items from './pages/Items/Items';
 import Privacy from './pages/Privacy/Privacy';
 import Faq from './pages/Faq/Faq';
+import AddItem from './pages/AddItem/AddItem';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/items" element={<Items />} />
+        <Route path="/additem" element={<AddItem />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/faq" element={<Faq />} />
       </Routes>

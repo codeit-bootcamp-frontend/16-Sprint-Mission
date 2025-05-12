@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import './FormAuth.css';
-import { validators } from './modules/validators';
+import { validators } from '../../modules/validators';
 import { useFormFields } from '../../hooks/useFormFields';
 import Field from './Field';
 

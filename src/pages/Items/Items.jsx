@@ -3,16 +3,33 @@ import './Header.css';
 import './Items.css';
 import { getItems } from '../../apis/api';
 import { useEffect, useState } from 'react';
-import favoriteItems from './mockItems.json';
-import currentItems from './mockItems.json';
+import { useDeviceType } from '../../hooks/useDeviceType';
+import { formatPriceKRW } from '../../modules/formatPrice';
+import { useNavigate } from 'react-router';
 
-const ItemComponent = ({ id, imageUrl, name, price, favoriteCount }) => {
+const ItemComponent = ({
+  id,
+  imageUrl,
+  imageDefaultUrl,
+  name,
+  price,
+  favoriteCount,
+}) => {
   return (
     <div className={'item-container'}>
-      <img className={'item-image'} src={imageUrl} width={282} />
+      <img
+        className={'item-image'}
+        src={imageUrl}
+        onError={(e) => {
+          e.target.onError = null;
+          e.target.src = imageDefaultUrl;
+        }}
+        alt={name}
+        width={282}
+      />
       <div className={'item-context'}>
         <h3 className={'item-title'}>{name}</h3>
-        <p className={'item-price'}>{price}</p>
+        <p className={'item-price'}>{formatPriceKRW(price)}</p>
         <div className={'item-favorite-container'}>
           <img
             className={'item-favorite-image inactive'}
@@ -26,28 +43,143 @@ const ItemComponent = ({ id, imageUrl, name, price, favoriteCount }) => {
   );
 };
 
-const getDeviceType = (width) => {
-  if (width >= 1200) return 'lg';
-  else if (width >= 768) return 'md';
-  else return 'sm';
+const pageSizeByDevice = {
+  best: (deviceType) => {
+    return deviceType === 'lg'
+      ? 4
+      : deviceType === 'md'
+      ? 2
+      : deviceType === 'sm'
+      ? 1
+      : 0;
+  },
+  current: (deviceType) => {
+    return deviceType === 'lg'
+      ? 10
+      : deviceType === 'md'
+      ? 6
+      : deviceType === 'sm'
+      ? 4
+      : 0;
+  },
+};
+
+const getCurrentPageState = (
+  offset,
+  pageSize,
+  totalDataCount,
+  maxVisiblePageCount = 5
+) => {
+  //총페이지가 307일때
+  //pagesize가 10이고 offset이 13이면?
+  //현재페이지: 2, pagenumbers = 1,2,3,4,5
+  const currentPageNumber = Math.ceil(offset / pageSize);
+  const paginationStartPage = Math.floor((currentPageNumber - 1) / 5) * 5 + 1;
+  const lastPageNumber = Math.ceil(totalDataCount / pageSize);
+  const remainingPageCount = lastPageNumber - paginationStartPage + 1;
+  const visiblePageCount =
+    remainingPageCount >= maxVisiblePageCount
+      ? maxVisiblePageCount
+      : remainingPageCount;
+  const visiblePageNumbers = new Array(visiblePageCount)
+    .fill(0)
+    .map((v, i) => v + i + paginationStartPage);
+  return { currentPageNumber, visiblePageNumbers };
 };
 
 const Items = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const { deviceType } = useDeviceType();
+
+  const [offset, setOffset] = useState(1);
+  const [order, setOrder] = useState('recent');
+  const [keyword, setKeyword] = useState('');
+
+  const [bestItemList, setBestItemList] = useState([]);
+  const [currentItemList, setCurrentItemList] = useState([]);
+  const [pageNumbers, setPageNumbers] = useState([1]);
+  const [currentPageNumber, setCurrentPageNumber] = useState(1);
+  const [lastPageIndex, setLastPageIndex] = useState(1);
+
+  const [searchInputValue, setSearchInputValue] = useState('');
+
+  const onCreateNewItemNavigate = useNavigate();
+
+  const prevPageEnable = currentPageNumber > 1;
+  const nextPageEnable = currentPageNumber < lastPageIndex;
+
+  const handleSearchOrderChange = (e) => {
+    setOffset(1);
+    setOrder(e.target.value);
+  };
+
+  const loadBestItemList = async (options) => {
+    const result = await getItems(options);
+    if (!result) return;
+    const { list } = result;
+    setBestItemList(list);
+  };
+
+  const loadCurrentItemList = async (option) => {
+    const result = await getItems(option);
+    if (!result) return;
+    const { list, totalCount } = result;
+    setCurrentItemList(list);
+    setLastPageIndex(Math.ceil(totalCount / option.pageSize));
+    const currentPageState = getCurrentPageState(
+      option.offset,
+      option.pageSize,
+      totalCount
+    );
+    setPageNumbers((prev) => {
+      const nextPageNumbers = currentPageState.visiblePageNumbers;
+      return JSON.stringify(prev) === JSON.stringify(nextPageNumbers)
+        ? prev
+        : nextPageNumbers;
+    });
+    setCurrentPageNumber(currentPageState.currentPageNumber);
+  };
+
+  const handleSearchInputChange = (e) => setSearchInputValue(e.target.value);
+  const handleSearchInputEnterPress = (e) => {
+    if (e.key === 'Enter') {
+      setOffset(1);
+      setKeyword(searchInputValue);
+    }
+  };
+
   //prettier-ignore
-  const [deviceType, setDeviceType] = useState(getDeviceType(window.innerWidth));
+  const handlePageNumberClick = (e) => onPaginationButtonClick(Number(e.target.value));
+  const handlePagePrev = () => onPaginationButtonClick(currentPageNumber - 1);
+  const handlePageNext = () => onPaginationButtonClick(currentPageNumber + 1);
+  const onPaginationButtonClick = (nextPageNumber) =>
+    setOffset((nextPageNumber - 1) * pageSizeByDevice.current(deviceType) + 1);
+
+  const handleCreateNewItemClick = (e) => {
+    e.preventDefault();
+    onCreateNewItemNavigate('/additem');
+  };
 
   useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+    (async () => {
+      await loadBestItemList({
+        offset: 1,
+        pageSize: pageSizeByDevice.best(deviceType),
+        orderBy: 'favorite',
+        keyword: '',
+      });
+    })();
+  }, [deviceType]);
 
   useEffect(() => {
-    setDeviceType(getDeviceType(windowWidth));
-  }, [windowWidth]);
+    (async () => {
+      await loadCurrentItemList({
+        offset: offset,
+        pageSize: pageSizeByDevice.current(deviceType),
+        orderBy: order,
+        keyword: keyword,
+      });
+    })();
+  }, [deviceType, order, offset, keyword]);
 
   return (
     <>
@@ -84,12 +216,12 @@ const Items = () => {
             <h2 className={'section-title'}>베스트 상품</h2>
           </div>
           <div className={'items-container'}>
-            {favoriteItems.map((item) => {
+            {bestItemList.map((item) => {
               return (
                 <ItemComponent
                   key={item.id}
                   id={item.id}
-                  imageUrl={item.images}
+                  imageUrl={item.images?.[0]}
                   name={item.name}
                   price={item.price}
                   favoriteCount={item.favoriteCount}
@@ -112,16 +244,22 @@ const Items = () => {
               <input
                 className={'search-input'}
                 placeholder="검색할 상품을 입력해주세요"
+                value={searchInputValue}
+                onChange={handleSearchInputChange}
+                onKeyDown={handleSearchInputEnterPress}
               ></input>
             </div>
 
-            <button className={'search-submit button-style'}>
+            <button
+              className={'search-submit button-style'}
+              onClick={handleCreateNewItemClick}
+            >
               상품 등록하기
             </button>
             <select
-              // value={order}
+              value={order}
               className={'search-select'}
-              // onChange={handleSearchOrderChange}
+              onChange={handleSearchOrderChange}
             >
               <option value="recent">최신순</option>
               <option value="favorite">좋아요순</option>
@@ -129,12 +267,13 @@ const Items = () => {
           </div>
 
           <div className={'items-container'}>
-            {currentItems.map((item) => {
+            {currentItemList.map((item) => {
               return (
                 <ItemComponent
                   key={item.id}
                   id={item.id}
                   imageUrl={item.images}
+                  imageDefaultUrl={'./images/img_items_default_md.png'}
                   name={item.name}
                   price={item.price}
                   favoriteCount={item.favoriteCount}
@@ -147,8 +286,8 @@ const Items = () => {
       <nav className={'items-pagination'}>
         <button
           className={'pagination-button prev-page'}
-          // onClick={handlePaginationPrev}
-          // disabled={!prevItemExist}
+          onClick={handlePagePrev}
+          disabled={!prevPageEnable}
         >
           <img
             className={'pagination-button-image'}
@@ -156,15 +295,15 @@ const Items = () => {
             width={16}
           />
         </button>
-        {/* {pageIndexList.map((pageIndex) => {
+        {pageNumbers.map((pageIndex) => {
           const ButtonClassName =
-            selectedPageIndex === pageIndex ? 'selected' : '';
+            currentPageNumber === pageIndex ? 'selected' : '';
           return (
             <button
               key={pageIndex}
               value={pageIndex}
               className={`pagination-button ${ButtonClassName}`}
-              onClick={handlePaginationButtonClick}
+              onClick={handlePageNumberClick}
             >
               {pageIndex}
             </button>
@@ -172,15 +311,15 @@ const Items = () => {
         })}
         <button
           className={'pagination-button next-page'}
-          onClick={handlePaginationNext}
-          disabled={!nextItemExist}
+          onClick={handlePageNext}
+          disabled={!nextPageEnable}
         >
           <img
             className={'pagination-button-image'}
             src={'./images/ic_nextPageClick_active.png'}
             width={16}
           />
-        </button> */}
+        </button>
       </nav>
     </>
   );
