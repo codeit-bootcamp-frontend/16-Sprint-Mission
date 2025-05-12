@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { useDeviceType } from '../../hooks/useDeviceType';
 import { formatPriceKRW } from '../../modules/formatPrice';
 import { useNavigate } from 'react-router';
-import Header from '../components/header';
+import Header from '../components/Header';
 
 const ItemComponent = ({
   id,

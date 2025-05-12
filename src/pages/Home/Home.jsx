@@ -5,7 +5,7 @@ import './Cards.css';
 import './Card.css';
 import './BannerBottom.css';
 import './Footer.css';
-import Header from '../components/header';
+import Header from '../components/Header';
 
 const Home = () => {
   return (
