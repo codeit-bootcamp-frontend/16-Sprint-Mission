@@ -2,9 +2,12 @@ import { Link } from 'react-router-dom';
 import './FormAuth.css';
 import { validators } from '../../modules/validators';
 import { useFormFields } from '../../hooks/useFormFields';
+import { useNavigate } from 'react-router';
 import Field from './Field';
 
 const Signup = () => {
+  const onSubmitNavigate = useNavigate();
+
   const FIELDS = {
     email: validators.email,
     nickname: validators.nickname,
@@ -17,11 +20,12 @@ const Signup = () => {
       return validators.passwordVerify(passwordVerifyText, passwordText);
     },
   };
-  const onSubmitRedirectURL = '/login';
-
+  const onSubmitRedirect = (e) => {
+    e.preventDefault();
+    onSubmitNavigate('/login');
+  };
   const formDataObject = {
     FIELDS,
-    onSubmitRedirectURL,
   };
 
   const {
@@ -31,8 +35,8 @@ const Signup = () => {
     isVisibles,
     isSubmitEnabled,
     handleInputChange,
+    handleInputBlur,
     handlePasswordIconClick,
-    handleSubmit,
   } = useFormFields(formDataObject);
 
   return (
@@ -46,7 +50,7 @@ const Signup = () => {
           />
           <h1 className="form-logo-text">판다마켓</h1>
         </Link>
-        <form className="form-container" onSubmit={handleSubmit}>
+        <form className="form-container" onSubmit={onSubmitRedirect}>
           <Field
             id={'email'}
             labelText={'이메일'}
@@ -59,6 +63,7 @@ const Signup = () => {
             hint={hints['email']}
             isVisible={isVisibles['email']}
             handleInputChange={handleInputChange}
+            handleInputBlur={handleInputBlur}
             handlePasswordIconClick={handlePasswordIconClick}
           />
           <Field
@@ -71,6 +76,7 @@ const Signup = () => {
             hint={hints['nickname']}
             isVisible={isVisibles['nickname']}
             handleInputChange={handleInputChange}
+            handleInputBlur={handleInputBlur}
             handlePasswordIconClick={handlePasswordIconClick}
           />
           <Field
@@ -85,6 +91,7 @@ const Signup = () => {
             hint={hints['password']}
             isVisible={isVisibles['password']}
             handleInputChange={handleInputChange}
+            handleInputBlur={handleInputBlur}
             handlePasswordIconClick={handlePasswordIconClick}
           />
           <Field
@@ -99,6 +106,7 @@ const Signup = () => {
             hint={hints['passwordVerify']}
             isVisible={isVisibles['passwordVerify']}
             handleInputChange={handleInputChange}
+            handleInputBlur={handleInputBlur}
             handlePasswordIconClick={handlePasswordIconClick}
           />
           <button

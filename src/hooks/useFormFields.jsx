@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
 
-export const useFormFields = ({ FIELDS, onSubmitRedirectURL }) => {
+export const useFormFields = ({ FIELDS }) => {
   const createInitialStates = (initialFields, initialValue) => {
     const returnFields = {};
     for (const field in initialFields) {
@@ -20,8 +19,6 @@ export const useFormFields = ({ FIELDS, onSubmitRedirectURL }) => {
   const [isVisibles, setIsVisibles] = useState(createInitialStates(FIELDS, false));
   const [isSubmitEnabled, setIsSubmitEnabled] = useState(false);
 
-  const onSubmitNavigate = useNavigate();
-
   useEffect(() => {
     setIsSubmitEnabled(Object.values(valids).every((v) => v === true));
   }, [valids]);
@@ -29,6 +26,10 @@ export const useFormFields = ({ FIELDS, onSubmitRedirectURL }) => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     updateFieldValues(name, value);
+  };
+
+  const handleInputBlur = (e) => {
+    const { name, value } = e.target;
     const validResults = getValidResults(name, value);
     updateValidResults(validResults);
   };
@@ -69,11 +70,6 @@ export const useFormFields = ({ FIELDS, onSubmitRedirectURL }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmitNavigate(onSubmitRedirectURL);
-  };
-
   return {
     values,
     valids,
@@ -81,7 +77,7 @@ export const useFormFields = ({ FIELDS, onSubmitRedirectURL }) => {
     isVisibles,
     isSubmitEnabled,
     handleInputChange,
+    handleInputBlur,
     handlePasswordIconClick,
-    handleSubmit,
   };
 };

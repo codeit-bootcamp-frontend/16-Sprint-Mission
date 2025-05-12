@@ -10,6 +10,7 @@ const Field = ({
   hint,
   isVisible,
   handleInputChange,
+  handleInputBlur,
   handlePasswordIconClick,
 }) => {
   const inputContainerClassName = () => {
@@ -38,6 +39,7 @@ const Field = ({
           type={inputType()}
           autoComplete={autoComplete}
           onChange={handleInputChange}
+          onBlur={handleInputBlur}
           value={value}
           name={id}
         ></input>

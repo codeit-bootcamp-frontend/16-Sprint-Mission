@@ -8,9 +8,10 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 0 var(--nav-padding-x);
   justify-content: space-between;
+  padding: 0 var(--nav-padding-x);
   margin: 0 auto;
+  gap: 32px;
 }
 
 .nav-logo-container {
@@ -32,6 +33,26 @@
   line-height: 100%;
   color: var(--color-blue400);
   font-family: 'ROKAFSans';
+}
+
+.nav-link-container {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 21px 15px;
+  text-decoration: none;
+  color: var(--color-gray600);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 26px;
+}
+
+.nav-link.active {
+  color: var(--color-blue400);
 }
 
 .nav-button {

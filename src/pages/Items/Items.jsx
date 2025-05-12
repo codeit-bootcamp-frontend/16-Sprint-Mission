@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
-import './Header.css';
 import './Items.css';
 import { getItems } from '../../apis/api';
 import { useEffect, useState } from 'react';
 import { useDeviceType } from '../../hooks/useDeviceType';
 import { formatPriceKRW } from '../../modules/formatPrice';
 import { useNavigate } from 'react-router';
+import Header from '../components/header';
+import { useIsLogin } from '../../contexts/LoginStateContext';
 
 const ItemComponent = ({
   id,
@@ -88,6 +89,7 @@ const getCurrentPageState = (
 };
 
 const Items = () => {
+  const isLogin = useIsLogin();
   const { deviceType } = useDeviceType();
 
   const [offset, setOffset] = useState(1);
@@ -183,33 +185,7 @@ const Items = () => {
 
   return (
     <>
-      <header className={'page-header'}>
-        <nav className={'nav-container'} aria-label="메인 페이지로 이동">
-          <Link to="/" className={'nav-logo-container'}>
-            <img
-              className={'nav-logo-img'}
-              src={'./images/Img_logo.png'}
-              width={40}
-              alt={'판다마켓 로고'}
-              title={'판다마켓 로고'}
-            />
-            <span className={'nav-logo-text'}>판다마켓</span>
-          </Link>
-          <div className={'nav-link-container'}>
-            <Link to="/items" className={'nav-link'}>
-              자유게시판
-            </Link>
-            <Link to="/items" className={'nav-link'}>
-              중고마켓
-            </Link>
-          </div>
-          <img
-            className={'nav-profile'}
-            src={'./images/icon_profile.png'}
-            width={40}
-          />
-        </nav>
-      </header>
+      <Header currentSection={'items'} />
       <main className={'items-page-main'}>
         <section id={'cards-best'} className={'cards-section'}>
           <div className={'section-header-container'}>

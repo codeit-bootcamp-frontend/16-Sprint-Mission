@@ -2,19 +2,29 @@ import { Link } from 'react-router-dom';
 import './FormAuth.css';
 import { validators } from '../../modules/validators';
 import { useFormFields } from '../../hooks/useFormFields';
+import { useNavigate } from 'react-router';
 import Field from './Field';
+import { useSetIsLogin } from '../../contexts/LoginStateContext';
 
 const Login = () => {
+  const onSubmitNavigate = useNavigate();
+
+  const setIsLogin = useSetIsLogin();
+
   const FIELDS = {
     email: validators.email,
     password: validators.password,
   };
 
-  const onSubmitRedirectURL = '/items';
+  const onSubmitRedirect = (e) => {
+    e.preventDefault();
+    onSubmitNavigate('/items');
+    setIsLogin(true);
+  };
 
   const formDataObject = {
     FIELDS,
-    onSubmitRedirectURL,
+    onSubmitRedirect,
   };
 
   const {
@@ -24,8 +34,8 @@ const Login = () => {
     isVisibles,
     isSubmitEnabled,
     handleInputChange,
+    handleInputBlur,
     handlePasswordIconClick,
-    handleSubmit,
   } = useFormFields(formDataObject);
 
   return (
@@ -39,7 +49,7 @@ const Login = () => {
           />
           <h1 className="form-logo-text">판다마켓</h1>
         </Link>
-        <form className="form-container" onSubmit={handleSubmit}>
+        <form className="form-container" onSubmit={onSubmitRedirect}>
           <Field
             id={'email'}
             labelText={'이메일'}
@@ -52,6 +62,7 @@ const Login = () => {
             hint={hints['email']}
             isVisible={isVisibles['email']}
             handleInputChange={handleInputChange}
+            handleInputBlur={handleInputBlur}
             handlePasswordIconClick={handlePasswordIconClick}
           />
           <Field
@@ -66,6 +77,7 @@ const Login = () => {
             hint={hints['password']}
             isVisible={isVisibles['password']}
             handleInputChange={handleInputChange}
+            handleInputBlur={handleInputBlur}
             handlePasswordIconClick={handlePasswordIconClick}
           />
           <button
