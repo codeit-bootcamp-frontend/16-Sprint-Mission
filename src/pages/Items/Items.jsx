@@ -204,11 +204,9 @@ const Items = () => {
             })}
           </div>
         </section>
-
         <section id={'cards-all'} className={'cards-section'}>
           <div className={'section-header-container'}>
             <h2 className={'section-title'}>전체 상품</h2>
-
             <div className={'search-input-container'}>
               <img
                 className={'search-input-icon'}
@@ -223,7 +221,6 @@ const Items = () => {
                 onKeyDown={handleSearchInputEnterPress}
               ></input>
             </div>
-
             <button
               className={'search-submit button-style'}
               onClick={handleCreateNewItemClick}
@@ -239,7 +236,6 @@ const Items = () => {
               <option value="favorite">좋아요순</option>
             </select>
           </div>
-
           <div className={'items-container'}>
             {currentItemList.map((item) => {
               return (
