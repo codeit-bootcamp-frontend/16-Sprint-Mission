@@ -2,16 +2,22 @@
 /* form label (이메일 / 비밀번호) */
 form label {
   display: block;
-  font-size: var(--text-lg);      
-  font-weight: var(--font-bold);   
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
   margin-bottom: var(--space-xs);
 }
 
 /* form input 텍스트 */
 .content input {
-  font-size: var(--text-base);       
-  font-weight: var(--font-normal);  
+  font-size: var(--text-base);
+  font-weight: var(--font-normal);
   color: var(--secondary-color-gray700);
+  /* 레이아웃 & 디자인 */
+  width: 100%;
+  height: 56px;
+  padding: 0 20px;
+  border-radius: 12px;
+  background-color: var(--secondary-color-gray100);
 }
 
 /* visibility 버튼 아이콘 */
@@ -22,20 +28,20 @@ form label {
 
 /* 제출 버튼 */
 .btn-submit {
-  font-size: var(--text-xl);        
-  font-weight: var(--font-semibold);  
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
   width: 100%;
   height: 56px;
   border-radius: 40px;
-  background-color: var(--primary-color-100);
+  background-color: var(--secondary-color-gray400);
   color: #fff;
 }
 
 /* 간편 로그인 타이틀 */
 .sns-login p {
   font-size: var(--text-base);
-  font-weight: var(--font-medium);  
-  color: var(--secondary-color-gray700);
+  font-weight: var(--font-medium);
+  color: var(--secondary-color-gray800);
 }
 
 /* SNS 아이콘 링크 */
@@ -45,33 +51,34 @@ form label {
 }
 
 /* 회원가입 텍스트 */
-.sign-up {
+.sign-up,
+.login {
   font-size: var(--text-base);
   font-weight: var(--font-normal);
   color: var(--secondary-color-gray700);
 }
-.sign-up a {
+.sign-up a,
+.login a {
   font-weight: var(--font-semibold);
   color: var(--primary-color-100);
   text-decoration: underline;
 }
-
-
 
 input:focus {
   outline-color: var(--primary-color-100);
 }
 
 .content {
-  max-width: 640px;
+  max-width: 400px;
   width: 100%;
-  margin: 120px auto;
-  padding: 0 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 80px auto;
+  padding: 0 16px;
   flex-direction: column;
   gap: 24px;
+}
+
+.logo {
+  width: 198px;
 }
 
 form {
@@ -79,15 +86,7 @@ form {
   margin-top: 26px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
-}
-
-.content input {
-  width: 100%;
-  height: 56px;
-  padding: 0 20px;
-  border-radius: 12px;
-  background-color: var(--secondary-color-gray100);
+  gap: 16px;
 }
 
 .password-input-box {
@@ -96,14 +95,6 @@ form {
 
 #password {
   padding: 0 40px 0 20px;
-}
-
-.btn-submit {
-  width: 100%;
-  height: 56px;
-  border-radius: 40px;
-  background-color: var(--primary-color-100);
-  color: #fff;
 }
 
 .sns-login {
@@ -118,9 +109,6 @@ form {
 }
 
 .sns-login-link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 16px;
 }
 
@@ -135,19 +123,17 @@ form {
   display: none;
 }
 
-.sign-up,
-.login {
-  font-size: 1.4rem;
-}
-
-.sign-up a,
-.login a {
-  text-decoration: underline;
-  color: var(--primary-color-100);
-}
-
 @media (min-width: 768px) {
   .content {
+    max-width: 640px;
     padding: 0;
+  }
+
+  form {
+    gap: 24px;
+  }
+
+  .logo {
+    width: 369px;
   }
 }

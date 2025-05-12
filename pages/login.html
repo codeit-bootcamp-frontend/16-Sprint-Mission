@@ -5,10 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>판다마켓</title>
 
-    <meta name="description" content="판다마켓 로그인 - 일상의 모든 물건을 거래하는 중고거래 플랫폼" />
-    <meta property="og:title" content="판다마켓 로그인" />
-    <meta property="og:description" content="일상의 모든 물건을 거래하는 중고거래 플랫폼" />
-    <meta property="og:image" content="/images/og-panda.svg" />
+    <meta name="description" content="판다마켓 - 일상의 모든 물건을 거래하는 중고거래 플랫폼" />
+
+    <!-- Open Graph (Facebook, Kakao, Discord 등) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="판다마켓" />
+    <meta property="og:description" content="일상의 모든 물건을 거래해보세요" />
+    <meta property="og:image" content="https://frabjous-youtiao-ccda2d.netlify.app/images/og_img.png" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="판다마켓" />
+    <meta name="twitter:description" content="일상의 모든 물건을 거래해보세요" />
+    <meta name="twitter:image" content="https://frabjous-youtiao-ccda2d.netlify.app/images/og_img.png" />
 
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
 
@@ -18,25 +27,24 @@
     <link rel="stylesheet" href="../css/login-signup.css" />
   </head>
   <body>
-    <div class="content">
+    <div class="content flex-center">
       <h1 class="logo">
         <a href="/" aria-label="메인 페이지로 이동">
-          <img src="../images/Property-1=lg@3x.svg" alt="로고 이미지" width="396px" height="132px" />
+          <img src="../images/logo_l_1x.svg" alt="로고 이미지" width="396px" height="132px" />
         </a>
       </h1>
       <form action="#" method="post">
         <label for="username">이메일</label>
-        <input
-          id="username"
-          name="username"
-          type="email"
-          placeholder="codeit@email.com"
-          required
-          autofocus />
+        <input id="username" name="username" type="email" placeholder="이메일을 입력해주세요" required autofocus />
         <label for="password" id="password-label">비밀번호</label>
         <div class="password-input-box">
-          <input id="password" type="password" aria-labelledby="password-label" required />
-          <button class="visibility-btn" aria-label="비밀번호 보기 버튼" type="button">
+          <input
+            id="password"
+            type="password"
+            aria-labelledby="password-label"
+            placeholder="비밀번호를 입력해주세요"
+            required />
+          <button type="button" class="visibility-btn" aria-label="비밀번호 보기" aria-pressed="false">
             <img
               class="visibility-btn-off"
               src="../images/visibility_off.svg"
@@ -55,7 +63,7 @@
       </form>
       <div class="sns-login">
         <p>간편 로그인하기</p>
-        <span class="sns-login-link">
+        <span class="sns-login-link flex-center">
           <a href="https://www.google.com/" aria-label="구글 페이지로 이동">
             <img src="../images/ic_login_google.svg" alt="구글 아이콘" width="42px" height="42px" />
           </a>

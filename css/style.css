@@ -1,9 +1,3 @@
-.flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 /* btn */
 .btn {
   display: inline-block;
@@ -73,9 +67,16 @@ footer a {
   font-weight: var(--font-normal);
 }
 
+.container {
+  width: 100%;
+  max-width: 343px;
+  margin: 0 auto;
+}
+
 /* header */
 header {
   width: 100%;
+  height: 70px;
   padding: 9px 16px;
   position: fixed;
   top: 0;
@@ -89,6 +90,10 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.logo img {
+  max-width: 103px;
 }
 
 /* main */
@@ -129,7 +134,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 40px;
-  padding: 48px 16px;
+  padding: 48px 0px;
   background-color: #fff;
 }
 
@@ -137,12 +142,15 @@ main {
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 24px;
 }
 
 .features .img-box {
   width: 100%;
   border-radius: 12px;
+  overflow: hidden;
 }
 
 .features .text-box {
@@ -181,7 +189,6 @@ main {
 }
 
 .footer-banner .img-box {
-  max-width: 746px;
   width: 100%;
 }
 
@@ -233,7 +240,194 @@ footer a {
 }
 
 /* 반응형 조절 */
-.pc,
-.tb {
-  display: none;
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 696px;
+  }
+
+  .more-btn {
+    width: 357px;
+  }
+
+  .logo img {
+    max-width: 153px;
+  }
+
+  /* font-size */
+  .features p {
+    font-size: var(--text-lg);
+    font-weight: var(--font-medium);
+  }
+
+  .badge {
+    font-size: var(--text-lg);
+  }
+
+  .hero-heading h1,
+  .footer-banner-heading h2 {
+    font-size: var(--text-4xl);
+    line-height: var(--leading-4xl);
+    font-weight: var(--font-bold);
+  }
+
+  .features h2 {
+    font-size: var(--text-3xl);
+    line-height: var(--leading-3xl);
+    font-weight: var(--font-bold);
+    margin: 0;
+  }
+
+  /* 레이아웃 수정 */
+  header {
+    padding: 9px 24px;
+  }
+
+  .hero {
+    height: 771px;
+    padding: 84px 0 0;
+  }
+
+  .hero-heading {
+    max-width: 515px;
+  }
+
+  .feature {
+    max-width: 696px;
+  }
+
+  .features .img-box img {
+    width: 100%;
+    height: auto;
+  }
+
+  .features .text-box {
+    gap: 24px;
+  }
+
+  .footer-banner {
+    height: 927px;
+    padding: 201px 0 0;
+  }
+
+  .copyright {
+    position: static;
+  }
+
+  footer {
+    padding: 0px 104px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .word-nowrap {
+    white-space: nowrap;
+  }
+
+  .container {
+    max-width: 1120px;
+  }
+
+  /* font-size */
+  body {
+    font-size: var(--text-lg);
+    font-weight: var(--font-medium);
+  }
+
+  .more-btn {
+    font-size: var(--text-xl);
+    font-weight: var(--font-semibold);
+  }
+
+  .badge {
+    font-size: var(--text-lg);
+  }
+
+  .features h2 {
+    font-size: var(--text-4xl);
+    line-height: var(--leading-4xl);
+    font-weight: var(--font-bold);
+  }
+
+  .features p {
+    font-size: var(--text-2xl);
+    line-height: var(--leading-2xl);
+    font-weight: var(--font-medium);
+  }
+
+  /* 레이아웃 수정 */
+  header {
+    padding: 9px 200px;
+  }
+
+  .hero {
+    height: 540px;
+  }
+
+  .hero-inner {
+    max-width: 1110px;
+    flex-direction: row;
+  }
+
+  .hero-heading {
+    max-width: 357px;
+    text-align: left;
+  }
+  .hero .img-box {
+    height: 100%;
+    align-items: flex-end;
+  }
+
+  .features {
+    padding: 138px 0;
+    gap: 138px 0;
+  }
+
+  .feature {
+    max-width: 988px;
+    height: 444px;
+    flex-direction: row;
+    margin: 0 auto;
+    gap: 64px;
+    border-radius: 12px;
+    background-color: var(--secondary-color-gray50);
+  }
+
+  .feature:nth-child(2) {
+    flex-direction: row-reverse;
+  }
+
+  .features .img-box {
+    max-width: 579px;
+    border-radius: 0;
+  }
+
+  .features .text-box {
+    flex: 1;
+  }
+
+  .footer-banner {
+    height: 540px;
+    padding: 143px 0 0;
+  }
+
+  .footer-banner-inner {
+    max-width: 1110px;
+    flex-direction: row;
+  }
+
+  .footer-banner-heading {
+    text-align: left;
+  }
+
+  .footer-banner .img-box {
+    width: 746px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .header-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+  }
 }
