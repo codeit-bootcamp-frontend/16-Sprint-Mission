@@ -67,6 +67,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 26px;
+  outline: none;
 }
 
 .search-input::placeholder {
