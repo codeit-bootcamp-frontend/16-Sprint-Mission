@@ -178,14 +178,19 @@
 @media (max-width: 767px) {
   .banner-btn {
     padding: 11px 71px;
+    font-size: 18px;
   }
   .banner-text {
     display: flex;
+
     flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     padding: 48px 68px;
+  }
+  .banner-text > h1 {
+    text-align: center;
   }
   br.only_pc_m {
     display: inline-block;
@@ -211,5 +216,13 @@
   }
   br.only_pc {
     display: none;
+  }
+  .info-container {
+    flex-wrap: wrap;
+    padding: 32px 32px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    row-gap: 30px;
   }
 }
