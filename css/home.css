@@ -35,8 +35,7 @@
 .banner-text {
   display: flex;
   flex-direction: column;
-  margin: 100px 5px;
-  align-items: flex-start;
+  padding: 100px 5px;
   justify-content: center;
 }
 
@@ -59,9 +58,8 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  margin: 0 auto;
+  margin: 138px auto;
   gap: 30px;
-  padding: 138px 0;
   border-radius: 12px;
   max-width: 1200px;
   width: 100%;
@@ -72,13 +70,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 0 40px;
 }
 
 .description > h2 {
   font-size: 20px;
   font-weight: 600;
-  margin-bottom: 32px;
+  margin-bottom: 12px;
   color: var(--blue);
 }
 
@@ -86,11 +83,13 @@
   text-align: right;
   align-items: flex-end;
 }
-
+.section.search {
+  flex-direction: row-reverse;
+}
 .footer-banner {
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   flex-wrap: wrap;
   background-color: #cfe5ff;
   padding-top: 100px;
@@ -105,7 +104,7 @@
 }
 
 .footer-info {
-  background-color: var(navy);
+  background-color: var(--navy);
   height: 160px;
 }
 
@@ -136,4 +135,81 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+
+/*Tablet*/
+@media (max-width: 1199px) {
+  .banner-btn {
+    padding: 12px 124px;
+  }
+  .banner-text {
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 100px;
+  }
+  .banner-image > img {
+    width: 100%;
+  }
+  br.only_pc_m {
+    display: none;
+  }
+  .section {
+    margin: 52px auto;
+    padding: 0 24px;
+  }
+  .section > img {
+    width: 100%;
+  }
+  .description {
+    width: 100%;
+  }
+  .footer-banner > img {
+    width: 100%;
+  }
+  .footer-text {
+    text-align: center;
+  }
+  br.only_pc {
+    display: none;
+  }
+}
+
+/*Mobile*/
+@media (max-width: 767px) {
+  .banner-btn {
+    padding: 11px 71px;
+  }
+  .banner-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 48px 68px;
+  }
+  br.only_pc_m {
+    display: inline-block;
+  }
+  .section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 40px auto;
+    padding: 0 16px;
+    gap: 30px;
+    border-radius: 12px;
+    width: 100%;
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 15px;
+  }
+  br.only_pc {
+    display: none;
+  }
 }
