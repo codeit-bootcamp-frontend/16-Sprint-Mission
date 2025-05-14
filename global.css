@@ -2,6 +2,13 @@
   box-sizing: border-box;
 }
 
+body {
+  margin: 68px 0 0 0;
+  background-color: #ffffff;
+  color: #374151;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
 :root {
   --color-gray900: #111827;
   --color-gray800: #1f2937;
@@ -16,10 +23,10 @@
 }
 
 .button {
-  background-color: #3692ff;
+  background-color: var(--color-blue);
   padding: 16px 124px;
   border-radius: 9999px;
-  color: #f9fafb;
+  color: var(--color-gray50);
   text-decoration: none;
   font-size: 16px;
   border: none;
