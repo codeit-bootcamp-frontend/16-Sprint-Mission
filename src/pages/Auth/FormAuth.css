@@ -77,12 +77,10 @@
 .form-password-icon {
   aspect-ratio: 20.39 / 14;
   width: 20.39px;
-  content: url('./images/icon_password_visible.png');
 }
 .form-password-icon.hidden {
   aspect-ratio: 20.47 / 18.07;
   width: 20.47px;
-  content: url('./images/icon_password_invisible.png');
 }
 
 .form-input-hint {
