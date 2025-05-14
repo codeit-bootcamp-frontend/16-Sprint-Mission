@@ -3,42 +3,43 @@
 }
 
 body {
-    /* display: flex; */
-    /* justify-content: center; */
+    margin: 0;
+  padding: 1rem;
+  font-family: sans-serif;
 }
 
-@media (min-width: 1920px) {
-    .top {
+  @media (max-width: 1920px) {
+    .navigationBar {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
-        width: 60%;
-        margin: auto;
+        position:fixed;  /*미션2 추가 사항 */
+        width: 100%;
+        z-index: 2;
+        background-color: #FFFFFF;
+        top: 0;
+        left: 0;
+        padding: 0 clamp(1rem, 20vw, 3rem);
     }
-    .describe_home_top_container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 70%;
-        height: 70%;
-        top: 200px;
-        left: 405px;
-        gap: 7px;
-        margin-top: 180px;
-        background-color: #CFE5FF;
-    }
+
+}
+
+.describe_home_top_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 70%;
+    top: 200px;
+    left: 405px;
+    gap: 7px;
+    margin-top: 180px;
+    background-color: #CFE5FF;
+}
     
-}
-@media (max-width: 1920px) {
-    .top {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        
-        margin-left: 200px;
-        margin-right: 200px;
-    }
-}
+
+
+
 
 .home_top {
     display: flex;
