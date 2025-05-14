@@ -16,10 +16,21 @@
         <a class="logo" href="/" aria-label="홈으로 이동">
           <img src="./img/logo/lg.png" width="396" height="132" />
         </a>
-        <form method="POST" class="sign-up-form" name="sign-up-form">
+        <form
+          method="POST"
+          action="./login.html"
+          class="sign-up-form"
+          name="sign-up-form"
+        >
           <div class="input-box">
             <label for="email">이메일</label>
-            <input id="email" type="email" name="email" placeholder="입력" />
+            <input
+              id="email"
+              type="email"
+              name="email"
+              placeholder="이메일을 입력해주세요"
+            />
+            <span class="email-detail hidden"></span>
           </div>
           <div class="input-box">
             <label for="nickname">닉네임</label>
@@ -27,8 +38,9 @@
               id="nickname"
               type="text"
               name="nickname"
-              placeholder="입력"
+              placeholder="닉네임을 입력해주세요"
             />
+            <span class="nickname-detail hidden"></span>
           </div>
           <div class="input-box">
             <label for="password">비밀번호</label>
@@ -38,10 +50,12 @@
               name="password"
               placeholder="비밀번호를 입력해주세요"
             />
+            <span class="password-detail hidden"></span>
             <img
-              class="toggle-visiblity"
-              src="./img/icon/btn_visibility_on_24px.png"
-              alt="비밀번호 표시 토글 버튼"
+              class="toggle-visibility"
+              src="./img/icon/btn_visibility_off_24px.png"
+              alt="비밀번호 표시 꺼짐"
+              aria-pressed="false"
               width="24"
               height="24"
             />
@@ -54,15 +68,17 @@
               name="password-repeat"
               placeholder="비밀번호를 입력해주세요"
             />
+            <span class="password-repeat-detail hidden"></span>
             <img
-              class="toggle-visiblity"
-              src="./img/icon/btn_visibility_on_24px.png"
-              alt="비밀번호 표시 토글 버튼"
+              class="toggle-repeat-visibility"
+              src="./img/icon/btn_visibility_off_24px.png"
+              alt="비밀번호 반복 표시 꺼짐"
+              aria-pressed="false"
               width="24"
               height="24"
             />
           </div>
-          <button type="submit" class="sign-up-btn">회원가입</button>
+          <button type="submit" disabled class="sign-up-btn">회원가입</button>
         </form>
 
         <div class="oauth flex-between-center">
@@ -93,5 +109,6 @@
         </p>
       </div>
     </main>
+    <script type="module" src="./js/sign_up.js"></script>
   </body>
 </html>

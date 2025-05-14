@@ -16,16 +16,22 @@
         <a class="logo" href="/" aria-label="홈으로 이동">
           <img src="./img/logo/lg.png" width="396" height="132" />
         </a>
-        <form method="POST" class="login-form" name="login-form">
+        <form
+          method="POST"
+          action="./items.html"
+          class="login-form"
+          name="login-form"
+        >
           <div class="input-box">
             <label for="email">이메일</label>
             <input
               id="email"
               type="email"
               name="email"
-              placeholder="입력"
+              placeholder="이메일을 입력해주세요"
               autocomplete="email"
             />
+            <span class="email-detail hidden"></span>
           </div>
           <div class="input-box">
             <label for="password">비밀번호</label>
@@ -35,15 +41,19 @@
               name="password"
               placeholder="비밀번호를 입력해주세요"
             />
+            <span class="password-detail hidden"></span>
             <img
-              class="toggle-visiblity"
-              src="./img/icon/btn_visibility_on_24px.png"
-              alt="비밀번호 표시 토글 버튼"
+              class="toggle-visibility"
+              src="./img/icon/btn_visibility_off_24px.png"
+              alt="비밀번호 표시 꺼짐"
+              aria-pressed="false"
               width="24"
               height="24"
             />
           </div>
-          <button type="submit" class="login-btn">로그인</button>
+          <button type="submit" disabled class="login-btn disable-btn">
+            로그인
+          </button>
         </form>
 
         <div class="oauth flex-between-center">
@@ -74,5 +84,7 @@
         </p>
       </div>
     </main>
+
+    <script type="module" src="./js/login.js"></script>
   </body>
 </html>
