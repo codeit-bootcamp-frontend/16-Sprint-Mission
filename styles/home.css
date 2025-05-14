@@ -81,3 +81,148 @@
   margin-top: 24px;
   word-break: keep-all;
 }
+
+@media (min-width: 375px) and (max-width: 767px) {
+  .logo-img {
+    display: none;
+  }
+
+  .banner .pill-button {
+    display: block;
+    margin: 24px auto;
+  }
+
+  .description .br-control {
+    display: none;
+  }
+
+  .features-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .feature-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+    gap: 24px;
+    padding: 40px 0;;
+  }
+
+  .feature-box img {
+    width: 100%;
+  }
+
+  .feature-box.reverse {
+    flex-direction: column-reverse;
+    align-items: flex-end;
+  }
+
+  .feature-tag,
+  .description {
+    font-size: var(--text-base);
+    line-height: 26px;
+    margin: 0;
+  }
+
+  .description h1 {
+    font-size: var(--text-2xl);
+  }
+
+  .banner {
+    background-position: center bottom;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: contain;
+  }
+
+  .layout-container.hero-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 200px;
+  }
+  
+  .layout-container.bottom-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 200px;
+  }
+}
+
+@media (min-width : 768px) and (max-width: 1199px) {
+  .banner .pill-button {
+    display: block;
+    margin: 24px auto;
+  }
+
+  .br-control {
+    display: none;
+  }
+
+  .features-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .feature-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+    gap: 24px;
+    padding: 40px 0;;
+  }
+
+  .feature-box img {
+    width: 100%;
+  }
+  
+  .feature-box.reverse {
+    flex-direction: column-reverse;
+    align-items: flex-end;
+  }
+
+  .feature-tag,
+  .description {
+    font-size: var(--text-lg);
+    line-height: 26px;
+    margin: 0;
+  }
+
+  .description h1 {
+    font-size: 32px;
+  }
+  
+  .banner {
+    background-position: center bottom;
+    height: 770px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: contain;
+  }
+  
+  .layout-container.hero-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 450px;
+  }
+  
+  .layout-container.bottom-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 450px;
+  }
+}
