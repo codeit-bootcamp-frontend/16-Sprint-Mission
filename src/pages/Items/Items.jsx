@@ -183,7 +183,7 @@ const Items = () => {
 
   return (
     <>
-      <Header currentSection={'board'} />
+      <Header currentSection={'items'} />
       <main className={'items-page-main'}>
         <section id={'cards-best'} className={'cards-section'}>
           <div className={'section-header-container'}>
