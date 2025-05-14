@@ -7,6 +7,7 @@
     <link rel="icon" href="../images/favi.ico">
     <link rel="stylesheet" href="../reset.css">
     <link rel="stylesheet" href="./sign-up.css" />
+    <script src="./sign-up-main.js" type="module"></script>
   </head>
   <body>
     <main>
@@ -16,20 +17,24 @@
             <img src="../images/logo-title.png" alt="판다마켓 로고" />
           </a>
         </div>
-        <form class="sign-up__form" method="POST">
+        <form class="sign-up__form" method="get" action="../login/">
           <fieldset>
             <label for="user-email">이메일</label>
             <input type="text" id="user-email" name="user-email" placeholder="이메일을 입력해주세요"/>
             <label for="user-name">닉네임</label>
             <input id="user-name" type="text" name="user-name" placeholder="닉네임을 입력해주세요"/>
-            <label for="user-password">비밀번호</label>
-            <input id="user-password" type="password" name="user-password" placeholder="비밀번호를 입력해주세요"/>
-            <label for="user-password">비밀번호 확인</label>
-            <input id="user-password-check" type="password" name="user-password-check" placeholder="비밀번호를 다시 한 번 입력해주세요"/>
-            <input id="toggle-visibility-pw"  type="checkbox"/>
-            <label aria-label="비밀번호 표시 여부" aria-checked="false" for="toggle-visibility-pw"></label>
-            <input id="toggle-visibility-pwcheck" type="checkbox"/>
-            <label aria-label="비밀번호 확인 표시 여부" aria-checked="false" for="toggle-visibility-pwcheck"></label>
+            <div class="container__position-relative">
+              <label for="user-password">비밀번호</label>
+              <input id="user-password" type="password" name="user-password" placeholder="비밀번호를 입력해주세요"/>
+              <input id="toggle-visibility-pw"  type="checkbox"/>
+              <label aria-label="비밀번호 표시 여부" aria-checked="false" for="toggle-visibility-pw"></label>
+            </div>
+            <div class="container__position-relative"> 
+              <label for="user-password">비밀번호 확인</label>
+              <input id="user-password-check" type="password" name="user-password-check" placeholder="비밀번호를 다시 한 번 입력해주세요"/>
+              <input id="toggle-visibility-pwcheck" type="checkbox"/>
+              <label aria-label="비밀번호 확인 표시 여부" aria-checked="false" for="toggle-visibility-pwcheck"></label>
+            </div>
             <button type="submit">회원가입</button>
           </fieldset>
             <div class="sign-up__alert"> 
