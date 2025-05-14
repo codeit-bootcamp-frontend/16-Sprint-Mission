@@ -104,9 +104,6 @@ const Items = () => {
 
   const onCreateNewItemNavigate = useNavigate();
 
-  const prevPageEnable = currentPageNumber > 1;
-  const nextPageEnable = currentPageNumber < lastPageIndex;
-
   const handleSearchOrderChange = (e) => {
     setOffset(1);
     setOrder(e.target.value);
@@ -147,6 +144,11 @@ const Items = () => {
     }
   };
 
+  const handleCreateNewItemClick = (e) => {
+    e.preventDefault();
+    onCreateNewItemNavigate('/additem');
+  };
+
   //prettier-ignore
   const handlePageNumberClick = (e) => onPaginationButtonClick(Number(e.target.value));
   const handlePagePrev = () => onPaginationButtonClick(currentPageNumber - 1);
@@ -154,10 +156,16 @@ const Items = () => {
   const onPaginationButtonClick = (nextPageNumber) =>
     setOffset((nextPageNumber - 1) * pageSizeByDevice.current(deviceType) + 1);
 
-  const handleCreateNewItemClick = (e) => {
-    e.preventDefault();
-    onCreateNewItemNavigate('/additem');
-  };
+  const prevPageEnable = currentPageNumber > 1;
+  const nextPageEnable = currentPageNumber < lastPageIndex;
+
+  const prevButtonImgSrc = prevPageEnable
+    ? './images/ic_prevPageClick_active.png'
+    : './images/ic_prevPageClick_inactive.png';
+
+  const nextButtonImgSrc = nextPageEnable
+    ? './images/ic_nextPageClick_active.png'
+    : './images/ic_nextPageClick_inactive.png';
 
   useEffect(() => {
     (async () => {
@@ -261,7 +269,7 @@ const Items = () => {
         >
           <img
             className={'pagination-button-image'}
-            src={'./images/ic_prevPageClick_active.png'}
+            src={prevButtonImgSrc}
             width={16}
           />
         </button>
@@ -286,7 +294,7 @@ const Items = () => {
         >
           <img
             className={'pagination-button-image'}
-            src={'./images/ic_nextPageClick_active.png'}
+            src={nextButtonImgSrc}
             width={16}
           />
         </button>

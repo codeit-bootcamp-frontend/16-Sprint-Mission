@@ -23,11 +23,9 @@ const Field = ({
     return isVisible ? '' : 'hidden';
   };
 
-  const passwordIconImgSrc = () => {
-    return isVisible
-      ? './images/icon_password_visible.png'
-      : './images/icon_password_invisible.png';
-  };
+  const passwordIconImgSrc = isVisible
+    ? './images/icon_password_visible.png'
+    : './images/icon_password_invisible.png';
 
   const inputType = () => {
     return isVisible ? 'text' : type;
@@ -52,7 +50,7 @@ const Field = ({
         {id.includes('password') && (
           <img
             className={`form-password-icon ${passwordIconClassName()}`}
-            src={passwordIconImgSrc()}
+            src={passwordIconImgSrc}
             width={20.47}
             onClick={() => handlePasswordIconClick(id)}
           />

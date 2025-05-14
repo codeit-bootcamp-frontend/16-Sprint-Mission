@@ -199,14 +199,6 @@
   cursor: pointer;
 }
 
-.pagination-button.prev-page:disabled .pagination-button-image {
-  content: url('./images/ic_prevPageClick_inactive.png');
-}
-
-.pagination-button.next-page:disabled .pagination-button-image {
-  content: url('./images/ic_nextPageClick_inactive.png');
-}
-
 .pagination-button:disabled {
   cursor: auto;
 }
