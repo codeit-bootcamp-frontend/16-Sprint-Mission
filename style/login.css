@@ -37,14 +37,20 @@ input {
   flex-grow: 1;
 }
 
-form button {
+.login-button {
+  width: 100%;
   padding: 16px 0px;
   border: 0;
   border-radius: 40px;
-  background-color: var(--primary-color);
+  background-color: var(--gray400);
   color: #fff;
   font-size: 20px;
   font-weight: 600;
+  cursor: not-allowed;
+}
+
+.login-button-enable {
+  background-color: var(--primary-color);
   cursor: pointer;
 }
 
@@ -53,12 +59,26 @@ form button {
   position: relative;
 }
 
-.password-container>button {
+.password-show-hide-button {
+  border: 0;
   position: absolute;
   background-color: transparent;
   right: 20px;
-  top: 0px;
+  top: 16px;
   z-index: 1;
+  cursor: pointer;
+}
+
+.password-show-button {
+  display: none;
+}
+
+.password-hide-button-toggle {
+  display: none;
+}
+
+.password-show-button-toggle {
+  display: inline;
 }
 
 .easy-login-container {
@@ -77,7 +97,7 @@ form button {
   gap: 16px;
 }
 
-.easy-login-icon>button {
+.easy-login-icon > button {
   background-color: transparent;
   border: 0;
   padding: 0;
@@ -89,8 +109,21 @@ footer {
   margin-top: 16px;
 }
 
-footer>a {
+footer > a {
   color: var(--primary-color);
+}
+
+.warning-message {
+  display: none;
+  color: #ff0000;
+}
+
+.warning-message-active {
+  display: block;
+}
+
+.warning-input-border {
+  border: 1px solid red;
 }
 
 @media (max-width: 767px) {
@@ -98,7 +131,7 @@ footer>a {
     margin-top: 80px;
   }
 
-  header>a>img {
+  header > a > img {
     width: 198px;
   }
 
