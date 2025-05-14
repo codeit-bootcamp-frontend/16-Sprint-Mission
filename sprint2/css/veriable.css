@@ -1,0 +1,39 @@
+@charset "UTF-8";
+:root {
+  /* main */
+  --color-primary: #3692FF;
+  --color-text: #374151;
+  --color-text-light: #9CA3AF;
+  --color-background: #FCFCFC;
+  --color-background-dark: #111827;
+  --color-background-light: #E5E7EB;
+  --color-banner: #CFE5FF;
+  
+  --font-family-base: 'Pretendard-Regular', sans-serif;
+  --font-family-heading: 'Noto Sans KR', sans-serif;
+  
+  --container-width: 1120px;
+  --header-height: 70px;
+  --footer-height: 160px;
+  
+  --spacing-xs: 12px;
+  --spacing-sm: 24px;
+  --spacing-md: 32px;
+  --spacing-lg: 60px;
+  --spacing-xl: 138px;
+
+/* login, signup color */
+--gray50: #f9fafb;
+--gray100: #f3f4f6;
+--gray200: #e5e7eb;
+--gray400: #9ca3af;
+--gray500: #6b7280;
+--gray600: #4b5563;
+--gray700: #374151;
+--gray800: #1f2937;
+--gray900: #111827;
+--blue: #3692ff;
+--background-blue: #e6f2ff;
+--hover-color:#1967d6;
+--click-color: #1251aa;
+}
