@@ -1,3 +1,12 @@
+:root {
+    /* footer padding */
+    --footer-padding: 32px 32px 64px 32px;
+    /* nav padding-left,right */
+    --padding-horizontal: 16px;
+    /* nav height */
+    --nav-height: 70px;
+}
+
 * {
     box-sizing: border-box;
     font-family: 'Pretendard', sans-serif;
@@ -10,16 +19,17 @@ body {
 header {
     position: sticky;
     top: 0;
-    background-color: var(--color-surface-primary);
+    background-color: var(--bg-primary);
 }
 
 nav {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    height: 70px;
-    background: var(--color-surface-primary);
-    color: var(--color-surface-primary);
+    height: var(--nav-height);
+    background: var(--bg-primary);
+    color: var(--bg-primary);
+    padding: 0 var(--padding-horizontal);
 }
 
 a {
@@ -30,30 +40,55 @@ a:visited {
     color: inherit;
 }
 
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: var(--wrapper-width);
+    margin: 0 auto;
+}
+
+.wrapper--narrow {
+    max-width: var(--wrapper-narrow-width)
+}
+
 /* 버튼스타일 */
 .btn-small-40 {
-    padding: 12px 24px;
+    padding: var(--button-padding-sm-40);
     background-color: var(--brand-blue);
-    color: var(--color-surface-primary);
+    color: var(--button-primary-text);
     border: none;
-    border-radius: 8px;
+    border-radius: var(--button-radius-sm-40);
     cursor: pointer;
+}
+
+.btn-large {
+    background-color: var(--brand-blue);
+    padding: var(--button-padding-lg);
+    color: var(--color-gray-50);
+    border: none;
+    border-radius: var(--button-radius-lg);
+    cursor: pointer;
+    font-weight: var(--font-weight-button);
+    font-size: var(--font-button-lg);
+    flex-shrink: 0;
 }
 
 /* footer section */
 footer {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    padding: 32px 200px 108px 200px;
-    background-color: var(--secondary-900);
-    color: var(--secondary-400);
+    padding: var(--footer-padding);
+    background-color: var(--bg-footer);
+    color: var(--text-muted);
 }
 
 #footer--sns {
     display: flex;
     gap: 12px;
-    color: var(--color-surface-primary);
 }
 
 #footer--menu {
@@ -62,5 +97,23 @@ footer {
 }
 
 #footer--menu a {
-    color: var(--secondary-200);
+    color: var(--color-gray-200);
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    :root {
+        --padding-horizontal: 24px;
+
+        --footer-padding: 32px 104px 64px 104px;
+    }
+
+
+}
+
+@media(min-width: 1200px) {
+    :root {
+        --padding-horizontal: 200px;
+
+        --footer-padding: 32px 104px 32px 104px;
+    }
 }

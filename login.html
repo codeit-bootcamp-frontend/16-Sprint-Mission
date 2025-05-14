@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="styles/global.css" />
     <link rel="stylesheet" href="styles/variables.css" />
     <link rel="stylesheet" href="styles/auth.css" />
-    <link rel="stylesheet" href="styles/auth-mobile.css" media="(max-width: 767px)" />
 </head>
 
 <body>
@@ -19,44 +18,49 @@
         <!-- 로고 -->
         <header class="header">
             <a href="/" aria-label="홈으로 이동">
-                <img src="/images/Property 1=lg.png" alt="판다마켓 로고" class="login-logo" width="398px"/>
+                <img src="/images/Property 1=lg.png" alt="판다마켓 로고" class="login-logo" width="398px" />
             </a>
         </header>
 
         <!-- 로그인 폼 -->
         <section class="auth-form-container">
-            <form class="login-form">
+            <form class="auth-form">
                 <div class="input-field">
                     <label for="email">이메일</label>
-                    <input type="email" id="email" name="email" required placeholder="이메일을 입력해주세요." />
+                    <input type="email" id="email" name="email" data-validate="email" autocomplete="email" required placeholder="이메일을 입력해주세요." />
+                    <span class="error-message" id="email-error"></span>
                 </div>
                 <div class="input-field">
                     <label for="password">비밀번호</label>
                     <div class="input-wrapper">
-                        <input type="password" id="password" name="password" required placeholder="패스워드를 입력해주세요."/>
-                        <button class="toggle-password">
+                        <input type="password" id="password" data-validate="password" name="password" autocomplete="current-password" required placeholder="패스워드를 입력해주세요." />
+                        <button type="button" class="toggle-password" data-target="password">
                             <img src="/images/btn_none_visibility_on_24px.png" alt="패스워드 보이지 않음" width="24" height="24">
                         </button>
                     </div>
+                    <span class="error-message" id="password-error"></span>
                 </div>
-                <button type="submit" class="btn">로그인</button>
+                <button type="submit" class="btn" disabled>로그인</button>
             </form>
 
             <!-- 간편 로그인 -->
             <div class="social-login">
                 <p>간편 로그인하기</p>
                 <div class="social-buttons">
-                    <a href="https://www.google.co.kr/?hl=ko"><img src="/images/Component 2.png" width="42" height="42"  aria-label="구글로 이동해서 로그인 하기"/></a>
-                    <a href="https://www.kakaocorp.com/page/service/service/KakaoTalk"><img src="/images/Component 3.png" width="42" height="42" aria-label="카카오로 이동해서 로그인 하기"/></a>
+                    <a href="https://www.google.co.kr/?hl=ko"><img src="/images/Component 2.png" width="42" height="42"
+                            aria-label="구글로 이동해서 로그인 하기" /></a>
+                    <a href="https://www.kakaocorp.com/page/service/service/KakaoTalk"><img
+                            src="/images/Component 3.png" width="42" height="42" aria-label="카카오로 이동해서 로그인 하기" /></a>
                 </div>
             </div>
 
             <!-- 회원가입 유도 -->
             <div class="signup-link">
-                <p>판다마켓이 처음인가요?</p><a href="/signup.html"  aria-label="회원가입으로 이동">회원가입</a>
+                <p>판다마켓이 처음인가요?</p><a href="/signup.html" aria-label="회원가입으로 이동">회원가입</a>
             </div>
         </section>
     </main>
+    <script type="module"  src="/scripts/auth.js"></script>
 </body>
 
 </html>

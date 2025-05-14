@@ -9,77 +9,103 @@
     <meta property="og:title" content="판다 마켓" />
     <meta property="og:description" content="일상의 모든 물건을 거래해보세요" />
     <meta property="og:image" content="/images/og_img.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="판다 마켓" />
-    <meta name="twitter:description" content="일상의 모든 물건을 거래해보세요" />
-    <meta name="twitter:image" content="/images/og_img.png" />
     <link rel="stylesheet" as="style" crossorigin
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" />
     <title>판다마켓</title>
     <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/variables.css">
-    <link rel="stylesheet" href="styles/mobile.css" media="(max-width: 767px)">
-    <link rel="stylesheet" href="styles/tablet.css" media="(min-width: 768px) and (max-width: 1199px)">
-    <link rel="stylesheet" href="styles/desktop.css" media="(min-width: 1200px)">
+    <link rel="stylesheet" href="styles/index.css">
 </head>
 
 <body>
+    <!-- header start -->
     <header>
+        <!-- nav start -->
         <nav>
-            <a href="/" aria-label="홈으로 이동">
+            <!-- <a href="/" aria-label="홈으로 이동">
+                <img src="/images/Property1-2=sm.png"
+                    srcset="/images/Property1-2=Typo.png 743w, /images/Property1-2=sm.png 744w"
+                    sizes="(max-width: 743px) 100vw, 744px" alt="판다마켓 로고" /> -->
                 <picture>
                     <source srcset="/images/Property1-2=Typo.png" media="(max-width: 743px)" />
-                    <img src="/images/Property 1-2=sm.png" alt="판다마켓 로고" />
+                    <img src="/images/Property1-2=sm.png" alt="판다마켓 로고" />
                 </picture>
             </a>
             <a href="/login.html" class="btn-small-40" aria-label="로그인으로 이동">로그인</a>
         </nav>
+        <!-- nav end -->
     </header>
+    <!-- header end -->
+
+    <!-- main start -->
     <main>
-        <section id="hero" class="banner">
+        <!-- hero section start -->
+        <section class="banner">
             <div class="wrapper">
-                <h1>일상의 모든 물건을<br>거래해 보세요</h1>
-                <a href="items.html"><button class="btn" aria-label="아이템으로 이동">구경하러 가기</button></a>
+                <div class="hero-title">
+                    <h1>일상의 모든 물건을 <span class="heading-line-break">거래해 보세요</span></h1>
+                    <a href="items.html">
+                        <button class="btn-large" aria-label="아이템으로 이동">구경하러 가기</button>
+                    </a>
+                </div>
+                <img src="/images/Img_home_top.png" alt="" aria-hidden="true" />
             </div>
         </section>
+        <!-- hero section end -->
+
+        <!-- features section start -->
         <section class="features wrapper wrapper--narrow">
+            <!-- feature div start -->
             <div class="feature">
                 <img src="images/Img_home_01.png" alt="아이템 콘텐츠 이미지" />
                 <div class="feature-content">
                     <p class="feature-tag">Hot item</p>
-                    <h1>인기 상품을<br />확인해 보세요</h1>
+                    <h1>인기 상품을<span class="heading-line-break"> 확인해 보세요</span></h1>
                     <p class="feature-description">
                         가장 HOT한 중고거래 물품을<br />판다마켓에서 확인해 보세요
                     </p>
                 </div>
             </div>
+            <!-- feature div end -->
+            <!-- feature div start -->
             <div class="feature">
+                <img src="images/Img_home_02.png" alt="아이템 콘텐츠 이미지">
                 <div class="feature-content">
                     <p class="feature-tag">Search</p>
-                    <h1>구매를 원하는<br>상품을 검색하세요</h1>
+                    <h1>구매를 원하는<span class="heading-line-break"> 상품을 검색하세요</span></h1>
                     <p class="feature-description">구매하고 싶은 물품은 검색해서<br>쉽게 찾아보세요</p>
                 </div>
-                <img src="images/Img_home_02.png" alt="아이템 콘텐츠 이미지">
             </div>
+            <!-- feature div end -->
+            <!-- feature div start -->
             <div class="feature">
                 <img src="images/Img_home_03.png" alt="아이템 콘텐츠 이미지" />
                 <div class="feature-content">
                     <p class="feature-tag">Register</p>
-                    <h1 class="font-fat">판매를 원하는<br>상품을 등록하세요</h1>
+                    <h1 class="font-fat">판매를 원하는<span class="heading-line-break"> 상품을 등록하세요</span></h1>
                     <p class="feature-description">
                         어떤 물건이든 판매하고 싶은 상품을<br>쉽게 등록하세요</p>
                 </div>
             </div>
+            <!-- feature div end -->
         </section>
-        <section id="closing-banner" class="banner">
+        <!-- features section end -->
+
+        <!-- closing banner start -->
+        <section class="banner">
             <div class="wrapper">
-                <h1>믿을 수 있는<br>판다마켓 중고 거래</h1>
+                <h1>믿을 수 있는<span class="heading-line-break"> 판다마켓 중고 거래</span></h1>
+                <img src="/images/Img_home_bottom.png" alt="" aria-hidden="true" />
             </div>
         </section>
+        <!-- closing banner end -->
     </main>
+    <!-- main end -->
+
+    <!-- footer start -->
     <footer>
-        <div  class="footer-copyright">© codeit - 2024</div>
+        <div class="footer-copyright">© codeit - 2024</div>
         <div id="footer--menu">
             <a href="/privacy.html" aria-label="Privacy Policy로 이동">Privacy Policy</a>
             <a href="/faq.html" aria-label="FAQ로 이동">FAQ</a>
@@ -91,6 +117,7 @@
             <a href="https://www.instagram.com/" aria-label="인스타그램으로 이동"><img src="/images/ic_instagram.svg"></a>
         </div>
     </footer>
+    <!-- footer end -->
 </body>
 
 </html>

@@ -1,0 +1,277 @@
+/******************* Mobile Start *******************/
+
+:root {
+    /* wrapper width */
+    --wrapper-width: 767px;
+    /* wrapper narrow width */
+    --wrapper-narrow-width: 344px;
+    /* wrapper gap */
+    --wrapper-gap: 18px;
+
+    /* banner padding top */
+    --banner-padding-top: 48px;
+    /* banner height */
+    --banner-height: 540px;
+    /* banner line break */
+    --banner-line-break: block;
+
+    /* hero title gap */
+    --hero-title-gap: 18px;
+
+    /* features padding bottom */
+    --features-padding-bottom: 18px;
+
+    /* feature padding */
+    --feature-padding: 40px 0;
+    /* feature margin */
+    --feature-margin: 0 16px;
+    /* feature gap */
+    --feature-gap: 24px;
+    /* feature h1 font size */
+    --feature-font-header: var(--font-size-lg);
+
+    /* feature content line break */
+    --feature-content-line-break: block;
+    /* feature content gap */
+    --feature-content-gap: 16px;
+}
+
+.banner {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    text-align: center;
+    width: 100%;
+    height: var(--banner-height);
+    overflow: hidden;
+    background-color: var(--bg-accent);
+}
+
+.banner .wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--banner-padding-top);
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: bottom;
+}
+
+.banner .hero-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--hero-title-gap); 
+}
+
+.banner .heading-line-break {
+    display: var(--banner-line-break);
+}
+
+#closing-banner .heading-line-break {
+    display: block;
+}
+
+.wrapper {
+    gap: var(--wrapper-gap);
+}
+
+h1 {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-gray-700);
+    line-height: var(--line-height-normal);
+}
+
+.features {
+    padding-bottom: var(--features-padding-bottom);
+}
+
+.feature {
+    padding: var(--feature-padding);
+    display: flex;
+    flex-direction: column;
+    margin: var(--feature-margin);
+    text-align: left;
+    gap: var(--feature-gap);
+}
+
+.feature-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: var(--feature-content-gap);
+}
+
+.feature:nth-of-type(even) .feature-content {
+    text-align: right;
+}
+
+.feature h1 {
+    font-size: var(--feature-font-header);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-normal);
+}
+
+.feature-tag {
+    color: var(--brand-blue);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-normal);
+}
+
+.feature-description {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-normal);
+    letter-spacing: var(--font-spacing-medium);
+}
+
+@media (max-width: 470px) {
+    .footer-copyright {
+        order: 3;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    #footer--menu {
+        order: 1;
+    }
+
+    #footer--sns {
+        order: 2;
+    }
+}
+
+/******************* Mobile End *******************/
+
+/******************** Tablet Start ********************/
+@media (min-width: 768px) and (max-width: 1199px) {
+    :root {
+        --button-padding-lg: 12px 124px;
+
+        --wrapper-width: 1199px;
+        --wrapper-narrow-width: 961px;
+        --wrapper-gap: 24px;
+
+        --banner-padding-top: 84px;
+        --banner-line-break: inline;
+        --banner-height: 771px;
+
+        --hero-title-gap: 24px;
+
+        --font-button-lg: 18px;
+
+        --features-padding-bottom: 52px;
+
+        --feature-font-header: var(--font-size-xl);
+        --feature-padding: 52px 0;
+        --feature-margin: 0 24px;
+
+        --feature-content-gap: 24px;
+    }
+
+    h1 {
+        font-size: var(--font-size-2xl);
+        line-height: var(--line-height-normal);
+    }
+
+    .feature-tag {
+        font-size: var(--font-size-md);
+        line-height: var(--line-height-normal);
+    }
+
+    .feature-description {
+        font-size: var(--font-size-md);
+        font-weight: var(--font-weight-medium);
+        line-height: var(--line-height-normal);
+        letter-spacing: var(--font-spacing-regular);
+    }
+
+}
+
+/******************** Tablet End ********************/
+
+/******************** Desktop Start ********************/
+@media(min-width: 1200px) {
+    :root {
+        --wrapper-width: 1920px;
+        --wrapper-narrow-width: 988px;
+        --wrapper-gap: 7px;
+
+        --banner-padding-top: 30px;
+        --banner-height: 540px;
+        --hero-title-gap: 24px;
+
+        --button-padding-lg: 12px 124px;
+
+        --features-padding-bottom: 138px;
+
+        --feature-font-header: var(--font-size-2xl);
+        --feature-padding: 138px 0;
+        --feature-margin: 0 24px;
+        --feature-gap: 10px;
+    }
+
+    .banner {
+        text-align: left;
+        height: var(--banner-height);
+    }
+
+    .banner .wrapper {
+        max-width: 1200px;
+        flex-direction: row; /* 가로 정렬로 변경 */
+        padding-top: var(--banner-padding-top);
+        position: relative;
+    }
+    
+    .banner img {
+        position: absolute;
+        bottom: 0;
+        right: 0;         
+        height: 70%;
+        width: auto; 
+    }
+
+    .banner .hero-title {
+        align-items: flex-start; /* 텍스트 왼쪽 정렬 */
+        gap: var(--hero-title-gap, 24px);
+    }
+
+    .feature-content .heading-line-break {
+        display: var(--feature-content-line-break);
+    }
+
+    h1 {
+        font-size: var(--font-size-2xl);
+        line-height: var(--line-height-normal);
+    }
+
+    /* features section */
+    .feature {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .feature:nth-of-type(even) {
+        flex-direction: row-reverse;
+    }
+
+    .feature img {
+        width: 55%;
+    }
+
+    .feature-description {
+        font-size: var(--font-size-lg);
+        line-height: var(--line-height-relaxed);
+    }
+}
+
+/******************** Desktop End ********************/
