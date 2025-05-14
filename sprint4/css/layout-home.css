@@ -1,5 +1,5 @@
 /* 
-  레이아웃 스타일
+  레이아웃 스타일 / 홈
   layout_main
 */
 
@@ -133,20 +133,6 @@
 }
 
 /*** 반응형 ***/
-/* 모바일 푸터 (460px~) */
-@media (min-width: 460px) {
-  .footer__copyright {
-    order: 1;
-  }
-
-  .footer__support {
-    order: 2;
-  }
-
-  .footer__sns {
-    order: 3;
-  }
-}
 /* 타블렛 (768px~) */
 @media (min-width: 768px) {
   /* 헤더 영역 */
@@ -200,6 +186,18 @@
   .footer {
     padding: var(--spacing-left-right-24);
     padding-top: 32px;
+  }
+
+  .footer__copyright {
+    order: 1;
+  }
+
+  .footer__support {
+    order: 2;
+  }
+
+  .footer__sns {
+    order: 3;
   }
 }
 /* 테스크탑 (1200px~) */

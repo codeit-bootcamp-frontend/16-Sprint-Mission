@@ -17,10 +17,9 @@
   <header class="header">
     <div class="header__logo">
       <a href="/" aria-label="홈으로 이동">
-        <picture>
-          <source media="(min-width: 767px)" srcset="images/img_logo.png">
-          <img class="header__logo-img" src="images/img_logo_m.png" alt="판다마켓" width="153" height="51">
-        </picture>
+        <img class="header__logo-img" src="images/img_logo_m.png"
+          srcset="images/img_logo_m.png 103w, images/img_logo.png 153w" sizes="(max-width: 767px) 103px, 153px"
+          alt="판다마켓" />
       </a>
     </div>
     <a class="header__btn--login btn btn--small btn--color1" href="login.html" aria-label="로그인 버튼">로그인</a>
