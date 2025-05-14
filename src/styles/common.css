@@ -29,7 +29,12 @@ body {
   padding: var(--spacing-xs) clamp(71px, 15vw, 124px);
 }
 
-@media (width <= 767px) {
+.button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+@media (max-width: 767px) {
   .button {
     font-size: 1.125rem;
     padding: 0.75rem 71px;

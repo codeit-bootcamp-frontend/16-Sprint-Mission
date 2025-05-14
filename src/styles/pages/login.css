@@ -4,8 +4,8 @@
 }
 
 .login__container {
-  margin: var(--container-top-margin) 1rem 0;
-  max-width: var(--auth-container-max-width);
+  margin: var(--container-top-margin-sm) 1rem 0;
+  max-width: var(--auth-container-max-width-sm);
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -39,11 +39,16 @@
 .form-field__input {
   width: 100%;
   height: 56px;
+  border: 1px solid var(--color-neutral-200);
   border-radius: 12px;
   background-color: var(--color-neutral-100);
   color: var(--color-neutral-800);
   padding-left: var(--spacing-sm);
   padding-right: var(--spacing-lg);
+}
+
+.form-field__input--error {
+  border-color: var(--color-error);
 }
 
 .form-field__group {
@@ -63,6 +68,16 @@
   color: transparent; /* 텍스트 없는 버튼 */
 }
 
+.form-field__toggle-password--visible {
+  background: url('/assets/icon/btn_visibility_on.png') no-repeat center;
+}
+
+.form-field__error-message {
+  color: var(--color-error);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
 /* 소셜 로그인 클래스 */
 
 .social-login {
@@ -78,7 +93,7 @@
 
 .social-login__label {
   color: var(--color-neutral-800);
-  size: 1rem;
+  font-size: 1rem;
   font-weight: 500;
 }
 
@@ -107,9 +122,9 @@
   text-decoration: underline;
 }
 
-@media (width <= 767px) {
+@media (min-width: 768px) {
   .login__container {
-    margin-top: var(--container-top-margin-sm);
-    max-width: var(--auth-container-max-width-sm);
+    margin-top: var(--container-top-margin);
+    max-width: var(--auth-container-max-width);
   }
 }

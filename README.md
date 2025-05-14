@@ -1,12 +1,12 @@
-# 스프린트 미션 3
+# 스프린트 미션 4
 
 ## 배포 링크
 
 > https://gentle-lamington-bbd035.netlify.app/
 
-## 1. 요구사항
+## 요구사항
 
-### 1-1. 공통 요구사항
+### 공통 요구사항
 
 - [x] “판다마켓” 클릭 시 루트 페이지(‘/’)로 이동한다.
 - [x] 클릭으로 기능이 동작해야 하는 경우, 사용자가 클릭할 수 있는 요소임을 알 수 있도록 `cursor: pointer`를 설정한다.
@@ -44,8 +44,6 @@
 #### 메타 태그
 
 - [x] 페이스북, 카카오톡, 디스코드, 트위터 등 SNS에서 Linkbrary 랜딩 페이지(“/”) 공유 시 좌측 예시와 같은 미리보기를 볼 수 있도록 랜딩 페이지 메타 태그를 설정한다.
-  > 미리보기에서 제목은 “판다 마켓”, 설명은 “일상의 모든 물건을 거래해보세요”로 설정합니다.
-  > 주소와 이미지는 자유롭게 설정하세요.
 
 ### 로그인 및 회원가입 페이지 ('/login, /signup')
 
@@ -60,75 +58,63 @@
 
 - [x] 회원가입 버튼 클릭 시 "/signup" 페이지로 이동한다.
 - [x] 로그인 버튼 클릭 시 "/login" 페이지로 이동한다.
+- [x] 활성화된 ‘로그인’ 버튼을 누르면 “/items” 로 이동한다.
+
+#### 유효성 검사
+
+- [x] 이메일 input에서 focus out 할 때, 값이 없을 경우 input에 빨강색 테두리와 아래에 “이메일을 입력해주세요.” 빨강색 에러 메세지를 보인다.
+- [x] 이메일 input에서 focus out 할 때, 이메일 형식에 맞지 않는 경우 input에 빨강색 테두리와 아래에 “잘못된 이메일 형식입니다” 빨강색 에러 메세지를 보인다.
+- [x] 비밀번호 input에서 focus out 할 때, 값이 없을 경우 아래에 “비밀번호를 입력해주세요.” 에러 메세지를 보인다.
+- [x] 비밀번호 input에서 focus out 할 때, 값이 8자 미만일 경우 아래에 “비밀번호를 8자 이상 입력해주세요.” 에러 메세지를 보인다.
+- [x] input 에 빈 값이 있거나 에러 메세지가 있으면 ‘로그인’ 버튼은 비활성화 되고, Input 에 유효한 값을 입력하면 ‘로그인' 버튼이 활성화 된다.
+- [ ]눈 모양 아이콘 클릭시 비밀번호의 문자열이 보이기도 하고, 가려지기도 합니다.
+  비밀번호의 문자열이 가려질 때는 눈 모양 아이콘에는 사선이 그어져있고, 비밀번호의 문자열이 보일 때는 사선이 없는 눈 모양 아이콘이 보이도록 합니다.
 
 ### 피드백 수정사항
 
-- [ ] 공통 스타일 정리
-- [ ] 미디어 쿼리 작성 순서 변경 및 문법 수정
-- [ ] 반응형 이미지 최적화
+- [x] 공통 스타일 정리
+- [x] 미디어 쿼리 작성 순서 변경 및 문법 수정
+- [ ] 반응형 이미지 태그 최적화
 - [ ] husky 도입
-- [ ] 디렉토리 구조 변경
 
 > ref: https://github.com/codeit-bootcamp-frontend/16-Sprint-Mission/pull/92
 
 ## 프로젝트 구조
 
-- `/assets`
+- `/src`
 
-  - `/icon`
-  - `/img`
-  - `/logo`
-  - `/fonts`
+  - `/js` # Javascript
 
-- `/styles`
+    - `/constants`
+    - `/service`
+    - `/utils`
+      - `redirector.js` # 페이지 이동 함수
+    - `/components`
+      - `InputFieldHandler.js` # 입력 필드내 유효성 검증 및 에러 메시지 랜더링
+      - `FormValidator.js` # 폼 전체 필드 관리
+    - `/validators` # 유효성 검증 스크립트 폴더
+      - `emailValidator.js`
+      - `passwordValidator.js`
 
-  - `reset.css`
-  - `common.css`
-  - `variables.css`
-  - `font.css`
-  - `/pages`
-    - `home.css`
-    - `signup.css`
-    - `login.css`
-
-- `index.html`
+  - `/styles` # CSS
+    - `/base`
+      - `reset.css` # html 기본 스타일 초기화
+      - `variables.css` # css 전역 변수 지정
+      - `font.css` # fontface 지정
+    - `/pages`
+      - `home.css`
+      - `signup.css`
+      - `login.css`
+    - `common.css` # 공통 스타일
 
 - `/pages`
+
   - `signup.html`
   - `login.html`
 
+- `index.html`
+
 ## 구현 사항
 
-### 전역 설정
-
-- css를 `reset.css`, `common.css`, `variables.css`로 분리했습니다.
-- 자주 사용되는 구조는 css에서 common.css에서 사용하도록 하였습니다.
-- layout, color, font-size, space 등을 `variables.css`에서 전역 변수로 관리합니다.
-- 컬러 변수 네이밍을 시멘틱하게 변경했습니다.
-- `font-size: clamp(12px, 1.6vw, 16px)` 를 통해, 폰트 사이즈가 12px에서 16px 사이로 유연하게 조절됩니다.
-- 미디어 쿼리를 활용해 태블릿 및 모바일을 지원합니다.
-- 웹 폰트에서 압축률이 좋은 `woff2` 로컬 폰트로 변경했습니다.
-- 접근성 향상을 위해 `aria-label`을 지정했습니다.
-- 보다 나은 클래스 구조화를 위해, **BEM 네이밍 방법론**과 **보조 클래스**를 사용했습니다.
-- `stylelint`를 사용하여 BEM 네이밍 및 스타일을 검사합니다.
-- `prettier`을 사용하여 포맷팅을 자동화했습니다.
-
-### 랜딩 페이지 (index.html)
-
-- 크게 header, main, footer 영역으로 나뉘어 있습니다.
-- `<main>` 의 각 `<section>` 안에는 hero, feature, cta 로 구성되어 있습니다.
-- `.hero`, `.cta` 클래스는 하위 박스인 `.container` 에서, 여백과 콘텐츠 관련 요구사항을 만족했습니다.
-- 링크로 연결되는 항목들은 `<a>`태그로 감싸서, 클릭시 특정 페이지들로 이동할 수 있습니다.
-- 폰트, 이미지, 몇몇 여백들은 `vw`를 활용해서 동적으로 크기가 조절됩니다.
-- 새 창으로 열리는 페이지들은 `target="_blank" rel="noopener"`속성을 사용하여, 보안상 취약점이 발생하고 퍼포먼스가 저하되는 문제를 해결했습니다.
-- 상단 GNB는 고정되도록 설정하였습니다.
-- OG와 twitter의 메타 정보를 등록했습니다.
-
-### 회원가입 및 로그인 페이지
-
-- 주요 내용은 `form`필드 내에 구성하였습니다.
-- 자주 사용하는 항목은 common.css에서 재사용합니다.
-
-## 질문
-
-1. 현제 스펙 웹사이트의 디렉토리 구조 관리 방법이 궁금합니다.
+- Javascript를 모듈화해서 가독성을 향상시켰습니다.
+- SOLID 원칙에 기반하여, 메서드와 클래스를 분리했습니다.
