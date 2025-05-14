@@ -4,8 +4,20 @@
 <head>
     <title>판다마켓</title>
     <meta charset="UTF-8">
-    <link href="./css/panda.css" rel="stylesheet" type="text/css" />
+
+    <meta property="og:title" content="판다 마켓">
+    <meta property="og:description" content="일상의 모든 물건을 거래해보세요">
+    <meta property="og:url" content="https://brilliant-liger-335e1c.netlify.app/">
+    <meta property="og:image" content="images/main-page/logo.png">
+    <meta property="og:type" content="website">
+    
+    <meta name="description" content="일상의 모든 물건을 거래해보세요">
+    <meta name="keywords" content="판다마켓, 중고거래, 물건 거래, 중고 물품, 마켓">
+
+
+    <link href="./css/reset.css" rel="stylesheet" type="text/css" />
     <link href="./css/common.css" rel="stylesheet" type="text/css" />
+    <link href="./css/panda.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -13,8 +25,12 @@
         <div class="header_top_container">
             <div class="header_top_box">
                 <div class="header_top_logo">
-                    <a href="index.html">
-                        <img src="images/main-page/logo.png" alt="" class="logo_img">
+                    <a href="index.html" aria-label="홈으로 이동">
+                        <!-- <img src="images/main-page/logo.png" alt="" class="logo_img"> -->
+                        <picture class="logo_img">
+                            <source media="(max-width: 767px)" srcset="images/main-page/logo.svg">
+                            <img src="images/main-page/logo.png" alt="로고" class="logo_img">
+                        </picture>
                     </a>
                 </div>
                 <div class="header_top_login">
@@ -25,6 +41,7 @@
             </div>
         </div>
     </section>
+    <div class="header_spacer"></div>
     <section class="banner">
         <div class="header_banner">
             <div class="header_banner_container">
@@ -38,12 +55,12 @@
             </div>
         </div>
     </section>
-    <article>
+    <article class="all-content">
         <div class="content">
             <div class="content_img_container">
                 <img src="images/main-page/content_img1.png" class="content_img">
             </div>
-            <div class="content_font_container">
+            <div class="content_font_container_left">
                 <h2>
                     Hot item
                 </h2>
@@ -56,7 +73,7 @@
             </div>
         </div>
         <div class="content">
-            <div class="content_font_container">
+            <div class="content_font_container_right">
                 <h2>
                     Search
                 </h2>
@@ -75,7 +92,7 @@
             <div class="content_img_container">
                 <img src="images/main-page/content_img3.png" class="content_img">
             </div>
-            <div class="content_font_container">
+            <div class="content_font_container_left">
                 <h2>
                     Register
                 </h2>
