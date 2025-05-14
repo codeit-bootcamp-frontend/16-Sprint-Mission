@@ -17,26 +17,16 @@
   --color-error: #f74747;
 
   /* Font Sizes */
-  --font-size-xs: 12px;
-  --font-size-sm: 13px;
-  --font-size-md: 14px;
-  --font-size-lg: 16px;
-  --font-size-2lg: 18px;
-  --font-size-xl: 20px;
-  --font-size-2xl: 24px;
-  --font-size-3xl: 32px;
-  --font-size-4xl: 40px;
+  --font-size-xxs: 14px;
+  --font-size-xs: 16px;
+  --font-size-sm: 18px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
+  --font-size-3xl: 40px;
 
   /* Border Radius */
   --border-radius-sm: 8px;
   --border-radius-md: 12px;
   --border-radius-lg: 40px;
-}
-
-body {
-  font-family: "Pretendard Variable";
-}
-
-a {
-  cursor: pointer;
 }
