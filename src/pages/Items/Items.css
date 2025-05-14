@@ -222,7 +222,7 @@
   --search-select-order: 4;
   --search-input-flex-grow: 1;
   --search-select-width: 42px;
-  --search-select-image: url('./images/ic_sort.png');
+  --search-select-image: url('/images/ic_sort.png');
   --search-select-image-position: center center;
 }
 
@@ -241,7 +241,7 @@
     --search-select-order: 4;
     --search-input-flex-grow: 0;
     --search-select-width: 130px;
-    --search-select-image: url('./images/ic_arrow_down.png');
+    --search-select-image: url('/images/ic_arrow_down.png');
     --search-select-image-position: right 20px center;
   }
   #cards-best .items-container {
@@ -270,7 +270,7 @@
     --search-select-order: 4;
     --search-input-flex-grow: 0;
     --search-select-width: 130px;
-    --search-select-image: url('./images/ic_arrow_down.png');
+    --search-select-image: url('/images/ic_arrow_down.png');
     --search-select-image-position: right 20px center;
   }
   #cards-best .items-container {
