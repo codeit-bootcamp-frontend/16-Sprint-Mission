@@ -43,6 +43,14 @@
   padding-top: 200px;
 }
 
+.hero__title {
+  white-space: pre-line;
+}
+
+.feature-section__headline {
+  white-space: pre-line;
+}
+
 .hero__title,
 .feature-section__headline,
 .closing-banner__headline {
@@ -140,10 +148,6 @@
 
 /* mobile */
 @media (min-width: 375px) and (max-width: 767px) {
-  br.onlyPC {
-    display: none;
-  }
-
   .header__nav {
     padding: 0 24px;
   }
@@ -195,6 +199,7 @@
 
   .feature-section__headline {
     font-size: 1.5rem;
+    white-space: normal;
   }
 
   .feature-section__description {
@@ -249,6 +254,7 @@
   .hero__title {
     font-size: 2rem;
     line-height: 1.4;
+    white-space: normal;
   }
 
   .hero__link {
@@ -262,6 +268,10 @@
 
   .feature-section {
     padding: 0 24px;
+  }
+
+  .feature-section__headline {
+    white-space: normal;
   }
 
   .feature-section__item {

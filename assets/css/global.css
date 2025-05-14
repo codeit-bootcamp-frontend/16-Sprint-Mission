@@ -14,3 +14,30 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+.input-error {
+  border: 1px solid var(--color-border-error);
+}
+
+.text-error {
+  color: var(--color-text-input-error);
+  font-size: 0.875rem;
+  margin-top: 4px;
+  margin-left: 20px;
+}
+
+.error-message {
+  min-height: 1.2em;
+  font-size: 0.875rem;
+  margin-top: 10px;
+}
+
+.form__input-button:disabled {
+  background-color: var(--color-button-disabled);
+  color: var(--color-button-disabled-text);
+  cursor: not-allowed;
+}
+
+.form__input-button.active {
+  background-color: var(--color-button-active);
+}

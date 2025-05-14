@@ -36,73 +36,94 @@
         </a>
       </header>
       <form class="form__signup">
-        <label class="form__label-email" for="email">이메일</label>
-        <input
-          class="form__input-email"
-          type="email"
-          id="email"
-          name="email"
-          autocomplete="email"
-          placeholder="이메일"
-          required
-        />
-        <label class="form__label-nickname" for="nickname">닉네임</label>
-        <input
-          class="form__input-nickname"
-          type="nickname"
-          id="nickname"
-          name="nickname"
-          autocomplete="nickname"
-          placeholder="이메일"
-          required
-        />
-        <label class="form__label-password" for="password">비밀번호</label>
-        <div class="form__input-wrapper">
+        <div class="form__field">
+          <label class="form__label-email" for="email">이메일</label>
           <input
-            class="form__input-password"
-            type="password"
-            id="password"
-            name="password"
-            autocomplete="current-password"
-            placeholder="비밀번호"
+            class="form__input-email"
+            type="email"
+            id="email"
+            name="email"
+            autocomplete="email"
+            placeholder="이메일"
             required
           />
-          <button
-            type="button"
-            class="form__toggle-password"
-            aria-label="비밀번호 보기 토글"
-          >
-            <img
-              src="/assets/images/icons/icon_visibilityOn.svg"
-              alt="비밀번호 보기"
-            />
-          </button>
+          <div id="emailError" class="error-message"></div>
         </div>
-        <label class="form__label-password-confirm" for="password-confirm"
-          >비밀번호 확인</label
+        <div class="form__field">
+          <label class="form__label-nickname" for="nickname">닉네임</label>
+          <input
+            class="form__input-nickname"
+            type="nickname"
+            id="nickname"
+            name="nickname"
+            autocomplete="nickname"
+            placeholder="닉네임"
+          />
+        </div>
+        <div class="form__field">
+          <label class="form__label-password" for="password">비밀번호</label>
+          <div class="form__input-wrapper">
+            <input
+              class="form__input-password"
+              type="password"
+              id="password"
+              name="password"
+              autocomplete="current-password"
+              placeholder="비밀번호"
+              required
+            />
+            <button
+              type="button"
+              id="togglePassword"
+              class="form__toggle-password"
+              aria-label="비밀번호 보기 토글"
+            >
+              <img
+                id="eyeIcon"
+                src="/assets/images/icons/icon_visibilityOff.svg"
+                alt="비밀번호 보기"
+              />
+            </button>
+          </div>
+          <div id="passwordError" class="error-message"></div>
+        </div>
+        <div class="form__field">
+          <label class="form__label-passwordCheck" for="passwordCheck">
+            비밀번호 확인
+          </label>
+          <div class="form__input-wrapper">
+            <input
+              class="form__input-passwordCheck"
+              type="password"
+              id="passwordCheck"
+              name="passwordCheck"
+              autocomplete="current-passwordCheck  "
+              placeholder="비밀번호 확인"
+              required
+            />
+            <button
+              type="button"
+              id="togglePasswordCheck"
+              class="form__toggle-passwordCheck"
+              aria-label="비밀번호 보기 토글"
+            >
+              <img
+                id="eyeIconCheck"
+                src="/assets/images/icons/icon_visibilityOff.svg"
+                alt="비밀번호 보기"
+              />
+            </button>
+          </div>
+          <div id="passwordCheckError" class="error-message"></div>
+        </div>
+        <button
+          id="signupButton"
+          class="form__input-button"
+          type="submit"
+          disabled
         >
-        <div class="form__input-wrapper">
-          <input
-            class="form__input-password-confirm"
-            type="password"
-            id="password-confirm"
-            name="password-confirm"
-            autocomplete="current-password-confirm  "
-            placeholder="비밀번호 확인"
-            required
-          />
-          <button
-            type="button"
-            class="form__toggle-password-confirm"
-            aria-label="비밀번호 보기 토글"
-          >
-            <img
-              src="/assets/images/icons/icon_visibilityOn.svg"
-              alt="비밀번호 보기"
-            />
-          </button>
-        </div>
-        <button class="form__input-button" type="submit">회원가입</button>
+          회원가입
+        </button>
       </form>
       <section class="quick-login">
         <p class="quick-login__title">간편 로그인하기</p>
@@ -130,10 +151,12 @@
             class="footer__link"
             href="/login.html"
             aria-label="회원가입으로 이동"
-            >로그인</a
           >
+            로그인
+          </a>
         </p>
       </footer>
     </main>
+    <script type="module" src="./scripts/signup.js"></script>
   </body>
 </html>

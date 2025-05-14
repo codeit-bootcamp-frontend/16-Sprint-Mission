@@ -1,9 +1,12 @@
 :root {
   --color-primary-surface: #e6f2ff;
   --color-primary: #3692ff;
-  --color-primary-hover: #1967d6;
-  --color-primary-active: #1251aa;
   --color-primary-banner: #cfe5ff;
+
+  --color-button-hover: #1251aa;
+  --color-button-active: #3692ff;
+  --color-button-disabled: #9ca3af;
+  --color-button-disabled-text: #f3f4f6;
 
   --color-text-title: var(--gray700);
   --color-text-label: var(--gray800);
@@ -11,7 +14,9 @@
   --color-text-placeholder: var(--gray400);
   --color-text-button: var(--gray100);
   --color-text-subtle: var(--gray50);
+  --color-text-input-error: #f74747;
 
+  --color-border-error: #f74747;
   --color-border: var(--gray200);
   --color-surface-input: var(--gray100);
   --color-footer-background: var(--gray900);

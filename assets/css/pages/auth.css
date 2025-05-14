@@ -5,12 +5,20 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 100px 600px;
+  margin: 100px 300px;
 }
 
 .header__login,
 .header__signup {
   margin-bottom: 40px;
+}
+
+.form__field {
+  margin-bottom: 20px;
+}
+
+.logo-image {
+  width: 400px;
 }
 
 .form__login,
@@ -23,16 +31,16 @@
 .form__label-email,
 .form__label-nickname,
 .form__label-password,
-.form__label-password-confirm {
+.form__label-passwordCheck {
   color: var(--color-text-label);
-  margin-bottom: 20px;
 }
 
 .form__input-email,
 .form__input-nickname,
 .form__input-password,
-.form__input-password-confirm {
+.form__input-passwordCheck {
   background-color: var(--color-surface-input);
+  margin: 20px 0;
   padding: 20px;
   border-radius: 8px;
   width: 100%;
@@ -47,11 +55,10 @@
   position: relative;
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
 }
 
 .form__toggle-password,
-.form__toggle-password-confirm {
+.form__toggle-passwordCheck {
   position: absolute;
   right: 20px;
   cursor: pointer;
@@ -90,6 +97,10 @@
   .signup-container {
     margin: 80px 16px 231px;
     max-width: 400px;
+  }
+
+  .logo-image {
+    width: 200px;
   }
 }
 
