@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import './Header.css';
-import { useIsLogin } from '../../contexts/LoginStateContext';
+import { useIsLogin } from '../contexts/LoginStateContext';
 
 const Header = ({ currentSection }) => {
   const isLogin = useIsLogin();

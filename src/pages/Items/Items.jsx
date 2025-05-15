@@ -1,11 +1,9 @@
-import { Link } from 'react-router-dom';
 import './Items.css';
 import { getItems } from '../../apis/api';
 import { useEffect, useState } from 'react';
-import { useScreenBreakpoint } from '../../hooks/useScreenBreakpoint';
 import { formatPriceKRW } from '../../modules/formatPrice';
 import { useNavigate } from 'react-router';
-import Header from '../components/Header';
+import Header from '../../components/Header';
 import { usePageSizeByBreakPoint } from '../../hooks/usePageSizeByBreakPoint';
 
 const ItemComponent = ({
@@ -148,6 +146,7 @@ const Items = () => {
     : './images/ic_nextPageClick_inactive.png';
 
   useEffect(() => {
+    if (!pageSizeList.best) return;
     (async () => {
       await loadBestItemList({
         offset: 1,
@@ -159,6 +158,7 @@ const Items = () => {
   }, [pageSizeList]);
 
   useEffect(() => {
+    if (!pageSizeList.current) return;
     (async () => {
       await loadCurrentItemList({
         offset: offset,
