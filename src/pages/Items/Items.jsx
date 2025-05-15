@@ -2,10 +2,11 @@ import { Link } from 'react-router-dom';
 import './Items.css';
 import { getItems } from '../../apis/api';
 import { useEffect, useState } from 'react';
-import { useDeviceType } from '../../hooks/useDeviceType';
+import { useScreenBreakpoint } from '../../hooks/useScreenBreakpoint';
 import { formatPriceKRW } from '../../modules/formatPrice';
 import { useNavigate } from 'react-router';
 import Header from '../components/Header';
+import { usePageSizeByBreakPoint } from '../../hooks/usePageSizeByBreakPoint';
 
 const ItemComponent = ({
   id,
@@ -43,27 +44,6 @@ const ItemComponent = ({
   );
 };
 
-const pageSizeByDevice = {
-  best: (deviceType) => {
-    return deviceType === 'lg'
-      ? 4
-      : deviceType === 'md'
-      ? 2
-      : deviceType === 'sm'
-      ? 1
-      : 0;
-  },
-  current: (deviceType) => {
-    return deviceType === 'lg'
-      ? 10
-      : deviceType === 'md'
-      ? 6
-      : deviceType === 'sm'
-      ? 4
-      : 0;
-  },
-};
-
 const getCurrentPageState = (
   offset,
   pageSize,
@@ -88,7 +68,7 @@ const getCurrentPageState = (
 };
 
 const Items = () => {
-  const { deviceType } = useDeviceType();
+  const { pageSizeList } = usePageSizeByBreakPoint();
 
   const [offset, setOffset] = useState(1);
   const [order, setOrder] = useState('recent');
@@ -154,7 +134,7 @@ const Items = () => {
   const handlePagePrev = () => onPaginationButtonClick(currentPageNumber - 1);
   const handlePageNext = () => onPaginationButtonClick(currentPageNumber + 1);
   const onPaginationButtonClick = (nextPageNumber) =>
-    setOffset((nextPageNumber - 1) * pageSizeByDevice.current(deviceType) + 1);
+    setOffset((nextPageNumber - 1) * pageSizeList.current + 1);
 
   const prevPageEnable = currentPageNumber > 1;
   const nextPageEnable = currentPageNumber < lastPageIndex;
@@ -171,23 +151,23 @@ const Items = () => {
     (async () => {
       await loadBestItemList({
         offset: 1,
-        pageSize: pageSizeByDevice.best(deviceType),
+        pageSize: pageSizeList.best,
         orderBy: 'favorite',
         keyword: '',
       });
     })();
-  }, [deviceType]);
+  }, [pageSizeList]);
 
   useEffect(() => {
     (async () => {
       await loadCurrentItemList({
         offset: offset,
-        pageSize: pageSizeByDevice.current(deviceType),
+        pageSize: pageSizeList.current,
         orderBy: order,
         keyword: keyword,
       });
     })();
-  }, [deviceType, order, offset, keyword]);
+  }, [pageSizeList, order, offset, keyword]);
 
   return (
     <>

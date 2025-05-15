@@ -14,14 +14,16 @@ function App() {
     <BrowserRouter>
       <LoginStateProvider>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/">
+            <Route index element={<Home />} />
+            <Route path="items" element={<Items />} />
+            <Route path="board" element={<Board />} />
+            <Route path="additem" element={<AddItem />} />
+            <Route path="privacy" element={<Privacy />} />
+            <Route path="faq" element={<Faq />} />
+          </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/items" element={<Items />} />
-          <Route path="/board" element={<Board />} />
-          <Route path="/additem" element={<AddItem />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/faq" element={<Faq />} />
         </Routes>
       </LoginStateProvider>
     </BrowserRouter>
