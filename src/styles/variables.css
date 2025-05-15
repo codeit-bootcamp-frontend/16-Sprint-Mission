@@ -1,0 +1,44 @@
+:root {
+  /* colors */
+  --gray50: #f9fafb;
+  --gray100: #f3f4f6;
+  --gray200: #e5e7eb;
+  --gray400: #9ca3af;
+  --gray500: #6b7280;
+  --gray600: #4b5563;
+  --gray700: #374151;
+  --gray800: #1f2937;
+  --gray900: #111827;
+  --blue: #3692ff;
+  --primary-color: var(--blue);
+  --primary-hover-color: #1967d6;
+  --primary-click-color: #1251aa;
+  --text-primary: var(--gray600);
+  --background-light: #fcfcfc;
+  --background-blue: #cfe5ff;
+  --background-blue-light: #e6f2ff;
+  --error-color: #f74747;
+
+  /* button */
+  --banner-btn-font-size: 18px;
+
+  /* layout */
+  --header-padding-lr: 16px;
+  --container-width: 70rem;
+  --container-width-small: 61.75rem;
+  --page-content-width: 75rem;
+  --sections-padding: 24px 16px 84px;
+  --section-margin-bottom: 16px;
+  --footer-padding: 32px;
+
+  /* form */
+  --form-padding-top: 24px;
+  --form-label-margin-bottom: 8px;
+  --form-contents-gap: 16px;
+
+  /* border-radius */
+  --border-radius-xs: 8px;
+  --border-radius-sm: 12px;
+  --border-radius-md: 20px;
+  --border-radius-lg: 40px;
+}

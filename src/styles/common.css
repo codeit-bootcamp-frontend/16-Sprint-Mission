@@ -1,0 +1,59 @@
+html {
+  font-size: 14px;
+}
+
+body {
+  font-family: "Pretendard", sans-serif;
+  background: var(--background-light);
+  overflow-x: hidden;
+}
+
+/* fonts */
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 400;
+  src: url("../assets/fonts/Pretendard-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 500;
+  src: url("../assets/fonts/Pretendard-Medium.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 700;
+  src: url("../assets/fonts/Pretendard-Bold.woff2") format("woff2");
+  font-display: swap;
+}
+
+/* layout */
+.page-content {
+  width: var(--page-content-width);
+  margin: 24px auto;
+}
+
+/*================ 반응형 ================*/
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* wide PC */
+@media (min-width: 1921px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+/* 반응형 요소에 clamp() 적용 */
+@supports (font-size: clamp(1rem, 2vw, 3rem)) {
+  :root {
+    --heading-font-size: clamp(24px, 3vw, 40px);
+    --description-font-size: clamp(16px, 2vw, 24px);
+    --label-font-size: clamp(16px, 1.5vw, 18px);
+    --form-label-font-size: clamp(14px, 1.25vw, 18px);
+  }
+}
