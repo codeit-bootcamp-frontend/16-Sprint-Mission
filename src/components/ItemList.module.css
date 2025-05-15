@@ -1,0 +1,10 @@
+.item-list {
+  display: flex;
+  gap: 24px;
+}
+
+.item-list-title {
+  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: 700;
+}

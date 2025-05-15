@@ -1,0 +1,25 @@
+.item-img {
+  height: 282px;
+  object-fit: cover;
+  border-radius: var(--thumb-border-radius);
+  margin-bottom: 16px;
+}
+
+.item-desc {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.item-price {
+  margin-bottom: 8px;
+}
+
+.btn-like {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
