@@ -5,6 +5,7 @@ import { formatPriceKRW } from '../../modules/formatPrice';
 import { useNavigate } from 'react-router';
 import Header from '../../components/Header';
 import { usePageSizeByBreakPoint } from '../../hooks/usePageSizeByBreakPoint';
+import { usePaginationByOffset } from '../../hooks/usePaginationByOffset';
 
 const ItemComponent = ({
   id,
@@ -67,18 +68,18 @@ const getCurrentPageState = (
 
 const Items = () => {
   const { pageSizeList } = usePageSizeByBreakPoint();
-
   const [offset, setOffset] = useState(1);
+  const [totalDataCount, setTotalDataCount] = useState(1);
+
   const [order, setOrder] = useState('recent');
   const [keyword, setKeyword] = useState('');
+  const [searchInputValue, setSearchInputValue] = useState('');
 
   const [bestItemList, setBestItemList] = useState([]);
   const [currentItemList, setCurrentItemList] = useState([]);
-  const [pageNumbers, setPageNumbers] = useState([1]);
-  const [currentPageNumber, setCurrentPageNumber] = useState(1);
-  const [lastPageIndex, setLastPageIndex] = useState(1);
 
-  const [searchInputValue, setSearchInputValue] = useState('');
+  const { totalPagesCount, currentPageNumber, visiblePageNumbers } =
+    usePaginationByOffset(offset, pageSizeList.best, totalDataCount);
 
   const onCreateNewItemNavigate = useNavigate();
 
@@ -99,19 +100,7 @@ const Items = () => {
     if (!result) return;
     const { list, totalCount } = result;
     setCurrentItemList(list);
-    setLastPageIndex(Math.ceil(totalCount / option.pageSize));
-    const currentPageState = getCurrentPageState(
-      option.offset,
-      option.pageSize,
-      totalCount
-    );
-    setPageNumbers((prev) => {
-      const nextPageNumbers = currentPageState.visiblePageNumbers;
-      return JSON.stringify(prev) === JSON.stringify(nextPageNumbers)
-        ? prev
-        : nextPageNumbers;
-    });
-    setCurrentPageNumber(currentPageState.currentPageNumber);
+    setTotalDataCount(totalCount);
   };
 
   const handleSearchInputChange = (e) => setSearchInputValue(e.target.value);
@@ -135,15 +124,7 @@ const Items = () => {
     setOffset((nextPageNumber - 1) * pageSizeList.current + 1);
 
   const prevPageEnable = currentPageNumber > 1;
-  const nextPageEnable = currentPageNumber < lastPageIndex;
-
-  const prevButtonImgSrc = prevPageEnable
-    ? './images/ic_prevPageClick_active.png'
-    : './images/ic_prevPageClick_inactive.png';
-
-  const nextButtonImgSrc = nextPageEnable
-    ? './images/ic_nextPageClick_active.png'
-    : './images/ic_nextPageClick_inactive.png';
+  const nextPageEnable = currentPageNumber < totalPagesCount;
 
   useEffect(() => {
     if (!pageSizeList.best) return;
@@ -249,11 +230,15 @@ const Items = () => {
         >
           <img
             className={'pagination-button-image'}
-            src={prevButtonImgSrc}
+            src={
+              prevPageEnable
+                ? './images/ic_prevPageClick_active.png'
+                : './images/ic_prevPageClick_inactive.png'
+            }
             width={16}
           />
         </button>
-        {pageNumbers.map((pageIndex) => {
+        {visiblePageNumbers.map((pageIndex) => {
           const ButtonClassName =
             currentPageNumber === pageIndex ? 'selected' : '';
           return (
@@ -274,7 +259,11 @@ const Items = () => {
         >
           <img
             className={'pagination-button-image'}
-            src={nextButtonImgSrc}
+            src={
+              nextPageEnable
+                ? './images/ic_nextPageClick_active.png'
+                : './images/ic_nextPageClick_inactive.png'
+            }
             width={16}
           />
         </button>
