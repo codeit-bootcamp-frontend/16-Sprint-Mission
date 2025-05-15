@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import styles from "./ItemCard.module.css";
 import likeImg from "../assets/images/ic-like.svg";
 
-const ItemCard = ({ imgSrc, description, name, price, likes, pageSize }) => {
+const ItemCard = ({ imgSrc, description, name, price, likes }) => {
   return (
-    <li style={{ width: `calc(100% / ${pageSize})` }}>
-      <Link to="/items" className={styles["item-card"]}>
+    <li className={styles["item-card"]}>
+      <Link to="/items">
         <img src={imgSrc} alt={name} className={styles["item-img"]} />
         <h6 className={styles["item-desc"]}>{description}</h6>
         <h4 className={styles["item-price"]}>

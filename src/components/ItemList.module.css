@@ -8,3 +8,14 @@
   font-size: 20px;
   font-weight: 700;
 }
+
+.item-list.best li {
+  width: 25%;
+}
+
+.item-list.all {
+  flex-wrap: wrap;
+}
+.item-list.all li {
+  width: 20%;
+}

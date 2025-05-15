@@ -3,7 +3,7 @@ import ItemCard from "./ItemCard";
 import { getItems } from "../api";
 import { useEffect, useState } from "react";
 
-const ItemList = ({ title, pageSize, orderBy }) => {
+const ItemList = ({ title, pageSize, orderBy, type }) => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -30,7 +30,7 @@ const ItemList = ({ title, pageSize, orderBy }) => {
   return (
     <div className={styles["item-list-area"]}>
       <h4 className={styles["item-list-title"]}>{title}</h4>
-      <ul className={styles["item-list"]}>
+      <ul className={`${styles["item-list"]} ${styles[type]}`}>
         {items.map((item) => {
           const { id, images, description, name, price, favoriteCount } = item;
           return (
@@ -41,7 +41,6 @@ const ItemList = ({ title, pageSize, orderBy }) => {
               name={name}
               price={price}
               likes={favoriteCount}
-              pageSize={pageSize}
             />
           );
         })}
