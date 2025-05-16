@@ -17,6 +17,14 @@
   -moz-tab-size: 4;
   tab-size: 4;
 }
+html {
+  font-size: 14px;
+}
+body {
+  font-family: "Pretendard", sans-serif;
+  background: var(--background-light);
+  overflow-x: hidden;
+}
 html,
 body {
   height: 100%;
@@ -39,6 +47,13 @@ button {
   background: none;
   border: 0;
   cursor: pointer;
+}
+button:disabled {
+  cursor: default;
+  background-color: var(--gray400);
+}
+button:disabled:hover {
+  background-color: var(--gray400);
 }
 a {
   text-decoration: none;

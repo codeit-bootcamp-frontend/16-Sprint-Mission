@@ -1,13 +1,3 @@
-html {
-  font-size: 14px;
-}
-
-body {
-  font-family: "Pretendard", sans-serif;
-  background: var(--background-light);
-  overflow-x: hidden;
-}
-
 /* fonts */
 @font-face {
   font-family: "Pretendard";
