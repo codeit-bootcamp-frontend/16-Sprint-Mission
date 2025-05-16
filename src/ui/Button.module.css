@@ -1,11 +1,3 @@
-button:disabled {
-  cursor: default;
-  background-color: var(--gray400);
-}
-button:disabled:hover {
-  background-color: var(--gray400);
-}
-
 .btn-lg {
   padding: 12px;
   border-radius: var(--border-radius-lg);
@@ -29,10 +21,4 @@ button:disabled:hover {
 }
 .btn-primary:active {
   background: var(--primary-click-color);
-}
-
-a[class*="btn"] {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
 }

@@ -5,11 +5,15 @@ import styles from "./ItemList.module.css";
 import ItemCard from "./ItemCard";
 import Button from "../ui/Button";
 import Dropdown from "../ui/Dropdown/Dropdown";
+import InputSearch from "../ui/InputSearch";
+
+const DEFAULT_PAGE_SIZE = 10;
+const DEFAULT_ORDER = "recent";
 
 const ItemList = ({
   title,
-  pageSize,
-  orderBy,
+  pageSize = DEFAULT_PAGE_SIZE,
+  orderBy = DEFAULT_ORDER,
   showSearch,
   showItemAddBtn,
   showOrderDropdown,
@@ -45,26 +49,23 @@ const ItemList = ({
         {(showSearch || showItemAddBtn || showOrderDropdown) && (
           <div className={styles.actions}>
             {showSearch && (
-              <input
-                type="search"
-                name="searchInput"
-                placeholder="검색할 상품을 입력해주세요"
-              />
+              <InputSearch placeholder="검색할 상품을 입력해주세요" />
             )}
             {showItemAddBtn && (
               <Button
                 type="button"
-                className="btn-primary"
+                variant="primary"
+                size="sm"
                 onClick={() => navigate("/addItem")}
               >
                 상품 등록하기
               </Button>
             )}
-            {showOrderDropdown && <Dropdown uiType="select" />}
+            {/* {showOrderDropdown && <Dropdown uiType="select" />} */}
           </div>
         )}
       </div>
-      <ul className={`${styles["item-list-ul"]}`}>
+      <ul className={styles["item-list-ul"]}>
         {items.map((item) => {
           const { id, images, description, name, price, favoriteCount } = item;
           return (

@@ -1,13 +1,3 @@
-.item-list-area {
-  padding-bottom: 40px;
-}
-
-.item-list-title {
-  margin-bottom: 16px;
-  font-size: 20px;
-  font-weight: 700;
-}
-
 .item-list-ul {
   display: flex;
   flex-wrap: wrap;
@@ -21,4 +11,25 @@
 
 .item-list img {
   height: 220px;
+}
+
+.item-list-area {
+  padding-bottom: 40px;
+}
+
+.item-list-header {
+  display: flex;
+  margin-bottom: 24px;
+}
+
+.item-list-header .actions {
+  display: flex;
+  margin-left: auto;
+  gap: 12px;
+}
+
+.item-list-title {
+  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: 700;
 }
