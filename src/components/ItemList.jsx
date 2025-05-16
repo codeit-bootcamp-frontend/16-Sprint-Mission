@@ -6,8 +6,10 @@ import ItemCard from "./ItemCard";
 import Button from "../ui/Button";
 import Dropdown from "../ui/Dropdown/Dropdown";
 import InputSearch from "../ui/InputSearch";
+import Pagination from "./Pagination";
 
 const DEFAULT_PAGE_SIZE = 10;
+const PAGINATION_SIZE = 5;
 const ORDER_MAP = {
   최신순: "recent",
   좋아요순: "favorite",
@@ -21,19 +23,22 @@ const ItemList = ({
   showItemAddBtn,
   showOrderDropdown,
 }) => {
+  const navigate = useNavigate();
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
   const [order, setOrder] = useState("최신순");
+  const [listPage, setListPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(0);
 
   const handleLoad = async (options) => {
     let result;
     try {
       setIsLoading(true);
       result = await getItems(options);
-      const { list } = result;
+      const { list, totalCount } = result;
       setItems(list);
+      setTotalPage(Math.ceil(totalCount / DEFAULT_PAGE_SIZE));
     } catch (err) {
       setError(err);
       return;
@@ -46,9 +51,13 @@ const ItemList = ({
     setOrder(selectedOrder);
   };
 
+  const handlePaginationClick = (selectedPage) => {
+    setListPage(selectedPage);
+  };
+
   useEffect(() => {
-    handleLoad({ pageSize, orderBy: ORDER_MAP[order] });
-  }, [order, pageSize]);
+    handleLoad({ page: listPage, pageSize, orderBy: ORDER_MAP[order] });
+  }, [listPage, order, pageSize]);
 
   return (
     <div className={styles["item-list-area"]}>
@@ -96,6 +105,12 @@ const ItemList = ({
           );
         })}
       </ul>
+      <Pagination
+        loadFunc={handleLoad}
+        paginationSize={PAGINATION_SIZE}
+        totalPage={totalPage}
+        onCurrentPage={handlePaginationClick}
+      />
     </div>
   );
 };
