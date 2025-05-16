@@ -1,8 +1,9 @@
-const DropdownBtn = ({ uiType, children }) => {
-  const className = `${uiType}`;
+import styles from "./DropdownBtn.module.css";
+
+const DropdownBtn = ({ selected }) => {
   return (
-    <button type="button" className={className}>
-      최신순
+    <button type="button" className={styles}>
+      {selected}
     </button>
   );
 };

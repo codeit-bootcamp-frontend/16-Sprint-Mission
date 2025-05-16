@@ -1,8 +1,11 @@
-const DropdownMenu = () => {
+const DropdownMenu = ({ items, onClick }) => {
   return (
     <ul>
-      <li>최신순</li>
-      <li>좋아요순</li>
+      {items.map((item) => (
+        <li key={item}>
+          <button onClick={onClick}>{item}</button>
+        </li>
+      ))}
     </ul>
   );
 };

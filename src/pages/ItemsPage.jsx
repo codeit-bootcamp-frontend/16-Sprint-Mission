@@ -8,7 +8,6 @@ const ItemsPage = () => {
       <ItemList
         title="전체 상품"
         pageSize={10}
-        orderBy="recent"
         showSearch
         showItemAddBtn
         showOrderDropdown

@@ -17,8 +17,14 @@
   padding-bottom: 40px;
 }
 
+.item-list-title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
 .item-list-header {
   display: flex;
+  align-items: center;
   margin-bottom: 24px;
 }
 
@@ -26,10 +32,4 @@
   display: flex;
   margin-left: auto;
   gap: 12px;
-}
-
-.item-list-title {
-  margin-bottom: 16px;
-  font-size: 20px;
-  font-weight: 700;
 }

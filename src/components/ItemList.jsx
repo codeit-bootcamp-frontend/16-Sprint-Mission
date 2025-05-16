@@ -8,12 +8,15 @@ import Dropdown from "../ui/Dropdown/Dropdown";
 import InputSearch from "../ui/InputSearch";
 
 const DEFAULT_PAGE_SIZE = 10;
-const DEFAULT_ORDER = "recent";
+const ORDER_MAP = {
+  최신순: "recent",
+  좋아요순: "favorite",
+};
+const dropdownMenu = ["최신순", "좋아요순"];
 
 const ItemList = ({
   title,
   pageSize = DEFAULT_PAGE_SIZE,
-  orderBy = DEFAULT_ORDER,
   showSearch,
   showItemAddBtn,
   showOrderDropdown,
@@ -22,6 +25,7 @@ const ItemList = ({
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const [order, setOrder] = useState("최신순");
 
   const handleLoad = async (options) => {
     let result;
@@ -38,9 +42,13 @@ const ItemList = ({
     }
   };
 
+  const handleDropdownSelect = (selectedOrder) => {
+    setOrder(selectedOrder);
+  };
+
   useEffect(() => {
-    handleLoad({ pageSize, orderBy });
-  }, []);
+    handleLoad({ pageSize, orderBy: ORDER_MAP[order] });
+  }, [order, pageSize]);
 
   return (
     <div className={styles["item-list-area"]}>
@@ -61,7 +69,13 @@ const ItemList = ({
                 상품 등록하기
               </Button>
             )}
-            {/* {showOrderDropdown && <Dropdown uiType="select" />} */}
+            {showOrderDropdown && (
+              <Dropdown
+                menu={dropdownMenu}
+                onClick={handleDropdownSelect}
+                defaultSelected={order}
+              />
+            )}
           </div>
         )}
       </div>
