@@ -10,15 +10,14 @@
 
 .item-list-ul {
   display: flex;
-  flex-wrap: wrap;
   gap: 40px 24px;
 }
 
 .item-list {
-  width: 20%;
-  max-width: 220px;
+  width: 25%;
+  max-width: 282px;
 }
 
 .item-list img {
-  height: 220px;
+  height: 282px;
 }

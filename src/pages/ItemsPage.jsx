@@ -1,15 +1,11 @@
 import ItemList from "../components/ItemList";
+import BestItemList from "../components/BestItemList";
 
 const ItemsPage = () => {
   return (
     <section className="page-content">
-      <ItemList
-        title="베스트 상품"
-        pageSize={4}
-        orderBy="favorite"
-        type="best"
-      />
-      <ItemList title="전체 상품" pageSize={10} orderBy="recent" type="all" />
+      <BestItemList />
+      <ItemList title="전체 상품" pageSize={10} orderBy="recent" />
     </section>
   );
 };
