@@ -7,7 +7,7 @@ import './BannerBottom.css';
 import './Footer.css';
 import Header from '../../components/Header';
 
-const Home = () => {
+const HomePage = () => {
   return (
     <>
       <Header currentSection={''} />
@@ -163,4 +163,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

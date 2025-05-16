@@ -1,62 +1,56 @@
-const Field = ({
-  id,
-  labelText,
-  placeholder,
-  ariaLabel,
-  type = 'text',
-  autoComplete = 'on',
-  value,
-  valid,
-  hint,
-  isVisible,
-  handleInputChange,
-  handleInputBlur,
-  handlePasswordIconClick,
-}) => {
-  const inputContainerClassName = () => {
-    if (valid === null) return '';
-    if (valid === false) return 'invalid';
-    else return 'valid';
-  };
+import { useState } from 'react';
 
-  const passwordIconClassName = () => {
-    return isVisible ? '' : 'hidden';
-  };
+const PASSWORD_ICON_CONFIG = {
+  false: {
+    src: './images/icon_password_invisible.png',
+    className: 'form-password-icon hidden',
+  },
+  true: {
+    src: './images/icon_password_visible.png',
+    className: 'form-password-icon',
+  },
+};
 
-  const passwordIconImgSrc = isVisible
-    ? './images/icon_password_visible.png'
-    : './images/icon_password_invisible.png';
+const INPUT_CONTAINER_CLASSNAME = {
+  null: 'form-input-container',
+  false: 'form-input-container invalid',
+  true: 'form-input-container valid',
+};
 
-  const inputType = () => {
-    return isVisible ? 'text' : type;
-  };
+const Field = ({ fieldConfig, handlers, getFieldState }) => {
+  //prettier-ignore
+  const fieldState = getFieldState(fieldConfig.id);
+  const [isVisible, setIsVisible] = useState(false);
+  const handlePasswordIconClick = () => setIsVisible((prev) => !prev);
 
   return (
     <label className="form-label">
-      {labelText}
-      <div className={`form-input-container ${inputContainerClassName()}`}>
+      {fieldConfig.labelText}
+      <div className={INPUT_CONTAINER_CLASSNAME[fieldState.valid]}>
         <input
-          id={id}
           className="form-input"
-          placeholder={placeholder}
-          aria-label={ariaLabel}
-          type={inputType()}
-          autoComplete={autoComplete}
-          onChange={handleInputChange}
-          onBlur={handleInputBlur}
-          value={value}
-          name={id}
+          id={fieldConfig.id}
+          name={fieldConfig.id}
+          value={fieldState.value}
+          placeholder={fieldConfig.placeholder}
+          aria-label={fieldConfig.ariaLabel}
+          type={isVisible ? 'text' : fieldConfig.type}
+          autoComplete={fieldConfig.autoComplete}
+          onChange={handlers.handleInputChange}
+          onBlur={handlers.handleInputBlur}
         ></input>
-        {id.includes('password') && (
+        {fieldConfig.id.includes('password') && (
           <img
-            className={`form-password-icon ${passwordIconClassName()}`}
-            src={passwordIconImgSrc}
+            className={PASSWORD_ICON_CONFIG[isVisible].className}
             width={20.47}
-            onClick={() => handlePasswordIconClick(id)}
+            src={PASSWORD_ICON_CONFIG[isVisible].src}
+            onClick={handlePasswordIconClick}
           />
         )}
       </div>
-      <span className={`form-input-hint`}>{hint}</span>
+      {fieldConfig.hint !== '' && (
+        <span className={`form-input-hint`}>{fieldState.hint}</span>
+      )}
     </label>
   );
 };

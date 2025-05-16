@@ -1,23 +1,26 @@
 import { useEffect, useState } from 'react';
+import { validators } from '../utils/validators';
 
-export const useFormFields = ({ FIELDS }) => {
+export const useFormFields = ({ fieldKeys: FIELDS }) => {
   const createInitialStates = (initialFields, initialValue) => {
     const returnFields = {};
-    for (const field in initialFields) {
+    for (const field of initialFields) {
       returnFields[field] = initialValue;
     }
     return returnFields;
   };
 
-  //prettier-ignore
-  const [values, setValues] = useState(createInitialStates(FIELDS, ''));
-  //prettier-ignore
-  const [valids, setValids] = useState(createInitialStates(FIELDS, null));
-  //prettier-ignore
-  const [hints, setHints] = useState(createInitialStates(FIELDS, ''));
-  //prettier-ignore
-  const [isVisibles, setIsVisibles] = useState(createInitialStates(FIELDS, false));
+  const [values, setValues] = useState(createInitialStates(FIELDS, '')); //prettier-ignore
+  const [valids, setValids] = useState(createInitialStates(FIELDS, null)); //prettier-ignore
+  const [hints, setHints] = useState(createInitialStates(FIELDS, '')); //prettier-ignore
   const [isSubmitEnabled, setIsSubmitEnabled] = useState(false);
+
+  const getValidateResults = {
+    email: validators.email(values.email),
+    nickname: validators.nickname(values.nickname),
+    password: validators.password(values.password, values.passwordVerify),
+    passwordVerify: validators.passwordVerify(values.passwordVerify, values.password), //prettier-ignore
+  };
 
   useEffect(() => {
     setIsSubmitEnabled(Object.values(valids).every((v) => v === true));
@@ -29,8 +32,8 @@ export const useFormFields = ({ FIELDS }) => {
   };
 
   const handleInputBlur = (e) => {
-    const { name, value } = e.target;
-    const validResults = getValidResults(name, value);
+    const { name } = e.target;
+    const validResults = getValidateResults[name];
     updateValidResults(validResults);
   };
 
@@ -39,11 +42,6 @@ export const useFormFields = ({ FIELDS }) => {
       ...prev,
       [name]: value,
     }));
-  };
-
-  const getValidResults = (name, value) => {
-    const validFunction = FIELDS[name];
-    return validFunction(value);
   };
 
   const updateValidResults = (validResults) => {
@@ -63,21 +61,12 @@ export const useFormFields = ({ FIELDS }) => {
     }));
   };
 
-  const handlePasswordIconClick = (name) => {
-    setIsVisibles((prev) => ({
-      ...prev,
-      [name]: !isVisibles[name],
-    }));
-  };
-
   return {
     values,
     valids,
     hints,
-    isVisibles,
     isSubmitEnabled,
     handleInputChange,
     handleInputBlur,
-    handlePasswordIconClick,
   };
 };

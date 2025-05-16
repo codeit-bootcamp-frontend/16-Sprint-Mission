@@ -1,42 +1,21 @@
 import { Link } from 'react-router-dom';
 import './FormAuth.css';
-import { validators } from '../../modules/validators';
-import { useFormFields } from '../../hooks/useFormFields';
 import { useNavigate } from 'react-router';
-import Field from './Field';
 import { useSetIsLogin } from '../../contexts/LoginStateContext';
+import Form from './Form';
+import Field from './Field';
+import { FIELDS_CONFIG } from '../../constants/fieldsConfig';
+
+const FIELD_KEYS = ['email', 'password'];
 
 const Login = () => {
   const onSubmitNavigate = useNavigate();
-
   const setIsLogin = useSetIsLogin();
 
-  const FIELDS = {
-    email: validators.email,
-    password: validators.password,
-  };
-
-  const onSubmitRedirect = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     onSubmitNavigate('/items');
     setIsLogin(true);
   };
-
-  const formDataObject = {
-    FIELDS,
-    onSubmitRedirect,
-  };
-
-  const {
-    values,
-    valids,
-    hints,
-    isVisibles,
-    isSubmitEnabled,
-    handleInputChange,
-    handleInputBlur,
-    handlePasswordIconClick,
-  } = useFormFields(formDataObject);
 
   return (
     <>
@@ -49,45 +28,30 @@ const Login = () => {
           />
           <h1 className="form-logo-text">판다마켓</h1>
         </Link>
-        <form className="form-container" onSubmit={onSubmitRedirect}>
-          <Field
-            id={'email'}
-            labelText={'이메일'}
-            placeholder={'이메일을 입력해주세요'}
-            ariaLabel={'이메일 입력 칸'}
-            type={'email'}
-            autoComplete={'email'}
-            value={values['email']}
-            valid={valids['email']}
-            hint={hints['email']}
-            isVisible={isVisibles['email']}
-            handleInputChange={handleInputChange}
-            handleInputBlur={handleInputBlur}
-            handlePasswordIconClick={handlePasswordIconClick}
-          />
-          <Field
-            id={'password'}
-            labelText={'비밀번호'}
-            placeholder={'비밀번호를 입력해주세요'}
-            ariaLabel={'비밀번호 입력 칸'}
-            type={'password'}
-            autoComplete={'current-password'}
-            value={values['password']}
-            valid={valids['password']}
-            hint={hints['password']}
-            isVisible={isVisibles['password']}
-            handleInputChange={handleInputChange}
-            handleInputBlur={handleInputBlur}
-            handlePasswordIconClick={handlePasswordIconClick}
-          />
-          <button
-            id="form-submit"
-            className="button-style"
-            disabled={!isSubmitEnabled}
-          >
-            로그인
-          </button>
-        </form>
+        <Form fieldKeys={FIELD_KEYS} onSubmit={handleSubmit}>
+          {({ isSubmitEnabled, handlers, getFieldState }) => (
+            <>
+              <Field
+                fieldConfig={FIELDS_CONFIG.email}
+                handlers={handlers}
+                getFieldState={getFieldState}
+              />
+              <Field
+                fieldConfig={FIELDS_CONFIG.password}
+                handlers={handlers}
+                getFieldState={getFieldState}
+              />
+              <button
+                id="form-submit"
+                className="button-style"
+                disabled={!isSubmitEnabled}
+              >
+                로그인
+              </button>
+            </>
+          )}
+        </Form>
+
         <div className="form-social-container">
           <span className="form-social-text">간편 로그인하기</span>
           <a

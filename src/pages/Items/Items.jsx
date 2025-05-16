@@ -1,7 +1,7 @@
 import './Items.css';
-import { getItems } from '../../apis/api';
+import { getItems } from '../../utils/api';
 import { useEffect, useState } from 'react';
-import { formatPriceKRW } from '../../modules/formatPrice';
+import { formatPriceKRW } from '../../utils/formatPrice';
 import { useNavigate } from 'react-router';
 import Header from '../../components/Header';
 import { usePageSizeByBreakPoint } from '../../hooks/usePageSizeByBreakPoint';
@@ -41,29 +41,6 @@ const ItemComponent = ({
       </div>
     </div>
   );
-};
-
-const getCurrentPageState = (
-  offset,
-  pageSize,
-  totalDataCount,
-  maxVisiblePageCount = 5
-) => {
-  //총페이지가 307일때
-  //pagesize가 10이고 offset이 13이면?
-  //현재페이지: 2, pagenumbers = 1,2,3,4,5
-  const currentPageNumber = Math.ceil(offset / pageSize);
-  const paginationStartPage = Math.floor((currentPageNumber - 1) / 5) * 5 + 1;
-  const lastPageNumber = Math.ceil(totalDataCount / pageSize);
-  const remainingPageCount = lastPageNumber - paginationStartPage + 1;
-  const visiblePageCount =
-    remainingPageCount >= maxVisiblePageCount
-      ? maxVisiblePageCount
-      : remainingPageCount;
-  const visiblePageNumbers = new Array(visiblePageCount)
-    .fill(0)
-    .map((v, i) => v + i + paginationStartPage);
-  return { currentPageNumber, visiblePageNumbers };
 };
 
 const Items = () => {
