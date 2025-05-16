@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { getItems } from "../api";
 import styles from "./ItemList.module.css";
 import ItemCard from "./ItemCard";
@@ -7,6 +7,7 @@ import Button from "../ui/Button";
 import Dropdown from "../ui/Dropdown/Dropdown";
 import InputSearch from "../ui/InputSearch";
 import Pagination from "./Pagination";
+import useAsync from "../hooks/useAsync";
 
 const DEFAULT_PAGE_SIZE = 10;
 const PAGINATION_SIZE = 5;
@@ -25,27 +26,22 @@ const ItemList = ({
 }) => {
   const navigate = useNavigate();
   const [items, setItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [isLoading, loadingError, getItemsAsync] = useAsync(getItems);
   const [order, setOrder] = useState("최신순");
   const [listPage, setListPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
 
-  const handleLoad = async (options) => {
-    let result;
-    try {
-      setIsLoading(true);
-      result = await getItems(options);
+  const handleLoad = useCallback(
+    async (options) => {
+      const result = await getItemsAsync(options);
+      if (!result) return;
+
       const { list, totalCount } = result;
       setItems(list);
       setTotalPage(Math.ceil(totalCount / DEFAULT_PAGE_SIZE));
-    } catch (err) {
-      setError(err);
-      return;
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    },
+    [getItemsAsync]
+  );
 
   const handleDropdownSelect = (selectedOrder) => {
     setOrder(selectedOrder);
@@ -57,7 +53,7 @@ const ItemList = ({
 
   useEffect(() => {
     handleLoad({ page: listPage, pageSize, orderBy: ORDER_MAP[order] });
-  }, [listPage, order, pageSize]);
+  }, [listPage, order, pageSize, handleLoad]);
 
   return (
     <div className={styles["item-list-area"]}>

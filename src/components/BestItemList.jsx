@@ -1,33 +1,29 @@
+import { useEffect, useState, useCallback } from "react";
+import { getItems } from "../api";
 import styles from "./BestItemList.module.css";
 import ItemCard from "./ItemCard";
-import { getItems } from "../api";
-import { useEffect, useState } from "react";
+import useAsync from "../hooks/useAsync";
 
 const ORDER_BY = "favorite";
 
 const BestItemList = ({ pageSize, title }) => {
   const [items, setItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [isLoading, loadingError, getItemsAsync] = useAsync(getItems);
 
-  const handleLoad = async (options) => {
-    let result;
-    try {
-      setIsLoading(true);
-      result = await getItems(options);
+  const handleLoad = useCallback(
+    async (options) => {
+      const result = await getItemsAsync(options);
+      if (!result) return;
+
       const { list } = result;
       setItems(list);
-    } catch (err) {
-      setError(err);
-      return;
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    },
+    [getItemsAsync]
+  );
 
   useEffect(() => {
     handleLoad({ pageSize: pageSize, orderBy: ORDER_BY });
-  }, [pageSize]);
+  }, [pageSize, handleLoad]);
 
   return (
     <div className={styles["item-list-area"]}>
