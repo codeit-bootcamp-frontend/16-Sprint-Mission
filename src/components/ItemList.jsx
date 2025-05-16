@@ -24,7 +24,7 @@ const ItemList = ({ title, pageSize, orderBy, type }) => {
   };
 
   useEffect(() => {
-    handleLoad({ pageSize: pageSize, orderBy: orderBy });
+    handleLoad({ pageSize, orderBy });
   }, []);
 
   return (
@@ -41,6 +41,7 @@ const ItemList = ({ title, pageSize, orderBy, type }) => {
               name={name}
               price={price}
               likes={favoriteCount}
+              type={type}
             />
           );
         })}

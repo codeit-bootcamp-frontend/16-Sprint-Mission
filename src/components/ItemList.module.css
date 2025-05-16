@@ -1,6 +1,10 @@
 .item-list {
   display: flex;
-  gap: 24px;
+  gap: 40px 24px;
+}
+
+.item-list-area {
+  padding-bottom: 40px;
 }
 
 .item-list-title {
@@ -11,11 +15,14 @@
 
 .item-list.best li {
   width: 25%;
+  max-width: 282px;
 }
 
 .item-list.all {
   flex-wrap: wrap;
 }
+
 .item-list.all li {
   width: 20%;
+  max-width: 220px;
 }

@@ -1,15 +1,13 @@
-.item-card.best {
-  width: 25%;
-}
-
-.item-card.all {
-  width: 20%;
-}
-
 .item-img {
   object-fit: cover;
   border-radius: var(--thumb-border-radius);
   margin-bottom: 16px;
+}
+.item-img.best {
+  height: 282px;
+}
+.item-img.all {
+  height: 220px;
 }
 
 .item-desc {

@@ -2,11 +2,15 @@ import { Link } from "react-router-dom";
 import styles from "./ItemCard.module.css";
 import likeImg from "../assets/images/ic-like.svg";
 
-const ItemCard = ({ imgSrc, description, name, price, likes }) => {
+const ItemCard = ({ imgSrc, description, name, price, likes, type }) => {
   return (
     <li className={styles["item-card"]}>
       <Link to="/items">
-        <img src={imgSrc} alt={name} className={styles["item-img"]} />
+        <img
+          src={imgSrc}
+          alt={name}
+          className={`${styles["item-img"]} ${styles[type]}`}
+        />
         <h6 className={styles["item-desc"]}>{description}</h6>
         <h4 className={styles["item-price"]}>
           {price.toLocaleString("ko-KR")}원
