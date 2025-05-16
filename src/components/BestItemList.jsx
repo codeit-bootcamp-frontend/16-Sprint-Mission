@@ -27,13 +27,13 @@ const BestItemList = ({ pageSize, title }) => {
 
   useEffect(() => {
     handleLoad({ pageSize: pageSize, orderBy: ORDER_BY });
-  }, []);
+  }, [pageSize]);
 
   return (
     <div className={styles["item-list-area"]}>
       <h4 className={styles["item-list-title"]}>{title}</h4>
       <ul className={`${styles["item-list-ul"]}`}>
-        {items.map((item) => {
+        {items.slice(0, pageSize).map((item) => {
           const { id, images, description, name, price, favoriteCount } = item;
           return (
             <li key={id} className={styles["item-list"]}>
