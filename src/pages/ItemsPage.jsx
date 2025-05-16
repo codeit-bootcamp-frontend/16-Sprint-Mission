@@ -4,7 +4,7 @@ import BestItemList from "../components/BestItemList";
 const ItemsPage = () => {
   return (
     <section className="page-content">
-      <BestItemList />
+      <BestItemList title="베스트 상품" pageSize={4} />
       <ItemList title="전체 상품" pageSize={10} orderBy="recent" />
     </section>
   );
