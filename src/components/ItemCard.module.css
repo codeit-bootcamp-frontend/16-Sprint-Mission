@@ -34,4 +34,5 @@
 
 .btn-like-ico .ico-img {
   height: 100%;
+  object-fit: contain;
 }

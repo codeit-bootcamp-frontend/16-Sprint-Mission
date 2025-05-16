@@ -13,11 +13,13 @@ const ItemsPage = () => {
     <section className="page-content">
       <BestItemList
         title="베스트 상품"
-        pageSize={width >= DESKTOP ? 4 : width >= TABLET ? 2 : 1}
+        // pageSize={width >= DESKTOP ? 4 : width >= TABLET ? 2 : 1}
+        pageSize={4}
       />
       <ItemList
         title="전체 상품"
-        pageSize={width >= DESKTOP ? 10 : width >= TABLET ? 6 : 4}
+        // pageSize={width >= DESKTOP ? 10 : width >= TABLET ? 6 : 4}
+        pageSize={10}
         showSearch
         showItemAddBtn
         showOrderDropdown

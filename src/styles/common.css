@@ -20,18 +20,26 @@
 
 /* layout */
 .page-content {
-  width: var(--page-content-width);
+  width: 100%;
   margin: 24px auto;
 }
 
 /*================ 반응형 ================*/
+/* tablet */
 @media (min-width: 768px) {
   html {
     font-size: 16px;
   }
 }
 
-/* wide PC */
+/* desktop */
+@media (min-width: 1200px) {
+  .page-content {
+    width: var(--page-content-width);
+  }
+}
+
+/* wide desktop */
 @media (min-width: 1921px) {
   html {
     font-size: 18px;

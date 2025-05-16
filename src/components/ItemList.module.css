@@ -1,16 +1,17 @@
 .item-list-ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px 24px;
+  gap: 32px 8px;
 }
 
 .item-list {
-  width: 20%;
-  max-width: 220px;
+  width: calc(50% - 8px);
 }
 
 .item-list img {
-  height: 220px;
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
 }
 
 .item-list-area {
@@ -32,4 +33,24 @@
   display: flex;
   margin-left: auto;
   gap: 12px;
+}
+
+@media (min-width: 768px) {
+  .item-list-ul {
+    gap: 40px 16px;
+  }
+  .item-list {
+    width: calc(33% - 16px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .item-list-ul {
+    gap: 40px 24px;
+  }
+
+  .item-list {
+    width: 20%;
+    max-width: 220px;
+  }
 }
