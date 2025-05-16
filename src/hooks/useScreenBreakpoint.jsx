@@ -10,10 +10,11 @@ export const useScreenBreakpoint = () => {
   };
 
   //prettier-ignore
-  const [breakPoint, setBreakPoint] = useState(getBreakPoint(window.innerWidth));
+  const [breakPoint, setBreakPoint] = useState(null);
 
   useEffect(() => {
     const handleResize = () => setBreakPoint(getBreakPoint(window.innerWidth));
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
