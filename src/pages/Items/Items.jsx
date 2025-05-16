@@ -56,7 +56,7 @@ const Items = () => {
   const [currentItemList, setCurrentItemList] = useState([]);
 
   const { totalPagesCount, currentPageNumber, visiblePageNumbers } =
-    usePaginationByOffset(offset, pageSizeList.best, totalDataCount);
+    usePaginationByOffset(offset, pageSizeList.current, totalDataCount);
 
   const onCreateNewItemNavigate = useNavigate();
 

@@ -11,7 +11,6 @@ const getCurrentPageState = (
   const nextCurrentPageNumber = Math.ceil(offset / pageSize);
 
   const nextTotalPagesCount = Math.ceil(totalDataCount / pageSize);
-
   //prettier-ignore
   const paginationStartPage = Math.floor((nextCurrentPageNumber - 1) / maxVisiblePageCount) * maxVisiblePageCount + 1;
   const remainingPageCount = nextTotalPagesCount - paginationStartPage + 1;
