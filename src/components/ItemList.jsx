@@ -1,12 +1,23 @@
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getItems } from "../api";
 import styles from "./ItemList.module.css";
 import ItemCard from "./ItemCard";
-import { getItems } from "../api";
-import { useEffect, useState } from "react";
+import Button from "../ui/Button";
+import Dropdown from "../ui/Dropdown/Dropdown";
 
-const ItemList = ({ title, pageSize, orderBy }) => {
+const ItemList = ({
+  title,
+  pageSize,
+  orderBy,
+  showSearch,
+  showItemAddBtn,
+  showOrderDropdown,
+}) => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleLoad = async (options) => {
     let result;
@@ -29,7 +40,30 @@ const ItemList = ({ title, pageSize, orderBy }) => {
 
   return (
     <div className={styles["item-list-area"]}>
-      <h4 className={styles["item-list-title"]}>{title}</h4>
+      <div className={styles["item-list-header"]}>
+        <h4 className={styles["item-list-title"]}>{title}</h4>
+        {(showSearch || showItemAddBtn || showOrderDropdown) && (
+          <div className={styles.actions}>
+            {showSearch && (
+              <input
+                type="search"
+                name="searchInput"
+                placeholder="검색할 상품을 입력해주세요"
+              />
+            )}
+            {showItemAddBtn && (
+              <Button
+                type="button"
+                className="btn-primary"
+                onClick={() => navigate("/addItem")}
+              >
+                상품 등록하기
+              </Button>
+            )}
+            {showOrderDropdown && <Dropdown uiType="select" />}
+          </div>
+        )}
+      </div>
       <ul className={`${styles["item-list-ul"]}`}>
         {items.map((item) => {
           const { id, images, description, name, price, favoriteCount } = item;

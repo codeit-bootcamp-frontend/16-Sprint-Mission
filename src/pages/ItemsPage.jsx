@@ -5,7 +5,14 @@ const ItemsPage = () => {
   return (
     <section className="page-content">
       <BestItemList title="베스트 상품" pageSize={4} />
-      <ItemList title="전체 상품" pageSize={10} orderBy="recent" />
+      <ItemList
+        title="전체 상품"
+        pageSize={10}
+        orderBy="recent"
+        showSearch
+        showItemAddBtn
+        showOrderDropdown
+      />
     </section>
   );
 };
