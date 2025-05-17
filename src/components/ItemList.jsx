@@ -8,6 +8,7 @@ import Dropdown from "../ui/Dropdown/Dropdown";
 import InputSearch from "../ui/InputSearch";
 import Pagination from "./Pagination";
 import useAsync from "../hooks/useAsync";
+import ItemListSkeleton from "../ui/Skeletons/ItemListSkeleton";
 
 const DEFAULT_PAGE_SIZE = 10;
 const PAGINATION_SIZE = 5;
@@ -73,38 +74,36 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
           iconType="orderIcon"
         />
       </div>
-      <div className={styles["item-list-content"]}>
-        {isLoading && <p>상품 목록 가져오는 중...</p>}
-        {!isLoading && loadingError && <p>상품 목록을 가져오지 못했습니다.</p>}
-        {!loadingError && (
-          <div className={styles["item-list-wrap"]}>
-            <ul className={styles["item-list-ul"]}>
-              {items.map((item) => {
-                const { id, images, description, name, price, favoriteCount } =
-                  item;
-                return (
-                  <li key={id} className={styles["item-list"]}>
-                    <ItemCard
-                      key={id}
-                      imgSrc={images}
-                      description={description}
-                      name={name}
-                      price={price}
-                      likes={favoriteCount}
-                    />
-                  </li>
-                );
-              })}
-            </ul>
-            <Pagination
-              loadFunc={handleLoad}
-              paginationSize={PAGINATION_SIZE}
-              totalPage={totalPage}
-              onCurrentPage={handlePaginationClick}
-            />
-          </div>
-        )}
-      </div>
+      {isLoading && <ItemListSkeleton count={pageSize} />}
+      {!isLoading && loadingError && <p>상품 목록을 가져오지 못했습니다.</p>}
+      {!loadingError && (
+        <div className={styles["item-list-wrap"]}>
+          <ul className={styles["item-list-ul"]}>
+            {items.map((item) => {
+              const { id, images, description, name, price, favoriteCount } =
+                item;
+              return (
+                <li key={id} className={styles["item-list"]}>
+                  <ItemCard
+                    key={id}
+                    imgSrc={images}
+                    description={description}
+                    name={name}
+                    price={price}
+                    likes={favoriteCount}
+                  />
+                </li>
+              );
+            })}
+          </ul>
+          <Pagination
+            loadFunc={handleLoad}
+            paginationSize={PAGINATION_SIZE}
+            totalPage={totalPage}
+            onCurrentPage={handlePaginationClick}
+          />
+        </div>
+      )}
     </div>
   );
 };

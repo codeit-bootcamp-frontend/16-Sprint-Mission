@@ -1,3 +1,7 @@
+.item-list-wrap {
+  position: relative;
+}
+
 .item-list-ul {
   display: flex;
   flex-wrap: wrap;
