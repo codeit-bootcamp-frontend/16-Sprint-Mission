@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: space-between;
   width: 130px;
+  height: 100%;
   padding: 8px 20px;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-sm);
@@ -10,6 +11,7 @@
   text-align: left;
   font-size: 1rem;
 }
-.dropdown-btn:hover {
+.dropdown-btn:hover,
+.dropdown-btn.active {
   border-color: var(--primary-color);
 }

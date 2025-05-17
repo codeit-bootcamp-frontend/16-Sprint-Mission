@@ -4,9 +4,9 @@ const DropdownMenu = ({ items, onClick, isDropdownOpen }) => {
   return (
     <ul
       className={`
-    ${styles["dropdown-menu"]}
-    ${isDropdownOpen ? styles.active : ""}
-  `}
+        ${styles["dropdown-menu"]}
+        ${isDropdownOpen ? styles.active : ""}
+      `}
     >
       {items.map((item) => (
         <li key={item}>

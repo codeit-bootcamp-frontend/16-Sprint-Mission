@@ -6,21 +6,28 @@ import DropdownMenu from "./DropdownMenu";
 const Dropdown = ({ menu, onClickMenu, defaultSelected }) => {
   const [selected, setSelected] = useState(defaultSelected);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isDropdownBtnActive, setIsDropdownBtnActive] = useState(false);
 
   const handleMenuClick = (e) => {
     const selectedValue = e.target.textContent;
     setSelected(selectedValue);
     onClickMenu(selectedValue);
     setIsDropdownOpen((prev) => !prev);
+    setIsDropdownBtnActive((prev) => !prev);
   };
 
-  const showDropdownMenu = () => {
+  const handleDropdown = () => {
     setIsDropdownOpen((prev) => !prev);
+    setIsDropdownBtnActive((prev) => !prev);
   };
 
   return (
     <div className={styles.dropdown}>
-      <DropdownBtn selected={selected} onClickDropdownBtn={showDropdownMenu} />
+      <DropdownBtn
+        selected={selected}
+        onClickDropdownBtn={handleDropdown}
+        isActive={isDropdownBtnActive}
+      />
       <DropdownMenu
         items={menu}
         onClick={handleMenuClick}
