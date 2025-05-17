@@ -1,18 +1,20 @@
+import { useState } from 'react';
 import { formatPriceKRW } from '../utils/formatPrice';
 import styles from './ItemCard.module.css';
 
 const IMAGE_DEFAULT_URL = './images/img_items_default_md.png';
 
 const ItemCard = ({ id, imageUrl, name, price, favoriteCount }) => {
+  const [isImageValid, setIsImageValid] = useState(true);
+
+  const imgSrc = isImageValid && imageUrl ? imageUrl : IMAGE_DEFAULT_URL;
+
   return (
     <div className={styles['container']}>
       <img
         className={styles['image']}
-        src={imageUrl}
-        onError={(e) => {
-          e.target.onError = null;
-          e.target.src = IMAGE_DEFAULT_URL;
-        }}
+        src={imgSrc}
+        onError={() => setIsImageValid(false)}
         alt={name}
         width={282}
       />

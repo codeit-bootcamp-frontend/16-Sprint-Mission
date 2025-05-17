@@ -1,13 +1,23 @@
-const Pagination = () => {
+import styles from './Pagination.module.css';
+
+const Pagination = ({
+  visiblePageNumbers,
+  currentPageNumber,
+  handlers,
+  pageControlEnabled,
+}) => {
+  const { handlePageNumberClick, handlePagePrev, handlePageNext } = handlers;
+  const { prevPageEnable, nextPageEnable } = pageControlEnabled;
+
   return (
-    <nav className={'items-pagination'}>
+    <nav className={styles['pagination-container']}>
       <button
-        className={'pagination-button prev-page'}
+        className={`${styles['pagination-button']} ${styles['prev-page']}`}
         onClick={handlePagePrev}
         disabled={!prevPageEnable}
       >
         <img
-          className={'pagination-button-image'}
+          className={styles['pagination-button-image']}
           src={
             prevPageEnable
               ? './images/ic_prevPageClick_active.png'
@@ -23,7 +33,7 @@ const Pagination = () => {
           <button
             key={pageIndex}
             value={pageIndex}
-            className={`pagination-button ${ButtonClassName}`}
+            className={`${styles['pagination-button']} ${styles[ButtonClassName]}`}
             onClick={handlePageNumberClick}
           >
             {pageIndex}
@@ -31,12 +41,12 @@ const Pagination = () => {
         );
       })}
       <button
-        className={'pagination-button next-page'}
+        className={`${styles['pagination-button']} ${styles['next-page']}`}
         onClick={handlePageNext}
         disabled={!nextPageEnable}
       >
         <img
-          className={'pagination-button-image'}
+          className={styles['pagination-button-image']}
           src={
             nextPageEnable
               ? './images/ic_nextPageClick_active.png'

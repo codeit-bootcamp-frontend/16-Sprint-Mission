@@ -1,20 +1,18 @@
-const VISIBLE_PAGECOUNT = 5;
-
 const getCurrentPageState = (
   offset,
   pageSize = 1,
   totalDataCount,
-  maxVisiblePageCount = VISIBLE_PAGECOUNT
+  maxVisiblePagelength
 ) => {
   const nextCurrentPageNumber = Math.ceil(offset / pageSize);
 
   const nextTotalPagesCount = Math.ceil(totalDataCount / pageSize);
   //prettier-ignore
-  const paginationStartPage = Math.floor((nextCurrentPageNumber - 1) / maxVisiblePageCount) * maxVisiblePageCount + 1;
+  const paginationStartPage = Math.floor((nextCurrentPageNumber - 1) / maxVisiblePagelength) * maxVisiblePagelength + 1;
   const remainingPageCount = nextTotalPagesCount - paginationStartPage + 1;
   const visiblePageCount =
-    remainingPageCount >= maxVisiblePageCount
-      ? maxVisiblePageCount
+    remainingPageCount >= maxVisiblePagelength
+      ? maxVisiblePagelength
       : remainingPageCount;
   const nextVisiblePageNumbers = new Array(visiblePageCount)
     .fill(0)
@@ -22,10 +20,15 @@ const getCurrentPageState = (
   return { nextCurrentPageNumber, nextVisiblePageNumbers, nextTotalPagesCount };
 };
 
-export const usePaginationByOffset = (offset, pageSize, totalDataCount) => {
+export const usePaginationByOffset = (
+  offset,
+  pageSize,
+  totalDataCount,
+  visiblePageLength = 5
+) => {
   //prettier-ignore
   const { nextTotalPagesCount, nextCurrentPageNumber, nextVisiblePageNumbers } =
-    getCurrentPageState(offset, pageSize, totalDataCount);
+    getCurrentPageState(offset, pageSize, totalDataCount, visiblePageLength);
 
   //prettier-ignore
   return {
