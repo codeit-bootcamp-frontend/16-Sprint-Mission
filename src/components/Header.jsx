@@ -14,8 +14,16 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles["header-container"]}>
         <div className={styles.logo}>
-          <img src={logoPandaImg} alt="판다마켓 로고 이미지" />
-          <img src={logoTxtImg} alt="판다마켓 로고 텍스트" />
+          <img
+            className={styles["logo-img"]}
+            src={logoPandaImg}
+            alt="판다마켓 로고 이미지"
+          />
+          <img
+            className={styles["logo-txt"]}
+            src={logoTxtImg}
+            alt="판다마켓 로고 텍스트"
+          />
         </div>
         <Nav />
         <Avatar

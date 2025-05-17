@@ -3,7 +3,7 @@ import BestItemList from "../components/BestItemList";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 
 const DESKTOP = 1200;
-const TABLET = 768;
+const TABLET = 600;
 
 const ItemsPage = () => {
   const { width } = useWindowDimensions();

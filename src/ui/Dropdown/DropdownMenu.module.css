@@ -1,8 +1,9 @@
 .dropdown-menu {
   position: absolute;
-  left: 0;
+  right: 0;
   top: 110%;
   width: 100%;
+  min-width: 130px;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-sm);
   overflow: hidden;

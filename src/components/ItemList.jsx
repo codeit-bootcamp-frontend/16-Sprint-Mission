@@ -53,22 +53,25 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
     <div className={styles["item-list-area"]}>
       <div className={styles["item-list-header"]}>
         <h4 className={styles["item-list-title"]}>{title}</h4>
-        <div className={styles.actions}>
-          <InputSearch placeholder="검색할 상품을 입력해주세요" />
-          <Button
-            type="button"
-            variant="primary"
-            size="sm"
-            onClick={() => navigate("/addItem")}
-          >
-            상품 등록하기
-          </Button>
-          <Dropdown
-            menu={dropdownMenu}
-            onClickMenu={handleDropdownSelect}
-            defaultSelected={order}
-          />
-        </div>
+        <Button
+          type="button"
+          variant="primary"
+          size="sm"
+          className={styles["add-item-btn"]}
+          onClick={() => navigate("/addItem")}
+        >
+          상품 등록하기
+        </Button>
+        <InputSearch
+          className={styles["item-list-header-search"]}
+          placeholder="검색할 상품을 입력해주세요"
+        />
+        <Dropdown
+          menu={dropdownMenu}
+          onClickMenu={handleDropdownSelect}
+          defaultSelected={order}
+          iconType="orderIcon"
+        />
       </div>
       <div className={styles["item-list-content"]}>
         {isLoading && <p>상품 목록 가져오는 중...</p>}

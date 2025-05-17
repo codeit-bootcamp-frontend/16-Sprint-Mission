@@ -22,7 +22,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-right: 32px;
+  margin-right: 8px;
 }
 
 .logo-img {
@@ -33,6 +33,16 @@
 
 .header-avatar {
   margin-left: auto;
+}
+
+@media (min-width: 600px) {
+  .logo {
+    margin-right: 32px;
+  }
+
+  .logo-img {
+    display: inline-block;
+  }
 }
 
 @media (min-width: 768px) {

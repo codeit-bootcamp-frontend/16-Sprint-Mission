@@ -32,6 +32,7 @@
   --sections-padding: 24px 16px 84px;
   --section-margin-bottom: 16px;
   --footer-padding: 32px;
+  --list-header-gap: 12px;
 
   /* form */
   --form-padding-top: 24px;
@@ -44,4 +45,7 @@
   --border-radius-md: 20px;
   --border-radius-lg: 40px;
   --thumb-border-radius: 16px;
+
+  /* dropdown */
+  --dropdown-min-width: 48px;
 }

@@ -3,7 +3,7 @@ import styles from "./Dropdown.module.css";
 import DropdownBtn from "./DropdownBtn";
 import DropdownMenu from "./DropdownMenu";
 
-const Dropdown = ({ menu, onClickMenu, defaultSelected }) => {
+const Dropdown = ({ menu, onClickMenu, defaultSelected, iconType }) => {
   const [selected, setSelected] = useState(defaultSelected);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDropdownBtnActive, setIsDropdownBtnActive] = useState(false);
@@ -27,6 +27,7 @@ const Dropdown = ({ menu, onClickMenu, defaultSelected }) => {
         selected={selected}
         onClickDropdownBtn={handleDropdown}
         isActive={isDropdownBtnActive}
+        iconType={iconType}
       />
       <DropdownMenu
         items={menu}

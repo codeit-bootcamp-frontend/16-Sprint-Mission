@@ -13,7 +13,7 @@ const Button = ({
   return (
     <button
       type={type}
-      className={`${styles[btnVariant]} ${styles[btnSize]}`}
+      className={`${className} ${styles[btnVariant]} ${styles[btnSize]}`}
       onClick={onClick}
     >
       {children}

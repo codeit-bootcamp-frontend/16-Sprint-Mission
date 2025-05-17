@@ -24,7 +24,7 @@
   object-fit: cover;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 600px) {
   .item-list-ul {
     gap: 40px 10px;
   }
