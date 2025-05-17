@@ -58,7 +58,7 @@
   }
 
   .item-list-header-search {
-    width: auto;
+    width: 242px;
   }
 }
 
@@ -71,5 +71,9 @@
     width: calc(20% - 24px);
     max-width: 220px;
     flex-grow: 1;
+  }
+
+  .item-list-header-search {
+    width: 324px;
   }
 }
