@@ -1,0 +1,25 @@
+.container {
+  width: 100%;
+  padding: 0 1rem;
+  margin: 0 auto;
+}
+
+/* 태블릿 이상 (768px부터) */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    :root{
+        --padding-horizontal: 24px;
+    }
+  .container {
+    max-width: 960px;
+  }
+}
+
+/* 데스크톱 이상 (1200px부터) */
+@media (min-width: 1200px) {
+    :root{
+        --padding-horizontal: 200px;
+    }
+  .container {
+    max-width: 1200px;
+  }
+}
