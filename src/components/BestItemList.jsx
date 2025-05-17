@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { getItems } from "../api";
+import { getItems } from "../apis/api";
 import styles from "./BestItemList.module.css";
 import ItemCard from "./ItemCard";
 import useAsync from "../hooks/useAsync";
@@ -33,26 +33,22 @@ const BestItemList = ({ pageSize, title }) => {
         {!isLoading && loadingError && <p>상품 목록을 가져오지 못했습니다.</p>}
         {!loadingError && (
           <ul className={`${styles["item-list-ul"]}`}>
-            {items.length !== 0 ? (
-              items.slice(0, pageSize).map((item) => {
-                const { id, images, description, name, price, favoriteCount } =
-                  item;
-                return (
-                  <li key={id} className={styles["item-list"]}>
-                    <ItemCard
-                      key={id}
-                      imgSrc={images}
-                      description={description}
-                      name={name}
-                      price={price}
-                      likes={favoriteCount}
-                    />
-                  </li>
-                );
-              })
-            ) : (
-              <p>등록된 상품이 없습니다.</p>
-            )}
+            {items.slice(0, pageSize).map((item) => {
+              const { id, images, description, name, price, favoriteCount } =
+                item;
+              return (
+                <li key={id} className={styles["item-list"]}>
+                  <ItemCard
+                    key={id}
+                    imgSrc={images}
+                    description={description}
+                    name={name}
+                    price={price}
+                    likes={favoriteCount}
+                  />
+                </li>
+              );
+            })}
           </ul>
         )}
       </div>

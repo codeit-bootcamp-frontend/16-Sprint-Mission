@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
-import { getItems } from "../api";
+import { getItems } from "../apis/api";
 import styles from "./ItemList.module.css";
 import ItemCard from "./ItemCard";
 import Button from "../ui/Button";
