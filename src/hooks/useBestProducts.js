@@ -1,18 +1,27 @@
-// hooks/useBestProducts.js
-import { useState, useEffect } from 'react';
-import { fetchProducts } from '../api/products';
+import { useEffect, useState } from "react";
+import { fetchProducts } from "../api/products";
+import { getLimitFromHtmlClass } from "../utils/getLimitFromHtmlClass";
 
-export default function useBestProducts(limit) {
-  const [products, setProducts] = useState([]);
+export default function useBestProducts(itemsPerDevice) {
+  const [bestProducts, setBestProducts] = useState([]);
 
   useEffect(() => {
-    const load = async () => {
-      const res = await fetchProducts();
-      const sorted = res.sort((a, b) => b.favoriteCount - a.favoriteCount);
-      setProducts(sorted.slice(0, limit));
+    const updateProducts = async () => {
+      const data = await fetchProducts();
+      const sorted = data.sort((a, b) => b.favoriteCount - a.favoriteCount);
+      const limit = getLimitFromHtmlClass(
+        itemsPerDevice.desktop,
+        itemsPerDevice.tablet,
+        itemsPerDevice.mobile
+      );
+      setBestProducts(sorted.slice(0, limit));
     };
-    load();
-  }, [limit]);
 
-  return products;
+    updateProducts();
+    const resizeHandler = () => updateProducts();
+    window.addEventListener("resize", resizeHandler);
+
+    return () => window.removeEventListener("resize", resizeHandler);
+  }, [itemsPerDevice]);
+  return bestProducts;
 }

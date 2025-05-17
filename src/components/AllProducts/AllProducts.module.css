@@ -1,0 +1,41 @@
+.container {
+  margin-top: 40px;
+}
+
+.title {
+  font-size: var(--font-size-lg);
+  margin-bottom: 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  border: 1px solid var(--border-default);
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  background: var(--bg-primary);
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.pagination button {
+  padding: 4px 10px;
+  border: none;
+  background: var(--color-gray-100);
+  cursor: pointer;
+}
+
+.pagination .active {
+  background: var(--brand-blue);
+  color: white;
+}

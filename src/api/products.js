@@ -1,11 +1,19 @@
-import { BASE_URL } from './config';
+import { BASE_URL } from "./config";
 
 export async function fetchProducts() {
   const res = await fetch(`${BASE_URL}/products`);
   if (!res.ok) {
-    throw new Error('상품 데이터를 불러오는데 실패했어요');
+    throw new Error("상품 데이터를 불러오는데 실패했어요");
   }
   const json = await res.json();
-  console.log(json.list);
   return json?.list || [];
+}
+
+export async function fetchPaginatedProducts({ page = 1, pageSize = 10 } = {}) {
+  const res = await fetch(
+    `${BASE_URL}/products?page=${page}&pageSize=${pageSize}`
+  );
+  if (!res.ok) throw new Error("상품 데이터를 불러오는데 실패했습니다.");
+  const json = await res.json();
+  return json;
 }
