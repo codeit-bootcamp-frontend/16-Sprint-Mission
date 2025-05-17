@@ -5,10 +5,6 @@ import ItemCard from "./ItemCard";
 import useAsync from "../hooks/useAsync";
 
 const ORDER_BY = "favorite";
-const THUMB_SIZE = {
-  width: 280,
-  height: 280,
-};
 
 const BestItemList = ({ pageSize, title }) => {
   const [items, setItems] = useState([]);
@@ -49,7 +45,7 @@ const BestItemList = ({ pageSize, title }) => {
                     name={name}
                     price={price}
                     likes={favoriteCount}
-                    thumbSize={THUMB_SIZE}
+                    loading="eager"
                   />
                 </li>
               );

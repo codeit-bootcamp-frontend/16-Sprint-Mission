@@ -3,11 +3,6 @@ import styles from "./ItemCard.module.css";
 import likeImg from "../assets/images/ic-like.svg";
 import pandaLogoImg from "../assets/images/logo-panda.svg";
 
-const INITIAL_THUMB_SIZE = {
-  width: 220,
-  height: 220,
-};
-
 const ItemCard = ({
   imgSrc,
   description,
@@ -15,7 +10,7 @@ const ItemCard = ({
   price,
   likes,
   type,
-  thumbSize = INITIAL_THUMB_SIZE,
+  loading = "lazy",
 }) => {
   return (
     <Link to="/items">
@@ -26,8 +21,7 @@ const ItemCard = ({
         onError={(e) => {
           e.currentTarget.src = pandaLogoImg;
         }}
-        width={thumbSize["width"]}
-        height={thumbSize["height"]}
+        loading={loading}
       />
       <h6 className={styles["item-desc"]}>{description}</h6>
       <h4 className={styles["item-price"]}>
