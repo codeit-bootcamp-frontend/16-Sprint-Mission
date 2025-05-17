@@ -1,0 +1,18 @@
+.title {
+    font-weight: var(--products-list-font-weight);
+    font-size: var(--products-list-font-size);
+    line-height: var(--products-list-line-height);
+    vertical-align: middle;
+}
+
+.contents{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.productGrid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}

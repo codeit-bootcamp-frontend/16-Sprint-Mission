@@ -19,6 +19,10 @@
   --font-size-logo: 20px;
   --font-size-link: var(--font-size-base);
 
+  --products-list-font-weight: var(--font-weight-bold);
+  --products-list-font-size: 20px;
+  --products-list-line-height: var(--line-height-relaxed);
+
   /* ===================== */
   /*      Font Family      */
   /* ===================== */
@@ -130,16 +134,20 @@
 /* ===================== */
 /*  반응형 환경에 따라 덮어쓰기 */
 /* ===================== */
-html.mobile nav .logo img {
-  display: none;
+html.mobile {
+  --layout-default-max-width: 344px;
+  --nav-img-logo: none;
+  --layout-default-padding: 17px 16px 35px 16px;
 }
 
 html.tablet {
   --padding-horizontal: 24px;
   --nav-heading-gap: 20px;
+  --nav-img-logo: display;
+  --layout-default-padding: 24px 24px 72px 24px;
   --font-size-logo: var(--font-size-lg);
   --font-size-link: var(--font-size-md);
-
+  --layout-default-max-width: 960px;
   --nav-logo-width: 153px;
   --nav-link-width: 93px;
   --nav-link-padding: 21px 15px;
@@ -148,9 +156,11 @@ html.tablet {
 html.desktop {
   --padding-horizontal: 200px;
   --nav-heading-gap: 32px;
+  --nav-img-logo: display;
+  --layout-default-padding: 24px 36px 141px 36px;
   --font-size-logo: var(--font-size-lg);
   --font-size-link: var(--font-size-md);
-
+  --layout-default-max-width: 1200px;
   --nav-logo-width: 153px;
   --nav-link-width: 108px;
   --nav-link-padding: 21px 15px;
