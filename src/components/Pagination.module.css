@@ -1,0 +1,6 @@
+.btn-page {
+}
+
+.btn-page.active {
+  background: var(--primary-color);
+}

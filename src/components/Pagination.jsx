@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./Pagination.module.css";
 
 const Pagination = ({
   loadFunc,
@@ -11,10 +12,12 @@ const Pagination = ({
   const [currentPages, setCurrentPages] = useState(
     Array.from({ length: paginationSize }, (_, i) => i + 1)
   );
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handlePageNumClick = (e) => {
-    const currentPage = e.target.textContent;
-    onCurrentPage(currentPage);
+    const selectedPage = +e.target.textContent;
+    setCurrentPage(selectedPage);
+    onCurrentPage(selectedPage);
   };
 
   const handlePrevPaginationClick = () => {
@@ -30,6 +33,7 @@ const Pagination = ({
     setHasPrev(true);
     setCurrentPages(prevPages);
     loadFunc({ page: prevLastPage });
+    setCurrentPage(prevLastPage);
 
     if (prevFirstPage === 1) setHasPrev(false);
 
@@ -48,6 +52,7 @@ const Pagination = ({
     setHasPrev(true);
     setCurrentPages(nextPages);
     loadFunc({ page: nextFirstPage });
+    setCurrentPage(nextFirstPage);
 
     if (nextPages.includes(totalPage)) setHasNext(false);
   };
@@ -58,7 +63,13 @@ const Pagination = ({
         prev
       </button>
       {currentPages.map((page) => (
-        <button key={page} onClick={handlePageNumClick}>
+        <button
+          key={page}
+          onClick={handlePageNumClick}
+          className={`${styles["btn-page"]} ${
+            page === currentPage ? styles.active : ""
+          }`}
+        >
           {page}
         </button>
       ))}
