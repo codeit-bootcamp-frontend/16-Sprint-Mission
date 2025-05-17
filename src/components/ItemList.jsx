@@ -79,32 +79,22 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
         {!loadingError && (
           <div className={styles["item-list-wrap"]}>
             <ul className={styles["item-list-ul"]}>
-              {items.length !== 0 ? (
-                items.map((item) => {
-                  const {
-                    id,
-                    images,
-                    description,
-                    name,
-                    price,
-                    favoriteCount,
-                  } = item;
-                  return (
-                    <li key={id} className={styles["item-list"]}>
-                      <ItemCard
-                        key={id}
-                        imgSrc={images}
-                        description={description}
-                        name={name}
-                        price={price}
-                        likes={favoriteCount}
-                      />
-                    </li>
-                  );
-                })
-              ) : (
-                <p>등록된 상품이 없습니다.</p>
-              )}
+              {items.map((item) => {
+                const { id, images, description, name, price, favoriteCount } =
+                  item;
+                return (
+                  <li key={id} className={styles["item-list"]}>
+                    <ItemCard
+                      key={id}
+                      imgSrc={images}
+                      description={description}
+                      name={name}
+                      price={price}
+                      likes={favoriteCount}
+                    />
+                  </li>
+                );
+              })}
             </ul>
             <Pagination
               loadFunc={handleLoad}

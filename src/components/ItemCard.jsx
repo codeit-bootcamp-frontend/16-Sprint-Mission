@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./ItemCard.module.css";
 import likeImg from "../assets/images/ic-like.svg";
+import pandaLogoImg from "../assets/images/logo-panda.svg";
 
 const ItemCard = ({ imgSrc, description, name, price, likes, type }) => {
   return (
@@ -9,6 +10,9 @@ const ItemCard = ({ imgSrc, description, name, price, likes, type }) => {
         src={imgSrc}
         alt={name}
         className={`${styles["item-img"]} ${styles[type]}`}
+        onError={(e) => {
+          e.currentTarget.src = pandaLogoImg;
+        }}
       />
       <h6 className={styles["item-desc"]}>{description}</h6>
       <h4 className={styles["item-price"]}>
