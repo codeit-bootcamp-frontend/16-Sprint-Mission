@@ -70,29 +70,48 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
           />
         </div>
       </div>
-      <ul className={styles["item-list-ul"]}>
-        {items.map((item) => {
-          const { id, images, description, name, price, favoriteCount } = item;
-          return (
-            <li key={id} className={styles["item-list"]}>
-              <ItemCard
-                key={id}
-                imgSrc={images}
-                description={description}
-                name={name}
-                price={price}
-                likes={favoriteCount}
-              />
-            </li>
-          );
-        })}
-      </ul>
-      <Pagination
-        loadFunc={handleLoad}
-        paginationSize={PAGINATION_SIZE}
-        totalPage={totalPage}
-        onCurrentPage={handlePaginationClick}
-      />
+      <div className={styles["item-list-content"]}>
+        {isLoading && <p>상품 목록 가져오는 중...</p>}
+        {!isLoading && loadingError && <p>상품 목록을 가져오지 못했습니다.</p>}
+        {!isLoading && !loadingError && (
+          <div className={styles["item-list-wrap"]}>
+            <ul className={styles["item-list-ul"]}>
+              {items.length !== 0 ? (
+                items.map((item) => {
+                  const {
+                    id,
+                    images,
+                    description,
+                    name,
+                    price,
+                    favoriteCount,
+                  } = item;
+                  return (
+                    <li key={id} className={styles["item-list"]}>
+                      <ItemCard
+                        key={id}
+                        imgSrc={images}
+                        description={description}
+                        name={name}
+                        price={price}
+                        likes={favoriteCount}
+                      />
+                    </li>
+                  );
+                })
+              ) : (
+                <p>등록된 상품이 없습니다.</p>
+              )}
+            </ul>
+            <Pagination
+              loadFunc={handleLoad}
+              paginationSize={PAGINATION_SIZE}
+              totalPage={totalPage}
+              onCurrentPage={handlePaginationClick}
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 };
