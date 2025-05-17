@@ -1,24 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import routes from "./routes";
+import "./styles/_style.scss";
 
 function App() {
+  const router = createBrowserRouter(routes, {
+    future: {
+      v7_relativeSplatPath: true,
+    },
+  });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <RouterProvider router={router} future={{ v7_startTransition: true }} />
   );
 }
 
