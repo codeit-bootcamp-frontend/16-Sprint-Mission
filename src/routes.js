@@ -1,10 +1,10 @@
 import Layout from "./layouts/Layout";
-import MainPage from "./pages/MainPage";
-import LoginPage from "./pages/LoginPage";
-import SignupPage from "./pages/SignupPage";
-import ItemsPage from "./pages/ItemsPage";
-import PrivacyPage from "./pages/PrivacyPage";
-import FaqPage from "./pages/FaqPage";
+import MainPage from "./pages/MainPage/MainPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import SignupPage from "./pages/SignupPage/SignupPage";
+import ItemsPage from "./pages/ItemsPage/ItemsPage";
+import PrivacyPage from "./pages/PrivacyPage/PrivacyPage";
+import FaqPage from "./pages/FaqPage/FaqPage";
 
 const routes = [
   {
