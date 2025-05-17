@@ -31,7 +31,7 @@ const BestItemList = ({ pageSize, title }) => {
       <div className={styles["item-list-content"]}>
         {isLoading && <p>상품 목록 가져오는 중...</p>}
         {!isLoading && loadingError && <p>상품 목록을 가져오지 못했습니다.</p>}
-        {!isLoading && !loadingError && (
+        {!loadingError && (
           <ul className={`${styles["item-list-ul"]}`}>
             {items.length !== 0 ? (
               items.slice(0, pageSize).map((item) => {

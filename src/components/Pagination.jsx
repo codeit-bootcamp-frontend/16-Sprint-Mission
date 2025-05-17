@@ -1,5 +1,7 @@
 import { useState } from "react";
 import styles from "./Pagination.module.css";
+import arrowLeft from "../assets/images/ic_arrow_sm_left.svg";
+import arrowRight from "../assets/images/ic_arrow_sm_right.svg";
 
 const Pagination = ({
   loadFunc,
@@ -58,23 +60,31 @@ const Pagination = ({
   };
 
   return (
-    <div className="pagination">
-      <button onClick={handlePrevPaginationClick} disabled={!hasPrev}>
-        prev
+    <div className={styles.pagination}>
+      <button
+        onClick={handlePrevPaginationClick}
+        className={styles["pagination-btn"]}
+        disabled={!hasPrev}
+      >
+        <img src={arrowLeft} alt="이전 페이지" />
       </button>
       {currentPages.map((page) => (
         <button
           key={page}
           onClick={handlePageNumClick}
-          className={`${styles["btn-page"]} ${
+          className={`${styles["pagination-btn"]} ${
             page === currentPage ? styles.active : ""
           }`}
         >
           {page}
         </button>
       ))}
-      <button onClick={handleNextPaginationClick} disabled={!hasNext}>
-        next
+      <button
+        onClick={handleNextPaginationClick}
+        className={styles["pagination-btn"]}
+        disabled={!hasNext}
+      >
+        <img src={arrowRight} alt="다음 페이지" />
       </button>
     </div>
   );

@@ -1,6 +1,25 @@
-.btn-page {
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 44px;
 }
 
+.pagination-btn,
+.btn-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  color: var(--gray500);
+}
+
+.pagination-btn.active,
 .btn-page.active {
   background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #fff;
 }

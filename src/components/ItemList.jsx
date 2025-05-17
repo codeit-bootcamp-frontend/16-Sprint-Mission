@@ -73,7 +73,7 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
       <div className={styles["item-list-content"]}>
         {isLoading && <p>상품 목록 가져오는 중...</p>}
         {!isLoading && loadingError && <p>상품 목록을 가져오지 못했습니다.</p>}
-        {!isLoading && !loadingError && (
+        {!loadingError && (
           <div className={styles["item-list-wrap"]}>
             <ul className={styles["item-list-ul"]}>
               {items.length !== 0 ? (
