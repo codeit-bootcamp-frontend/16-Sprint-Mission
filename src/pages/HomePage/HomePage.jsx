@@ -5,12 +5,12 @@ import './Cards.css';
 import './Card.css';
 import './BannerBottom.css';
 import './Footer.css';
-import Header from '../../components/Header';
+import Nav from '../../components/Nav';
 
 const HomePage = () => {
   return (
     <>
-      <Header currentSection={''} />
+      <Nav currentSection={''} />
       <main className="page-main">
         <section className="banner">
           <article className="banner-container">

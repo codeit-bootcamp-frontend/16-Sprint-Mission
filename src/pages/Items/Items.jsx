@@ -1,47 +1,11 @@
 import './Items.css';
 import { getItems } from '../../utils/api';
 import { useEffect, useState } from 'react';
-import { formatPriceKRW } from '../../utils/formatPrice';
 import { useNavigate } from 'react-router';
-import Header from '../../components/Header';
+import Nav from '../../components/Nav';
 import { usePageSizeByBreakPoint } from '../../hooks/usePageSizeByBreakPoint';
 import { usePaginationByOffset } from '../../hooks/usePaginationByOffset';
-
-const ItemComponent = ({
-  id,
-  imageUrl,
-  imageDefaultUrl,
-  name,
-  price,
-  favoriteCount,
-}) => {
-  return (
-    <div className={'item-container'}>
-      <img
-        className={'item-image'}
-        src={imageUrl}
-        onError={(e) => {
-          e.target.onError = null;
-          e.target.src = imageDefaultUrl;
-        }}
-        alt={name}
-        width={282}
-      />
-      <div className={'item-context'}>
-        <h3 className={'item-title'}>{name}</h3>
-        <p className={'item-price'}>{formatPriceKRW(price)}</p>
-        <div className={'item-favorite-container'}>
-          <img
-            className={'item-favorite-image inactive'}
-            src={'./images/img_favorite_inactive.png'}
-            width={13.4}
-          />
-          <p className={'item-favorite-count'}>{favoriteCount}</p>
-        </div>
-      </div>
-    </div>
-  );
-};
+import ItemCard from '../../components/ItemCard';
 
 const Items = () => {
   const { pageSizeList } = usePageSizeByBreakPoint();
@@ -129,7 +93,7 @@ const Items = () => {
 
   return (
     <>
-      <Header currentSection={'items'} />
+      <Nav currentSection={'items'} />
       <main className={'items-page-main'}>
         <section id={'cards-best'} className={'cards-section'}>
           <div className={'section-header-container'}>
@@ -138,7 +102,7 @@ const Items = () => {
           <div className={'items-container'}>
             {bestItemList.map((item) => {
               return (
-                <ItemComponent
+                <ItemCard
                   key={item.id}
                   id={item.id}
                   imageUrl={item.images?.[0]}
@@ -185,11 +149,10 @@ const Items = () => {
           <div className={'items-container'}>
             {currentItemList.map((item) => {
               return (
-                <ItemComponent
+                <ItemCard
                   key={item.id}
                   id={item.id}
                   imageUrl={item.images}
-                  imageDefaultUrl={'./images/img_items_default_md.png'}
                   name={item.name}
                   price={item.price}
                   favoriteCount={item.favoriteCount}

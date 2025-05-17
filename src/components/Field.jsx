@@ -1,20 +1,21 @@
 import { useState } from 'react';
+import styles from './Field.module.css';
 
 const PASSWORD_ICON_CONFIG = {
   false: {
     src: './images/icon_password_invisible.png',
-    className: 'form-password-icon hidden',
+    className: 'password-icon hidden',
   },
   true: {
     src: './images/icon_password_visible.png',
-    className: 'form-password-icon',
+    className: 'password-icon',
   },
 };
 
 const INPUT_CONTAINER_CLASSNAME = {
-  null: 'form-input-container',
-  false: 'form-input-container invalid',
-  true: 'form-input-container valid',
+  null: '',
+  false: 'invalid',
+  true: 'valid',
 };
 
 const Field = ({ fieldConfig, handlers, getFieldState }) => {
@@ -23,12 +24,16 @@ const Field = ({ fieldConfig, handlers, getFieldState }) => {
   const [isVisible, setIsVisible] = useState(false);
   const handlePasswordIconClick = () => setIsVisible((prev) => !prev);
 
+  const inputContainerClass = INPUT_CONTAINER_CLASSNAME[fieldState.valid];
+
   return (
-    <label className="form-label">
+    <label className={styles['label']}>
       {fieldConfig.labelText}
-      <div className={INPUT_CONTAINER_CLASSNAME[fieldState.valid]}>
+      <div
+        className={`${styles['input-container']} ${styles[inputContainerClass]}`}
+      >
         <input
-          className="form-input"
+          className={styles['input']}
           id={fieldConfig.id}
           name={fieldConfig.id}
           value={fieldState.value}
@@ -41,7 +46,7 @@ const Field = ({ fieldConfig, handlers, getFieldState }) => {
         ></input>
         {fieldConfig.id.includes('password') && (
           <img
-            className={PASSWORD_ICON_CONFIG[isVisible].className}
+            className={styles[PASSWORD_ICON_CONFIG[isVisible].className]}
             width={20.47}
             src={PASSWORD_ICON_CONFIG[isVisible].src}
             onClick={handlePasswordIconClick}
@@ -49,7 +54,7 @@ const Field = ({ fieldConfig, handlers, getFieldState }) => {
         )}
       </div>
       {fieldConfig.hint !== '' && (
-        <span className={`form-input-hint`}>{fieldState.hint}</span>
+        <span className={styles['input-hint']}>{fieldState.hint}</span>
       )}
     </label>
   );

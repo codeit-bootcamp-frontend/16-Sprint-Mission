@@ -110,14 +110,6 @@
   row-gap: 40px;
 }
 
-.item-container {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  flex-grow: 1;
-  width: 100%;
-}
-
 #cards-best .items-container {
   column-gap: 0;
   grid-template-columns: repeat(1, 1fr);
@@ -127,47 +119,6 @@
   column-gap: 8px;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
-}
-
-.item-context {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.item-image {
-  aspect-ratio: 1/1;
-  width: 100%;
-  border-radius: 16px;
-}
-
-.item-title {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-}
-.item-price {
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 26px;
-}
-
-.item-favorite-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 3.35px;
-}
-
-.item-favorite-image {
-  aspect-ratio: 1/1;
-  width: 16px;
-}
-
-.item-favorite-count {
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 18px;
 }
 
 .items-pagination {

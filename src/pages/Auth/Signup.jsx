@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom';
 import './FormAuth.css';
 import { useNavigate } from 'react-router';
 import { useSetIsLogin } from '../../contexts/LoginStateContext';
-import Form from './Form';
-import Field from './Field';
+import Form from '../../components/Form';
+import Field from '../../components/Field';
 import { FIELDS_CONFIG } from '../../constants/fieldsConfig';
+import SocialLogin from '../../components/SocialLogin';
+import LogoHeader from '../../components/LogoHeader';
 
 const FIELD_KEYS = ['email', 'nickname', 'password', 'passwordVerify'];
 
@@ -20,14 +22,7 @@ const Signup = () => {
   return (
     <>
       <main className="page-form">
-        <Link to="/" className="form-logo-container">
-          <img
-            className="form-logo-image"
-            src={'./images/Img_logo.png'}
-            width={51.76}
-          />
-          <h1 className="form-logo-text">판다마켓</h1>
-        </Link>
+        <LogoHeader />
         <Form fieldKeys={FIELD_KEYS} onSubmit={handleSubmit}>
           {({ isSubmitEnabled, handlers, getFieldState }) => (
             <>
@@ -61,32 +56,7 @@ const Signup = () => {
             </>
           )}
         </Form>
-
-        <div className="form-social-container">
-          <span className="form-social-text">간편 로그인하기</span>
-          <a
-            className="form-social-link"
-            href="#"
-            aria-label={'구글 아이디로 간편 로그인 버튼'}
-          >
-            <img
-              src={'./images/icon_google.png'}
-              width={42}
-              alt={'구글 아이디로 간편 로그인'}
-            />
-          </a>
-          <a
-            className="form-social-link"
-            href="#"
-            aria-label={'카카오 아이디로 간편 로그인 버튼'}
-          >
-            <img
-              src={'./images/icon_kakao.png'}
-              width={42}
-              alt={'카카오 아이디로 간편 로그인'}
-            />
-          </a>
-        </div>
+        <SocialLogin />
         <span className="form-hint">
           이미 판다마켓 회원이신가요?{' '}
           <Link

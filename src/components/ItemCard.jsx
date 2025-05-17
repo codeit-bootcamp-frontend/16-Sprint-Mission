@@ -1,0 +1,35 @@
+import { formatPriceKRW } from '../utils/formatPrice';
+import styles from './ItemCard.module.css';
+
+const IMAGE_DEFAULT_URL = './images/img_items_default_md.png';
+
+const ItemCard = ({ id, imageUrl, name, price, favoriteCount }) => {
+  return (
+    <div className={styles['container']}>
+      <img
+        className={styles['image']}
+        src={imageUrl}
+        onError={(e) => {
+          e.target.onError = null;
+          e.target.src = IMAGE_DEFAULT_URL;
+        }}
+        alt={name}
+        width={282}
+      />
+      <div className={styles['context']}>
+        <h3 className={styles['title']}>{name}</h3>
+        <p className={styles['price']}>{formatPriceKRW(price)}</p>
+        <div className={styles['favorite-container']}>
+          <img
+            className={styles['favorite-image inactive']}
+            src={'./images/img_favorite_inactive.png'}
+            width={13.4}
+          />
+          <p className={styles['favorite-count']}>{favoriteCount}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ItemCard;

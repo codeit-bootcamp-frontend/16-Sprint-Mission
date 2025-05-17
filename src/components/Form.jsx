@@ -1,4 +1,4 @@
-import { useFormFields } from '../../hooks/useFormFields';
+import { useFormFields } from '../hooks/useFormFields';
 
 const Form = ({ onSubmit, children, fieldKeys }) => {
   const {

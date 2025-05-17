@@ -1,9 +1,9 @@
-import Header from '../../components/Header';
+import Nav from '../../components/Nav';
 
 const Board = () => {
   return (
     <>
-      <Header currentSection={'board'} />
+      <Nav currentSection={'board'} />
     </>
   );
 };
