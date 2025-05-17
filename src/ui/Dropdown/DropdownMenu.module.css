@@ -17,6 +17,9 @@
   width: 100%;
   background: #fff;
 }
+.dropdown-menu li:hover {
+  color: var(--primary-color);
+}
 
 .dropdown-menu li + li {
   border-top: 1px solid var(--border-color);
