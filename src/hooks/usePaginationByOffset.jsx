@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-
 const VISIBLE_PAGECOUNT = 5;
 
 const getCurrentPageState = (
@@ -25,24 +23,14 @@ const getCurrentPageState = (
 };
 
 export const usePaginationByOffset = (offset, pageSize, totalDataCount) => {
-  const [totalPagesCount, setTotalPagesCount] = useState(1);
-  const [currentPageNumber, setCurrentPageNumber] = useState(1);
-  const [visiblePageNumbers, setVisiblePageNumbers] = useState([1]);
+  //prettier-ignore
+  const { nextTotalPagesCount, nextCurrentPageNumber, nextVisiblePageNumbers } =
+    getCurrentPageState(offset, pageSize, totalDataCount);
 
-  useEffect(() => {
-    const {
-      nextTotalPagesCount,
-      nextCurrentPageNumber,
-      nextVisiblePageNumbers,
-    } = getCurrentPageState(offset, pageSize, totalDataCount);
-    setTotalPagesCount(nextTotalPagesCount);
-    setCurrentPageNumber(nextCurrentPageNumber);
-    setVisiblePageNumbers((prev) => {
-      return JSON.stringify(prev) === JSON.stringify(nextVisiblePageNumbers)
-        ? prev
-        : nextVisiblePageNumbers;
-    });
-  }, [offset, pageSize, totalDataCount]);
-
-  return { totalPagesCount, currentPageNumber, visiblePageNumbers };
+  //prettier-ignore
+  return {
+    totalPagesCount: nextTotalPagesCount,
+    currentPageNumber: nextCurrentPageNumber,
+    visiblePageNumbers: nextVisiblePageNumbers,
+  };
 };
