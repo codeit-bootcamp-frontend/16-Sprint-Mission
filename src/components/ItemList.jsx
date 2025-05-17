@@ -17,13 +17,7 @@ const ORDER_MAP = {
 };
 const dropdownMenu = ["최신순", "좋아요순"];
 
-const ItemList = ({
-  title,
-  pageSize = DEFAULT_PAGE_SIZE,
-  showSearch,
-  showItemAddBtn,
-  showOrderDropdown,
-}) => {
+const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
   const navigate = useNavigate();
   const [items, setItems] = useState([]);
   const [isLoading, loadingError, getItemsAsync] = useAsync(getItems);
@@ -59,30 +53,22 @@ const ItemList = ({
     <div className={styles["item-list-area"]}>
       <div className={styles["item-list-header"]}>
         <h4 className={styles["item-list-title"]}>{title}</h4>
-        {(showSearch || showItemAddBtn || showOrderDropdown) && (
-          <div className={styles.actions}>
-            {showSearch && (
-              <InputSearch placeholder="검색할 상품을 입력해주세요" />
-            )}
-            {showItemAddBtn && (
-              <Button
-                type="button"
-                variant="primary"
-                size="sm"
-                onClick={() => navigate("/addItem")}
-              >
-                상품 등록하기
-              </Button>
-            )}
-            {showOrderDropdown && (
-              <Dropdown
-                menu={dropdownMenu}
-                onClick={handleDropdownSelect}
-                defaultSelected={order}
-              />
-            )}
-          </div>
-        )}
+        <div className={styles.actions}>
+          <InputSearch placeholder="검색할 상품을 입력해주세요" />
+          <Button
+            type="button"
+            variant="primary"
+            size="sm"
+            onClick={() => navigate("/addItem")}
+          >
+            상품 등록하기
+          </Button>
+          <Dropdown
+            menu={dropdownMenu}
+            onClick={handleDropdownSelect}
+            defaultSelected={order}
+          />
+        </div>
       </div>
       <ul className={styles["item-list-ul"]}>
         {items.map((item) => {

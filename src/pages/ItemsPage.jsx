@@ -17,9 +17,6 @@ const ItemsPage = () => {
       <ItemList
         title="전체 상품"
         pageSize={width >= DESKTOP ? 10 : width >= TABLET ? 6 : 4}
-        showSearch
-        showItemAddBtn
-        showOrderDropdown
       />
     </section>
   );
