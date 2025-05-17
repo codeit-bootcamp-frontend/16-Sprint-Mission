@@ -5,8 +5,7 @@
   margin-top: 44px;
 }
 
-.pagination-btn,
-.btn-page {
+.pagination-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,9 +15,17 @@
   border: 1px solid var(--border-color);
   color: var(--gray500);
 }
+.pagination-btn:hover {
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+}
 
-.pagination-btn.active,
-.btn-page.active {
+.pagination-btn:disabled {
+  background: var(--gray200);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.pagination-btn.active {
   background: var(--primary-color);
   border-color: var(--primary-color);
   color: #fff;
