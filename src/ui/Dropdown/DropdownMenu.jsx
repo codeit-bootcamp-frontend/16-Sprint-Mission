@@ -1,9 +1,18 @@
-const DropdownMenu = ({ items, onClick }) => {
+import styles from "./DropdownMenu.module.css";
+
+const DropdownMenu = ({ items, onClick, isDropdownOpen }) => {
   return (
-    <ul>
+    <ul
+      className={`
+    ${styles["dropdown-menu"]}
+    ${isDropdownOpen ? styles.active : ""}
+  `}
+    >
       {items.map((item) => (
         <li key={item}>
-          <button onClick={onClick}>{item}</button>
+          <button onClick={onClick} className={styles["dropdown-menu-btn"]}>
+            {item}
+          </button>
         </li>
       ))}
     </ul>

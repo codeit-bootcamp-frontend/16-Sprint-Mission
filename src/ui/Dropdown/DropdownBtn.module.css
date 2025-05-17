@@ -8,6 +8,7 @@
   border-radius: var(--border-radius-sm);
   color: var(--secondary-color);
   text-align: left;
+  font-size: 1rem;
 }
 .dropdown-btn:hover {
   border-color: var(--primary-color);

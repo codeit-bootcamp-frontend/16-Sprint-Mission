@@ -65,7 +65,7 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
           </Button>
           <Dropdown
             menu={dropdownMenu}
-            onClick={handleDropdownSelect}
+            onClickMenu={handleDropdownSelect}
             defaultSelected={order}
           />
         </div>
