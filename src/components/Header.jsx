@@ -3,7 +3,7 @@ import logoPandaImg from "../assets/images/logo-panda.svg";
 import logoTxtImg from "../assets/images/logo-txt.svg";
 import avatarImg from "../assets/images/img-avatar.png";
 import Nav from "./Nav";
-import Avatar from "../ui/Avatar";
+import Avatar from "../components/Avatar";
 
 const Header = () => {
   const handleAvatarClick = () => {
