@@ -13,11 +13,13 @@
   --primary-color: var(--blue);
   --primary-hover-color: #1967d6;
   --primary-click-color: #1251aa;
+  --secondary-color: var(--gray800);
   --text-primary: var(--gray600);
   --background-light: #fcfcfc;
   --background-blue: #cfe5ff;
   --background-blue-light: #e6f2ff;
   --error-color: #f74747;
+  --border-color: var(--gray200);
 
   /* button */
   --banner-btn-font-size: 18px;

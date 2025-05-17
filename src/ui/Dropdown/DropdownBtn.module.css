@@ -1,0 +1,14 @@
+.dropdown-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 130px;
+  padding: 8px 20px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  color: var(--secondary-color);
+  text-align: left;
+}
+.dropdown-btn:hover {
+  border-color: var(--primary-color);
+}

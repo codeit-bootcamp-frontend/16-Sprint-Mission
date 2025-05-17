@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./Dropdown.module.css";
 import DropdownBtn from "./DropdownBtn";
 import DropdownMenu from "./DropdownMenu";
 
@@ -12,7 +13,7 @@ const Dropdown = ({ menu, onClick, defaultSelected }) => {
   };
 
   return (
-    <div className="dropdown">
+    <div className={styles.dropdown}>
       <DropdownBtn selected={selected} />
       <DropdownMenu items={menu} onClick={handleMenuClick} />
     </div>
