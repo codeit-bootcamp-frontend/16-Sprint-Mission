@@ -1,4 +1,5 @@
 @use "variables" as var;
+@use "mixin" as mixin;
 
 .btn {
   display: inline-flex;
@@ -45,5 +46,15 @@
 
   &.h48 {
     height: 48px;
+  }
+}
+
+@include mixin.mobile {
+  .btn {
+    &.lg {
+      min-width: 240px;
+      height: 48px;
+      font-size: 18px;
+    }
   }
 }
