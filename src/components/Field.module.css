@@ -41,12 +41,8 @@
 }
 
 .password-icon {
-  aspect-ratio: 20.39 / 14;
-  width: 20.39px;
-}
-.password-icon.hidden {
-  aspect-ratio: 20.47 / 18.07;
-  width: 20.47px;
+  aspect-ratio: 1 / 1;
+  width: 24px;
 }
 
 .input-hint {

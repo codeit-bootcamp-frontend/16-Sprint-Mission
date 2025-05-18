@@ -1,67 +1,82 @@
-import { Link } from 'react-router-dom';
-import './FormAuth.css';
-import { useNavigate } from 'react-router';
-import { useSetIsLogin } from '../../contexts/LoginStateContext';
-import Form from '../../components/Form';
-import Field from '../../components/Field';
-import { FIELDS_CONFIG } from '../../constants/fieldsConfig';
-import SocialLogin from '../../components/SocialLogin';
-import LogoHeader from '../../components/LogoHeader';
+import { Link } from "react-router-dom";
+import "./FormAuth.css";
+import { useNavigate } from "react-router";
+import Field from "../../components/Field";
+import { FIELDS_CONFIG } from "../../constants/fieldsConfig";
+import SocialLogin from "../../components/SocialLogin";
+import LogoHeader from "../../components/LogoHeader";
+import { useFormFields } from "../../hooks/useFormFields";
 
-const FIELD_KEYS = ['email', 'nickname', 'password', 'passwordVerify'];
+const FIELD_KEYS = ["email", "nickname", "password", "passwordVerify"];
 
 const Signup = () => {
   const onSubmitNavigate = useNavigate();
-  const setIsLogin = useSetIsLogin();
 
-  const handleSubmit = () => {
-    onSubmitNavigate('/items');
-    setIsLogin(true);
+  const {
+    values,
+    valids,
+    hints,
+    isSubmitEnabled,
+    handleInputChange,
+    handleInputBlur,
+  } = useFormFields(FIELD_KEYS);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmitNavigate("/login");
   };
 
   return (
     <>
       <main className="page-form">
         <LogoHeader />
-        <Form fieldKeys={FIELD_KEYS} onSubmit={handleSubmit}>
-          {({ isSubmitEnabled, handlers, getFieldState }) => (
-            <>
-              <Field
-                fieldConfig={FIELDS_CONFIG.email}
-                handlers={handlers}
-                getFieldState={getFieldState}
-              />
-              <Field
-                fieldConfig={FIELDS_CONFIG.nickname}
-                handlers={handlers}
-                getFieldState={getFieldState}
-              />
-              <Field
-                fieldConfig={FIELDS_CONFIG.password}
-                handlers={handlers}
-                getFieldState={getFieldState}
-              />
-              <Field
-                fieldConfig={FIELDS_CONFIG.passwordVerify}
-                handlers={handlers}
-                getFieldState={getFieldState}
-              />
-              <button
-                id="form-submit"
-                className="button-style"
-                disabled={!isSubmitEnabled}
-              >
-                로그인
-              </button>
-            </>
-          )}
-        </Form>
+        <form className="form-container" onSubmit={handleSubmit}>
+          <Field
+            fieldConfig={FIELDS_CONFIG.email}
+            value={values["email"]}
+            valid={valids["email"]}
+            hint={hints["email"]}
+            handleInputChange={handleInputChange}
+            handleInputBlur={handleInputBlur}
+          />
+          <Field
+            fieldConfig={FIELDS_CONFIG.nickname}
+            value={values["nickname"]}
+            valid={valids["nickname"]}
+            hint={hints["nickname"]}
+            handleInputChange={handleInputChange}
+            handleInputBlur={handleInputBlur}
+          />
+          <Field
+            fieldConfig={FIELDS_CONFIG.password}
+            value={values["password"]}
+            valid={valids["password"]}
+            hint={hints["password"]}
+            handleInputChange={handleInputChange}
+            handleInputBlur={handleInputBlur}
+          />
+          <Field
+            fieldConfig={FIELDS_CONFIG.passwordVerify}
+            value={values["passwordVerify"]}
+            valid={valids["passwordVerify"]}
+            hint={hints["passwordVerify"]}
+            handleInputChange={handleInputChange}
+            handleInputBlur={handleInputBlur}
+          />
+          <button
+            id="form-submit"
+            className="button-style"
+            disabled={!isSubmitEnabled}
+          >
+            회원가입
+          </button>
+        </form>
         <SocialLogin />
         <span className="form-hint">
-          이미 판다마켓 회원이신가요?{' '}
+          이미 회원이신가요?{" "}
           <Link
             className="form-hint-link"
-            to={'/login'}
+            to={"/login"}
             aria-label="로그인 버튼"
           >
             로그인

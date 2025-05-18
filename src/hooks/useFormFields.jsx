@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import { validators } from '../utils/validators';
+import { useEffect, useState } from "react";
+import { validators } from "../utils/validators";
 
-export const useFormFields = ({ fieldKeys: FIELDS }) => {
+export const useFormFields = (FIELD_KEYS) => {
   const createInitialStates = (initialFields, initialValue) => {
     const returnFields = {};
     for (const field of initialFields) {
@@ -10,9 +10,9 @@ export const useFormFields = ({ fieldKeys: FIELDS }) => {
     return returnFields;
   };
 
-  const [values, setValues] = useState(createInitialStates(FIELDS, '')); //prettier-ignore
-  const [valids, setValids] = useState(createInitialStates(FIELDS, null)); //prettier-ignore
-  const [hints, setHints] = useState(createInitialStates(FIELDS, '')); //prettier-ignore
+  const [values, setValues] = useState(createInitialStates(FIELD_KEYS, '')); //prettier-ignore
+  const [valids, setValids] = useState(createInitialStates(FIELD_KEYS, null)); //prettier-ignore
+  const [hints, setHints] = useState(createInitialStates(FIELD_KEYS, '')); //prettier-ignore
   const [isSubmitEnabled, setIsSubmitEnabled] = useState(false);
 
   const getValidateResults = {
