@@ -6,7 +6,6 @@ import useAsync from "../hooks/useAsync";
 import ItemListSkeleton from "../ui/Skeletons/ItemListSkeleton";
 
 const ORDER_BY = "favorite";
-const THUMB_SIZE = 280;
 
 const BestItemList = ({ pageSize, title }) => {
   const [items, setItems] = useState([]);
@@ -30,33 +29,29 @@ const BestItemList = ({ pageSize, title }) => {
   return (
     <div className={styles["item-list-area"]}>
       <h4 className={styles["item-list-title"]}>{title}</h4>
-      <div className={styles["item-list-content"]}>
-        {isLoading && (
-          <ItemListSkeleton count={pageSize} thumbSize={THUMB_SIZE} />
-        )}
-        {!isLoading && loadingError && <p>상품 목록을 가져오지 못했습니다.</p>}
-        {!loadingError && (
-          <ul className={`${styles["item-list-ul"]}`}>
-            {items.slice(0, pageSize).map((item) => {
-              const { id, images, description, name, price, favoriteCount } =
-                item;
-              return (
-                <li key={id} className={styles["item-list"]}>
-                  <ItemCard
-                    key={id}
-                    imgSrc={images}
-                    description={description}
-                    name={name}
-                    price={price}
-                    likes={favoriteCount}
-                    loading="eager"
-                  />
-                </li>
-              );
-            })}
-          </ul>
-        )}
-      </div>
+      {isLoading && <ItemListSkeleton count={pageSize} />}
+      {!isLoading && loadingError && <p>상품 목록을 가져오지 못했습니다.</p>}
+      {!loadingError && (
+        <ul className={`${styles["item-list-ul"]}`}>
+          {items.slice(0, pageSize).map((item) => {
+            const { id, images, description, name, price, favoriteCount } =
+              item;
+            return (
+              <li key={id} className={styles["item-list"]}>
+                <ItemCard
+                  key={id}
+                  imgSrc={images}
+                  description={description}
+                  name={name}
+                  price={price}
+                  likes={favoriteCount}
+                  loading="eager"
+                />
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </div>
   );
 };

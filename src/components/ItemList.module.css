@@ -67,6 +67,7 @@
     grid-template-rows: repeat(2, 1fr);
     gap: 40px 24px;
   }
+
   .item-list-header-search {
     width: 324px;
   }

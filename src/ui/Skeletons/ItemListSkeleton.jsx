@@ -1,17 +1,11 @@
 import styles from "./ItemListSkeleton.module.css";
 import ItemCardSkeleton from "./ItemCardSkeleton";
 
-const SKELETON_GAP = 24;
-
-const ItemListSkeleton = ({ count = 4, thumbSize = 220 }) => {
+const ItemListSkeleton = ({ count = 4, listType = "all" }) => {
   return (
-    <ul className={styles["skeleton-list"]}>
+    <ul className={`${styles["item-list-ul"]} ${styles[listType]}`}>
       {Array.from({ length: count }).map((_, i) => (
-        <li
-          key={i}
-          className={styles["skeleton-item"]}
-          style={{ width: `calc(${thumbSize}px - ${SKELETON_GAP}px)` }}
-        >
+        <li key={i} className={styles["item-list"]}>
           <ItemCardSkeleton />
         </li>
       ))}
