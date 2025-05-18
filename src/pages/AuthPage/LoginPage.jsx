@@ -10,7 +10,7 @@ import { useFormFields } from "../../hooks/useFormFields";
 
 const FIELD_KEYS = ["email", "password"];
 
-const Login = () => {
+const LoginPage = () => {
   const onSubmitNavigate = useNavigate();
   const setIsLogin = useSetIsLogin();
 
@@ -74,4 +74,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;
