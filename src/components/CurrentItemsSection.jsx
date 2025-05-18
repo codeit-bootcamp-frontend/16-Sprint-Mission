@@ -5,12 +5,15 @@ import styles from "./ItemsSection.module.css";
 import { usePaginationByOffset } from "../hooks/usePaginationByOffset";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Pagination from "./Pagination";
+import { useIsLogin } from "../contexts/LoginStateContext";
 
 const LIST_TYPE = "current";
 const VISIBLE_PAGE_LENGTH = 5;
 
 const CurrentItemsSection = ({ pageSize }) => {
   //prettier-ignore
+  const isLogin = useIsLogin();
+
   const [searchParams, setSearchParams] = useSearchParams();
   const initKeyword = searchParams.get("keyword") || "";
   const [keyword, setKeyword] = useState(initKeyword);
@@ -109,12 +112,14 @@ const CurrentItemsSection = ({ pageSize }) => {
               onKeyDown={handleSearchInputEnterPress}
             ></input>
           </div>
-          <button
-            className={`${styles["search-submit"]} button-style`}
-            onClick={handleCreateNewItemClick}
-          >
-            상품 등록하기
-          </button>
+          {isLogin && (
+            <button
+              className={`${styles["search-submit"]} button-style`}
+              onClick={handleCreateNewItemClick}
+            >
+              상품 등록하기
+            </button>
+          )}
           <select
             value={order}
             className={styles["search-select"]}
