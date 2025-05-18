@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import { getItems } from '../utils/api';
-import ItemsContainer from './ItemsContainer';
-import styles from './ItemsSection.module.css';
+import { useEffect, useState } from "react";
+import { getItems } from "../utils/api";
+import ItemsContainer from "./ItemsContainer";
+import styles from "./ItemsSection.module.css";
 
-const LIST_TYPE = 'best';
+const LIST_TYPE = "best";
 
 const BestItemsSection = ({ pageSize }) => {
   const [bestItemList, setBestItemList] = useState([]);
@@ -21,21 +21,21 @@ const BestItemsSection = ({ pageSize }) => {
       await loadBestItemList({
         offset: 1,
         pageSize: pageSize,
-        orderBy: 'favorite',
-        keyword: '',
+        orderBy: "favorite",
+        keyword: "",
       });
     })();
   }, [pageSize]);
 
   return (
-    <section className={`${styles['cards-section']} ${styles[LIST_TYPE]}`}>
-      <div className={styles['section-header-container']}>
-        <h2 className={styles['section-title']}>베스트 상품</h2>
+    <section className={`${styles["cards-section"]} ${styles[LIST_TYPE]}`}>
+      <div className={styles["section-header-container"]}>
+        <h2 className={styles["section-title"]}>베스트 상품</h2>
       </div>
       <ItemsContainer
         listName={LIST_TYPE}
         itemList={bestItemList}
-        columnSize={pageSize}
+        pageSize={pageSize}
       />
     </section>
   );

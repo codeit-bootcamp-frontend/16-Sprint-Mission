@@ -1,21 +1,21 @@
-import { useEffect, useState } from 'react';
-import { getItems } from '../utils/api';
-import ItemsContainer from './ItemsContainer';
-import styles from './ItemsSection.module.css';
-import { usePaginationByOffset } from '../hooks/usePaginationByOffset';
-import { useNavigate } from 'react-router';
-import Pagination from './Pagination';
+import { useEffect, useState } from "react";
+import { getItems } from "../utils/api";
+import ItemsContainer from "./ItemsContainer";
+import styles from "./ItemsSection.module.css";
+import { usePaginationByOffset } from "../hooks/usePaginationByOffset";
+import { useNavigate } from "react-router";
+import Pagination from "./Pagination";
 
-const LIST_TYPE = 'current';
+const LIST_TYPE = "current";
 const VISIBLE_PAGE_LENGTH = 5;
 
 const CurrentItemsSection = ({ pageSize }) => {
   const [offset, setOffset] = useState(1);
   const [totalDataCount, setTotalDataCount] = useState(1);
 
-  const [order, setOrder] = useState('recent');
-  const [keyword, setKeyword] = useState('');
-  const [searchInputValue, setSearchInputValue] = useState('');
+  const [order, setOrder] = useState("recent");
+  const [keyword, setKeyword] = useState("");
+  const [searchInputValue, setSearchInputValue] = useState("");
 
   const [currentItemList, setCurrentItemList] = useState([]);
 
@@ -44,7 +44,7 @@ const CurrentItemsSection = ({ pageSize }) => {
 
   const handleSearchInputChange = (e) => setSearchInputValue(e.target.value);
   const handleSearchInputEnterPress = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       setOffset(1);
       setKeyword(searchInputValue);
     }
@@ -52,7 +52,7 @@ const CurrentItemsSection = ({ pageSize }) => {
 
   const handleCreateNewItemClick = (e) => {
     e.preventDefault();
-    onCreateNewItemNavigate('/additem');
+    onCreateNewItemNavigate("/additem");
   };
 
   //prettier-ignore
@@ -90,17 +90,17 @@ const CurrentItemsSection = ({ pageSize }) => {
 
   return (
     <>
-      <section className={`${styles['cards-section']} ${styles[LIST_TYPE]}`}>
-        <div className={styles['section-header-container']}>
-          <h2 className={styles['section-title']}>전체 상품</h2>
-          <div className={styles['search-input-container']}>
+      <section className={`${styles["cards-section"]} ${styles[LIST_TYPE]}`}>
+        <div className={styles["section-header-container"]}>
+          <h2 className={styles["section-title"]}>전체 상품</h2>
+          <div className={styles["search-input-container"]}>
             <img
-              className={styles['search-input-icon']}
-              src={'./images/ic_search.png'}
+              className={styles["search-input-icon"]}
+              src={"./images/ic_search.png"}
               width={24}
             />
             <input
-              className={styles['search-input']}
+              className={styles["search-input"]}
               placeholder="검색할 상품을 입력해주세요"
               value={searchInputValue}
               onChange={handleSearchInputChange}
@@ -108,14 +108,14 @@ const CurrentItemsSection = ({ pageSize }) => {
             ></input>
           </div>
           <button
-            className={`${styles['search-submit']} button-style`}
+            className={`${styles["search-submit"]} button-style`}
             onClick={handleCreateNewItemClick}
           >
             상품 등록하기
           </button>
           <select
             value={order}
-            className={styles['search-select']}
+            className={styles["search-select"]}
             onChange={handleSearchOrderChange}
           >
             <option value="recent">최신순</option>
@@ -125,7 +125,7 @@ const CurrentItemsSection = ({ pageSize }) => {
         <ItemsContainer
           listName={LIST_TYPE}
           itemList={currentItemList}
-          columnSize={pageSize}
+          pageSize={pageSize}
         />
         <Pagination
           visiblePageNumbers={visiblePageNumbers}
