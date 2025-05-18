@@ -43,6 +43,7 @@
 @media (min-width: 1200px) {
   .page-content {
     width: var(--page-content-width);
+    padding: 0;
   }
 }
 

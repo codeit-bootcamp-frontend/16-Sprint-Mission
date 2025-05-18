@@ -77,7 +77,7 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
       {isLoading && <ItemListSkeleton count={pageSize} />}
       {!isLoading && loadingError && <p>상품 목록을 가져오지 못했습니다.</p>}
       {!loadingError && (
-        <div className={styles["item-list-wrap"]}>
+        <>
           <ul className={styles["item-list-ul"]}>
             {items.map((item) => {
               const { id, images, description, name, price, favoriteCount } =
@@ -102,7 +102,7 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
             totalPage={totalPage}
             onCurrentPage={handlePaginationClick}
           />
-        </div>
+        </>
       )}
     </div>
   );

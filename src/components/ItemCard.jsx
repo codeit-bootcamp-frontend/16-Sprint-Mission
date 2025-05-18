@@ -14,15 +14,18 @@ const ItemCard = ({
 }) => {
   return (
     <Link to="/items">
-      <img
-        src={imgSrc}
-        alt={name}
-        className={`${styles["item-img"]} ${styles[type]}`}
-        onError={(e) => {
-          e.currentTarget.src = pandaLogoImg;
-        }}
-        loading={loading}
-      />
+      <div className={styles["img-wrap"]}>
+        <img
+          src={imgSrc}
+          alt={name}
+          className={`${styles["item-img"]} ${styles[type]}`}
+          onError={(e) => {
+            e.currentTarget.src = pandaLogoImg;
+          }}
+          loading={loading}
+        />
+      </div>
+
       <h6 className={styles["item-desc"]}>{description}</h6>
       <h4 className={styles["item-price"]}>
         {price.toLocaleString("ko-KR")}원

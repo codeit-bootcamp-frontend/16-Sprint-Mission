@@ -4,8 +4,8 @@
   margin-bottom: 16px;
 }
 
-.item-img.all {
-  height: 220px;
+.img-wrap {
+  width: 100%;
 }
 
 .item-desc {
