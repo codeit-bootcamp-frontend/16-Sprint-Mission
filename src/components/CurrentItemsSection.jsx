@@ -3,19 +3,21 @@ import { getItems } from "../utils/api";
 import ItemsContainer from "./ItemsContainer";
 import styles from "./ItemsSection.module.css";
 import { usePaginationByOffset } from "../hooks/usePaginationByOffset";
-import { useNavigate } from "react-router";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Pagination from "./Pagination";
 
 const LIST_TYPE = "current";
 const VISIBLE_PAGE_LENGTH = 5;
 
 const CurrentItemsSection = ({ pageSize }) => {
+  //prettier-ignore
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initKeyword = searchParams.get("keyword") || "";
+  const [keyword, setKeyword] = useState(initKeyword);
+
   const [offset, setOffset] = useState(1);
   const [totalDataCount, setTotalDataCount] = useState(1);
-
   const [order, setOrder] = useState("recent");
-  const [keyword, setKeyword] = useState("");
-  const [searchInputValue, setSearchInputValue] = useState("");
 
   const [currentItemList, setCurrentItemList] = useState([]);
 
@@ -42,11 +44,11 @@ const CurrentItemsSection = ({ pageSize }) => {
     setTotalDataCount(totalCount);
   };
 
-  const handleSearchInputChange = (e) => setSearchInputValue(e.target.value);
+  const handleSearchInputChange = (e) => setKeyword(e.target.value);
   const handleSearchInputEnterPress = (e) => {
     if (e.key === "Enter") {
       setOffset(1);
-      setKeyword(searchInputValue);
+      setSearchParams(keyword ? { keyword } : {});
     }
   };
 
@@ -83,10 +85,10 @@ const CurrentItemsSection = ({ pageSize }) => {
         offset: offset,
         pageSize: pageSize,
         orderBy: order,
-        keyword: keyword,
+        keyword: initKeyword,
       });
     })();
-  }, [pageSize, order, offset, keyword]);
+  }, [pageSize, order, offset, initKeyword]);
 
   return (
     <>
@@ -102,7 +104,7 @@ const CurrentItemsSection = ({ pageSize }) => {
             <input
               className={styles["search-input"]}
               placeholder="검색할 상품을 입력해주세요"
-              value={searchInputValue}
+              value={keyword}
               onChange={handleSearchInputChange}
               onKeyDown={handleSearchInputEnterPress}
             ></input>

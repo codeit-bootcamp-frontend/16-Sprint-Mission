@@ -3,7 +3,6 @@ import ItemCardSkeleton from "./ItemCardSkeleton";
 import styles from "./itemsContainer.module.css";
 
 const ItemsContainer = ({ listName, itemList, pageSize }) => {
-  console.log(itemList);
   return (
     <div className={`${styles["items-container"]} ${styles[listName]}`}>
       {itemList.length === 0
