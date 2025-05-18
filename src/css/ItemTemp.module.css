@@ -1,0 +1,329 @@
+.items {
+  padding-top: 17px;
+  color: var(--secondary-gray900);
+
+  /* 컬러 */
+  --cool-gray500: #6b7280;
+  --cool-gray600: #4b5563;
+  --cool-gray200: #e5e7eb;
+  /* 모바일 : .items 내부 변수들 */
+  /* 컨테이너 */
+  --init-zero: 0;
+  --container-width: 344px;
+  /* 베스트 상품 */
+  --favorite-card-size: 343px;
+  /* 전체 상품 */
+  --products-margin-top: 24px;
+  --search-input-width: 288px;
+  --filter-select-width: 42px;
+  --filter-select-height: 42px;
+  --products-list-margin-top: 71px;
+  --products-flex-gap: 8px;
+  --products-card-size: 168px;
+  --pagination-padding-bottom: 58px;
+}
+
+.items .container {
+  /* 전역 container랑 겹치지 않게 조심*/
+  max-width: var(--container-width);
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* 베스트상품 */
+.favoriteItems h2 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 32px;
+}
+
+.favoriteItems ul {
+  margin-top: 16px;
+  display: flex;
+}
+
+.favoriteItems ul .card {
+  width: var(--favorite-card-size);
+}
+
+.favoriteItems ul li .card img {
+  height: var(--favorite-card-size);
+  border-radius: 19.46px;
+  margin-bottom: 10px;
+}
+
+/* 전체 상품 */
+.productsAll {
+  margin-top: var(--products-margin-top);
+}
+
+/* 필터 (검색, 조회순서 등) 컨테이너 */
+.filter-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* 보류 */
+  position: relative;
+  flex-wrap: wrap;
+  padding-top: 5px;
+}
+
+.filter-container > h2 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+}
+
+/* 필터 바 */
+.filter-bar {
+  display: flex;
+  text-align: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  position: absolute;
+  top: 0px;
+}
+
+.filter-bar button {
+  background-color: var(--primary-color);
+  padding: 12px 23px;
+  font-size: 16px;
+  border-radius: 8px;
+  color: var(--secondary-gray100);
+  height: 42px;
+  margin-bottom: 8px;
+}
+
+.search {
+  position: relative;
+}
+
+.searchInput {
+  width: var(--search-input-width);
+  height: 42px;
+  padding: 9px 44px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--secondary-gray100);
+  margin-right: 14px;
+}
+
+.searchIcon {
+  width: 24px;
+  height: 24px;
+  background: url("../assets/icon/ic_search.png") center no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 9px;
+  left: 16px;
+}
+
+/* 커스텀 셀렉터 */
+.select {
+  width: var(--filter-select-width);
+  height: var(--filter-select-height);
+  border: 1px solid var(--secondary-gray200);
+  border-radius: 12px;
+  padding: 12px 20px;
+  display: block;
+  position: relative;
+  background: url("../assets/icon/ic_sort.png") no-repeat center;
+  text-align: left;
+  cursor: pointer;
+  color: transparent;
+}
+
+.select ul {
+  text-align: center;
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+}
+
+.select input {
+  display: none;
+}
+
+.select ul li {
+  background-color: #fff;
+  width: 130px;
+  height: var(--filter-select-height);
+  border: 1px solid var(--cool-gray200);
+  line-height: var(--filter-select-height);
+  cursor: pointer;
+  color: var(--secondary-gray800);
+}
+
+.select ul li:first-child {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom: none;
+}
+
+.select ul li:nth-child(2) {
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.select input:checked + ul {
+  display: block;
+}
+
+.productsAllList {
+  margin-top: var(--products-list-margin-top);
+  display: flex;
+  gap: var(--products-flex-gap);
+  flex-wrap: wrap;
+}
+
+.productsAllList .card {
+  width: var(--products-card-size);
+  /* gap(8)+24 */
+  margin-bottom: 24px;
+}
+.productsAllList li img {
+  width: 100%;
+  height: var(--products-card-size);
+  border-radius: 12px;
+  /* gap(6)+10 */
+  margin-bottom: 10px;
+}
+
+/* item card 공통*/
+.card {
+  display: flex;
+  flex-direction: column;
+  /* 카드 내 글과 글 사이 갭 */
+  gap: 6px;
+}
+
+.card__name {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.card__price {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 26px;
+}
+.card__favorite {
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 500;
+  color: var(--secondary-gray600);
+}
+
+/* 페이지네이션 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+  gap: 4px;
+  padding-bottom: var(--pagination-padding-bottom);
+}
+
+.pagination li {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #d9d9d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  cursor: pointer;
+  color: var(--cool-gray500);
+}
+
+.pagination .prevBtn,
+.pagination .nextBtn {
+  color: var(--cool-gray600);
+}
+
+.pagination .activate {
+  background-color: #2f80ed;
+  color: var(--secondary-gray100);
+}
+
+/* 테블릿 */
+@media screen and (min-width: 768px) {
+  .items {
+    padding-top: 24px;
+
+    /* 태블릿 : .items 내부 변수들 */
+    /* 컨테이너 */
+    --container-width: 696px;
+    /* 전체 상품 */
+    --products-margin-top: 40px;
+    --search-input-width: 242px;
+    --filter-select-width: 130px;
+    --products-list-margin-top: 24px;
+    --products-flex-gap: 16px;
+    --products-card-size: 220px;
+    --pagination-padding-bottom: 72px;
+  }
+
+  /* 베스트상품 */
+  .favoriteItems ul {
+    gap: 10px;
+  }
+
+  /* 전체 상품 */
+  /* 필터 (검색, 조회순서 등) 컨테이너 */
+  .filter-container {
+    flex-wrap: nowrap;
+    padding-top: var(--init-zero);
+  }
+
+  /* 필터 바 */
+  .filter-bar {
+    gap: 12px;
+    flex-wrap: nowrap;
+    position: relative;
+  }
+
+  .filter-bar button {
+    margin-bottom: var(--init-zero);
+    order: 1;
+  }
+
+  .select {
+    order: 2;
+    background: url("../assets/icon/ic_arrow_down.png") no-repeat 86px 8px;
+    color: var(--secondary-gray800);
+  }
+  .productsAllList li img {
+    border-radius: 16px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .items {
+    /* 데스크탑 : .items 내부 변수들 */
+    /* 컨테이너 */
+    --container-width: 1200px;
+    /* 베스트 상품 */
+    --favorite-card-size: 282px;
+    /* 전체 상품 */
+    --search-input-width: 325px;
+    --products-flex-gap: 24px;
+    --pagination-padding-bottom: 35px;
+  }
+
+  /* 베스트상품 */
+  .favoriteItems ul {
+    gap: 24px;
+  }
+
+  .favoriteItems ul li .card img {
+    border-radius: 16px;
+  }
+
+  /* 전체 상품 */
+  .productsAllList .card {
+    margin-bottom: 16px;
+  }
+}
