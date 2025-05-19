@@ -20,3 +20,21 @@ export const getItems = async ({
   const body = await response.json();
   return body;
 };
+
+export const getItemDetails = async (id) => {
+	const response = await fetch(`${BASE_URL}/products/${id}`);
+	if (!response.ok) {
+    throw new Error('품목을 불러오지 못했습니다.');
+  }
+	const body = await response.json();
+	return body;
+}
+
+export const getItemComments = async (id) => {
+	const response = await fetch(`${BASE_URL}/products/${id}/comments?limit=10`);
+	if (!response.ok) {
+    throw new Error('댓글을 불러오지 못했습니다.');
+  }
+	const body = await response.json();
+	return body;
+}

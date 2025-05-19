@@ -16,7 +16,7 @@ const Nav = ({ currentSection }) => {
         <Link to="/" className={styles["nav-logo-container"]}>
           <img
             className={styles["nav-logo-img"]}
-            src={"./images/Img_logo.png"}
+            src={"/images/Img_logo.png"}
             width={40}
             alt={"판다마켓 로고"}
             title={"판다마켓 로고"}

@@ -8,6 +8,7 @@ import AddItemPage from "./pages/AddItemPage/AddItemPage";
 import PrivacyPage from "./pages/PrivacyPage/PrivacyPage";
 import FaqPage from "./pages/FaqPage/FaqPage";
 import BoardPage from "./pages/BoardPage/BoardPage";
+import ItemDetailsPage from "./pages/ItemDetailsPage/ItemDetailsPage";
 
 function App() {
   return (
@@ -16,7 +17,10 @@ function App() {
         <Routes>
           <Route path="/">
             <Route index element={<HomePage />} />
-            <Route path="items" element={<ItemsPage />} />
+            <Route path="items">
+              <Route index element={<ItemsPage />} />
+              <Route path=":itemId" element={<ItemDetailsPage />} />
+            </Route>
             <Route path="board" element={<BoardPage />} />
             <Route path="additem" element={<AddItemPage />} />
             <Route path="privacy" element={<PrivacyPage />} />
