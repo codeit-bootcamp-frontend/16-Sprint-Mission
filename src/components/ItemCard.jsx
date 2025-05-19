@@ -14,7 +14,7 @@ const ItemCard = ({
 }) => {
   return (
     <Link to="/items">
-      <div className={styles["img-wrap"]}>
+      <span className={styles["img-wrap"]}>
         <img
           src={imgSrc}
           alt={name}
@@ -24,7 +24,7 @@ const ItemCard = ({
           }}
           loading={loading}
         />
-      </div>
+      </span>
 
       <h6 className={styles["item-desc"]}>{description}</h6>
       <h4 className={styles["item-price"]}>

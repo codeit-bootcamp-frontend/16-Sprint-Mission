@@ -5,7 +5,7 @@
 }
 
 .img-wrap {
-  width: 100%;
+  display: block;
 }
 
 .item-desc {
