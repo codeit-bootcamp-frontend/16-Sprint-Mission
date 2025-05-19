@@ -1,72 +1,42 @@
-// components/AllProducts/AllProducts.js
-import { useEffect, useState } from "react";
-import styles from "./AllProducts.module.css";
-import { getLimitFromHtmlClass } from "../../utils/getLimitFromHtmlClass";
-import ProductCard from "../ProductCard/ProductCard";
-import { fetchPaginatedProducts } from "../../api/products";
+import useResponsiveLimit from "../../hooks/useResponsiveLimit";
+import usePaginationState from "../../hooks/usePaginationState";
+import usePaginatedProducts from "../../hooks/usePaginatedProducts";
+import ProductSection from "../ProductSection/ProductSection";
 import Pagination from "../Pagination/Pagination";
+import { useState, useCallback } from "react";
 
-function AllProducts({ title,itemsPerDevice }) {
-  const [products, setProducts] = useState([]);
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+function AllProducts({ title, itemsPerDevice }) {
+  console.log("AllProducts itemsPerDevice:", itemsPerDevice);
+  const limit = useResponsiveLimit(itemsPerDevice);
+  const [page, changePage] = usePaginationState(limit);
+  const [sort, setSort] = useState("latest");
 
-  const [limit, setLimit] = useState(() =>
-    getLimitFromHtmlClass(
-      itemsPerDevice.desktop,
-      itemsPerDevice.tablet,
-      itemsPerDevice.mobile
-    )
-  );
+  const { products, totalPages } = usePaginatedProducts({ page, limit, sort });
 
-  useEffect(() => {
-    const load = async () => {
-      const res = await fetchPaginatedProducts({ page, pageSize: limit });
-      console.log(res);
-      setProducts(res.list);
-      const total = Math.ceil(res.totalCount / limit); 
-      setTotalPages(total);
-    };
+    // sort 변경 시 페이지도 같이 1로 리셋
+  const handleSortChange = useCallback((newSort) => {
+    setSort(newSort);
+    changePage(1);
+  }, [changePage]);
 
-    load();
-
-  }, [page, limit]);
-
- useEffect(() => {
-  const update = () => {
-    const newLimit = getLimitFromHtmlClass(
-      itemsPerDevice.desktop,
-      itemsPerDevice.tablet,
-      itemsPerDevice.mobile
-    );
-
-    setLimit((prevLimit) => {
-      const currentStartIndex = (page - 1) * prevLimit;
-      const newPage = Math.floor(currentStartIndex / newLimit) + 1;
-      setPage(newPage);
-      return newLimit;
-    });
-  };
-
-  window.addEventListener("resize", update);
-  return () => window.removeEventListener("resize", update);
-}, [page, itemsPerDevice]);
   return (
-    <section className={styles.container}>
-      <h3 className={styles.title}>{title}</h3>
-      <div className={styles.grid}>
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
-
+    <>
+      <ProductSection
+        title={title}
+        products={products}
+        sort={sort}
+        showSearch={true}
+        showRegisterButton={true}
+        onChangeSort={handleSortChange}
+      />
       <Pagination
         currentPage={page}
         totalPages={totalPages}
-        onPageChange={setPage}
+        onPageChange={changePage}
       />
-    </section>
+    </>
   );
 }
+
 
 export default AllProducts;

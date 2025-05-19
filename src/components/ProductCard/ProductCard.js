@@ -1,9 +1,15 @@
 import styles from "./ProductCard.module.css";
+import ImageWithFallback from "../ImageWithFallback";
+import replaceImg from "../../assets/images/no-image-icon.png";
 
 function ProductCard({ product }) {
   return (
     <div className={styles.card}>
-      <img src={product.images[0]} alt={product.name} className={styles.img} />
+      <ImageWithFallback
+        src={product.images?.[0] || replaceImg}
+        alt={product.name}
+        fallback={replaceImg}
+      />
       <div className={styles.textContainer}>
         <h3 className={styles.name}>{product.name}</h3>
         <p className={styles.price}>{product.price}원</p>

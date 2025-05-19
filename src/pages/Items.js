@@ -1,14 +1,14 @@
+import style from "./Items.module.css"
 import BestProducts from "../components/BestProducts/BestProducts";
-// import styles from "./Items.module.css";
-import { ALL_PRODUCTS_PER_DEVICE, BEST_PRODUCTS_PER_DEVICE } from "../api/config";
 import AllProducts from "../components/AllProducts/AllProducts";
-
+import { BEST_PRODUCTS_PER_DEVICE,ALL_PRODUCTS_PER_DEVICE } from "../constants/products";
+import { TITLE_ALL_PRODUCTS_COMP,TITLE_BEST_PRODUCTS_COMP } from "../constants/titles";
 function Items() {
   return (
-    <>
-      <BestProducts title="베스트 상품" itemsPerDevice={BEST_PRODUCTS_PER_DEVICE} />
-      <AllProducts title="전체 상품" itemsPerDevice={ALL_PRODUCTS_PER_DEVICE} />
-    </>
+    <div className={style.container}>
+      <BestProducts title={TITLE_BEST_PRODUCTS_COMP} itemsPerDevice={BEST_PRODUCTS_PER_DEVICE} />
+      <AllProducts title={TITLE_ALL_PRODUCTS_COMP} itemsPerDevice={ALL_PRODUCTS_PER_DEVICE} />
+    </div>
   );
 }
 

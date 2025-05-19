@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchProducts } from "../api/products";
-import { getLimitFromHtmlClass } from "../utils/getLimitFromHtmlClass";
+import { getLimitFromWindowWidth } from "../utils/getLimitFromWindowWidth";
 
 export default function useBestProducts(itemsPerDevice) {
   const [bestProducts, setBestProducts] = useState([]);
@@ -9,7 +9,7 @@ export default function useBestProducts(itemsPerDevice) {
     const updateProducts = async () => {
       const data = await fetchProducts();
       const sorted = data.sort((a, b) => b.favoriteCount - a.favoriteCount);
-      const limit = getLimitFromHtmlClass(
+      const limit = getLimitFromWindowWidth(
         itemsPerDevice.desktop,
         itemsPerDevice.tablet,
         itemsPerDevice.mobile
