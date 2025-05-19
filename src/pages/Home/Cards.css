@@ -1,0 +1,38 @@
+.page-cards {
+  background-color: var(--page-cards-background-color);
+  display: flex;
+  flex-direction: column;
+  gap: var(--page-cards-gap);
+  padding-top: var(--page-cards-padding-top);
+  padding-bottom: var(--page-cards-padding-bottom);
+  margin-bottom: var(--page-cards-margin-bottom);
+}
+
+:root {
+  --page-cards-background-color: var(--color-gray050);
+  --page-cards-padding-top: 52px;
+  --page-cards-padding-bottom: 83px;
+  --page-cards-margin-bottom: 0px;
+  --page-cards-gap: 40px;
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  :root {
+    --page-cards-background-color: var(--color-gray050);
+    --page-cards-padding-top: 24px;
+    --page-cards-padding-bottom: 56px;
+    --page-cards-margin-bottom: 0px;
+    --page-cards-gap: 52px;
+  }
+}
+/* PC */
+@media (min-width: 1200px) {
+  :root {
+    --page-cards-background-color: var(--color-white);
+    --page-cards-padding-top: 138px;
+    --page-cards-padding-bottom: 138px;
+    --page-cards-margin-bottom: 138px;
+    --page-cards-gap: 276px;
+  }
+}

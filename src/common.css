@@ -1,0 +1,55 @@
+:root {
+  --color-blue950: #111827;
+  --color-blue600: #1251aa;
+  --color-blue500: #1967d6;
+  --color-blue400: #3692ff;
+  --color-blue200: #cfe5ff;
+  --color-blue100: #e6f2ff;
+  --color-gray900: #111827;
+  --color-gray800: #1f2937;
+  --color-gray700: #374151;
+  --color-gray600: #4b5563;
+  --color-gray500: #6b7280;
+  --color-gray400: #9ca3af;
+  --color-gray300: #e5e7eb;
+  --color-gray200: #f3f4f6;
+  --color-gray100: #f9fafb;
+  --color-gray050: #fcfcfc;
+  --color-white: #ffffff;
+  --color-error: #f74747;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-gray050);
+}
+
+.button-style {
+  text-decoration: none;
+  display: inline-block;
+  background-color: var(--color-blue400);
+  font-weight: 600;
+  font-family: 'Pretendard';
+  border: none;
+}
+
+.button-style:hover {
+  background-color: var(--color-blue500);
+}
+
+.button-style:disabled {
+  background-color: var(--color-gray400);
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+    format('woff');
+}
+@font-face {
+  font-family: 'ROKAFSans';
+  src: url('../src/fonts/rokafsansmedium-normal.woff') format('woff');
+}
