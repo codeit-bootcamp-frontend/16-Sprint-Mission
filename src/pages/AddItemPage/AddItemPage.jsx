@@ -21,11 +21,8 @@ const AddItemPage = () => {
   const fileInputRef = useRef();
 
   const handleAddItemClick = () => {
-    if (!imgUrl) {
-      fileInputRef.current.click();
-    } else {
-      setHintVisible(true);
-    }
+    if (!imgUrl) fileInputRef.current.click();
+    else setHintVisible(true);
   };
 
   const handleInputFileChange = (e) => {
@@ -42,13 +39,9 @@ const AddItemPage = () => {
     setHintVisible(false);
   };
 
-  const handleInputProductChange = (e) => {
-    setProduct(e.target.value);
-  };
+  const handleInputProductChange = (e) => setProduct(e.target.value);
 
-  const handleInputDescriptionChange = (e) => {
-    setDescription(e.target.value);
-  };
+  const handleInputDescriptionChange = (e) => setDescription(e.target.value);
 
   const handleInputPriceChange = (e) => {
     const numericValue = e.target.value.replace(/\D/g, "");
@@ -56,9 +49,7 @@ const AddItemPage = () => {
     setPrice(formattedValue);
   };
 
-  const handleInputTagChange = (e) => {
-    setTag(e.target.value);
-  };
+  const handleInputTagChange = (e) => setTag(e.target.value);
 
   const handleTagInputEnterPress = (e) => {
     if (e.key === "Enter") {
@@ -108,17 +99,17 @@ const AddItemPage = () => {
           <h2 className={styles["subtitle"]}>상품 이미지</h2>
           <div className={styles["images-container"]}>
             <div
-              className={`${styles["input"]} ${styles["input-additems"]}`}
+              className={`${styles["input"]} ${styles["button-additems"]}`}
               onClick={handleAddItemClick}
             >
               <img
-                className={styles["input-additems-image"]}
+                className={styles["additems-preview-image"]}
                 src="./images/ic_plus.png"
                 width={48}
               />
-              <span className={styles["input-additems-text"]}>이미지 등록</span>
+              <span className={styles["additems-text"]}>이미지 등록</span>
               <input
-                id={styles["input-file"]}
+                style={{ display: "none" }}
                 type="file"
                 ref={fileInputRef}
                 onChange={handleInputFileChange}
@@ -129,7 +120,7 @@ const AddItemPage = () => {
                 <div className={styles["image-container"]}>
                   <img className={styles["image"]} src={preview} />
                   <img
-                    className={styles["image-delete-icon"]}
+                    className={styles["icon-delete"]}
                     src={"./images/ic_X.png"}
                     onClick={handleInputFileDeleteClick}
                     width={24}
@@ -188,7 +179,7 @@ const AddItemPage = () => {
                   <span>{`#${tag}`}</span>
                   <img
                     name={tag}
-                    className={styles["tag-delete-icon"]}
+                    className={styles["icon-delete-tag"]}
                     src={"./images/ic_X.png"}
                     width={24}
                     onClick={handleTagDelete}
