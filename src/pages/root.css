@@ -1,0 +1,167 @@
+@import '../theme.css';
+
+header {
+  width: inherit;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav {
+  width: 1120px;
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login-button {
+  border: 0;
+  width: 128px;
+  height: 48px;
+  border-radius: 8px;
+  background-color: var(--primary-100);
+  color: white;
+}
+
+.section-with-background {
+  width: inherit;
+  height: 540px;
+  background-color: #cfe5ff;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+.section-with-innerdiv {
+  display: flex;
+  align-items: center;
+}
+
+.hero-content {
+  width: 357px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-content-text {
+  font-size: 40px;
+  line-height: 140%;
+  color: var(--secondary-700);
+}
+
+.hero-content-button {
+  border: 0;
+  width: 357px;
+  height: 56px;
+  margin-bottom: 60px;
+  border-radius: 40px;
+  background-color: var(--primary-100);
+  color: white;
+  font-weight: 600;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.section {
+  width: inherit;
+  height: 720px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 988px;
+  height: 444px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 12px;
+  border-radius: 12px;
+  background-color: #fcfcfc;
+}
+
+.card-text {
+  width: 298px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-text>span {
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--primary-100);
+}
+
+.card-text>h2 {
+  font-weight: 700;
+  font-size: 40px;
+  color: var(--secondary-700);
+  line-height: 140%;
+}
+
+.card-text>p {
+  font-size: 500;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.card-reverse {
+  flex-direction: row-reverse;
+}
+
+.card-text-reverse {
+  text-align: end;
+}
+
+.footer-text {
+  font-weight: 700;
+  font-size: 40px;
+  width: 295px;
+  padding-right: 69px;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  height: 160px;
+  background-color: var(--secondary-900);
+  padding-top: 32px;
+}
+
+.footer-nav-text {
+  color: var(--secondary-400);
+}
+
+.footer-nav-link-container {
+  display: flex;
+  gap: 30px;
+}
+
+.footer-nav-link {
+  text-decoration: none;
+  color: var(--secondary-200);
+}
+
+.footer-nav-icon-container {
+  display: flex;
+  gap: 12px;
+}
+
+@media (max-width: 1120px) {
+  header {
+    padding: 0px 16px;
+  }
+
+  .nav {
+    width: 100%;
+  }
+
+  .footer-nav {
+    padding: 32px 16px 0px 16px;
+  }
+}
