@@ -22,9 +22,12 @@
 }
 
 .subtitle {
+	display: flex;
+	flex-direction: column;
 	font-weight: 700;
 	font-size: 18px;
 	line-height: 26px;
+	gap: 16px;
 }
 
 .submit {
@@ -37,12 +40,6 @@
 	border-radius: 8px;
 }
 
-.subtitle-container {
-	display: flex;
-	flex-direction: column;
-	gap: 16px;
-}
-
 .input {
 	background-color: var(--color-gray200);
 	border-radius: 12px;
@@ -52,7 +49,8 @@
 	font-size: 16px;
 	line-height: 26px;
 	padding: 15px 24px;
-	color: var(--color-gray800)
+	color: var(--color-gray800);
+	outline:none;
 }
 
 .input::placeholder{
@@ -137,6 +135,9 @@
 	flex-direction: row;
 	align-items: center;
 	gap: 8px;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 26px;
 }
 
 .icon-delete-tag {
