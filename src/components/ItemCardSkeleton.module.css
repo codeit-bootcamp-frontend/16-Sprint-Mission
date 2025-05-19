@@ -1,19 +1,21 @@
 @keyframes skeleton-gradient {
   0% {
-    background-color: rgba(165,165,165, 0.1);
-  }
-  50% {
-    background-color: rgba(165,165,165, 0.3);
+    background-position: 0% 50%;
   }
   100% {
-    background-color: rgba(165,165,165, 0.1);
+    background-position: 100% 50%;
   }
 }
-
+:root {
+	--skeleton-dark: #e3e3e3;
+	--skeleton-light: #f0f0f0;
+}
 .image,
 .title,
 .price,
 .favorite-container {
+	background: linear-gradient(90deg, var(--skeleton-dark), var(--skeleton-dark), var(--skeleton-dark), var(--skeleton-light), var(--skeleton-dark), var(--skeleton-dark), var(--skeleton-dark) );
+	background-size: 800% 800%;
   animation: skeleton-gradient 1.5s infinite ease-in-out;
 }
 
