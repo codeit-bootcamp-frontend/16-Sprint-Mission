@@ -95,8 +95,8 @@ const AddItemPage = () => {
             등록
           </button>
         </div>
-        <div className={styles["subtitle-container"]}>
-          <h2 className={styles["subtitle"]}>상품 이미지</h2>
+        <label className={styles["subtitle"]}>
+          상품 이미지
           <div className={styles["images-container"]}>
             <div
               className={`${styles["input"]} ${styles["button-additems"]}`}
@@ -129,32 +129,32 @@ const AddItemPage = () => {
               </>
             )}
           </div>
-          {hintVisible && (
-            <span className={styles["input-additems-hint"]}>
-              *이미지 등록은 최대 1개까지 가능합니다.
-            </span>
-          )}
-        </div>
-        <div className={styles["subtitle-container"]}>
-          <h2 className={styles["subtitle"]}>상품명</h2>
+        </label>
+        {hintVisible && (
+          <span className={styles["input-additems-hint"]}>
+            *이미지 등록은 최대 1개까지 가능합니다.
+          </span>
+        )}
+        <label className={styles["subtitle"]}>
+          상품명
           <input
             value={product}
             className={styles["input"]}
             placeholder="상품명을 입력해주세요"
             onChange={handleInputProductChange}
           />
-        </div>
-        <div className={styles["subtitle-container"]}>
-          <h2 className={styles["subtitle"]}>상품 소개</h2>
+        </label>
+        <label className={styles["subtitle"]}>
+          상품 소개
           <textarea
             className={`${styles["input"]} ${styles["input-textarea"]}`}
             placeholder="상품 소개를 입력해주세요"
             onChange={handleInputDescriptionChange}
             value={description}
           />
-        </div>
-        <div className={styles["subtitle-container"]}>
-          <h2 className={styles["subtitle"]}>판매가격</h2>
+        </label>
+        <label className={styles["subtitle"]}>
+          판매가격
           <input
             inputMode="numeric"
             className={styles["input"]}
@@ -162,9 +162,9 @@ const AddItemPage = () => {
             onChange={handleInputPriceChange}
             value={price}
           />
-        </div>
-        <div className={styles["subtitle-container"]}>
-          <h2 className={styles["subtitle"]}>태그</h2>
+        </label>
+        <label className={styles["subtitle"]}>
+          태그
           <input
             className={styles["input"]}
             placeholder="태그를 입력해주세요"
@@ -188,7 +188,7 @@ const AddItemPage = () => {
               );
             })}
           </div>
-        </div>
+        </label>
       </form>
     </>
   );
