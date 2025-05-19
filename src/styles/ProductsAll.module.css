@@ -1,0 +1,75 @@
+.items__all {
+  --products-margin-top: 24px;
+  --products-list-margin-top: 71px;
+  --products-flex-gap: 8px;
+  --products-card-size: 168px;
+
+  margin-top: var(--products-margin-top);
+}
+
+/* 필터 (검색, 조회순서 등) 컨테이너 */
+.items__all-filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* 보류 */
+  position: relative;
+  flex-wrap: wrap;
+  padding-top: 5px;
+}
+
+.items__all-filter > h2 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+}
+
+.items__all-list {
+  margin-top: var(--products-list-margin-top);
+  display: flex;
+  gap: var(--products-flex-gap);
+  flex-wrap: wrap;
+}
+
+.all-list__card {
+  width: var(--products-card-size);
+  /* gap(8)+24 */
+  margin-bottom: 24px;
+  cursor: pointer;
+}
+
+.all-list__item img {
+  width: 100%;
+  height: var(--products-card-size);
+  border-radius: 12px;
+  /* gap(6)+10 */
+  margin-bottom: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .items__all {
+    --products-margin-top: 40px;
+    --products-list-margin-top: 24px;
+    --products-flex-gap: 16px;
+    --products-card-size: 220px;
+  }
+
+  .items__all-filter {
+    flex-wrap: nowrap;
+    padding-top: var(--init-zero);
+  }
+
+  .items__all li img {
+    border-radius: 16px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .items__all {
+    --products-flex-gap: 24px;
+  }
+
+  .all-list__card {
+    margin-bottom: 16px;
+  }
+}

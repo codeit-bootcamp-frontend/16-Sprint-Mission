@@ -1,9 +1,6 @@
-import styles from "../css/Header.module.css";
-// import "../css/Header.scss";
+import styles from "../styles/Header.module.css";
 import logoImg from "../assets/images/logo.png";
 import logoTextImg from "../assets/images/logo-text.png";
-
-// import { Head,Nav, Button } from "../css/HeaderStyle";
 
 function Header() {
   return (
@@ -20,24 +17,6 @@ function Header() {
         </a>
       </nav>
     </header>
-    // <Head>
-    //   <Nav>
-    //     <a
-    //       className={styles.nav__logo}
-    //       aria-label="판다마켓 메인으로 이동"
-    //       href="./"
-    //     >
-    //       <picture>
-    //         <source media="(max-width: 767px)" srcSet={logoTextImg} />
-    //         <img src={logoImg} alt="판다마켓로고" />
-    //       </picture>
-    //     </a>
-
-    //     <Button  href="./login">
-    //       로그인
-    //     </Button>
-    //   </Nav>
-    // </Head>
   );
 }
 

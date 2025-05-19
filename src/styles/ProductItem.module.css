@@ -1,0 +1,26 @@
+/* item card 공통*/
+.card {
+  display: flex;
+  flex-direction: column;
+  /* 카드 내 글과 글 사이 갭 */
+  gap: 6px;
+}
+
+.card__name {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.card__price {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.card__favorite {
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 500;
+  color: var(--secondary-gray600);
+}

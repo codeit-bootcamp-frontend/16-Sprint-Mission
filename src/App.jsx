@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import "./css/reset.css";
-import "./css/global.css";
+import "./styles/reset.css";
+import "./styles/global.css";
 import "./App.css";
 import Home from "./pages/Home";
 import Items from "./pages/Items";

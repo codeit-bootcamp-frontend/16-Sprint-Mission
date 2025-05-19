@@ -30,6 +30,13 @@
   margin: 0 auto;
 }
 
+/* 불러오기 실패 메세지 */
+.errMsg {
+  font-size: 28px;
+  margin: 100px 0;
+  text-align: center;
+}
+
 /* 베스트상품 */
 .favoriteItems h2 {
   font-size: 20px;
@@ -288,6 +295,10 @@
   .filter-bar button {
     margin-bottom: var(--init-zero);
     order: 1;
+  }
+
+  .searchInput {
+    margin-right: var(--init-zero);
   }
 
   .select {

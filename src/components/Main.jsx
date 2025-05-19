@@ -1,4 +1,4 @@
-import styles from "../css/Main.module.css";
+import styles from "../styles/Main.module.css";
 import heroImg from "../assets/images/top_main.png";
 import hotItemImg from "../assets/images/hot_item.png";
 import searchImg from "../assets/images/search.png";

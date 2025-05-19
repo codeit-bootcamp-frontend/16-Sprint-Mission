@@ -1,6 +1,6 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 
-const ProductAllContext = createContext();
+export const ProductAllContext = createContext();
 
 function ProductAllContextProvider({ children }) {
   const [products, setProducts] = useState([]);
@@ -25,35 +25,6 @@ function ProductAllContextProvider({ children }) {
       {children}
     </ProductAllContext.Provider>
   );
-}
-
-export function useToTal() {
-  const context = useContext(ProductAllContextProvider);
-  return context.total;
-}
-
-export function useSetToTal() {
-  const context = useContext(ProductAllContextProvider);
-  return context.setTotal;
-}
-
-export function useQueryStrings() {
-  const context = useContext(ProductAllContextProvider);
-  return context.queryStrings;
-}
-
-export function useProducts() {
-  const context = useContext(ProductAllContextProvider);
-  return context.products;
-}
-
-export function useSetQueryStrings() {
-  const context = useContext(ProductAllContextProvider);
-  return context.setQueryStrings;
-}
-export function useSetProducts() {
-  const context = useContext(ProductAllContextProvider);
-  return context.setProducts;
 }
 
 export default ProductAllContextProvider;

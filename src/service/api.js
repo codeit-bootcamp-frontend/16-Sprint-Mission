@@ -3,7 +3,7 @@ const BASEURL = 'https://panda-market-api.vercel.app'
 
 
 export async function getProducts(queryStrings) {
-    const {orderBy, page=1, pageSize=10} = queryStrings;
+    const {orderBy, page, pageSize} = queryStrings;
 
 
     const response = await fetch(`${BASEURL}/products?orderBy=${orderBy}&page=${page}&pageSize=${pageSize}`);
