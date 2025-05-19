@@ -33,9 +33,9 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
 
       const { list, totalCount } = result;
       setItems(list);
-      setTotalPage(Math.ceil(totalCount / DEFAULT_PAGE_SIZE));
+      setTotalPage(Math.ceil(totalCount / pageSize));
     },
-    [getItemsAsync]
+    [pageSize, getItemsAsync]
   );
 
   const handleDropdownSelect = (selectedOrder) => {
