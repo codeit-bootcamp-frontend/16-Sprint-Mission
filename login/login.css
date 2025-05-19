@@ -262,3 +262,28 @@ html {
     max-width: 640px;
   }
 }
+
+.error {
+  border: 1px solid red;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.login_input.error {
+  border: 1px solid red !important;
+}
+
+.login_password_wrap.error {
+  border: 1px solid red;
+}
+
+.login_button:disabled {
+  background-color: #d1d5db;
+  color: white;
+  cursor: not-allowed;
+  opacity: 1;
+}
