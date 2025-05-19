@@ -4,7 +4,8 @@ import arrowLeft from "../assets/images/ic_arrow_sm_left.svg";
 import arrowRight from "../assets/images/ic_arrow_sm_right.svg";
 
 const Pagination = ({
-  loadFunc,
+  handleLoad,
+  pageSize = 10,
   paginationSize = 5,
   totalPage,
   onCurrentPage,
@@ -34,7 +35,10 @@ const Pagination = ({
 
     setHasPrev(true);
     setCurrentPages(prevPages);
-    loadFunc({ page: prevLastPage });
+    handleLoad({
+      page: prevLastPage,
+      pageSize: pageSize,
+    });
     setCurrentPage(prevLastPage);
 
     if (prevFirstPage === 1) setHasPrev(false);
@@ -53,7 +57,10 @@ const Pagination = ({
 
     setHasPrev(true);
     setCurrentPages(nextPages);
-    loadFunc({ page: nextFirstPage });
+    handleLoad({
+      page: nextFirstPage,
+      pageSize: pageSize,
+    });
     setCurrentPage(nextFirstPage);
 
     if (nextPages.includes(totalPage)) setHasNext(false);

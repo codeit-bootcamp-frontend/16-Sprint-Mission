@@ -23,7 +23,7 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
   const [items, setItems] = useState([]);
   const [isLoading, loadingError, getItemsAsync] = useAsync(getItems);
   const [order, setOrder] = useState("최신순");
-  const [listPage, setListPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
 
   const handleLoad = useCallback(
@@ -43,12 +43,16 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
   };
 
   const handlePaginationClick = (selectedPage) => {
-    setListPage(selectedPage);
+    setCurrentPage(selectedPage);
   };
 
   useEffect(() => {
-    handleLoad({ page: listPage, pageSize, orderBy: ORDER_MAP[order] });
-  }, [listPage, order, pageSize, handleLoad]);
+    handleLoad({
+      page: currentPage,
+      pageSize: pageSize,
+      orderBy: ORDER_MAP[order],
+    });
+  }, [currentPage, order, pageSize, handleLoad]);
 
   return (
     <div className={styles["item-list-area"]}>
@@ -97,7 +101,8 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
             })}
           </ul>
           <Pagination
-            loadFunc={handleLoad}
+            handleLoad={handleLoad}
+            pageSize={pageSize}
             paginationSize={PAGINATION_SIZE}
             totalPage={totalPage}
             onCurrentPage={handlePaginationClick}
