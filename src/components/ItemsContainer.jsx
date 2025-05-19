@@ -1,6 +1,6 @@
 import ItemCard from "./ItemCard";
 import ItemCardSkeleton from "./ItemCardSkeleton";
-import styles from "./itemsContainer.module.css";
+import styles from "./ItemsContainer.module.css";
 
 const ItemsContainer = ({ listName, itemList, pageSize }) => {
   return (
