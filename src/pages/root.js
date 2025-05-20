@@ -10,16 +10,19 @@ import youtubeIcon from '../public/ic_youtube.png';
 import twitterIcon from '../public/ic_twitter.png';
 import facebookIcon from '../public/ic_facebook.png';
 import instagramIcon from '../public/ic_instagram.png';
+import { Link } from 'react-router-dom';
 
 function Root() {
   return (
     <>
       <header>
         <nav className='nav'>
-          <a href='/' className='navbar-button' type='button'>
+          <Link to='/' className='navbar-button' type='button'>
             <img src={navbarLogo} alt='내비게이션 바 로고 버튼' />
-          </a>
-          <button className='login-button'>로그인</button>
+          </Link>
+          <Link to='/login'>
+            <button className='login-button'>로그인</button>
+          </Link>
         </nav>
       </header>
       <section className='section-with-background'>
@@ -28,11 +31,11 @@ function Root() {
             <h1 className='hero-content-text'>
               일상의 모든 물건을 거래해보세요
             </h1>
-            <a href='/items'>
+            <Link to='/items'>
               <button className='hero-content-button'>
                 구경하러 가기
               </button>
-            </a>
+            </Link>
           </div>
           <img src={heroImg} alt='히어로 섹션 판다마켓 이미지' />
         </div>
@@ -77,14 +80,14 @@ function Root() {
         <div className='nav'>
           <span className='footer-nav-text'>©codeit - 2024</span>
           <div className='footer-nav-link-container'>
-            <a className='footer-nav-link'>Privacy Policy</a>
-            <a className='footer-nav-link'>FAQ</a>
+            <Link className='footer-nav-link'>Privacy Policy</Link>
+            <Link className='footer-nav-link'>FAQ</Link>
           </div>
           <div className='footer-nav-icon-container'>
-            <a><img src={facebookIcon} alt='페이스북 아이콘' /></a>
-            <a><img src={twitterIcon} alt='트위터 아이콘' /></a>
-            <a><img src={youtubeIcon} alt='유튜브 아이콘' /></a>
-            <a><img src={instagramIcon} alt='인스타 아이콘' /></a>
+            <a href='https://facebook.com'><img src={facebookIcon} alt='페이스북 아이콘' /></a>
+            <a href='https://x.com'><img src={twitterIcon} alt='트위터 아이콘' /></a>
+            <a href='https://youtube.com'><img src={youtubeIcon} alt='유튜브 아이콘' /></a>
+            <a href='https://instagram.com'><img src={instagramIcon} alt='인스타 아이콘' /></a>
           </div>
         </div>
       </footer>

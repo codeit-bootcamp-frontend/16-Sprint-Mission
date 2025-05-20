@@ -24,6 +24,7 @@ header {
   border-radius: 8px;
   background-color: var(--primary-100);
   color: white;
+  cursor: pointer;
 }
 
 .section-with-background {
