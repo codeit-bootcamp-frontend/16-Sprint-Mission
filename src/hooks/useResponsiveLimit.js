@@ -14,6 +14,7 @@ export default function useResponsiveLimit(itemsPerDevice) {
    let timeoutId;
 
   const update = () => {
+    // 디바운싱 추가
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => {
       const newLimit = getLimitFromWindowWidth(

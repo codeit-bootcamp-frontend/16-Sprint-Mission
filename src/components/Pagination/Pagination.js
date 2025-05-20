@@ -1,8 +1,13 @@
 import styles from "./Pagination.module.css";
 
-function Pagination({ currentPage, totalPages, onPageChange, maxPageButtons = 5 }) {
-
-  const groupStart = Math.floor((currentPage - 1) / maxPageButtons) * maxPageButtons + 1;
+function Pagination({
+  currentPage,
+  totalPages,
+  onPageChange,
+  maxPageButtons = 5,
+}) {
+  const groupStart =
+    Math.floor((currentPage - 1) / maxPageButtons) * maxPageButtons + 1;
   const groupEnd = Math.min(groupStart + maxPageButtons - 1, totalPages);
 
   const handlePrevGroup = () => {
@@ -21,20 +26,32 @@ function Pagination({ currentPage, totalPages, onPageChange, maxPageButtons = 5 
   }
 
   return (
-    <div className="pagination">
-      <button disabled={groupStart === 1} onClick={handlePrevGroup}>
+    <div className={styles.pagination}>
+      <button
+        disabled={groupStart === 1}
+        onClick={handlePrevGroup}
+        className={styles.button}
+      >
         &lt;
       </button>
       {pages.map((page) => (
         <button
           key={page}
           onClick={() => onPageChange(page)}
-          className={page === currentPage ? styles.active : ''}
+          className={
+            page === currentPage
+              ? `${styles.button} ${styles.active}`
+              : styles.button
+          }
         >
           {page}
         </button>
       ))}
-      <button disabled={groupEnd === totalPages} onClick={handleNextGroup}>
+      <button
+        disabled={groupEnd === totalPages}
+        onClick={handleNextGroup}
+        className={styles.button}
+      >
         &gt;
       </button>
     </div>

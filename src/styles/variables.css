@@ -2,26 +2,33 @@
   /* ===================== */
   /*     Layout Tokens     */
   /* ===================== */
+  --container-max-width: 1200px;
+
   --nav-height: 70px;
   --nav-heading-gap: 8px;
   --nav-links-width: 201px;
   --nav-profile-image-width: 40px;
   --nav-profile-image-height: 40px;
   --nav-profile-image-radius: 50%;
-  --container-max-width: 1200px;
-  --padding-horizontal: 12px;
-
   --nav-logo-width: 81px;
   --nav-link-width: 70px;
   --nav-link-height: 70px;
   --nav-link-padding: 25px 0;
   --nav-links-gap: 8px;
+  --padding-horizontal: 12px;
+
   --font-size-logo: 20px;
   --font-size-link: var(--font-size-base);
 
   --products-list-font-weight: var(--font-weight-bold);
   --products-list-font-size: 20px;
   --products-list-line-height: var(--line-height-relaxed);
+
+  --pagination-font-color: var(--color-gray-500);
+  --pagination-font-size: var(--font-size-base);
+  --pagination-font-weight: var(--font-weight-button);
+  --pagination-line-height: var(--line-height-relaxed-);
+  --pagination-button-border: 1px solid var(--color-gray-200);
 
   /* ===================== */
   /*      Font Family      */
@@ -46,6 +53,7 @@
   --font-size-sm: 14px;
   --font-size-base: 16px;
   --font-size-md: 18px;
+  --font-size-md-lg: 20px;
   --font-size-lg: 24px;
   --font-size-xl: 32px;
   --font-size-2xl: 40px;
@@ -76,9 +84,11 @@
   /*     Color Tokens      */
   /* ===================== */
   --color-white: #FFFFFF;
+  --color-white-100: #f0f0f0;
   --color-blue-50: #E6F2FF;
   --color-blue-100: #CFE5FF;
   --color-blue-200: #3692FF;
+  --color-blue-250: #2F80ED;
   --color-blue-300: #1967D6;
   --color-blue-400: #1251AA;
   --color-gray-50: #F9FAFB;
@@ -129,39 +139,65 @@
   --spacing-lg: 24px;
   --spacing-xl: 32px;
   --spacing-2xl: 40px;
-}
 
-/* ===================== */
-/*  반응형 환경에 따라 덮어쓰기 */
-/* ===================== */
-html.mobile {
+  /* ======================= */
+  /* (반응형) 모바일 환경 변수 설정 */
+  /* ======================= */
   --layout-default-max-width: 344px;
   --nav-img-logo: none;
   --layout-default-padding: 17px 16px 35px 16px;
+  --search-wrapper-width: 344px;
+  --product-img-width-best: 343px;
+  --product-img-height-best: 343px;
+  --product-img-width-all: 185px;
+  --product-img-height-all: 185px;
 }
 
-html.tablet {
-  --padding-horizontal: 24px;
-  --nav-heading-gap: 20px;
-  --nav-img-logo: display;
-  --layout-default-padding: 24px 24px 72px 24px;
-  --font-size-logo: var(--font-size-lg);
-  --font-size-link: var(--font-size-md);
-  --layout-default-max-width: 960px;
-  --nav-logo-width: 153px;
-  --nav-link-width: 93px;
-  --nav-link-padding: 21px 15px;
+
+/* ======================= */
+/* (반응형) 태블릿 환경 변수 설정 */
+/* ======================= */
+@media (min-width: 768px) and (max-width: 1199px) {
+  :root {
+    --padding-horizontal: 24px;
+    --nav-heading-gap: 20px;
+    --nav-img-logo: display;
+    --layout-default-padding: 24px 24px 72px 24px;
+    --font-size-logo: var(--font-size-lg);
+    --font-size-link: var(--font-size-md);
+    --layout-default-max-width: 960px;
+    --nav-logo-width: 153px;
+    --nav-link-width: 93px;
+    --nav-link-padding: 21px 15px;
+    --search-input-padding: 9px 20px 9px 48px;
+    --search-wrapper-width: 242px;
+    --product-img-width-best: 343px;
+    --product-img-height-best: 343px;
+    --product-img-width-all: 221px;
+    --product-img-height-all: 221px;
+  }
 }
 
-html.desktop {
-  --padding-horizontal: 200px;
-  --nav-heading-gap: 32px;
-  --nav-img-logo: display;
-  --layout-default-padding: 24px 36px 141px 36px;
-  --font-size-logo: var(--font-size-lg);
-  --font-size-link: var(--font-size-md);
-  --layout-default-max-width: 1200px;
-  --nav-logo-width: 153px;
-  --nav-link-width: 108px;
-  --nav-link-padding: 21px 15px;
+/* ========================= */
+/* (반응형) 데스크톱 환경 변수 설정 */
+/* ========================= */
+@media(min-width: 1200px) {
+  :root {
+    --padding-horizontal: 200px;
+    --nav-heading-gap: 32px;
+    --nav-img-logo: display;
+    --layout-default-padding: 24px 36px 141px 36px;
+    --font-size-logo: var(--font-size-lg);
+    --font-size-link: var(--font-size-md);
+    --layout-default-max-width: 1200px;
+    --nav-logo-width: 153px;
+    --nav-link-width: 108px;
+    --nav-link-padding: 21px 15px;
+    --search-input-padding: 9px 20px 9px 48px;
+    --search-wrapper-width: 325px;
+    --product-img-width-best: 282px;
+    --product-img-height-best: 282px;
+    --product-img-width-all: 221px;
+    --product-img-height-all: 221px;
+  }
 }

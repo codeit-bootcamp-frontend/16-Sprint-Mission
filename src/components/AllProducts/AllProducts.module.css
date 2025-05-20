@@ -21,6 +21,12 @@
   background: var(--bg-primary);
 }
 
+.paginationWrapper{
+  display: flex;
+  justify-content: center;
+  padding: 43px 12px 0px 12px;
+}
+
 .pagination {
   margin-top: 20px;
   display: flex;
