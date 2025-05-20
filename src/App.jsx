@@ -5,18 +5,19 @@ import Header from "./components/Header";
 import "./styles/reset.css";
 import "./styles/global.css";
 import "./App.css";
+import Login from "./pages/Login";
 
 function App() {
   return (
-    <div className="page-wrapper">
-      <BrowserRouter>
-        <Header></Header>
-        <Routes>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Header></Header>}>
           <Route path="/" element={<Home></Home>}></Route>
-          <Route path="/items" element={<Items></Items>}></Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+          <Route path="items" element={<Items></Items>}></Route>
+        </Route>
+        <Route path="login" element={<Login />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

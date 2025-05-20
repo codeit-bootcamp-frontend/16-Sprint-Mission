@@ -22,7 +22,7 @@ function ProductsAll() {
       try {
         const result = await getProducts(queryStrings);
         setProducts(result.list);
-          if (setTotal) setTotal(result.totalCount);
+        if (setTotal) setTotal(result.totalCount);
       } catch (err) {
         setError(err);
       }

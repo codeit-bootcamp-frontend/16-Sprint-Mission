@@ -5,7 +5,7 @@
   --container-paragraph-margin-top: 16px;
 }
 
-.page-wrapper {
+.homepage-wrapper {
   background-color: var(--article-background-color);
   color: var(--text-color);
   max-width: 1920px;
@@ -17,12 +17,6 @@
   margin: var(--container-margin);
   max-width: var(--container-width);
   width: 100%;
-}
-
-body {
-  background-color: var(--background-color);
-  width: 100vw;
-  overflow-x: hidden;
 }
 
 @media screen and (min-width: 768px) {
