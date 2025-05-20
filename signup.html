@@ -17,23 +17,27 @@
                 </div>
                 <div class="signup-email-box">
                     <h4>이메일</h4>
-                    <input type="email" placeholder="codeit@gmail.com" class="signup-email-input" required>
+                    <input type="email" placeholder="codeit@gmail.com" class="signup-email-input SignupInput" required>
+                    <h4 class="error-msg" style="color: red; display: none; font-size: 12px;">이메일을 입력해주세요.</h4>
                 </div>
                 <div class="signup-nickname-box">
                     <h4>닉네임</h4>
-                    <input type="name" placeholder="판다" class="signup-nickname-input" required>
+                    <input type="name" placeholder="판다" class="signup-nickname-input SignupInput" required>
+                    <h4 class="error-msg" style="color: red; display: none; font-size: 12px;">닉네임을 입력해주세요.</h4>
                 </div>
                 <div class="signup-password-box">
                     <h4>비밀번호</h4>
-                    <input type="password" class="signup-password-input" required>
+                    <input type="password" class="signup-password-input SignupInput" required>
+                    <h4 class="error-msg" style="color: red; display: none; font-size: 12px;">비밀번호를 입력해주세요.</h4>
                 </div>
                 <div class="signup-ckpassword-box">
                     <h4>비밀번호 확인</h4>
-                    <input type="password" class="signup-ckpassword-input" required>
+                    <input type="password" class="signup-ckpassword-input SignupInput" required>
+                    <h4 class="error-msg" style="color: red; display: none; font-size: 12px;">비밀번호가 일치하지 않습니다.</h4>
                 </div>
                 <div class="signup-button-box">
-                    <button class="signup-button">
-                        로그인
+                    <button id="signupBtn" class="signup-button" onclick="location.href='login.html'"  disabled style="cursor: default;">
+                        회원가입
                     </button>
                 </div>
                 <div class="signup-ezlogin-box">
@@ -58,6 +62,8 @@
             </div>
         </section>
     </article>
+
+    <script src="script/login-signup.js"></script>
 </body>
 
 </html>
