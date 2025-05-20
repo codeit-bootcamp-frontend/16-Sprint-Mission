@@ -9,25 +9,15 @@
     width: 100%;
     object-fit: cover;
     border-radius: 8px;
+    aspect-ratio: 1 / 1;
 }
 
-.img-all {
-    width: var(--product-img-width-all);
-    height: var(--product-img-height-all);
-}
-
-.img-best {
-    width: var(--product-img-width-best);
-    height: var(--product-img-height-best);
-}
-
-.textContainer-all {
+.textContainer {
     display: flex;
     flex-direction: column;
     gap: 10px;
     width: 100%;
     text-align: left;
-    max-width: var(--product-img-width-all);
 }
 
 .textContainer-best {
@@ -36,7 +26,6 @@
     gap: 10px;
     width: 100%;
     text-align: left;
-    max-width: var(--product-img-width-best);
 }
 
 .name {

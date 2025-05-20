@@ -1,6 +1,7 @@
 .wrapper {
   position: relative;
-  display: inline-block;
+  display: block;
+  width: 100%;
 }
 
 .toggle {
@@ -27,6 +28,7 @@
   top: calc(100% + 4px);
   right: 0;
   width: 120px;
+  /* 리스트 너비는 고정 */
   margin: 0;
   padding: 0;
   background-color: var(--color-white);
@@ -56,4 +58,25 @@
 
 .selected {
   font-weight: 600;
+}
+
+.label {
+  display: inline;
+}
+
+@media (max-width: 767px) {
+  .toggle {
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .icon {
+    margin-left: 0;
+  }
+
+  .label {
+    display: none;
+  }
 }

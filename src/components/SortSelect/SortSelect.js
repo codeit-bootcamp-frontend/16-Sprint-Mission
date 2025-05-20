@@ -31,7 +31,7 @@ function SortSelect({ value, onChange }) {
         className={styles.toggle}
         onClick={() => setOpen((prev) => !prev)}
       >
-        {selected.label}
+        <span className={styles.label}>{selected.label}</span>
         <FontAwesomeIcon icon={open ? faChevronUp : faChevronDown} className={styles.icon} />
       </button>
       {open && (

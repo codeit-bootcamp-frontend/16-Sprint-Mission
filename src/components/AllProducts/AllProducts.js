@@ -27,7 +27,6 @@ function AllProducts({ title, itemsPerDevice }) {
         showSearch={true}
         showRegisterButton={true}
         onChangeSort={handleSortChange}
-        productCardSize="all"
       />
       <div className={styles.paginationWrapper}>
       <Pagination

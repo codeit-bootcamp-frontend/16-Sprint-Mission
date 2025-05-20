@@ -1,11 +1,10 @@
 import styles from "./ProductCard.module.css";
 import ImageWithFallback from "../ImageWithFallback";
 import replaceImg from "../../assets/images/no-image-icon.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
 
-function ProductCard({ product, size = "default" }) {
-
-  const sizeClass = styles[`img-${size}`] || "";
-const textSizeClass = styles[`textContainer-${size}`] || "";
+function ProductCard({ product}) {
 
   return (
     <div className={styles.card}>
@@ -13,13 +12,16 @@ const textSizeClass = styles[`textContainer-${size}`] || "";
         src={product.images?.[0] || replaceImg}
         alt={product.name}
         fallback={replaceImg}
-        className={`${styles.img} ${sizeClass}`}
+        className={styles.img}
       />
-      <div className={`${styles.textContainer} ${textSizeClass}`}>
+      <div className={styles.textContainer}>
         <h3 className={styles.name}>{product.name}</h3>
         <p className={styles.price}>{product.price}원</p>
         <p className={styles.favorite}>
-          <span>🤍</span>️ <span>{product.favoriteCount}</span>
+          <span>
+            <FontAwesomeIcon icon={farHeart} />
+          </span>
+          ️ <span>{product.favoriteCount}</span>
         </p>
       </div>
     </div>
