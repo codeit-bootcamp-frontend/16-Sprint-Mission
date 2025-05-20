@@ -2,9 +2,8 @@
 
 .button {
   border: 0;
-  width: 357px;
+  width: 100%;
   height: 56px;
-  margin-bottom: 60px;
   border-radius: 40px;
   background-color: var(--primary-100);
   color: white;
