@@ -11,6 +11,7 @@ import twitterIcon from '../public/ic_twitter.png';
 import facebookIcon from '../public/ic_facebook.png';
 import instagramIcon from '../public/ic_instagram.png';
 import { Link } from 'react-router-dom';
+import Button from '../components/button';
 
 function Root() {
   return (
@@ -32,9 +33,9 @@ function Root() {
               일상의 모든 물건을 거래해보세요
             </h1>
             <Link to='/items'>
-              <button className='hero-content-button'>
+              <Button>
                 구경하러 가기
-              </button>
+              </Button>
             </Link>
           </div>
           <img src={heroImg} alt='히어로 섹션 판다마켓 이미지' />

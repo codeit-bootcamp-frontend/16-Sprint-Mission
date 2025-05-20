@@ -54,19 +54,6 @@ header {
   color: var(--secondary-700);
 }
 
-.hero-content-button {
-  border: 0;
-  width: 357px;
-  height: 56px;
-  margin-bottom: 60px;
-  border-radius: 40px;
-  background-color: var(--primary-100);
-  color: white;
-  font-weight: 600;
-  font-size: 20px;
-  cursor: pointer;
-}
-
 .section {
   width: inherit;
   height: 720px;
