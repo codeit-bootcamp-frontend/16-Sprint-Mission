@@ -24,3 +24,10 @@
   font-weight: 500;
   color: var(--secondary-gray600);
 }
+
+.card__favorite > img[alt="좋아요 아이콘"] {
+  width: 16px;
+  height: 16px;
+  margin-bottom: var(--init-zero);
+  margin-right: 4px;
+}

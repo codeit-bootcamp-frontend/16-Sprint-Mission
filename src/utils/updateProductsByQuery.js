@@ -1,7 +1,7 @@
 import { getProducts } from "../service/api";
 
-// 재사용 때문에 묶긴 했는데... 데이터 받기 + set하기 +set하기 +set하기 분
-export function updateProductsByQuery(queryStrings, setItems, setError, setTotal = null) {
+// 공통되는 부분을 묶을지? 아니면 상태를 set하는 모습을 드러낼지? 고민이네
+export function loadItems(queryStrings, setItems, setError, setTotal = null) {
     async function fetchAndSetItems() {
         try {
             const result = await getProducts(queryStrings);

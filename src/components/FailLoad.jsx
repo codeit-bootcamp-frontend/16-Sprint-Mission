@@ -1,11 +1,11 @@
-import styles from '../styles/FailLoad.module.css';
-
-
+import styles from "../styles/FailLoad.module.css";
 
 function FailLoad() {
   return (
-    <p className={styles.errMsg}>죄송합니다 목록을 가져오는 데에 실패했습니다.</p>
-  )
+    <p className={styles.errMsg}>
+      죄송합니다 목록을 가져오는 데에 실패했습니다.
+    </p>
+  );
 }
 
-export default FailLoad
+export default FailLoad;

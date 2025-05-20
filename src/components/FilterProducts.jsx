@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import styles from "../styles/FilterProducts.module.css";
 import { ProductAllContext } from "../context/ProductAllContext";
+import styles from "../styles/FilterProducts.module.css";
 
 function FilterProducts() {
   const { queryStrings, setQueryStrings } = useContext(ProductAllContext);
@@ -8,6 +8,7 @@ function FilterProducts() {
   // dataset.value에 의한 queryStrings변경
   const handleChange = (e) => {
     if (e.target.tagName !== "LI") return;
+    
     setQueryStrings((prev) => ({
       ...prev,
       orderBy: e.target.dataset.value,
