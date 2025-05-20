@@ -1,0 +1,51 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.price {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+}
+
+.likeNum {
+  font-size: 12px;
+}
+
+.heart {
+  all: unset;
+  margin-right: 5px;
+}
+
+.bestImg {
+  width: 343px;
+  height: 343px;
+  object-fit: cover;
+  border-radius: 25px;
+}
+
+.img {
+  width: 168px;
+  height: 168px;
+  object-fit: cover;
+  border-radius: 25px;
+}
+
+/* Tablet  Desktop*/
+@media (min-width: 768px) {
+  .img {
+    width: 221px;
+    height: 221px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .bestImg {
+    width: 282px;
+    height: 282px;
+  }
+}

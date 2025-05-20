@@ -1,0 +1,46 @@
+:root {
+  --background-color: rgba(255, 255, 255, 1);
+  --border-bottom: rgba(223, 223, 223, 1);
+  --link-bg: rgba(207, 229, 255, 1);
+  --content-bg: rgba(252, 252, 252, 1);
+  --banner-bg: rgba(207, 229, 255, 1);
+  --primary-100: rgba(54, 146, 255, 1);
+  --primary-200: rgba(47, 128, 237, 1);
+  --primary-300: rgba(18, 81, 170, 1);
+  --secondary-900: rgba(17, 24, 39, 1);
+  --secondary-800: rgba(31, 41, 55, 1);
+  --secondary-700: rgba(55, 65, 81, 1);
+  --secondary-600: rgba(75, 85, 99, 1);
+  --secondary-500: rgba(107, 114, 128, 1);
+  --secondary-400: rgba(156, 163, 175, 1);
+  --secondary-200: rgba(229, 231, 235, 1);
+  --secondary-100: rgba(243, 244, 246, 1);
+  --secondary-50: rgba(249, 250, 251, 1);
+  --cool-gray-200: rgba(229, 231, 235, 1);
+  --cool-gray-600: rgba(75, 85, 99, 1);
+
+  --header-height: 70px;
+  --content-width: 1120px;
+
+  --desktop-width: 1200px;
+  --tablet-width: 1199px;
+  --tablet-width-min: 768px;
+  --mobile-width: 767px;
+  --mobile-width-min: 375px;
+
+  --padding-mobile: 0 16px;
+  --padding-tablet: 0 24px;
+  --padding-desktop: 0 200px;
+
+  --spacing-xs: 9px;
+  --spacing-sm: 12px;
+  --spacing-md: 24px;
+  --spacing-lg: 32px;
+  --spacing-xl: 64px;
+
+  --font-size-xs: 16px;
+  --font-size-sm: 18px;
+  --font-size-md: 20px;
+  --font-size-lg: 24px;
+  --font-size-xl: 40px;
+}

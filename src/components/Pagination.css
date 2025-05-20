@@ -1,0 +1,17 @@
+.pageNation {
+  width: 40px;
+  height: 40px;
+  background-color: var(--background-color);
+  border: 1.8px solid var(--cool-gray-200);
+  border-radius: 50%;
+  color: var(--cool-gray-600);
+}
+.pageNation:hover {
+  background-color: var(--primary-200);
+  color: var(--secondary-100);
+}
+
+.active {
+  background-color: var(--primary-200);
+  color: var(--secondary-100);
+}

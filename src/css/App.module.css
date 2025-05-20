@@ -1,0 +1,31 @@
+:root {
+  background-color: var(--content-bg);
+}
+
+.content {
+  width: 344px;
+  margin: 20px auto;
+}
+.headers {
+  margin: 16px 0 10px 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .content {
+    width: 696px;
+    margin: 20px auto;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1200px) {
+  .content {
+    width: 1200px;
+    margin: 20px auto;
+  }
+}

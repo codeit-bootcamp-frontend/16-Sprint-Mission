@@ -1,0 +1,40 @@
+.container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translate(-30%, 70px);
+  cursor: pointer;
+}
+
+.items {
+  width: 130px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary-800);
+  background-color: var(--content-bg);
+  border: 1px solid var(--secondary-200);
+  font-size: var(--font-size-xs);
+  font-weight: 400;
+}
+
+.items:first-child {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom: 0px;
+}
+
+.items:last-child {
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+/* Tablet  Desktop*/
+@media (min-width: 768px) {
+  .container {
+    transform: translate(0%, 70px);
+  }
+}

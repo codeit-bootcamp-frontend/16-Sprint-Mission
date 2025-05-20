@@ -1,0 +1,15 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto;
+  padding-bottom: 20px;
+}
+
+.page {
+  width: 40px;
+  height: 40px;
+  background-color: var(--background-color);
+  border: 1.8px solid var(--cool-gray-200);
+  border-radius: 50%;
+}
