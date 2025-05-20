@@ -32,7 +32,7 @@
             (max-width: 767px) 198px,
             (max-width: 1200px) 396px, 396px
             "
-            alt="회원가입페이지 판다마켓 로고"
+            alt="로그인페이지 판다마켓 로고"
           />
         </a>
       </div>
@@ -42,14 +42,8 @@
           id="username"
           name="email"
           type="email"
+          autocomplete="email"
           placeholder="이메일을 입력해 주세요"
-        />
-        <label for="nickname">닉네임</label>
-        <input
-          id="nickname"
-          name="nickname"
-          type="text"
-          placeholder="닉네임을 입력해 주세요"
         />
         <label for="password">비밀번호</label>
         <div class="password-wrapper">
@@ -65,21 +59,7 @@
             class="toggle-password"
           />
         </div>
-        <label for="password-check">비밀번호 확인</label>
-        <div class="password-check-wrapper">
-          <input
-            id="password-check"
-            name="password-check"
-            type="password"
-            placeholder="비밀번호를 다시 한 번 입력해 주세요"
-          />
-          <img
-            src="../image/Property 1=Variant2.svg"
-            alt="비밀번호 숨김"
-            class="toggle-password"
-          />
-        </div>
-        <button id="auth-form_btn">회원가입</button>
+        <button id="auth-form_btn">로그인</button>
       </form>
       <div class="auth-footer">
         <div>간편 로그인하기</div>
@@ -103,8 +83,8 @@
         </div>
       </div>
       <div class="auth-switch">
-        <span>이미 회원이신가요?</span>
-        <a href="signin.html">로그인</a>
+        <span>판다마켓이 처음이신가요?</span>
+        <a href="signup.html">회원가입</a>
       </div>
     </div>
   </body>
