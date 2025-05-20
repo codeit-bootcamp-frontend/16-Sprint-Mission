@@ -22,14 +22,17 @@
       <div class="auth-logo">
         <a href="../index.html" aria-label="홈으로 이동">
           <img
-            class="forPCTablet"
+            class="auth-logo-img"
             src="../image/property 1=lg.svg"
-            alt="로그인페이지 판다마켓 큰 로고"
-          />
-          <img
-            class="forMobile"
-            src="../image/property 1=md.svg"
-            alt="로그인페이지 판다마켓 중간 로고"
+            srcset="
+              ../image/property1-lg.svg 396w,
+              ../image/property1-md.svg 198w
+            "
+            sizes="
+            (max-width: 767px) 198px,
+            (max-width: 1200px) 396px, 396px
+            "
+            alt="로그인페이지 판다마켓 로고"
           />
         </a>
       </div>

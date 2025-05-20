@@ -1,18 +1,11 @@
 .auth-page {
-  width: 640px;
+  max-width: 640px;
   margin: 50px auto;
 }
 
 .auth-logo {
   display: flex;
   justify-content: center;
-}
-
-.forPCTablet {
-  display: inline-block;
-}
-.forMobile {
-  display: none;
 }
 
 .auth-form {
@@ -48,14 +41,12 @@
 input {
   background-color: var(--gray100);
   border: none;
-  width: 640px;
   border-radius: 12px;
   height: 56px;
   margin: 16px 0 24px;
   padding-left: 16px;
   font-size: 18px;
   width: 100%;
-  font-weight: 400;
 }
 
 label {
@@ -95,7 +86,7 @@ input:focus {
 }
 
 /*Mobile*/
-@media (max-width: 767px) {
+@media screen and (min-width: 375px) and (max-width: 767px) {
   .auth-page {
     padding: 0 16px;
     max-width: 400px;
@@ -103,15 +94,16 @@ input:focus {
   .auth-logo > img {
     max-width: 50%;
   }
-  .forMobile {
-    display: inline-block;
-  }
-  .forPCTablet {
-    display: none;
-  }
-
   label,
   input {
     font-size: 14px;
+  }
+}
+
+/*tablet*/
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .auth-logo {
+    margin-top: 60px;
+    margin-bottom: 40px;
   }
 }
