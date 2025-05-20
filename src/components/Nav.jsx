@@ -45,7 +45,7 @@ const Nav = ({ currentSection }) => {
             </div>
             <img
               className={styles["nav-profile"]}
-              src={"./images/icon_profile.png"}
+              src={"/images/icon_profile.png"}
               width={40}
             />
           </>

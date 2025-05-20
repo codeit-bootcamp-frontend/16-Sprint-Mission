@@ -18,12 +18,17 @@ const INITIAL_DETAILS = {
   isFavorite: null,
 };
 
+const IMAGE_DEFAULT_URL = "/images/img_items_default_md.png";
+
 const ItemDetails = ({ itemId }) => {
   const [details, setDetails] = useState(INITIAL_DETAILS);
+  const [isImageValid, setIsImageValid] = useState(true);
+
+  const imgSrc =
+    isImageValid && details.images ? details.images : IMAGE_DEFAULT_URL;
 
   const loadItemDetails = async () => {
     const result = await getItemDetails(itemId);
-    console.log(result);
     setDetails(result);
   };
 
@@ -35,39 +40,40 @@ const ItemDetails = ({ itemId }) => {
 
   return (
     <>
-      <div className={styles["details-container"]}>
+      <div className={styles["section"]}>
         <img
-          className={styles["details-image"]}
-          src={details.images}
+          className={styles["product-image"]}
+          src={imgSrc}
+          onError={() => setIsImageValid(false)}
           width={486}
         />
-        <div className={styles["details-context-container"]}>
-          <div className={styles["details-header-container"]}>
-            <div className={styles["details-title-container"]}>
-              <h1 className={styles["details-title"]}>{details.name}</h1>
-              <span className={styles["details-price"]}>
+        <div className={styles["context-container"]}>
+          <div className={styles["header-container"]}>
+            <div className={styles["title-container"]}>
+              <h1 className={styles["title"]}>{details.name}</h1>
+              <span className={styles["price"]}>
                 {formatPriceKRW(details.price)}
               </span>
             </div>
             <img
-              className={styles["details-kebab"]}
+              className={styles["kebab-button"]}
               src={"/images/ic_kebab.png"}
               width={24}
             />
           </div>
-          <div className={styles["details-description-container"]}>
-            <div className={styles["details-subtitle-container"]}>
-              <h2 className={styles["details-subtitle"]}>상품 소개</h2>
-              <span className={styles["details-description"]}>
+          <div className={styles["description-container"]}>
+            <div className={styles["subtitle-container"]}>
+              <h2 className={styles["subtitle"]}>상품 소개</h2>
+              <span className={styles["description"]}>
                 {details.description}
               </span>
             </div>
-            <div className={styles["details-subtitle-container"]}>
-              <h2 className={styles["details-subtitle"]}>상품 태그</h2>
-              <div className={styles["details-tag-container"]}>
+            <div className={styles["subtitle-container"]}>
+              <h2 className={styles["subtitle"]}>상품 태그</h2>
+              <div className={styles["tag-container"]}>
                 {details.tags.map((tag) => {
                   return (
-                    <div key={tag} className={styles["details-tag"]}>
+                    <div key={tag} className={styles["tag"]}>
                       {`#${tag}`}
                     </div>
                   );
@@ -75,28 +81,28 @@ const ItemDetails = ({ itemId }) => {
               </div>
             </div>
           </div>
-          <div className={styles["details-metadata-container"]}>
+          <div className={styles["metadata-container"]}>
             <img
-              className={styles["details-profile"]}
+              className={styles["profile-image"]}
               src={"/images/icon_profile.png"}
               width={40}
             />
-            <div className={styles["details-metadata-context-container"]}>
-              <span className={styles["details-nickname"]}>
+            <div className={styles["metadata-context-container"]}>
+              <span className={styles["nickname"]}>
                 {details.ownerNickname}
               </span>
-              <span className={styles["details-updatedAt"]}>
+              <span className={styles["updatedAt"]}>
                 {formatDateKRW(details.updatedAt)}
               </span>
             </div>
             <div className={styles["vertical-line"]} />
-            <div className={styles["details-favorite-container"]}>
+            <div className={styles["favorite-container"]}>
               <img
-                className={styles["details-favorite-image"]}
+                className={styles["favorite-image"]}
                 src={"/images/img_favorite_inactive.png"}
                 width={32}
               />
-              <span className={styles["details-favorite-count"]}>
+              <span className={styles["favorite-count"]}>
                 {details.favoriteCount}
               </span>
             </div>

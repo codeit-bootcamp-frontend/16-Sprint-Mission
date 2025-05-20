@@ -1,0 +1,10 @@
+.kebab-button {
+	aspect-ratio: 1/1;
+	width: 24px;
+	cursor: pointer;
+	border-radius: 999px;
+}
+
+.kebab-button:hover {
+	background-color: var(--color-gray200);
+}
