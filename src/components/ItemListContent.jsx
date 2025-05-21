@@ -3,6 +3,8 @@ import ItemCard from "./ItemCard";
 import ItemCardSkeleton from "../ui/Skeletons/ItemCardSkeleton";
 
 const ItemListContent = ({ isLoading, isError, items, pageSize, listType }) => {
+  const isLoadingError = !isLoading && isError;
+
   if (isLoading) {
     return (
       <ul className={`${styles[`item-list-ul`]} ${styles[listType]}`}>
@@ -15,7 +17,7 @@ const ItemListContent = ({ isLoading, isError, items, pageSize, listType }) => {
     );
   }
 
-  if (isError) return <p>상품 목록을 가져오지 못했습니다.</p>;
+  if (isLoadingError) return <p>상품 목록을 가져오지 못했습니다.</p>;
 
   return (
     <ul className={`${styles[`item-list-ul`]} ${styles[listType]}`}>
