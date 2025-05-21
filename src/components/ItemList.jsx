@@ -49,7 +49,7 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
   useEffect(() => {
     handleLoad({
       page: currentPage,
-      pageSize: pageSize,
+      pageSize,
       orderBy: ORDER_MAP[order],
     });
   }, [currentPage, order, pageSize, handleLoad]);

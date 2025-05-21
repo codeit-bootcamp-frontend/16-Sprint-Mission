@@ -23,7 +23,7 @@ const BestItemList = ({ pageSize, title }) => {
   );
 
   useEffect(() => {
-    handleLoad({ pageSize: pageSize, orderBy: ORDER_BY });
+    handleLoad({ pageSize, orderBy: ORDER_BY });
   }, [pageSize, handleLoad]);
 
   return (

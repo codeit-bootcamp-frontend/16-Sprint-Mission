@@ -37,7 +37,7 @@ const Pagination = ({
     setCurrentPages(prevPages);
     handleLoad({
       page: prevLastPage,
-      pageSize: pageSize,
+      pageSize,
     });
     setCurrentPage(prevLastPage);
 
@@ -59,7 +59,7 @@ const Pagination = ({
     setCurrentPages(nextPages);
     handleLoad({
       page: nextFirstPage,
-      pageSize: pageSize,
+      pageSize,
     });
     setCurrentPage(nextFirstPage);
 
