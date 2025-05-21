@@ -1,0 +1,36 @@
+@import '../theme.css';
+
+.header {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #dfdfdf;
+}
+
+.navbar {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-image {
+  margin-right: 32px;
+}
+
+.navbar-left-container {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-button {
+  padding: 21px 15px;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--secondary-600);
+}
+
+.navbar-avatar {
+  height: 40px;
+}

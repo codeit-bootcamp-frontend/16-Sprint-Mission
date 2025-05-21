@@ -11,3 +11,11 @@
   font-size: 20px;
   cursor: pointer;
 }
+
+.button:disabled {
+  background-color: var(--secondary-400);
+}
+
+.button-link {
+  width: 100%;
+}

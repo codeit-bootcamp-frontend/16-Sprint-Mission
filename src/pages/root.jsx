@@ -32,11 +32,9 @@ function Root() {
             <h1 className='hero-content-text'>
               일상의 모든 물건을 거래해보세요
             </h1>
-            <Link to='/items'>
-              <Button>
-                구경하러 가기
-              </Button>
-            </Link>
+            <Button link='/items'>
+              구경하러 가기
+            </Button>
           </div>
           <img src={heroImg} alt='히어로 섹션 판다마켓 이미지' />
         </div>
