@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./Pagination.module.css";
-import arrowLeft from "../assets/images/ic_arrow_sm_left.svg";
-import arrowRight from "../assets/images/ic_arrow_sm_right.svg";
+import arrowLeft from "../../assets/images/ic_arrow_sm_left.svg";
+import arrowRight from "../../assets/images/ic_arrow_sm_right.svg";
 
 const Pagination = ({
   handleLoad,

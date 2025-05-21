@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./ItemCard.module.css";
-import likeImg from "../assets/images/ic-like.svg";
-import pandaLogoImg from "../assets/images/logo-panda.svg";
+import likeImg from "../../assets/images/ic-like.svg";
+import pandaLogoImg from "../../assets/images/logo-panda.svg";
 
 const ItemCard = ({ data, loading = "lazy" }) => {
   const { images, name, description, price, favoriteCount } = data;

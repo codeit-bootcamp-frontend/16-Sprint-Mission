@@ -1,5 +1,5 @@
 import ItemList from "../components/ItemList";
-import BestItemList from "../components/BestItemList";
+import BestItemList from "../components/ItemList/BestItemList";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 
 const DESKTOP = 1200;

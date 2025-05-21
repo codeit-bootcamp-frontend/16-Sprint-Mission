@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
-import { getItems } from "../apis/api";
+import { getItems } from "../../apis/api";
 import styles from "./ItemList.module.css";
-import Button from "../ui/Button";
-import Dropdown from "../ui/Dropdown/Dropdown";
-import InputSearch from "../ui/InputSearch";
-import Pagination from "./Pagination";
-import useAsync from "../hooks/useAsync";
+import Button from "../../ui/Button";
+import Dropdown from "../../ui/Dropdown";
+import InputSearch from "../../ui/Input/InputSearch";
+import Pagination from "../Pagination";
+import useAsync from "../../hooks/useAsync";
 import ItemListRenderer from "./ItemListRenderer";
 
 const DEFAULT_PAGE_SIZE = 10;

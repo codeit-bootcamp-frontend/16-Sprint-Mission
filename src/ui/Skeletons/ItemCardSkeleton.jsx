@@ -1,4 +1,4 @@
-import styles from "../../components/ItemCard.module.css";
+import styles from "../../components/ItemCard/ItemCard.module.css";
 import skeletonStyles from "./ItemCardSkeleton.module.css";
 
 const ItemCardSkeleton = () => {

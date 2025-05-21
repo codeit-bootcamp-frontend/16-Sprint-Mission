@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
-import { getItems } from "../apis/api";
+import { getItems } from "../../apis/api";
 import styles from "./ItemList.module.css";
-import useAsync from "../hooks/useAsync";
+import useAsync from "../../hooks/useAsync";
 import ItemListRenderer from "./ItemListRenderer";
 
 const ORDER_BY = "favorite";
