@@ -15,7 +15,7 @@ const ORDER_MAP = {
   최신순: "recent",
   좋아요순: "favorite",
 };
-const dropdownMenu = ["최신순", "좋아요순"];
+const dropdownMenuItems = Object.keys(ORDER_MAP);
 
 const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
   const navigate = useNavigate();
@@ -71,7 +71,7 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
           placeholder="검색할 상품을 입력해주세요"
         />
         <Dropdown
-          menu={dropdownMenu}
+          menu={dropdownMenuItems}
           onClickMenu={handleDropdownSelect}
           defaultSelected={order}
           iconType="orderIcon"
