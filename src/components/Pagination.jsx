@@ -1,3 +1,7 @@
+import "../components/css/Pagination.css";
+import preve from "../assets/arrow_left.png";
+import next from "../assets/arrow_right.png";
+
 function Pagination({ currentPage, totalPages, setPage }) {
   //페이지 변경
   const handlePageChange = (newPage) => {
@@ -6,6 +10,7 @@ function Pagination({ currentPage, totalPages, setPage }) {
 
   // console.log("현재페이지 : ", currentPage);
   // console.log("총 페이지 : ", totalPages);
+
   const pageNumbers = []; //버튼에 쓸 숫자가 들어간다.
 
   const start = currentPage - 2 < 1 ? 1 : currentPage - 2;
@@ -16,18 +21,18 @@ function Pagination({ currentPage, totalPages, setPage }) {
   }
 
   return (
-    <div>
+    <div className="pagination ">
       {/* {currentPage > 1 && } */}
       <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
-        이전
+        <img src={preve} alt="이전" />
       </button>
       {pageNumbers.map((num) => (
-        <button key={num} onClick={() => handlePageChange(num)} style={{ fontWeight: num === currentPage ? "bold" : "normal" }}>
+        <button key={num} onClick={() => handlePageChange(num)} className={num === currentPage ? "active" : undefined}>
           {num}
         </button>
       ))}
       <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
-        다음
+        <img src={next} alt="다음" />
       </button>
     </div>
   );

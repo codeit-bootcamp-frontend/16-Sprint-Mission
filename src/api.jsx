@@ -19,6 +19,7 @@ export function useProductData({ page, pageSize, isPageinated = true }) {
   const [totalPages, setTotalPages] = useState(5); //전체 페이지 수 관리
 
   useEffect(() => {
+    if (!pageSize) return; // pageSize가 없으면 API를 아예 호출하지 않게 차단한다.
     const fetchData = async () => {
       try {
         const query = isPageinated ? { page, pageSize } : { pageSize };

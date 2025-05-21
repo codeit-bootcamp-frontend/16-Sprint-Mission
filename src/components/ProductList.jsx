@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useProductData } from "../api.jsx";
 import { pageSizebyScreenWidth } from "./pageSizebyScreenWidth.jsx";
@@ -9,15 +10,7 @@ import "./css/ProductList.css";
 function ProductList() {
   const [sortKey, setSortKey] = useState("updatedAt");
   const [page, setPage] = useState(1); //현재 페이지
-  const [pageSize, setPageSize] = useState(4); //상품 개수
-
-  // 브라우저 크기에 따라 상품 개수 변경
-  useEffect(() => {
-    const width = window.innerWidth;
-    const sizes = pageSizebyScreenWidth(width);
-    setPageSize(sizes.all);
-    console.log("ProductList: 화면 크기 설정", width, sizes.all);
-  }, []);
+  const [pageSize, setPageSize] = useState(() => pageSizebyScreenWidth(window.innerWidth).all); //상품 개수
 
   // api 불러오기
   const { products, totalPages } = useProductData({ page, pageSize, isPageinated: true });
@@ -29,13 +22,24 @@ function ProductList() {
     return 0;
   });
 
+  // 브라우저 크기에 따라 상품 개수 변경
+  useEffect(() => {
+    const width = window.innerWidth;
+    const sizes = pageSizebyScreenWidth(width);
+    setPageSize(sizes.all);
+    // console.log("ProductList: 화면 크기 설정", width, sizes.all);
+  }, []);
+
   return (
-    <div className="ProductList__warp">
-      <div className="ProductList__header">
+    <div>
+      <div className="Products__header Products__header--items mb16">
         <h1>전체 상품</h1>
-        <form>
+        <button className="btn btn--color1 btn--small Products__register">
+          <Link to="/additem">상품 등록하기</Link>
+        </button>
+        <form className="Products__form">
           <input type="text" placeholder="검색할 상품을 입력해주세요" />
-          <button className="btn  btn--color1 btn--small">상품 등록하기</button>
+          <button></button>
         </form>
         <SortSelect sortKey={sortKey} onChange={setSortKey} />
       </div>

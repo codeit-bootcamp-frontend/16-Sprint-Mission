@@ -1,7 +1,14 @@
+import { NavLink } from "react-router-dom";
 import mobileLogeImg from "../assets/img_logo_m.png";
 import logeImg from "../assets/img_logo.png";
 import ProfileImg from "../assets/profile.png";
 import "./css/Nav.css";
+
+function getLinkStyle({ isActive }) {
+  return {
+    color: isActive ? "#3692FF" : "#333",
+  };
+}
 
 function Nav() {
   return (
@@ -19,10 +26,14 @@ function Nav() {
       </div>
       <ul className="nav">
         <li>
-          <a href="/">자유게시판</a>
+          <NavLink to="/" style={getLinkStyle}>
+            자유게시판
+          </NavLink>
         </li>
         <li>
-          <a href="/">중고마켓</a>
+          <NavLink to="/items" style={getLinkStyle}>
+            중고마켓
+          </NavLink>
         </li>
       </ul>
       <div className="profile">

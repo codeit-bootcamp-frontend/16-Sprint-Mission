@@ -1,14 +1,15 @@
 import { useState } from "react";
 import "../components/css/ProductDisplay.css";
+import icfavorite from "../assets/ic_heart.png";
 
 function ProductDisplay({ sortedItems, bestList }) {
-  // 이미지 로드 상태를 관리하기 위한 객체
+  // 이미지 로드 상태를 관리 변수
   const [imgLoadStatus, setImgLoadStatus] = useState({});
 
-  // 이미지 로드 실패 시 호출되는 함수
+  // 2. 이미지 로드 실패 시 호출되는 함수
   const handleImageError = (productId) => {
     setImgLoadStatus((prev) => ({
-      ...prev,
+      ...prev, //스프레드 연산자로 기존 상태를 복사해오는 역할
       [productId]: "error",
     }));
   };
@@ -23,31 +24,33 @@ function ProductDisplay({ sortedItems, bestList }) {
 
   return (
     // ProductList__content
-    <ul className={bestList ? "ProductList__content bestList" : "ProductList__content list"}>
+    <ul className={bestList ? "Product__content bestList" : "Product__content all"}>
       {sortedItems.map((product) => (
         <li key={product.id}>
-          {/* <img src={product.images[0]} alt={product.name} onError={() => handleImageError} /> */}
-
-          <div className="product-image-container">
-            {imgLoadStatus[product.id] === "error" ? (
-              // 이미지 로드 실패 시 대체 UI
-              <div className="image-placeholder">
-                <span className="product-name-placeholder">{product.name.charAt(0)}</span>
+          <div className="product__image">
+            {!product.images[0] || imgLoadStatus[product.id] === "error" ? (
+              // 3. 이미지 로드 실패 시 대체 UI
+              <div className="product__image-placeholder">
+                <span className="product__title-placeholder">{product.name}</span>
               </div>
             ) : (
-              // 이미지 로드 시도
+              // 1. 이미지 로드 시도
               <img
                 src={product.images[0]}
                 alt={product.name}
+                // product.id를 사용하는 이유는, 각 상품의 이미지 로드 상태를 개별적으로 추적하기 위해 쓰인다.
+                // 상품의 배열에서 고유하게 구분할 수 있는 값
                 onError={() => handleImageError(product.id)}
                 onLoad={() => handleImageLoad(product.id)}
               />
             )}
           </div>
-
-          <span>{product.name}</span>
-          <span>{product.price}</span>
-          <span>{product.favoriteCount}</span>
+          <div className="product__title">{product.name}</div>
+          <div className="product__price">{product.price.toLocaleString()}원</div>
+          <div className="product__favorite">
+            <img src={icfavorite} alt="좋아요" />
+            {product.favoriteCount}
+          </div>
         </li>
       ))}
     </ul>

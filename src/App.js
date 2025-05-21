@@ -1,13 +1,17 @@
+import Nav from "./components/Nav";
 import BestProductList  from "./components/BestProductList";
 import ProductList from "./components/ProductList";
 import './components/css/App.css'
 
 function App() {
   return (
-    <div className="bg">
-      <BestProductList/>
-      <ProductList/>
-    </div>
+    <>
+      <Nav />
+      <div className="Products__warp">
+        <BestProductList/>
+        <ProductList/>
+      </div>
+    </>
   );
 }
 

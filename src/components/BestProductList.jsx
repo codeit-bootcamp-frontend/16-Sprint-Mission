@@ -20,9 +20,9 @@ function BestProductList() {
   }, []);
 
   return (
-    <div className="ProductList__warp">
-      <div className="ProductList__header">
-        <h1>인기 상품</h1>
+    <div>
+      <div className="Products__header mb16">
+        <h1>베스트 상품</h1>
       </div>
       <ProductDisplay sortedItems={sortedItems} bestList={true} />
     </div>
