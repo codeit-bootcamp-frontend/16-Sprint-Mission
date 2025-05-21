@@ -18,6 +18,13 @@
   border-color: var(--primary-color);
 }
 
+.dropdown-btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
 @media (min-width: 600px) {
   .dropdown-btn {
     width: 130px;

@@ -3,10 +3,11 @@ import arrowDownImg from "../../assets/images/ic_arrow_down.png";
 import sortImg from "../../assets/images/ic_sort.svg";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 
-const MOBILE = 600;
+const MOBILE_BREAKPOINT = 600;
 
 const DropdownBtn = ({ selected, onClickDropdownBtn, isActive, iconType }) => {
   const { width } = useWindowDimensions();
+  const isMobile = width < MOBILE_BREAKPOINT;
 
   return (
     <button
@@ -17,16 +18,16 @@ const DropdownBtn = ({ selected, onClickDropdownBtn, isActive, iconType }) => {
       `}
       onClick={onClickDropdownBtn}
     >
-      {width >= MOBILE ? (
-        <>
-          {selected}
-          <img src={arrowDownImg} alt="더보기" />
-        </>
-      ) : (
+      {isMobile ? (
         <img
           src={iconType === "orderIcon" ? sortImg : arrowDownImg}
           alt="정렬"
         />
+      ) : (
+        <span className={styles["dropdown-btn-container"]}>
+          {selected}
+          <img src={arrowDownImg} alt="더보기" />
+        </span>
       )}
     </button>
   );
