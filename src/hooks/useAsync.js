@@ -4,7 +4,7 @@ const useAsync = (asyncFunc) => {
   const [loading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const wrapperFunc = useCallback(
+  const runAsync = useCallback(
     async (...args) => {
       try {
         setIsLoading(true);
@@ -20,7 +20,7 @@ const useAsync = (asyncFunc) => {
     [asyncFunc]
   );
 
-  return [loading, error, wrapperFunc];
+  return { loading, error, runAsync };
 };
 
 export default useAsync;

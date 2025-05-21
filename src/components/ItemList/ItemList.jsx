@@ -20,7 +20,11 @@ const dropdownMenuItems = Object.keys(ORDER_MAP);
 const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
   const navigate = useNavigate();
   const [items, setItems] = useState([]);
-  const [isLoading, loadingError, getItemsAsync] = useAsync(getItems);
+  const {
+    isLoading,
+    loadingError,
+    runAsync: getItemsAsync,
+  } = useAsync(getItems);
   const [order, setOrder] = useState("최신순");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);

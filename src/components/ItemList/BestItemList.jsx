@@ -9,7 +9,11 @@ const LIST_TYPE = "best";
 
 const BestItemList = ({ pageSize, title }) => {
   const [items, setItems] = useState([]);
-  const [isLoading, loadingError, getItemsAsync] = useAsync(getItems);
+  const {
+    isLoading,
+    loadingError,
+    runAsync: getItemsAsync,
+  } = useAsync(getItems);
 
   const handleLoad = useCallback(
     async (options) => {
