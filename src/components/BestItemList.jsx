@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import { getItems } from "../apis/api";
 import styles from "./ItemList.module.css";
 import useAsync from "../hooks/useAsync";
-import ItemListContent from "./ItemListContent";
+import ItemListRenderer from "./ItemListRenderer";
 
 const ORDER_BY = "favorite";
 const LIST_TYPE = "best";
@@ -29,7 +29,7 @@ const BestItemList = ({ pageSize, title }) => {
   return (
     <div className={styles["item-list-area"]}>
       <h4 className={styles["item-list-title"]}>{title}</h4>
-      <ItemListContent
+      <ItemListRenderer
         isLoading={isLoading}
         isError={loadingError}
         items={items}

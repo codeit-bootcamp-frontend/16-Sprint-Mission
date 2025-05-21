@@ -7,7 +7,7 @@ import Dropdown from "../ui/Dropdown/Dropdown";
 import InputSearch from "../ui/InputSearch";
 import Pagination from "./Pagination";
 import useAsync from "../hooks/useAsync";
-import ItemListContent from "./ItemListContent";
+import ItemListRenderer from "./ItemListRenderer";
 
 const DEFAULT_PAGE_SIZE = 10;
 const PAGINATION_SIZE = 5;
@@ -77,7 +77,7 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
           iconType="orderIcon"
         />
       </div>
-      <ItemListContent
+      <ItemListRenderer
         isLoading={isLoading}
         isError={loadingError}
         items={items}
