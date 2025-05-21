@@ -1,0 +1,55 @@
+/* 디자인 변수를 정의합니다. */
+:root {
+  /* Font */
+  --font-family-base: 'Pretendard', sans-serif;
+  --font-title: 2.5rem;
+  --font-title-sm: 2rem;
+  --font-title-xs: 1.5rem;
+  --font-content: 1.5rem;
+  --font-content-sm: 1rem;
+  --font-label: 1.125rem;
+
+  /* Color - Primary */
+  --color-primary-100: #3692ff;
+
+  /* Color -Secondary */
+
+  --color-secondary-50: #fcfcfc;
+  --color-secondary-100: #e6f2ff;
+  --color-secondary-200: #cfe5ff;
+
+  /* Color -Neutral */
+  --color-neutral-50: #f9fafb;
+  --color-neutral-100: #f3f4f6;
+  --color-neutral-200: #e5e7eb;
+  --color-neutral-400: #9ca3af;
+  --color-neutral-500: #6b7280;
+  --color-neutral-600: #4b5563;
+  --color-neutral-700: #374151;
+  --color-neutral-800: #1f2937;
+  --color-neutral-900: #111827;
+
+  /* Color- Error */
+  --color-error: red;
+
+  /* Spacing */
+  --spacing-xs: 1rem;
+  --spacing-sm: 1.125rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2.5rem;
+  --spacing-xl: 8rem;
+
+  /* Layout */
+  --container-max-width: 1920px;
+  --container-padding: 200px;
+  --container-padding-tablet: 104px;
+  --container-top-margin: 231px;
+  --container-top-margin-sm: 80px;
+  --auth-container-max-width: 640px;
+  --auth-container-max-width-sm: 400px;
+  --tablet-max-width: 1199px;
+  --mobile-max-width: 767px;
+
+  /* Border-radious */
+  --radius-button: 40px;
+}

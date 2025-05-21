@@ -1,0 +1,23 @@
+@import './reset.scss'; // 여러분이 쓰시는 reset 파일
+@import './variables.scss'; // 색상·브레이크포인트·폰트 크기 변수
+@import './mixins.scss'; // 미디어쿼리·유틸 믹스인
+
+/* 글로벌 기본 스타일 */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-family-base);
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+}
+
+/* 공통 유틸리티 클래스  */
+
+.pointer {
+  cursor: pointer;
+}

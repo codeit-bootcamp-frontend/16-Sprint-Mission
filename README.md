@@ -27,6 +27,7 @@
 
 ### 추가 구현사항
 
+- [ ] ESLint, Stylelint, Prettier, Husky 사용
 - [ ] Vite 번들러 기반으로 변경
 - [ ] ts 기반으로 제작
 - [ ] 테스트 코드 제작
