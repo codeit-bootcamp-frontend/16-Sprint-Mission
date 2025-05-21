@@ -1,11 +1,11 @@
 import { useEffect, useState, useCallback } from "react";
 import { getItems } from "../apis/api";
-import styles from "./BestItemList.module.css";
-import ItemCard from "./ItemCard";
+import styles from "./ItemList.module.css";
 import useAsync from "../hooks/useAsync";
-import ItemCardSkeleton from "../ui/Skeletons/ItemCardSkeleton";
+import ItemListContent from "./ItemListContent";
 
 const ORDER_BY = "favorite";
+const LIST_TYPE = "best";
 
 const BestItemList = ({ pageSize, title }) => {
   const [items, setItems] = useState([]);
@@ -29,34 +29,13 @@ const BestItemList = ({ pageSize, title }) => {
   return (
     <div className={styles["item-list-area"]}>
       <h4 className={styles["item-list-title"]}>{title}</h4>
-      {!isLoading && loadingError && <p>상품 목록을 가져오지 못했습니다.</p>}
-      {!loadingError && (
-        <ul className={`${styles["item-list-ul"]}`}>
-          {isLoading
-            ? Array.from({ length: pageSize }).map((_, index) => (
-                <li key={index} className={styles["item-list"]}>
-                  <ItemCardSkeleton />
-                </li>
-              ))
-            : items.slice(0, pageSize).map((item) => {
-                const { id, images, description, name, price, favoriteCount } =
-                  item;
-                return (
-                  <li key={id} className={styles["item-list"]}>
-                    <ItemCard
-                      key={id}
-                      imgSrc={images}
-                      description={description}
-                      name={name}
-                      price={price}
-                      likes={favoriteCount}
-                      loading="eager"
-                    />
-                  </li>
-                );
-              })}
-        </ul>
-      )}
+      <ItemListContent
+        isLoading={isLoading}
+        isError={loadingError}
+        items={items}
+        pageSize={pageSize}
+        listType={LIST_TYPE}
+      />
     </div>
   );
 };

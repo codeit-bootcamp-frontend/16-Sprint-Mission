@@ -2,13 +2,12 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
 import { getItems } from "../apis/api";
 import styles from "./ItemList.module.css";
-import ItemCard from "./ItemCard";
 import Button from "../ui/Button";
 import Dropdown from "../ui/Dropdown/Dropdown";
 import InputSearch from "../ui/InputSearch";
 import Pagination from "./Pagination";
 import useAsync from "../hooks/useAsync";
-import ItemCardSkeleton from "../ui/Skeletons/ItemCardSkeleton";
+import ItemListContent from "./ItemListContent";
 
 const DEFAULT_PAGE_SIZE = 10;
 const PAGINATION_SIZE = 5;
@@ -78,48 +77,19 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
           iconType="orderIcon"
         />
       </div>
-      {!isLoading && loadingError && <p>상품 목록을 가져오지 못했습니다.</p>}
-      {!loadingError && (
-        <>
-          <ul className={styles["item-list-ul"]}>
-            {isLoading
-              ? Array.from({ length: pageSize }).map((_, index) => (
-                  <li key={index} className={styles["item-list"]}>
-                    <ItemCardSkeleton />
-                  </li>
-                ))
-              : items.map((item) => {
-                  const {
-                    id,
-                    images,
-                    description,
-                    name,
-                    price,
-                    favoriteCount,
-                  } = item;
-                  return (
-                    <li key={id} className={styles["item-list"]}>
-                      <ItemCard
-                        key={id}
-                        imgSrc={images}
-                        description={description}
-                        name={name}
-                        price={price}
-                        likes={favoriteCount}
-                      />
-                    </li>
-                  );
-                })}
-          </ul>
-          <Pagination
-            handleLoad={handleLoad}
-            pageSize={pageSize}
-            paginationSize={PAGINATION_SIZE}
-            totalPage={totalPage}
-            onCurrentPage={handlePaginationClick}
-          />
-        </>
-      )}
+      <ItemListContent
+        isLoading={isLoading}
+        isError={loadingError}
+        items={items}
+        pageSize={pageSize}
+      />
+      <Pagination
+        handleLoad={handleLoad}
+        pageSize={pageSize}
+        paginationSize={PAGINATION_SIZE}
+        totalPage={totalPage}
+        onCurrentPage={handlePaginationClick}
+      />
     </div>
   );
 };

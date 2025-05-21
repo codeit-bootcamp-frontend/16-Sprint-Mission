@@ -1,0 +1,42 @@
+import styles from "./ItemList.module.css";
+import ItemCard from "./ItemCard";
+import ItemCardSkeleton from "../ui/Skeletons/ItemCardSkeleton";
+
+const ItemListContent = ({ isLoading, isError, items, pageSize, listType }) => {
+  if (isLoading) {
+    return (
+      <ul className={`${styles[`item-list-ul`]} ${styles[listType]}`}>
+        {Array.from({ length: pageSize }).map((_, index) => (
+          <li key={index} className={styles["item-list"]}>
+            <ItemCardSkeleton />
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
+  if (isError) return <p>상품 목록을 가져오지 못했습니다.</p>;
+
+  return (
+    <ul className={`${styles[`item-list-ul`]} ${styles[listType]}`}>
+      {items.slice(0, pageSize).map((item) => {
+        const { id, images, description, name, price, favoriteCount } = item;
+        return (
+          <li key={id} className={styles["item-list"]}>
+            <ItemCard
+              key={id}
+              imgSrc={images}
+              description={description}
+              name={name}
+              price={price}
+              likes={favoriteCount}
+              loading="eager"
+            />
+          </li>
+        );
+      })}
+    </ul>
+  );
+};
+
+export default ItemListContent;
