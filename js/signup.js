@@ -1,3 +1,5 @@
+import { validateInput } from './ValidationRules.js'
+
 document.addEventListener('DOMContentLoaded', function () {
   const emailInput = document.getElementById('email')
   const nicknameInput = document.getElementById('nickname')
@@ -8,55 +10,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // 이메일 부분
   emailInput.addEventListener('blur', () => {
-    const value = emailInput.value.trim()
-    const errorMsg = getOrCreateErrorElement(emailInput)
-
-    if (!value) {
-      showError(emailInput, errorMsg, '이메일을 입력해주세요.')
-    } else if (!isValidEmail(value)) {
-      showError(emailInput, errorMsg, '잘못된 이메일 형식입니다.')
-    } else {
-      clearError(emailInput, errorMsg)
-    }
-
+    validateInput(
+      emailInput,
+      'email',
+      validateErrorMessage,
+      showError,
+      clearError
+    )
     updateButtonState()
   })
 
   // 닉네임 부분
-  nicknameInput.addEventListener('blur', () => {
-    const value = nicknameInput.value.trim()
-    const errorMsg = getOrCreateErrorElement(nicknameInput)
-
-    if (!value) {
-      showError(nicknameInput, errorMsg, '닉네임을 입력해주세요.')
-    } else {
-      clearError(nicknameInput, errorMsg)
-    }
-
-    updateButtonState()
-  })
+  nicknameInput.addEventListener('blur', () =>
+    validateInput(
+      nicknameInput,
+      'nickname',
+      validateErrorMessage,
+      showError,
+      clearError
+    )
+  )
 
   // 비밀번호 부분
-  passwordInput.addEventListener('blur', () => {
-    const value = passwordInput.value.trim()
-    const errorMsg = getOrCreateErrorElement(passwordInput)
+  passwordInput.addEventListener('blur', () =>
+    validateInput(
+      passwordInput,
+      'password',
+      validateErrorMessage,
+      showError,
+      clearError
+    )
+  )
 
-    if (!value) {
-      showError(passwordInput, errorMsg, '비밀번호를 입력해주세요.')
-    } else if (value.length < 8) {
-      showError(passwordInput, errorMsg, '비밀번호를 8자 이상 입력해주세요.')
-    } else {
-      clearError(passwordInput, errorMsg)
-    }
-
-    updateButtonState()
-  })
-
-  // 비밀번호 확인 부분분
+  // 비밀번호 확인 부분
   passwordCheckInput.addEventListener('blur', () => {
     const pwValue = passwordInput.value.trim()
     const checkValue = passwordCheckInput.value.trim()
-    const errorMsg = getOrCreateErrorElement(passwordCheckInput)
+    const errorMsg = validateErrorMessage(passwordCheckInput)
 
     if (pwValue !== checkValue) {
       showError(passwordCheckInput, errorMsg, '비밀번호가 일치하지 않습니다.')
@@ -78,13 +68,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const passwordValue = passwordInput.value.trim()
     const passwordCheckValue = passwordCheckInput.value.trim()
 
-    const hasEmailError = getOrCreateErrorElement(emailInput).textContent !== ''
+    const hasEmailError = validateErrorMessage(emailInput).textContent !== ''
     const hasNicknameError =
-      getOrCreateErrorElement(nicknameInput).textContent !== ''
+      validateErrorMessage(nicknameInput).textContent !== ''
     const hasPasswordError =
-      getOrCreateErrorElement(passwordInput).textContent !== ''
+      validateErrorMessage(passwordInput).textContent !== ''
     const hasPasswordCheckError =
-      getOrCreateErrorElement(passwordCheckInput).textContent !== ''
+      validateErrorMessage(passwordCheckInput).textContent !== ''
 
     const isValid =
       emailValue &&
@@ -132,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
     errorElement.style.display = 'none'
   }
 
-  function getOrCreateErrorElement(input) {
+  function validateErrorMessage(input) {
     let wrapper = input.closest('.login_password_wrap') || input
     let next = wrapper.nextElementSibling
     if (!next || !next.classList.contains('error-message')) {
