@@ -3,22 +3,16 @@ import styles from "./ItemCard.module.css";
 import likeImg from "../assets/images/ic-like.svg";
 import pandaLogoImg from "../assets/images/logo-panda.svg";
 
-const ItemCard = ({
-  imgSrc,
-  description,
-  name,
-  price,
-  likes,
-  type,
-  loading = "lazy",
-}) => {
+const ItemCard = ({ data, loading = "lazy" }) => {
+  const { images, name, description, price, favoriteCount } = data;
+
   return (
     <Link to="/items">
       <span className={styles["img-wrap"]}>
         <img
-          src={imgSrc}
+          src={images}
           alt={name}
-          className={`${styles["item-img"]} ${styles[type]}`}
+          className={styles["item-img"]}
           onError={(e) => {
             e.currentTarget.src = pandaLogoImg;
           }}
@@ -34,7 +28,7 @@ const ItemCard = ({
         <span className={styles["btn-like-ico"]}>
           <img className={styles["ico-img"]} src={likeImg} alt="좋아요" />
         </span>
-        <span className={styles["btn-like-count"]}>{likes}</span>
+        <span className={styles["btn-like-count"]}>{favoriteCount}</span>
       </button>
     </Link>
   );

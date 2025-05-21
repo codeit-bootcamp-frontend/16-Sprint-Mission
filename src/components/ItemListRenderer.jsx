@@ -21,19 +21,10 @@ const ItemListContent = ({ isLoading, isError, items, pageSize, listType }) => {
 
   return (
     <ul className={`${styles[`item-list-ul`]} ${styles[listType]}`}>
-      {items.slice(0, pageSize).map((item) => {
-        const { id, images, description, name, price, favoriteCount } = item;
+      {items.slice(0, pageSize).map(({ id, ...itemData }) => {
         return (
           <li key={id} className={styles["item-list"]}>
-            <ItemCard
-              key={id}
-              imgSrc={images}
-              description={description}
-              name={name}
-              price={price}
-              likes={favoriteCount}
-              loading="eager"
-            />
+            <ItemCard key={id} data={itemData} loading="eager" />
           </li>
         );
       })}
