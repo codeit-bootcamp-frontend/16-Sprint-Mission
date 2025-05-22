@@ -2,67 +2,59 @@ const emailInput = document.querySelector("#email");
 const emailInputMsg = document.querySelector(".email__msg");
 const passwordInput = document.querySelector("#password");
 const passwordInputMsg = document.querySelector(".password__msg");
-const passwordIcon = document.querySelectorAll(".visibility__icon");
+const passwordIcons = document.querySelectorAll(".visibility__icon");
+const nicknameInput = document.querySelector("#nickname");
+const nicknameInputMsg = document.querySelector(".nickname__msg");
+const passwordCheckInput = document.querySelector("#passwordCheck");
+const passwordCheckMsg = document.querySelector(".password__check__msg");
 const button = document.querySelector(".btn");
 
-/* 이메일 유효성 체크 */
-const emailValidate = () => {
-  const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
-  let isValid = false;
+const validators = {
+  email: (value) => {
+    const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+    if (!value) return { isValid: false, message: "이메일을 입력해주세요" };
+    if (!regex.test(value)) {
+      return { isValid: false, message: "" };
+    }
+    return { isValid: true, message: "잘못된 이메일 형식입니다" };
+  },
+  password: (value) => {
+    if (!value) return { isValid: false, message: "비밀번호를 입력해주세요" };
+    if (value.length < 8)
+      return { isValid: false, message: "비밀번호를 8자 이상 입력해주세요" };
+    return { isValid: true, message: "" };
+  },
+  passwordCheck: (value) => {
+    if (!passwordInput.value)
+      return { isValid: false, message: "비밀번호를 먼저 입력해주세요" };
+    if (value.length < 8)
+      return { isValid: false, message: "비밀번호를 8자 이상 입력해주세요" };
+    if (value !== passwordInput.value)
+      return { isValid: false, message: "비밀번호가 일치하지 않습니다" };
+    return { isValid: true, message: "" };
+  },
+  nickname: (value) => {
+    if (!value) return { isValid: false, message: "닉네임을 입력해주세요" };
+    return { isValid: true, message: "" };
+  },
+};
 
-  if (!emailInput.value) {
-    emailInputMsg.innerText = "이메일을 입력해주세요";
-    isValid = false;
-  } else if (!regex.test(emailInput.value)) {
-    emailInputMsg.innerText = "잘못된 이메일 형식입니다 ";
-    isValid = false;
+/* 공통 유효성 체크 */
+const validateInput = (inputElement, inputMsgElement, validatorType) => {
+  const { isValid, message } = validators[validatorType](inputElement.value);
+  inputMsgElement.innerText = message;
+
+  inputElement.classList.remove("success", "error");
+  inputMsgElement.classList.remove("error");
+
+  if (isValid) {
+    inputElement.classList.add("success");
   } else {
-    emailInputMsg.innerText = "";
-    isValid = true;
+    inputElement.classList.add("error");
+    inputMsgElement.classList.add("error");
   }
+
   return isValid;
-};
-
-/* 이메일 인풋, 에러 메시지 클래스 변경 */
-const updateEmailClass = (result) => {
-  emailInput.classList.remove("success", "error");
-  emailInputMsg.classList.remove("error");
-
-  if (result) {
-    emailInput.classList.add("success");
-  } else {
-    emailInput.classList.add("error");
-    emailInputMsg.classList.add("error");
-  }
-};
-
-/* 비밀번호 유효성 체크 */
-const passwordValidate = () => {
-  let isValid = false;
-  if (!passwordInput.value) {
-    passwordInputMsg.innerText = "비밀번호를 입력해주세요";
-    isValid = false;
-  } else if (passwordInput.value.length < 8) {
-    passwordInputMsg.innerText = "비밀번호를 8자 이상 입력해주세요";
-    isValid = false;
-  } else {
-    passwordInputMsg.innerText = "";
-    isValid = true;
-  }
-  return isValid;
-};
-
-/* 비밀번호 인풋, 에러 메시지 클래스 변경 */
-const updatePasswordClass = (result) => {
-  passwordInput.classList.remove("success", "error");
-  passwordInputMsg.classList.remove("success", "error");
-
-  if (result) {
-    passwordInput.classList.add("success");
-  } else {
-    passwordInput.classList.add("error");
-    passwordInputMsg.classList.add("error");
-  }
 };
 
 export default {
@@ -70,10 +62,11 @@ export default {
   emailInputMsg,
   passwordInput,
   passwordInputMsg,
-  passwordIcon,
+  passwordIcons,
+  nicknameInput,
+  nicknameInputMsg,
+  passwordCheckInput,
+  passwordCheckMsg,
   button,
-  emailValidate,
-  updateEmailClass,
-  passwordValidate,
-  updatePasswordClass,
+  validateInput,
 };

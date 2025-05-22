@@ -2,19 +2,24 @@ import common from "./common.js";
 
 const {
   emailInput,
+  emailInputMsg,
   passwordInput,
-  passwordIcon,
+  passwordInputMsg,
+  passwordIcons,
   button,
-  emailValidate,
-  updateEmailClass,
-  passwordValidate,
-  updatePasswordClass,
+  validateInput,
 } = common;
+
+const inputs = [emailInput, passwordInput];
 
 /* 로그인 버튼 유효성 체크 */
 const loginButtonValidate = () => {
-  const isEmailValid = emailValidate();
-  const isPasswordValid = passwordValidate();
+  const isEmailValid = validateInput(emailInput, emailInputMsg, "email");
+  const isPasswordValid = validateInput(
+    passwordInput,
+    passwordInputMsg,
+    "password"
+  );
   const result = isEmailValid && isPasswordValid;
   if (result) {
     button.disabled = false;
@@ -24,17 +29,13 @@ const loginButtonValidate = () => {
   return result;
 };
 
-emailInput.addEventListener("focusout", () => {
-  updateEmailClass(emailValidate());
-  loginButtonValidate();
+inputs.forEach((input) => {
+  input.addEventListener("focusout", () => {
+    loginButtonValidate();
+  });
 });
 
-passwordInput.addEventListener("focusout", () => {
-  updatePasswordClass(passwordValidate());
-  loginButtonValidate();
-});
-
-passwordIcon.forEach((icon) => {
+passwordIcons.forEach((icon) => {
   icon.addEventListener("click", () => {
     let passwordInput = icon.previousElementSibling;
     let isShowPassword = passwordInput.type === "text";
@@ -52,8 +53,5 @@ button.addEventListener("click", (event) => {
   event.preventDefault();
   if (loginButtonValidate()) {
     window.location.href = "/items.html";
-  } else {
-    updateEmailClass(emailValidate());
-    updatePasswordClass(passwordValidate());
   }
 });
