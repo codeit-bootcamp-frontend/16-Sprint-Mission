@@ -1,0 +1,13 @@
+@use "../../styles/mixin" as mixin;
+
+.signupPage {
+  padding: 60px 0;
+
+  @include mixin.tablet {
+    padding: 48px 0;
+  }
+
+  @include mixin.mobile {
+    padding: 24px 0;
+  }
+}

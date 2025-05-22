@@ -1,3 +1,5 @@
+@use "variables" as var;
+
 /* ====== reset ====== */
 * {
   margin: 0;
@@ -35,6 +37,10 @@ ol {
 input {
   border: none;
   outline: none;
+
+  &::placeholder {
+    color: var.$gray400;
+  }
 }
 
 button {
