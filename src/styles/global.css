@@ -1,0 +1,33 @@
+:root {
+  --primary-color: #3692ff;
+  --gray: #4b5563;
+  --gray-500: #6b7280;
+  --dark: #111827;
+  --dark-800: #1f2937;
+  --white: #ffffff;
+
+  /* Font Sizes */
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 40px;
+}
+
+header {
+  background-color: var(--white);
+  width: 100%;
+  height: 70px;
+  padding: 0 200px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+}
