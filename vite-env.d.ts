@@ -4,3 +4,13 @@ declare module '*.module.scss' {
   const classes: { [key: string]: string };
   export default classes;
 }
+
+//이미지 파일
+declare module '*.png' {
+  const src: string;
+  export default src;
+}
+declare module '*.jpg' {
+  const src: string;
+  export default src;
+}
