@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { formatPriceKRW } from "../../../utils/formatPrice";
+import { formatPriceKRW } from "../../../utils/format";
 import styles from "./ItemCard.module.css";
 import ItemImageViewer from "../ItemImageViewer/ItemImageViewer";
 

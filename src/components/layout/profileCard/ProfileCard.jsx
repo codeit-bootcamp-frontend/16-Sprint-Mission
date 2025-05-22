@@ -1,3 +1,4 @@
+import { formatTimeStamp } from "../../../utils/format";
 import styles from "./ProfileCard.module.css";
 
 const PROFILE_IMAGE_DEFAULT = "/images/icon_profile.png";
@@ -22,7 +23,7 @@ const ProfileCard = ({
       />
       <div className={styles["profile-context"]}>
         <span className={styles["profile-name"]}>{nickname}</span>
-        <span className={styles["time-stamp"]}>{timeStamp}</span>
+        <span className={styles["time-stamp"]}>{formatTimeStamp(timeStamp)}</span>
       </div>
     </div>
   );

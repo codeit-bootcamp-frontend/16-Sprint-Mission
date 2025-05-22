@@ -30,7 +30,7 @@ export const getItemDetails = async (id) => {
 }
 
 export const getItemComments = async (id) => {
-	const response = await fetch(`${BASE_URL}/products/${id}/comments?limit=10`);
+	const response = await fetch(`${BASE_URL}/products/${id}/comments?limit=100`);
 	if (!response.ok) {
     throw new Error('댓글을 불러오지 못했습니다.');
   }

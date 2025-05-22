@@ -1,6 +1,6 @@
 import styles from "./ItemDetailsSection.module.css";
 import { getItemDetails } from "../../../utils/api";
-import { formatPriceKRW } from "../../../utils/formatPrice";
+import { formatPriceKRW } from "../../../utils/format";
 import ItemImageViewer from "../../../components/common/ItemImageViewer/ItemImageViewer";
 import { useAsync } from "../../../hooks/useAsync";
 import ItemTitleHeader from "../../../components/ItemDetails/ItemTitleHeader";

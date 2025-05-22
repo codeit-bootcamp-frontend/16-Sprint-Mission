@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./AddItemPage.module.css";
-import { formatNumber } from "../../utils/formatPrice";
+import { formatNumber } from "../../utils/format";
 import Nav from "../../components/layout/Nav/Nav";
 
 const AddItemPage = () => {
