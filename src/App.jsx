@@ -1,27 +1,29 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home/Home';
-import Login from './pages/Auth/Login';
-import Signup from './pages/Auth/Signup';
-import Items from './pages/Items/Items';
-import Privacy from './pages/Privacy/Privacy';
-import Faq from './pages/Faq/Faq';
-import AddItem from './pages/AddItem/AddItem';
-import { LoginStateProvider } from './contexts/LoginStateContext';
-import Board from './pages/Board/Board';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { LoginStateProvider } from "./contexts/LoginStateContext";
+import HomePage from "./pages/HomePage/HomePage";
+import LoginPage from "./pages/AuthPage/LoginPage";
+import SignupPage from "./pages/AuthPage/SignupPage";
+import ItemsPage from "./pages/ItemsPage/ItemsPage";
+import AddItemPage from "./pages/AddItemPage/AddItemPage";
+import PrivacyPage from "./pages/PrivacyPage/PrivacyPage";
+import FaqPage from "./pages/FaqPage/FaqPage";
+import BoardPage from "./pages/BoardPage/BoardPage";
 
 function App() {
   return (
     <BrowserRouter>
       <LoginStateProvider>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/items" element={<Items />} />
-          <Route path="/board" element={<Board />} />
-          <Route path="/additem" element={<AddItem />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/faq" element={<Faq />} />
+          <Route path="/">
+            <Route index element={<HomePage />} />
+            <Route path="items" element={<ItemsPage />} />
+            <Route path="board" element={<BoardPage />} />
+            <Route path="additem" element={<AddItemPage />} />
+            <Route path="privacy" element={<PrivacyPage />} />
+            <Route path="faq" element={<FaqPage />} />
+          </Route>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
         </Routes>
       </LoginStateProvider>
     </BrowserRouter>
