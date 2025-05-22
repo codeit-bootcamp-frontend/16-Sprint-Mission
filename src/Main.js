@@ -1,7 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
 import ItemsPage from "./pages/ItemsPage";
-import "./css/reset.css";
+import "./css/base/reset.css";
+import "./css/base/variables.css";
+import "./css/base/common.css";
 
 function Main() {
   return (
