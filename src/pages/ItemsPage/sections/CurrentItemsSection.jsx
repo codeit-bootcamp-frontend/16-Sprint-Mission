@@ -1,11 +1,11 @@
 import { useMemo, useState } from "react";
-import { useAsync } from "../hooks/useAsync";
-import { getItems } from "../utils/api";
-import ItemsContainer from "./ItemsContainer";
+import { useAsync } from "../../../hooks/useAsync";
+import { getItems } from "../../../utils/api";
+import ItemsContainer from "../../../components/ItemsContainer";
 import styles from "./ItemsSection.module.css";
-import Pagination from "./common/Pagination/Pagination";
-import ItemsSearchHeader from "./ItemsSearchHeader";
-import { usePaginationByOffset } from "../hooks/usePaginationByOffset";
+import Pagination from "../../../components/common/Pagination/Pagination";
+import ItemsSearchHeader from "../../../components/ItemsSearchHeader";
+import { usePaginationByOffset } from "../../../hooks/usePaginationByOffset";
 
 const VISIBLE_PAGE_LENGTH = 5;
 const LIST_TYPE = "current";
