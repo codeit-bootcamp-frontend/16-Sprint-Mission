@@ -2,12 +2,11 @@ import styles from "./DropdownBtn.module.css";
 import arrowDownImg from "../../assets/images/ic_arrow_down.png";
 import sortImg from "../../assets/images/ic_sort.svg";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
-
-const MOBILE_BREAKPOINT = 600;
+import { BREAKPOINTS } from "../../constants/responsive";
 
 const DropdownBtn = ({ selected, onClickDropdownBtn, isActive, iconType }) => {
   const { width } = useWindowDimensions();
-  const isMobile = width < MOBILE_BREAKPOINT;
+  const isMobile = width < BREAKPOINTS.tablet;
 
   return (
     <button

@@ -3,12 +3,12 @@ import styles from "./Pagination.module.css";
 import arrowLeft from "../../assets/images/ic_arrow_sm_left.svg";
 import arrowRight from "../../assets/images/ic_arrow_sm_right.svg";
 import usePagination from "../../hooks/usePagination";
+import { DEFAULT_ITEM_PAGE_SIZE } from "../../constants/pagesize.js";
 
 const PAGINATION_SIZE = 5;
-const DEFAULT_PAGE_SIZE = 10;
 
 const Pagination = ({
-  pageSize = DEFAULT_PAGE_SIZE,
+  pageSize = DEFAULT_ITEM_PAGE_SIZE,
   totalCount,
   paginationSize = PAGINATION_SIZE,
   handleLoad,

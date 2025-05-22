@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { getItems } from "../../apis/api";
+import { getItems } from "../../services/api";
 import styles from "./ItemList.module.css";
 import useAsync from "../../hooks/useAsync";
 import ItemListResults from "./ItemListResults";

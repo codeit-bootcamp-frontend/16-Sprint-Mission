@@ -1,9 +1,12 @@
 import ItemList from "../components/ItemList";
 import BestItemList from "../components/ItemList/BestItemList";
 import useWindowDimensions from "../hooks/useWindowDimensions";
-
-const DESKTOP = 1200;
-const TABLET = 600;
+import { BEST_ITEMS_TITLE, ALL_ITEMS_TITLE } from "../constants/titles";
+import {
+  BREAKPOINTS,
+  BEST_ITEMS_PAGESIZE,
+  ALL_ITEMS_PAGESIZE,
+} from "../constants/responsive";
 
 const ItemsPage = () => {
   const { width } = useWindowDimensions();
@@ -11,12 +14,24 @@ const ItemsPage = () => {
   return (
     <section className="page-content">
       <BestItemList
-        title="베스트 상품"
-        pageSize={width >= DESKTOP ? 4 : width >= TABLET ? 2 : 1}
+        title={BEST_ITEMS_TITLE}
+        pageSize={
+          width >= BREAKPOINTS.desktop
+            ? BEST_ITEMS_PAGESIZE.desktop
+            : width >= BREAKPOINTS.tablet
+            ? BEST_ITEMS_PAGESIZE.tablet
+            : BEST_ITEMS_PAGESIZE.mobile
+        }
       />
       <ItemList
-        title="전체 상품"
-        pageSize={width >= DESKTOP ? 10 : width >= TABLET ? 6 : 4}
+        title={ALL_ITEMS_TITLE}
+        pageSize={
+          width >= BREAKPOINTS.desktop
+            ? ALL_ITEMS_PAGESIZE.desktop
+            : width >= BREAKPOINTS.tablet
+            ? ALL_ITEMS_PAGESIZE.tablet
+            : ALL_ITEMS_PAGESIZE.mobile
+        }
       />
     </section>
   );

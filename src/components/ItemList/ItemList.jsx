@@ -8,16 +8,13 @@ import InputSearch from "../../ui/Input/InputSearch";
 import Pagination from "../Pagination";
 import useAsync from "../../hooks/useAsync";
 import ItemListResults from "./ItemListResults";
+import { DEFAULT_ITEM_PAGE_SIZE } from "../../constants/pagesize";
+import { ITEMS_ORDER_MAP } from "../../constants/sortOptions";
 
-const DEFAULT_PAGE_SIZE = 10;
-const ORDER_MAP = {
-  최신순: "recent",
-  좋아요순: "favorite",
-};
-const DEFAULT_ORDER = Object.keys(ORDER_MAP)[0];
-const dropdownMenuItems = Object.keys(ORDER_MAP);
+const DEFAULT_ORDER = Object.keys(ITEMS_ORDER_MAP)[0];
+const dropdownMenuItems = Object.keys(ITEMS_ORDER_MAP);
 
-const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
+const ItemList = ({ title, pageSize = DEFAULT_ITEM_PAGE_SIZE }) => {
   const [items, setItems] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
   const [order, setOrder] = useState(DEFAULT_ORDER);
@@ -49,7 +46,7 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
   useEffect(() => {
     handleLoad({
       pageSize,
-      orderBy: ORDER_MAP[order],
+      orderBy: ITEMS_ORDER_MAP[order],
       keyword,
     });
   }, [pageSize, order, keyword, handleLoad]);
@@ -91,7 +88,7 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
         pageSize={pageSize}
         totalCount={totalCount}
         handleLoad={handleLoad}
-        orderStatus={ORDER_MAP[order]}
+        orderStatus={ITEMS_ORDER_MAP[order]}
         searchKeyword={keyword}
       />
     </div>
