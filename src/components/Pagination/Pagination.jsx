@@ -1,7 +1,7 @@
-import { useState } from "react";
 import styles from "./Pagination.module.css";
 import arrowLeft from "../../assets/images/ic_arrow_sm_left.svg";
 import arrowRight from "../../assets/images/ic_arrow_sm_right.svg";
+import usePagination from "../../hooks/usePagination";
 
 const PAGINATION_SIZE = 5;
 
@@ -11,70 +11,21 @@ const Pagination = ({
   paginationSize = PAGINATION_SIZE,
   handleLoad,
 }) => {
-  const [hasPrev, setHasPrev] = useState(false);
-  const [hasNext, setHasNext] = useState(true);
-  const [currentPages, setCurrentPages] = useState(
-    Array.from({ length: paginationSize }, (_, i) => i + 1)
-  );
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPage = Math.floor(totalCount / pageSize);
-
-  const handlePageNumClick = (e) => {
-    const selectedPage = +e.target.textContent;
-    setCurrentPage(selectedPage);
-    handleLoad({
-      page: selectedPage,
-      pageSize,
-    });
-  };
-
-  const handlePrevPaginationClick = () => {
-    const currentFirstPage = currentPages[0];
-    const prevFirstPage = currentFirstPage - paginationSize;
-    const prevLastPage = prevFirstPage + paginationSize - 1;
-
-    let prevPages = Array.from(
-      { length: paginationSize },
-      (_, i) => prevFirstPage + i
-    );
-
-    setHasPrev(true);
-    setCurrentPages(prevPages);
-    handleLoad({
-      page: prevLastPage,
-      pageSize,
-    });
-    setCurrentPage(prevLastPage);
-
-    if (prevFirstPage === 1) setHasPrev(false);
-
-    setHasNext(true);
-  };
-
-  const handleNextPaginationClick = () => {
-    const paginationLength = currentPages.length;
-    const currentLastPage = currentPages[paginationLength - 1];
-    const nextFirstPage = currentLastPage + 1;
-    let nextPages = Array.from(
-      { length: paginationSize },
-      (_, i) => nextFirstPage + i
-    ).filter((page) => page <= totalPage);
-
-    setHasPrev(true);
-    setCurrentPages(nextPages);
-    handleLoad({
-      page: nextFirstPage,
-      pageSize,
-    });
-    setCurrentPage(nextFirstPage);
-
-    if (nextPages.includes(totalPage)) setHasNext(false);
-  };
+  const { pageData, pageActions } = usePagination({
+    totalCount,
+    pageSize,
+    paginationSize,
+    onPageChange: (page) => {
+      handleLoad({ page, pageSize });
+    },
+  });
+  const { currentPage, currentPages, hasPrev, hasNext } = pageData;
+  const { goToPage, goPrevPages, goNextPages } = pageActions;
 
   return (
     <div className={styles.pagination}>
       <button
-        onClick={handlePrevPaginationClick}
+        onClick={goPrevPages}
         className={styles["pagination-btn"]}
         disabled={!hasPrev}
       >
@@ -83,16 +34,17 @@ const Pagination = ({
       {currentPages.map((page) => (
         <button
           key={page}
-          onClick={handlePageNumClick}
-          className={`${styles["pagination-btn"]} ${
-            page === currentPage ? styles.active : ""
-          }`}
+          onClick={() => goToPage(page)}
+          className={`
+            ${styles["pagination-btn"]} 
+            ${page === currentPage ? styles.active : ""}
+          `}
         >
           {page}
         </button>
       ))}
       <button
-        onClick={handleNextPaginationClick}
+        onClick={goNextPages}
         className={styles["pagination-btn"]}
         disabled={!hasNext}
       >
