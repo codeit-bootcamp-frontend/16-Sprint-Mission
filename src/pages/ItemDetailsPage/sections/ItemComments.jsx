@@ -4,6 +4,7 @@ import { getItemComments } from "../../../utils/api";
 import CommentCard from "../../../components/CommentCard";
 import { useNavigate } from "react-router-dom";
 import CommentRequireForm from "../../../components/CommentRequireForm";
+import CommentsContainer from "../../../components/CommentsContainer";
 
 const ItemComments = ({ itemId }) => {
   const [comments, setComments] = useState([]);
@@ -31,11 +32,7 @@ const ItemComments = ({ itemId }) => {
     <section className={styles["section"]}>
       <CommentRequireForm />
       {comments.length > 0 ? (
-        <div className={styles["comment-container"]}>
-          {comments.map((comment) => {
-            return <CommentCard key={comment.id} comment={comment} />;
-          })}
-        </div>
+        <CommentsContainer comments={comments} />
       ) : (
         <div className={styles["comment-none-container"]}>
           <img src={"/images/img_comment_none.png"} width={196} />

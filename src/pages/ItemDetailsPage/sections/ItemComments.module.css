@@ -5,13 +5,6 @@
 	font-family: 'pretendard';
 }
 
-.comment-container {
-	display: flex;
-	flex-direction: column;
-	gap: var(--comment-container-gap);
-	margin-bottom: var(--comment-container-margin-bottom);
-}
-
 .comment-none-container {
 	display: flex;
 	flex-direction: column;
