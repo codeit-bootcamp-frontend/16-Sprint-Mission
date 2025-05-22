@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router";
 import styles from "./ItemsSearchHeader.module.css";
 import { useSearchQueryString } from "../hooks/useSearchQueryString";
-import SortDropDown from "./SortDropdown";
-import SearchInput from "./SearchInput";
+import SelectDropDown from "./common/SelectDropdown/SelectDropdown";
+import SearchInput from "./common/SearchInput/SearchInput";
 import { useLoginContext } from "../contexts/LoginContext";
 
 const ItemsSearchHeader = ({ setOrder, setOffset, setKeyword }) => {
@@ -42,7 +42,7 @@ const ItemsSearchHeader = ({ setOrder, setOffset, setKeyword }) => {
         onInputChange={handleSearchInputChange}
         onInputEnterPress={handleSearchInputEnterPress}
       />
-      <SortDropDown
+      <SelectDropDown
         setKey={setOrder}
         dropdownItems={[
           {

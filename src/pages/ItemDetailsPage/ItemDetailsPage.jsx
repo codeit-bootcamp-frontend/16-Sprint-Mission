@@ -1,8 +1,9 @@
 import styles from "./ItemDetailsPage.module.css";
-import Nav from "../../components/Nav";
 import { useParams } from "react-router";
-import ItemDetails from "../../components/ItemDetails";
-import ItemComments from "../../components/ItemComments";
+
+import Nav from "../../components/layout/Nav/Nav";
+import ItemDetailsSection from "./sections/ItemDetailsSection";
+import ItemComments from "./sections/ItemComments";
 
 const ItemDetailsPage = () => {
   const { itemId } = useParams();
@@ -11,7 +12,7 @@ const ItemDetailsPage = () => {
     <>
       <Nav />
       <main className={styles["page"]}>
-        <ItemDetails itemId={itemId} />
+        <ItemDetailsSection itemId={itemId} />
         <ItemComments itemId={itemId} />
       </main>
     </>

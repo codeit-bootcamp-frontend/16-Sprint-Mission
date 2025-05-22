@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./Field.module.css";
+import styles from "./AuthField.module.css";
 
 const PASSWORD_ICON_CONFIG = {
   false: {
@@ -18,7 +18,7 @@ const INPUT_CONTAINER_CLASSNAME = {
   true: "valid",
 };
 
-const Field = ({
+const AuthField = ({
   fieldConfig,
   value,
   valid,
@@ -62,4 +62,4 @@ const Field = ({
   );
 };
 
-export default Field;
+export default AuthField;

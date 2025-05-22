@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { formatDateKRW } from "../utils/formatPrice";
 import styles from "./CommentCard.module.css";
-import CommentProfile from "./CommentProfile";
+import CommentProfile from "./layout/profileCard/CommentProfile";
 import CommentEditForm from "./CommentEditForm";
 import CommentView from "./CommentView";
 import styled from "styled-components";
@@ -79,10 +79,7 @@ const CommentCard = ({ comment, kebabSelectedId, setKebabSelectedId }) => {
   }, [isKebabSelected]);
 
   return (
-    <CommentContainer
-      className={styles["container"]}
-      $isKebabSelected={isKebabSelected}
-    >
+    <CommentContainer className={styles["container"]} $isKebabSelected={isKebabSelected}>
       {isEditing ? (
         <CommentEditForm
           comment={comment}

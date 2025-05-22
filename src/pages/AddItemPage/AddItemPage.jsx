@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import Nav from "../../components/Nav";
 import styles from "./AddItemPage.module.css";
 import { formatNumber } from "../../utils/formatPrice";
+import Nav from "../../components/layout/Nav/Nav";
 
 const AddItemPage = () => {
   const [preview, setPreview] = useState(null);

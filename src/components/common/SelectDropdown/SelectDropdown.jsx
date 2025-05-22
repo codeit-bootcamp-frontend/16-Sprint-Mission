@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import styles from "./SortDropdown.module.css";
+import styles from "./SelectDropdown.module.css";
 
-const SortDropDown = ({ dropdownItems, setKey }) => {
+const SelectDropDown = ({ dropdownItems, setKey }) => {
   const [isSelected, setIsSelected] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const dropdownButtonRef = useRef();
@@ -67,4 +67,4 @@ const SortDropDown = ({ dropdownItems, setKey }) => {
   );
 };
 
-export default SortDropDown;
+export default SelectDropDown;

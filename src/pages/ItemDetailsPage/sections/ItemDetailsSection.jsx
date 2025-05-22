@@ -1,8 +1,8 @@
-import styles from "./ItemDetails.module.css";
-import { getItemDetails } from "../utils/api";
+import styles from "./ItemDetailsSection.module.css";
+import { getItemDetails } from "../../../utils/api";
 import { useEffect, useState } from "react";
-import { formatDateKRW, formatPriceKRW } from "../utils/formatPrice";
-import KebabButton from "./KebabButton";
+import { formatDateKRW, formatPriceKRW } from "../../../utils/formatPrice";
+import KebabButton from "../../../components/KebabButton";
 
 const INITIAL_DETAILS = {
   id: null,
@@ -21,12 +21,11 @@ const INITIAL_DETAILS = {
 
 const IMAGE_DEFAULT_URL = "/images/img_items_default_md.png";
 
-const ItemDetails = ({ itemId }) => {
+const ItemDetailsSection = ({ itemId }) => {
   const [details, setDetails] = useState(INITIAL_DETAILS);
   const [isImageValid, setIsImageValid] = useState(true);
 
-  const imgSrc =
-    isImageValid && details.images ? details.images : IMAGE_DEFAULT_URL;
+  const imgSrc = isImageValid && details.images ? details.images : IMAGE_DEFAULT_URL;
 
   const loadItemDetails = async () => {
     const result = await getItemDetails(itemId);
@@ -54,22 +53,14 @@ const ItemDetails = ({ itemId }) => {
           <div className={styles["header-container"]}>
             <div className={styles["title-container"]}>
               <h1 className={styles["title"]}>{details.name}</h1>
-              <span className={styles["price"]}>
-                {formatPriceKRW(details.price)}
-              </span>
+              <span className={styles["price"]}>{formatPriceKRW(details.price)}</span>
             </div>
-            <KebabButton
-              id={itemId}
-              onClick={handleKebabClick}
-              kebabRef={null}
-            />
+            <KebabButton id={itemId} onClick={handleKebabClick} kebabRef={null} />
           </div>
           <div className={styles["description-container"]}>
             <div className={styles["subtitle-container"]}>
               <h2 className={styles["subtitle"]}>상품 소개</h2>
-              <span className={styles["description"]}>
-                {details.description}
-              </span>
+              <span className={styles["description"]}>{details.description}</span>
             </div>
             <div className={styles["subtitle-container"]}>
               <h2 className={styles["subtitle"]}>상품 태그</h2>
@@ -91,9 +82,7 @@ const ItemDetails = ({ itemId }) => {
               width={40}
             />
             <div className={styles["metadata-context-container"]}>
-              <span className={styles["nickname"]}>
-                {details.ownerNickname}
-              </span>
+              <span className={styles["nickname"]}>{details.ownerNickname}</span>
               <span className={styles["updatedAt"]}>
                 {formatDateKRW(details.updatedAt)}
               </span>
@@ -105,9 +94,7 @@ const ItemDetails = ({ itemId }) => {
                 src={"/images/img_favorite_inactive.png"}
                 width={32}
               />
-              <span className={styles["favorite-count"]}>
-                {details.favoriteCount}
-              </span>
+              <span className={styles["favorite-count"]}>{details.favoriteCount}</span>
             </div>
           </div>
         </div>
@@ -116,4 +103,4 @@ const ItemDetails = ({ itemId }) => {
   );
 };
 
-export default ItemDetails;
+export default ItemDetailsSection;

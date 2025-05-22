@@ -1,9 +1,9 @@
 import styles from "./ItemComments.module.css";
 import { useEffect, useState } from "react";
-import { getItemComments } from "../utils/api";
-import CommentCard from "./CommentCard";
+import { getItemComments } from "../../../utils/api";
+import CommentCard from "../../../components/CommentCard";
 import { useNavigate } from "react-router-dom";
-import CommentRequireForm from "./CommentRequireForm";
+import CommentRequireForm from "../../../components/CommentRequireForm";
 
 const ItemComments = ({ itemId }) => {
   const [comments, setComments] = useState([]);
@@ -47,9 +47,7 @@ const ItemComments = ({ itemId }) => {
       ) : (
         <div className={styles["comment-none-container"]}>
           <img src={"/images/img_comment_none.png"} width={196} />
-          <span className={styles["comment-none-text"]}>
-            아직 문의가 없어요
-          </span>
+          <span className={styles["comment-none-text"]}>아직 문의가 없어요</span>
         </div>
       )}
       <button
@@ -57,11 +55,7 @@ const ItemComments = ({ itemId }) => {
         onClick={handleReturnToListClick}
       >
         목록으로 돌아가기
-        <img
-          className={"back-button-image"}
-          src={"/images/ic_back.png"}
-          width={24}
-        />
+        <img className={"back-button-image"} src={"/images/ic_back.png"} width={24} />
       </button>
     </section>
   );

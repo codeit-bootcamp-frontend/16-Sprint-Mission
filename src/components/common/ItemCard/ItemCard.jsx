@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { formatPriceKRW } from "../utils/formatPrice";
+import { formatPriceKRW } from "../../../utils/formatPrice";
 import styles from "./ItemCard.module.css";
 import { useNavigate } from "react-router-dom";
 

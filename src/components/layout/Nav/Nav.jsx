@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./Nav.module.css";
-import { useLoginContext } from "../contexts/LoginContext";
+import { useLoginContext } from "../../../contexts/LoginContext";
 
 const LINK_CLASSNAME = {
   false: "",

@@ -1,8 +1,8 @@
 import "./ItemsPage.css";
-import Nav from "../../components/Nav";
 import { usePageSizeByBreakPoint } from "../../hooks/usePageSizeByBreakPoint";
 import BestItemsSection from "../../components/BestItemsSection";
 import CurrentItemsSection from "../../components/CurrentItemsSection";
+import Nav from "../../components/layout/Nav/Nav";
 
 const ItemsPage = () => {
   const { pageSizeList } = usePageSizeByBreakPoint();

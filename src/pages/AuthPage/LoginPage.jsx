@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import "./FormAuth.css";
 import { useNavigate } from "react-router";
-import Field from "../../components/Field";
+import AuthField from "../../components/common/AuthField/AuthField";
 import { FIELDS_CONFIG } from "./fieldsConfig";
 import SocialLogin from "../../components/SocialLogin";
-import LogoHeader from "../../components/LogoHeader";
+import LogoHeader from "../../components/layout/LogoHeader/LogoHeader";
 import { useFormFields } from "../../hooks/useFormFields";
 import { useLoginContext } from "../../contexts/LoginContext";
 
@@ -28,7 +28,7 @@ const LoginPage = () => {
       <main className="page-form">
         <LogoHeader />
         <form className="form-container" onSubmit={handleSubmit}>
-          <Field
+          <AuthField
             fieldConfig={FIELDS_CONFIG.email}
             value={values["email"]}
             valid={valids["email"]}
@@ -36,7 +36,7 @@ const LoginPage = () => {
             handleInputChange={handleInputChange}
             handleInputBlur={handleInputBlur}
           />
-          <Field
+          <AuthField
             fieldConfig={FIELDS_CONFIG.password}
             value={values["password"]}
             valid={valids["password"]}
