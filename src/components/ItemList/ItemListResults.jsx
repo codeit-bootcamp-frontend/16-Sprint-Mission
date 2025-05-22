@@ -2,7 +2,7 @@ import styles from "./ItemList.module.css";
 import ItemCard from "../ItemCard";
 import ItemCardSkeleton from "../../ui/Skeletons/ItemCardSkeleton";
 
-const ItemListContent = ({ isLoading, isError, items, pageSize, listType }) => {
+const ItemListResults = ({ isLoading, isError, items, pageSize, listType }) => {
   const isLoadingError = !isLoading && isError;
 
   if (isLoading) {
@@ -32,4 +32,4 @@ const ItemListContent = ({ isLoading, isError, items, pageSize, listType }) => {
   );
 };
 
-export default ItemListContent;
+export default ItemListResults;

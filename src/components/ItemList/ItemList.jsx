@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
-import { getItems } from "../../apis/api";
+import { getItems } from "../../services/api";
 import styles from "./ItemList.module.css";
 import Button from "../../ui/Button";
 import Dropdown from "../../ui/Dropdown";
 import InputSearch from "../../ui/Input/InputSearch";
 import Pagination from "../Pagination";
 import useAsync from "../../hooks/useAsync";
-import ItemListRenderer from "./ItemListRenderer";
+import ItemListResults from "./ItemListResults";
 
 const DEFAULT_PAGE_SIZE = 10;
 const ORDER_MAP = {
@@ -65,7 +65,7 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
         </Button>
         <InputSearch
           className={styles["item-list-header-search"]}
-          placeholder="검색할 상품을 입력해주세요"
+          placeholder="상품명을 입력하고 엔터를 눌러주세요."
         />
         <Dropdown
           menu={dropdownMenuItems}
@@ -74,7 +74,7 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
           iconType="orderIcon"
         />
       </div>
-      <ItemListRenderer
+      <ItemListResults
         items={items}
         pageSize={pageSize}
         isLoading={isLoading}
