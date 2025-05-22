@@ -14,12 +14,13 @@ const ORDER_MAP = {
   최신순: "recent",
   좋아요순: "favorite",
 };
+const DEFAULT_ORDER = Object.keys(ORDER_MAP)[0];
 const dropdownMenuItems = Object.keys(ORDER_MAP);
 
 const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
   const [items, setItems] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
-  const [order, setOrder] = useState("최신순");
+  const [order, setOrder] = useState(DEFAULT_ORDER);
   const navigate = useNavigate();
   const {
     isLoading,
