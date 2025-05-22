@@ -1,15 +1,3 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 
 ```
 16-Sprint-Mission
@@ -75,176 +63,17 @@ If you are developing a production application, we recommend using TypeScript wi
 │  ├─ App.jsx
 │  ├─ common.css
 │  ├─ components
-│  │  ├─ BestItemsSection.jsx
-│  │  ├─ CommentCard.jsx
-│  │  ├─ CommentCard.module.css
-│  │  ├─ CommentEditForm.jsx
-│  │  ├─ CommentEditForm.module.css
-│  │  ├─ CommentProfile.jsx
-│  │  ├─ CommentProfile.module.css
-│  │  ├─ CommentRequireForm.jsx
-│  │  ├─ CommentRequireForm.module.css
-│  │  ├─ CommentView.jsx
-│  │  ├─ CommentView.module.css
-│  │  ├─ CurrentItemsSection.jsx
-│  │  ├─ DropDownMenu.jsx
-│  │  ├─ DropDownMenu.module.css
-│  │  ├─ Field.jsx
-│  │  ├─ Field.module.css
-│  │  ├─ ItemCard.jsx
-│  │  ├─ ItemCard.module.css
-│  │  ├─ ItemCardSkeleton.jsx
-│  │  ├─ ItemCardSkeleton.module.css
-│  │  ├─ ItemComments.jsx
-│  │  ├─ ItemComments.module.css
-│  │  ├─ ItemDetails.jsx
-│  │  ├─ ItemDetails.module.css
-│  │  ├─ ItemsContainer.jsx
-│  │  ├─ ItemsContainer.module.css
-│  │  ├─ ItemsSearchHeader.jsx
-│  │  ├─ ItemsSearchHeader.module.css
-│  │  ├─ ItemsSection.module.css
-│  │  ├─ KebabButton.jsx
-│  │  ├─ KebabButton.module.css
-│  │  ├─ LogoHeader.jsx
-│  │  ├─ LogoHeader.module.css
-│  │  ├─ Nav.jsx
-│  │  ├─ Nav.module.css
-│  │  ├─ Pagination.jsx
-│  │  ├─ Pagination.module.css
-│  │  ├─ PaginationButton.jsx
-│  │  ├─ PaginationButton.module.css
-│  │  ├─ SearchInput.jsx
-│  │  ├─ SearchInput.module.css
-│  │  ├─ SocialLogin.jsx
-│  │  ├─ SocialLogin.module.css
-│  │  ├─ SortDropdown.jsx
-│  │  └─ SortDropdown.module.css
-│  ├─ constants
-│  ├─ contexts
-│  │  └─ LoginContext.jsx
-│  ├─ fonts
-│  │  └─ rokafsansmedium-normal.woff
-│  ├─ hooks
-│  │  ├─ useAsync.jsx
-│  │  ├─ useFormFields.jsx
-│  │  ├─ usePageSizeByBreakPoint.jsx
-│  │  ├─ usePaginationByOffset.jsx
-│  │  ├─ useScreenBreakpoint.jsx
-│  │  └─ useSearchQueryString.jsx
-│  ├─ main.jsx
-│  ├─ pages
-│  │  ├─ AddItemPage
-│  │  │  ├─ AddItemPage.jsx
-│  │  │  └─ AddItemPage.module.css
-│  │  ├─ AuthPage
-│  │  │  ├─ fieldsConfig.js
-│  │  │  ├─ FormAuth.css
-│  │  │  ├─ LoginPage.jsx
-│  │  │  └─ SignupPage.jsx
-│  │  ├─ BoardPage
-│  │  │  └─ BoardPage.jsx
-│  │  ├─ FaqPage
-│  │  │  └─ FaqPage.jsx
-│  │  ├─ HomePage
-│  │  │  ├─ Banner.css
-│  │  │  ├─ BannerBottom.css
-│  │  │  ├─ Card.css
-│  │  │  ├─ Cards.css
-│  │  │  ├─ Footer.css
-│  │  │  ├─ Home.css
-│  │  │  ├─ HomePage.jsx
-│  │  │  └─ Main.css
-│  │  ├─ ItemDetailsPage
-│  │  │  ├─ ItemDetailsPage.jsx
-│  │  │  └─ ItemDetailsPage.module.css
-│  │  ├─ ItemsPage
-│  │  │  ├─ ItemsPage.css
-│  │  │  └─ ItemsPage.jsx
-│  │  └─ PrivacyPage
-│  │     └─ PrivacyPage.jsx
-│  ├─ reset.css
-│  └─ utils
-│     ├─ api.js
-│     ├─ debounce.js
-│     ├─ formatPrice.js
-│     └─ validators.js
-└─ vite.config.js
-
-```
-```
-16-Sprint-Mission
-├─ eslint.config.js
-├─ index.html
-├─ package-lock.json
-├─ package.json
-├─ public
-│  ├─ images
-│  │  ├─ icon_google.png
-│  │  ├─ icon_kakao.png
-│  │  ├─ icon_password_invisible.png
-│  │  ├─ icon_password_visible.png
-│  │  ├─ icon_profile.png
-│  │  ├─ ic_arrow_down.png
-│  │  ├─ ic_back.png
-│  │  ├─ ic_facebook.png
-│  │  ├─ ic_instagram.png
-│  │  ├─ ic_kebab.png
-│  │  ├─ ic_nextPageClick_active.png
-│  │  ├─ ic_nextPageClick_inactive.png
-│  │  ├─ ic_plus.png
-│  │  ├─ ic_prevPageClick_active.png
-│  │  ├─ ic_prevPageClick_inactive.png
-│  │  ├─ ic_search.png
-│  │  ├─ ic_sort.png
-│  │  ├─ ic_twitter.png
-│  │  ├─ ic_X.png
-│  │  ├─ ic_youtube.png
-│  │  ├─ img_comment_none.png
-│  │  ├─ img_favorite_inactive.png
-│  │  ├─ Img_home_01
-│  │  │  ├─ Img_home_01@0.5x.png
-│  │  │  ├─ Img_home_01@1.5x.png
-│  │  │  ├─ Img_home_01@1x.png
-│  │  │  └─ Img_home_01@2x.png
-│  │  ├─ Img_home_02
-│  │  │  ├─ Img_home_02@0.5x.png
-│  │  │  ├─ Img_home_02@1.5x.png
-│  │  │  ├─ Img_home_02@1x.png
-│  │  │  └─ Img_home_02@2x.png
-│  │  ├─ Img_home_03
-│  │  │  ├─ Img_home_03@0.5x.png
-│  │  │  ├─ Img_home_03@1.5x.png
-│  │  │  ├─ Img_home_03@1x.png
-│  │  │  └─ Img_home_03@2x.png
-│  │  ├─ Img_home_bottom
-│  │  │  ├─ Img_home_bottom@0.5x.png
-│  │  │  ├─ Img_home_bottom@1.5x.png
-│  │  │  ├─ Img_home_bottom@1x.png
-│  │  │  └─ Img_home_bottom@2x.png
-│  │  ├─ Img_home_top
-│  │  │  ├─ Img_home_top@0.5x.png
-│  │  │  ├─ Img_home_top@1.5x.png
-│  │  │  ├─ Img_home_top@1x.png
-│  │  │  └─ Img_home_top@2x.png
-│  │  ├─ img_items_default_md.png
-│  │  ├─ Img_logo.png
-│  │  └─ Img_openGraph.png
-│  └─ _redirects
-├─ README.md
-├─ src
-│  ├─ App.jsx
-│  ├─ common.css
-│  ├─ components
-│  │  ├─ BestItemsSection.jsx
-│  │  ├─ CommentCard.jsx
-│  │  ├─ CommentCard.module.css
-│  │  ├─ CommentEditForm.jsx
-│  │  ├─ CommentEditForm.module.css
-│  │  ├─ CommentRequireForm.jsx
-│  │  ├─ CommentRequireForm.module.css
-│  │  ├─ CommentView.jsx
-│  │  ├─ CommentView.module.css
+│  │  ├─ comments
+│  │  │  ├─ CommentCard.jsx
+│  │  │  ├─ CommentCard.module.css
+│  │  │  ├─ CommentEditForm.jsx
+│  │  │  ├─ CommentEditForm.module.css
+│  │  │  ├─ CommentRequireForm.jsx
+│  │  │  ├─ CommentRequireForm.module.css
+│  │  │  ├─ CommentsContainer.jsx
+│  │  │  ├─ CommentsContainer.module.css
+│  │  │  ├─ CommentView.jsx
+│  │  │  └─ CommentView.module.css
 │  │  ├─ common
 │  │  │  ├─ AuthField
 │  │  │  │  ├─ AuthField.jsx
@@ -256,179 +85,9 @@ If you are developing a production application, we recommend using TypeScript wi
 │  │  │  ├─ ItemCardSkeleton
 │  │  │  │  ├─ ItemCardSkeleton.jsx
 │  │  │  │  └─ ItemCardSkeleton.module.css
-│  │  │  ├─ KebabMenu
-│  │  │  │  ├─ KebabMenu.jsx
-│  │  │  │  └─ KebabMenu.module.css
-│  │  │  ├─ Pagination
-│  │  │  ├─ PaginationButton
-│  │  │  │  ├─ PaginationButton.jsx
-│  │  │  │  └─ PaginationButton.module.css
-│  │  │  ├─ SearchInput
-│  │  │  │  ├─ SearchInput.jsx
-│  │  │  │  └─ SearchInput.module.css
-│  │  │  └─ SelectDropdown
-│  │  │     ├─ SelectDropdown.jsx
-│  │  │     └─ SelectDropdown.module.css
-│  │  ├─ CurrentItemsSection.jsx
-│  │  ├─ ItemsContainer.jsx
-│  │  ├─ ItemsContainer.module.css
-│  │  ├─ ItemsSearchHeader.jsx
-│  │  ├─ ItemsSearchHeader.module.css
-│  │  ├─ ItemsSection.module.css
-│  │  ├─ layout
-│  │  │  ├─ LogoHeader
-│  │  │  │  ├─ LogoHeader.jsx
-│  │  │  │  └─ LogoHeader.module.css
-│  │  │  ├─ Nav
-│  │  │  │  ├─ Nav.jsx
-│  │  │  │  └─ Nav.module.css
-│  │  │  └─ profileCard
-│  │  │     ├─ ProfileCard.jsx
-│  │  │     └─ ProfileCard.module.css
-│  │  ├─ Pagination.jsx
-│  │  ├─ Pagination.module.css
-│  │  ├─ SocialLogin.jsx
-│  │  └─ SocialLogin.module.css
-│  ├─ constants
-│  ├─ contexts
-│  │  └─ LoginContext.jsx
-│  ├─ fonts
-│  │  └─ rokafsansmedium-normal.woff
-│  ├─ hooks
-│  │  ├─ useAsync.jsx
-│  │  ├─ useFormFields.jsx
-│  │  ├─ usePageSizeByBreakPoint.jsx
-│  │  ├─ usePaginationByOffset.jsx
-│  │  ├─ useScreenBreakpoint.jsx
-│  │  └─ useSearchQueryString.jsx
-│  ├─ main.jsx
-│  ├─ pages
-│  │  ├─ AddItemPage
-│  │  │  ├─ AddItemPage.jsx
-│  │  │  └─ AddItemPage.module.css
-│  │  ├─ AuthPage
-│  │  │  ├─ fieldsConfig.js
-│  │  │  ├─ FormAuth.css
-│  │  │  ├─ LoginPage.jsx
-│  │  │  └─ SignupPage.jsx
-│  │  ├─ BoardPage
-│  │  │  └─ BoardPage.jsx
-│  │  ├─ FaqPage
-│  │  │  └─ FaqPage.jsx
-│  │  ├─ HomePage
-│  │  │  ├─ Banner.css
-│  │  │  ├─ BannerBottom.css
-│  │  │  ├─ Card.css
-│  │  │  ├─ Cards.css
-│  │  │  ├─ Footer.css
-│  │  │  ├─ Home.css
-│  │  │  ├─ HomePage.jsx
-│  │  │  └─ Main.css
-│  │  ├─ ItemDetailsPage
-│  │  │  ├─ ItemDetailsPage.jsx
-│  │  │  ├─ ItemDetailsPage.module.css
-│  │  │  └─ sections
-│  │  │     ├─ ItemComments.jsx
-│  │  │     ├─ ItemComments.module.css
-│  │  │     ├─ ItemDetailsSection.jsx
-│  │  │     └─ ItemDetailsSection.module.css
-│  │  ├─ ItemsPage
-│  │  │  ├─ ItemsPage.css
-│  │  │  └─ ItemsPage.jsx
-│  │  └─ PrivacyPage
-│  │     └─ PrivacyPage.jsx
-│  ├─ reset.css
-│  └─ utils
-│     ├─ api.js
-│     ├─ debounce.js
-│     ├─ formatPrice.js
-│     └─ validators.js
-└─ vite.config.js
-
-```
-```
-16-Sprint-Mission
-├─ eslint.config.js
-├─ index.html
-├─ package-lock.json
-├─ package.json
-├─ public
-│  ├─ images
-│  │  ├─ icon_google.png
-│  │  ├─ icon_kakao.png
-│  │  ├─ icon_password_invisible.png
-│  │  ├─ icon_password_visible.png
-│  │  ├─ icon_profile.png
-│  │  ├─ ic_arrow_down.png
-│  │  ├─ ic_back.png
-│  │  ├─ ic_facebook.png
-│  │  ├─ ic_instagram.png
-│  │  ├─ ic_kebab.png
-│  │  ├─ ic_nextPageClick_active.png
-│  │  ├─ ic_nextPageClick_inactive.png
-│  │  ├─ ic_plus.png
-│  │  ├─ ic_prevPageClick_active.png
-│  │  ├─ ic_prevPageClick_inactive.png
-│  │  ├─ ic_search.png
-│  │  ├─ ic_sort.png
-│  │  ├─ ic_twitter.png
-│  │  ├─ ic_X.png
-│  │  ├─ ic_youtube.png
-│  │  ├─ img_comment_none.png
-│  │  ├─ img_favorite_inactive.png
-│  │  ├─ Img_home_01
-│  │  │  ├─ Img_home_01@0.5x.png
-│  │  │  ├─ Img_home_01@1.5x.png
-│  │  │  ├─ Img_home_01@1x.png
-│  │  │  └─ Img_home_01@2x.png
-│  │  ├─ Img_home_02
-│  │  │  ├─ Img_home_02@0.5x.png
-│  │  │  ├─ Img_home_02@1.5x.png
-│  │  │  ├─ Img_home_02@1x.png
-│  │  │  └─ Img_home_02@2x.png
-│  │  ├─ Img_home_03
-│  │  │  ├─ Img_home_03@0.5x.png
-│  │  │  ├─ Img_home_03@1.5x.png
-│  │  │  ├─ Img_home_03@1x.png
-│  │  │  └─ Img_home_03@2x.png
-│  │  ├─ Img_home_bottom
-│  │  │  ├─ Img_home_bottom@0.5x.png
-│  │  │  ├─ Img_home_bottom@1.5x.png
-│  │  │  ├─ Img_home_bottom@1x.png
-│  │  │  └─ Img_home_bottom@2x.png
-│  │  ├─ Img_home_top
-│  │  │  ├─ Img_home_top@0.5x.png
-│  │  │  ├─ Img_home_top@1.5x.png
-│  │  │  ├─ Img_home_top@1x.png
-│  │  │  └─ Img_home_top@2x.png
-│  │  ├─ img_items_default_md.png
-│  │  ├─ Img_logo.png
-│  │  └─ Img_openGraph.png
-│  └─ _redirects
-├─ README.md
-├─ src
-│  ├─ App.jsx
-│  ├─ common.css
-│  ├─ components
-│  │  ├─ CommentCard.jsx
-│  │  ├─ CommentCard.module.css
-│  │  ├─ CommentEditForm.jsx
-│  │  ├─ CommentEditForm.module.css
-│  │  ├─ CommentRequireForm.jsx
-│  │  ├─ CommentRequireForm.module.css
-│  │  ├─ CommentView.jsx
-│  │  ├─ CommentView.module.css
-│  │  ├─ common
-│  │  │  ├─ AuthField
-│  │  │  │  ├─ AuthField.jsx
-│  │  │  │  └─ AuthField.module.css
-│  │  │  ├─ Button
-│  │  │  ├─ ItemCard
-│  │  │  │  ├─ ItemCard.jsx
-│  │  │  │  └─ ItemCard.module.css
-│  │  │  ├─ ItemCardSkeleton
-│  │  │  │  ├─ ItemCardSkeleton.jsx
-│  │  │  │  └─ ItemCardSkeleton.module.css
+│  │  │  ├─ ItemsContainer
+│  │  │  │  ├─ ItemsContainer.jsx
+│  │  │  │  └─ ItemsContainer.module.css
 │  │  │  ├─ KebabMenu
 │  │  │  │  ├─ KebabMenu.jsx
 │  │  │  │  └─ KebabMenu.module.css
@@ -444,10 +103,6 @@ If you are developing a production application, we recommend using TypeScript wi
 │  │  │  └─ SelectDropdown
 │  │  │     ├─ SelectDropdown.jsx
 │  │  │     └─ SelectDropdown.module.css
-│  │  ├─ ItemsContainer.jsx
-│  │  ├─ ItemsContainer.module.css
-│  │  ├─ ItemsSearchHeader.jsx
-│  │  ├─ ItemsSearchHeader.module.css
 │  │  └─ layout
 │  │     ├─ LogoHeader
 │  │     │  ├─ LogoHeader.jsx
@@ -509,6 +164,9 @@ If you are developing a production application, we recommend using TypeScript wi
 │  │  │  ├─ ItemsPage.jsx
 │  │  │  └─ sections
 │  │  │     ├─ BestItemsSection.jsx
+│  │  │     ├─ CurrentItemsSection
+│  │  │     │  ├─ ItemsSearchHeader.jsx
+│  │  │     │  └─ ItemsSearchHeader.module.css
 │  │  │     ├─ CurrentItemsSection.jsx
 │  │  │     └─ ItemsSection.module.css
 │  │  └─ PrivacyPage

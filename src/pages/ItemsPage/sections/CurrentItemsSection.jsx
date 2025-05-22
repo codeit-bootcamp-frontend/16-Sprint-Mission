@@ -1,10 +1,10 @@
 import { useMemo, useState } from "react";
 import { useAsync } from "../../../hooks/useAsync";
-import { getItems } from "../../../utils/api";
-import styles from "./ItemsSection.module.css";
-import Pagination from "../../../components/common/Pagination/Pagination";
-import ItemsSearchHeader from "../../../components/ItemsSearchHeader";
 import { usePaginationByOffset } from "../../../hooks/usePaginationByOffset";
+import { getItems } from "../../../utils/api";
+import styles from "./CurrentItemsSection.module.css";
+import Pagination from "../../../components/common/Pagination/Pagination";
+import ItemsSearchHeader from "./CurrentItemsSection/ItemsSearchHeader";
 import ItemsContainer from "../../../components/common/ItemsContainer/ItemsContainer";
 
 const VISIBLE_PAGE_LENGTH = 5;

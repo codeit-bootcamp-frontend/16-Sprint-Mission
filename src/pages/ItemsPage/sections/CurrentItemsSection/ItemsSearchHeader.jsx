@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router";
 import styles from "./ItemsSearchHeader.module.css";
-import { useSearchQueryString } from "../hooks/useSearchQueryString";
-import SelectDropDown from "./common/SelectDropdown/SelectDropdown";
-import SearchInput from "./common/SearchInput/SearchInput";
-import { useLoginContext } from "../contexts/LoginContext";
+import { useSearchQueryString } from "../../../../hooks/useSearchQueryString";
+import SelectDropDown from "../../../../components/common/SelectDropdown/SelectDropdown";
+import SearchInput from "../../../../components/common/SearchInput/SearchInput";
+import { useLoginContext } from "../../../../contexts/LoginContext";
 
 const ItemsSearchHeader = ({ setOrder, setOffset, setKeyword }) => {
   const { isLogin } = useLoginContext();

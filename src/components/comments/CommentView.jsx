@@ -1,7 +1,7 @@
 import { formatDateKRW } from "../../utils/formatPrice";
 import styles from "./CommentView.module.css";
 import KebabMenu from "../common/KebabMenu/KebabMenu";
-import ProfileCard from "../layout/profileCard/ProfileCard";
+import ProfileCard from "../layout/ProfileCard/ProfileCard";
 
 const CommentView = ({ comment, onEdit, onDelete }) => {
   const dropDownItems = [

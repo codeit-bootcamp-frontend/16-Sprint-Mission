@@ -1,7 +1,7 @@
-import { getItems } from "../../../utils/api";
-import styles from "./ItemsSection.module.css";
 import { useAsync } from "../../../hooks/useAsync";
 import { useMemo } from "react";
+import { getItems } from "../../../utils/api";
+import styles from "./BestItemsSection.module.css";
 import ItemsContainer from "../../../components/common/ItemsContainer/ItemsContainer";
 
 const LIST_TYPE = "best";
