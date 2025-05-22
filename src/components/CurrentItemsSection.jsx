@@ -3,7 +3,7 @@ import { useAsync } from "../hooks/useAsync";
 import { getItems } from "../utils/api";
 import ItemsContainer from "./ItemsContainer";
 import styles from "./ItemsSection.module.css";
-import Pagination from "./Pagination";
+import Pagination from "./common/Pagination/Pagination";
 import ItemsSearchHeader from "./ItemsSearchHeader";
 import { usePaginationByOffset } from "../hooks/usePaginationByOffset";
 

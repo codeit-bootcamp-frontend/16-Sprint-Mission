@@ -1,5 +1,5 @@
 import styles from "./Pagination.module.css";
-import PaginationButton from "./common/PaginationButton/PaginationButton";
+import PaginationButton from "./PaginationButton";
 
 const Pagination = ({
   currentPageNumber,
