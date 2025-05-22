@@ -1,6 +1,10 @@
+import "./Products.css";
+import BestItemsSection from "./BestItemsSection";
+import AllItemsSection from "./AllItemsSection";
+
 function ProductPage() {
   return (
-    <div>
+    <div className="productsWrapper">
       <BestItemsSection />
       <AllItemsSection />
     </div>
