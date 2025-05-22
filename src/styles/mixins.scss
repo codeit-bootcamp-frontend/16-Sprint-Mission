@@ -1,1 +1,22 @@
 //믹스인 정의
+@mixin mobile {
+  @media (max-width: var(--mobile-max-width)) {
+    @content;
+  }
+}
+
+/// tablet 이하일 때
+
+@mixin tablet {
+  @media (max-width: var(--tablet-max-width)) {
+    @content;
+  }
+}
+
+/// laptop 이하일 때
+
+@mixin laptop {
+  @media (max-width: var(--desktop-max-width)) {
+    @content;
+  }
+}
