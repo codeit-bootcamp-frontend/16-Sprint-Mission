@@ -1,8 +1,8 @@
 import { getItems } from "../../../utils/api";
-import ItemsContainer from "../../../components/ItemsContainer";
 import styles from "./ItemsSection.module.css";
 import { useAsync } from "../../../hooks/useAsync";
 import { useMemo } from "react";
+import ItemsContainer from "../../../components/common/ItemsContainer/ItemsContainer";
 
 const LIST_TYPE = "best";
 

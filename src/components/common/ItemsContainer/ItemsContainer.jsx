@@ -1,5 +1,5 @@
-import ItemCard from "./common/ItemCard/ItemCard";
-import ItemCardSkeleton from "./common/ItemCardSkeleton/ItemCardSkeleton";
+import ItemCard from "../ItemCard/ItemCard";
+import ItemCardSkeleton from "../ItemCardSkeleton/ItemCardSkeleton";
 import styles from "./ItemsContainer.module.css";
 
 const ItemsContainer = ({ listName, itemList, pageSize }) => {
