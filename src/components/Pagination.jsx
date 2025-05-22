@@ -3,10 +3,8 @@ import { ProductAllContext } from "../context/ProductAllContext";
 import styles from "../styles/Pagination.module.css";
 
 function Pagination() {
-  const { queryStrings, setQueryStrings, total } =
-    useContext(ProductAllContext);
+  const { queryStrings, setQueryStrings, total } = useContext(ProductAllContext);
   const { pageSize } = queryStrings;
-
   const [pageStart, setPageStart] = useState(1);
   const [pageList, setPageList] = useState([1, 2, 3, 4, 5]);
   const pageLength = Math.ceil(total / pageSize);

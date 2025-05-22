@@ -17,7 +17,7 @@ const pageSizeByType = {
     }
 }
 
-export function reRequestByInnerWidth(type, innerWidth, setQueryStrings ) {
+export function reRequestByInnerWidth(type, innerWidth,) {
     const { lg, md } = viewPort;
 
     let pageSizeKey;
@@ -30,16 +30,9 @@ export function reRequestByInnerWidth(type, innerWidth, setQueryStrings ) {
         pageSizeKey = "lg"
     }
 
-
-
-    // const pageSize =  pageSizeByType[type][pageSizeKey]
-    // return pageSize;
-    setQueryStrings((prev) => {
-        return {
-            ...prev,
-            pageSize: pageSizeByType[type][pageSizeKey],
-        }
-    })
+    const pageSize = pageSizeByType[type][pageSizeKey]
+     
+    return pageSize;
 }
 
 

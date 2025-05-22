@@ -1,10 +1,9 @@
+import styles from "../styles/ProductsFavorite.module.css";
 import { useEffect, useState } from "react";
 import ProductItem from "./ProductItem";
-import styles from "../styles/ProductsFavorite.module.css";
 import { useResizeRequest } from "../hooks/useResizeRequest ";
 import FailLoad from "./FailLoad";
-import { getProducts } from "../service/api";
-import { useLoadItems } from "../hooks/useValidate";
+import { useLoadItems } from "../hooks/useLoadItems";
 
 function ProductsFavorite() {
   const [favoriteItems, setFavoriteItems] = useState([]);
@@ -13,35 +12,28 @@ function ProductsFavorite() {
     orderBy: "favorite",
     pageSize: 4,
   });
-  const [favoriteError, setFavoriteError] = useState(null);
 
-  //innerWidth바뀌면 쿼리 다시 설정해줘
-  useResizeRequest("favor", setFavoriteQueryStrings);
-
-
-
-  // const [loadFail, result] = useLoadItems(favoriteQueryStrings);
+  //resize 발생 시 pageSize 새로 가져다줘
+  const [pageSize] = useResizeRequest("favor");
+  useEffect(() => {
+    setFavoriteQueryStrings((prev) => {
+      return { ...prev, pageSize };
+    });
+  }, [pageSize]);
 
   //쿼리 변경 시 가져오기
+  const [loadFail, result] = useLoadItems(favoriteQueryStrings);
+
   useEffect(() => {
-    async function loadFavoriteItems() {
-      try {
-        const result = await getProducts(favoriteQueryStrings);//미리 쿼리스트링 짜고 넘겨주기
-        setFavoriteItems(result.list);
-      } catch (err) {
-        setFavoriteError(err);
-      }
+    if (result.list) {
+      setFavoriteItems([...result.list]);
     }
-    loadFavoriteItems()
-
-  },[favoriteQueryStrings])
-
-
+  }, [result]);
 
   return (
     <section className={styles.items__favorite}>
       <h2>베스트 상품</h2>
-      {favoriteError ? (
+      {loadFail ? (
         <FailLoad></FailLoad>
       ) : (
         <ul className={styles["favorite-list"]}>

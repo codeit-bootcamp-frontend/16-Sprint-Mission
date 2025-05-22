@@ -3,21 +3,24 @@ import facebookIcon from "../assets/icon/ic_facebook.png";
 import instaIcon from "../assets/icon/ic_instagram.png";
 import twitterIcon from "../assets/icon/ic_twitter.png";
 import youtubeIcon from "../assets/icon/ic_youtube.png";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
     <footer className={styles.footer}>
-      <div className={`${styles.footer__container} ${styles.container} container`}>
+      <div
+        className={`${styles.footer__container} ${styles.container} container`}
+      >
         <span>©codeit - 2024</span>
         <div>
-          <a aria-label="약관으로 이동" href="./privacy">
+          <Link aria-label="약관으로 이동" to="/privacy">
             Privacy Policy
-          </a>
-          <a aria-label="FAQ로 이동" href="./faq">
+          </Link>
+          <Link aria-label="FAQ로 이동" to="/faq">
             FAQ
-          </a>
+          </Link>
         </div>
-        <ul className={styles['footer__sns-list']}>
+        <ul className={styles["footer__sns-list"]}>
           <li>
             <a
               rel="noopener noreferer"

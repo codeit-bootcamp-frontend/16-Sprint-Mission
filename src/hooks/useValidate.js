@@ -67,10 +67,7 @@ export function useValidate() {
       // setHasErr((prev) => ({ ...prev, [e.target.name]: true }));
       validator.isPassed = false;
     }
-
-
-
-}
+  }
 
   return [err, errMsg, updateErrUi];
 }
@@ -89,39 +86,10 @@ export function hasLoginInvalid() {
 export function hasSignUpInvalid() {
   const hasValidResult =
     ruleObj["user-email"].isPassed &&
-    ruleObj["user-password"].isPassed &&
-    ruleObj["user-name"].isPassed &&
-    ruleObj["user-password-check"].isPassed
+      ruleObj["user-password"].isPassed &&
+      ruleObj["user-name"].isPassed &&
+      ruleObj["user-password-check"].isPassed
       ? true
       : false;
   return hasValidResult;
 }
-
-
-
-
-
-
-// 이건 다른 거 일단 킵
-export function useLoadItems(queryStrings) {
-  const [loadFail, setLoadFail] = useState("");
-  const [result, setResult] = useState([]);
-
-  useEffect(() => {
-    async function loadItemsByQuery() {
-      try {
-        const result = await getProducts(queryStrings);
-        setResult(result);
-        // console.log(result)
-        setLoadFail(null);
-      } catch (err) {
-        setLoadFail(err);
-      }
-    }
-    loadItemsByQuery();
-  }, []);
-
-  return [loadFail, result];
-}
-
-
