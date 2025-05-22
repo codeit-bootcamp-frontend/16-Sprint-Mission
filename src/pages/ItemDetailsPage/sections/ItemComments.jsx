@@ -1,10 +1,10 @@
 import styles from "./ItemComments.module.css";
 import { useEffect, useState } from "react";
 import { getItemComments } from "../../../utils/api";
-import CommentCard from "../../../components/CommentCard";
+import CommentCard from "../../../components/comments/CommentCard";
 import { useNavigate } from "react-router-dom";
-import CommentRequireForm from "../../../components/CommentRequireForm";
-import CommentsContainer from "../../../components/CommentsContainer";
+import CommentRequireForm from "../../../components/comments/CommentRequireForm";
+import CommentsContainer from "../../../components/comments/CommentsContainer";
 
 const ItemComments = ({ itemId }) => {
   const [comments, setComments] = useState([]);
