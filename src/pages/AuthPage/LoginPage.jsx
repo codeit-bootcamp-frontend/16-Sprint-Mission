@@ -3,7 +3,7 @@ import "./FormAuth.css";
 import { useNavigate } from "react-router";
 import AuthField from "../../components/common/AuthField/AuthField";
 import { FIELDS_CONFIG } from "./fieldsConfig";
-import SocialLogin from "../../components/SocialLogin";
+import SocialLogin from "./sections/SocialLogin";
 import LogoHeader from "../../components/layout/LogoHeader/LogoHeader";
 import { useFormFields } from "../../hooks/useFormFields";
 import { useLoginContext } from "../../contexts/LoginContext";
