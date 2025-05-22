@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 
 const usePagination = ({
   pageSize = 10,
@@ -23,10 +23,13 @@ const usePagination = ({
   const hasPrev = currentGroupIndex > 0;
   const hasNext = currentPages[currentPages.length - 1] < totalPage;
 
-  const goToPage = (page) => {
-    setCurrentPage(page);
-    onPageChange(page);
-  };
+  const goToPage = useCallback(
+    (page) => {
+      setCurrentPage(page);
+      onPageChange(page);
+    },
+    [onPageChange]
+  );
 
   const goPrevPages = () => {
     if (!hasPrev) return;

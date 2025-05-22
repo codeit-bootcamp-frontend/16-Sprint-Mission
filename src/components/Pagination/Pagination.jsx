@@ -1,3 +1,4 @@
+import { useCallback, useEffect } from "react";
 import styles from "./Pagination.module.css";
 import arrowLeft from "../../assets/images/ic_arrow_sm_left.svg";
 import arrowRight from "../../assets/images/ic_arrow_sm_right.svg";
@@ -16,12 +17,20 @@ const Pagination = ({
     totalCount,
     pageSize,
     paginationSize,
-    onPageChange: (page) => {
-      handleLoad({ page, pageSize, orderBy: orderStatus });
-    },
+    onPageChange: useCallback(
+      (page) => {
+        handleLoad({ page, pageSize, orderBy: orderStatus });
+      },
+      [handleLoad, pageSize, orderStatus]
+    ),
   });
   const { currentPage, currentPages, hasPrev, hasNext } = pageData;
   const { goToPage, goPrevPages, goNextPages } = pageActions;
+
+  // 정렬이 바뀌면 첫번째 페이지로 이동
+  useEffect(() => {
+    goToPage(1);
+  }, [orderStatus, goToPage]);
 
   return (
     <div className={styles.pagination}>
