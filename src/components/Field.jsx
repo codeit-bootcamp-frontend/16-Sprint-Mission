@@ -28,16 +28,14 @@ const Field = ({
 }) => {
   //prettier-ignore
   const [isVisible, setIsVisible] = useState(false);
-  const handlePasswordIconClick = () => setIsVisible((prev) => !prev);
+  const handlePasswordIconClick = () => setIsVisible(!isVisible);
 
   const inputContainerClass = INPUT_CONTAINER_CLASSNAME[valid];
 
   return (
     <label className={styles["label"]}>
       {fieldConfig.labelText}
-      <div
-        className={`${styles["input-container"]} ${styles[inputContainerClass]}`}
-      >
+      <div className={`${styles["input-container"]} ${styles[inputContainerClass]}`}>
         <input
           value={value}
           className={styles["input"]}
@@ -59,9 +57,7 @@ const Field = ({
           />
         )}
       </div>
-      {fieldConfig.hint !== "" && (
-        <span className={styles["input-hint"]}>{hint}</span>
-      )}
+      {fieldConfig.hint !== "" && <span className={styles["input-hint"]}>{hint}</span>}
     </label>
   );
 };

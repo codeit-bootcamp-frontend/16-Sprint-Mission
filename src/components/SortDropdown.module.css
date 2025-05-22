@@ -1,0 +1,98 @@
+.dropdown-container {
+	position: relative;
+	font-family: 'pretendard';
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 26px;
+}
+
+.dropdown-button-text {
+	display: var(--dropdown-button-text-display);
+}
+
+.dropdown-button {
+	display: flex;
+	flex-direction: row;
+	justify-content: var(--dropdown-button-justify-content);
+	align-items: center;
+	width: var(--dropdown-button-width);
+	padding: 0 var(--dropdown-button-padding-x);
+	height: 42px;
+	border: 1px solid var(--color-gray300);
+	border-radius: 12px;
+	background-color: var(--color-white);
+	cursor: pointer;
+}
+
+.dropdown-button:hover {
+	background-color: var(--color-gray300);
+}
+
+.dropdown-button-icon {
+	background-image: var(--dropdown-button-icon-src);
+	background-repeat: no-repeat;
+	background-size: cover;
+	aspect-ratio: 1/1;
+	width: 24px;
+}
+
+.dropdown-list {
+	position: absolute;
+	top: 52px;
+	cursor: pointer;
+}
+
+.dropdown-option {
+	width: 130px;
+	height: 42px;
+	border-left: 1px solid var(--color-gray300);
+	border-right: 1px solid var(--color-gray300);
+	border-bottom: 1px solid var(--color-gray300);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--color-white);
+}
+
+.dropdown-option:first-child {
+	border-top: 1px solid var(--color-gray300);
+	border-radius: 12px 12px 0 0;
+}
+
+.dropdown-option:last-child {
+	border-radius: 0 0 12px 12px;
+}
+
+.dropdown-option:hover {
+	background-color: var(--color-gray300);
+}
+
+
+:root {
+	--dropdown-button-width: 42px;
+	--dropdown-button-text-display: none;
+	--dropdown-button-padding-x: 0;
+	--dropdown-button-justify-content: center;
+	--dropdown-button-icon-src: url('/images/ic_sort.png');
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  :root {
+		--dropdown-button-width: 130px;
+		--dropdown-button-text-display: inline;
+		--dropdown-button-padding-x: 20px;
+		--dropdown-button-justify-content: space-between;
+		--dropdown-button-icon-src: url('/images/ic_arrow_down.png');
+  }
+}
+/* PC */
+@media (min-width: 1200px) {
+  :root {
+		--dropdown-button-width: 130px;
+		--dropdown-button-text-display: inline;
+		--dropdown-button-padding-x: 20px;
+		--dropdown-button-justify-content: space-between;
+		--dropdown-button-icon-src: url('/images/ic_arrow_down.png');
+  }
+}

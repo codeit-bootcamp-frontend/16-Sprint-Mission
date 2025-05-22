@@ -1,60 +1,36 @@
-import styles from './Pagination.module.css';
+import styles from "./Pagination.module.css";
+import PaginationButton from "./PaginationButton";
 
 const Pagination = ({
-  visiblePageNumbers,
   currentPageNumber,
-  handlers,
-  pageControlEnabled,
+  visiblePageNumbers,
+  paginationHandler,
+  paginationState,
 }) => {
-  const { handlePageNumberClick, handlePagePrev, handlePageNext } = handlers;
-  const { prevPageEnable, nextPageEnable } = pageControlEnabled;
-
+  console.log(currentPageNumber, visiblePageNumbers, paginationHandler, paginationState);
   return (
-    <nav className={styles['pagination-container']}>
-      <button
-        className={`${styles['pagination-button']} ${styles['prev-page']}`}
-        onClick={handlePagePrev}
-        disabled={!prevPageEnable}
-      >
-        <img
-          className={styles['pagination-button-image']}
-          src={
-            prevPageEnable
-              ? './images/ic_prevPageClick_active.png'
-              : './images/ic_prevPageClick_inactive.png'
-          }
-          width={16}
-        />
-      </button>
-      {visiblePageNumbers.map((pageIndex) => {
-        const ButtonClassName =
-          currentPageNumber === pageIndex ? 'selected' : '';
+    <nav className={styles["pagination-container"]}>
+      <PaginationButton
+        type="prev"
+        onClick={paginationHandler.onPagePrev}
+        isEnabled={paginationState.isPrevPageEnable}
+      />
+      {visiblePageNumbers.map((pageNumber) => {
         return (
-          <button
-            key={pageIndex}
-            value={pageIndex}
-            className={`${styles['pagination-button']} ${styles[ButtonClassName]}`}
-            onClick={handlePageNumberClick}
-          >
-            {pageIndex}
-          </button>
+          <PaginationButton
+            key={pageNumber}
+            type="number"
+            pageNumber={pageNumber}
+            onClick={paginationHandler.onPageNumberClick}
+            currentPageNumber={currentPageNumber}
+          />
         );
       })}
-      <button
-        className={`${styles['pagination-button']} ${styles['next-page']}`}
-        onClick={handlePageNext}
-        disabled={!nextPageEnable}
-      >
-        <img
-          className={styles['pagination-button-image']}
-          src={
-            nextPageEnable
-              ? './images/ic_nextPageClick_active.png'
-              : './images/ic_nextPageClick_inactive.png'
-          }
-          width={16}
-        />
-      </button>
+      <PaginationButton
+        type="next"
+        onClick={paginationHandler.onPageNext}
+        isEnabled={paginationState.isNextPageEnable}
+      />
     </nav>
   );
 };

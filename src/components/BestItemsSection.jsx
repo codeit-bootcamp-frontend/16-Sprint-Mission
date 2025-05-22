@@ -1,31 +1,24 @@
-import { useEffect, useState } from "react";
 import { getItems } from "../utils/api";
 import ItemsContainer from "./ItemsContainer";
 import styles from "./ItemsSection.module.css";
+import { useAsync } from "../hooks/useAsync";
+import { useMemo } from "react";
 
 const LIST_TYPE = "best";
 
 const BestItemsSection = ({ pageSize }) => {
-  const [bestItemList, setBestItemList] = useState([]);
+  const options = useMemo(
+    () => ({
+      offset: 1,
+      pageSize: 4,
+      orderBy: "favorite",
+      keyword: "",
+    }),
+    []
+  );
 
-  const loadBestItemList = async (options) => {
-    const result = await getItems(options);
-    if (!result) return;
-    const { list } = result;
-    setBestItemList(list);
-  };
-
-  useEffect(() => {
-    if (!pageSize) return;
-    (async () => {
-      await loadBestItemList({
-        offset: 1,
-        pageSize: pageSize,
-        orderBy: "favorite",
-        keyword: "",
-      });
-    })();
-  }, [pageSize]);
+  const { result } = useAsync(getItems, options);
+  const bestItemList = result?.list || [];
 
   return (
     <section className={`${styles["cards-section"]} ${styles[LIST_TYPE]}`}>
@@ -34,7 +27,7 @@ const BestItemsSection = ({ pageSize }) => {
       </div>
       <ItemsContainer
         listName={LIST_TYPE}
-        itemList={bestItemList}
+        itemList={bestItemList.slice(0, pageSize)}
         pageSize={pageSize}
       />
     </section>

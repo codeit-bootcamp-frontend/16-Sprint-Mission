@@ -2,6 +2,7 @@ import styles from "./ItemDetails.module.css";
 import { getItemDetails } from "../utils/api";
 import { useEffect, useState } from "react";
 import { formatDateKRW, formatPriceKRW } from "../utils/formatPrice";
+import KebabButton from "./KebabButton";
 
 const INITIAL_DETAILS = {
   id: null,
@@ -32,6 +33,8 @@ const ItemDetails = ({ itemId }) => {
     setDetails(result);
   };
 
+  const handleKebabClick = () => {};
+
   useEffect(() => {
     (async () => {
       await loadItemDetails();
@@ -55,10 +58,10 @@ const ItemDetails = ({ itemId }) => {
                 {formatPriceKRW(details.price)}
               </span>
             </div>
-            <img
-              className={styles["kebab-button"]}
-              src={"/images/ic_kebab.png"}
-              width={24}
+            <KebabButton
+              id={itemId}
+              onClick={handleKebabClick}
+              kebabRef={null}
             />
           </div>
           <div className={styles["description-container"]}>

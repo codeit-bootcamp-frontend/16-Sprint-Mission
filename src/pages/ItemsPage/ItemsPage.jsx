@@ -6,13 +6,12 @@ import CurrentItemsSection from "../../components/CurrentItemsSection";
 
 const ItemsPage = () => {
   const { pageSizeList } = usePageSizeByBreakPoint();
-
   return (
     <>
       <Nav currentSection={"items"} />
       <main className={"items-page-main"}>
-        <BestItemsSection pageSize={pageSizeList.best} />
-        <CurrentItemsSection pageSize={pageSizeList.current} />
+        {pageSizeList.best && <BestItemsSection pageSize={pageSizeList.best} />}
+        {pageSizeList.current && <CurrentItemsSection pageSize={pageSizeList.current} />}
       </main>
     </>
   );
