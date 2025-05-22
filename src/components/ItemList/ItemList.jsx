@@ -10,7 +10,6 @@ import useAsync from "../../hooks/useAsync";
 import ItemListRenderer from "./ItemListRenderer";
 
 const DEFAULT_PAGE_SIZE = 10;
-const PAGINATION_SIZE = 5;
 const ORDER_MAP = {
   최신순: "recent",
   좋아요순: "favorite",
@@ -18,44 +17,37 @@ const ORDER_MAP = {
 const dropdownMenuItems = Object.keys(ORDER_MAP);
 
 const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
-  const navigate = useNavigate();
   const [items, setItems] = useState([]);
+  const [totalCount, setTotalCount] = useState(0);
+  const [order, setOrder] = useState("최신순");
+  const navigate = useNavigate();
   const {
     isLoading,
     loadingError,
     runAsync: getItemsAsync,
   } = useAsync(getItems);
-  const [order, setOrder] = useState("최신순");
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPage, setTotalPage] = useState(0);
 
   const handleLoad = useCallback(
     async (options) => {
       const result = await getItemsAsync(options);
       if (!result) return;
 
-      const { list, totalCount } = result;
-      setItems(list);
-      setTotalPage(Math.ceil(totalCount / pageSize));
+      setItems(result.list);
+      setTotalCount(result.totalCount);
     },
-    [pageSize, getItemsAsync]
+    [getItemsAsync]
   );
 
   const handleDropdownSelect = (selectedOrder) => {
     setOrder(selectedOrder);
   };
 
-  const handlePaginationClick = (selectedPage) => {
-    setCurrentPage(selectedPage);
-  };
-
   useEffect(() => {
     handleLoad({
-      page: currentPage,
       pageSize,
       orderBy: ORDER_MAP[order],
     });
-  }, [currentPage, order, pageSize, handleLoad]);
+  }, [order, pageSize, handleLoad]);
 
   return (
     <div className={styles["item-list-area"]}>
@@ -82,17 +74,15 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
         />
       </div>
       <ItemListRenderer
-        isLoading={isLoading}
-        isError={loadingError}
         items={items}
         pageSize={pageSize}
+        isLoading={isLoading}
+        isError={loadingError}
       />
       <Pagination
-        handleLoad={handleLoad}
         pageSize={pageSize}
-        paginationSize={PAGINATION_SIZE}
-        totalPage={totalPage}
-        onCurrentPage={handlePaginationClick}
+        totalCount={totalCount}
+        handleLoad={handleLoad}
       />
     </div>
   );

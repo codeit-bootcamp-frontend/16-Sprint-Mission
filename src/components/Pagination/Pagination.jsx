@@ -3,12 +3,13 @@ import styles from "./Pagination.module.css";
 import arrowLeft from "../../assets/images/ic_arrow_sm_left.svg";
 import arrowRight from "../../assets/images/ic_arrow_sm_right.svg";
 
+const PAGINATION_SIZE = 5;
+
 const Pagination = ({
-  handleLoad,
   pageSize = 10,
-  paginationSize = 5,
-  totalPage,
-  onCurrentPage,
+  totalCount,
+  paginationSize = PAGINATION_SIZE,
+  handleLoad,
 }) => {
   const [hasPrev, setHasPrev] = useState(false);
   const [hasNext, setHasNext] = useState(true);
@@ -16,11 +17,15 @@ const Pagination = ({
     Array.from({ length: paginationSize }, (_, i) => i + 1)
   );
   const [currentPage, setCurrentPage] = useState(1);
+  const totalPage = Math.floor(totalCount / pageSize);
 
   const handlePageNumClick = (e) => {
     const selectedPage = +e.target.textContent;
     setCurrentPage(selectedPage);
-    onCurrentPage(selectedPage);
+    handleLoad({
+      page: selectedPage,
+      pageSize,
+    });
   };
 
   const handlePrevPaginationClick = () => {
@@ -53,7 +58,7 @@ const Pagination = ({
     let nextPages = Array.from(
       { length: paginationSize },
       (_, i) => nextFirstPage + i
-    ).filter((page) => page <= totalPage); // totalPage 초과 방지
+    ).filter((page) => page <= totalPage);
 
     setHasPrev(true);
     setCurrentPages(nextPages);
