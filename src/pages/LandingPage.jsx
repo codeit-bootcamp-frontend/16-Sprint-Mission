@@ -1,5 +1,15 @@
+import FeatureDesscriptionList from '../components/FeatureList';
+import MainHero from '../components/MainHero';
+import SubHero from '../components/SubHero';
+
 const LandingPage = () => {
-  return <h1>This is Landing Page.</h1>;
+  return (
+    <>
+      <MainHero />
+      <FeatureDesscriptionList />
+      <SubHero />
+    </>
+  );
 };
 
 export default LandingPage;

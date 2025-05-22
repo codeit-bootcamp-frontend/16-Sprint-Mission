@@ -2,17 +2,17 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Navigation from './Navigation';
 import Footer from './Footer';
 
-const MainLayout = () => {
+const AppLayout = () => {
   const location = useLocation();
-  const showFooter = location.pathname === '/';
+  const isLandingPage = location.pathname === '/';
 
   return (
     <>
-      <Navigation />
+      <Navigation isLandingPage={isLandingPage} />
       <Outlet />
-      {showFooter && <Footer />}
+      {isLandingPage && <Footer />}
     </>
   );
 };
 
-export default MainLayout;
+export default AppLayout;

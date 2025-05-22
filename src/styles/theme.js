@@ -1,4 +1,4 @@
-export const theme = {
+const theme = {
   colors: {
     primary100: '#3692ff',
     primary200: '#1967d6',
@@ -15,3 +15,5 @@ export const theme = {
     error: '#f74747',
   },
 };
+
+export default theme;
