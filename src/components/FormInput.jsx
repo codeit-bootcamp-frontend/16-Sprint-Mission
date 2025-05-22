@@ -1,11 +1,15 @@
-import { useState } from "react";
-import { useValidate } from "../hooks/useValidate";
-import styles from "../styles/errMsg.module.css";
+import { useEffect, useState } from "react";
+import { updateValidateRule, useValidate } from "../hooks/useValidate";
+import styles from "../styles/ErrMsg.module.css";
 
-function LoginFormInput(props) {
+function FormInput(props) {
   const { placeholder, name, type, id, setHasErr } = props;
   const [value, setValue] = useState("");
   const [err, errMsg, updateErrUi] = useValidate();
+
+  useEffect(()=>{
+    updateValidateRule(name, value);
+  },[value])
 
   return (
     <>
@@ -13,7 +17,7 @@ function LoginFormInput(props) {
         value={value}
         className={err ? styles["error-line"] : ""}
         onChange={(e)=>setValue(e.target.value)}
-        onBlur={(e)=>updateErrUi(e, setHasErr)}
+        onBlur={(e)=>updateErrUi(e)}
         type={type}
         id={id}
         name={name}
@@ -24,4 +28,4 @@ function LoginFormInput(props) {
   );
 }
 
-export default LoginFormInput;
+export default FormInput;

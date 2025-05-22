@@ -1,30 +1,38 @@
-import styles from "../styles/login.module.css";
+import styles from "../styles/Login.module.css";
 import logo from "../assets/images/logo-title.png";
 import kakaoIcon from "../assets/icon/login_kakao.png";
 import googleIcon from "../assets/icon/login_google.png";
-import LoginFormInput from "../components/LoginFormInput";
+import FormInput from "../components/FormInput";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { hasLoginInvalid} from "../hooks/useValidate";
 
 function Login() {
-  const [hasErr, setHasErr] = useState({
-    "user-email": true,
-    "user-password": true,
-  });
+  const [checked, setChecked] = useState(false);
+  const [isAllValid, setIsAllValid] = useState(false);
 
-  function isFormValid() {
-    const isPassed = Object.values(hasErr).every((el) => el === false);
-    return isPassed;
+  function handleChange(e) {
+    if (hasLoginInvalid()) {
+      setIsAllValid(true);
+    } else {
+      setIsAllValid(false);
+    }
   }
 
   function handleSubmit(e) {
-    if (isFormValid()) {
+    if (hasLoginInvalid()) {
+      //세션에 넘겨줘
+      sessionStorage.setItem('isLogined','true');
     } else {
       e.preventDefault();
     }
   }
 
   // 토글 보이기 추가하기
+  function handlePwCheck(e){
+      setChecked(!checked);
+    //다 렌더링 되는 거 막아....
+  }
 
   return (
     <main className={styles.main}>
@@ -35,6 +43,7 @@ function Login() {
           </Link>
         </div>
         <form
+          onBlur={handleChange}
           onSubmit={handleSubmit}
           className={styles.login__form}
           method="get"
@@ -42,36 +51,35 @@ function Login() {
         >
           <fieldset>
             <label htmlFor="user-email">이메일</label>
-            <LoginFormInput
-              setHasErr={setHasErr}
+            <FormInput
               type="text"
               id="user-email"
               name="user-email"
               placeholder="이메일을 입력해주세요"
-            ></LoginFormInput>
+            ></FormInput>
             <div className={styles[`container__position-relative`]}>
               <label htmlFor="user-password">비밀번호</label>
-              <LoginFormInput
-                setHasErr={setHasErr}
+              <FormInput
                 id="user-password"
-                type="password"
+               type={checked?"text":"password"}
                 name="user-password"
                 placeholder="비밀번호를 입력해주세요"
-              ></LoginFormInput>
+              ></FormInput>
               <input
                 className={styles[`toggle-visibility-pw`]}
                 id="toggle-visibility-pw"
                 type="checkbox"
+                onChange={handlePwCheck}
               />
               <label
                 aria-label="비밀번호 표시 여부"
-                aria-checked="false"
+                aria-checked={checked}
                 htmlFor="toggle-visibility-pw"
               ></label>
             </div>
             <button
               className={
-                isFormValid() ? styles[`button-pass`] : styles[`button-fail`]
+                !isAllValid ? styles[`button-fail`] : styles[`button-pass`]
               }
               type="submit"
             >
@@ -101,7 +109,7 @@ function Login() {
           </div>
           <div className={styles[`login__sign-up`]}>
             판다마켓이 처음이신가요?&nbsp;
-            <Link to="sign_up" aria-label="회원가입 페이지로 이동">
+            <Link to="/sign_up" aria-label="회원가입 페이지로 이동">
               회원가입
             </Link>
           </div>

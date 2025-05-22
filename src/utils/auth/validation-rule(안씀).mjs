@@ -59,3 +59,5 @@ export function createValidRule(inputElement, ruleObj) {
 
     return validRule;
 }
+
+

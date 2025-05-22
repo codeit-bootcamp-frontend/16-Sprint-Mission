@@ -6,6 +6,7 @@ import "./styles/reset.css";
 import "./styles/global.css";
 import "./App.css";
 import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 
 function App() {
   return (
@@ -13,9 +14,10 @@ function App() {
       <Routes>
         <Route element={<Header></Header>}>
           <Route path="/" element={<Home></Home>}></Route>
-          <Route path="items" element={<Items></Items>}></Route>
+          <Route path="/items" element={<Items></Items>}></Route>
         </Route>
-        <Route path="login" element={<Login />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/sign_up" element={<SignUp />}></Route>
       </Routes>
     </BrowserRouter>
   );

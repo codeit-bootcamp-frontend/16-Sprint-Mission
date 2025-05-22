@@ -2,8 +2,16 @@ import styles from "../styles/Header.module.css";
 import logoImg from "../assets/images/logo.png";
 import logoTextImg from "../assets/images/logo-text.png";
 import { Link, Outlet } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function Header() {
+  const [isLogined,setIsLogined] = useState();
+
+  useEffect(()=>{
+    setIsLogined(sessionStorage.getItem('isLogined'))
+    console.log('hi')
+  },[])
+
   return (
     <>
       <header className={styles.header}>
@@ -23,7 +31,11 @@ function Header() {
             로그인
           </Link>
         </nav>
+    
       </header>
+
+
+
       <Outlet />
     </>
   );

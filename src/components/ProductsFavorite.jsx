@@ -4,6 +4,7 @@ import styles from "../styles/ProductsFavorite.module.css";
 import { useResizeRequest } from "../hooks/useResizeRequest ";
 import FailLoad from "./FailLoad";
 import { getProducts } from "../service/api";
+import { useLoadItems } from "../hooks/useValidate";
 
 function ProductsFavorite() {
   const [favoriteItems, setFavoriteItems] = useState([]);
@@ -17,18 +18,25 @@ function ProductsFavorite() {
   //innerWidth바뀌면 쿼리 다시 설정해줘
   useResizeRequest("favor", setFavoriteQueryStrings);
 
+
+
+  // const [loadFail, result] = useLoadItems(favoriteQueryStrings);
+
   //쿼리 변경 시 가져오기
   useEffect(() => {
     async function loadFavoriteItems() {
       try {
-        const result = await getProducts(favoriteQueryStrings);
+        const result = await getProducts(favoriteQueryStrings);//미리 쿼리스트링 짜고 넘겨주기
         setFavoriteItems(result.list);
       } catch (err) {
         setFavoriteError(err);
       }
     }
-    loadFavoriteItems();
-  }, [favoriteQueryStrings]);
+    loadFavoriteItems()
+
+  },[favoriteQueryStrings])
+
+
 
   return (
     <section className={styles.items__favorite}>

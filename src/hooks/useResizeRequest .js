@@ -3,7 +3,10 @@ import { reRequestByInnerWidth } from "../utils/responsivePageSize";
 
 export function useResizeRequest (type, setQueryStrings) {
     const [innerWidth, setInnerWidth] = useState(null);
+    // const [pageSize, setPageSize]= useState(1);
     const debounceTimer = useRef(null);
+
+ 
 
     useEffect(() => {
         setInnerWidth(window.innerWidth);
@@ -24,7 +27,14 @@ export function useResizeRequest (type, setQueryStrings) {
     }, []);
 
     useEffect(() => {
-       reRequestByInnerWidth(type, innerWidth, setQueryStrings);
+        // setPageSize(reRequestByInnerWidth(type, innerWidth));
+        // setQueryStrings()
+        reRequestByInnerWidth(type, innerWidth, setQueryStrings)
     }, [innerWidth]);
+
+
+
+
+    // return [pageSize]
 }
 
