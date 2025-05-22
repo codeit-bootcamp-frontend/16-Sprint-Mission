@@ -31,12 +31,20 @@ const Pagination = ({
       [handleLoad, pageSize, orderStatus, searchKeyword]
     ),
   });
-  const { currentPage, currentPages, hasPrev, hasNext } = pageData;
-  const { goToPage, goPrevPages, goNextPages } = pageActions;
 
+  const { currentPage, currentPages, hasPrev, hasNext } = pageData;
+  const { goToPage, goPrevPages, goNextPages, updatePageWithResize } =
+    pageActions;
+
+  // 정렬 바뀌면 첫번째 페이지로 이동
   useEffect(() => {
-    goToPage(1); // 정렬 바뀌면 첫번째 페이지로 이동
+    goToPage(1);
   }, [orderStatus, goToPage]);
+
+  // resize시 보고 있던 페이지 유지
+  useEffect(() => {
+    updatePageWithResize(pageSize);
+  }, [pageSize, updatePageWithResize]);
 
   return (
     <div className={styles.pagination}>

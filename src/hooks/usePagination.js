@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useRef } from "react";
 
 const usePagination = ({
   pageSize = 10,
@@ -23,6 +23,8 @@ const usePagination = ({
   const hasPrev = currentGroupIndex > 0;
   const hasNext = currentPages[currentPages.length - 1] < totalPage;
 
+  const pageSizeRef = useRef(pageSize);
+
   const goToPage = useCallback(
     (page) => {
       setCurrentPage(page);
@@ -43,6 +45,18 @@ const usePagination = ({
     goToPage(nextPage);
   };
 
+  const updatePageWithResize = (newPageSize) => {
+    const prevPageSize = pageSizeRef.current;
+
+    if (newPageSize !== prevPageSize) {
+      const prevItemIdx = (currentPage - 1) * prevPageSize;
+      const newCurrentPage = Math.floor(prevItemIdx / pageSize) + 1;
+      goToPage(newCurrentPage);
+    }
+
+    pageSizeRef.current = newPageSize;
+  };
+
   return {
     pageData: {
       currentPage,
@@ -54,6 +68,7 @@ const usePagination = ({
       goToPage,
       goPrevPages,
       goNextPages,
+      updatePageWithResize,
     },
   };
 };

@@ -46,10 +46,6 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
     setOrder(selectedOrder);
   };
 
-  const resetSearch = () => {
-    setSearchParams("");
-  };
-
   useEffect(() => {
     handleLoad({
       pageSize,
@@ -89,7 +85,7 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
         pageSize={pageSize}
         isLoading={isLoading}
         isError={loadingError}
-        isEmpty={resetSearch}
+        isEmpty={() => setSearchParams("")}
       />
       <Pagination
         pageSize={pageSize}
