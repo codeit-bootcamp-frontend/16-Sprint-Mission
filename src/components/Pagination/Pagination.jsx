@@ -5,9 +5,10 @@ import arrowRight from "../../assets/images/ic_arrow_sm_right.svg";
 import usePagination from "../../hooks/usePagination";
 
 const PAGINATION_SIZE = 5;
+const DEFAULT_PAGE_SIZE = 10;
 
 const Pagination = ({
-  pageSize = 10,
+  pageSize = DEFAULT_PAGE_SIZE,
   totalCount,
   paginationSize = PAGINATION_SIZE,
   handleLoad,
