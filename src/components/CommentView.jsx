@@ -1,6 +1,6 @@
 import { formatDateKRW } from "../utils/formatPrice";
 import styles from "./CommentView.module.css";
-import KebabButton from "./KebabButton";
+import KebabMenu from "./common/KebabMenu/KebabMenu";
 import ProfileCard from "./layout/profileCard/ProfileCard";
 
 const CommentView = ({ comment, onEdit, onDelete }) => {
@@ -13,7 +13,7 @@ const CommentView = ({ comment, onEdit, onDelete }) => {
     <div className={styles["container"]}>
       <div className={styles["content-container"]}>
         <span className={styles["content"]}>{comment.content}</span>
-        <KebabButton id={comment.id} menuItems={dropDownItems} />
+        <KebabMenu id={comment.id} menuItems={dropDownItems} />
       </div>
       <ProfileCard
         ProfileImgUrl={"/images/icon_profile.png"}

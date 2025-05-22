@@ -2,7 +2,7 @@ import styles from "./ItemDetailsSection.module.css";
 import { getItemDetails } from "../../../utils/api";
 import { useEffect, useState } from "react";
 import { formatDateKRW, formatPriceKRW } from "../../../utils/formatPrice";
-import KebabButton from "../../../components/KebabButton";
+import KebabMenu from "../../../components/common/KebabMenu/KebabMenu";
 
 const INITIAL_DETAILS = {
   id: null,

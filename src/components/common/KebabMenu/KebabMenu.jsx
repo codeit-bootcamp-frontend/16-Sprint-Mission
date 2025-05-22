@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import styles from "./KebabButton.module.css";
+import styles from "./KebabMenu.module.css";
 
-const KebabButton = ({ id, menuItems }) => {
+const KebabMenu = ({ id, menuItems }) => {
   const [isKebabSelected, setIsKebabSelected] = useState();
 
   const DropDownRef = useRef();
@@ -55,4 +55,4 @@ const KebabButton = ({ id, menuItems }) => {
   );
 };
 
-export default KebabButton;
+export default KebabMenu;
