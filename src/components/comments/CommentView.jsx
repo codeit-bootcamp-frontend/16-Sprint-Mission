@@ -2,7 +2,7 @@ import styles from "./CommentView.module.css";
 import KebabMenu from "../common/KebabMenu/KebabMenu";
 import ProfileCard from "../layout/ProfileCard/ProfileCard";
 
-const CommentView = ({ comment, onEdit, onDelete }) => {
+const CommentView = ({ comment, onEdit, onDelete, onKebabOpen, onKebabClose }) => {
   const dropDownItems = [
     { label: "수정하기", onClick: onEdit },
     { label: "삭제하기", onClick: onDelete },
@@ -12,7 +12,12 @@ const CommentView = ({ comment, onEdit, onDelete }) => {
     <div className={styles["container"]}>
       <div className={styles["content-container"]}>
         <span className={styles["content"]}>{comment.content}</span>
-        <KebabMenu id={comment.id} menuItems={dropDownItems} />
+        <KebabMenu
+          id={comment.id}
+          menuItems={dropDownItems}
+          onOpen={onKebabOpen}
+          onClose={onKebabClose}
+        />
       </div>
       <ProfileCard
         ProfileImgUrl={"/images/icon_profile.png"}

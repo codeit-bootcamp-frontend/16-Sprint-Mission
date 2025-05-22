@@ -5,7 +5,7 @@ import CommentView from "./CommentView";
 
 const CommentCard = ({ comment }) => {
   const [isEditing, setIsEditing] = useState(false);
-
+  const [zIndex, setZIndex] = useState(0);
   const handleEditClick = (e) => {
     e.preventDefault();
     setIsEditing(true);
@@ -25,8 +25,20 @@ const CommentCard = ({ comment }) => {
     setIsEditing(false);
   };
 
+  const handleKebabOpen = () => {
+    setZIndex(1);
+  };
+
+  const handleKebabClose = () => {
+    setZIndex(0);
+  };
+
+  const containerStyle = {
+    zIndex: zIndex,
+  };
+
   return (
-    <div className={styles["container"]}>
+    <div style={containerStyle} className={styles["container"]}>
       {isEditing ? (
         <CommentEditForm
           comment={comment}
@@ -38,6 +50,8 @@ const CommentCard = ({ comment }) => {
           comment={comment}
           onEdit={handleEditClick}
           onDelete={handleDeleteClick}
+          onKebabOpen={handleKebabOpen}
+          onKebabClose={handleKebabClose}
         />
       )}
     </div>

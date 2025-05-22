@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./KebabMenu.module.css";
-
-const KebabMenu = ({ id, menuItems }) => {
+const KebabMenu = ({ id, menuItems, onOpen = null, onClose = null }) => {
   const [isKebabSelected, setIsKebabSelected] = useState();
 
   const DropDownRef = useRef();
@@ -23,8 +22,10 @@ const KebabMenu = ({ id, menuItems }) => {
 
   useEffect(() => {
     if (!isKebabSelected) {
+      if (onClose) onClose();
       document.removeEventListener("mousedown", handleDropDownOutsideClick);
     } else {
+      if (onOpen) onOpen();
       document.addEventListener("mousedown", handleDropDownOutsideClick);
     }
     return () => {

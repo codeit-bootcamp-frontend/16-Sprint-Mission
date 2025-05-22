@@ -15,14 +15,11 @@ export const useScreenBreakpoint = () => {
   useEffect(() => {
     const handleResize = () => {
       const nextBreakPoint = getBreakPoint(window.innerWidth);
-      setBreakPoint((prev) =>
-        prev === nextBreakPoint ? prev : nextBreakPoint
-      );
+      setBreakPoint((prev) => (prev === nextBreakPoint ? prev : nextBreakPoint));
     };
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => {
-      console.log("useEffect cleanup");
       window.removeEventListener("resize", handleResize);
     };
   }, []);
