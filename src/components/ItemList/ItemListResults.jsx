@@ -1,8 +1,16 @@
 import styles from "./ItemList.module.css";
 import ItemCard from "../ItemCard";
 import ItemCardSkeleton from "../../ui/Skeletons/ItemCardSkeleton";
+import Button from "../../ui/Button";
 
-const ItemListResults = ({ isLoading, isError, items, pageSize, listType }) => {
+const ItemListResults = ({
+  isLoading,
+  isError,
+  isEmpty,
+  items,
+  pageSize,
+  listType,
+}) => {
   const isLoadingError = !isLoading && isError;
 
   if (isLoading) {
@@ -18,6 +26,16 @@ const ItemListResults = ({ isLoading, isError, items, pageSize, listType }) => {
   }
 
   if (isLoadingError) return <p>상품 목록을 가져오지 못했습니다.</p>;
+
+  if (items.length === 0)
+    return (
+      <div className={styles["item-list-empty"]}>
+        <p>상품이 없습니다.</p>
+        <Button type="button" variant="primary" size="sm" onClick={isEmpty}>
+          돌아가기
+        </Button>
+      </div>
+    );
 
   return (
     <ul className={`${styles[`item-list-ul`]} ${styles[listType]}`}>

@@ -13,6 +13,7 @@ const Pagination = ({
   paginationSize = PAGINATION_SIZE,
   handleLoad,
   orderStatus,
+  searchKeyword,
 }) => {
   const { pageData, pageActions } = usePagination({
     totalCount,
@@ -20,17 +21,21 @@ const Pagination = ({
     paginationSize,
     onPageChange: useCallback(
       (page) => {
-        handleLoad({ page, pageSize, orderBy: orderStatus });
+        handleLoad({
+          page,
+          pageSize,
+          orderBy: orderStatus,
+          keyword: searchKeyword,
+        });
       },
-      [handleLoad, pageSize, orderStatus]
+      [handleLoad, pageSize, orderStatus, searchKeyword]
     ),
   });
   const { currentPage, currentPages, hasPrev, hasNext } = pageData;
   const { goToPage, goPrevPages, goNextPages } = pageActions;
 
-  // 정렬이 바뀌면 첫번째 페이지로 이동
   useEffect(() => {
-    goToPage(1);
+    goToPage(1); // 정렬 바뀌면 첫번째 페이지로 이동
   }, [orderStatus, goToPage]);
 
   return (

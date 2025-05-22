@@ -1,23 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./InputSearch.module.css";
 import searchImg from "../../assets/images/ic-search.svg";
 
-const InputSearch = ({ className, placeholder }) => {
-  const [value, setValue] = useState("");
+const InputSearch = ({ keyword, onSearch, className, placeholder }) => {
+  const [value, setValue] = useState(keyword);
 
-  const handleChange = (e) => setValue(e.target.value);
+  const handleSearch = () => {
+    onSearch({ keyword: value });
+  };
 
-  const classNames = `${styles["search-area"]} ${className} `;
+  useEffect(() => {
+    setValue(keyword);
+  }, [keyword]);
 
   return (
-    <div className={classNames}>
+    <div className={`${styles["search-area"]} ${className}`}>
       <img src={searchImg} alt="상품 검색" className={styles["search-ico"]} />
       <input
         type="search"
         name="keyword"
         value={value}
         placeholder={placeholder}
-        onChange={handleChange}
+        onChange={(e) => setValue(e.target.value)}
+        onKeyDown={(e) => e.key === "Enter" && handleSearch()}
       />
     </div>
   );

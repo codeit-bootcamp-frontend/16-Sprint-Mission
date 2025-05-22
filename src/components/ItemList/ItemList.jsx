@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
 import { getItems } from "../../services/api";
 import styles from "./ItemList.module.css";
@@ -28,6 +28,9 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
     runAsync: getItemsAsync,
   } = useAsync(getItems);
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  const keyword = searchParams.get("keyword") || "";
+
   const handleLoad = useCallback(
     async (options) => {
       const result = await getItemsAsync(options);
@@ -43,12 +46,17 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
     setOrder(selectedOrder);
   };
 
+  const resetSearch = () => {
+    setSearchParams("");
+  };
+
   useEffect(() => {
     handleLoad({
       pageSize,
       orderBy: ORDER_MAP[order],
+      keyword,
     });
-  }, [order, pageSize, handleLoad]);
+  }, [pageSize, order, keyword, handleLoad]);
 
   return (
     <div className={styles["item-list-area"]}>
@@ -64,8 +72,10 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
           상품 등록하기
         </Button>
         <InputSearch
+          keyword={keyword}
+          onSearch={setSearchParams}
           className={styles["item-list-header-search"]}
-          placeholder="상품명을 입력하고 엔터를 눌러주세요."
+          placeholder="검색할 상품을 입력해주세요"
         />
         <Dropdown
           menu={dropdownMenuItems}
@@ -79,12 +89,14 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
         pageSize={pageSize}
         isLoading={isLoading}
         isError={loadingError}
+        isEmpty={resetSearch}
       />
       <Pagination
         pageSize={pageSize}
         totalCount={totalCount}
         handleLoad={handleLoad}
         orderStatus={ORDER_MAP[order]}
+        searchKeyword={keyword}
       />
     </div>
   );
