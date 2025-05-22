@@ -1,4 +1,16 @@
 /* 로그인 & 회원가입 */
+.warning-text {
+  font-size: 13px;
+  color: #f74747;
+  font-weight: 500;
+  padding-left: 5px;
+  height: 13px;
+  margin: 8px 0 15px;
+}
+.input-error {
+  border: 1px solid red;
+}
+
 .auth-container {
   width: var(--auth-container-width);
   margin: 0 auto;
@@ -37,7 +49,6 @@
   height: 56px;
   background-color: var(--gray100);
   border-radius: 12px;
-  margin-bottom: 24px;
   padding-left: 24px;
   color: var(--gray800);
   width: 100%;
@@ -47,14 +58,12 @@
 }
 .auth-container .form-wrap .pw-wrap {
   position: relative;
-  margin-bottom: 24px;
 }
 .auth-container .form-wrap .pw-wrap .input {
   margin: 0;
 }
 .auth-container .form-wrap .pw-wrap .eye-icon {
   content: "";
-  display: block;
   background-image: url(../images/eyes_close.png);
   background-position: center;
   background-repeat: no-repeat;
@@ -69,12 +78,20 @@
 }
 .auth-container .form-wrap .pw-wrap .eye-icon.on {
   background-image: url(../images/eyes.png);
+  width: 21px;
+  height: 21px;
+  right: 26px;
+  top: 48%;
 }
 .auth-container .form-wrap .input::placeholder {
   color: var(--gray400);
 }
-.auth-container .form-wrap .form-btn {
+.auth-container .form-wrap .form-btn:disabled {
+  cursor: default;
   background-color: var(--gray400);
+}
+.auth-container .form-wrap .form-btn {
+  background-color: var(--main-color);
   color: #fff;
   height: 56px;
   border-radius: 50px;
@@ -104,10 +121,10 @@
   margin-top: 24px;
   font-size: 14px;
 }
-.auth-container .signup-wrap .goto-signup {
+.auth-container .signup-wrap .goto-page {
   color: var(--main-color);
   text-decoration: underline;
 }
-.auth-container .signup-wrap .goto-signup:visited {
+.auth-container .signup-wrap .goto-page:visited {
   color: var(--main-color);
 }

@@ -26,7 +26,7 @@
           autocomplete="email"
           placeholder="이메일을 입력해주세요"
         />
-
+        <span class="warning-text"></span>
         <label class="label" for="pw">비밀번호</label>
         <div class="pw-wrap">
           <input
@@ -40,11 +40,11 @@
           <span
             class="eye-icon"
             aria-label="비밀번호 표시"
-            ,aria-pressed="false"
+            aria-pressed="false"
           ></span>
         </div>
-
-        <button class="form-btn" type="submit">로그인</button>
+        <span class="warning-text"></span>
+        <button class="form-btn" type="submit" disabled>로그인</button>
       </form>
       <div class="easy-login-wrap">
         <p class="login-info">간편 로그인하기</p>
@@ -63,8 +63,9 @@
       </div>
       <div class="signup-wrap">
         <span>판다마켓이 처음이신가요?</span>
-        <span><a class="goto-signup" href="./signup.html">회원가입</a></span>
+        <span><a class="goto-page" href="./signup.html">회원가입</a></span>
       </div>
     </section>
+    <script src="../script/login.js" type="module" defer></script>
   </body>
 </html>

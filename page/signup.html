@@ -25,7 +25,7 @@
           autocomplete="email"
           placeholder="이메일을 입력해주세요"
         />
-
+        <span class="warning-text"></span>
         <label class="label" for="nickname">닉네임</label>
         <input
           type="text"
@@ -35,7 +35,7 @@
           class="input"
           placeholder="닉네임을 입력해주세요"
         />
-
+        <span class="warning-text"></span>
         <label class="label" for="pw">비밀번호</label>
         <div class="pw-wrap">
           <input
@@ -47,11 +47,12 @@
             placeholder="비밀번호를 입력해주세요"
           />
           <span
-            class="eye-icon"
+            class="eye-icon pw"
             aria-label="비밀번호 표시"
-            ,aria-pressed="false"
+            aria-pressed="false"
           ></span>
         </div>
+        <span class="warning-text"></span>
         <label class="label" for="pw-chk">비밀번호 확인</label>
         <div class="pw-wrap">
           <input
@@ -62,10 +63,15 @@
             class="input"
             placeholder="비밀번호를 다시 한 번 입력해주세요"
           />
-          <span class="eye-icon"></span>
+          <span
+            class="eye-icon pw-chk"
+            aria-label="비밀번호 표시"
+            aria-pressed="false"
+          ></span>
         </div>
+        <span class="warning-text"></span>
 
-        <button class="form-btn" type="submit">회원가입</button>
+        <button class="form-btn" type="submit" disabled>회원가입</button>
       </form>
       <div class="easy-login-wrap">
         <p class="login-info">간편 로그인하기</p>
@@ -84,8 +90,9 @@
       </div>
       <div class="signup-wrap">
         <span>이미 회원이신가요?</span>
-        <span><a class="goto-signup" href="./login.html">로그인</a></span>
+        <span><a class="goto-page" href="./login.html">로그인</a></span>
       </div>
     </section>
+    <script src="../script/signUp.js" type="module" defer></script>
   </body>
 </html>
