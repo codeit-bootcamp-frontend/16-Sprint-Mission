@@ -3,6 +3,7 @@ import { getItemDetails } from "../../../utils/api";
 import { useEffect, useState } from "react";
 import { formatDateKRW, formatPriceKRW } from "../../../utils/formatPrice";
 import KebabMenu from "../../../components/common/KebabMenu/KebabMenu";
+import ItemImageViewer from "../../../components/common/ItemImageViewer/ItemImageViewer";
 
 const INITIAL_DETAILS = {
   id: null,
@@ -32,7 +33,14 @@ const ItemDetailsSection = ({ itemId }) => {
     setDetails(result);
   };
 
-  const handleKebabClick = () => {};
+  const handleEditClick = () => {};
+
+  const handleDeleteClick = () => {};
+
+  const dropDownItems = [
+    { label: "수정하기", onClick: handleEditClick },
+    { label: "삭제하기", onClick: handleDeleteClick },
+  ];
 
   useEffect(() => {
     (async () => {
@@ -43,19 +51,21 @@ const ItemDetailsSection = ({ itemId }) => {
   return (
     <>
       <div className={styles["section"]}>
-        <img
-          className={styles["product-image"]}
-          src={imgSrc}
-          onError={() => setIsImageValid(false)}
-          width={486}
-        />
+        <div className={styles["product-image-container"]}>
+          <ItemImageViewer
+            alt={details.name}
+            src={details.images}
+            defaultWidth={486}
+            borderRadius={16}
+          />
+        </div>
         <div className={styles["context-container"]}>
           <div className={styles["header-container"]}>
             <div className={styles["title-container"]}>
               <h1 className={styles["title"]}>{details.name}</h1>
               <span className={styles["price"]}>{formatPriceKRW(details.price)}</span>
             </div>
-            {/* <KebabButton id={itemId} onClick={handleKebabClick} kebabRef={null} /> */}
+            <KebabMenu id={itemId} menuItems={dropDownItems} />
           </div>
           <div className={styles["description-container"]}>
             <div className={styles["subtitle-container"]}>

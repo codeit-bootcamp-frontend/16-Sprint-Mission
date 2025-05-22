@@ -12,7 +12,7 @@
 	align-items: start;
 }
 
-.product-image {
+.product-image-container {
 	aspect-ratio: 1/1;
 	width: var(--product-image-width);
 	border-radius: 28.59px;
@@ -89,6 +89,7 @@
 .tag-container {
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 	gap: 8px;
 }
 
