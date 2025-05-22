@@ -5,6 +5,13 @@
 	font-family: 'pretendard';
 }
 
+.comment-loading-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 200px;
+}
+
 .comment-none-container {
 	display: flex;
 	flex-direction: column;

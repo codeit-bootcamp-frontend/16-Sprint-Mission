@@ -1,38 +1,32 @@
 import styles from "./ItemComments.module.css";
-import { useEffect, useState } from "react";
 import { getItemComments } from "../../../utils/api";
 import { useNavigate } from "react-router-dom";
 import CommentRequireForm from "../../../components/comments/CommentRequireForm";
 import CommentsContainer from "../../../components/comments/CommentsContainer";
+import { useAsync } from "../../../hooks/useAsync";
+import LoadingSpinner from "../../../components/layout/LoadingSpinner/LoadingSpinner";
 
 const ItemComments = ({ itemId }) => {
-  const [comments, setComments] = useState([]);
-
   const navigate = useNavigate();
 
-  const loadItemComments = async () => {
-    const result = await getItemComments(itemId);
-    const { list } = result;
-    setComments(list);
-  };
+  const { result } = useAsync(getItemComments, itemId);
+  const comments = result?.list;
 
   const handleReturnToListClick = (e) => {
     e.preventDefault();
     navigate("/items");
   };
 
-  useEffect(() => {
-    (async () => {
-      await loadItemComments();
-    })();
-  }, []);
-
   return (
     <section className={styles["section"]}>
       <CommentRequireForm />
-      {comments.length > 0 ? (
-        <CommentsContainer comments={comments} />
-      ) : (
+      {!comments && (
+        <div className={styles["comment-loading-container"]}>
+          <LoadingSpinner />
+        </div>
+      )}
+      {comments && comments?.length > 0 && <CommentsContainer comments={comments} />}
+      {comments && comments?.length === 0 && (
         <div className={styles["comment-none-container"]}>
           <img src={"/images/img_comment_none.png"} width={196} />
           <span className={styles["comment-none-text"]}>아직 문의가 없어요</span>

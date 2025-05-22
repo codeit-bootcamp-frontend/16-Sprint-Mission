@@ -1,4 +1,3 @@
-import { formatDateKRW } from "../../utils/formatPrice";
 import styles from "./CommentView.module.css";
 import KebabMenu from "../common/KebabMenu/KebabMenu";
 import ProfileCard from "../layout/ProfileCard/ProfileCard";
@@ -18,7 +17,7 @@ const CommentView = ({ comment, onEdit, onDelete }) => {
       <ProfileCard
         ProfileImgUrl={"/images/icon_profile.png"}
         nickname={comment.writer.nickname}
-        timeStamp={formatDateKRW(comment.updatedAt)}
+        timeStamp={comment.updatedAt}
       />
     </div>
   );

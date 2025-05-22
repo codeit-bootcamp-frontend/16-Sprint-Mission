@@ -1,0 +1,33 @@
+.container {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 8px;
+  background: #3498db;
+  border-radius: 20px;
+  transform: rotate(calc(30deg * var(--i))) translateX(40px);
+  animation: blink 1.2s linear infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}

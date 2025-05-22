@@ -11,8 +11,8 @@ const ItemsPage = () => {
     <>
       <Nav currentSection={"items"} />
       <main className={"items-page-main"}>
-        {pageSizeList.best && <BestItemsSection pageSize={pageSizeList.best} />}
-        {pageSizeList.current && <CurrentItemsSection pageSize={pageSizeList.current} />}
+        <BestItemsSection pageSize={pageSizeList?.best} />
+        <CurrentItemsSection pageSize={pageSizeList?.current} />
       </main>
     </>
   );

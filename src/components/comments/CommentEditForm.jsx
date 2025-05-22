@@ -1,4 +1,3 @@
-import { formatDateKRW } from "../../utils/formatPrice";
 import styles from "./CommentEditForm.module.css";
 import { useState } from "react";
 import ProfileCard from "../layout/ProfileCard/ProfileCard";
@@ -27,7 +26,7 @@ const CommentEditForm = ({ comment, onSubmit, onCancel }) => {
         <ProfileCard
           ProfileImgUrl={"/images/icon_profile.png"}
           nickname={comment.writer.nickname}
-          timeStamp={formatDateKRW(comment.updatedAt)}
+          timeStamp={comment.updatedAt}
         />
         <div className={styles["button-container"]}>
           <button className={styles["cancel"]} onClick={onCancel}>
