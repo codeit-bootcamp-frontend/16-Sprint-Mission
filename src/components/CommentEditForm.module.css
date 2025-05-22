@@ -4,6 +4,8 @@
 	gap: 16px;
 	align-items: end;
 	width: 100%;
+	padding-bottom: 26.5px;
+	border-bottom: 1px solid var(--color-gray300);
 }
 
 .inquire-label {
@@ -34,6 +36,13 @@
 
 .input-textarea::placeholder {
 	color: var(--color-gray400);
+}
+
+.footer-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
 }
 
 .button-container {

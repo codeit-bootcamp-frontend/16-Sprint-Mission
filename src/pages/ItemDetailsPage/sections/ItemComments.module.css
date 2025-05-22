@@ -6,9 +6,9 @@
 }
 
 .comment-container {
-	display:flex;
+	display: flex;
 	flex-direction: column;
-	gap:24px;
+	gap: var(--comment-container-gap);
 	margin-bottom: var(--comment-container-margin-bottom);
 }
 
@@ -42,17 +42,20 @@
 
 :root {
 	--comment-container-margin-bottom: 40px;
+	--comment-container-gap: 16px;
 }
 
 /* Tablet */
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   :root {
 		--comment-container-margin-bottom: 47px;
+		--comment-container-gap: 24px;
 	}
 }
 /* PC */
 @media (min-width: 1200px) {
   :root {
 		--comment-container-margin-bottom: 64px;
+		--comment-container-gap: 24px;
 	}
 }

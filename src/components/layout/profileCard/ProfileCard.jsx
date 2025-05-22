@@ -1,6 +1,6 @@
-import styles from "./CommentProfile.module.css";
+import styles from "./ProfileCard.module.css";
 
-const CommentProfile = ({ ProfileImgUrl, nickname, timeStamp }) => {
+const ProfileCard = ({ ProfileImgUrl, nickname, timeStamp }) => {
   return (
     <div className={styles["profile-container"]}>
       <img className={styles["profile-image"]} src={ProfileImgUrl} width={32} />
@@ -12,4 +12,4 @@ const CommentProfile = ({ ProfileImgUrl, nickname, timeStamp }) => {
   );
 };
 
-export default CommentProfile;
+export default ProfileCard;

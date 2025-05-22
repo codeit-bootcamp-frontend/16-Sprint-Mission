@@ -7,7 +7,6 @@ import CommentRequireForm from "../../../components/CommentRequireForm";
 
 const ItemComments = ({ itemId }) => {
   const [comments, setComments] = useState([]);
-  const [kebabSelectedId, setKebabSelectedId] = useState(null);
 
   const navigate = useNavigate();
 
@@ -34,14 +33,7 @@ const ItemComments = ({ itemId }) => {
       {comments.length > 0 ? (
         <div className={styles["comment-container"]}>
           {comments.map((comment) => {
-            return (
-              <CommentCard
-                key={comment.id}
-                comment={comment}
-                kebabSelectedId={kebabSelectedId}
-                setKebabSelectedId={setKebabSelectedId}
-              />
-            );
+            return <CommentCard key={comment.id} comment={comment} />;
           })}
         </div>
       ) : (

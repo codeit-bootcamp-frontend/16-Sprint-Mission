@@ -1,3 +1,7 @@
+.container {
+	position: relative;
+}
+
 .kebab-button {
 	aspect-ratio: 1/1;
 	width: 24px;
@@ -7,4 +11,60 @@
 
 .kebab-button:hover {
 	background-color: var(--color-gray200);
+}
+
+.dropdown-menu {
+	display:flex;
+	flex-direction: column;
+	position: absolute;
+	right: 0;
+	top: 34px;
+	width: var(--dropdown-width);
+}
+
+.dropdown-button {
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 26px;
+	border: none;
+	border-left: 1px solid var(--color-gray300);
+	border-right: 1px solid var(--color-gray300);
+	background-color: #ffffff;
+	color: var(--color-gray500);
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 46px;
+}
+
+.dropdown-button:first-child {
+	border-top: 1px solid var(--color-gray300);
+	border-radius: 8px 8px 0 0;
+}
+
+.dropdown-button:last-child {
+	border-bottom: 1px solid var(--color-gray300);
+	border-radius: 0 0 8px 8px;
+}
+
+.dropdown-button:hover {
+	background-color: var(--color-gray100);
+}
+
+:root {
+	--dropdown-width: 102px;
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  :root {
+		--dropdown-width: 139px;
+	}
+}
+/* PC */
+@media (min-width: 1200px) {
+  :root {
+		--dropdown-width: 139px;
+	}
 }

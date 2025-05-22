@@ -1,23 +1,25 @@
+import { formatDateKRW } from "../utils/formatPrice";
 import styles from "./CommentView.module.css";
-import DropDownMenu from "./DropDownMenu";
 import KebabButton from "./KebabButton";
+import ProfileCard from "./layout/profileCard/ProfileCard";
 
-const CommentView = ({
-  id,
-  content,
-  onKebabClick,
-  kebabRef,
-  isKebabSelected,
-  dropDownItems,
-  DropDownRef,
-}) => {
+const CommentView = ({ comment, onEdit, onDelete }) => {
+  const dropDownItems = [
+    { label: "수정하기", onClick: onEdit },
+    { label: "삭제하기", onClick: onDelete },
+  ];
+
   return (
-    <div className={styles["content-container"]}>
-      <span className={styles["content"]}>{content}</span>
-      <KebabButton id={id} onClick={onKebabClick} kebabRef={kebabRef} />
-      {isKebabSelected && (
-        <DropDownMenu menuItems={dropDownItems} DropDownRef={DropDownRef} />
-      )}
+    <div className={styles["container"]}>
+      <div className={styles["content-container"]}>
+        <span className={styles["content"]}>{comment.content}</span>
+        <KebabButton id={comment.id} menuItems={dropDownItems} />
+      </div>
+      <ProfileCard
+        ProfileImgUrl={"/images/icon_profile.png"}
+        nickname={comment.writer.nickname}
+        timeStamp={formatDateKRW(comment.updatedAt)}
+      />
     </div>
   );
 };

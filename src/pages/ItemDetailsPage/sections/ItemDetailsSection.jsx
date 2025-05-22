@@ -55,7 +55,7 @@ const ItemDetailsSection = ({ itemId }) => {
               <h1 className={styles["title"]}>{details.name}</h1>
               <span className={styles["price"]}>{formatPriceKRW(details.price)}</span>
             </div>
-            <KebabButton id={itemId} onClick={handleKebabClick} kebabRef={null} />
+            {/* <KebabButton id={itemId} onClick={handleKebabClick} kebabRef={null} /> */}
           </div>
           <div className={styles["description-container"]}>
             <div className={styles["subtitle-container"]}>

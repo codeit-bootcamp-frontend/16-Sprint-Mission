@@ -3,9 +3,6 @@
 	flex-direction: row;
 	gap: 8px;
 	align-items: start;
-	position: absolute;
-	bottom: 12px;
-	left: 0;
 }
 
 .profile-image {

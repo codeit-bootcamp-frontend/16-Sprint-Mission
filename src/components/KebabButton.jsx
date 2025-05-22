@@ -1,15 +1,57 @@
+import { useEffect, useRef, useState } from "react";
 import styles from "./KebabButton.module.css";
 
-const KebabButton = ({ id, onClick, kebabRef }) => {
+const KebabButton = ({ id, menuItems }) => {
+  const [isKebabSelected, setIsKebabSelected] = useState();
+
+  const DropDownRef = useRef();
+  const kebabRef = useRef();
+
+  const handleDropDownOutsideClick = (e) => {
+    if (DropDownRef.current && DropDownRef.current.contains(e.target)) {
+      return;
+    } else if (kebabRef.current.contains(e.target)) {
+      return;
+    } else {
+      setIsKebabSelected(false);
+    }
+  };
+
+  const handleKebabClick = () => {
+    setIsKebabSelected(!isKebabSelected);
+  };
+
+  useEffect(() => {
+    if (!isKebabSelected) {
+      document.removeEventListener("mousedown", handleDropDownOutsideClick);
+    } else {
+      document.addEventListener("mousedown", handleDropDownOutsideClick);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleDropDownOutsideClick);
+    };
+  }, [isKebabSelected]);
+
   return (
-    <img
-      name={id}
-      className={styles["kebab-button"]}
-      src={"/images/ic_kebab.png"}
-      width={24}
-      onClick={onClick}
-      ref={kebabRef}
-    />
+    <div className={styles["container"]}>
+      <img
+        name={id}
+        className={styles["kebab-button"]}
+        src={"/images/ic_kebab.png"}
+        width={24}
+        onClick={handleKebabClick}
+        ref={kebabRef}
+      />
+      {isKebabSelected && (
+        <ul className={styles["dropdown-menu"]} ref={DropDownRef}>
+          {menuItems.map(({ label, onClick }) => (
+            <li className={styles["dropdown-button"]} key={label} onClick={onClick}>
+              {label}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 };
 
