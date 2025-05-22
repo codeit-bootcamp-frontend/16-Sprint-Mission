@@ -22,8 +22,8 @@ const SortDropDown = ({ dropdownItems, setKey }) => {
   };
 
   const handleDropDownListClick = (e) => {
-    setSelectedIndex(Number(e.currenttarget.dataset.index));
-    setKey(e.currenttarget.dataset.keyName);
+    setSelectedIndex(Number(e.currentTarget.dataset.index));
+    setKey(e.currentTarget.dataset.keyname);
     setIsSelected(false);
   };
 
@@ -54,7 +54,7 @@ const SortDropDown = ({ dropdownItems, setKey }) => {
             <li
               className={styles["dropdown-option"]}
               key={key}
-              data-keyName={key}
+              data-keyname={key}
               data-index={index}
               onClick={handleDropDownListClick}
             >

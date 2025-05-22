@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./Nav.module.css";
-import { useIsLogin } from "../contexts/LoginStateContext";
+import { useLoginContext } from "../contexts/LoginContext";
 
 const LINK_CLASSNAME = {
   false: "",
@@ -8,7 +8,7 @@ const LINK_CLASSNAME = {
 };
 
 const Nav = ({ currentSection }) => {
-  const isLogin = useIsLogin();
+  const { isLogin } = useLoginContext();
 
   return (
     <header className={styles["page-header"]}>

@@ -1,18 +1,18 @@
 import { Link } from "react-router-dom";
 import "./FormAuth.css";
 import { useNavigate } from "react-router";
-import { useSetIsLogin } from "../../contexts/LoginStateContext";
 import Field from "../../components/Field";
 import { FIELDS_CONFIG } from "./fieldsConfig";
 import SocialLogin from "../../components/SocialLogin";
 import LogoHeader from "../../components/LogoHeader";
 import { useFormFields } from "../../hooks/useFormFields";
+import { useLoginContext } from "../../contexts/LoginContext";
 
 const FIELD_KEYS = ["email", "password"];
 
 const LoginPage = () => {
   const onSubmitNavigate = useNavigate();
-  const setIsLogin = useSetIsLogin();
+  const { setIsLogin } = useLoginContext();
 
   const { values, valids, hints, isSubmitEnabled, handleInputChange, handleInputBlur } =
     useFormFields(FIELD_KEYS);

@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { LoginStateProvider } from "./contexts/LoginStateContext";
+import { LoginProvider } from "./contexts/LoginContext";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/AuthPage/LoginPage";
 import SignupPage from "./pages/AuthPage/SignupPage";
@@ -13,7 +13,7 @@ import ItemDetailsPage from "./pages/ItemDetailsPage/ItemDetailsPage";
 function App() {
   return (
     <BrowserRouter>
-      <LoginStateProvider>
+      <LoginProvider>
         <Routes>
           <Route path="/">
             <Route index element={<HomePage />} />
@@ -29,7 +29,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
         </Routes>
-      </LoginStateProvider>
+      </LoginProvider>
     </BrowserRouter>
   );
 }

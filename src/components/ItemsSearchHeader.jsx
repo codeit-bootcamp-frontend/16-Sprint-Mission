@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router";
-import { useIsLogin } from "../contexts/LoginStateContext";
 import styles from "./ItemsSearchHeader.module.css";
 import { useSearchQueryString } from "../hooks/useSearchQueryString";
 import SortDropDown from "./SortDropdown";
 import SearchInput from "./SearchInput";
+import { useLoginContext } from "../contexts/LoginContext";
 
 const ItemsSearchHeader = ({ setOrder, setOffset, setKeyword }) => {
-  const isLogin = useIsLogin();
+  const { isLogin } = useLoginContext();
   const onCreateNewItemNavigate = useNavigate();
 
   const { inputValue, setInputValue, onSearchSubmit } = useSearchQueryString();

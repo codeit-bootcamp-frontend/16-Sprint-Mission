@@ -7,7 +7,6 @@ const Pagination = ({
   paginationHandler,
   paginationState,
 }) => {
-  console.log(currentPageNumber, visiblePageNumbers, paginationHandler, paginationState);
   return (
     <nav className={styles["pagination-container"]}>
       <PaginationButton
