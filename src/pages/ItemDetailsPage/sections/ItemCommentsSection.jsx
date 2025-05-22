@@ -1,4 +1,4 @@
-import styles from "./ItemComments.module.css";
+import styles from "./ItemCommentsSection.module.css";
 import { getItemComments } from "../../../utils/api";
 import { useNavigate } from "react-router-dom";
 import CommentRequireForm from "../../../components/comments/CommentRequireForm";
@@ -6,7 +6,7 @@ import CommentsContainer from "../../../components/comments/CommentsContainer";
 import { useAsync } from "../../../hooks/useAsync";
 import LoadingSpinner from "../../../components/layout/LoadingSpinner/LoadingSpinner";
 
-const ItemComments = ({ itemId }) => {
+const ItemCommentsSection = ({ itemId }) => {
   const navigate = useNavigate();
 
   const { result } = useAsync(getItemComments, itemId);
@@ -43,4 +43,4 @@ const ItemComments = ({ itemId }) => {
   );
 };
 
-export default ItemComments;
+export default ItemCommentsSection;

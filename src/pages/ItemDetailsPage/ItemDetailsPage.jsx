@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 
 import Nav from "../../components/layout/Nav/Nav";
 import ItemDetailsSection from "./sections/ItemDetailsSection";
-import ItemComments from "./sections/ItemComments";
+import ItemCommentsSection from "./sections/ItemCommentsSection";
 
 const ItemDetailsPage = () => {
   const { itemId } = useParams();
@@ -13,7 +13,7 @@ const ItemDetailsPage = () => {
       <Nav />
       <main className={styles["page"]}>
         <ItemDetailsSection itemId={itemId} />
-        <ItemComments itemId={itemId} />
+        <ItemCommentsSection itemId={itemId} />
       </main>
     </>
   );
