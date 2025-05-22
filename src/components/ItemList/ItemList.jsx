@@ -81,9 +81,11 @@ const ItemList = ({ title, pageSize = DEFAULT_PAGE_SIZE }) => {
         isError={loadingError}
       />
       <Pagination
+        key={order}
         pageSize={pageSize}
         totalCount={totalCount}
         handleLoad={handleLoad}
+        orderStatus={ORDER_MAP[order]}
       />
     </div>
   );

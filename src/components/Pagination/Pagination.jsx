@@ -10,13 +10,14 @@ const Pagination = ({
   totalCount,
   paginationSize = PAGINATION_SIZE,
   handleLoad,
+  orderStatus,
 }) => {
   const { pageData, pageActions } = usePagination({
     totalCount,
     pageSize,
     paginationSize,
     onPageChange: (page) => {
-      handleLoad({ page, pageSize });
+      handleLoad({ page, pageSize, orderBy: orderStatus });
     },
   });
   const { currentPage, currentPages, hasPrev, hasNext } = pageData;
