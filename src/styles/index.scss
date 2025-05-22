@@ -1,6 +1,4 @@
-@import './reset.scss'; // 여러분이 쓰시는 reset 파일
-@import './variables.scss'; // 색상·브레이크포인트·폰트 크기 변수
-@import './mixins.scss'; // 미디어쿼리·유틸 믹스인
+//vite.confing.ts에서 자동 주입되는 전역 설정 css입니다.
 
 /* 글로벌 기본 스타일 */
 * {

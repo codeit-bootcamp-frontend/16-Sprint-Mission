@@ -16,7 +16,14 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "@/assets/scss/_variables.scss";`,
+        // ← src/ 하위 경로를 절대 경로처럼 불러올 수 있도록
+        includePaths: [path.resolve(__dirname, 'src')],
+        // 자동 주입
+        additionalData: `
+          @use "reset"     as *;
+          @use "variables" as *;
+          @use "mixins"    as *;
+          `,
       },
     },
   },
