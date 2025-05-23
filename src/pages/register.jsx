@@ -97,10 +97,13 @@ function Register() {
               <span>비밀번호가 일치하지 않습니다.</span>
             </div>
           )}
-          <Button
-            disabled={validate.email.state && validate.pw.state && validate.nickname.state && pwValid ? false : true}
-            link='/login'
-          >회원가입</Button>
+          <div style={{ width: '100%' }}>
+            <Button
+              size='button-big'
+              disabled={validate.email.state && validate.pw.state && validate.nickname.state && pwValid ? false : true}
+              link='/login'
+            >회원가입</Button>
+          </div>
           <section className='easy-login'>
             <span>간편 로그인하기</span>
             <div className='easy-login-logo'>

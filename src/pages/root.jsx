@@ -32,7 +32,7 @@ function Root() {
             <h1 className='hero-content-text'>
               일상의 모든 물건을 거래해보세요
             </h1>
-            <Button link='/items'>
+            <Button link='/items' size='button-big'>
               구경하러 가기
             </Button>
           </div>

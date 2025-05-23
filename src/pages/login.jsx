@@ -65,7 +65,9 @@ function Login() {
               <span>{validate.pw.message}</span>
             </div>
           )}
-          <Button disabled={validate.pw.state && validate.email.state ? false : true} link='/items'>로그인</Button>
+          <div style={{ width: '100%' }}>
+            <Button size='button-big' disabled={validate.pw.state && validate.email.state ? false : true} link='/items'>로그인</Button>
+          </div>
           <section className='easy-login'>
             <span>간편 로그인하기</span>
             <div className='easy-login-logo'>
