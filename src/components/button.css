@@ -1,6 +1,6 @@
 @import '../theme.css';
 
-.button {
+.button-big {
   border: 0;
   width: 100%;
   height: 56px;
@@ -12,10 +12,19 @@
   cursor: pointer;
 }
 
-.button:disabled {
-  background-color: var(--secondary-400);
+.button-small {
+  border: 0;
+  width: fit-content;
+  height: 40px;
+  padding: 12px 23px;
+  border-radius: 8px;
+  background-color: var(--primary-100);
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-.button-link {
-  width: 100%;
+.button:disabled {
+  background-color: var(--secondary-400);
 }

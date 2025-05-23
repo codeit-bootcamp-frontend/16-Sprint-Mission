@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import './button.css';
 
-function Button({ children, disabled, link }) {
+function Button({ children, disabled, link, radius, size }) {
   return (
-    <Link to={link} className='button-link'>
-      <button className='button' disabled={disabled}>
+    <Link to={link}>
+      <button className={size} disabled={disabled}>
         {children}
       </button>
     </Link>
