@@ -7,6 +7,7 @@ const Button = ({
   size,
   children,
   className = "",
+  disabled,
   onClick,
 }) => {
   return (
@@ -14,6 +15,7 @@ const Button = ({
       type={type}
       css={[styles.size[size], styles.variant[variant]]}
       className={className}
+      disabled={disabled}
       onClick={onClick}
     >
       {children}
