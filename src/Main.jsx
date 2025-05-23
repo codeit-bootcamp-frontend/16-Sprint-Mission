@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
-import ProductsPage from "./pages/ProductsPage";
-import BoardPage from "./pages/BoardPage";
-import AddProductPage from "./pages/AddProductPage";
+import ProductsPage from "./pages/products/ProductsPage";
+import BoardPage from "./pages/board/BoardPage";
+import AddProductPage from "./pages/products/AddProductPage";
 
 const Main = () => {
   return (
