@@ -17,6 +17,7 @@ const InputSearch = ({ keyword, onSearch, className, placeholder }) => {
     <div className={`${styles["search-area"]} ${className}`}>
       <img src={searchImg} alt="상품 검색" className={styles["search-ico"]} />
       <input
+        id="inputSearch"
         type="search"
         name="keyword"
         value={value}
