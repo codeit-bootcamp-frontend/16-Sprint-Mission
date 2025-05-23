@@ -6,8 +6,9 @@ import Button from "../../ui/Button";
 import Dropdown from "../../ui/Dropdown";
 import InputSearch from "../../ui/Input/InputSearch";
 import Pagination from "../Pagination";
-import useAsync from "../../hooks/useAsync";
 import ItemListResults from "./ItemListResults";
+import SectionTitle from "../../ui/SectionTitle/SectionTitle";
+import useAsync from "../../hooks/useAsync";
 import { DEFAULT_ITEM_PAGE_SIZE } from "../../constants/pagesize";
 import { ITEMS_ORDER_MAP } from "../../constants/sortOptions";
 
@@ -54,7 +55,7 @@ const ItemList = ({ title, pageSize = DEFAULT_ITEM_PAGE_SIZE }) => {
   return (
     <div className={styles["item-list-area"]}>
       <div className={styles["item-list-header"]}>
-        <h4 className={styles["item-list-title"]}>{title}</h4>
+        <SectionTitle title={title} />
         <Button
           type="button"
           variant="primary"

@@ -28,14 +28,6 @@
   padding-bottom: 40px;
 }
 
-.item-list-title {
-  width: auto;
-  margin-bottom: 1rem;
-  margin-right: auto;
-  font-size: 20px;
-  font-weight: 700;
-}
-
 .item-list-header .item-list-title {
   margin-bottom: 0;
 }

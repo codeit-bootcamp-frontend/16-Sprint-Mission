@@ -1,13 +1,14 @@
 import { useEffect, useState, useCallback } from "react";
 import { getItems } from "../../services/api";
 import styles from "./ItemList.module.css";
-import useAsync from "../../hooks/useAsync";
+import SectionTitle from "../../ui/SectionTitle/SectionTitle";
 import ItemListResults from "./ItemListResults";
+import useAsync from "../../hooks/useAsync";
 
 const ORDER_BY = "favorite";
 const LIST_TYPE = "best";
 
-const BestItemList = ({ pageSize, title }) => {
+const BestItemList = ({ title, pageSize }) => {
   const [items, setItems] = useState([]);
   const {
     isLoading,
@@ -32,7 +33,7 @@ const BestItemList = ({ pageSize, title }) => {
 
   return (
     <div className={styles["item-list-area"]}>
-      <h4 className={styles["item-list-title"]}>{title}</h4>
+      <SectionTitle title={title} />
       <ItemListResults
         isLoading={isLoading}
         isError={loadingError}
