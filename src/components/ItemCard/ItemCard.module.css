@@ -1,0 +1,38 @@
+.item-img {
+  object-fit: cover;
+  border-radius: var(--thumb-border-radius);
+  margin-bottom: 16px;
+}
+
+.img-wrap {
+  display: block;
+}
+
+.item-desc {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.item-price {
+  margin-bottom: 8px;
+}
+
+.btn-like {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-like-ico {
+  width: 16px;
+  height: 16px;
+}
+
+.btn-like-ico .ico-img {
+  height: 100%;
+  object-fit: contain;
+}

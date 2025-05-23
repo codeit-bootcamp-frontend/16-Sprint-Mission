@@ -1,0 +1,24 @@
+.btn-lg {
+  padding: 12px;
+  border-radius: var(--border-radius-lg);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+.btn-sm {
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: var(--border-radius-xs);
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--primary-hover-color);
+}
+.btn-primary:active {
+  background: var(--primary-click-color);
+}

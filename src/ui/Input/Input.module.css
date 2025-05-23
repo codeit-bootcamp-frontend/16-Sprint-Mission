@@ -1,0 +1,5 @@
+.input {
+  padding: 14px 20px;
+  background: var(--gray100);
+  border-radius: var(--border-radius-sm);
+}
