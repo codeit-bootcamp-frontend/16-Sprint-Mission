@@ -1,3 +1,4 @@
+import PageContent from "../ui/Layout/PageContent";
 import ItemList from "../components/ItemList";
 import BestItemList from "../components/ItemList/BestItemList";
 import useWindowDimensions from "../hooks/useWindowDimensions";
@@ -12,7 +13,7 @@ const ItemsPage = () => {
   const { width } = useWindowDimensions();
 
   return (
-    <section className="page-content">
+    <PageContent>
       <BestItemList
         title={BEST_ITEMS_TITLE}
         pageSize={
@@ -33,7 +34,7 @@ const ItemsPage = () => {
             : ALL_ITEMS_PAGESIZE.mobile
         }
       />
-    </section>
+    </PageContent>
   );
 };
 
