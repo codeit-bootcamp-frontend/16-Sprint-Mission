@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo-title.png";
 import kakaoIcon from "../../assets/icon/login_kakao.png";
 import googleIcon from "../../assets/icon/login_google.png";
@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 function SignUp() {
   const [passwordToggle, setPasswordToggle] = useState(false);
   const [passwordCheckToggle, setPasswordCheckToggle] = useState(false);
-
+   const navigate = useNavigate();
   const emailInput = useValidate();
   const nameInput = useValidate();
   const passwordInput = useValidate();
@@ -39,6 +39,7 @@ function SignUp() {
 
     if (isAllValid) {
       sessionStorage.setItem("isLogined", "true");
+      navigate('/login');
     } else {
       e.preventDefault();
     }
@@ -63,8 +64,6 @@ function SignUp() {
         <form
           onSubmit={handleSubmit}
           className={styles[`sign-up__form`]}
-          method="get"
-          action="../login/"
         >
           <fieldset>
             <label htmlFor="user-email">이메일</label>

@@ -4,12 +4,12 @@ import kakaoIcon from "../../assets/icon/login_kakao.png";
 import googleIcon from "../../assets/icon/login_google.png";
 import MemoizedFormInput from "./FormInput";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useValidate } from "../../hooks/useValidate";
 
 function Login() {
   const [passwordToggle, setPasswordToggle] = useState(false);
-
+  const navigate = useNavigate();
   const emailInput = useValidate();
   const passwordInput = useValidate();
 
@@ -21,6 +21,7 @@ function Login() {
 
     if (isAllValid) {
       sessionStorage.setItem("isLogined", "true");
+      navigate("/items")
     } else {
       e.preventDefault();
     }
@@ -42,8 +43,6 @@ function Login() {
         <form
           onSubmit={handleSubmit}
           className={styles.login__form}
-          method="get"
-          action="../items/"
         >
           <fieldset>
             <label htmlFor="user-email">이메일</label>
