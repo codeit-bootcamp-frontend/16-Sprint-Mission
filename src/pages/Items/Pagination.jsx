@@ -13,14 +13,14 @@ function Pagination() {
 
   //이전으로 가기(pageStart변경)
   function handlePrev() {
-    if (page - PAGINATION_MAX >= 1) {
+    if (pageStart - PAGINATION_MAX >= 1) {
       setPageStart((prev) => prev - PAGINATION_MAX);
     }
   }
 
   //다음으로 가기(pageStart변경)
   function handleNext() {
-    if (maxPageLength >= page + PAGINATION_MAX) {
+    if (maxPageLength >= pageStart + PAGINATION_MAX) {
       setPageStart((prev) => prev + PAGINATION_MAX);
     }
   }
@@ -31,7 +31,7 @@ function Pagination() {
 
     for (let i = 0; i < PAGINATION_MAX; i++) {
       if (pageStart + i > maxPageLength) break;
-      visiblePages[i] = page + i;
+      visiblePages[i] = pageStart + i;
     }
 
     setPageList(visiblePages);
