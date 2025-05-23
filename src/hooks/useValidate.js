@@ -1,10 +1,7 @@
-import { useEffect, useState } from "react";
-import { getProducts } from "../service/api";
+import { useState } from "react";
 
 export const ruleObj = {
   "user-email": {
-    value: null,
-    isPassed: false,
     isValid(value) {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
     },
@@ -13,8 +10,6 @@ export const ruleObj = {
     },
   },
   "user-password": {
-    value: null,
-    isPassed: false,
     isValid(value) {
       return value.length >= 8;
     },
@@ -25,8 +20,6 @@ export const ruleObj = {
     },
   },
   "user-name": {
-    value: null,
-    isPassed: false,
     isValid(value) {
       return value;
     },
@@ -35,12 +28,8 @@ export const ruleObj = {
     },
   },
   "user-password-check": {
-    value: null,
-    isPassed: false,
-    // input: passwordCheckInput,
-    isValid(value) {
-      //여기보류해야하나
-      return ruleObj["user-password"].value === value && value.length != 0;
+    isValid(value, pwValue) {
+      return pwValue === value && value.length !== 0;
     },
     getErrorMessage() {
       return "비밀번호가 일치하지 않습니다.";
@@ -51,45 +40,19 @@ export const ruleObj = {
 export function useValidate() {
   const [err, setErr] = useState(false);
   const [errMsg, setErrMsg] = useState("");
+  const [isValidNow, setIsValidNow] = useState(false);
+  const [value, setValue] = useState("");
 
-  function updateErrUi(e) {
-    const validator = ruleObj[e.target.name];
-    const targetValue = e.target.value;
+  function isValidate(name, pwValue) {
+    const validator = ruleObj[name];
+    const targetValue = value;
+    const validResult = validator.isValid(targetValue, pwValue);
 
-    if (validator.isValid(targetValue)) {
-      setErr(false);
-      setErrMsg("");
-      // setHasErr((prev) => ({ ...prev, [e.target.name]: false }));
-      validator.isPassed = true;
-    } else {
-      setErr(true);
-      setErrMsg(validator.getErrorMessage(targetValue));
-      // setHasErr((prev) => ({ ...prev, [e.target.name]: true }));
-      validator.isPassed = false;
-    }
+    setErr(!validResult);
+    validResult ? setErrMsg("") : setErrMsg(validator.getErrorMessage(targetValue));
+    setIsValidNow(validResult);
   }
 
-  return [err, errMsg, updateErrUi];
-}
 
-export function updateValidateRule(name, value) {
-  ruleObj[name].value = value;
-}
-
-export function hasLoginInvalid() {
-  const hasValidResult =
-    ruleObj["user-email"].isPassed && ruleObj["user-password"].isPassed
-      ? true
-      : false;
-  return hasValidResult;
-}
-export function hasSignUpInvalid() {
-  const hasValidResult =
-    ruleObj["user-email"].isPassed &&
-      ruleObj["user-password"].isPassed &&
-      ruleObj["user-name"].isPassed &&
-      ruleObj["user-password-check"].isPassed
-      ? true
-      : false;
-  return hasValidResult;
+  return { err, errMsg, isValidate, isValidNow, value, setValue };
 }

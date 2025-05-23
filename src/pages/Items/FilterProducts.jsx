@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { ProductAllContext } from "../context/ProductAllContext";
-import styles from "../styles/FilterProducts.module.css";
+import { ProductAllContext } from "../../context/ProductAllContext";
+import styles from "../../styles/FilterProducts.module.css";
 
 function FilterProducts() {
   const { queryStrings, setQueryStrings } = useContext(ProductAllContext);

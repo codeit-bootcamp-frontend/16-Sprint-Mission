@@ -1,5 +1,5 @@
-import styles from "../styles/ProductItem.module.css";
-import heartIcon from "../assets/icon/ic_heart.png";
+import styles from "../../styles/ProductItem.module.css";
+import heartIcon from "../../assets/icon/ic_heart.png";
 
 function ProductItem({ className, item }) {
   return (

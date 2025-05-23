@@ -1,19 +1,19 @@
-import styles from "../styles/ProductsAll.module.css";
+import styles from "../../styles/ProductsAll.module.css";
 import ProductItem from "./ProductItem";
 import FilterProducts from "./FilterProducts";
 import Pagination from "./Pagination";
 import FailLoad from "./FailLoad";
-import { useResizeRequest } from "../hooks/useResizeRequest ";
+import { useResizeRequest } from "../../hooks/useResizeRequest ";
 import { useContext, useEffect, useState } from "react";
-import { ProductAllContext } from "../context/ProductAllContext";
-import { useLoadItems } from "../hooks/useLoadItems";
+import { ProductAllContext } from "../../context/ProductAllContext";
+import { useLoadItems } from "../../hooks/useLoadItems";
 
 function ProductsAll() {
-  const { products, setProducts, setTotal, queryStrings, setQueryStrings } =
-    useContext(ProductAllContext);
+  const { products, setProducts, setTotal, queryStrings, setQueryStrings } = useContext(ProductAllContext);
 
   //innerWidth에 따라 쿼리 변경하기
   const [pageSize] = useResizeRequest("all");
+  
   useEffect(() => {
     setQueryStrings((prev) => ({ ...prev, pageSize }));
   }, [pageSize]);

@@ -1,39 +1,55 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/images/logo-title.png";
-import kakaoIcon from "../assets/icon/login_kakao.png";
-import googleIcon from "../assets/icon/login_google.png";
-import FormInput from "../components/FormInput";
-import { hasSignUpInvalid } from "../hooks/useValidate";
-import styles from "../styles/SignUp.module.css";
-import { useState } from "react";
+import logo from "../../assets/images/logo-title.png";
+import kakaoIcon from "../../assets/icon/login_kakao.png";
+import googleIcon from "../../assets/icon/login_google.png";
+import MemoizedFormInput from "./FormInput";
+import { useValidate } from "../../hooks/useValidate";
+import styles from "../../styles/SignUp.module.css";
+import { useState, useEffect } from "react";
 
 function SignUp() {
-  const [checkedChecked, setCheckedChecked] = useState(false);
-  const [checked, setChecked] = useState(false);
-  const [isAllValid, setIsAllValid] = useState(false);
+  const [passwordToggle, setPasswordToggle] = useState(false);
+  const [passwordCheckToggle, setPasswordCheckToggle] = useState(false);
 
-  function handleChange(e) {
-    if (hasSignUpInvalid()) {
-      setIsAllValid(true);
+  const emailInput = useValidate();
+  const nameInput = useValidate();
+  const passwordInput = useValidate();
+  const passwordCheckInput = useValidate();
+
+  const isAllValid =
+    emailInput.isValidNow &&
+    passwordInput.isValidNow &&
+    nameInput.isValidNow &&
+    passwordCheckInput.isValidNow;
+
+  //비밀번호 값 변경 시 비밀번호 확인도 유효성 검사 다시
+  const pwValue = passwordInput.value;
+  useEffect(() => {
+    if (passwordCheckInput.value !== "") {
+      passwordCheckInput.isValidate("user-password-check", passwordInput.value);
+    }
+  }, [pwValue]);
+
+  // 제출 버튼 클릭 시 검사 한번씩 다 해
+  function handleSubmit(e) {
+    emailInput.isValidate("user-email");
+    passwordInput.isValidate("user-password");
+    passwordCheckInput.isValidate("user-password-check", passwordInput.value);
+    nameInput.isValidate("user-name");
+
+    if (isAllValid) {
+      sessionStorage.setItem("isLogined", "true");
     } else {
-      setIsAllValid(false);
+      e.preventDefault();
     }
   }
 
-  function handleSubmit(e) {
-    if (!hasSignUpInvalid()) {
-      e.preventDefault();
-    } 
-  }
-
   // 토글 보이기 추가하기
-  function handlePwCheck(e) {
-    setChecked(!checked);
-    //다 렌더링 되는 거 막아....
+  function handlePwToggle() {
+    setPasswordToggle(!passwordToggle);
   }
-  function handlePwCheckCheck(e) {
-    setCheckedChecked(!checkedChecked);
-    //다 렌더링 되는 거 막아....
+  function handlePwCheckToggle() {
+    setPasswordCheckToggle(!passwordCheckToggle);
   }
 
   return (
@@ -46,21 +62,30 @@ function SignUp() {
         </div>
         <form
           onSubmit={handleSubmit}
-          onBlur={handleChange}
           className={styles[`sign-up__form`]}
           method="get"
           action="../login/"
         >
           <fieldset>
             <label htmlFor="user-email">이메일</label>
-            <FormInput
+            <MemoizedFormInput
+              err={emailInput.err}
+              errMsg={emailInput.errMsg}
+              isValidate={emailInput.isValidate}
+              value={emailInput.value}
+              setValue={emailInput.setValue}
               type="text"
               id="user-email"
               name="user-email"
               placeholder="이메일을 입력해주세요"
             />
             <label htmlFor="user-name">닉네임</label>
-            <FormInput
+            <MemoizedFormInput
+              err={nameInput.err}
+              errMsg={nameInput.errMsg}
+              isValidate={nameInput.isValidate}
+              value={nameInput.value}
+              setValue={nameInput.setValue}
               id="user-name"
               type="text"
               name="user-name"
@@ -68,41 +93,52 @@ function SignUp() {
             />
             <div className={styles[`container__position-relative`]}>
               <label htmlFor="user-password">비밀번호</label>
-              <FormInput
+              <MemoizedFormInput
+                err={passwordInput.err}
+                errMsg={passwordInput.errMsg}
+                isValidate={passwordInput.isValidate}
+                value={passwordInput.value}
+                setValue={passwordInput.setValue}
                 id="user-password"
-                type={checked ? "text" : "password"}
+                type={passwordToggle ? "text" : "password"}
                 name="user-password"
                 placeholder="비밀번호를 입력해주세요"
               />
               <input
                 id="toggle-visibility-pw"
-                onChange={handlePwCheck}
+                onChange={handlePwToggle}
                 className={styles[`toggle-visibility-pw`]}
                 type="checkbox"
               />
               <label
                 aria-label="비밀번호 표시 여부"
-                aria-checked="false"
+                aria-checked={passwordToggle}
                 htmlFor="toggle-visibility-pw"
               ></label>
             </div>
             <div className={styles[`container__position-relative`]}>
               <label htmlFor="user-password">비밀번호 확인</label>
-              <FormInput
+              <MemoizedFormInput
+                passwordInputValue={passwordInput.value}
+                err={passwordCheckInput.err}
+                errMsg={passwordCheckInput.errMsg}
+                isValidate={passwordCheckInput.isValidate}
+                value={passwordCheckInput.value}
+                setValue={passwordCheckInput.setValue}
                 id="user-password-check"
-                type={checkedChecked ? "text" : "password"}
+                type={passwordCheckToggle ? "text" : "password"}
                 name="user-password-check"
                 placeholder="비밀번호를 다시 한 번 입력해주세요"
               />
               <input
                 id="toggle-visibility-pwcheck"
-                onChange={handlePwCheckCheck}
+                onChange={handlePwCheckToggle}
                 className={styles[`toggle-visibility-pwcheck`]}
                 type="checkbox"
               />
               <label
                 aria-label="비밀번호 확인 표시 여부"
-                aria-checked="false"
+                aria-checked={passwordCheckToggle}
                 htmlFor="toggle-visibility-pwcheck"
               ></label>
             </div>

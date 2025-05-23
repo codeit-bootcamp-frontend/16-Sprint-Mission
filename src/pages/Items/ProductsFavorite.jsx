@@ -1,9 +1,9 @@
-import styles from "../styles/ProductsFavorite.module.css";
+import styles from "../../styles/ProductsFavorite.module.css";
 import { useEffect, useState } from "react";
 import ProductItem from "./ProductItem";
-import { useResizeRequest } from "../hooks/useResizeRequest ";
+import { useResizeRequest } from "../../hooks/useResizeRequest ";
 import FailLoad from "./FailLoad";
-import { useLoadItems } from "../hooks/useLoadItems";
+import { useLoadItems } from "../../hooks/useLoadItems";
 
 function ProductsFavorite() {
   const [favoriteItems, setFavoriteItems] = useState([]);

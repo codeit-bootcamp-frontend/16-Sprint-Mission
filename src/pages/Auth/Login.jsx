@@ -1,37 +1,34 @@
-import styles from "../styles/Login.module.css";
-import logo from "../assets/images/logo-title.png";
-import kakaoIcon from "../assets/icon/login_kakao.png";
-import googleIcon from "../assets/icon/login_google.png";
-import FormInput from "../components/FormInput";
+import styles from "../../styles/Login.module.css";
+import logo from "../../assets/images/logo-title.png";
+import kakaoIcon from "../../assets/icon/login_kakao.png";
+import googleIcon from "../../assets/icon/login_google.png";
+import MemoizedFormInput from "./FormInput";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { hasLoginInvalid} from "../hooks/useValidate";
+import { useValidate } from "../../hooks/useValidate";
 
 function Login() {
-  const [checked, setChecked] = useState(false);
-  const [isAllValid, setIsAllValid] = useState(false);
+  const [passwordToggle, setPasswordToggle] = useState(false);
 
-  function handleChange(e) {
-    if (hasLoginInvalid()) {
-      setIsAllValid(true);
-    } else {
-      setIsAllValid(false);
-    }
-  }
+  const emailInput = useValidate();
+  const passwordInput = useValidate();
+
+  const isAllValid = emailInput.isValidNow && passwordInput.isValidNow;
 
   function handleSubmit(e) {
-    if (hasLoginInvalid()) {
-      //세션에 넘겨줘
-      sessionStorage.setItem('isLogined','true');
+    emailInput.isValidate("user-email");
+    passwordInput.isValidate("user-password");
+
+    if (isAllValid) {
+      sessionStorage.setItem("isLogined", "true");
     } else {
       e.preventDefault();
     }
   }
 
   // 토글 보이기 추가하기
-  function handlePwCheck(e){
-      setChecked(!checked);
-    //다 렌더링 되는 거 막아....
+  function handlePwCheck() {
+    setPasswordToggle(!passwordToggle);
   }
 
   return (
@@ -43,7 +40,6 @@ function Login() {
           </Link>
         </div>
         <form
-          onBlur={handleChange}
           onSubmit={handleSubmit}
           className={styles.login__form}
           method="get"
@@ -51,20 +47,30 @@ function Login() {
         >
           <fieldset>
             <label htmlFor="user-email">이메일</label>
-            <FormInput
+            <MemoizedFormInput
+              err={emailInput.err}
+              errMsg={emailInput.errMsg}
+              isValidate={emailInput.isValidate}
+              value={emailInput.value}
+              setValue={emailInput.setValue}
               type="text"
               id="user-email"
               name="user-email"
               placeholder="이메일을 입력해주세요"
-            ></FormInput>
+            ></MemoizedFormInput>
             <div className={styles[`container__position-relative`]}>
               <label htmlFor="user-password">비밀번호</label>
-              <FormInput
+              <MemoizedFormInput
+                err={passwordInput.err}
+                errMsg={passwordInput.errMsg}
+                isValidate={passwordInput.isValidate}
+                value={passwordInput.value}
+                setValue={passwordInput.setValue}
                 id="user-password"
-               type={checked?"text":"password"}
+                type={passwordToggle ? "text" : "password"}
                 name="user-password"
                 placeholder="비밀번호를 입력해주세요"
-              ></FormInput>
+              ></MemoizedFormInput>
               <input
                 className={styles[`toggle-visibility-pw`]}
                 id="toggle-visibility-pw"
@@ -73,7 +79,7 @@ function Login() {
               />
               <label
                 aria-label="비밀번호 표시 여부"
-                aria-checked={checked}
+                aria-checked={passwordToggle}
                 htmlFor="toggle-visibility-pw"
               ></label>
             </div>

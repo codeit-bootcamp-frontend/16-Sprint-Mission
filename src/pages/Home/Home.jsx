@@ -1,5 +1,5 @@
-import Main from "../components/Main";
-import Footer from "../components/Footer";
+import Main from "./Main";
+import Footer from "./Footer";
 
 function Home() {
   return (
