@@ -1,4 +1,4 @@
-import searchIcon from "../assets/input/search.svg";
+import searchIcon from "../../assets/input/search.svg";
 import styles from "./SearchItem.module.css";
 
 function SearchItem({ value, onChange }) {

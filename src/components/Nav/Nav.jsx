@@ -1,8 +1,8 @@
-import smLogo from "../assets/logo/logo.svg";
-import logo from "../assets/logo/market_logo.svg";
+import smLogo from "../../assets/logo/logo.svg";
+import logo from "../../assets/logo/market_logo.svg";
 
-import profile from "../assets/input/default_profile.svg";
-import { useScreenSize } from "../utils/useScreenSize";
+import profile from "../../assets/input/default_profile.svg";
+import { useScreenSize } from "../../utils/useScreenSize";
 
 import styles from "./Nav.module.css";
 
