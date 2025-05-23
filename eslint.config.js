@@ -30,7 +30,13 @@ export default [
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
       'react/react-in-jsx-scope': 'off',
       quotes: ['error', 'single', { avoidEscape: true }],
-      indent: ['error', 2],
+      indent: [
+        'error',
+        2,
+        {
+          SwitchCase: 1,
+        },
+      ],
       'object-curly-spacing': ['error', 'always'],
       'array-bracket-spacing': ['error', 'never'],
       'eol-last': ['error', 'always'],
