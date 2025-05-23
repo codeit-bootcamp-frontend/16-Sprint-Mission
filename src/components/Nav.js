@@ -1,8 +1,14 @@
-import { Link } from "react-router-dom";
-import TextLogo from "../img/logo_text.jpg";
-import Logo from "../img/logo.jpg";
-import User from "../img/user.jpg";
-import "../css/pages/nav.css";
+import { Link, NavLink } from "react-router-dom";
+import textLogoIcon from "../img/logo_text.jpg";
+import logoIcon from "../img/logo.jpg";
+import userIcon from "../img/user.jpg";
+import "../css/pages/Nav.css";
+
+function getLinkStyle({ isActive }) {
+  return {
+    color: isActive ? `var(--color-primary-100)` : undefined,
+  };
+}
 
 function Nav() {
   return (
@@ -11,20 +17,30 @@ function Nav() {
         <div className="header__content__navigation__group">
           <Link to="/">
             <img
-              src={TextLogo}
-              srcSet={`${TextLogo} 103w, ${Logo} 153w`}
+              src={textLogoIcon}
+              srcSet={`${textLogoIcon} 103w, ${logoIcon} 153w`}
               sizes={"(min-width: 768px) 153px, 103px"}
               alt="판다마켓 로고"
               className="header__content__logo"
             />
           </Link>
           <ul>
-            <li>자유게시판</li>
-            <li>중고마켓</li>
+            <NavLink to="board" style={getLinkStyle}>
+              <li>자유게시판</li>
+            </NavLink>
+            <NavLink to="items" style={getLinkStyle}>
+              <li>중고마켓</li>
+            </NavLink>
           </ul>
         </div>
         <div className="header__content__user">
-          <img src={User} alt="사용자 아이콘" />
+          <Link to="user">
+            <img
+              src={userIcon}
+              alt="사용자 아이콘"
+              className="header__content__user__icon"
+            />
+          </Link>
         </div>
       </div>
     </header>

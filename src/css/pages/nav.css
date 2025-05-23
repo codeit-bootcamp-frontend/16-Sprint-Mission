@@ -36,8 +36,18 @@ header {
 .header__content__navigation__group {
   display: flex;
   align-items: center;
+  gap: 32px;
 }
 
 .header__content__navigation__group ul {
   display: flex;
+  gap: 30px;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-secondary-600);
+}
+
+.header__content__user__icon {
+  width: 40px;
+  vertical-align: middle;
 }
