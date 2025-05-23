@@ -2,7 +2,7 @@ import styles from "../../styles/Login.module.css";
 import logo from "../../assets/images/logo-title.png";
 import kakaoIcon from "../../assets/icon/login_kakao.png";
 import googleIcon from "../../assets/icon/login_google.png";
-import MemoizedFormInput from "./FormInput";
+import FormInput from "./FormInput";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useValidate } from "../../hooks/useValidate";
@@ -46,7 +46,7 @@ function Login() {
         >
           <fieldset>
             <label htmlFor="user-email">이메일</label>
-            <MemoizedFormInput
+            <FormInput
               err={emailInput.err}
               errMsg={emailInput.errMsg}
               isValidate={emailInput.isValidate}
@@ -56,10 +56,10 @@ function Login() {
               id="user-email"
               name="user-email"
               placeholder="이메일을 입력해주세요"
-            ></MemoizedFormInput>
+            ></FormInput>
             <div className={styles[`container__position-relative`]}>
               <label htmlFor="user-password">비밀번호</label>
-              <MemoizedFormInput
+              <FormInput
                 err={passwordInput.err}
                 errMsg={passwordInput.errMsg}
                 isValidate={passwordInput.isValidate}
@@ -69,7 +69,7 @@ function Login() {
                 type={passwordToggle ? "text" : "password"}
                 name="user-password"
                 placeholder="비밀번호를 입력해주세요"
-              ></MemoizedFormInput>
+              ></FormInput>
               <input
                 className={styles[`toggle-visibility-pw`]}
                 id="toggle-visibility-pw"

@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo-title.png";
 import kakaoIcon from "../../assets/icon/login_kakao.png";
 import googleIcon from "../../assets/icon/login_google.png";
-import MemoizedFormInput from "./FormInput";
+import FormInput from "./FormInput";
 import { useValidate } from "../../hooks/useValidate";
 import styles from "../../styles/SignUp.module.css";
 import { useState, useEffect } from "react";
@@ -67,7 +67,7 @@ function SignUp() {
         >
           <fieldset>
             <label htmlFor="user-email">이메일</label>
-            <MemoizedFormInput
+            <FormInput
               err={emailInput.err}
               errMsg={emailInput.errMsg}
               isValidate={emailInput.isValidate}
@@ -79,7 +79,7 @@ function SignUp() {
               placeholder="이메일을 입력해주세요"
             />
             <label htmlFor="user-name">닉네임</label>
-            <MemoizedFormInput
+            <FormInput
               err={nameInput.err}
               errMsg={nameInput.errMsg}
               isValidate={nameInput.isValidate}
@@ -92,7 +92,7 @@ function SignUp() {
             />
             <div className={styles[`container__position-relative`]}>
               <label htmlFor="user-password">비밀번호</label>
-              <MemoizedFormInput
+              <FormInput
                 err={passwordInput.err}
                 errMsg={passwordInput.errMsg}
                 isValidate={passwordInput.isValidate}
@@ -117,7 +117,7 @@ function SignUp() {
             </div>
             <div className={styles[`container__position-relative`]}>
               <label htmlFor="user-password">비밀번호 확인</label>
-              <MemoizedFormInput
+              <FormInput
                 passwordInputValue={passwordInput.value}
                 err={passwordCheckInput.err}
                 errMsg={passwordCheckInput.errMsg}

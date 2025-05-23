@@ -43,7 +43,7 @@ function Header() {
             <Link
               className={styles.nav__logo}
               aria-label="판다마켓 메인으로 이동"
-              href="./"
+              to="/"
             >
               <picture>
                 <source media="(max-width: 767px)" srcSet={logoTextImg} />
