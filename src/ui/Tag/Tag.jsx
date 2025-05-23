@@ -1,0 +1,28 @@
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
+
+const Tag = ({ children }) => {
+  return (
+    <span css={tagStyle}>
+      {children}
+      <button css={deleteButtonStyle}>x</button>
+    </span>
+  );
+};
+
+export default Tag;
+
+const tagStyle = css`
+  padding: 8px 16px;
+  background-color: var(--gray200);
+  border-radius: var(--tag-border-radius);
+`;
+
+const deleteButtonStyle = css`
+  width: 20px;
+  height: 20px;
+  margin-left: 8px;
+  background-color: var(--gray400);
+  color: #fff;
+  border-radius: 50%;
+`;

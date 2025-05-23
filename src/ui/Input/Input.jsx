@@ -20,7 +20,7 @@ export default Input;
 const InputStyle = css`
   font-size: 1rem;
   padding: 14px 20px;
-  background: var(--gray100);
+  background: var(--gray200);
   border-radius: var(--border-radius-sm);
 
   &::placeholder {

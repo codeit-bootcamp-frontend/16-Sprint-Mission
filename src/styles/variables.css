@@ -1,8 +1,8 @@
 :root {
   /* colors */
-  --gray50: #f9fafb;
-  --gray100: #f3f4f6;
-  --gray200: #e5e7eb;
+  --gray100: #f9fafb;
+  --gray200: #f3f4f6;
+  --gray300: #e5e7eb;
   --gray400: #9ca3af;
   --gray500: #6b7280;
   --gray600: #4b5563;
@@ -38,6 +38,7 @@
   --form-padding-top: 24px;
   --form-label-margin-bottom: 8px;
   --form-contents-gap: 16px;
+  --form-input-max-height: 282px;
 
   /* border-radius */
   --border-radius-xs: 8px;
@@ -45,6 +46,7 @@
   --border-radius-md: 20px;
   --border-radius-lg: 40px;
   --thumb-border-radius: 16px;
+  --tag-border-radius: 26px;
 
   /* dropdown */
   --dropdown-min-width: 48px;
