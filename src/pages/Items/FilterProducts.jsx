@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { ProductAllContext } from "../../context/ProductAllContext";
+import { Link } from "react-router-dom";
 import styles from "../../styles/FilterProducts.module.css";
 
 function FilterProducts() {
@@ -17,7 +18,7 @@ function FilterProducts() {
 
   return (
     <div className={styles[`filter-bar`]}>
-      <button>상품 등록하기</button>
+      <button><Link to='/addItem'>상품 등록하기</Link></button>
       <div className={styles.filter__search}>
         <label
           className={styles[`filter__search-icon`]}

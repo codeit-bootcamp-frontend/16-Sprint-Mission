@@ -2,7 +2,7 @@ import styles from "../styles/Header.module.css";
 import logoImg from "../assets/images/logo.png";
 import logoTextImg from "../assets/images/logo-text.png";
 import userImg from "../assets/icon/ic_user.png";
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function Header() {
@@ -29,7 +29,7 @@ function Header() {
             </Link>
             <div className={styles.nav__category}>
               <Link>자유게시판</Link>
-              <Link>중고마켓</Link>
+              <NavLink to='/items' className={({ isActive }) => isActive ? `${styles.isActive}` : ''} >중고마켓</NavLink>
             </div>
 
             <div className={styles[`nav__my-page`]}>

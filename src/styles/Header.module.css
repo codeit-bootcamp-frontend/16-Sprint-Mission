@@ -63,6 +63,10 @@ header {
   cursor: pointer;
 }
 
+.isActive {
+  color: var(--primary-color) !important;
+}
+
 /* 태블릿 */
 @media screen and (min-width: 768px) {
   :root {

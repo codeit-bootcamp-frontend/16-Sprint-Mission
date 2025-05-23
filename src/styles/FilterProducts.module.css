@@ -17,9 +17,12 @@
   padding: 12px 23px;
   font-size: 16px;
   border-radius: 8px;
-  color: var(--secondary-gray100);
   height: 42px;
   margin-bottom: 8px;
+}
+
+.filter-bar button a {
+  color: var(--secondary-gray100);
 }
 
 .filter__search {
