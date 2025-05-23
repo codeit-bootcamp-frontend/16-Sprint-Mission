@@ -1,18 +1,18 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
-import ItemsPage from "./pages/ItemsPage";
+import ProductsPage from "./pages/ProductsPage";
 import BoardPage from "./pages/BoardPage";
-import AddItemPage from "./pages/AddItemPage";
+import AddProductPage from "./pages/AddProductPage";
 
 const Main = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route index element={<ItemsPage />} />
-          <Route path="/items" element={<ItemsPage />} />
+          <Route index element={<ProductsPage />} />
+          <Route path="/items" element={<ProductsPage />} />
           <Route path="/board" element={<BoardPage />} />
-          <Route path="/addItem" element={<AddItemPage />} />
+          <Route path="/addItem" element={<AddProductPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,12 +1,12 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
 import { getItems } from "../../services/api";
-import styles from "./ItemList.module.css";
+import styles from "./ProductList.module.css";
 import Button from "../../ui/Button";
 import Dropdown from "../../ui/Dropdown";
 import InputSearch from "../../ui/Input/InputSearch";
 import Pagination from "../Pagination";
-import ItemListResults from "./ItemListResults";
+import ProductListResults from "./ProductListResults";
 import SectionTitle from "../../ui/SectionTitle/SectionTitle";
 import useAsync from "../../hooks/useAsync";
 import { DEFAULT_ITEM_PAGE_SIZE } from "../../constants/pagesize";
@@ -15,7 +15,7 @@ import { ITEMS_ORDER_MAP } from "../../constants/sortOptions";
 const DEFAULT_ORDER = Object.keys(ITEMS_ORDER_MAP)[0];
 const dropdownMenuItems = Object.keys(ITEMS_ORDER_MAP);
 
-const ItemList = ({ title, pageSize = DEFAULT_ITEM_PAGE_SIZE }) => {
+const ProductList = ({ title, pageSize = DEFAULT_ITEM_PAGE_SIZE }) => {
   const [items, setItems] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
   const [order, setOrder] = useState(DEFAULT_ORDER);
@@ -78,7 +78,7 @@ const ItemList = ({ title, pageSize = DEFAULT_ITEM_PAGE_SIZE }) => {
           iconType="orderIcon"
         />
       </div>
-      <ItemListResults
+      <ProductListResults
         items={items}
         pageSize={pageSize}
         isLoading={isLoading}
@@ -96,4 +96,4 @@ const ItemList = ({ title, pageSize = DEFAULT_ITEM_PAGE_SIZE }) => {
   );
 };
 
-export default ItemList;
+export default ProductList;

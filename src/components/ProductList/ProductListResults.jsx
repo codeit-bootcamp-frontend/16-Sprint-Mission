@@ -1,9 +1,9 @@
-import styles from "./ItemList.module.css";
-import ItemCard from "../ItemCard";
-import ItemCardSkeleton from "../../ui/Skeletons/ItemCardSkeleton";
+import styles from "./ProductList.module.css";
+import ProductCard from "../ProductCard";
+import ProductCardSkeleton from "../../ui/Skeletons/ProductCardSkeleton";
 import Button from "../../ui/Button";
 
-const ItemListResults = ({
+const ProductListResults = ({
   isLoading,
   isError,
   isEmpty,
@@ -14,24 +14,28 @@ const ItemListResults = ({
   const isLoadingError = !isLoading && isError;
 
   if (isLoading)
-    return <ItemListLoading pageSize={pageSize} listType={listType} />;
+    return <ProductListLoading pageSize={pageSize} listType={listType} />;
 
-  if (isLoadingError) return <ItemListError />;
+  if (isLoadingError) return <ProductListError />;
 
-  if (items.length === 0) return <ItemListEmpty isEmpty={isEmpty} />;
+  if (items.length === 0) return <ProductListEmpty isEmpty={isEmpty} />;
 
   return (
-    <ItemListRenderer items={items} pageSize={pageSize} listType={listType} />
+    <ProductListRenderer
+      items={items}
+      pageSize={pageSize}
+      listType={listType}
+    />
   );
 };
 
-const ItemListRenderer = ({ items, pageSize, listType }) => {
+const ProductListRenderer = ({ items, pageSize, listType }) => {
   return (
     <ul className={`${styles[`item-list-ul`]} ${styles[listType]}`}>
       {items.slice(0, pageSize).map(({ id, ...itemData }) => {
         return (
           <li key={id} className={styles["item-list"]}>
-            <ItemCard key={id} data={itemData} loading="eager" />
+            <ProductCard key={id} data={itemData} loading="eager" />
           </li>
         );
       })}
@@ -39,23 +43,23 @@ const ItemListRenderer = ({ items, pageSize, listType }) => {
   );
 };
 
-const ItemListLoading = ({ pageSize, listType }) => {
+const ProductListLoading = ({ pageSize, listType }) => {
   return (
     <ul className={`${styles[`item-list-ul`]} ${styles[listType]}`}>
       {Array.from({ length: pageSize }).map((_, index) => (
         <li key={index} className={styles["item-list"]}>
-          <ItemCardSkeleton />
+          <ProductCardSkeleton />
         </li>
       ))}
     </ul>
   );
 };
 
-const ItemListError = () => {
+const ProductListError = () => {
   return <p>상품 목록을 가져오지 못했습니다.</p>;
 };
 
-const ItemListEmpty = ({ isEmpty }) => {
+const ProductListEmpty = ({ isEmpty }) => {
   return (
     <div className={styles["item-list-empty"]}>
       <p>상품이 없습니다.</p>
@@ -66,4 +70,4 @@ const ItemListEmpty = ({ isEmpty }) => {
   );
 };
 
-export default ItemListResults;
+export default ProductListResults;

@@ -1,7 +1,7 @@
-import styles from "../../components/ItemCard/ItemCard.module.css";
-import skeletonStyles from "./ItemCardSkeleton.module.css";
+import styles from "../../components/ProductCard/ProductCard.module.css";
+import skeletonStyles from "./ProductCardSkeleton.module.css";
 
-const ItemCardSkeleton = () => {
+const ProductCardSkeleton = () => {
   return (
     <div className={`${styles["item-img"]} ${skeletonStyles["skeleton-card"]}`}>
       <div className={skeletonStyles["skeleton-img"]}></div>
@@ -12,4 +12,4 @@ const ItemCardSkeleton = () => {
   );
 };
 
-export default ItemCardSkeleton;
+export default ProductCardSkeleton;
