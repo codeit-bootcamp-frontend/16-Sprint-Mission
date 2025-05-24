@@ -26,7 +26,6 @@ function FilterProducts() {
           aria-label="검색창 아이콘"
         />
         <input
-          aria-label="검색할 상품 입력"
           id="searchInput"
           className={styles[`filter__search-input`]}
           placeholder="검색할 상품을 입력해주세요"

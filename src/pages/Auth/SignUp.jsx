@@ -68,11 +68,7 @@ function SignUp() {
           <fieldset>
             <label htmlFor="user-email">이메일</label>
             <FormInput
-              err={emailInput.err}
-              errMsg={emailInput.errMsg}
-              isValidate={emailInput.isValidate}
-              value={emailInput.value}
-              setValue={emailInput.setValue}
+              {...emailInput}
               type="text"
               id="user-email"
               name="user-email"
@@ -80,11 +76,7 @@ function SignUp() {
             />
             <label htmlFor="user-name">닉네임</label>
             <FormInput
-              err={nameInput.err}
-              errMsg={nameInput.errMsg}
-              isValidate={nameInput.isValidate}
-              value={nameInput.value}
-              setValue={nameInput.setValue}
+              {...nameInput}
               id="user-name"
               type="text"
               name="user-name"
@@ -93,11 +85,7 @@ function SignUp() {
             <div className={styles[`container__position-relative`]}>
               <label htmlFor="user-password">비밀번호</label>
               <FormInput
-                err={passwordInput.err}
-                errMsg={passwordInput.errMsg}
-                isValidate={passwordInput.isValidate}
-                value={passwordInput.value}
-                setValue={passwordInput.setValue}
+                {...passwordInput}
                 id="user-password"
                 type={passwordToggle ? "text" : "password"}
                 name="user-password"
@@ -118,12 +106,8 @@ function SignUp() {
             <div className={styles[`container__position-relative`]}>
               <label htmlFor="user-password">비밀번호 확인</label>
               <FormInput
+                {...passwordCheckInput}
                 passwordInputValue={passwordInput.value}
-                err={passwordCheckInput.err}
-                errMsg={passwordCheckInput.errMsg}
-                isValidate={passwordCheckInput.isValidate}
-                value={passwordCheckInput.value}
-                setValue={passwordCheckInput.setValue}
                 id="user-password-check"
                 type={passwordCheckToggle ? "text" : "password"}
                 name="user-password-check"

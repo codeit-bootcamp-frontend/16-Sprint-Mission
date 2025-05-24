@@ -4,7 +4,7 @@ import FilterProducts from "./FilterProducts";
 import Pagination from "./Pagination";
 import FailLoad from "./FailLoad";
 import { useResizeRequest } from "../../hooks/useResizeRequest ";
-import { useContext, useEffect, useMemo } from "react";
+import { useContext, useEffect } from "react";
 import { ProductAllContext } from "../../context/ProductAllContext";
 import { useLoadItems } from "../../hooks/useLoadItems";
 
@@ -18,12 +18,9 @@ function ProductsAll() {
     setQueryStrings((prev) => ({ ...prev, pageSize }));
   }, [pageSize]);
 
-  const finalQueryStrings = useMemo(() => {
-    return { ...queryStrings, pageSize };
-  }, [queryStrings, pageSize]);
 
   // 쿼리스트링으로 아이템 가져오기 가져다줘
-  const [loadFail, result] = useLoadItems(finalQueryStrings);
+  const [loadFail, result] = useLoadItems(queryStrings);
 
   useEffect(() => {
     if (result.list) {

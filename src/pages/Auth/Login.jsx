@@ -20,7 +20,7 @@ function Login() {
     passwordInput.isValidate("user-password");
 
     if (isAllValid) {
-      sessionStorage.setItem("isLogined", "true");
+      sessionStorage.setItem("logined", emailInput.value);
       navigate("/items")
     } else {
       e.preventDefault();
@@ -47,11 +47,7 @@ function Login() {
           <fieldset>
             <label htmlFor="user-email">이메일</label>
             <FormInput
-              err={emailInput.err}
-              errMsg={emailInput.errMsg}
-              isValidate={emailInput.isValidate}
-              value={emailInput.value}
-              setValue={emailInput.setValue}
+             {...emailInput}
               type="text"
               id="user-email"
               name="user-email"
@@ -60,11 +56,7 @@ function Login() {
             <div className={styles[`container__position-relative`]}>
               <label htmlFor="user-password">비밀번호</label>
               <FormInput
-                err={passwordInput.err}
-                errMsg={passwordInput.errMsg}
-                isValidate={passwordInput.isValidate}
-                value={passwordInput.value}
-                setValue={passwordInput.setValue}
+                {...passwordInput}
                 id="user-password"
                 type={passwordToggle ? "text" : "password"}
                 name="user-password"

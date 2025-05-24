@@ -3,9 +3,9 @@ import styles from "../../styles/ErrMsg.module.css";
 function FormInput(props) {
   const { placeholder, name, type, id , err, errMsg, isValidate, value, setValue, passwordInputValue=null } = props;
 
- function handleChange(e){
-  setValue(e.target.value)
- }
+  function handleChange(e){
+    setValue(e.target.value)
+  }
 
  function handleBlur(){
   isValidate(name, passwordInputValue)
