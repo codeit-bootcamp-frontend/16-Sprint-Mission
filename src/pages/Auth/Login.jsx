@@ -1,11 +1,10 @@
 import styles from "@styles/Login.module.css";
 import logo from "@assets/images/logo-title.png";
-import kakaoIcon from "@assets/icon/login_kakao.png";
-import googleIcon from "@assets/icon/login_google.png";
 import FormInput from "./FormInput";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useValidate } from "@hooks/useValidate";
+import SocialLogin from "../../components/SocialLogin";
 
 function Login() {
   const [passwordToggle, setPasswordToggle] = useState(false);
@@ -80,27 +79,7 @@ function Login() {
               로그인
             </button>
           </fieldset>
-          <div className={styles.login__alert}>
-            간편 로그인하기
-            <div className="icon__container">
-              <a
-                aria-label="구글로 로그인"
-                rel="noopener"
-                target="_blank"
-                href="https://www.google.com/"
-              >
-                <img src={googleIcon} alt="구글 아이콘" />
-              </a>
-              <a
-                aria-label="카카오로 로그인"
-                rel="noopener"
-                target="_blank"
-                href="https://www.kakaocorp.com/page/"
-              >
-                <img src={kakaoIcon} alt="카카오 아이콘" />
-              </a>
-            </div>
-          </div>
+         <SocialLogin />
           <div className={styles[`login__sign-up`]}>
             판다마켓이 처음이신가요?&nbsp;
             <Link to="/sign_up" aria-label="회원가입 페이지로 이동">

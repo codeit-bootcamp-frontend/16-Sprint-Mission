@@ -130,27 +130,7 @@ function SignUp() {
               회원가입
             </button>
           </fieldset>
-          <div className={styles[`sign-up__alert`]}>
-            간편 로그인하기
-            <div className={styles.icon__container}>
-              <a
-                aria-label="구글로 로그인"
-                rel="noopener"
-                target="_blank"
-                href="https://www.google.com"
-              >
-                <img src={googleIcon} alt="구글아이콘" />
-              </a>
-              <a
-                aria-label="카카오로 로그인"
-                rel="noopener"
-                target="_blank"
-                href="https://www.kakaocorp.com/page/"
-              >
-                <img src={kakaoIcon} alt="카카오톡아이콘" />
-              </a>
-            </div>
-          </div>
+          <SocialLogin />
           <div className={styles[`sign-up__login`]}>
             이미 회원이신가요?&nbsp;
             <Link aria-label="로그인 페이지로 이동" to="/login">
