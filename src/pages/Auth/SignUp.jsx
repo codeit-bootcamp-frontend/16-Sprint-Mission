@@ -1,16 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
 import logo from "@assets/images/logo-title.png";
-import kakaoIcon from "@assets/icon/login_kakao.png";
-import googleIcon from "@assets/icon/login_google.png";
 import FormInput from "./FormInput";
 import { useValidate } from "@hooks/useValidate";
 import styles from "@styles/SignUp.module.css";
 import { useState, useEffect } from "react";
+import SocialLogin from "@components/SocialLogin";
 
 function SignUp() {
   const [passwordToggle, setPasswordToggle] = useState(false);
   const [passwordCheckToggle, setPasswordCheckToggle] = useState(false);
-  const navigate = useNavigate();
+  const toLoginNavigate = useNavigate();
   const emailInput = useValidate();
   const nameInput = useValidate();
   const passwordInput = useValidate();
@@ -38,7 +37,7 @@ function SignUp() {
 
     if (isAllValid) {
       sessionStorage.setItem("isLogined", "true");
-      navigate("/login");
+      toLoginNavigate("/login");
     } else {
       e.preventDefault();
     }

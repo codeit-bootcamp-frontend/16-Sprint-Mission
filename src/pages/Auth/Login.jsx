@@ -4,11 +4,11 @@ import FormInput from "./FormInput";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useValidate } from "@hooks/useValidate";
-import SocialLogin from "../../components/SocialLogin";
+import SocialLogin from "@components/SocialLogin";
 
 function Login() {
   const [passwordToggle, setPasswordToggle] = useState(false);
-  const navigate = useNavigate();
+  const toItemsNavigation = useNavigate();
   const emailInput = useValidate();
   const passwordInput = useValidate();
 
@@ -20,7 +20,7 @@ function Login() {
 
     if (isAllValid) {
       sessionStorage.setItem("logined", emailInput.value);
-      navigate("/items");
+      toItemsNavigation("/items");
     } else {
       e.preventDefault();
     }
@@ -79,7 +79,7 @@ function Login() {
               로그인
             </button>
           </fieldset>
-         <SocialLogin />
+          <SocialLogin />
           <div className={styles[`login__sign-up`]}>
             판다마켓이 처음이신가요?&nbsp;
             <Link to="/sign_up" aria-label="회원가입 페이지로 이동">

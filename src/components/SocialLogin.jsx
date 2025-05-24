@@ -6,7 +6,7 @@ function SocialLogin() {
   return (
     <div className={styles.login__alert}>
       간편 로그인하기
-      <div className="icon__container">
+      <div className={styles.icon__container}>
         <a
           aria-label="구글로 로그인"
           rel="noopener"
