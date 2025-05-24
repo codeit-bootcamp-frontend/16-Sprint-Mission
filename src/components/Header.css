@@ -1,5 +1,4 @@
 .header {
-  width: 1120px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,7 +16,7 @@
 }
 .logo a {
   color: var(--primary-color);
-  font-size: 25.63px;
+  font-size: var(--text-xl);
   font-weight: 700;
   line-height: 100%;
   cursor: pointer;
@@ -32,7 +31,7 @@
 
 .headerNav a {
   color: var(--gray);
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   line-height: 26px;
   font-weight: 600;
 }
@@ -40,4 +39,16 @@
 .headerUser {
   width: 40px;
   height: 40px;
+}
+
+@media (min-width: 768px) {
+  .logo a {
+    font-size: 25.63px;
+  }
+  .headerNav a {
+    font-size: var(--text-lg);
+  }
+}
+
+@media (min-width: 1280px) {
 }

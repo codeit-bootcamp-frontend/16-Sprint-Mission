@@ -1,0 +1,19 @@
+.pageBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pageButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 1px solid #e5e7eb;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--white);
+  color: var(--gray-500);
+}
+
+.pageButton.active {
+  background-color: var(--primary-color);
+  color: var(--white);
+}

@@ -9,7 +9,7 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <div>
+      <div className="container">
         <Routes>
           <Route index element={<HomePage />} />
           <Route path="community" element={<CommunityPage />} />
