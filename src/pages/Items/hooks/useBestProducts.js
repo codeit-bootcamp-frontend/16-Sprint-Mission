@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { fetchProducts } from "../api/products";
-import { getLimitFromWindowWidth } from "../utils/getLimitFromWindowWidth";
+import { fetchProducts } from "../../../api/products";
+import { getLimitFromWindowWidth } from "../../../utils/getLimitFromWindowWidth";
 
 export default function useBestProducts(itemsPerDevice) {
   const [bestProducts, setBestProducts] = useState([]);

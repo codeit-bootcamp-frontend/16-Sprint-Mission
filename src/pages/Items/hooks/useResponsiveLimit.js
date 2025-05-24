@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getLimitFromWindowWidth } from "../utils/getLimitFromWindowWidth";
+import { getLimitFromWindowWidth } from "../../../utils/getLimitFromWindowWidth";
 
 export default function useResponsiveLimit(itemsPerDevice) {
   const [limit, setLimit] = useState(() =>

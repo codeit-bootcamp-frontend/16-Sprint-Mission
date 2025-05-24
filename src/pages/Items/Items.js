@@ -1,8 +1,8 @@
 import style from "./Items.module.css"
-import BestProducts from "../components/BestProducts/BestProducts";
-import AllProducts from "../components/AllProducts/AllProducts";
-import { BEST_PRODUCTS_PER_DEVICE,ALL_PRODUCTS_PER_DEVICE } from "../constants/products";
-import { TITLE_ALL_PRODUCTS_COMP,TITLE_BEST_PRODUCTS_COMP } from "../constants/titles";
+import BestProducts from "./components/BestProducts/BestProducts";
+import AllProducts from "./components/AllProducts/AllProducts";
+import { BEST_PRODUCTS_PER_DEVICE,ALL_PRODUCTS_PER_DEVICE } from "../../constants/products";
+import { TITLE_ALL_PRODUCTS_COMP,TITLE_BEST_PRODUCTS_COMP } from "../../constants/titles";
 function Items() {
   return (
     <div className={style.container}>

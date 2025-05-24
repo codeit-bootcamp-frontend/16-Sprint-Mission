@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchPaginatedProducts } from "../api/products";
+import { fetchPaginatedProducts } from "../../../api/products";
 
 export default function usePaginatedProducts({ page, limit, sort }) {
   const [products, setProducts] = useState([]);
