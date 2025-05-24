@@ -17,7 +17,7 @@ const Input = ({ ...props }) => {
 
 export default Input;
 
-const InputStyle = css`
+export const InputStyle = css`
   font-size: 1rem;
   padding: 14px 20px;
   background: var(--gray200);
