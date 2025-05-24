@@ -11,7 +11,7 @@ import { useLoadItems } from "@hooks/useLoadItems";
 function ProductsAll() {
   const { products, setProducts, setTotal, queryStrings, setQueryStrings } = useContext(ProductAllContext);
 
-  //innerWidth에 따라 쿼리 변경하기
+  //resize발생하면 페이지사이즈 다시 가져다줘
   const [pageSize] = useResizeInnerWidth("all");
 
   useEffect(() => {

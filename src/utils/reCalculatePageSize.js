@@ -18,8 +18,6 @@ const pageSizeByType = {
 }
 
 export function reCalculatePageSize(type, innerWidth,) {
-    if (innerWidth === null) return;
-
     const { lg, md } = viewPort;
     let pageSizeKey;
 

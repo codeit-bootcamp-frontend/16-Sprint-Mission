@@ -4,7 +4,7 @@ import { reCalculatePageSize } from "../utils/reCalculatePageSize";
 export function useResizeInnerWidth(type) {
     const [innerWidth, setInnerWidth] = useState(null);
     const [pageSize, setPageSize] = useState(null);
-    const debounceTimer = useRef(0);
+    const debounceTimer = useRef(null);
 
     useEffect(() => {
         setInnerWidth(window.innerWidth);
@@ -25,6 +25,8 @@ export function useResizeInnerWidth(type) {
     }, []);
 
     useEffect(() => {
+        if (innerWidth === null) return;
+
         const newPageSize = reCalculatePageSize(type, innerWidth)
         setPageSize(newPageSize)
     }, [innerWidth]);

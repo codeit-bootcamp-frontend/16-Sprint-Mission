@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const ruleObj = {
+const  validRuleObj = {
   "user-email": {
     isValid(value) {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -44,7 +44,7 @@ export function useValidate() {
   const [value, setValue] = useState("");
 
   function isValidate(name, pwValue) {
-    const validator = ruleObj[name];
+    const validator = validRuleObj[name];
     const validateResult = validator.isValid(value, pwValue);
 
     setErr(!validateResult);
