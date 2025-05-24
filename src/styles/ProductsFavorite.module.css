@@ -17,7 +17,7 @@
 
 .favorite-list__card {
   width: var(--favorite-card-size);
-   cursor: pointer;
+  cursor: pointer;
 }
 
 .favorite-list__item img {

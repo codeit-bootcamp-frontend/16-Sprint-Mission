@@ -1,9 +1,9 @@
-import styles from "../../styles/Main.module.css";
-import heroImg from "../../assets/images/top_main.png";
-import hotItemImg from "../../assets/images/hot_item.png";
-import searchImg from "../../assets/images/search.png";
-import registerImg from "../../assets/images/register.png";
-import bannerImg from "../../assets/images/bottom_banner.png";
+import styles from "@styles/Main.module.css";
+import heroImg from "@assets/images/top_main.png";
+import hotItemImg from "@assets/images/hot_item.png";
+import searchImg from "@assets/images/search.png";
+import registerImg from "@assets/images/register.png";
+import bannerImg from "@assets/images/bottom_banner.png";
 import { Link } from "react-router-dom";
 
 function Main() {

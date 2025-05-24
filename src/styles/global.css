@@ -14,7 +14,7 @@ body {
 
 :root {
   /* 색상 변수 */
-  --divider-color:#d9d9d9;
+  --divider-color: #d9d9d9;
   --primary-color: #3692ff;
   --primary-hover: #1251aa;
   --article-background-color: #fcfcfc;
@@ -31,5 +31,4 @@ body {
   --secondary-gray100: #f3f4f6;
   --secondary-gray50: #f9fafb;
   --footer-text: #cfcfcf;
-
 }

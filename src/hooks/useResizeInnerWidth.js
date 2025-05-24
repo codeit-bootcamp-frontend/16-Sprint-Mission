@@ -1,15 +1,14 @@
 import { useEffect, useState, useRef } from "react";
-import { reRequestByInnerWidth } from "../utils/responsivePageSize";
+import { reCalculatePageSize } from "../utils/reCalculatePageSize";
 
-export function useResizeRequest(type) {
-    const [innerWidth, setInnerWidth] = useState(window.innerWidth);
-
+export function useResizeInnerWidth(type) {
+    const [innerWidth, setInnerWidth] = useState(null);
     const [pageSize, setPageSize] = useState(null);
-    const debounceTimer = useRef(null);
+    const debounceTimer = useRef(0);
 
     useEffect(() => {
         setInnerWidth(window.innerWidth);
-       
+
         function handleResize() {
             if (debounceTimer.current) clearTimeout(debounceTimer.current);
             debounceTimer.current = setTimeout(() => {
@@ -26,7 +25,7 @@ export function useResizeRequest(type) {
     }, []);
 
     useEffect(() => {
-        const newPageSize = reRequestByInnerWidth(type, innerWidth)
+        const newPageSize = reCalculatePageSize(type, innerWidth)
         setPageSize(newPageSize)
     }, [innerWidth]);
 

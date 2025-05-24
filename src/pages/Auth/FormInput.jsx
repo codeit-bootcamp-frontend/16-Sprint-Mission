@@ -1,4 +1,4 @@
-import styles from "../../styles/ErrMsg.module.css";
+import styles from "@styles/ErrMsg.module.css";
 
 function FormInput(props) {
   const { placeholder, name, type, id , err, errMsg, isValidate, value, setValue, passwordInputValue=null } = props;

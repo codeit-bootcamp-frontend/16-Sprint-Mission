@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import {getProducts} from "../service/api"
+import { getProducts } from "../service/api"
 
 export function useLoadItems(queryStrings) {
   const [loadFail, setLoadFail] = useState("");
   const [result, setResult] = useState({});
+
   useEffect(() => {
-   if(!queryStrings?.pageSize) return
+    if (!queryStrings?.pageSize) return
 
     async function loadItemsByQuery() {
       try {
@@ -16,6 +17,7 @@ export function useLoadItems(queryStrings) {
         setLoadFail('fail')
       }
     }
+
     loadItemsByQuery();
   }, [queryStrings])
 

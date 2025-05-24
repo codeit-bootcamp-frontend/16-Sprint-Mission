@@ -1,11 +1,11 @@
-import styles from "../../styles/Login.module.css";
-import logo from "../../assets/images/logo-title.png";
-import kakaoIcon from "../../assets/icon/login_kakao.png";
-import googleIcon from "../../assets/icon/login_google.png";
+import styles from "@styles/Login.module.css";
+import logo from "@assets/images/logo-title.png";
+import kakaoIcon from "@assets/icon/login_kakao.png";
+import googleIcon from "@assets/icon/login_google.png";
 import FormInput from "./FormInput";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useValidate } from "../../hooks/useValidate";
+import { useValidate } from "@hooks/useValidate";
 
 function Login() {
   const [passwordToggle, setPasswordToggle] = useState(false);
@@ -21,14 +21,14 @@ function Login() {
 
     if (isAllValid) {
       sessionStorage.setItem("logined", emailInput.value);
-      navigate("/items")
+      navigate("/items");
     } else {
       e.preventDefault();
     }
   }
 
   // 토글 보이기 추가하기
-  function handlePwCheck() {
+  function handlePwToggle() {
     setPasswordToggle(!passwordToggle);
   }
 
@@ -40,14 +40,11 @@ function Login() {
             <img src={logo} alt="판다마켓 로고" />
           </Link>
         </div>
-        <form
-          onSubmit={handleSubmit}
-          className={styles.login__form}
-        >
+        <form onSubmit={handleSubmit} className={styles.login__form}>
           <fieldset>
             <label htmlFor="user-email">이메일</label>
             <FormInput
-             {...emailInput}
+              {...emailInput}
               type="text"
               id="user-email"
               name="user-email"
@@ -66,7 +63,7 @@ function Login() {
                 className={styles[`toggle-visibility-pw`]}
                 id="toggle-visibility-pw"
                 type="checkbox"
-                onChange={handlePwCheck}
+                onChange={handlePwToggle}
               />
               <label
                 aria-label="비밀번호 표시 여부"

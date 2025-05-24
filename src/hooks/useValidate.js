@@ -45,12 +45,11 @@ export function useValidate() {
 
   function isValidate(name, pwValue) {
     const validator = ruleObj[name];
-    const targetValue = value;
-    const validResult = validator.isValid(targetValue, pwValue);
+    const validateResult = validator.isValid(value, pwValue);
 
-    setErr(!validResult);
-    validResult ? setErrMsg("") : setErrMsg(validator.getErrorMessage(targetValue));
-    setIsValidNow(validResult);
+    setErr(!validateResult);
+    validateResult ? setErrMsg("") : setErrMsg(validator.getErrorMessage(value));
+    setIsValidNow(validateResult); 
   }
 
   return { err, errMsg, isValidate, isValidNow, value, setValue };

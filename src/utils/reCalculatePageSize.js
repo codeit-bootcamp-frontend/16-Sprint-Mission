@@ -17,9 +17,10 @@ const pageSizeByType = {
     }
 }
 
-export function reRequestByInnerWidth(type, innerWidth,) {
-    const { lg, md } = viewPort;
+export function reCalculatePageSize(type, innerWidth,) {
+    if (innerWidth === null) return;
 
+    const { lg, md } = viewPort;
     let pageSizeKey;
 
     if (innerWidth < md) {
@@ -31,7 +32,7 @@ export function reRequestByInnerWidth(type, innerWidth,) {
     }
 
     const pageSize = pageSizeByType[type][pageSizeKey]
-     
+
     return pageSize;
 }
 

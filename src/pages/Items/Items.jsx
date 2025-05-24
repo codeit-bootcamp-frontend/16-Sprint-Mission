@@ -1,7 +1,7 @@
 import ProductsFavorite from "./ProductsFavorite";
 import ProductsAll from "./ProductsAll";
-import ProductAllContextProvider from "../../context/ProductAllContext";
-import "../../styles/item.css";
+import ProductAllContextProvider from "@context/ProductAllContext";
+import "@styles/item.css";
 
 function Items() {
   return (

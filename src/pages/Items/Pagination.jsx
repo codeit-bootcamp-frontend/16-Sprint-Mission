@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
-import { ProductAllContext } from "../../context/ProductAllContext";
-import styles from "../../styles/Pagination.module.css";
-import nextBtn_active from "../..//assets/images/nextBtn-active.png";
-import nextBtn_inactive from "../..//assets/images/nextBtn-inactive.png";
-import prevBtn_active from "../..//assets/images/prevBtn-active.png";
-import prevBtn_inactive from "../..//assets/images/prevBtn-inactive.png";
+import { ProductAllContext } from "@context/ProductAllContext";
+import styles from "@styles/Pagination.module.css";
+import nextBtn_active from "@assets/images/nextBtn-active.png";
+import nextBtn_inactive from "@assets/images/nextBtn-inactive.png";
+import prevBtn_active from "@assets/images/prevBtn-active.png";
+import prevBtn_inactive from "@assets/images/prevBtn-inactive.png";
 
 const PAGINATION_MAX = 5;
 

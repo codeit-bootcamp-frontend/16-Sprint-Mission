@@ -1,9 +1,9 @@
-import styles from "../../styles/ProductsFavorite.module.css";
-import { useEffect, useState } from "react";
+import styles from "@styles/ProductsFavorite.module.css";
+import { useEffect, useState, useMemo } from "react";
 import ProductItem from "./ProductItem";
-import { useResizeRequest } from "../../hooks/useResizeRequest ";
-import FailLoad from "./FailLoad";
-import { useLoadItems } from "../../hooks/useLoadItems";
+import { useResizeInnerWidth } from "@hooks/useResizeInnerWidth";
+import LoadFailed from "./LoadFailed";
+import { useLoadItems } from "@hooks/useLoadItems";
 
 function ProductsFavorite() {
   const [favoriteItems, setFavoriteItems] = useState([]);
@@ -14,11 +14,10 @@ function ProductsFavorite() {
   });
 
   //resize 발생 시 pageSize 새로 가져다줘
-  const [pageSize] = useResizeRequest("favor");
+  const [pageSize] = useResizeInnerWidth("favor");
+
   useEffect(() => {
-    setFavoriteQueryStrings((prev) => {
-      return { ...prev, pageSize };
-    });
+    setFavoriteQueryStrings((prev) => ({ ...prev, pageSize }));
   }, [pageSize]);
 
   //쿼리 변경 시 가져오기
@@ -26,7 +25,7 @@ function ProductsFavorite() {
 
   useEffect(() => {
     if (result.list) {
-      setFavoriteItems([...result.list]);
+      setFavoriteItems(result.list);
     }
   }, [result]);
 
@@ -34,7 +33,7 @@ function ProductsFavorite() {
     <section className={styles.items__favorite}>
       <h2>베스트 상품</h2>
       {loadFail ? (
-        <FailLoad></FailLoad>
+        <LoadFailed></LoadFailed>
       ) : (
         <ul className={styles["favorite-list"]}>
           {favoriteItems.map((item) => (

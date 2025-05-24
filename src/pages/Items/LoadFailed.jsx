@@ -1,6 +1,6 @@
-import styles from "../../styles/FailLoad.module.css";
+import styles from "@styles/FailLoad.module.css";
 
-function FailLoad() {
+function LoadFailed() {
   return (
     <p className={styles.errMsg}>
       죄송합니다 목록을 가져오는 데에 실패했습니다.
@@ -8,4 +8,4 @@ function FailLoad() {
   );
 }
 
-export default FailLoad;
+export default LoadFailed;

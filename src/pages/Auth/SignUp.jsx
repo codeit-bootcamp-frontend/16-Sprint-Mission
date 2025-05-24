@@ -1,16 +1,16 @@
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../../assets/images/logo-title.png";
-import kakaoIcon from "../../assets/icon/login_kakao.png";
-import googleIcon from "../../assets/icon/login_google.png";
+import logo from "@assets/images/logo-title.png";
+import kakaoIcon from "@assets/icon/login_kakao.png";
+import googleIcon from "@assets/icon/login_google.png";
 import FormInput from "./FormInput";
-import { useValidate } from "../../hooks/useValidate";
-import styles from "../../styles/SignUp.module.css";
+import { useValidate } from "@hooks/useValidate";
+import styles from "@styles/SignUp.module.css";
 import { useState, useEffect } from "react";
 
 function SignUp() {
   const [passwordToggle, setPasswordToggle] = useState(false);
   const [passwordCheckToggle, setPasswordCheckToggle] = useState(false);
-   const navigate = useNavigate();
+  const navigate = useNavigate();
   const emailInput = useValidate();
   const nameInput = useValidate();
   const passwordInput = useValidate();
@@ -25,21 +25,20 @@ function SignUp() {
   //비밀번호 값 변경 시 비밀번호 확인도 유효성 검사 다시
   const pwValue = passwordInput.value;
   useEffect(() => {
-    if (passwordCheckInput.value !== "") {
-      passwordCheckInput.isValidate("user-password-check", passwordInput.value);
-    }
+    if (passwordCheckInput.value === "") return;
+    passwordCheckInput.isValidate("user-password-check", passwordInput.value);
   }, [pwValue]);
 
   // 제출 버튼 클릭 시 검사 한번씩 다 해
   function handleSubmit(e) {
     emailInput.isValidate("user-email");
+    nameInput.isValidate("user-name");
     passwordInput.isValidate("user-password");
     passwordCheckInput.isValidate("user-password-check", passwordInput.value);
-    nameInput.isValidate("user-name");
 
     if (isAllValid) {
       sessionStorage.setItem("isLogined", "true");
-      navigate('/login');
+      navigate("/login");
     } else {
       e.preventDefault();
     }
@@ -61,10 +60,7 @@ function SignUp() {
             <img src={logo} alt="판다마켓 로고" />
           </Link>
         </div>
-        <form
-          onSubmit={handleSubmit}
-          className={styles[`sign-up__form`]}
-        >
+        <form onSubmit={handleSubmit} className={styles[`sign-up__form`]}>
           <fieldset>
             <label htmlFor="user-email">이메일</label>
             <FormInput

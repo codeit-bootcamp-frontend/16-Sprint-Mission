@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { ProductAllContext } from "../../context/ProductAllContext";
+import { ProductAllContext } from "@context/ProductAllContext";
 import { Link } from "react-router-dom";
-import styles from "../../styles/FilterProducts.module.css";
+import styles from "@styles/FilterProducts.module.css";
 
-function FilterProducts() {
+function ProductsFilterBar() {
   const { queryStrings, setQueryStrings } = useContext(ProductAllContext);
 
   // dataset.value에 의한 queryStrings변경
@@ -59,4 +59,4 @@ function FilterProducts() {
   );
 }
 
-export default FilterProducts;
+export default ProductsFilterBar;

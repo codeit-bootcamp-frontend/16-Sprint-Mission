@@ -1,5 +1,4 @@
-const BASEURL = 'https://panda-market-api.vercel.app'
-
+const BASEURL = import.meta.env.VITE_API_BASE_URL;
 
 export async function getProducts(queryStrings) {
     const {orderBy, page, pageSize} = queryStrings;
@@ -10,7 +9,6 @@ export async function getProducts(queryStrings) {
         return result;
     }
     catch(err){
-        return err
-    }
-        
+        throw err
+    }    
 }
