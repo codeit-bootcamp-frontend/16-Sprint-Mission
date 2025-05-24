@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import textLogoIcon from "../img/logo_text.jpg";
 import logoIcon from "../img/logo.jpg";
 import userIcon from "../img/user.jpg";
-import "../css/pages/Nav.css";
+import "../css/components/Nav.css";
 
 function getLinkStyle({ isActive }) {
   return {

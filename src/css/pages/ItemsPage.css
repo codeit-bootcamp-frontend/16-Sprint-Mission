@@ -1,0 +1,20 @@
+.items__container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.items__container__title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 16px;
+}
+
+
+.items__container__best__item {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    /* 설정해줄 필요가 있나? */
+}
