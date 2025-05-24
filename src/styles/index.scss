@@ -1,5 +1,6 @@
+//index.scss
 //main.tsx에서 불러옴
-
+@use './reset';
 /* 글로벌 기본 스타일 */
 * {
   box-sizing: border-box;

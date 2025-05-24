@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './styles/index.scss'; //글로벌 스타일
 import App from './App';
 import reportWebVitals from './utils/reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
 
 const container = document.getElementById('root')!;
 if (!container) {
@@ -11,7 +12,9 @@ if (!container) {
 const root = ReactDOM.createRoot(container);
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
 reportWebVitals();

@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Header.module.scss';
 import { NavLink } from 'react-router-dom';
 import { LOGO } from '@/constants/LogoImage';
+import UserProfile from './UserProfile';
 
 //네비게이션 아이템 리스트
 const navItems = [
@@ -13,6 +14,7 @@ export default function Header({ isLoggedin = true }) {
   return (
     <header className={styles['header']}>
       <div className={styles['header__container']}>
+        {/* 로고 이미지 */}
         <NavLink to="/" className={styles['header__logo']}>
           <img
             src={LOGO.small}
@@ -22,6 +24,30 @@ export default function Header({ isLoggedin = true }) {
             className={styles['header__logo-img']}
           />
         </NavLink>
+        {/* 네비게이션 그룹  */}
+        <nav className={styles['header__nav']}>
+          {navItems.map(({ to, label }) => (
+            <NavLink key={to} to={to}>
+              {label}
+            </NavLink>
+          ))}
+        </nav>
+        {/* 로그인 여부에 따라 프로필 컴포넌트| 로그인 & 회원가입  */}
+        <div className={styles['header__user']}>
+          {/*  */}
+          {isLoggedin ? (
+            <UserProfile />
+          ) : (
+            <>
+              <NavLink to="/login" className={styles['header__login']}>
+                로그인
+              </NavLink>
+              <NavLink to="/signup" className={styles['header__signup']}>
+                회원가입
+              </NavLink>
+            </>
+          )}
+        </div>
       </div>
     </header>
   );

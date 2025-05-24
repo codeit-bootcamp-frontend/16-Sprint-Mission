@@ -1,5 +1,6 @@
 import style from './styles/App.module.scss';
 import Router from '@/routes/index';
+import Header from './components/Header/Header';
 
 function App() {
   return (
