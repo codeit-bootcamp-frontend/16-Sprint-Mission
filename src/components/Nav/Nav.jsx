@@ -1,5 +1,6 @@
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 import { NavLink } from "react-router-dom";
-import styles from "./Nav.module.css";
 
 const Nav = () => {
   const activeLinkStyle = ({ isActive }) => {
@@ -7,22 +8,14 @@ const Nav = () => {
   };
 
   return (
-    <ul className={styles.nav}>
+    <ul css={NavStyle}>
       <li>
-        <NavLink
-          to="/board"
-          style={activeLinkStyle}
-          className={styles["nav-link"]}
-        >
+        <NavLink to="/board" style={activeLinkStyle} css={NavLinkStyle}>
           자유게시판
         </NavLink>
       </li>
       <li>
-        <NavLink
-          to="/items"
-          style={activeLinkStyle}
-          className={styles["nav-link"]}
-        >
+        <NavLink to="/items" style={activeLinkStyle} css={NavLinkStyle}>
           중고마켓
         </NavLink>
       </li>
@@ -31,3 +24,19 @@ const Nav = () => {
 };
 
 export default Nav;
+
+const NavStyle = css`
+  display: flex;
+`;
+
+const NavLinkStyle = css`
+  padding: 14px 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gray600);
+
+  @media (min-width: 600px) {
+    padding: 14px 20px;
+    font-size: 18px;
+  }
+`;

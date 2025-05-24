@@ -1,5 +1,6 @@
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 import { useCallback, useEffect } from "react";
-import styles from "./Pagination.module.css";
 import arrowLeft from "../../assets/images/ic_arrow_sm_left.svg";
 import arrowRight from "../../assets/images/ic_arrow_sm_right.svg";
 import usePagination from "../../hooks/usePagination";
@@ -47,10 +48,10 @@ const Pagination = ({
   }, [pageSize, updatePageWithResize]);
 
   return (
-    <div className={styles.pagination}>
+    <div css={PaginationStyle}>
       <button
         onClick={goPrevPages}
-        className={styles["pagination-btn"]}
+        css={PaginationBtnStyle(false)}
         disabled={!hasPrev}
       >
         <img src={arrowLeft} alt="이전 페이지" />
@@ -59,17 +60,14 @@ const Pagination = ({
         <button
           key={page}
           onClick={() => goToPage(page)}
-          className={`
-            ${styles["pagination-btn"]} 
-            ${page === currentPage ? styles.active : ""}
-          `}
+          css={PaginationBtnStyle(page === currentPage)}
         >
           {page}
         </button>
       ))}
       <button
         onClick={goNextPages}
-        className={styles["pagination-btn"]}
+        css={PaginationBtnStyle(false)}
         disabled={!hasNext}
       >
         <img src={arrowRight} alt="다음 페이지" />
@@ -79,3 +77,38 @@ const Pagination = ({
 };
 
 export default Pagination;
+
+const PaginationStyle = css`
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 44px;
+  padding-bottom: 20px;
+`;
+
+const PaginationBtnStyle = (isActive) => css`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: ${isActive
+    ? "1px solid var(--primary-color)"
+    : "1px solid var(--border-color)"};
+  color: ${isActive ? "#fff" : "var(--gray500)"};
+  font-size: 1rem;
+  font-weight: 600;
+  background: ${isActive ? "var(--primary-color)" : "#fff"};
+
+  &:hover {
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  &:disabled {
+    background: var(--gray200);
+    opacity: 0.5;
+    pointer-events: none;
+    border: none;
+  }
+`;

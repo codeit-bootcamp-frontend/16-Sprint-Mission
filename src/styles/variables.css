@@ -51,3 +51,15 @@
   /* dropdown */
   --dropdown-min-width: 48px;
 }
+
+@media (min-width: 768px) {
+  :root {
+    --header-padding-lr: 24px;
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --header-padding-lr: 12.5rem;
+  }
+}
