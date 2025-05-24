@@ -1,5 +1,5 @@
 import styles from "../../styles/ProductsFavorite.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import ProductItem from "./ProductItem";
 import { useResizeRequest } from "../../hooks/useResizeRequest ";
 import FailLoad from "./FailLoad";
@@ -21,8 +21,12 @@ function ProductsFavorite() {
     });
   }, [pageSize]);
 
+  const finalQueryStrings = useMemo(() => {
+    return { ...favoriteQueryStrings, pageSize };
+  }, [favoriteQueryStrings, pageSize]);
+
   //쿼리 변경 시 가져오기
-  const [loadFail, result] = useLoadItems(favoriteQueryStrings);
+  const [loadFail, result] = useLoadItems(finalQueryStrings);
 
   useEffect(() => {
     if (result.list) {

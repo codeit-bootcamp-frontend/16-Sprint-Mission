@@ -5,12 +5,14 @@ export function useLoadItems(queryStrings) {
   const [loadFail, setLoadFail] = useState("");
   const [result, setResult] = useState({});
   useEffect(() => {
+   if(!queryStrings?.pageSize) return
 
     async function loadItemsByQuery() {
       try {
         const result = await getProducts(queryStrings);
         setResult(result);
         setLoadFail("");
+        console.log(result)
       } catch (err) {
         setLoadFail('fail')
       }

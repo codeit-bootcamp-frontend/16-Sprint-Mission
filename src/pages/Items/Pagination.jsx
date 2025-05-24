@@ -9,10 +9,10 @@ function Pagination() {
   const { page, pageSize } = queryStrings;
   const [pageList, setPageList] = useState([1, 2, 3, 4, 5]);
   const maxPageLength = Math.ceil(total / pageSize);
-
-  const getPaginationStart = useCallback((page)=>{
-      return Math.floor((page - 1) / PAGINATION_MAX) * PAGINATION_MAX + 1;
-  },[page])
+  
+  function getPaginationStart(){
+    return Math.floor((page - 1) / PAGINATION_MAX) * PAGINATION_MAX + 1;
+  }
 
   const pageStart = getPaginationStart(page);
 

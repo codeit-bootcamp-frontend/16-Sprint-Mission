@@ -4,7 +4,7 @@ import FilterProducts from "./FilterProducts";
 import Pagination from "./Pagination";
 import FailLoad from "./FailLoad";
 import { useResizeRequest } from "../../hooks/useResizeRequest ";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo } from "react";
 import { ProductAllContext } from "../../context/ProductAllContext";
 import { useLoadItems } from "../../hooks/useLoadItems";
 
@@ -13,13 +13,17 @@ function ProductsAll() {
 
   //innerWidth에 따라 쿼리 변경하기
   const [pageSize] = useResizeRequest("all");
-  
+  console.log(products); //여기서 1개가 담기네
   useEffect(() => {
     setQueryStrings((prev) => ({ ...prev, pageSize }));
   }, [pageSize]);
 
+  const finalQueryStrings = useMemo(() => {
+    return { ...queryStrings, pageSize };
+  }, [queryStrings, pageSize]);
+
   // 쿼리스트링으로 아이템 가져오기 가져다줘
-  const [loadFail, result] = useLoadItems(queryStrings);
+  const [loadFail, result] = useLoadItems(finalQueryStrings);
 
   useEffect(() => {
     if (result.list) {
