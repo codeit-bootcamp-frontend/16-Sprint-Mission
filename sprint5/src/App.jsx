@@ -1,12 +1,18 @@
 import "./App.css";
 import Navi from "./Navi.jsx";
-import Item from "./Item.jsx";
+import ItemCard from "./ItemCard.jsx";
 
 function App() {
   return (
     <>
       <Navi />
-      <Item />
+      <section>
+        <h2>베스트 상품</h2>
+        <ItemCard />
+        <ItemCard />
+        <ItemCard />
+        <ItemCard />
+      </section>
     </>
   );
 }
