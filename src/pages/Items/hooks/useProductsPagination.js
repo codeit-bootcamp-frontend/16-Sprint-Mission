@@ -1,9 +1,24 @@
-import { useEffect, useState } from "react";
+// ✅ useProductsPagination.js
+import { useState, useEffect, useCallback } from "react";
 import { fetchPaginatedProducts } from "../../../api/products";
+import useResponsiveLimit from "./useResponsiveLimit";
+import usePaginationState from "./usePaginationState";
 
-export default function usePaginatedProducts({ page, limit, sort }) {
+export default function useProductsPagination(itemsPerDevice) {
+    
+  const limit = useResponsiveLimit(itemsPerDevice);
+  const [page, changePage] = usePaginationState(limit);
+  const [sort, setSort] = useState("latest");
   const [products, setProducts] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
+
+  const handleSortChange = useCallback(
+    (newSort) => {
+      setSort(newSort);
+      changePage(1);
+    },
+    [changePage]
+  );
 
   useEffect(() => {
     const load = async () => {
@@ -23,5 +38,12 @@ export default function usePaginatedProducts({ page, limit, sort }) {
     if (page && limit) load();
   }, [page, limit, sort]);
 
-  return { products, totalPages };
+  return {
+    products,
+    totalPages,
+    page,
+    changePage,
+    sort,
+    handleSortChange,
+  };
 }
