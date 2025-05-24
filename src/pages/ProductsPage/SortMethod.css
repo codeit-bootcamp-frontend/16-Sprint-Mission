@@ -1,0 +1,19 @@
+.toggleList {
+  width: 130px;
+  top: 110%;
+  right: 0;
+  position: absolute;
+  background-color: var(--white);
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.toggleItem {
+  display: flex;
+  justify-content: center;
+  padding: 12px;
+  font-size: var(--text-base);
+  color: var(--dark-800);
+  cursor: pointer;
+  border-bottom: 1px solid #e5e7eb;
+}

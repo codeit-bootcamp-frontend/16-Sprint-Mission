@@ -1,3 +1,173 @@
-.productsWrapper {
+.itemCard {
+  display: flex;
+  flex-direction: column;
+  color: var(--dark-800);
+  cursor: pointer;
+  gap: 10px;
+}
+
+.itemImage {
   width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: 16px;
+}
+
+.itemDescription {
+  display: flex;
+  flex-direction: column;
+  color: var(--dark-800);
+  gap: 6px;
+}
+
+.itemTitle {
+  font-size: var(--text-sm);
+}
+.itemPrice {
+  font-size: var(--text-base);
+}
+
+.favoriteHeart {
+  color: var(--gray);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+}
+
+.bestItemContainer {
+  display: flex;
+  flex-direction: column;
+  padding-top: 17px;
+  padding-bottom: 24px;
+  gap: 16px;
+}
+
+.bestItemSection {
+  color: #fcfcfc;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 32px 8px;
+}
+
+.allItemHeaderWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.registerButton {
+  background-color: var(--primary-color);
+  font-size: var(--text-base);
+  color: #f3f4f6;
+  padding: 12px 32px;
+  gap: 10px;
+  border-radius: 8px;
+  border: none;
+}
+
+.searchBarContainer {
+  width: 288px;
+  display: flex;
+  align-items: center;
+  background-color: #f3f4f6;
+  padding: 9px 20px 9px 16px;
+  border-radius: 12px;
+  gap: 10px;
+}
+
+.searchInput {
+  width: 174px;
+  background-color: inherit;
+  border: none;
+  line-height: 26px;
+}
+
+.searchInput::placeholder {
+  color: #9ca3af;
+  font-size: 16px;
+}
+
+.searchInput:focus {
+  outline: none;
+}
+
+.sortButtonContainer {
+  position: relative;
+}
+
+.sortIconButton {
+  background-color: var(--white);
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 9px;
+  gap: 10px;
+  align-items: center;
+}
+.sortTextButton {
+  display: none;
+}
+
+.allItemSection {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.pageNavigationBar {
+  padding: 40px 0;
+}
+
+@media (min-width: 768px) {
+  .bestItemSection {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .allItemSection {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .allItemTitle {
+    order: 1;
+    margin-right: auto;
+  }
+  .searchBarContainer {
+    order: 2;
+  }
+  .registerButton {
+    order: 3;
+  }
+  .sortButtonContainer {
+    order: 4;
+  }
+
+  .sortIconButton {
+    display: none;
+  }
+
+  .sortTextButton {
+    width: 130px;
+    height: 42px;
+    display: inline-block;
+    background-color: var(--white);
+    font-size: var(--text-base);
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 12px 20px;
+    gap: 10px;
+    align-items: center;
+  }
+}
+
+@media (min-width: 1280px) {
+  .bestItemSection {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .allItemSection {
+    grid-template-columns: repeat(5, 1fr);
+  }
 }

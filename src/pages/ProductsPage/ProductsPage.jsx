@@ -4,10 +4,13 @@ import AllItemsSection from "./AllItemsSection";
 
 function ProductPage() {
   return (
-    <div className="productsWrapper">
-      <BestItemsSection />
-      <AllItemsSection />
-    </div>
+    <>
+      <div className="productsWrapper">
+        <BestItemsSection />
+        <AllItemsSection />
+      </div>
+      <footer></footer>
+    </>
   );
 }
 
