@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getProducts } from "../../api";
 import Item from "./Item";
 import SortMethod from "./SortMethod";
@@ -64,9 +65,9 @@ function AllItemsSection() {
     <div>
       <div className="allItemHeaderWrapper">
         <h1 className="allItemTitle">전체 상품</h1>
-        <button className="registerButton" type="submit">
+        <Link to="/additem" className="registerButton">
           상품 등록하기
-        </button>
+        </Link>
 
         <div className="searchBarContainer">
           <img src={searchicon} alt="검색버튼"></img>
