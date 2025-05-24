@@ -13,7 +13,7 @@ function ProductsAll() {
 
   //innerWidth에 따라 쿼리 변경하기
   const [pageSize] = useResizeRequest("all");
-  console.log(products); //여기서 1개가 담기네
+
   useEffect(() => {
     setQueryStrings((prev) => ({ ...prev, pageSize }));
   }, [pageSize]);

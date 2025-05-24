@@ -28,7 +28,6 @@ export function useResizeRequest(type) {
     useEffect(() => {
         const newPageSize = reRequestByInnerWidth(type, innerWidth)
         setPageSize(newPageSize)
-        // console.log(newPageSize)//이상 무
     }, [innerWidth]);
 
     return [pageSize]

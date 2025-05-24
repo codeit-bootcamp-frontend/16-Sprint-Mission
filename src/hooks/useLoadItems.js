@@ -12,7 +12,6 @@ export function useLoadItems(queryStrings) {
         const result = await getProducts(queryStrings);
         setResult(result);
         setLoadFail("");
-        console.log(result)
       } catch (err) {
         setLoadFail('fail')
       }

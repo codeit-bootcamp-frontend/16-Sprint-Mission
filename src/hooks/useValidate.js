@@ -53,6 +53,5 @@ export function useValidate() {
     setIsValidNow(validResult);
   }
 
-
   return { err, errMsg, isValidate, isValidNow, value, setValue };
 }
