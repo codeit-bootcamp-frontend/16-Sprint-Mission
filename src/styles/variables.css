@@ -140,6 +140,28 @@
   --spacing-xl: 32px;
   --spacing-2xl: 40px;
 
+  /* ===================== */
+  /*        z-index        */
+  /* ===================== */ 
+  /* Base layers */
+  --z-base: 0;
+  --z-above-base: 1;
+  
+  /* UI Components */
+  --z-dropdown: 1000;
+  --z-modal: 2000;
+  --z-toast: 3000;
+  --z-tooltip: 4000;
+  
+  /* Fixed elements */
+  --z-header: 100;
+  --z-footer: 100;
+  --z-sidebar: 200;
+  
+  /* Overlay elements */
+  --z-overlay: 1500;
+  --z-overlay-above: 2500;
+
   /* ======================= */
   /* (반응형) 모바일 환경 변수 설정 */
   /* ======================= */
