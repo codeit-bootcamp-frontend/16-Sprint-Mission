@@ -40,6 +40,7 @@
 - `UserProfile`은 Props로 유저 정보를 가져와야함
 - Context로 전역적으로 앱에서 로그인 여부와 유저 정보를 가져오는게 나은 방식인듯 함
 - AuthProvider에서 user와 isLoggedIn으로 상태를 중복적으로 관리하므로 최적화가 필요함
+- AuthProvider는 인증 상태만 관리하고, useAuth를 통해 비즈니스 로직을 분리하는게 좋아보임
 
 ### todo
 
