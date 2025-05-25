@@ -55,7 +55,7 @@ const LoginPage = () => {
 
   const handleClickSubmit = (e) => {
     e.preventDefault();
-    nav("/login");
+    nav("/");
   };
 
   return (
