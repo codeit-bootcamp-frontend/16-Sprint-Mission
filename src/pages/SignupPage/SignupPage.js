@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
 import getLogo from "../../utils/getLogo";
-import pwHide from "../../assets/images/icons/ic_pw_hide.svg";
 import AuthSns from "../../components/AuthSns/AuthSns";
 import AuthGuide from "../../components/AuthGuide/AuthGuide";
 import styles from "./SignupPage.module.scss";
@@ -14,6 +13,7 @@ import {
   checkValidPasswordConfirm,
   getAuthValidClassName,
 } from "../../utils/authUtils";
+import usePasswordToggle from "../../hooks/usePasswordToggle";
 
 const INIT_VALUE = {
   nickname: "",
@@ -44,6 +44,8 @@ const SignupPage = () => {
   const nav = useNavigate();
   const [userValues, setUserValues] = useState(INIT_VALUE);
   const [valueValids, setValueValids] = useState(INIT_VALID);
+  const pwToggle = usePasswordToggle();
+  const pwConfirmToggle = usePasswordToggle();
   const isAllValid = useAllValid(valueValids);
 
   // 비밀번호 확인 필드 함수 재정의
@@ -168,7 +170,7 @@ const SignupPage = () => {
             </label>
             <div className="auth-form__input-box auth-form__input-box--pw">
               <input
-                type="password"
+                type={pwToggle.toggle ? "text" : "password"}
                 name="password"
                 id="password"
                 placeholder="비밀번호를 입력해주세요."
@@ -180,10 +182,11 @@ const SignupPage = () => {
                 type="button"
                 className="auth-form__toggle-btn"
                 aria-label="비밀번호 표시"
-                aria-pressed="false"
+                aria-pressed={pwToggle.toggle}
+                onClick={pwToggle.handleClickToggle}
               >
                 <img
-                  src={pwHide}
+                  src={pwToggle.toggleImg}
                   width="24"
                   height="24"
                   alt="비밀번호 보기 아이콘"
@@ -201,7 +204,7 @@ const SignupPage = () => {
             </label>
             <div className="auth-form__input-box auth-form__input-box--pw">
               <input
-                type="password"
+                type={pwConfirmToggle.toggle ? "text" : "password"}
                 name="passwordConfirm"
                 id="passwordConfirm"
                 placeholder="비밀번호를 다시 한 번 입력해주세요"
@@ -215,10 +218,11 @@ const SignupPage = () => {
                 type="button"
                 className="auth-form__toggle-btn"
                 aria-label="비밀번호 표시"
-                aria-pressed="false"
+                aria-pressed={pwConfirmToggle.toggle}
+                onClick={pwConfirmToggle.handleClickToggle}
               >
                 <img
-                  src={pwHide}
+                  src={pwConfirmToggle.toggleImg}
                   width="24"
                   height="24"
                   alt="비밀번호 보기 아이콘"
