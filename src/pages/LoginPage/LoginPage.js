@@ -6,57 +6,50 @@ import AuthSns from "../../components/AuthSns/AuthSns";
 import AuthGuide from "../../components/AuthGuide/AuthGuide";
 import styles from "./LoginPage.module.scss";
 import "../../styles/auth.scss";
+import {
+  checkValidEmail,
+  checkValidPassword,
+  getAuthValidClassName,
+} from "../../utils/authUtils";
+import useAllValid from "../../hooks/useAllValid";
 
-const EMPTY_MSG = {
-  email: "이메일을 입력해주세요.",
-  nickname: "닉네임을 입력해주세요.",
-  password: "비밀번호를 입력해주세요.",
-  passwordConfirm: "비밀번호를 입력해주세요.",
+const INIT_VALUE = { email: "", password: "" };
+const INIT_VALID = {
+  email: {
+    isValid: null,
+    msg: "",
+  },
+  password: {
+    isValid: null,
+    msg: "",
+  },
 };
 
 const VALIDATOR = {
-  nickname: {
-    isValid: function (value) {
-      return !!value.length;
-    },
-    failedMsg: null,
-  },
-  email: {
-    isValid: function (value) {
-      const PATTERN =
-        /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
-      return PATTERN.test(value);
-    },
-    failedMsg: "잘못된 이메일 형식입니다.",
-  },
-  password: {
-    isValid: function (value) {
-      const PATTERN = /^[0-9a-zA-Z]{8}/;
-      return PATTERN.test(value);
-    },
-    failedMsg: "비밀번호를 8자 이상 입력해주세요.",
-  },
-  passwordConfirm: {
-    isValid: function (value) {
-      const password = document.querySelector("#password");
-      return password.value === value;
-    },
-    failedMsg: "비밀번호가 일치하지 않습니다.",
-  },
+  email: checkValidEmail,
+  password: checkValidPassword,
 };
 
 const LoginPage = () => {
-  const [userInfo, setUserInfo] = useState({ email: "", password: "" });
-  const handleChangeUserInfo = (e) =>
-    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+  const [userValues, setUserValues] = useState(INIT_VALUE);
+  const [valueValids, setValueValids] = useState(INIT_VALID);
+  const isAllValid = useAllValid(valueValids);
 
-  // 1. focusout 이벤트
-  //    - 아이디에 값이 비었는지 검증
-  //    - 패스워드에 값이 비었는지 검증
-  //    - 아이디값이 올바른지 검증
-  //    - 패스워드가 8자 이상인지 검증
-  //  - input에 빈값이 있는지 유효성 검사를 전부 통과했는지 확인 후 submit 버튼 활성화
-  // 3. submit 완료시
+  const handleChangeUserValues = (e) => {
+    setUserValues({ ...userValues, [e.target.name]: e.target.value });
+  };
+
+  const handleFocusOut = (e) => {
+    const { name, value } = e.target;
+
+    // 검증할 요소인지 확인
+    if (!VALIDATOR[name]) return;
+
+    setValueValids({
+      ...valueValids,
+      [name]: VALIDATOR[name](value),
+    });
+  };
 
   return (
     <div id="wrap" className={styles.loginPage}>
@@ -71,7 +64,7 @@ const LoginPage = () => {
             />
           </Link>
         </h1>
-        <form className="auth-form">
+        <form className="auth-form" onBlur={handleFocusOut}>
           {/* 이메일 */}
           <div className="auth-form__item">
             <label htmlFor="email" className="auth-form__label">
@@ -84,11 +77,14 @@ const LoginPage = () => {
                 id="email"
                 autoComplete="email"
                 placeholder="이메일을 입력해주세요."
-                value={userInfo.email}
-                onChange={handleChangeUserInfo}
+                className={getAuthValidClassName(valueValids.email.isValid)}
+                value={userValues.email}
+                onChange={handleChangeUserValues}
               />
             </div>
-            {/* <p className="auth-form__error-msg">잘못된 이메일입니다.</p> */}
+            {!valueValids.email.isValid && (
+              <p className="auth-form__error-msg">{valueValids.email.msg}</p>
+            )}
           </div>
           {/* 비밀번호 */}
           <div className="auth-form__item">
@@ -101,8 +97,9 @@ const LoginPage = () => {
                 name="password"
                 id="password"
                 placeholder="비밀번호를 입력해주세요."
-                value={userInfo.password}
-                onChange={handleChangeUserInfo}
+                className={getAuthValidClassName(valueValids.password.isValid)}
+                value={userValues.password}
+                onChange={handleChangeUserValues}
               />
               <button
                 type="button"
@@ -118,8 +115,14 @@ const LoginPage = () => {
                 />
               </button>
             </div>
+            {!valueValids.password.isValid && (
+              <p className="auth-form__error-msg">{valueValids.password.msg}</p>
+            )}
           </div>
-          <button disabled className="btn lg auth-form__submit-btn">
+          <button
+            disabled={!isAllValid}
+            className="btn lg auth-form__submit-btn"
+          >
             로그인
           </button>
         </form>
