@@ -23,7 +23,7 @@ function Header() {
               <img src={logoImg} alt="판다마켓로고" />
             </picture>
           </Link>
-          {isLogined ? <Navigations /> : null}
+          {isLogined && <Navigations />}
           <HeaderAuth isLogined={isLogined} />
         </nav>
       </header>
