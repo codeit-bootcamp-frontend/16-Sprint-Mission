@@ -1,5 +1,11 @@
+import styles from "./ItemsPage.module.scss";
+
 const ItemsPage = () => {
-  return <div>아이템 페이지</div>;
+  return (
+    <div id="container" className={styles.itemsPage}>
+      <div className={styles.itemsPage__inner}>dsfds</div>
+    </div>
+  );
 };
 
 export default ItemsPage;
