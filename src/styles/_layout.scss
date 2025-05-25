@@ -1,4 +1,5 @@
 @use "variables" as var;
+@use "mixin" as mixin;
 
 @mixin layoutInner {
   max-width: 1120px;
@@ -22,6 +23,7 @@
   justify-content: center;
   height: 70px;
   padding: 0 200px;
+  border-bottom: 1px solid #dfdfdf;
   background-color: var.$white;
   z-index: 100;
   flex: 0 0 auto;
@@ -29,41 +31,73 @@
   .inner {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     @include layoutInner;
+  }
+
+  @include mixin.tablet {
+    padding: 0 24px;
+  }
+
+  @include mixin.mobile {
+    padding: 0 16px;
   }
 
   .header {
     &__logo {
       a {
         display: block;
+
+        @include mixin.mobile {
+          width: 81px;
+        }
+      }
+    }
+
+    &__gnb {
+      margin: 0 32px;
+
+      @include mixin.tablet {
+        margin: 0 20px;
+      }
+
+      @include mixin.mobile {
+        margin: 0 8px;
+      }
+
+      ul {
+        display: flex;
+        align-items: center;
+
+        @include mixin.mobile {
+          gap: 8px;
+        }
+
+        li {
+          a {
+            display: block;
+            padding: 20px 15px;
+            font-size: 18px;
+            font-weight: 700;
+            color: var.$gray600;
+
+            &.active {
+              color: var.$primary-color;
+            }
+
+            @include mixin.mobile {
+              padding: 20px 0;
+            }
+          }
+        }
       }
     }
 
     &__login-link {
+      margin-left: auto;
       width: 128px;
     }
   }
-
-  // tablet
-  @media (max-width: var.$tablet-size) {
-    padding: 0 24px;
-  }
-
-  // mobile
-  @media (max-width: var.$mobile-size) {
-    padding: 0 16px;
-
-    .header {
-      &__logo {
-        a {
-          width: 103px;
-        }
-      }
-    }
-  }
 }
-
 // container
 #container {
   flex: 1;
@@ -76,16 +110,30 @@
   background-color: var.$footer-bg;
   flex: 0 0 auto;
 
+  @include mixin.mobile {
+    padding: 32px 32px 30px;
+  }
+
   .inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
     @include layoutInner;
+
+    @include mixin.mobile {
+      flex-wrap: wrap;
+      gap: 60px 36px;
+    }
   }
 
   .footer {
     &__copy {
       color: #9ca3af;
+
+      @include mixin.mobile {
+        width: 100%;
+        order: 3;
+      }
     }
 
     &__menu-list {
@@ -106,22 +154,6 @@
 
       a {
         display: block;
-      }
-    }
-  }
-
-  @media (max-width: var.$mobile-size) {
-    padding: 32px 32px 30px;
-
-    .inner {
-      flex-wrap: wrap;
-      gap: 60px 36px;
-    }
-
-    .footer {
-      &__copy {
-        width: 100%;
-        order: 3;
       }
     }
   }

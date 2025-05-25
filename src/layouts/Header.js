@@ -10,13 +10,23 @@ const Header = () => {
             <img
               width="153"
               height="51"
-              srcSet={`${getLogo("sx")} 103w, ${getLogo("md")} 153w`}
-              sizes="(max-width: 767px) 103px, 153px"
+              srcSet={`${getLogo("sx")} 81w, ${getLogo("md")} 153w`}
+              sizes="(max-width: 767px) 81px, 153px"
               src={getLogo("md")}
               alt="판다마켓 로고 이미지"
             />
           </Link>
         </h1>
+        <nav className="header__gnb">
+          <ul>
+            <li>
+              <Link to="">자유게시판</Link>
+            </li>
+            <li>
+              <Link to="/items">중고마켓</Link>
+            </li>
+          </ul>
+        </nav>
         <Link
           to="/login"
           aria-label="로그인 페이지로 이동"
