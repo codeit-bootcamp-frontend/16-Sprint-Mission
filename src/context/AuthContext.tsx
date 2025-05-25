@@ -5,8 +5,8 @@ import React, { createContext, useContext, useState } from 'react';
 //유저 정보 인터페이스 정의
 export interface User {
   id: string;
-  nickname: string;
-  avatarUrl: string;
+  userName: string;
+  userAvatar: string;
 }
 // AuthContextType 인터페이스 정의
 interface AuthContextType {
@@ -14,7 +14,7 @@ interface AuthContextType {
   setUser: (user: User | null) => void;
 }
 // AuthContext 생성
-const AuthContext = createContext<AuthContextType | null>(null);
+export const AuthContext = createContext<AuthContextType | null>(null);
 
 // AuthProvider 컴포넌트 정의
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {

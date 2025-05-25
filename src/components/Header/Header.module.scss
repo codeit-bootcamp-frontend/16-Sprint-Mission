@@ -13,18 +13,28 @@
 
   &__container {
     max-width: var(--container-max-width);
+    height: 100%;
     margin: 0 auto;
-    padding: var(--spacing-xs) var(--spacing-md);
+    padding: 9px var(--spacing-xs);
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     @include tablet {
-      padding: var(--spacing-xs) var(--spacing-lg);
+      padding: 9px var(--spacing-md);
     }
 
     @include laptop {
-      padding: var(--spacing-xs) var(--spacing-xl);
+      padding: 9px var(--container-padding);
+    }
+  }
+  &__leftwrap {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+
+    @include tablet {
+      gap: var(--spacing-lg);
     }
   }
 
@@ -35,32 +45,37 @@
     img {
       display: block;
       height: 2.5rem;
-      @include tablet {
-        height: 2rem;
-      }
-      @include mobile {
-        height: 1.5rem;
-      }
     }
   }
 
   /* 2. Navigation */
   &__nav {
     display: flex;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-sm);
+    font-size: var(--font-content-sm);
+    font-weight: bold;
+
+    @include tablet {
+      gap: var(--spacing-md);
+    }
+    @include laptop {
+      gap: var(--spacing-lg);
+    }
   }
-  &__nav_item {
+
+  &__nav-item {
     font-size: var(--font-content-sm);
     color: var(--color-neutral-700);
     text-decoration: none;
-    transition: color 0.2s;
+    transition:
+      color 0.2s,
+      font-size 0.2s;
 
-    &:hover {
+    &:hover,
+    &:active {
       color: var(--color-primary-100);
+      transform: scale(1.05);
     }
-  }
-  &__nav_item_active {
-    color: var(--color-primary-100);
   }
 
   /* 3. Login Icon */

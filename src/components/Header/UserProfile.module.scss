@@ -1,0 +1,17 @@
+//src/modules/Header/UserProfile.module.scss
+
+user-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background-color: var(--color-background);
+  border-radius: 0.25rem;
+
+  &__avatar {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+}

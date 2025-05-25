@@ -3,7 +3,7 @@ import logoSm from '@/assets/logo/logo_sm.png';
 //import logoLg from '@/assets/logo/logo_lg.png';
 
 export const LOGO = {
-  typography: logoTypo,
+  typo: logoTypo,
   // <img> 기본 src
   small: logoSm,
   // srcset 문자열

@@ -1,6 +1,9 @@
+@use 'variables' as *;
 //믹스인 정의
+
+/// 모바일 이하일 때
 @mixin mobile {
-  @media (max-width: var(--mobile-max-width)) {
+  @media (min-width: $mobile-min-width) {
     @content;
   }
 }
@@ -8,7 +11,7 @@
 /// tablet 이하일 때
 
 @mixin tablet {
-  @media (max-width: var(--tablet-max-width)) {
+  @media (min-width: $tablet-min-width) {
     @content;
   }
 }
@@ -16,7 +19,7 @@
 /// laptop 이하일 때
 
 @mixin laptop {
-  @media (max-width: var(--desktop-max-width)) {
+  @media (min-width: $desktop-min-width) {
     @content;
   }
 }

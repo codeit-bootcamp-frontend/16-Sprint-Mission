@@ -53,3 +53,8 @@
   /* Border-radious */
   --radius-button: 40px;
 }
+
+/* 미디어 쿼리 : scss */
+$mobile-min-width: 767px;
+$tablet-min-width: 1199px;
+$desktop-min-width: 1920px;
