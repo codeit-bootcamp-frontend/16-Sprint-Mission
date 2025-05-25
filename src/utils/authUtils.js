@@ -39,7 +39,7 @@ export function checkValidPassword(value) {
   return { isValid: true, msg: "" };
 }
 
-// 비밀번호 확인인
+// 비밀번호 확인 검사
 export function checkValidPasswordConfirm(value, password) {
   // 빈값 확인
   if (!value.trim().length)

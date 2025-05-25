@@ -1,11 +1,7 @@
-import { Link, useNavigate } from "react-router-dom";
-import getLogo from "../../utils/getLogo";
-import AuthSns from "../../components/AuthSns/AuthSns";
-import AuthGuide from "../../components/AuthGuide/AuthGuide";
-import styles from "./SignupPage.module.scss";
-import "../../styles/auth.scss";
 import { useCallback, useMemo, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import useAllValid from "../../hooks/useAllValid";
+import usePasswordToggle from "../../hooks/usePasswordToggle";
 import {
   checkValidEmail,
   checkValidNickname,
@@ -13,7 +9,11 @@ import {
   checkValidPasswordConfirm,
   getAuthValidClassName,
 } from "../../utils/authUtils";
-import usePasswordToggle from "../../hooks/usePasswordToggle";
+import getLogo from "../../utils/getLogo";
+import AuthSns from "../../components/AuthSns/AuthSns";
+import AuthGuide from "../../components/AuthGuide/AuthGuide";
+import "../../styles/auth.scss";
+import styles from "./SignupPage.module.scss";
 
 const INIT_VALUE = {
   nickname: "",
