@@ -1,8 +1,8 @@
 import style from "./ProductSection.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import SortSelect from "../SortSelect/SortSelect";
-import ProductCard from "../ProductCard/ProductCard";
+import SortSelect from "../sort-select/SortSelect";
+import ProductCard from "../product-card/ProductCard";
 import { useNavigate } from "react-router-dom";
 
 function ProductSection({
