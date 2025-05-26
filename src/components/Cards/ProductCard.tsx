@@ -24,7 +24,7 @@ function ProductCard({ product }: { product: Product }) {
       <div className={style['product-card__info']}>
         <h3 className={style['product-card__name']}>{name}</h3>
         <p className={style['product-card__price']}>
-          ₩{price.toLocaleString()}
+          {price.toLocaleString()}원
         </p>
 
         <div className={style['product-card__like']}>

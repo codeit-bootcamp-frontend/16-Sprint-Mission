@@ -4,7 +4,7 @@ function AllProducts() {
   return (
     <div className={style['all-products']}>
       <div className={style['all-products__header']}>
-        <h2>전체 상품</h2>
+        <h2 className={style['all-products__title']}>전체 상품</h2>
         <div className={style['all-products-filter-container']}>
           {/* 검색창 및 필터 */}
         </div>
