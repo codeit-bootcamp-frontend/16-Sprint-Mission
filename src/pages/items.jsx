@@ -68,10 +68,6 @@ function Items() {
     });
   }, [])
 
-  useEffect(() => {
-    console.log(currentPage);
-  }, [currentPage])
-
   return (
     <>
       <header className='header'>
