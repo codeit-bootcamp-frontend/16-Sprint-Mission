@@ -35,13 +35,7 @@
   font-size: 20px;
   font-weight: 700;
   color: #111827;
-  margin-right: 80px;
-}
-
-@media screen and (min-width: 1200px) {
-  .items__container__title {
-    margin-right: 514px;
-  }
+  flex-grow: 1;
 }
 
 .items__container__register {
@@ -197,6 +191,7 @@
 @media screen and (min-width: 744px) {
   .items__container__dropdown__button {
     width: 130px;
+    justify-content: space-between;
   }
 }
 
