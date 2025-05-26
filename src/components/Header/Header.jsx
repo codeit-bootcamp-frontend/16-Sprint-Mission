@@ -7,7 +7,7 @@ import Navigations from "./Navigations";
 import HeaderAuth from "./HeaderAuth";
 
 function Header() {
-  const [isLogined, setIsLogined] = useState(sessionStorage.getItem("logined"));
+  const [isLoggedIn, setIsLoggedIn] = useState(sessionStorage.getItem("loggedIn"));
 
   return (
     <>
@@ -23,8 +23,8 @@ function Header() {
               <img src={logoImg} alt="판다마켓로고" />
             </picture>
           </Link>
-          {isLogined && <Navigations />}
-          <HeaderAuth isLogined={isLogined} />
+          {isLoggedIn && <Navigations />}
+          <HeaderAuth isLoggedIn={isLoggedIn} />
         </nav>
       </header>
       <Outlet />

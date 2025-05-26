@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import logo from "@assets/images/logo-title.png";
-import FormInput from "./FormInput";
-import { useValidate } from "@hooks/useValidate";
+import MemoizedFormInput from "./FormInput";
+import { useValidate, checkAllValid } from "@hooks/useValidate";
 import styles from "@styles/SignUp.module.css";
 import { useState, useEffect } from "react";
 import SocialLogin from "@components/SocialLogin";
@@ -10,33 +10,33 @@ function SignUp() {
   const [passwordToggle, setPasswordToggle] = useState(false);
   const [passwordCheckToggle, setPasswordCheckToggle] = useState(false);
   const toLoginNavigate = useNavigate();
-  const emailInput = useValidate();
-  const nameInput = useValidate();
-  const passwordInput = useValidate();
-  const passwordCheckInput = useValidate();
-
-  const isAllValid =
-    emailInput.isValidNow &&
-    passwordInput.isValidNow &&
-    nameInput.isValidNow &&
-    passwordCheckInput.isValidNow;
+  const [getFieldState, validate] = useValidate();
+  const emailValidationState = getFieldState("user-email");
+  const nameValidationState = getFieldState("user-name");
+  const passwordValidationState = getFieldState("user-password");
+  const passwordChekcValidationState = getFieldState("user-password-check");
+  const isAllValid = checkAllValid(
+    emailValidationState,
+    nameValidationState,
+    passwordValidationState,
+    passwordChekcValidationState
+  );
 
   //비밀번호 값 변경 시 비밀번호 확인도 유효성 검사 다시
-  const pwValue = passwordInput.value;
+  const pwValue = passwordValidationState.value;
   useEffect(() => {
-    if (passwordCheckInput.value === "") return;
-    passwordCheckInput.isValidate("user-password-check", passwordInput.value);
-  }, [pwValue]);
+    if (passwordChekcValidationState.value === "") return;
+    validate("user-password-check", passwordChekcValidationState.value);
+  }, [passwordValidationState.value]);
 
   // 제출 버튼 클릭 시 검사 한번씩 다 해
   function handleSubmit(e) {
-    emailInput.isValidate("user-email");
-    nameInput.isValidate("user-name");
-    passwordInput.isValidate("user-password");
-    passwordCheckInput.isValidate("user-password-check", passwordInput.value);
+    validate("user-email", emailValidationState.value);
+    validate("user-name", nameValidationState.value);
+    validate("user-password", passwordValidationState.value);
+    validate("user-password-check", passwordChekcValidationState.value);
 
     if (isAllValid) {
-      sessionStorage.setItem("isLogined", "true");
       toLoginNavigate("/login");
     } else {
       e.preventDefault();
@@ -62,16 +62,18 @@ function SignUp() {
         <form onSubmit={handleSubmit} className={styles[`sign-up__form`]}>
           <fieldset>
             <label htmlFor="user-email">이메일</label>
-            <FormInput
-              {...emailInput}
+            <MemoizedFormInput
+              validate={validate}
+              {...emailValidationState}
               type="text"
               id="user-email"
               name="user-email"
               placeholder="이메일을 입력해주세요"
             />
             <label htmlFor="user-name">닉네임</label>
-            <FormInput
-              {...nameInput}
+            <MemoizedFormInput
+              validate={validate}
+              {...nameValidationState}
               id="user-name"
               type="text"
               name="user-name"
@@ -79,8 +81,9 @@ function SignUp() {
             />
             <div className={styles[`container__position-relative`]}>
               <label htmlFor="user-password">비밀번호</label>
-              <FormInput
-                {...passwordInput}
+              <MemoizedFormInput
+                validate={validate}
+                {...passwordValidationState}
                 id="user-password"
                 type={passwordToggle ? "text" : "password"}
                 name="user-password"
@@ -100,9 +103,10 @@ function SignUp() {
             </div>
             <div className={styles[`container__position-relative`]}>
               <label htmlFor="user-password">비밀번호 확인</label>
-              <FormInput
-                {...passwordCheckInput}
-                passwordInputValue={passwordInput.value}
+              <MemoizedFormInput
+                validate={validate}
+                {...passwordChekcValidationState}
+                passwordInputValue={pwValue}
                 id="user-password-check"
                 type={passwordCheckToggle ? "text" : "password"}
                 name="user-password-check"

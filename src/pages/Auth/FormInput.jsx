@@ -1,21 +1,23 @@
 import styles from "@styles/ErrMsg.module.css";
+import React from "react";
 
 function FormInput(props) {
-  const { placeholder, name, type, id , err, errMsg, isValidate, value, setValue, passwordInputValue=null } = props;
+  const { placeholder, name, type, id, error, errorMessage, validate, value } =
+    props;
 
-  function handleChange(e){
-    setValue(e.target.value)
+  function handleChange(e) {
+    validate(name, e.target.value);
   }
 
- function handleBlur(){
-  isValidate(name, passwordInputValue)
- }
+  function handleBlur(e) {
+    validate(name, e.target.value);
+  }
 
   return (
     <>
       <input
         value={value}
-        className={err ? styles["error-line"] : ""}
+        className={error ? styles["error-line"] : ""}
         onChange={handleChange}
         onBlur={handleBlur}
         type={type}
@@ -23,10 +25,11 @@ function FormInput(props) {
         name={name}
         placeholder={placeholder}
       />
-      <div className={styles[`error-message`]}>{errMsg}</div>
+      <div className={styles[`error-message`]}>{errorMessage}</div>
     </>
   );
 }
 
-export default FormInput;
+const MemoizedFormInput = React.memo(FormInput);
 
+export default MemoizedFormInput;

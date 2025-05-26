@@ -1,25 +1,29 @@
 import styles from "@styles/Login.module.css";
 import logo from "@assets/images/logo-title.png";
-import FormInput from "./FormInput";
+import MemoizedFormInput from "./FormInput";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useValidate } from "@hooks/useValidate";
+import { useValidate, checkAllValid } from "@hooks/useValidate";
 import SocialLogin from "@components/SocialLogin";
 
 function Login() {
   const [passwordToggle, setPasswordToggle] = useState(false);
   const toItemsNavigation = useNavigate();
-  const emailInput = useValidate();
-  const passwordInput = useValidate();
+  const [getFieldState, validate] = useValidate();
+  const emailValidationState = getFieldState("user-email"); //email관련 값만 받아오기 생성x조회o
+  const passwordValidationState = getFieldState("user-password");
 
-  const isAllValid = emailInput.isValidNow && passwordInput.isValidNow;
+  const isAllValid = checkAllValid(
+    emailValidationState,
+    passwordValidationState
+  );
 
   function handleSubmit(e) {
-    emailInput.isValidate("user-email");
-    passwordInput.isValidate("user-password");
+    validate("user-email", emailValidationState.value);
+    validate("user-password", passwordValidationState.value);
 
     if (isAllValid) {
-      sessionStorage.setItem("logined", emailInput.value);
+      sessionStorage.setItem("loggedIn", emailValidationState.value);
       toItemsNavigation("/items");
     } else {
       e.preventDefault();
@@ -42,22 +46,24 @@ function Login() {
         <form onSubmit={handleSubmit} className={styles.login__form}>
           <fieldset>
             <label htmlFor="user-email">이메일</label>
-            <FormInput
-              {...emailInput}
+            <MemoizedFormInput
+              validate={validate}
+              {...emailValidationState}
               type="text"
               id="user-email"
               name="user-email"
               placeholder="이메일을 입력해주세요"
-            ></FormInput>
+            />
             <div className={styles[`container__position-relative`]}>
               <label htmlFor="user-password">비밀번호</label>
-              <FormInput
-                {...passwordInput}
+              <MemoizedFormInput
+                validate={validate}
+                {...passwordValidationState}
                 id="user-password"
                 type={passwordToggle ? "text" : "password"}
                 name="user-password"
                 placeholder="비밀번호를 입력해주세요"
-              ></FormInput>
+              />
               <input
                 className={styles[`toggle-visibility-pw`]}
                 id="toggle-visibility-pw"
