@@ -1,0 +1,43 @@
+.pagination__container {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 40px;
+}
+
+.pagination__button {
+  width: 40px;
+  height: 40px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #6b7280;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.pagination__button[aria-current="page"] {
+  background-color: #2f80ed;
+  color: #f9fafb;
+}
+
+.items__container__pagination__button {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #e5e7eb;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #6b7280;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #ffffff;
+  /* 활성화된 경우
+    color: #F9FAFB;
+    background-color: #2F80ED;
+  */
+}

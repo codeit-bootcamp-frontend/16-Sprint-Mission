@@ -1,0 +1,22 @@
+.search__input__container {
+  position: relative;
+}
+
+.search__input {
+  height: 42px;
+  width: 288px;
+  padding: 16px 16px 16px 44px;
+}
+
+@media screen and (min-width: 744px) {
+  .search__input {
+    width: 242px;
+  }
+}
+
+.search__icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 16px;
+}

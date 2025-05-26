@@ -1,35 +1,21 @@
-import Card from "../components/Card";
 import "../css/pages/ItemsPage.css";
 import { useState, useEffect } from "react";
 import { getFavoriteItems, getAllItems } from "../api/Items.js";
-import { Link } from "react-router-dom";
-import searchIcon from "../img/search.svg";
-import sortIcon from "../img/sort.svg";
-import arrowDownIcon from "../img/arrow_down.svg";
-import arrowLeftButtonActive from "../img/arrow_button_left_active.svg";
-import arrowLeftButtonInactive from "../img/arrow_button_left_inactive.svg";
-import arrowRightButtonActive from "../img/arrow_button_right_active.svg";
-import arrowRightButtonInactive from "../img/arrow_button_right_inactive.svg";
+import Card from "../components/Card";
+import SearchInput from "../components/SearchInput.js";
+import Button from "../components/Button.js";
+import Dropdown from "../components/Dropdown.js";
+import Pagination from "../components/Pagination.js";
 
 function ItemsPage() {
-  const INITIAL_BEST_ITEM_PARAMS = {
-    page: 1,
-    pageSize: 4,
-    orderBy: "favorite",
-    keyword: "",
-  };
-  const INITIAL_ALL_ITEM_PARAMS = {
-    page: 1,
-    pageSize: 10,
-    orderBy: "recent",
-    keyword: "",
-  };
   const [orderBy, setOrderBy] = useState({
     name: "최신순",
     value: "recent",
   });
-
   const [keyword, setKeyword] = useState("");
+
+  const [totalCount, setTotalCount] = useState(0);
+  const [paginationCurrentPage, setPaginationCurrentPage] = useState(1);
 
   const [bestItems, setBestItems] = useState([
     {
@@ -52,10 +38,6 @@ function ItemsPage() {
     },
   ]);
 
-  const [totalCount, setTotalCount] = useState(0);
-
-  const [pageSize, setPageSize] = useState(10);
-
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownList = [
     { value: "recent", name: "최신순" },
@@ -77,7 +59,7 @@ function ItemsPage() {
     try {
       const { list, totalCount } = await getAllItems(queryParams);
       setAllItems(list);
-      setTotalCount(totalCount);
+      setTotalCount((prev) => (prev === totalCount ? prev : totalCount));
     } catch (error) {
       console.log(error);
     } finally {
@@ -105,8 +87,8 @@ function ItemsPage() {
 
   const onClickSearch = () => {
     fetchAllItems({
-      page: 1,
-      pageSize: 10,
+      page: paginationCurrentPage,
+      pageSize: devicePageSize[deviceType]["all"],
       orderBy: orderBy.value,
       keyword,
     });
@@ -138,8 +120,20 @@ function ItemsPage() {
   );
 
   const handleResize = () => {
-    setDeviceType(calcBreakPoint(window.innerWidth));
-    console.log(deviceType);
+    const newDeviceType = calcBreakPoint(window.innerWidth);
+    setDeviceType(newDeviceType);
+  };
+
+  const onClickNextPage = () => {
+    setPaginationCurrentPage(paginationCurrentPage + 1);
+  };
+
+  const onClickPrevPage = () => {
+    setPaginationCurrentPage(paginationCurrentPage - 1);
+  };
+
+  const onClickPage = (page) => {
+    setPaginationCurrentPage(page);
   };
 
   useEffect(() => {
@@ -149,12 +143,12 @@ function ItemsPage() {
       orderBy: "favorite",
     });
     fetchAllItems({
-      page: 1,
+      page: paginationCurrentPage,
       pageSize: devicePageSize[deviceType]["all"],
       orderBy: orderBy.value,
       keyword,
     });
-  }, [orderBy, deviceType]);
+  }, [deviceType, orderBy.value, paginationCurrentPage]);
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
@@ -169,6 +163,7 @@ function ItemsPage() {
       {/* 메인 영역*/}
       <main className="items__container">
         <div className="items__container__inner">
+          {/* 베스트 상품 영역 */}
           <section>
             <div className="items__container__best__header">
               <div className="items__container__title">베스트 상품</div>
@@ -181,66 +176,33 @@ function ItemsPage() {
               ))}
             </ul>
           </section>
+
+          {/* 전체 상품 영역 */}
           <section>
             <div className="items__container__all__header">
               <div className="items__container__title">전체 상품</div>
-
-              <div className="items__container__search__bar">
-                <input
-                  className="items__container__search__input input-search"
-                  placeholder="검색할 상품을 입력해주세요"
-                  value={keyword}
-                  onInput={onKeywordChange}
-                  onKeyDown={onKeyDown}
-                />
-                <img
-                  src={searchIcon}
-                  className="items__container__search__bar__icon"
-                  alt="검색 아이콘"
-                  onClick={onClickSearch}
-                />
-              </div>
-
-              <div className="items__container__register">
-                <button className="btn btn-register">
-                  <Link to="addItem">상품 등록하기</Link>
-                </button>
-              </div>
-
-              <div
+              <SearchInput
+                value={keyword}
+                onInput={onKeywordChange}
+                onKeyDown={onKeyDown}
+                onClick={onClickSearch}
+                className="items__container__search__input"
+              />
+              <Button
+                className="items__container__registerBtn"
+                type="register"
+                to="addItem"
+                text="상품 등록하기"
+              />
+              <Dropdown
                 className="items__container__dropdown"
-                onClick={onClickDropdown}
-              >
-                <div className="items__container__dropdown__button dropdown">
-                  <span className="items__container__dropdown__text">
-                    {orderBy.name}
-                  </span>
-                  <img
-                    src={arrowDownIcon}
-                    alt="드롭다운 아이콘"
-                    className="items__container__dropdown__button__icon"
-                  />
-                  <img
-                    src={sortIcon}
-                    alt="분류아이콘"
-                    className="items__container__dropdown__sort__icon"
-                  />
-                </div>
-                {showDropdown && (
-                  <ul className="items__container__dropdown__list">
-                    {dropdownList?.map((item) => (
-                      <li
-                        key={item.value}
-                        onClick={() => onClickDropdownItem(item)}
-                      >
-                        {item.name}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
+                onClickDropdown={onClickDropdown}
+                onClickDropdownItem={onClickDropdownItem}
+                dropdownList={dropdownList}
+                showDropdown={showDropdown}
+                value={orderBy}
+              />
             </div>
-
             <ul className="items__container__all__list">
               {allItems?.map((item, index) => (
                 <li key={index}>
@@ -249,11 +211,14 @@ function ItemsPage() {
               ))}
             </ul>
 
-            <div className="items__container__pagination">
-              <img src={arrowRightButtonActive} alt="페이지 네이션 이전 버튼" />
-              <div className="items__container__pagination__button">1</div>
-              <img src={arrowLeftButtonActive} alt="페이지 네이션 다음 버튼" />
-            </div>
+            <Pagination
+              totalCount={totalCount}
+              pageSize={devicePageSize[deviceType]["all"]}
+              currentPage={paginationCurrentPage}
+              onClickNext={onClickNextPage}
+              onClickPrev={onClickPrevPage}
+              onClickPage={onClickPage}
+            />
           </section>
         </div>
       </main>

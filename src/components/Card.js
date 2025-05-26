@@ -11,11 +11,13 @@ function Card({ data }) {
       />
       <div className="card__info">
         <div className="card__info__title">{data.name}</div>
-        <div className="card__info__price">{data.price}</div>
+        <div className="card__info__price">
+          {data.price.toLocaleString("ko-KR")}원
+        </div>
 
         <div className="card__icon__group">
           <img src={heartIcon} alt="하트 아이콘" className="heart__icon" />
-          <span className="heart__icon__count">111</span>
+          <span className="heart__icon__count">{data.favoriteCount}</span>
         </div>
       </div>
     </div>
