@@ -1,0 +1,46 @@
+@import '../theme.css';
+
+.footer-wrapper {
+  width: 100%;
+  margin: 16px 0px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.circle {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid var(--secondary-200);
+  border-radius: 9999px;
+
+  &:hover {
+    background-color: var(--secondary-200);
+  }
+
+  &:active {
+    background-color: var(--secondary-400);
+  }
+
+  &:disabled {
+    background-color: var(--gray-100);
+  }
+}
+
+.circle-active {
+  border: 0;
+  background-color: var(--primary-200);
+  color: var(--gray-100);
+
+  &:hover {
+    background-color: var(--primary-100);
+  }
+
+  &:active {
+    background-color: var(--primary-300);
+  }
+}
