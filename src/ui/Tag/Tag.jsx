@@ -2,12 +2,12 @@
 import { css } from "@emotion/react";
 import closeIcon from "../../assets/images/ic_close_white.svg";
 
-const Tag = ({ children }) => {
+const Tag = ({ children, onClick }) => {
   return (
     <span css={tagStyle}>
       #{children}
-      <button css={deleteButtonStyle}>
-        <img src={closeIcon} alt="삭제" />
+      <button css={deleteButtonStyle} type="button" onClick={onClick}>
+        <img src={closeIcon} alt="삭제" width="8" height="8" />
       </button>
     </span>
   );

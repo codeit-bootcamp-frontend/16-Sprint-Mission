@@ -1,8 +1,17 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 
-const Textarea = ({ id, placeholder }) => {
-  return <textarea id={id} placeholder={placeholder} css={TextareaStyle} />;
+const Textarea = ({ ...props }) => {
+  const { id, name, placeholder, onChange } = props;
+  return (
+    <textarea
+      id={id}
+      name={name}
+      placeholder={placeholder}
+      css={TextareaStyle}
+      onChange={onChange}
+    />
+  );
 };
 
 export default Textarea;

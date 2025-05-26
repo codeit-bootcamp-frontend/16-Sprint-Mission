@@ -5,7 +5,7 @@ const ImageFileUploader = () => {
   return (
     <div>
       <SquareButton type="button">
-        <img src={plusIcon} alt="이미지 등록 버튼" />
+        <img width="48" height="48" src={plusIcon} alt="이미지 등록 버튼" />
         <span>이미지 등록</span>
       </SquareButton>
     </div>
