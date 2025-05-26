@@ -52,7 +52,7 @@
   &__nav {
     display: flex;
     gap: var(--spacing-sm);
-    font-size: var(--font-content-sm);
+    font-size: var(--font-content-xs);
     font-weight: bold;
 
     @include tablet {

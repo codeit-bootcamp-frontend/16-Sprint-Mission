@@ -1,6 +1,6 @@
 // src/router/routes.ts
 //라우터 경로 정의
-import MarketPage from '@/pages/MarketPage';
+import MarketPage from '@/pages/MarketPage/MarketPage';
 
 //라우터 인터페이스 설정
 export interface AppRoute {
