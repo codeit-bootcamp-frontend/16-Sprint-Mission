@@ -1,4 +1,4 @@
-import { use, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 // 컴포넌트에서 api를 호출할때 로딩, 실패, 결과를 반환함
 // data : api 호출 결과
 // loading : api 호출 중인지 여부

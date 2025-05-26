@@ -28,7 +28,7 @@ export async function fetchProducts(
   pageSize: number = 10,
   orderBy: 'favorite' | 'recent' = 'recent',
   keyword: string = ''
-): Promise<{ totalCount: number; products: Product[] }> {
+): Promise<{ totalCount: number; list: Product[] }> {
   try {
     const response = await axios.get<{ totalCount: number; list: Product[] }>(
       `${API_URL}/products`,
@@ -37,31 +37,40 @@ export async function fetchProducts(
           page,
           pageSize,
           orderBy,
-          ...(keyword ? { keyword } : {}), // 검색어가 있을 경우에만 포함
+          keyword,
         },
       }
     );
     const { totalCount, list } = response.data;
-    return { totalCount, products: list };
+    return {
+      totalCount,
+      list,
+    };
   } catch (error: unknown) {
+    let errMsg = '상품 목록을 불러오는 중 오류가 발생했습니다.';
     // 에러 상황 세분화하여 로그 출력
     if (axios.isAxiosError(error)) {
       if (error.response) {
-        console.error(
-          '[fetchProducts] HTTP Error:',
-          error.response.status,
-          error.response.data
-        );
+        // 서버가 상태 코드로 응답했을 때
+        errMsg += ` 상태 코드: ${error.response.status}`;
+        console.error(errMsg, error.response.status, error.response.data);
+        throw new Error(errMsg);
       } else if (error.request) {
-        console.error('[fetchProducts] No response received:', error.request);
+        // 요청이 이루어졌으나 응답이 없을 때
+        errMsg += ` 응답이 없습니다.`;
+        console.error(errMsg, error.request);
+        throw new Error(errMsg);
       } else {
-        console.error('[fetchProducts] Error message:', error.message);
+        // 요청 설정 중 오류가 발생했을 때
+        errMsg += ` 설정 오류`;
+        console.error(errMsg, error.message);
+        throw new Error(errMsg);
       }
     } else {
-      console.error('[fetchProducts] Unexpected error:', error);
+      // 예상치 못한 오류
+      errMsg += ` 예상치 못한 오류가 발생했습니다.`;
+      console.error(errMsg, error);
+      throw new Error(errMsg);
     }
-    throw new Error(
-      '상품 목록을 불러오는 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.'
-    );
   }
 }
