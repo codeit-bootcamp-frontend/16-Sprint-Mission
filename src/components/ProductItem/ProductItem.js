@@ -1,18 +1,20 @@
 import { Link } from "react-router-dom";
 import style from "./ProductItem.module.scss";
 
-const ProductItem = () => {
+const ProductItem = ({ product }) => {
+  const { id, images, name, price, favoriteCount } = product;
+
   return (
-    <Link to={`링크`} className={style.productItem}>
+    <Link to={`/items/${id}`} className={style.productItem}>
       <figure className={style.productItem__image}>
-        <img src={``} alt={`상품 제목`} />
+        <img src={images[0]} alt={name} />
       </figure>
       <div className={style.productItem__content}>
-        <p className={style.productItem__subject}>{`상품 제목`}</p>
+        <p className={style.productItem__subject}>{name}</p>
         <strong className={style.productItem__price}>
-          <span>{"30,000"}</span>원
+          <span>{price.toLocaleString("ko-KR")}</span>원
         </strong>
-        <span className={style.productItem__favorite}>{240}</span>
+        <span className={style.productItem__favorite}>{favoriteCount}</span>
       </div>
     </Link>
   );
