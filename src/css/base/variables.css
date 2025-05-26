@@ -1,7 +1,9 @@
 :root {
   /* Colors */
+  --color-background-white: #ffffff;
   --color-background-blue: #cfe5ff;
   --color-background-light-blue: #e6f2ff;
+  --color-background-bright-blue: #2f80ed;
   --color-primary-100: #3692ff;
   --color-primary-200: #1967d6;
   --color-primary-300: #1251aa;
@@ -17,6 +19,7 @@
   --color-error: #f74747;
 
   /* Font Sizes */
+  --font-size-xxxs: 12px;
   --font-size-xxs: 14px;
   --font-size-xs: 16px;
   --font-size-sm: 18px;

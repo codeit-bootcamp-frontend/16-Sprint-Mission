@@ -12,15 +12,15 @@
 }
 
 .card__info__title {
-  font-size: 14px;
+  font-size: var(--font-size-xxs);
   font-weight: 500;
-  color: #1f2937;
+  color: var(--color-secondary-800);
 }
 
 .card__info__price {
-  font-size: 16px;
+  font-size: var(--font-size-xs);
   font-weight: 700;
-  color: #1f2937;
+  color: var(--color-secondary-800);
 }
 
 .card__icon__group {
@@ -35,7 +35,7 @@
 }
 
 .heart__icon__count {
-  font-size: 12px;
+  font-size: var(--font-size-xxxs);
   font-weight: 500;
-  color: #4b5563;
+  color: var(--color-secondary-600);
 }

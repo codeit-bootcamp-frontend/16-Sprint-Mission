@@ -1,6 +1,6 @@
 header {
   padding: 15px 0;
-  background-color: white;
+  background-color: var(--color-background-white);
   position: sticky;
   top: 0;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
@@ -11,7 +11,6 @@ header {
   padding: 0 16px;
   max-width: 1920px;
   margin: 0 auto;
-  /* color: #ffffff; */
   display: flex;
   justify-content: space-between;
   align-items: center;

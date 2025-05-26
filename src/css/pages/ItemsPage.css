@@ -85,13 +85,13 @@
 }
 
 @media screen and (min-width: 744px) {
-  .items__container__best__headerr {
+  .items__container__best__header {
     min-width: 696px;
   }
 }
 
 @media screen and (min-width: 1200px) {
-  .items__container__best__headerr {
+  .items__container__best__header {
     min-width: 1152px;
   }
 }

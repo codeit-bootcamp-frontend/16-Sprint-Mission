@@ -41,7 +41,7 @@ label {
 }
 
 .msg {
-  font-size: 14px;
+  font-size: var(--font-size-xxs);
   font-weight: 600;
   padding-left: 16px;
   display: none;
@@ -50,18 +50,4 @@ label {
 
 .msg.error {
   display: block;
-}
-
-.dropdown {
-  height: 42px;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  background-color: #ffffff;
-  display: flex;
-  padding: 12px 20px;
-  font-size: 16px;
-  color: #1f2937;
-  font-weight: 400;
-  display: flex;
-  align-items: center;
 }
