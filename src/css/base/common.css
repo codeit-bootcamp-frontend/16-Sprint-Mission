@@ -17,6 +17,12 @@ input {
   border: none;
 }
 
+/* .input-search {
+  height: 42px;
+  width: 325px;
+  padding: 16px 16px 16px 44px;
+} */
+
 input::placeholder {
   color: var(--color-secondary-400);
   font-size: var(--font-size-xs);
@@ -49,6 +55,13 @@ label {
   justify-content: center;
   align-items: center;
   font-weight: 600;
+}
+
+.btn-register {
+  border-radius: var(--border-radius-sm);
+  min-width: 133px;
+  height: 42px;
+  font-size: var(--font-size-xs);
 }
 
 .btn-small {
@@ -84,4 +97,18 @@ label {
 
 .msg.error {
   display: block;
+}
+
+.dropdown {
+  height: 42px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background-color: #ffffff;
+  display: flex;
+  padding: 12px 20px;
+  font-size: 16px;
+  color: #1f2937;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
 }

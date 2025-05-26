@@ -1,34 +1,41 @@
 .card__image {
-    width: 282px;
-    height: 282px;
-    border-radius: 16px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  margin-bottom: 16px;
 }
 
 .card__info {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .card__info__title {
-    font-size: 14px;
-    font-weight: 500;
-    color: #1F2937;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937;
 }
 
 .card__info__price {
-    font-size: 16px;
-    font-weight: 700;
-    color: #1F2937;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.card__icon__group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .heart__icon {
-    width: 16px;
-    height: 16px;
+  width: 16px;
+  height: 16px;
 }
 
 .heart__icon__count {
-    font-size: 12px;
-    font-weight: 500;
-    color: #4B5563;
+  font-size: 12px;
+  font-weight: 500;
+  color: #4b5563;
 }

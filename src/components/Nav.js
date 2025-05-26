@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import textLogoIcon from "../img/logo_text.jpg";
-import logoIcon from "../img/logo.jpg";
-import userIcon from "../img/user.jpg";
+import logoIcon from "../img/logo.svg";
+import userIcon from "../img/user.svg";
 import "../css/components/Nav.css";
 
 function getLinkStyle({ isActive }) {
@@ -25,12 +25,17 @@ function Nav() {
             />
           </Link>
           <ul>
-            <NavLink to="board" style={getLinkStyle}>
-              <li>자유게시판</li>
-            </NavLink>
-            <NavLink to="items" style={getLinkStyle}>
-              <li>중고마켓</li>
-            </NavLink>
+            <li>
+              <NavLink to="board" style={getLinkStyle}>
+                자유게시판
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink to="items" style={getLinkStyle}>
+                중고마켓
+              </NavLink>
+            </li>
           </ul>
         </div>
         <div className="header__content__user">
