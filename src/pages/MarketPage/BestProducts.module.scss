@@ -1,34 +1,32 @@
 .best-products {
   width: 100%;
   max-width: 1200px;
-
   display: flex;
   flex-direction: column;
-
   gap: 20px;
 
-  &__titie {
+  &__title {
     width: 100%;
-
-    font-size: var(--font-title);
+    font-size: var(--font-title-md);
     font-weight: bold;
     margin-bottom: 20px;
   }
   &__list {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: nowrap;
+    display: grid;
     gap: var(--spacing-xs);
-
-    flex: 0 0 100%;
+    /* 모바일: 1열 */
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    /* 태블릿: 2열 */
 
     @include tablet {
-      /* 태블릿: 칸 사이 20px 하나 제외 후 절반 */
-      flex: 0 0 calc((100% - 20px) / 2);
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 1fr;
     }
+    /* 랩톱: 4열 */
     @include laptop {
-      /* 랩톱: 칸 사이 20px×3개 제외 후 4등분 */
-      flex: 0 0 calc((100% - 20px * 3) / 4);
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 1fr;
     }
   }
 }

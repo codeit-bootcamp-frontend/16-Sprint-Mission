@@ -67,6 +67,7 @@
 }
 
 /* 미디어 쿼리 : scss */
-$mobile-min-width: 767px;
-$tablet-min-width: 1199px;
-$desktop-min-width: 1920px;
+$mobile-max-width: 767px;
+$tablet-min-width: 768px;
+$tablet-max-width: 1199px;
+$desktop-min-width: 1200px;

@@ -3,7 +3,7 @@
 
 /// 모바일 이하일 때
 @mixin mobile {
-  @media (min-width: $mobile-min-width) {
+  @media (max-width: $mobile-max-width) {
     @content;
   }
 }
@@ -11,7 +11,7 @@
 /// tablet 이하일 때
 
 @mixin tablet {
-  @media (min-width: $tablet-min-width) {
+  @media (min-width: $tablet-min-width) and (max-width: $tablet-max-width) {
     @content;
   }
 }

@@ -1,0 +1,55 @@
+/* src/components/Cards/SkeletonCard.module.scss */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.skeleton-card {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  overflow: hidden;
+  gap: 6px;
+  animation: pulse 1.5s ease-in-out infinite;
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #e0e0e0;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 6px;
+  }
+
+  &__title {
+    width: 60%;
+    height: 16px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+  }
+
+  &__price {
+    width: 40%;
+    height: 16px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+  }
+
+  &__like {
+    width: 30%;
+    height: 14px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+  }
+}

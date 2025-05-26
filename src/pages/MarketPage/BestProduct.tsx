@@ -4,6 +4,7 @@ import getMediaCount from '@/utils/getMediaCount';
 import useApi from '@/hooks/useApi';
 import { fetchProducts, Product } from '@/api/products';
 import ProductCard from '@/components/Cards/ProductCard';
+import SkeletonCard from '@/components/Cards/SkeletonCard';
 // 베스트 상품 컴포넌트
 function BestProducts() {
   // 미디어 쿼리에서 베스트 상품의 개수를 가져옵니다.
@@ -23,11 +24,13 @@ function BestProducts() {
     <div className={style['best-products']}>
       <h2 className={style['best-products__title']}>베스트 상품</h2>
       <div className={style['best-products__list']}>
-        {/*todo:  로딩 중일때 스켈레톤 카드 표시 */}
-        {/* 로딩 이후 카드 표시 */}
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+        {loading
+          ? Array.from({ length: bestProductsCount }).map((_, idx) => (
+              <SkeletonCard key={idx} />
+            ))
+          : products.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
       </div>
     </div>
   );
