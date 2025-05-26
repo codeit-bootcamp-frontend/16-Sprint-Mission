@@ -1,0 +1,34 @@
+/* Mobile styles */
+
+body {
+  background-color: #fcfcfc;
+}
+
+.gnb-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+nav a {
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 700;
+  color: #4b5563;
+}
+
+/* Tablet styles */
+
+@media (min-width: 768px) {
+}
+
+/* Desktop styles */
+
+@media (min-width: 1280px) {
+}
