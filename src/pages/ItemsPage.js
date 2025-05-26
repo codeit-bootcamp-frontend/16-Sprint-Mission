@@ -97,6 +97,12 @@ function ItemsPage() {
     setKeyword(e.target.value);
   };
 
+  const onKeyDown = (e) => {
+    if (e.key === "Enter") {
+      onClickSearch();
+    }
+  };
+
   const onClickSearch = () => {
     fetchAllItems({
       page: 1,
@@ -106,19 +112,57 @@ function ItemsPage() {
     });
   };
 
+  const calcBreakPoint = (width) => {
+    if (width >= 1200) return "pc";
+    if (width >= 744) return "tablet";
+    return "mobile";
+  };
+
+  const devicePageSize = {
+    mobile: {
+      best: 1,
+      all: 4,
+    },
+    tablet: {
+      best: 2,
+      all: 6,
+    },
+    pc: {
+      best: 4,
+      all: 10,
+    },
+  };
+
+  const [deviceType, setDeviceType] = useState(
+    calcBreakPoint(window.innerWidth)
+  );
+
+  const handleResize = () => {
+    setDeviceType(calcBreakPoint(window.innerWidth));
+    console.log(deviceType);
+  };
+
   useEffect(() => {
     fetchFavoriteItems({
       page: 1,
-      pageSize: 4,
+      pageSize: devicePageSize[deviceType]["best"],
       orderBy: "favorite",
     });
     fetchAllItems({
       page: 1,
-      pageSize: 10,
+      pageSize: devicePageSize[deviceType]["all"],
       orderBy: orderBy.value,
       keyword,
     });
-  }, [orderBy]);
+  }, [orderBy, deviceType]);
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <div>
@@ -147,7 +191,7 @@ function ItemsPage() {
                   placeholder="검색할 상품을 입력해주세요"
                   value={keyword}
                   onInput={onKeywordChange}
-                  onKeyDown={onClickSearch}
+                  onKeyDown={onKeyDown}
                 />
                 <img
                   src={searchIcon}
