@@ -7,7 +7,7 @@ import PageNations from './PageNations';
 import getMediaCount from '@/utils/getMediaCount';
 import ProductCard from '@/components/Cards/ProductCard';
 import SkeletonCard from '@/components/Cards/SkeletonCard';
-
+import useDebounce from '@/hooks/useDebounce';
 function AllProducts() {
   // 미디어 쿼리에 따라 페이지당 제품의 개수를 설정합니다.
   const { allProductsCount: pageSize } = getMediaCount();
@@ -16,11 +16,12 @@ function AllProducts() {
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState<SortKey>('recent');
   const [keyword, setKeyword] = useState('');
-
+  // 키워드 디바운스 처리
+  const debouncedKeyword = useDebounce(keyword, 300);
   //api를 통해 전체 상품을 가져오기
   const { data, loading, error } = useApi(
-    () => fetchProducts(page, pageSize, sort, keyword),
-    [pageSize, page, sort, keyword]
+    () => fetchProducts(page, pageSize, sort, debouncedKeyword),
+    [pageSize, page, sort, debouncedKeyword]
   );
   // 전체 상품 수
   const totalCount: number = data?.totalCount ?? 0;
