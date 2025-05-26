@@ -42,6 +42,7 @@ export async function fetchProducts(
       }
     );
     const { totalCount, list } = response.data;
+
     return {
       totalCount,
       list,

@@ -3,21 +3,31 @@ import style from './BestProducts.module.scss';
 import getMediaCount from '@/utils/getMediaCount';
 import useApi from '@/hooks/useApi';
 import { fetchProducts, Product } from '@/api/products';
-
+import ProductCard from '@/components/Cards/ProductCard';
 // 베스트 상품 컴포넌트
 function BestProducts() {
   // 미디어 쿼리에서 베스트 상품의 개수를 가져옵니다.
   const { bestProductsCount } = getMediaCount();
+  // API를 호출하여 베스트 상품을 가져옵니다.
   const { data, loading, error } = useApi(
     () => fetchProducts(1, bestProductsCount, 'favorite', ''),
     [bestProductsCount]
   );
-  const products: Product[] = data.list;
+
+  if (error) {
+    console.error('베스트 상품을 불러오는 중 오류 발생:', error);
+  }
+  const products: Product[] = data?.list ?? [];
+  console.log('베스트 상품:', products);
   return (
     <div className={style['best-products']}>
       <h2 className={style['best-products__title']}>베스트 상품</h2>
       <div className={style['best-products__list']}>
-        {/* 베스트 상품 리스트를 여기에 추가 */}
+        {/*todo:  로딩 중일때 스켈레톤 카드 표시 */}
+        {/* 로딩 이후 카드 표시 */}
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
       </div>
     </div>
   );
