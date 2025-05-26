@@ -1,4 +1,4 @@
-import "../css/pages/ItemsPage.css";
+import "../css/pages/ItemListPage.css";
 import { useState, useEffect, useCallback } from "react";
 import { getFavoriteItems, getAllItems } from "../api/Items.js";
 import Card from "../components/Card";
@@ -7,7 +7,7 @@ import Button from "../components/Button.js";
 import Dropdown from "../components/Dropdown.js";
 import Pagination from "../components/Pagination.js";
 
-function ItemsPage() {
+function ItemListPage() {
   const [orderBy, setOrderBy] = useState({
     name: "최신순",
     value: "recent",
@@ -59,7 +59,7 @@ function ItemsPage() {
     try {
       const { list, totalCount } = await getAllItems(queryParams);
       setAllItems(list);
-      setTotalCount((prev) => (prev === totalCount ? prev : totalCount));
+      setTotalCount(totalCount);
     } catch (error) {
       console.log(error);
     } finally {
@@ -89,7 +89,7 @@ function ItemsPage() {
     setPaginationCurrentPage(1);
     fetchAllItems({
       page: paginationCurrentPage,
-      pageSize: devicePageSize[deviceType]["all"],
+      pageSize: allPageSize,
       orderBy: orderBy.value,
       keyword,
     });
@@ -236,4 +236,4 @@ function ItemsPage() {
   );
 }
 
-export default ItemsPage;
+export default ItemListPage;
