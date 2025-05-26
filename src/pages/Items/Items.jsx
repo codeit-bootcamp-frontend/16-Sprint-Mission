@@ -7,9 +7,9 @@ function Items() {
   return (
     <main className="items">
       <div className="items__container">
-        <ProductsFavorite></ProductsFavorite>
+        <ProductsFavorite />
         <ProductAllContextProvider>
-          <ProductsAll></ProductsAll>
+          <ProductsAll />
         </ProductAllContextProvider>
       </div>
     </main>

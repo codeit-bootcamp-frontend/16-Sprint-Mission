@@ -12,7 +12,6 @@ function Login() {
   const [getFieldState, validate] = useValidate();
   const emailValidationState = getFieldState("user-email"); //email관련 값만 받아오기 생성x조회o
   const passwordValidationState = getFieldState("user-password");
-
   const isAllValid = checkAllValid(
     emailValidationState,
     passwordValidationState

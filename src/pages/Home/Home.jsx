@@ -5,8 +5,8 @@ function Home() {
   return (
     <>
       <div className="homepage-wrapper">
-        <Main></Main>
-        <Footer></Footer>
+        <Main />
+        <Footer />
       </div>
     </>
   );

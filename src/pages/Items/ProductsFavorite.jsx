@@ -33,7 +33,7 @@ function ProductsFavorite() {
     <section className={styles.items__favorite}>
       <h2>베스트 상품</h2>
       {loadFail ? (
-        <LoadFailed></LoadFailed>
+        <LoadFailed />
       ) : (
         <ul className={styles["favorite-list"]}>
           {favoriteItems.map((item) => (

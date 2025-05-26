@@ -33,10 +33,10 @@ function ProductsAll() {
       <section className={styles.items__all}>
         <div className={styles[`items__all-filter`]}>
           <h2>전체 상품</h2>
-          <ProductsFilterBar></ProductsFilterBar>
+          <ProductsFilterBar />
         </div>
         {loadFail ? (
-          <LoadFailed></LoadFailed>
+          <LoadFailed />
         ) : (
           <ul className={styles[`items__all-list`]}>
             {products.map((item) => {
@@ -51,7 +51,7 @@ function ProductsAll() {
             })}
           </ul>
         )}
-        <Pagination></Pagination>
+        <Pagination />
       </section>
     </>
   );

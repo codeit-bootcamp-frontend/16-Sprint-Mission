@@ -2,8 +2,7 @@ import styles from "@styles/ErrMsg.module.css";
 import React from "react";
 
 function FormInput(props) {
-  const { placeholder, name, type, id, error, errorMessage, validate, value } =
-    props;
+  const { placeholder, name, type, id, error, errorMessage, validate, value } = props;
 
   function handleChange(e) {
     validate(name, e.target.value);

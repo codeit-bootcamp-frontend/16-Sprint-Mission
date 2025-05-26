@@ -29,7 +29,7 @@ export function useResizeInnerWidth(type) {
 
         const newPageSize = reCalculatePageSize(type, innerWidth)
         setPageSize(newPageSize)
-    }, [innerWidth]);
+    }, [innerWidth, type]);
 
     return [pageSize]
 }

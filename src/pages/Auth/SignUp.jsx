@@ -47,6 +47,7 @@ function SignUp() {
   function handlePwToggle() {
     setPasswordToggle(!passwordToggle);
   }
+
   function handlePwCheckToggle() {
     setPasswordCheckToggle(!passwordCheckToggle);
   }
