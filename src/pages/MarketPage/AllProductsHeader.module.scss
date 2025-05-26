@@ -1,0 +1,111 @@
+.all-products-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+
+  @include tablet {
+    flex-direction: row;
+    align-items: center;
+  }
+  @include laptop {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: var(--font-title-md);
+    font-weight: bold;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 100px;
+  }
+  &__filter-wrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 10px;
+    position: relative;
+  }
+
+  &__search {
+    flex: 1;
+    min-width: 200px;
+
+    width: 100%;
+    padding: 10px 20px;
+    border: 1px solid var(--color-neutral-300);
+    border-radius: 12px;
+    font-size: var(--font-content-sm);
+    color: var(--color-neutral-800);
+    background-color: var(--color-neutral-100);
+    outline: none;
+    transition: border-color 0.2s ease;
+
+    @include tablet {
+      max-width: 325px;
+    }
+    @include laptop {
+      max-width: 400px;
+    }
+
+    &:focus {
+      border-color: var(--color-primary-500);
+    }
+  }
+  &__add {
+    padding: 12px 24px;
+    font-size: var(--font-content-md);
+    font-weight: bold;
+    color: white;
+    background-color: var(--color-primary-100);
+    border-radius: 8px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 50px;
+    right: 10px;
+
+    @include tablet {
+      position: relative;
+      bottom: 0;
+      right: 0;
+    }
+    @include laptop {
+      position: relative;
+      bottom: 0;
+      right: 0;
+    }
+  }
+  &__filter {
+    border: 2px solid var(--color-neutral-200);
+    border-radius: 13px;
+    padding: 9px;
+    width: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 24px;
+
+    // 텍스트 숨기기
+    color: transparent;
+    text-indent: 9999px;
+    background-image: url('@/assets/icon/ic_sort.png');
+
+    @include tablet {
+      background-image: none;
+      width: auto;
+      padding: 9px;
+      color: var(--color-neutral-800);
+      text-indent: 0;
+      padding: 12px 20px;
+    }
+    @include laptop {
+      width: auto;
+      padding: 9px;
+      background-image: none;
+      color: var(--color-neutral-800);
+      text-indent: 0;
+      padding: 12px 20px;
+    }
+  }
+}

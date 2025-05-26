@@ -1,46 +1,80 @@
+import { useState } from 'react';
+import { fetchProducts, Product } from '@/api/products';
+import useApi from '@/hooks/useApi';
+import AllProductsHeader, { SortKey } from './AllProductsHeader';
 import style from './AllProducts.module.scss';
 import PageNations from './PageNations';
 import getMediaCount from '@/utils/getMediaCount';
-import useApi from '@/hooks/useApi';
-import { fetchProducts } from '@/api/products';
+import ProductCard from '@/components/Cards/ProductCard';
+import SkeletonCard from '@/components/Cards/SkeletonCard';
+
 function AllProducts() {
-  //현재 화면 사이즈 종류
-  // 미디어 쿼리에 따라 전체 상품의 개수를 설정합니다.
-  const { allProductsCount } = getMediaCount();
+  // 미디어 쿼리에 따라 페이지당 제품의 개수를 설정합니다.
+  const { allProductsCount: pageSize } = getMediaCount();
+
+  //상태 선언
+  const [page, setPage] = useState(1);
+  const [sort, setSort] = useState<SortKey>('recent');
+  const [keyword, setKeyword] = useState('');
+
   //api를 통해 전체 상품을 가져오기
   const { data, loading, error } = useApi(
-    () => fetchProducts(page, allProductsCount, sort, keword),
-    [allProductsCount]
+    () => fetchProducts(page, pageSize, sort, keyword),
+    [pageSize, page, sort, keyword]
   );
-  // 페이지네이션에 따른 페이지
+  // 전체 상품 수
+  const totalCount: number = data?.totalCount ?? 0;
+  // 페이지당 상품 목록
+  const products: Product[] = data?.list ?? [];
+
+  //핸들러 함수 선언
+  // 페이지 변경 핸들러
+  const handlePageChange = (newPage: number) => {
+    setPage(newPage);
+  };
+  // 검색 핸들러
+  const handleKeywordChange = (newKeyword: string) => {
+    setKeyword(newKeyword);
+    setPage(1); // 검색 시 항상 1페이지로
+  };
+  // 정렬 변경 핸들러
+  const handleSortChange = (newSort: SortKey) => {
+    setSort(newSort);
+    setPage(1); // 정렬 변경 시에도 1페이지로
+  };
+  // 상품 추가 버튼 클릭 핸들러
+  const handleAddClick = () => {
+    // todo:  /additem 으로 이동
+  };
 
   return (
     <div className={style['all-products']}>
-      <div className={style['all-products__header']}>
-        {/* 검색창 및 필터 */}
-        <h2 className={style['all-products__title']}>전체 상품</h2>
-        <div className={style['all-products__filter-wrap']}>
-          <input
-            type="text"
-            placeholder="검색할 상품을 입력하세요"
-            className={style['all-products__search']}
-          />
-          <button className={style['all-products__add']}>상품 등록하기</button>
+      {/* 전체 상품 헤더 */}
+      <AllProductsHeader
+        keyword={keyword}
+        sort={sort}
+        onKeywordChange={handleKeywordChange}
+        onSortChange={handleSortChange}
+        onAddClick={handleAddClick}
+      />
 
-          <select
-            className={style['all-products__filter']}
-            aria-label="상품 정렬"
-          >
-            <option value="recent">최신순</option>
-            <option value="favorite">좋아요순</option>
-          </select>
-        </div>
-      </div>
       {/* 전체 상품 리스트 */}
-      <div className={style['all-products-list']}></div>
-
+      <div className={style['all-products__list']}>
+        {loading
+          ? Array.from({ length: pageSize }).map((_, idx) => (
+              <SkeletonCard key={idx} />
+            ))
+          : products.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+      </div>
       {/* 페이지네이션 컴포넌트 */}
-      <PageNations />
+      <PageNations
+        currentPage={page}
+        pageSize={pageSize}
+        totalCount={data?.totalCount ?? 0}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 }
