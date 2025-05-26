@@ -52,6 +52,12 @@
   --dropdown-min-width: 48px;
 }
 
+@media (min-width: 600px) {
+  :root {
+    --dropdown-min-width: 130px;
+  }
+}
+
 @media (min-width: 768px) {
   :root {
     --header-padding-lr: 24px;

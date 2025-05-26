@@ -1,16 +1,17 @@
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
 import { getItems } from "../../services/api";
-import styles from "./ProductList.module.css";
+import { DEFAULT_ITEM_PAGE_SIZE } from "../../constants/pagesize";
+import { ITEMS_ORDER_MAP } from "../../constants/sortOptions";
+import useAsync from "../../hooks/useAsync";
+import SectionTitle from "../../ui/SectionTitle/SectionTitle";
 import Button from "../../ui/Button";
 import Dropdown from "../../ui/Dropdown";
 import InputSearch from "../../ui/Input/InputSearch";
 import Pagination from "../Pagination";
 import ProductListResults from "./ProductListResults";
-import SectionTitle from "../../ui/SectionTitle/SectionTitle";
-import useAsync from "../../hooks/useAsync";
-import { DEFAULT_ITEM_PAGE_SIZE } from "../../constants/pagesize";
-import { ITEMS_ORDER_MAP } from "../../constants/sortOptions";
 
 const DEFAULT_ORDER = Object.keys(ITEMS_ORDER_MAP)[0];
 const dropdownMenuItems = Object.keys(ITEMS_ORDER_MAP);
@@ -53,14 +54,14 @@ const ProductList = ({ title, pageSize = DEFAULT_ITEM_PAGE_SIZE }) => {
   }, [pageSize, order, keyword, handleLoad]);
 
   return (
-    <div className={styles["item-list-area"]}>
-      <div className={styles["item-list-header"]}>
+    <div css={ProductListStyle}>
+      <div className="item-list-header">
         <SectionTitle title={title} />
         <Button
           type="button"
           variant="primary"
           size="sm"
-          className={styles["add-item-btn"]}
+          className="add-item-btn"
           onClick={() => navigate("/addItem")}
         >
           상품 등록하기
@@ -68,7 +69,7 @@ const ProductList = ({ title, pageSize = DEFAULT_ITEM_PAGE_SIZE }) => {
         <InputSearch
           keyword={keyword}
           onSearch={setSearchParams}
-          className={styles["item-list-header-search"]}
+          className="item-list-header-search"
           placeholder="검색할 상품을 입력해주세요"
         />
         <Dropdown
@@ -97,3 +98,100 @@ const ProductList = ({ title, pageSize = DEFAULT_ITEM_PAGE_SIZE }) => {
 };
 
 export default ProductList;
+
+export const ProductListStyle = css`
+  padding-bottom: 40px;
+
+  .item-list-ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(48%, 1fr));
+    gap: 32px 8px;
+  }
+
+  .item-list img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+  }
+
+  .item-list-ul.best {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px 24px;
+  }
+
+  .item-list-ul.best .item-list {
+    flex-grow: 1;
+  }
+
+  .item-list-header .item-list-title {
+    margin-bottom: 0;
+  }
+
+  .item-list-header {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--list-header-gap);
+    margin-bottom: 24px;
+  }
+
+  .item-list-header-search {
+    width: calc(100% - var(--dropdown-min-width) - var(--list-header-gap));
+  }
+
+  .item-list-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    gap: 8px;
+  }
+
+  @media (min-width: 600px) {
+    .item-list-ul.best {
+      gap: 40px 10px;
+    }
+
+    .item-list-ul.best .item-list {
+      width: calc(50% - 10px);
+    }
+  }
+
+  @media (min-width: 720px) {
+    .item-list-ul {
+      grid-template-columns: repeat(3, minmax(30%, 1fr));
+      gap: 40px 16px;
+    }
+
+    .item-list-header {
+      flex-wrap: nowrap;
+    }
+
+    .item-list-header-search {
+      width: 242px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .item-list-ul {
+      grid-template-columns: repeat(5, minmax(220px, 1fr));
+      gap: 40px 24px;
+    }
+
+    .item-list-ul.best {
+      gap: 40px 24px;
+    }
+
+    .item-list-ul.best .item-list {
+      width: calc(25% - 24px);
+      flex-grow: 1;
+    }
+
+    .item-list-header-search {
+      width: 324px;
+    }
+  }
+`;

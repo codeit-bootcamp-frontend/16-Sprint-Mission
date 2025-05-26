@@ -1,4 +1,6 @@
-import styles from "./ProductList.module.css";
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
+import { ProductListStyle } from "./ProductList";
 import ProductCard from "../ProductCard";
 import ProductCardSkeleton from "../../ui/Skeletons/ProductCardSkeleton";
 import Button from "../../ui/Button";
@@ -31,41 +33,51 @@ const ProductListResults = ({
 
 const ProductListRenderer = ({ items, pageSize, listType }) => {
   return (
-    <ul className={`${styles[`item-list-ul`]} ${styles[listType]}`}>
-      {items.slice(0, pageSize).map(({ id, ...itemData }) => {
-        return (
-          <li key={id} className={styles["item-list"]}>
-            <ProductCard key={id} data={itemData} loading="eager" />
-          </li>
-        );
-      })}
-    </ul>
+    <div css={ProductListStyle}>
+      <ul className={`item-list-ul ${listType}`}>
+        {items.slice(0, pageSize).map(({ id, ...itemData }) => {
+          return (
+            <li key={id} className="item-list">
+              <ProductCard key={id} data={itemData} loading="eager" />
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 };
 
 const ProductListLoading = ({ pageSize, listType }) => {
   return (
-    <ul className={`${styles[`item-list-ul`]} ${styles[listType]}`}>
-      {Array.from({ length: pageSize }).map((_, index) => (
-        <li key={index} className={styles["item-list"]}>
-          <ProductCardSkeleton />
-        </li>
-      ))}
-    </ul>
+    <div css={ProductListStyle}>
+      <ul className={`item-list-ul ${listType}`}>
+        {Array.from({ length: pageSize }).map((_, index) => (
+          <li key={index} className="item-list">
+            <ProductCardSkeleton />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
 const ProductListError = () => {
-  return <p>상품 목록을 가져오지 못했습니다.</p>;
+  return (
+    <div css={ProductListStyle}>
+      <p>상품 목록을 가져오지 못했습니다.</p>
+    </div>
+  );
 };
 
 const ProductListEmpty = ({ isEmpty }) => {
   return (
-    <div className={styles["item-list-empty"]}>
-      <p>상품이 없습니다.</p>
-      <Button type="button" variant="primary" size="sm" onClick={isEmpty}>
-        돌아가기
-      </Button>
+    <div css={ProductListStyle}>
+      <div className="item-list-empty">
+        <p>상품이 없습니다.</p>
+        <Button type="button" variant="primary" size="sm" onClick={isEmpty}>
+          돌아가기
+        </Button>
+      </div>
     </div>
   );
 };

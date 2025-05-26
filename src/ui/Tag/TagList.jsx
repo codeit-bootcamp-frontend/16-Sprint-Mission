@@ -6,7 +6,7 @@ const TagList = ({ tags }) => {
   return (
     <div css={TagListStyle}>
       {tags.map((tag) => (
-        <Tag>{tag}</Tag>
+        <Tag key="tag">{tag}</Tag>
       ))}
     </div>
   );

@@ -5,7 +5,7 @@ import closeIcon from "../../assets/images/ic_close_white.svg";
 const Tag = ({ children }) => {
   return (
     <span css={tagStyle}>
-      {children}
+      #{children}
       <button css={deleteButtonStyle}>
         <img src={closeIcon} alt="삭제" />
       </button>
@@ -21,6 +21,7 @@ const tagStyle = css`
   padding: 8px 16px;
   background-color: var(--gray200);
   border-radius: var(--tag-border-radius);
+  font-size: 1rem;
 `;
 
 const deleteButtonStyle = css`

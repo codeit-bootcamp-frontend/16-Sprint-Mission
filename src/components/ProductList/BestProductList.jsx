@@ -1,6 +1,8 @@
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
+import { ProductListStyle } from "./ProductList";
 import { useEffect, useState, useCallback } from "react";
 import { getItems } from "../../services/api";
-import styles from "./ProductList.module.css";
 import SectionTitle from "../../ui/SectionTitle";
 import ProductListResults from "./ProductListResults";
 import useAsync from "../../hooks/useAsync";
@@ -32,7 +34,7 @@ const BestProductList = ({ title, pageSize }) => {
   }, [pageSize, handleLoad]);
 
   return (
-    <div className={styles["item-list-area"]}>
+    <div css={ProductListStyle}>
       <SectionTitle title={title} />
       <ProductListResults
         isLoading={isLoading}

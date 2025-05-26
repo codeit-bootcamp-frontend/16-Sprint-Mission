@@ -1,5 +1,6 @@
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 import { useState } from "react";
-import styles from "./Dropdown.module.css";
 import DropdownBtn from "./DropdownBtn";
 import DropdownMenu from "./DropdownMenu";
 
@@ -22,7 +23,7 @@ const Dropdown = ({ menu, onClickMenu, defaultSelected, iconType }) => {
   };
 
   return (
-    <div className={styles.dropdown}>
+    <div css={DropdownStyle}>
       <DropdownBtn
         selected={selected}
         onClickDropdownBtn={handleDropdown}
@@ -39,3 +40,7 @@ const Dropdown = ({ menu, onClickMenu, defaultSelected, iconType }) => {
 };
 
 export default Dropdown;
+
+const DropdownStyle = css`
+  position: relative;
+`;
