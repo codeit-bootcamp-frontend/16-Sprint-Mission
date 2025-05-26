@@ -5,6 +5,7 @@ import SignupPage from "./pages/SignupPage/SignupPage";
 import ItemsPage from "./pages/ItemsPage/ItemsPage";
 import PrivacyPage from "./pages/PrivacyPage/PrivacyPage";
 import FaqPage from "./pages/FaqPage/FaqPage";
+import AddItemPage from "./pages/AddItemPage/AddItemPage";
 
 const routes = [
   {
@@ -13,6 +14,7 @@ const routes = [
     children: [
       { path: "/", element: <MainPage /> },
       { path: "/items", element: <ItemsPage /> },
+      { path: "/additem", element: <AddItemPage /> },
       { path: "/privacy", element: <PrivacyPage /> },
       { path: "/faq", element: <FaqPage /> },
     ],

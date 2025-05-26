@@ -1,7 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import getLogo from "../utils/getLogo";
 
+const GNB_MENU = [
+  { path: "/free", title: "자유게시판" },
+  { path: "/items", title: "중고마켓" },
+];
+
 const Header = () => {
+  const location = useLocation();
+
   return (
     <header id="header">
       <div className="inner">
@@ -19,12 +26,16 @@ const Header = () => {
         </h1>
         <nav className="header__gnb">
           <ul>
-            <li>
-              <Link to="">자유게시판</Link>
-            </li>
-            <li>
-              <Link to="/items">중고마켓</Link>
-            </li>
+            {GNB_MENU.map((gnb) => (
+              <li key={gnb.path}>
+                <Link
+                  to={gnb.path}
+                  className={location.pathname === gnb.path ? "current" : ""}
+                >
+                  {gnb.title}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
         <Link

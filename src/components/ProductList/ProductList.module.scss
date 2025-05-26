@@ -1,0 +1,32 @@
+@use "../../styles/mixin" as mixin;
+
+.productList {
+  display: grid;
+  gap: 40px 24px;
+
+  &__best {
+    grid-template-columns: repeat(4, 1fr);
+
+    @include mixin.tablet {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    @include mixin.mobile {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  &__all {
+    grid-template-columns: repeat(5, 1fr);
+
+    @include mixin.tablet {
+      gap: 16px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include mixin.mobile {
+      gap: 8px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
