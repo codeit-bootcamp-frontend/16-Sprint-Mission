@@ -1,5 +1,5 @@
 import "../css/pages/ItemsPage.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { getFavoriteItems, getAllItems } from "../api/Items.js";
 import Card from "../components/Card";
 import SearchInput from "../components/SearchInput.js";
@@ -101,6 +101,10 @@ function ItemsPage() {
     return "mobile";
   };
 
+  const [deviceType, setDeviceType] = useState(
+    calcBreakPoint(window.innerWidth)
+  );
+
   const devicePageSize = {
     mobile: {
       best: 1,
@@ -116,14 +120,14 @@ function ItemsPage() {
     },
   };
 
-  const [deviceType, setDeviceType] = useState(
-    calcBreakPoint(window.innerWidth)
-  );
+  const bestPageSize = devicePageSize[deviceType]["best"];
 
-  const handleResize = () => {
+  const allPageSize = devicePageSize[deviceType]["all"];
+
+  const handleResize = useCallback(() => {
     const newDeviceType = calcBreakPoint(window.innerWidth);
     setDeviceType(newDeviceType);
-  };
+  }, []);
 
   const onClickNextPage = () => {
     setPaginationCurrentPage(paginationCurrentPage + 1);
@@ -140,16 +144,21 @@ function ItemsPage() {
   useEffect(() => {
     fetchFavoriteItems({
       page: 1,
-      pageSize: devicePageSize[deviceType]["best"],
+      pageSize: bestPageSize,
       orderBy: "favorite",
     });
     fetchAllItems({
       page: paginationCurrentPage,
-      pageSize: devicePageSize[deviceType]["all"],
+      pageSize: allPageSize,
       orderBy: orderBy.value,
-      keyword,
     });
-  }, [deviceType, orderBy.value, paginationCurrentPage]);
+  }, [
+    deviceType,
+    orderBy.value,
+    paginationCurrentPage,
+    bestPageSize,
+    allPageSize,
+  ]);
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
@@ -157,7 +166,7 @@ function ItemsPage() {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [handleResize]);
 
   return (
     <div>
@@ -214,7 +223,7 @@ function ItemsPage() {
 
             <Pagination
               totalCount={totalCount}
-              pageSize={devicePageSize[deviceType]["all"]}
+              pageSize={allPageSize}
               currentPage={paginationCurrentPage}
               onClickNext={onClickNextPage}
               onClickPrev={onClickPrevPage}
