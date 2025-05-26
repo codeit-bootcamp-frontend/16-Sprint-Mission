@@ -14,7 +14,7 @@ const AllProductsCounts = {
 };
 
 // useMediaQuery 훅을 사용하여 현재 화면 크기에 따라 베스트 상품과 전체 상품의 개수를 반환합니다.
-export default function useMediaCount() {
+export default function getMediaCount() {
   const breakpoint = useMediaQuery();
 
   return {
