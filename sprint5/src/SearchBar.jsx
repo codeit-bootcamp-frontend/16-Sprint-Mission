@@ -1,3 +1,4 @@
+// 검색바
 import React, { useState } from "react";
 
 const SearchBar = ({ onSearch }) => {

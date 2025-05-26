@@ -1,3 +1,4 @@
+//하단 페이지네이션
 import React, { useState } from "react";
 
 const Pagination = () => {
@@ -24,12 +25,6 @@ const Pagination = () => {
   //페이지 넘기기 기능
   return (
     <div>
-      <ul>
-        {paginatedData.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
-
       <div>
         <button
           onClick={() => handlePageChange(currentPage - 1)}
