@@ -12,7 +12,7 @@ export function usePagination(queryStrings, setQueryStrings, total, PAGINATION_M
         return Math.ceil(total / pageSize);
     }, [total, pageSize]) //이건 자주 안 바뀌니까 해도 되겠다.
 
-    const pageStart = Math.floor((page - 1) / PAGINATION_MAX) * PAGINATION_MAX + 1; /*훅에서 반환할 꺼 */
+    const pageStart = Math.floor((page - 1) / PAGINATION_MAX) * PAGINATION_MAX + 1;
 
     //이전, 다음 버튼 활성, 비활성 이미지용
     const isPrevDisabled = pageStart <= 1;  /*훅에서 반환할 꺼 */
@@ -56,5 +56,5 @@ export function usePagination(queryStrings, setQueryStrings, total, PAGINATION_M
         }));
     }, [setQueryStrings])
 
-    return { pageStart, pageList, handlePageRequest, handleNextBtn, handlePrevBtn, isPrevDisabled, isNextDisabled }
+    return { pageList, handlePageRequest, handleNextBtn, handlePrevBtn, isPrevDisabled, isNextDisabled }
 }

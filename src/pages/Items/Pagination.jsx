@@ -13,7 +13,6 @@ function Pagination() {
   const { queryStrings, setQueryStrings, total } = useContext(ProductData);
 
   const {
-    pageStart,
     handlePageRequest,
     pageList,
     handleNextBtn,
