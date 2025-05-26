@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { ProductAllContext } from "@context/ProductAllContext";
+import { ProductData } from "./ProductDataProvider";
 import styles from "@styles/Pagination.module.css";
 import nextBtn_active from "@assets/images/nextBtn-active.png";
 import nextBtn_inactive from "@assets/images/nextBtn-inactive.png";
@@ -9,7 +9,7 @@ import prevBtn_inactive from "@assets/images/prevBtn-inactive.png";
 const PAGINATION_MAX = 5;
 
 function Pagination() {
-  const { queryStrings, setQueryStrings, total } = useContext(ProductAllContext);
+  const { queryStrings, setQueryStrings, total } = useContext(ProductData);
   const { page, pageSize } = queryStrings;
   const [pageList, setPageList] = useState([1, 2, 3, 4, 5]);
   const maxPageLength = Math.ceil(total / pageSize);
@@ -19,7 +19,7 @@ function Pagination() {
   }
 
   const pageStart = getPaginationStart(page);
-  
+
   // 밑에 이전, 다음 버튼 활성, 비활성 이미지용
   const isPrevDisabled = pageStart <= 1;
   const isNextDisabled = pageStart + PAGINATION_MAX > maxPageLength;
@@ -75,7 +75,10 @@ function Pagination() {
       className={styles[`items__all-pagination`]}
     >
       <li className={styles.pagination__prev} onClick={handlePrev}>
-        <img src={isPrevDisabled ? prevBtn_inactive : prevBtn_active} alt="페이지 이전 목록으로 가기" />
+        <img
+          src={isPrevDisabled ? prevBtn_inactive : prevBtn_active}
+          alt="페이지 이전 목록으로 가기"
+        />
       </li>
       {pageList.map((i) => (
         <li
@@ -88,7 +91,10 @@ function Pagination() {
         </li>
       ))}
       <li className={styles.pagination__next} onClick={handleNext}>
-        <img src={isNextDisabled ? nextBtn_inactive : nextBtn_active} alt="페이지 다음 목록으로 가기" />
+        <img
+          src={isNextDisabled ? nextBtn_inactive : nextBtn_active}
+          alt="페이지 다음 목록으로 가기"
+        />
       </li>
     </ul>
   );

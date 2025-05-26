@@ -1,8 +1,8 @@
 import { createContext, useState } from "react";
 
-export const ProductAllContext = createContext();
+export const ProductData = createContext();
 
-function ProductAllContextProvider({ children }) {
+function ProductDataProvider({ children }) {
   const [products, setProducts] = useState([]);
   const [queryStrings, setQueryStrings] = useState({
     orderBy: "recent",
@@ -12,7 +12,7 @@ function ProductAllContextProvider({ children }) {
   const [total, setTotal] = useState(0);
 
   return (
-    <ProductAllContext.Provider
+    <ProductData.Provider
       value={{
         total,
         setTotal,
@@ -23,8 +23,8 @@ function ProductAllContextProvider({ children }) {
       }}
     >
       {children}
-    </ProductAllContext.Provider>
+    </ProductData.Provider>
   );
 }
 
-export default ProductAllContextProvider;
+export default ProductDataProvider;

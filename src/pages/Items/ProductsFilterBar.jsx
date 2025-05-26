@@ -1,15 +1,15 @@
 import { useContext } from "react";
-import { ProductAllContext } from "@context/ProductAllContext";
+import { ProductData } from "./ProductDataProvider";
 import { Link } from "react-router-dom";
 import styles from "@styles/FilterProducts.module.css";
 
 function ProductsFilterBar() {
-  const { queryStrings, setQueryStrings } = useContext(ProductAllContext);
+  const { queryStrings, setQueryStrings } = useContext(ProductData);
 
   // dataset.value에 의한 queryStrings변경
   const handleChange = (e) => {
     if (e.target.tagName !== "LI") return;
-    
+
     setQueryStrings((prev) => ({
       ...prev,
       orderBy: e.target.dataset.value,
@@ -18,7 +18,9 @@ function ProductsFilterBar() {
 
   return (
     <div className={styles[`filter-bar`]}>
-      <button><Link to='/addItem'>상품 등록하기</Link></button>
+      <button>
+        <Link to="/addItem">상품 등록하기</Link>
+      </button>
       <div className={styles.filter__search}>
         <label
           className={styles[`filter__search-icon`]}

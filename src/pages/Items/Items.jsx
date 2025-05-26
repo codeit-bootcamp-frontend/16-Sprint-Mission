@@ -1,6 +1,6 @@
 import ProductsFavorite from "./ProductsFavorite";
 import ProductsAll from "./ProductsAll";
-import ProductAllContextProvider from "@context/ProductAllContext";
+import ProductDataProvider from "./ProductDataProvider";
 import "@styles/item.css";
 
 function Items() {
@@ -8,9 +8,9 @@ function Items() {
     <main className="items">
       <div className="items__container">
         <ProductsFavorite />
-        <ProductAllContextProvider>
+        <ProductDataProvider>
           <ProductsAll />
-        </ProductAllContextProvider>
+        </ProductDataProvider>
       </div>
     </main>
   );

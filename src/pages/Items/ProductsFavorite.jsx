@@ -1,5 +1,5 @@
 import styles from "@styles/ProductsFavorite.module.css";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import ProductItem from "./ProductItem";
 import { useResizeInnerWidth } from "@hooks/useResizeInnerWidth";
 import LoadFailed from "./LoadFailed";

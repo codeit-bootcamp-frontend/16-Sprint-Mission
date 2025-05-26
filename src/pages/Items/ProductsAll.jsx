@@ -5,11 +5,11 @@ import Pagination from "./Pagination";
 import LoadFailed from "./LoadFailed";
 import { useResizeInnerWidth } from "@hooks/useResizeInnerWidth";
 import { useContext, useEffect } from "react";
-import { ProductAllContext } from "@context/ProductAllContext";
+import { ProductData } from "./ProductDataProvider";
 import { useLoadItems } from "@hooks/useLoadItems";
 
 function ProductsAll() {
-  const { products, setProducts, setTotal, queryStrings, setQueryStrings } = useContext(ProductAllContext);
+  const { products, setProducts, setTotal, queryStrings, setQueryStrings } = useContext(ProductData);
 
   //resize발생하면 페이지사이즈 다시 가져다줘
   const [pageSize] = useResizeInnerWidth("all");
