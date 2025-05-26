@@ -105,16 +105,16 @@ function Items() {
     <>
       <Nav />
       <Content>
-        <Header type={h1} text={"베스트 상품"} />
+        <Header type='h1' text={"베스트 상품"} />
         <ProductList
           orderBy={"favorite"}
           pageSize={bestProductCount}
           type='large'
         />
         <div className={styles.headers}>
-          <Header type={h1} text={"전체 상품"} />
+          <Header type='h1' text={"전체 상품"} />
           <SearchItem value={search} onChange={handleSearch} />
-          <Button href={"#"} buttonText={"상품등록하기"} />
+          <Button type='button' href={"#"} buttonText={"상품등록하기"} />
           <DropDown onChangeOrder={handleOrder} />
         </div>
         <ProductList

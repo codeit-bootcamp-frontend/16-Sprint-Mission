@@ -1,8 +1,8 @@
 import styles from "./Button.module.css";
 
-function Button({ href, buttonText }) {
+function Button({ href, buttonText, type }) {
   return (
-    <a className={styles.button} href={href}>
+    <a className={styles[type]} href={href}>
       {buttonText}
     </a>
   );
