@@ -8,6 +8,8 @@ import { routes } from './routes';
 export default function AppRouter() {
   return (
     <Routes>
+      {/*기본 경로 "/" 로 들어오면 /items 로 리다이렉트 */}
+      <Route path="/" element={<Navigate to="/items" replace />} />
       {/* {라우터 배열에서 경로를 탐색함} */}
       {routes.map(({ path, element: Component }) => (
         <Route key={path} path={path} element={<Component />} />
