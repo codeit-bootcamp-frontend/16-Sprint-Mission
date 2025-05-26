@@ -86,6 +86,7 @@ function ItemsPage() {
   };
 
   const onClickSearch = () => {
+    setPaginationCurrentPage(1);
     fetchAllItems({
       page: paginationCurrentPage,
       pageSize: devicePageSize[deviceType]["all"],

@@ -17,20 +17,20 @@ function Pagination({
     .fill()
     .map((e, i) => i + 1);
 
-  const visiblePageList =
-    currentPage < pageTotal - 4
-      ? totalPageList.slice(currentPage - 1, currentPage + 4)
-      : totalPageList.slice(pageTotal - 5, pageTotal);
+  let startPage = Math.floor((currentPage - 1) / 5) * 5 + 1;
+  let endPage = Math.min(startPage + 5 - 1, pageTotal);
+
+  const visiblePageList = totalPageList.slice(startPage - 1, endPage);
 
   return (
     <div className="pagination__container">
       <button
         className="pagination__button"
-        disabled={currentPage < 2}
+        disabled={currentPage === 1}
         onClick={onClickPrev}
       >
         <img
-          src={currentPage < 2 ? arrowLeftInactive : arrowLeftActive}
+          src={currentPage === 1 ? arrowLeftInactive : arrowLeftActive}
           alt="페이지 네이션 이전 버튼"
         />
       </button>
