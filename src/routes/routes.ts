@@ -8,7 +8,7 @@ export interface AppRoute {
   element: React.ComponentType;
 }
 export const routes: AppRoute[] = [
-  { path: '/', element: MarketPage },
+  { path: '/items', element: MarketPage },
 
   // …추가 라우트
 ];
