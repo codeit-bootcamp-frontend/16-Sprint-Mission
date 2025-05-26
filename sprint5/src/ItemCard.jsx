@@ -3,17 +3,16 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import heartIcon from "./assets/heart_Icon.png";
 
-const ItemCard = () => {
+function ItemCard({ limit }) {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
     const fetchItems = async () => {
       try {
         const response = await axios.get(
-          "https://panda-market-api.vercel.app/products"
+          "https://panda-market-api.vercel.app/products?page=1&pageSize=10&orderBy=recent"
         );
-        console.log(response.data);
-        setItems(response.data.list); // list 배열만 꺼내서 items에 저장장
+        setItems(response.data.list); // list 배열만 꺼내서 items에 저장
       } catch (error) {
         console.error("상품 정보를 불러오는데 실패했습니다!", error);
       }
@@ -22,9 +21,11 @@ const ItemCard = () => {
     fetchItems();
   }, []);
 
+  const shownItems = limit ? items.slice(0, limit) : items;
+
   return (
     <section className="item-card-container">
-      {items.map((item) => (
+      {shownItems.map((item) => (
         <div key={item.id} className="item-card">
           <img src={item.imageUrl} alt={item.name} />
           <h3>{item.name}</h3>
@@ -36,6 +37,6 @@ const ItemCard = () => {
       ))}
     </section>
   );
-};
+}
 
 export default ItemCard;
