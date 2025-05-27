@@ -1,5 +1,3 @@
-/** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
 import { ADD_PRODUCT_TITLE } from "../../constants/titles";
 import PageContent from "../../layout/PageContent";
 import AddProductForm from "../../components/Form/AddProductForm";

@@ -29,7 +29,7 @@ const deleteButtonStyle = css`
   align-items: center;
   justify-content: center;
   width: 20px;
-  height: 20px;
+  aspect-ratio: 1/1;
   margin-left: 8px;
   background-color: var(--gray400);
   color: #fff;
@@ -37,6 +37,6 @@ const deleteButtonStyle = css`
 
   img {
     width: 8px;
-    height: 8px;
+    aspect-ratio: 1/1;
   }
 `;
