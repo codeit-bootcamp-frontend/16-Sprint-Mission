@@ -4,15 +4,19 @@ import styled from "@emotion/styled/macro";
 import { useEffect, useState } from "react";
 import { InputStyle } from "../Input/Input";
 import { validateTag } from "../../utils/validators";
-import Tag from "../Tag";
+import debounce from "../../utils/debounce";
+import Tag from ".";
+
+const ADD_TAG_DEBOUNCE_MS = 100;
 
 const TagsInput = ({ id, placeholder, onTagsChange }) => {
   const [inputValue, setInputValue] = useState("");
   const [tags, setTags] = useState([]);
   const [errorMessage, setErrorMessage] = useState(false);
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = debounce((e) => {
     if (e.key !== "Enter") return;
+    if (e.isComposing) return; // 한글 중복 입력 방지
     e.preventDefault();
 
     const newTag = inputValue.trim();
@@ -26,9 +30,10 @@ const TagsInput = ({ id, placeholder, onTagsChange }) => {
     const updatedTags = [...tags, newTag];
     setTags(updatedTags);
     onTagsChange(updatedTags);
+
     setInputValue("");
     setErrorMessage("");
-  };
+  }, ADD_TAG_DEBOUNCE_MS);
 
   const removeTag = (tag) => {
     const updatedTags = tags.filter((prevTag) => prevTag !== tag);
