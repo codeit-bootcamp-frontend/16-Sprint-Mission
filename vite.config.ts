@@ -4,7 +4,7 @@ import path from 'path';
 import sass from 'sass';
 
 export default defineConfig({
-  base: './', // 빌드 결과물의 기본 경로 설정
+  base: '/', // 빌드 결과물의 기본 경로 설정
   plugins: [
     react({
       // fast-refresh, SWC 옵션 등 필요시 추가 설정
@@ -20,11 +20,11 @@ export default defineConfig({
       scss: {
         implementation: sass,
         //issue : includePath 를 불러오지 못함
-        includePaths: [path.resolve(__dirname, 'src/styles')],
+
         // 자동 주입
         additionalData: `
-          @use "variables" as *;
-          @use "mixins"    as *;
+          @use "@/styles/variables" as *;
+          @use "@/styles/mixins" as *;
           `,
       },
     },
