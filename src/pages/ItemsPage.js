@@ -40,8 +40,8 @@ function ItemListPage() {
 
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownList = [
-    { value: "recent", name: "최신순" },
-    { value: "favorite", name: "좋아요순" },
+    { name: "최신순", value: "recent" },
+    { name: "좋아요순", value: "favorite" },
   ];
 
   const fetchFavoriteItems = async (queryParams) => {
@@ -71,8 +71,11 @@ function ItemListPage() {
     setShowDropdown(!showDropdown);
   };
 
-  const onClickDropdownItem = (value) => {
-    setOrderBy(value);
+  const onClickDropdownItem = (order) => {
+    if (order.value !== orderBy.value) {
+      setOrderBy(order);
+      setPaginationCurrentPage(1);
+    }
   };
 
   const onKeywordChange = (e) => {
