@@ -82,6 +82,7 @@ const TagsInputStyle = css`
 
 const TagList = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
 `;
 
