@@ -12,6 +12,8 @@ function ItemListPage() {
     name: "최신순",
     value: "recent",
   });
+
+  const [searchValue, setSearchValue] = useState("");
   const [keyword, setKeyword] = useState("");
 
   const [totalCount, setTotalCount] = useState(0);
@@ -49,9 +51,7 @@ function ItemListPage() {
       const { list } = await getFavoriteItems(queryParams);
       setBestItems(list);
     } catch (error) {
-      console.log(error);
     } finally {
-      console.log("finally");
     }
   };
 
@@ -61,9 +61,7 @@ function ItemListPage() {
       setAllItems(list);
       setTotalCount(totalCount);
     } catch (error) {
-      console.log(error);
     } finally {
-      console.log("finally");
     }
   };
 
@@ -79,7 +77,7 @@ function ItemListPage() {
   };
 
   const onKeywordChange = (e) => {
-    setKeyword(e.target.value);
+    setSearchValue(e.target.value);
   };
 
   const onKeyDown = (e) => {
@@ -88,14 +86,9 @@ function ItemListPage() {
     }
   };
 
-  const onClickSearch = () => {
+  const onClickSearch = async () => {
     setPaginationCurrentPage(1);
-    fetchAllItems({
-      page: paginationCurrentPage,
-      pageSize: allPageSize,
-      orderBy: orderBy.value,
-      keyword,
-    });
+    setKeyword(searchValue);
   };
 
   const calcBreakPoint = (width) => {
@@ -152,12 +145,12 @@ function ItemListPage() {
       page: paginationCurrentPage,
       pageSize: allPageSize,
       orderBy: orderBy.value,
+      keyword,
     });
-  }, [deviceType, orderBy.value, paginationCurrentPage, allPageSize]);
+  }, [deviceType, orderBy.value, paginationCurrentPage, allPageSize, keyword]);
 
   useEffect(() => {
     const handleResize = () => {
-      console.log("handleResize");
       const newDeviceType = calcBreakPoint(window.innerWidth);
       setDeviceType(newDeviceType);
     };
@@ -193,7 +186,7 @@ function ItemListPage() {
             <div className="items__container__all__header">
               <div className="items__container__title">전체 상품</div>
               <SearchInput
-                value={keyword}
+                value={searchValue}
                 onInput={onKeywordChange}
                 onKeyDown={onKeyDown}
                 onClick={onClickSearch}
