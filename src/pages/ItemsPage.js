@@ -1,5 +1,5 @@
 import "../css/pages/ItemListPage.css";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { getFavoriteItems, getAllItems } from "../api/Items.js";
 import Card from "../components/Card";
 import SearchInput from "../components/SearchInput.js";
@@ -127,11 +127,6 @@ function ItemListPage() {
 
   const allPageSize = devicePageSize[deviceType]["all"];
 
-  const handleResize = useCallback(() => {
-    const newDeviceType = calcBreakPoint(window.innerWidth);
-    setDeviceType(newDeviceType);
-  }, []);
-
   const onClickNextPage = () => {
     setPaginationCurrentPage(paginationCurrentPage + 1);
   };
@@ -150,26 +145,29 @@ function ItemListPage() {
       pageSize: bestPageSize,
       orderBy: "favorite",
     });
+  }, [deviceType, bestPageSize]);
+
+  useEffect(() => {
     fetchAllItems({
       page: paginationCurrentPage,
       pageSize: allPageSize,
       orderBy: orderBy.value,
     });
-  }, [
-    deviceType,
-    orderBy.value,
-    paginationCurrentPage,
-    bestPageSize,
-    allPageSize,
-  ]);
+  }, [deviceType, orderBy.value, paginationCurrentPage, allPageSize]);
 
   useEffect(() => {
+    const handleResize = () => {
+      console.log("handleResize");
+      const newDeviceType = calcBreakPoint(window.innerWidth);
+      setDeviceType(newDeviceType);
+    };
+
     window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [handleResize]);
+  }, []);
 
   return (
     <div>
