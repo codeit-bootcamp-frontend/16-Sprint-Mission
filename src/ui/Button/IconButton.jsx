@@ -11,6 +11,7 @@ const IconButton = ({
 }) => {
   return (
     <button
+      type="button"
       css={[IconButtonStyle({ color, radius }), customStyle]}
       onClick={onClick}
     >
