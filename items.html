@@ -30,58 +30,21 @@
     <header>
       <div class="gnb-left">
         <a href="index.html" class="pc-logo" aria-label="홈으로 이동">
-          <img src="images/logo/logo.svg" alt="판다마켓 로고" width="153"/>
+          <img src="images/logo/logo.svg" alt="판다마켓 로고" width="153" />
         </a>
         <a href="index.html" class="mobile-logo" aria-label="홈으로 이동">
-          <img src="images/logo/logo-text.svg" alt="판다마켓 로고" width="81"/>
+          <img src="images/logo/logo-text.svg" alt="판다마켓 로고" width="81" />
         </a>
         <nav class="nav">
           <a href="/">자유게시판</a>
-          <a href="items.html">중고마켓</a>
-        </div>
+          <a href="items.html" class="active">중고마켓</a>
+        </nav>
       </div>
       <a href="/" id="loginLink">
         <img src="images/icons/ic-profile.svg" alt="프로필" width="40" />
       </a>
     </header>
-    <main id="item-root"></main>
-    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-    <script type="text/babel">
-      const { useEffect, useState } = React;
-
-      function ItemList() {
-        const [items, setItems] = useState([]);
-
-        useEffect(() => {
-          fetch("https://panda-market-api.vercel.app/items")
-            .then(res => res.json())
-            .then(data => {
-              setItems(data);
-            })
-            .catch(err => {
-              console.error("에러 발생!", err);
-            });
-        }, []);
-
-        return (
-          <section style={{ padding: "20px" }}>
-            <h2>📦 중고마켓 상품 목록</h2>
-            <ul>
-              {items.map(item => (
-                <li key={item.id}>
-                  <strong>{item.title}</strong> - {item.price}원
-                </li>
-              ))}
-            </ul>
-          </section>
-        );
-      }
-
-      const root = ReactDOM.createRoot(document.getElementById("item-root"));
-      root.render(<ItemList />);
-    </script>
+    <main id="root" class="with-header"></main>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
