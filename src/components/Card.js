@@ -8,6 +8,10 @@ function Card({ data }) {
         className="card__image"
         alt="중고상품 이미지"
         src={data.images[0] ?? defaultImg}
+        onError={(e) => {
+          e.target.onError = null;
+          e.target.src = defaultImg;
+        }}
       />
       <div className="card__info">
         <div className="card__info__title">{data.name}</div>
