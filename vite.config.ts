@@ -4,6 +4,7 @@ import path from 'path';
 import sass from 'sass';
 
 export default defineConfig({
+  base: './', // 빌드 결과물의 기본 경로 설정
   plugins: [
     react({
       // fast-refresh, SWC 옵션 등 필요시 추가 설정
