@@ -1,4 +1,7 @@
+import styles from "./Additem.module.css";
 import { useRef, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
 function Additem() {
   const fileInputRef = useRef(null);
@@ -11,6 +14,7 @@ function Additem() {
   });
   const [imagePreview, setImagePreview] = useState(null);
   const [tagInput, setTagInput] = useState("");
+  const [isComposing, setIsComposing] = useState(false);
   const [errors, setErrors] = useState({});
 
   const validateField = (name, value) => {
@@ -83,136 +87,140 @@ function Additem() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <header style={{ display: "flex", justifyContent: "space-between" }}>
-        <h1>상품 등록하기</h1>
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <header className={styles.header}>
+        <h1 className={styles.title}>상품 등록하기</h1>
         <button
           type="submit"
           disabled={!isFormValid()}
-          style={{
-            backgroundColor: isFormValid() ? "#3692FF" : "#ccc",
-            color: "white",
-            cursor: isFormValid() ? "pointer" : "not-allowed",
-          }}
+          className={styles.submitButton}
         >
           등록
         </button>
       </header>
-
-      <h3>상품 이미지</h3>
-      <input
-        type="file"
-        accept="image/*"
-        ref={fileInputRef}
-        onChange={handleImageChange}
-        style={{ display: "none" }}
-      />
-      <button type="button" onClick={() => fileInputRef.current.click()}>
-        이미지 등록
-      </button>
-      {imagePreview && (
-        <div style={{ marginTop: "12px" }}>
-          <img src={imagePreview} alt="미리보기" width="200" />
-          <button
-            type="button"
-            onClick={() => {
-              setImagePreview(null);
-              fileInputRef.current.value = "";
-            }}
-            style={{
-              marginLeft: "8px",
-              background: "transparent",
-              border: "none",
-              cursor: "pointer",
-              fontWeight: "bold",
-            }}
-          >
-            ×
-          </button>
-        </div>
-      )}
-      {errors.image && <p style={{ color: "red" }}>{errors.image}</p>}
-
-      <h3>상품명</h3>
-      <input
-        name="productName"
-        value={form.productName}
-        onChange={handleChange}
-      />
-      {errors.productName && <p style={{ color: "red" }}>{errors.productName}</p>}
-
-      <h3>상품 소개</h3>
-      <textarea
-        name="productDescription"
-        value={form.productDescription}
-        onChange={handleChange}
-      />
-      {errors.productDescription && (
-        <p style={{ color: "red" }}>{errors.productDescription}</p>
-      )}
-
-      <h3>판매 가격</h3>
-      <input name="price" value={form.price} onChange={handleChange} />
-      {errors.price && <p style={{ color: "red" }}>*{errors.price}</p>}
-
-      <h3>태그</h3>
-      <input
-        type="text"
-        value={tagInput}
-        onChange={(e) => setTagInput(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            e.preventDefault();
-            const trimmed = tagInput.trim();
-            if (trimmed && !form.tags.includes(trimmed)) {
-              setForm((prev) => ({
-                ...prev,
-                tags: [...prev.tags, trimmed],
-              }));
-            }
-            setTagInput("");
-          }
-        }}
-        placeholder="태그 입력 후 Enter"
-      />
-      {errors.tags && <p style={{ color: "red" }}>{errors.tags}</p>}
-
-      <div style={{ display: "flex", flexWrap: "wrap", marginTop: "12px" }}>
-        {form.tags.map((tag, idx) => (
-          <div
-            key={idx}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              padding: "6px 10px",
-              backgroundColor: "#f0f0f0",
-              borderRadius: "20px",
-              marginRight: "8px",
-              marginBottom: "8px",
-              fontSize: "14px",
-            }}
-          >
-            #{tag}
-            <button
-              type="button"
-              onClick={() => {
-                setForm((prev) => ({
-                  ...prev,
-                  tags: prev.tags.filter((t) => t !== tag),
-                }));
-              }}
-              style={{
-                marginLeft: "8px",
-                background: "transparent",
-                border: "none",
-                cursor: "pointer",
-                fontWeight: "bold",
-              }}
+      <div className={styles.inputContainer}>
+        <div className={styles.inputWrapper}>
+          <h3>상품 이미지</h3>
+          <input
+            type="file"
+            accept="image/*"
+            ref={fileInputRef}
+            onChange={handleImageChange}
+            style={{ display: "none" }}
+          />
+          <div className={styles.imageWrapper}>
+            <div
+              className={styles.imageUploadBox}
+              onClick={() => fileInputRef.current.click()}
             >
-              ×
-            </button>
+              <FontAwesomeIcon icon={faPlus} className={styles.plus} />
+              <div>이미지 등록</div>
+            </div>
+            {imagePreview && (
+              <div className={styles.imagePreviewWrapper}>
+                <img
+                  src={imagePreview}
+                  alt="미리보기"
+                  className={styles.imagePreview}
+                />
+                <div
+                  type="button"
+                  onClick={() => {
+                    setImagePreview(null);
+                    fileInputRef.current.value = "";
+                  }}
+                  className={styles.removeImageButton}
+                >
+                  <FontAwesomeIcon icon={faTimesCircle} />
+                </div>
+              </div>
+            )}
+            {errors.image && <p className={styles.errorText}>{errors.image}</p>}
           </div>
-        ))}
+        </div>
+        <div className={styles.inputWrapper}>
+          <h3>상품명</h3>
+          <input
+            name="productName"
+            value={form.productName}
+            onChange={handleChange}
+            className={styles.input}
+            placeholder="상품명을 입력해주세요"
+          />
+          {errors.productName && (
+            <p className={styles.errorText}>{errors.productName}</p>
+          )}
+        </div>
+        <div className={styles.inputWrapper}>
+          <h3>상품 소개</h3>
+          <textarea
+            name="productDescription"
+            value={form.productDescription}
+            onChange={handleChange}
+            className={styles.textArea}
+            placeholder="상품 소개를 입력해주세요"
+          />
+          {errors.productDescription && (
+            <p className={styles.errorText}>{errors.productDescription}</p>
+          )}
+        </div>
+        <div className={styles.inputWrapper}>
+          <h3>판매 가격</h3>
+          <input
+            name="price"
+            value={form.price}
+            onChange={handleChange}
+            className={styles.input}
+            placeholder="판매 가격을 입력해주세요"
+          />
+          {errors.price && <p className={styles.errorText}>*{errors.price}</p>}
+        </div>
+        <div className={styles.inputWrapper}>
+          <h3>태그</h3>
+          <input
+            type="text"
+            value={tagInput}
+            onChange={(e) => setTagInput(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter"&& !isComposing) {
+                e.preventDefault();
+                const trimmed = tagInput.trim();
+                if (trimmed && !form.tags.includes(trimmed)) {
+                  setForm((prev) => ({
+                    ...prev,
+                    tags: [...prev.tags, trimmed],
+                  }));
+                }
+                setTagInput("");
+              }
+            }}
+            onCompositionStart={() => setIsComposing(true)}
+            onCompositionEnd={() => setIsComposing(false)}
+            placeholder="태그를 입력하고 Enter키를 눌러주세요"
+            className={styles.input}
+          />
+          {errors.tags && <p className={styles.errorText}>{errors.tags}</p>}
+
+          <div className={styles.tagsContainer}>
+            {form.tags.map((tag, idx) => (
+              <div key={idx} className={styles.tag}>
+                #{tag}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setForm((prev) => ({
+                      ...prev,
+                      tags: prev.tags.filter((t) => t !== tag),
+                    }));
+                  }}
+                  className={styles.removeTagButton}
+                >
+                  <FontAwesomeIcon icon={faTimesCircle} />
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </form>
   );
