@@ -1,9 +1,112 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Pagination from "../Pagination/Pagination";
 import ProductList from "../ProductList/ProductList";
+import { getData } from "../../data/api";
 import styles from "./AllProductArea.module.scss";
 
+const SORT_TYPE = {
+  recent: "최신순",
+  favorite: "좋아요순",
+};
+const SortDropdown = ({ orderBy, setOrderBy }) => {
+  const [sortOpen, setSortOpen] = useState(false);
+  const handleClickSort = () => setSortOpen(!sortOpen);
+  const handleSelectSort = (sort) => {
+    setOrderBy(sort);
+    setSortOpen(!sortOpen);
+  };
+
+  return (
+    <>
+      <button
+        type="button"
+        className={styles.sortSelectBox__current}
+        onClick={handleClickSort}
+      >
+        <span>{SORT_TYPE[orderBy]}</span>
+      </button>
+      {sortOpen && (
+        <div className={styles.sortSelectBox__list}>
+          <ul>
+            {Object.keys(SORT_TYPE).map((sort) => (
+              <li key={sort}>
+                <button type="button" onClick={() => handleSelectSort(sort)}>
+                  {SORT_TYPE[sort]}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </>
+  );
+};
+
+const ITEM_COUNT = {
+  WEB: 10,
+  TABLET: 6,
+  MOBILE: 4,
+};
+
+const getItemCount = (itemCountInfo) => {
+  const viewWidth = window.innerWidth;
+  if (viewWidth <= 767) {
+    // mobile
+    return itemCountInfo["MOBILE"];
+  } else if (viewWidth <= 1199) {
+    // tablet
+    return itemCountInfo["TABLET"];
+  }
+  return itemCountInfo["WEB"];
+};
+
+const INIT_PAGE_SIZE = getItemCount(ITEM_COUNT);
+
 const AllProductArea = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [orderBy, setOrderBy] = useState("recent");
+  const [pageSize, setPageSize] = useState(INIT_PAGE_SIZE);
+  const [productList, setProductList] = useState([]);
+
+  // 요구 정의서
+  // 1. orderby="recent", 10가지 상품을 전체 상품 리스트에 렌더링
+  // 2. 반응형에 따라 웹에선 10, 타블렛에선 6, 모바일에선 4 보여주기 (미디어 쿼리 사용하기)
+  // 3. 전체 상품에서 드롭다운으로 최신순/좋아요순 정렬 기능 추가
+  // 4. [심화] 페이지네이션 기능 구현
+
+  const getProductList = async (options) => {
+    try {
+      const data = await getData(options);
+      if (!data) return;
+      setProductList(data.list);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const updatePageSize = () => {
+    const itemCount = getItemCount(ITEM_COUNT);
+    setPageSize(itemCount);
+  };
+
+  useEffect(() => {
+    updatePageSize();
+    window.addEventListener("resize", updatePageSize);
+
+    return () => {
+      window.removeEventListener("resize", updatePageSize);
+    };
+  }, []);
+
+  useEffect(() => {
+    getProductList({
+      page: currentPage,
+      pageSize: pageSize,
+      orderBy: orderBy,
+    });
+  }, [currentPage, pageSize, orderBy]);
+
   return (
     <>
       <div className={styles.allProductArea__utils}>
@@ -22,24 +125,12 @@ const AllProductArea = () => {
           상품 등록하기
         </Link>
         <div className={styles.utils__sortSelectBox}>
-          <button type="button" className={styles.sortSelectBox__current}>
-            <span>최신순</span>
-          </button>
-          <div className={styles.sortSelectBox__list}>
-            <ul>
-              <li>
-                <button type="button">최신순</button>
-              </li>
-              <li>
-                <button type="button">좋아요순</button>
-              </li>
-            </ul>
-          </div>
+          <SortDropdown orderBy={orderBy} setOrderBy={setOrderBy} />
         </div>
       </div>
       <div className={styles.allProductArea__content}>
-        <ProductList />
-        <Pagination />
+        <ProductList list={productList} />
+        <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} />
       </div>
     </>
   );

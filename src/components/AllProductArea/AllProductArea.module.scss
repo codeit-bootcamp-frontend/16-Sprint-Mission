@@ -98,29 +98,41 @@
           }
 
           &__list {
-            display: none;
             position: absolute;
             top: 100%;
             right: 0;
             width: 130px;
             margin-top: 8px;
-            border: 1px solid var.$gray200;
-            background: var.$white;
-            border-radius: 12px;
+            z-index: 1;
+            overflow: hidden;
 
-            li {
-              border-bottom: 1px solid var.$gray200;
+            ul {
+              border: 1px solid var.$gray200;
+              background: var.$white;
+              border-radius: 12px;
+              transform: translateY(-100%);
+              animation: showSortList 0.3s ease forwards;
 
-              &:last-of-type {
-                border-bottom: none;
+              @keyframes showSortList {
+                100% {
+                  transform: translateY(0);
+                }
               }
 
-              button {
-                display: block;
-                width: 100%;
-                height: $height;
-                font-size: 16px;
-                color: var.$gray800;
+              li {
+                border-bottom: 1px solid var.$gray200;
+
+                &:last-of-type {
+                  border-bottom: none;
+                }
+
+                button {
+                  display: block;
+                  width: 100%;
+                  height: $height;
+                  font-size: 16px;
+                  color: var.$gray800;
+                }
               }
             }
           }
