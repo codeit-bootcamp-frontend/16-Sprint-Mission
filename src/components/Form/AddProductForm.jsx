@@ -14,6 +14,7 @@ import {
   validateProductDescription,
   validateProductPrice,
 } from "../../utils/validators";
+import debounce from "../../utils/debounce";
 
 const INITIAL_VALUES = {
   name: "",
@@ -21,6 +22,8 @@ const INITIAL_VALUES = {
   price: 0,
   tags: [],
 };
+
+const CHECK_FORM_DEBOUNCE_MS = 100;
 
 const AddProductForm = ({ title }) => {
   const [formData, setFormData] = useState(INITIAL_VALUES);
@@ -60,7 +63,7 @@ const AddProductForm = ({ title }) => {
   };
 
   useEffect(() => {
-    validateForm(formData);
+    debounce(validateForm(formData), CHECK_FORM_DEBOUNCE_MS);
   }, [formData]);
 
   return (
@@ -104,9 +107,9 @@ const AddProductForm = ({ title }) => {
       <FormControl>
         <FormLabel inputId="productPrice">판매 가격</FormLabel>
         <Input
-          type="number"
           id="productPrice"
           name="price"
+          type="number"
           placeholder="판매 가격을 입력해주세요"
           value={formData.price}
           onChange={handleFormInputChange}
