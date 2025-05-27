@@ -14,6 +14,7 @@ function Additem() {
   });
   const [imagePreview, setImagePreview] = useState(null);
   const [tagInput, setTagInput] = useState("");
+  const [isPriceFocused, setIsPriceFocused] = useState(false);
   const [isComposing, setIsComposing] = useState(false);
   const [errors, setErrors] = useState({});
 
@@ -46,19 +47,52 @@ function Additem() {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
+
     if (!file) return;
+
     if (imagePreview) {
-      alert("이미지는 한 개만 등록할 수 있어요!");
+      // 🔥 이미지가 이미 등록되어 있다면 덮어쓰기 막기
+      setErrors((prev) => ({
+        ...prev,
+        imagePreview: "이미지는 한 개만 등록할 수 있어요!",
+      }));
+
+      // 선택창에서 파일 선택해도 input 상태는 유지됨 → 값 리셋 필요
       e.target.value = "";
+
       return;
     }
 
     const imageUrl = URL.createObjectURL(file);
     setImagePreview(imageUrl);
+
+    // 🔥 이미지 정상 등록 시 에러 초기화
+    setErrors((prev) => ({
+      ...prev,
+      imagePreview: "",
+    }));
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    if (name === "price") {
+      // 쉼표 제거 후 숫자만 추출
+      const rawValue = value.replace(/,/g, "");
+      if (!/^\d*$/.test(rawValue)) return; // 숫자만 입력 허용
+
+      setForm((prev) => ({
+        ...prev,
+        price: rawValue,
+      }));
+
+      const error = validateField(name, rawValue);
+      setErrors((prev) => ({
+        ...prev,
+        [name]: error,
+      }));
+      return;
+    }
+
     setForm((prev) => ({
       ...prev,
       [name]: value,
@@ -73,11 +107,18 @@ function Additem() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const validationResults = {};
+
     Object.entries(form).forEach(([key, val]) => {
       const err = validateField(key, val);
       if (err) validationResults[key] = err;
     });
+
+    // ✅ 이미지 추가 검사
+    if (!imagePreview) {
+      validationResults.imagePreview = "이미지를 등록해주세요.";
+    }
 
     setErrors(validationResults);
     if (Object.keys(validationResults).length > 0) return;
@@ -106,6 +147,9 @@ function Additem() {
             accept="image/*"
             ref={fileInputRef}
             onChange={handleImageChange}
+            onClick={(e) => {
+              e.target.value = "";
+            }}
             style={{ display: "none" }}
           />
           <div className={styles.imageWrapper}>
@@ -135,8 +179,10 @@ function Additem() {
                 </div>
               </div>
             )}
-            {errors.image && <p className={styles.errorText}>{errors.image}</p>}
           </div>
+          {errors.imagePreview && (
+            <p className={styles.errorText}>{errors.imagePreview}</p>
+          )}
         </div>
         <div className={styles.inputWrapper}>
           <h3>상품명</h3>
@@ -144,6 +190,7 @@ function Additem() {
             name="productName"
             value={form.productName}
             onChange={handleChange}
+            onBlur={handleChange}
             className={styles.input}
             placeholder="상품명을 입력해주세요"
           />
@@ -157,6 +204,7 @@ function Additem() {
             name="productDescription"
             value={form.productDescription}
             onChange={handleChange}
+            onBlur={handleChange}
             className={styles.textArea}
             placeholder="상품 소개를 입력해주세요"
           />
@@ -168,7 +216,13 @@ function Additem() {
           <h3>판매 가격</h3>
           <input
             name="price"
-            value={form.price}
+            value={
+              isPriceFocused
+                ? form.price
+                : Number(form.price || 0).toLocaleString()
+            }
+            onFocus={() => setIsPriceFocused(true)}
+            onBlur={() => setIsPriceFocused(false)}
             onChange={handleChange}
             className={styles.input}
             placeholder="판매 가격을 입력해주세요"
@@ -181,8 +235,9 @@ function Additem() {
             type="text"
             value={tagInput}
             onChange={(e) => setTagInput(e.target.value)}
+            onBlur={handleChange}
             onKeyDown={(e) => {
-              if (e.key === "Enter"&& !isComposing) {
+              if (e.key === "Enter" && !isComposing) {
                 e.preventDefault();
                 const trimmed = tagInput.trim();
                 if (trimmed && !form.tags.includes(trimmed)) {
