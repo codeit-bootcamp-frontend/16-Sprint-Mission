@@ -1,10 +1,11 @@
 import "./App.css";
 import Navi from "./Navi.jsx";
-import ItemCard from "./ItemCard.jsx";
 import SearchBar from "./SearchBar.jsx";
 import AddProductButton from "./AddProductButton.jsx";
 import SortDropdown from "./SortDropdown.jsx";
 import Pagination from "./Pagination.jsx";
+import BestItemCard from "./BestItemCard.jsx";
+import AllItemCard from "./AllItemCard.jsx";
 
 function App() {
   return (
@@ -12,14 +13,14 @@ function App() {
       <Navi />
       <section>
         <h2>베스트 상품</h2>
-        <ItemCard limit={4} /> {/* 데스크탑 기준 베스트 상품 4개*/}
+        <BestItemCard />
       </section>
       <section>
         <h2>전체 상품</h2>
         <SearchBar />
         <AddProductButton />
         <SortDropdown />
-        <ItemCard limit={10} /> {/* 데스크탑 기준 전체 상품 10개 */}
+        <AllItemCard />
       </section>
       <Pagination />
     </>
