@@ -4,6 +4,7 @@ import Pagination from "../Pagination/Pagination";
 import ProductList from "../ProductList/ProductList";
 import { getData } from "../../data/api";
 import styles from "./AllProductArea.module.scss";
+import { getItemCount } from "../../utils/getItemCount";
 
 const SORT_TYPE = {
   recent: "최신순",
@@ -47,18 +48,6 @@ const ITEM_COUNT = {
   WEB: 10,
   TABLET: 6,
   MOBILE: 4,
-};
-
-const getItemCount = (itemCountInfo) => {
-  const viewWidth = window.innerWidth;
-  if (viewWidth <= 767) {
-    // mobile
-    return itemCountInfo["MOBILE"];
-  } else if (viewWidth <= 1199) {
-    // tablet
-    return itemCountInfo["TABLET"];
-  }
-  return itemCountInfo["WEB"];
 };
 
 const INIT_PAGE_SIZE = getItemCount(ITEM_COUNT);

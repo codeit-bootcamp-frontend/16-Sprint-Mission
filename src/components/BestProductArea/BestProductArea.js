@@ -2,12 +2,18 @@ import { useEffect, useState } from "react";
 import ProductList from "../ProductList/ProductList";
 import { getData } from "../../data/api";
 import styles from "./BestProductArea.module.scss";
+import { getItemCount } from "../../utils/getItemCount";
 
-const INIT_PAGE = 4;
+const INIT_PAGE_SIZE = 4;
+const ITEM_COUNT = {
+  WEB: 4,
+  TABLET: 2,
+  MOBILE: 1,
+};
 
 const BestProductArea = () => {
   const [bestList, setBestList] = useState([]);
-  const [pageSize, setPageSize] = useState(INIT_PAGE);
+  const [pageSize, setPageSize] = useState(INIT_PAGE_SIZE);
 
   // 요구 정의서
   // 1. orderby="favorite", 4가지 상품을 베스트 상품 리스트에 렌더링
@@ -24,14 +30,12 @@ const BestProductArea = () => {
   };
 
   const updatePageSize = () => {
-    const viewWidth = window.innerWidth;
-    if (viewWidth <= 767) setPageSize(1); // mobile
-    else if (viewWidth <= 1199) setPageSize(2); // tablet
-    else setPageSize(4); // web
+    const itemCount = getItemCount(ITEM_COUNT);
+    setPageSize(itemCount);
   };
 
   useEffect(() => {
-    getProductList({ orderBy: "favorite", pageSize: INIT_PAGE, page: 1 });
+    getProductList({ orderBy: "favorite", pageSize: INIT_PAGE_SIZE, page: 1 });
 
     updatePageSize();
     window.addEventListener("resize", updatePageSize);
