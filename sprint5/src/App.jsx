@@ -1,3 +1,5 @@
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navi from "./Navi.jsx";
 import SearchBar from "./SearchBar.jsx";
@@ -9,8 +11,11 @@ import AllItemCard from "./AllItemCard.jsx";
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Navi />
+      <Routes>
+        <Route path="/items" />
+      </Routes>
       <section>
         <h2>베스트 상품</h2>
         <BestItemCard />
@@ -23,7 +28,7 @@ function App() {
         <AllItemCard />
       </section>
       <Pagination />
-    </>
+    </BrowserRouter>
   );
 }
 
