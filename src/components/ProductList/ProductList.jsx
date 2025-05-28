@@ -6,10 +6,10 @@ import { getProducts } from "../../services/api";
 import { DEFAULT_ITEM_PAGE_SIZE } from "../../constants/pagesize";
 import { ITEMS_ORDER_MAP } from "../../constants/sortOptions";
 import useAsync from "../../hooks/useAsync";
-import SectionTitle from "../../ui/SectionTitle/SectionTitle";
-import Button from "../../ui/Button";
-import Dropdown from "../../ui/Dropdown";
-import InputSearch from "../../ui/Input/InputSearch";
+import SectionTitle from "../ui/SectionTitle/SectionTitle";
+import Button from "../ui/Button";
+import Dropdown from "../ui/Dropdown";
+import InputSearch from "../ui/Input/InputSearch";
 import Pagination from "../Pagination";
 import ProductListResults from "./ProductListResults";
 

@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import { useEffect, useRef, useState } from "react";
 import plusIcon from "../../assets/images/ic_plus.svg";
 import closeIcon from "../../assets/images/ic_close_white.svg";
-import IconButton from "../../ui/Button/IconButton";
+import IconButton from "../ui/Button/IconButton";
 
 const ImageFileUploader = () => {
   const [previewUrl, setPreviewUrl] = useState(null);

@@ -1,4 +1,4 @@
-import PageContent from "../../layout/PageContent";
+import PageContent from "../../components/layout/PageContent";
 import ProductList from "../../components/ProductList";
 import BestProductList from "../../components/ProductList/BestProductList";
 import useWindowDimensions from "../../hooks/useWindowDimensions";

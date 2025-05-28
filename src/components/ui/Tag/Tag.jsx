@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import IconButton from "../Button/IconButton";
-import closeIcon from "../../assets/images/ic_close_white.svg";
+import closeIcon from "../../../assets/images/ic_close_white.svg";
 
 const Tag = ({ children, onClick }) => {
   return (

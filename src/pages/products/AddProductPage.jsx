@@ -1,5 +1,5 @@
 import { ADD_PRODUCT_TITLE } from "../../constants/titles";
-import PageContent from "../../layout/PageContent";
+import PageContent from "../../components/layout/PageContent";
 import AddProductForm from "../../components/Form/AddProductForm";
 
 const AddProductPage = () => {

@@ -2,7 +2,7 @@
 import { ProductListStyle } from "./ProductList";
 import { useEffect, useState, useCallback } from "react";
 import { getProducts } from "../../services/api";
-import SectionTitle from "../../ui/SectionTitle";
+import SectionTitle from "../ui/SectionTitle";
 import ProductListResults from "./ProductListResults";
 import useAsync from "../../hooks/useAsync";
 

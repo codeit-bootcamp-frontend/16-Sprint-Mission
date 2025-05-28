@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { useEffect, useState } from "react";
-import searchImg from "../../assets/images/ic-search.svg";
+import searchImg from "../../../assets/images/ic-search.svg";
 
 const InputSearch = ({ keyword, onSearch, className, placeholder }) => {
   const [value, setValue] = useState(keyword);

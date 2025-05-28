@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { ProductListStyle } from "./ProductList";
 import ProductCard from "../ProductCard";
-import ProductCardSkeleton from "../../ui/Skeletons/ProductCardSkeleton";
-import Button from "../../ui/Button";
+import ProductCardSkeleton from "../ui/Skeletons/ProductCardSkeleton";
+import Button from "../ui/Button";
 
 const ProductListResults = ({
   isLoading,

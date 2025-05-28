@@ -1,14 +1,14 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { useEffect, useState } from "react";
-import SectionTitle from "../../ui/SectionTitle";
-import Button from "../../ui/Button";
-import FormControl from "../../ui/Form/FormControl";
-import FormLabel from "../../ui/Form/FormLabel";
+import SectionTitle from "../ui/SectionTitle";
+import Button from "../ui/Button";
+import FormControl from "../ui/Form/FormControl";
+import FormLabel from "../ui/Form/FormLabel";
 import ImageFileUploader from "../ImageFileUploader/ImageFileUploader";
-import Input from "../../ui/Input";
-import Textarea from "../../ui/Textarea";
-import TagsInput from "../../ui/Tag/TagsInput";
+import Input from "../ui/Input";
+import Textarea from "../ui/Textarea";
+import TagsInput from "../ui/Tag/TagsInput";
 import {
   validateProductName,
   validateProductDescription,

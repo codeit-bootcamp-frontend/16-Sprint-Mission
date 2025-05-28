@@ -3,8 +3,8 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled/macro";
 import { useEffect, useState } from "react";
 import { InputStyle } from "../Input/Input";
-import { validateTag } from "../../utils/validators";
-import debounce from "../../utils/debounce";
+import { validateTag } from "../../../utils/validators";
+import debounce from "../../../utils/debounce";
 import Tag from ".";
 
 const ADD_TAG_DEBOUNCE_MS = 100;

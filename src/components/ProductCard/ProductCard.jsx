@@ -9,7 +9,7 @@ const ProductCard = ({ data, loading = "lazy" }) => {
 
   return (
     <div css={ProductCardStyle}>
-      <Link to="/items">
+      <Link to="/products">
         <span className="img-wrap">
           <img
             src={images}

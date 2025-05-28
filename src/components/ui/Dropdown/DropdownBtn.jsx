@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import arrowDownImg from "../../assets/images/ic_arrow_down.png";
-import sortImg from "../../assets/images/ic_sort.svg";
-import useWindowDimensions from "../../hooks/useWindowDimensions";
-import { BREAKPOINTS } from "../../constants/responsive";
+import arrowDownImg from "../../../assets/images/ic_arrow_down.png";
+import sortImg from "../../../assets/images/ic_sort.svg";
+import useWindowDimensions from "../../../hooks/useWindowDimensions";
+import { BREAKPOINTS } from "../../../constants/responsive";
 
 const DropdownBtn = ({ selected, onClickDropdownBtn, isActive, iconType }) => {
   const { width } = useWindowDimensions();
