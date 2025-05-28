@@ -114,7 +114,7 @@ function Items() {
         <div className={styles.headers}>
           <Header type='h1' text={"전체 상품"} />
           <SearchItem value={search} onChange={handleSearch} />
-          <Button type='button' href={"#"} buttonText={"상품등록하기"} />
+          <Button href={"additem"} buttonText={"상품등록하기"} />
           <DropDown onChangeOrder={handleOrder} />
         </div>
         <ProductList
