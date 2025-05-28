@@ -3,6 +3,7 @@ import App from "./App";
 import ProductsPage from "./pages/products/ProductsPage";
 import BoardPage from "./pages/board/BoardPage";
 import AddProductPage from "./pages/products/AddProductPage";
+import ProductsLayout from "./pages/products/ProductsLayout";
 
 const Main = () => {
   return (
@@ -10,9 +11,13 @@ const Main = () => {
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<ProductsPage />} />
-          <Route path="/items" element={<ProductsPage />} />
+
+          <Route path="/products" element={<ProductsLayout />}>
+            <Route index element={<ProductsPage />} />
+            <Route path="addProduct" element={<AddProductPage />} />
+          </Route>
+
           <Route path="/board" element={<BoardPage />} />
-          <Route path="/addItem" element={<AddProductPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

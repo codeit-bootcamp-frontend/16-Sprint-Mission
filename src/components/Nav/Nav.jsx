@@ -15,7 +15,7 @@ const Nav = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/items" style={activeLinkStyle} css={NavLinkStyle}>
+        <NavLink to="/products" style={activeLinkStyle} css={NavLinkStyle}>
           중고마켓
         </NavLink>
       </li>

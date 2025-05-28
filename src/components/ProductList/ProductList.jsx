@@ -62,7 +62,7 @@ const ProductList = ({ title, pageSize = DEFAULT_ITEM_PAGE_SIZE }) => {
           variant="primary"
           size="sm"
           className="add-item-btn"
-          onClick={() => navigate("/addItem")}
+          onClick={() => navigate("/products/addProduct")}
         >
           상품 등록하기
         </Button>
