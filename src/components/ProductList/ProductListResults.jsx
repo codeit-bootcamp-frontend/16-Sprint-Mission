@@ -1,5 +1,4 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
 import { ProductListStyle } from "./ProductList";
 import ProductCard from "../ProductCard";
 import ProductCardSkeleton from "../../ui/Skeletons/ProductCardSkeleton";
@@ -9,7 +8,7 @@ const ProductListResults = ({
   isLoading,
   isError,
   isEmpty,
-  items,
+  products,
   pageSize,
   listType,
 }) => {
@@ -20,24 +19,24 @@ const ProductListResults = ({
 
   if (isLoadingError) return <ProductListError />;
 
-  if (items.length === 0) return <ProductListEmpty isEmpty={isEmpty} />;
+  if (products.length === 0) return <ProductListEmpty isEmpty={isEmpty} />;
 
   return (
     <ProductListRenderer
-      items={items}
+      products={products}
       pageSize={pageSize}
       listType={listType}
     />
   );
 };
 
-const ProductListRenderer = ({ items, pageSize, listType }) => {
+const ProductListRenderer = ({ products, pageSize, listType }) => {
   return (
     <div css={ProductListStyle}>
-      <ul className={`item-list-ul ${listType}`}>
-        {items.slice(0, pageSize).map(({ id, ...itemData }) => {
+      <ul className={`product-list-ul ${listType}`}>
+        {products.slice(0, pageSize).map(({ id, ...itemData }) => {
           return (
-            <li key={id} className="item-list">
+            <li key={id} className="product-list">
               <ProductCard key={id} data={itemData} loading="eager" />
             </li>
           );
@@ -50,9 +49,9 @@ const ProductListRenderer = ({ items, pageSize, listType }) => {
 const ProductListLoading = ({ pageSize, listType }) => {
   return (
     <div css={ProductListStyle}>
-      <ul className={`item-list-ul ${listType}`}>
+      <ul className={`product-list-ul ${listType}`}>
         {Array.from({ length: pageSize }).map((_, index) => (
-          <li key={index} className="item-list">
+          <li key={index} className="product-list">
             <ProductCardSkeleton />
           </li>
         ))}
@@ -72,7 +71,7 @@ const ProductListError = () => {
 const ProductListEmpty = ({ isEmpty }) => {
   return (
     <div css={ProductListStyle}>
-      <div className="item-list-empty">
+      <div className="product-list-empty">
         <p>상품이 없습니다.</p>
         <Button type="button" variant="primary" size="sm" onClick={isEmpty}>
           돌아가기

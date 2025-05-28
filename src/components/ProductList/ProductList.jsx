@@ -2,7 +2,7 @@
 import { css } from "@emotion/react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
-import { getItems } from "../../services/api";
+import { getProducts } from "../../services/api";
 import { DEFAULT_ITEM_PAGE_SIZE } from "../../constants/pagesize";
 import { ITEMS_ORDER_MAP } from "../../constants/sortOptions";
 import useAsync from "../../hooks/useAsync";
@@ -17,28 +17,28 @@ const DEFAULT_ORDER = Object.keys(ITEMS_ORDER_MAP)[0];
 const dropdownMenuItems = Object.keys(ITEMS_ORDER_MAP);
 
 const ProductList = ({ title, pageSize = DEFAULT_ITEM_PAGE_SIZE }) => {
-  const [items, setItems] = useState([]);
+  const [products, setProducts] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
   const [order, setOrder] = useState(DEFAULT_ORDER);
   const navigate = useNavigate();
   const {
     isLoading,
     loadingError,
-    runAsync: getItemsAsync,
-  } = useAsync(getItems);
+    runAsync: getProductsAsync,
+  } = useAsync(getProducts);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const keyword = searchParams.get("keyword") || "";
 
   const handleLoad = useCallback(
     async (options) => {
-      const result = await getItemsAsync(options);
+      const result = await getProductsAsync(options);
       if (!result) return;
 
-      setItems(result.list);
+      setProducts(result.list);
       setTotalCount(result.totalCount);
     },
-    [getItemsAsync]
+    [getProductsAsync]
   );
 
   const handleDropdownSelect = (selectedOrder) => {
@@ -63,13 +63,13 @@ const ProductList = ({ title, pageSize = DEFAULT_ITEM_PAGE_SIZE }) => {
 
   return (
     <div css={ProductListStyle}>
-      <div className="item-list-header">
+      <div className="product-list-header">
         <SectionTitle title={title} />
         <Button
           type="button"
           variant="primary"
           size="sm"
-          className="add-item-btn"
+          className="add-product-btn"
           onClick={() => navigate("/products/addProduct")}
         >
           상품 등록하기
@@ -77,7 +77,7 @@ const ProductList = ({ title, pageSize = DEFAULT_ITEM_PAGE_SIZE }) => {
         <InputSearch
           keyword={keyword}
           onSearch={setSearchParams}
-          className="item-list-header-search"
+          className="product-list-header-search"
           placeholder="검색할 상품을 입력해주세요"
         />
         <Dropdown
@@ -88,7 +88,7 @@ const ProductList = ({ title, pageSize = DEFAULT_ITEM_PAGE_SIZE }) => {
         />
       </div>
       <ProductListResults
-        items={items}
+        products={products}
         pageSize={pageSize}
         isLoading={isLoading}
         isError={loadingError}
@@ -110,95 +110,95 @@ export default ProductList;
 export const ProductListStyle = css`
   padding-bottom: 40px;
 
-  .item-list-ul {
+  .product-list-ul {
     display: grid;
     grid-template-columns: repeat(2, minmax(48%, 1fr));
     gap: 32px 8px;
   }
 
-  .item-list img {
+  .product-list img {
     width: 100%;
     aspect-ratio: 1/1;
     object-fit: cover;
   }
 
-  .item-list-ul.best {
+  .product-list-ul.best {
     display: flex;
     flex-wrap: wrap;
     gap: 40px 24px;
   }
 
-  .item-list-ul.best .item-list {
+  .product-list-ul.best .product-list {
     flex-grow: 1;
   }
 
-  .item-list-header .item-list-title {
+  .product-list-header .product-list-title {
     margin-bottom: 0;
   }
 
-  .item-list-header {
+  .product-list-header {
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-products: center;
     gap: var(--list-header-gap);
     margin-bottom: 24px;
   }
 
-  .item-list-header-search {
+  .product-list-header-search {
     width: calc(100% - var(--dropdown-min-width) - var(--list-header-gap));
   }
 
-  .item-list-empty {
+  .product-list-empty {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-products: center;
     justify-content: center;
     height: 300px;
     gap: 8px;
   }
 
   @media (min-width: 600px) {
-    .item-list-ul.best {
+    .product-list-ul.best {
       gap: 40px 10px;
     }
 
-    .item-list-ul.best .item-list {
+    .product-list-ul.best .product-list {
       width: calc(50% - 10px);
     }
   }
 
   @media (min-width: 720px) {
-    .item-list-ul {
+    .product-list-ul {
       grid-template-columns: repeat(3, minmax(30%, 1fr));
       gap: 40px 16px;
     }
 
-    .item-list-header {
+    .product-list-header {
       flex-wrap: nowrap;
     }
 
-    .item-list-header-search {
+    .product-list-header-search {
       width: 242px;
     }
   }
 
   @media (min-width: 1200px) {
-    .item-list-ul {
+    .product-list-ul {
       grid-template-columns: repeat(5, minmax(220px, 1fr));
       gap: 40px 24px;
     }
 
-    .item-list-ul.best {
+    .product-list-ul.best {
       gap: 40px 24px;
     }
 
-    .item-list-ul.best .item-list {
+    .product-list-ul.best .product-list {
       width: calc(25% - 24px);
       flex-grow: 1;
     }
 
-    .item-list-header-search {
+    .product-list-header-search {
       width: 324px;
     }
   }

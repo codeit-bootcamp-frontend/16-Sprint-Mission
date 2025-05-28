@@ -1,8 +1,7 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
 import { ProductListStyle } from "./ProductList";
 import { useEffect, useState, useCallback } from "react";
-import { getItems } from "../../services/api";
+import { getProducts } from "../../services/api";
 import SectionTitle from "../../ui/SectionTitle";
 import ProductListResults from "./ProductListResults";
 import useAsync from "../../hooks/useAsync";
@@ -11,22 +10,22 @@ const ORDER_BY = "favorite";
 const LIST_TYPE = "best";
 
 const BestProductList = ({ title, pageSize }) => {
-  const [items, setItems] = useState([]);
+  const [products, setProducts] = useState([]);
   const {
     isLoading,
     loadingError,
-    runAsync: getItemsAsync,
-  } = useAsync(getItems);
+    runAsync: getProductsAsync,
+  } = useAsync(getProducts);
 
   const handleLoad = useCallback(
     async (options) => {
-      const result = await getItemsAsync(options);
+      const result = await getProductsAsync(options);
       if (!result) return;
 
       const { list } = result;
-      setItems(list);
+      setProducts(list);
     },
-    [getItemsAsync]
+    [getProductsAsync]
   );
 
   useEffect(() => {
@@ -39,7 +38,7 @@ const BestProductList = ({ title, pageSize }) => {
       <ProductListResults
         isLoading={isLoading}
         isError={loadingError}
-        items={items}
+        products={products}
         pageSize={pageSize}
         listType={LIST_TYPE}
       />
