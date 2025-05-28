@@ -5,20 +5,18 @@ import ProductCardSkeleton from "../ui/Skeletons/ProductCardSkeleton";
 import Button from "../ui/Button";
 
 const ProductListResults = ({
-  isLoading,
-  isError,
-  isEmpty,
   products,
   pageSize,
   listType,
+  isLoading,
+  loadingError,
+  isEmpty,
 }) => {
-  const isLoadingError = !isLoading && isError;
+  const isLoadingError = !isLoading && loadingError;
 
   if (isLoading)
     return <ProductListLoading pageSize={pageSize} listType={listType} />;
-
   if (isLoadingError) return <ProductListError />;
-
   if (products.length === 0) return <ProductListEmpty isEmpty={isEmpty} />;
 
   return (

@@ -91,7 +91,7 @@ const ProductList = ({ title, pageSize = DEFAULT_ITEM_PAGE_SIZE }) => {
         products={products}
         pageSize={pageSize}
         isLoading={isLoading}
-        isError={loadingError}
+        loadingError={loadingError}
         isEmpty={() => setSearchParams("")}
       />
       <Pagination
@@ -140,7 +140,7 @@ export const ProductListStyle = css`
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    align-products: center;
+    align-items: center;
     gap: var(--list-header-gap);
     margin-bottom: 24px;
   }
@@ -152,7 +152,7 @@ export const ProductListStyle = css`
   .product-list-empty {
     display: flex;
     flex-direction: column;
-    align-products: center;
+    align-items: center;
     justify-content: center;
     height: 300px;
     gap: 8px;
