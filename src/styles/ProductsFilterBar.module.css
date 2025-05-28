@@ -1,0 +1,141 @@
+.filter-bar {
+  /* 모바일 변수 */
+  --search-input-width: 288px;
+  --filter-select-width: 42px;
+  --filter-select-height: 42px;
+
+  display: flex;
+  text-align: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  position: absolute;
+  top: 0px;
+}
+
+.filter-bar button {
+  background-color: var(--primary-color);
+  padding: 12px 23px;
+  font-size: 16px;
+  border-radius: 8px;
+  height: 42px;
+  margin-bottom: 8px;
+}
+
+.filter-bar button a {
+  color: var(--secondary-gray100);
+}
+
+.filter__search {
+  position: relative;
+}
+
+.filter__search-input {
+  width: var(--search-input-width);
+  height: 42px;
+  padding: 9px 44px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--secondary-gray100);
+  margin-right: 14px;
+}
+
+.filter__search-icon {
+  width: 24px;
+  height: 24px;
+  background: url("../assets/icon/ic_search.png") center no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 9px;
+  left: 16px;
+}
+
+/* 커스텀 셀렉터 */
+.filter__select {
+  width: var(--filter-select-width);
+  height: var(--filter-select-height);
+  border: 1px solid var(--secondary-gray200);
+  border-radius: 12px;
+  padding: 12px 20px;
+  display: block;
+  position: relative;
+  background: url("../assets/icon/ic_sort.png") no-repeat center;
+  text-align: left;
+  cursor: pointer;
+  color: transparent;
+}
+
+.filter__select ul {
+  text-align: center;
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+}
+
+.filter__select input {
+  display: none;
+}
+
+.filter__select ul li {
+  background-color: #fff;
+  width: 130px;
+  height: var(--filter-select-height);
+  border: 1px solid var(--cool-gray200);
+  line-height: var(--filter-select-height);
+  cursor: pointer;
+  color: var(--secondary-gray800);
+}
+
+.filter__select ul li:first-child {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom: none;
+}
+
+.filter__select ul li:nth-child(2) {
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.filter__select input:checked + ul {
+  display: block;
+}
+
+@media screen and (min-width: 768px) {
+  .filter-bar {
+    /* 태블릿 변수 */
+    --search-input-width: 242px;
+    --filter-select-width: 130px;
+
+    gap: 12px;
+    flex-wrap: nowrap;
+    position: relative;
+  }
+
+  .filter-bar button {
+    margin-bottom: var(--init-zero);
+    order: 1;
+  }
+
+  .filter-bar button:hover {
+    background-color: var(--primary-hover);
+  }
+
+  .filter__search-input {
+    margin-right: var(--init-zero);
+  }
+
+  .filter__select {
+    order: 2;
+    background: url("../assets/icon/ic_arrow_down.png") no-repeat 86px 8px;
+    color: var(--secondary-gray800);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .filter-bar {
+    /* 데스크탑 변수 */
+    --search-input-width: 325px;
+  }
+}

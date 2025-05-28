@@ -1,0 +1,15 @@
+.error-message {
+  /* err메세지 */
+  color: red;
+  font-size: 14px;
+  line-height: 26px;
+  padding-left: 24px;
+  display: block;
+  margin-top: -16px;
+  margin-bottom: 16px;
+}
+
+.error-line {
+  /* 인풋 빨간 라인*/
+  border: 1px solid red !important;
+}

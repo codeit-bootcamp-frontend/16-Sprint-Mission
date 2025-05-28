@@ -1,0 +1,36 @@
+.items {
+  /* 컬러 */
+  --cool-gray500: #6b7280;
+  --cool-gray600: #4b5563;
+  --cool-gray200: #e5e7eb;
+  /* 모바일 : .items 내부 변수들 */
+  /* 컨테이너 */
+  --init-zero: 0;
+  --container-width: 344px;
+  /* header와 거리 벌리기 */
+  padding-top: 17px;
+  color: var(--secondary-gray900);
+}
+
+.items__container {
+  max-width: var(--container-width);
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* 테블릿 */
+@media screen and (min-width: 768px) {
+  .items {
+    /* 태블릿 변수들 */
+    --container-width: 696px;
+    /* header와 거리 벌리기 */
+    padding-top: 24px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .items {
+    /* 데스크탑 변수들 */
+    --container-width: 1200px;
+  }
+}

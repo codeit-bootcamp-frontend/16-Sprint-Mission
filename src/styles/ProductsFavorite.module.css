@@ -1,0 +1,49 @@
+.items__favorite {
+  /* 모바일 변수 */
+  --favorite-card-size: 343px;
+}
+
+/* 베스트상품 */
+.items__favorite h2 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 32px;
+}
+
+.favorite-list {
+  margin-top: 16px;
+  display: flex;
+}
+
+.favorite-list__card {
+  width: var(--favorite-card-size);
+  cursor: pointer;
+}
+
+.favorite-list__item img {
+  height: var(--favorite-card-size);
+  border-radius: 19.46px;
+  margin-bottom: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .favorite-list {
+    gap: 10px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .items__favorite {
+    /* 데스크탑 변수 */
+    --favorite-card-size: 282px;
+  }
+
+  /* 베스트상품 */
+  .favorite-list {
+    gap: 24px;
+  }
+
+  .items__favorite ul li .card img {
+    border-radius: 16px;
+  }
+}
