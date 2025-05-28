@@ -64,7 +64,7 @@
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1280px) {
   :root {
     --header-padding-lr: 12.5rem;
   }

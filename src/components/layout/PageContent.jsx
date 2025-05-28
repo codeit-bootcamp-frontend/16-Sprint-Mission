@@ -10,7 +10,7 @@ export default PageContent;
 const PageContentStyle = css`
   /* mobile */
   width: 100%;
-  margin: 24px auto;
+  margin: 0 auto;
   padding: 16px;
 
   /* tablet */
@@ -19,8 +19,9 @@ const PageContentStyle = css`
   }
 
   /* desktop */
-  @media (min-width: 1200px) {
+  @media (min-width: 1280px) {
     width: var(--page-content-width);
+    margin: 24px auto;
     padding: 0;
   }
 `;
