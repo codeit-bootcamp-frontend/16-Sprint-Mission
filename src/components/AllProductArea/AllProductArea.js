@@ -57,6 +57,7 @@ const AllProductArea = () => {
   const [orderBy, setOrderBy] = useState("recent");
   const [pageSize, setPageSize] = useState(INIT_PAGE_SIZE);
   const [productList, setProductList] = useState([]);
+  const [totalCount, setTotalCount] = useState(0);
 
   // 요구 정의서
   // 1. orderby="recent", 10가지 상품을 전체 상품 리스트에 렌더링
@@ -69,6 +70,7 @@ const AllProductArea = () => {
       const data = await getData(options);
       if (!data) return;
       setProductList(data.list);
+      setTotalCount(data.totalCount);
     } catch (error) {
       console.error(error);
     }
@@ -119,7 +121,12 @@ const AllProductArea = () => {
       </div>
       <div className={styles.allProductArea__content}>
         <ProductList list={productList} />
-        <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} />
+        <Pagination
+          pageSize={pageSize}
+          totalCount={totalCount}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
       </div>
     </>
   );

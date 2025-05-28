@@ -28,6 +28,10 @@ $size: 40px;
     color: var.$gray500;
     border-radius: 50%;
 
+    &:disabled {
+      opacity: 0.5;
+    }
+
     &-current {
       border-color: #2f80ed;
       color: #fff;
