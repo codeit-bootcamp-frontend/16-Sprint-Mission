@@ -1,0 +1,155 @@
+/* block */
+.product-add-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  padding: 2rem;
+  font-size: 1.4rem;
+
+  // ----- header -----
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  &__submit-btn {
+    background: #a6abb7;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.6rem 1.4rem;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+
+  // ----- images -----
+  &__images {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  // 업로더 카드
+  &__uploader {
+    width: 160px;
+    height: 160px;
+    border: 2px dashed #d9d9d9;
+    border-radius: 8px;
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.15s;
+
+    &:hover {
+      background: #f0f0f0;
+    }
+  }
+
+  &__uploader-plus {
+    font-size: 3.2rem;
+    line-height: 1;
+  }
+  &__uploader-text {
+    margin-top: 0.4rem;
+    font-size: 1.2rem;
+    color: #777;
+  }
+  &__images-error {
+    margin-top: 0.4rem;
+    font-size: 1.2rem;
+    color: #ff4d4f; // 빨간색
+  }
+
+  // 썸네일
+  &__thumb {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    border-radius: 8px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__thumb-delete {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 24px;
+    height: 24px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    line-height: 24px;
+    font-size: 1.4rem;
+    cursor: pointer;
+  }
+
+  // 일반 인풋 / textarea
+  &__input,
+  &__textarea {
+    width: 100%;
+    border: none;
+    border-radius: 6px;
+    background: #f5f6f8;
+    padding: 1.2rem 1.4rem;
+    font-size: 1.4rem;
+    resize: none;
+
+    &:focus {
+      outline: 2px solid #4f7cff;
+      background: #fff;
+    }
+  }
+
+  // textarea만 별도
+  &__textarea {
+    min-height: 140px;
+  }
+
+  // ----- tags -----
+  &__tags {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  &__tag {
+    background: #f1f1f1;
+    border-radius: 9999px;
+    padding: 0.4rem 0.8rem 0.4rem 1rem;
+    font-size: 1.2rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__tag-delete {
+    margin-left: 0.4rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+}
