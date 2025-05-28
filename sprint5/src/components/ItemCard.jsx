@@ -1,5 +1,5 @@
 // 기본 상품 카드
-import heartIcon from "./assets/heart_Icon.png";
+import heartIcon from "../assets/heart_Icon.png";
 
 function ItemCard({ item }) {
   return (

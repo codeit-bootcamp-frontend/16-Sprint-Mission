@@ -1,33 +1,66 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Navi from "./Navi.jsx";
-import SearchBar from "./SearchBar.jsx";
-import AddProductButton from "./AddProductButton.jsx";
-import SortDropdown from "./SortDropdown.jsx";
-import Pagination from "./Pagination.jsx";
-import BestItemCard from "./BestItemCard.jsx";
-import AllItemCard from "./AllItemCard.jsx";
+import Navi from "./components/Navi.jsx";
+import ItemsMarket from "./pages/ItemsMarket.jsx";
+import SearchBar from "./components/SearchBar.jsx";
+import AddProductButton from "./components/AddProductButton.jsx";
+import AddItemPage from "./pages/AddItemPage.jsx";
+import SortDropdown from "./components/SortDropdown.jsx";
+import "./components/ProductList.jsx";
+import Pagination from "./components/Pagination.jsx";
+import BestItemCard from "./components/BestItemCard.jsx";
+import AllItemCard from "./components/AllItemCard.jsx";
 
 function App() {
+  const [sortOption, setSortOption] = useState("recent");
+  const [items, setItems] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+
+  useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const response = await axios.get(
+          `https://panda-market-api.vercel.app/products?page=${currentPage}&pageSize=10&orderBy=${sortOption}`
+        );
+        setItems(response.data.list);
+        setTotalPages(response.data.totalPages);
+      } catch (error) {
+        console.error("상품을 불러오지 못했습니다!", error);
+      }
+    };
+
+    fetchItems();
+  }, [sortOption, currentPage]);
+
   return (
     <BrowserRouter>
       <Navi />
+
       <Routes>
-        <Route path="/items" />
+        <Route path="/items" element={<ItemsMarket />} />
       </Routes>
+
       <section>
         <h2>베스트 상품</h2>
         <BestItemCard />
       </section>
+
       <section>
         <h2>전체 상품</h2>
         <SearchBar />
         <AddProductButton />
-        <SortDropdown />
-        <AllItemCard />
+        <SortDropdown sortOption={sortOption} onChange={setSortOption} />
+        <AllItemCard items={items} />
       </section>
-      <Pagination />
+
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={setCurrentPage}
+      />
     </BrowserRouter>
   );
 }
