@@ -1,5 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import getLogo from "../utils/getLogo";
+import userThumbnail from "../assets/images/icons/ic_user_thumbnail.svg";
+import { useState } from "react";
 
 const GNB_MENU = [
   { path: "/free", title: "자유게시판" },
@@ -8,6 +10,7 @@ const GNB_MENU = [
 
 const Header = () => {
   const location = useLocation();
+  const [isLogin, setIsLogin] = useState(true);
 
   return (
     <header id="header">
@@ -38,13 +41,21 @@ const Header = () => {
             ))}
           </ul>
         </nav>
-        <Link
-          to="/login"
-          aria-label="로그인 페이지로 이동"
-          className="btn h48 header__login-link"
-        >
-          로그인
-        </Link>
+        <div className="header__member">
+          {isLogin ? (
+            <Link to="/">
+              <img src={userThumbnail} alt="유저 썸네일" />
+            </Link>
+          ) : (
+            <Link
+              to="/login"
+              aria-label="로그인 페이지로 이동"
+              className="btn h48 header__login-link"
+            >
+              로그인
+            </Link>
+          )}
+        </div>
       </div>
     </header>
   );
