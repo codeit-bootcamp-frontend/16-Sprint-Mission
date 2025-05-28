@@ -42,10 +42,14 @@ export default function ProductAddPage() {
   };
 
   const handleTagKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.nativeEvent.isComposing) return;
+
     if (e.key !== 'Enter' && e.key !== ',') return;
     e.preventDefault();
+
     const value = tagInput.trim();
     if (!value || tags.includes(value)) return;
+
     setTags((prev) => [...prev, value]);
     setTagInput('');
   };
