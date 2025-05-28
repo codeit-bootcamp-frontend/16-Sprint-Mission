@@ -2,7 +2,7 @@
 import { css } from "@emotion/react";
 
 const Textarea = ({ ...props }) => {
-  const { id, name, placeholder, onChange } = props;
+  const { id, name, placeholder, onChange, onBlur } = props;
   return (
     <textarea
       id={id}
@@ -10,6 +10,7 @@ const Textarea = ({ ...props }) => {
       placeholder={placeholder}
       css={TextareaStyle}
       onChange={onChange}
+      onBlur={onBlur}
     />
   );
 };

@@ -2,15 +2,25 @@
 import { css } from "@emotion/react";
 
 const Input = ({ ...props }) => {
-  const { id, type = "text", name, placeholder, onChange } = props;
+  const {
+    id,
+    type = "text",
+    name,
+    value,
+    placeholder,
+    onChange,
+    onBlur,
+  } = props;
   return (
     <input
       id={id}
       type={type}
       name={name}
+      value={value}
       placeholder={placeholder}
       css={InputStyle}
       onChange={onChange}
+      onBlur={onBlur}
     />
   );
 };

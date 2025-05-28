@@ -15,11 +15,12 @@ import {
   validateProductPrice,
 } from "../../utils/validators";
 import debounce from "../../utils/debounce";
+import { formatPrice, unformatPrice } from "../../utils/formatPrice";
 
 const INITIAL_VALUES = {
   name: "",
   description: "",
-  price: 0,
+  price: "",
   tags: [],
 };
 
@@ -32,10 +33,22 @@ const AddProductForm = ({ title }) => {
   const handleFormInputChange = (e) => {
     const { name, value } = e.target;
 
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [name]: value,
-    });
+    }));
+  };
+
+  const handlePriceInputChange = (e) => {
+    const { name, value } = e.target;
+    const raw = value;
+    const digits = unformatPrice(raw);
+    const formatted = formatPrice(digits);
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: formatted,
+    }));
   };
 
   const handleTagsChange = (updatedTags) => {
@@ -58,7 +71,19 @@ const AddProductForm = ({ title }) => {
     setIsFormValid(isAllValid);
   };
 
-  const handleFormInputBlur = () => {
+  const handleFormInputBlur = (e) => {
+    const { name, value } = e.target;
+
+    if (name === "price") {
+      let priceValue = value;
+      priceValue = priceValue.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+      setFormData((prev) => ({
+        ...prev,
+        [name]: priceValue,
+      }));
+    }
+
     validateForm(formData);
   };
 
@@ -109,10 +134,10 @@ const AddProductForm = ({ title }) => {
         <Input
           id="productPrice"
           name="price"
-          type="number"
+          type="text"
           placeholder="판매 가격을 입력해주세요"
           value={formData.price}
-          onChange={handleFormInputChange}
+          onChange={handlePriceInputChange}
           onBlur={handleFormInputBlur}
         />
       </FormControl>
