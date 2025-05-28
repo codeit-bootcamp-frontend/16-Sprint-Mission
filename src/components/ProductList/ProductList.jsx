@@ -54,7 +54,6 @@ const ProductList = ({ title, pageSize = DEFAULT_ITEM_PAGE_SIZE }) => {
   }, [pageSize, order, keyword, handleLoad]);
 
   // 새로고침 시 검색값 초기화
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (searchParams.has("keyword")) {
       searchParams.delete("keyword");

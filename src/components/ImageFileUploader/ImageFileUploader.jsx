@@ -108,13 +108,17 @@ const AddFileButtonStyle = css`
   justify-content: center;
   gap: 12px;
   width: calc(48% - 12px);
-  max-width: var(--form-input-max-height);
+  max-width: 168px;
   aspect-ratio: 1/1;
   flex-grow: 1;
   background-color: var(--gray200);
   color: var(--gray400);
   border-radius: var(--border-radius-sm);
   font-size: 1rem;
+
+  @media (min-width: 600px) {
+    max-width: var(--form-input-max-height);
+  }
 
   @media (min-width: 768px) {
     width: auto;
@@ -126,7 +130,6 @@ const AddFileButtonStyle = css`
 const ImagePreviewStyle = css`
   position: relative;
   width: calc(48% - 12px);
-  max-width: var(--form-input-max-height);
   aspect-ratio: 1/1;
   flex-grow: 1;
   border-radius: var(--border-radius-sm);
