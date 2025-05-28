@@ -1,0 +1,98 @@
+// @use '@/styles/variables' as *;
+// @use '@/styles/mixins' as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background: white;
+  border-bottom: 1px solid var(--color-neutral-200);
+  z-index: 1000;
+
+  &__container {
+    max-width: var(--container-max-width);
+    height: 100%;
+    margin: 0 auto;
+    padding: 9px var(--spacing-xs);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include tablet {
+      padding: 9px var(--spacing-md);
+    }
+
+    @include laptop {
+      padding: 9px var(--container-padding);
+    }
+  }
+  &__leftwrap {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+
+    @include tablet {
+      gap: var(--spacing-lg);
+    }
+  }
+
+  /* 1. Logo */
+  &__logo {
+    display: block;
+
+    img {
+      display: block;
+      height: 2.5rem;
+    }
+  }
+
+  /* 2. Navigation */
+  &__nav {
+    display: flex;
+    gap: var(--spacing-sm);
+    font-size: var(--font-content-xs);
+    font-weight: bold;
+
+    @include tablet {
+      gap: var(--spacing-md);
+    }
+    @include laptop {
+      gap: var(--spacing-lg);
+    }
+  }
+
+  &__nav-item {
+    font-size: var(--font-content-sm);
+    color: var(--color-neutral-700);
+    text-decoration: none;
+    transition:
+      color 0.2s,
+      font-size 0.2s;
+
+    &:hover,
+    &:active {
+      color: var(--color-primary-100);
+      transform: scale(1.05);
+    }
+  }
+
+  /* 3. Login Icon */
+  &__login {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      fill: var(--color-neutral-700);
+      transition: fill 0.2s;
+    }
+    &:hover svg {
+      fill: var(--color-primary-100);
+    }
+  }
+}

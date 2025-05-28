@@ -1,0 +1,15 @@
+.market-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: var(--market-container-max-width);
+  margin: 0 auto;
+  padding: var(--spacing-xs);
+  gap: var(--spacing-md);
+
+  @include tablet {
+    padding: var(--spacing-md);
+    gap: var(--spacing-lg);
+  }
+}

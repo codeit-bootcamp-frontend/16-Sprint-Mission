@@ -1,0 +1,73 @@
+/* 디자인 변수를 정의합니다. */
+:root {
+  /* Font */
+  --font-family-base: 'Pretendard', sans-serif;
+  --font-title-lx: 2.5rem; // 40px
+  --font-title-lg: 2rem; // 32px
+  --font-title-md: 1.5rem; // 24px
+  --font-title-sm: 1.25rem; // 20px
+  --font-title-xs: 1.125rem; // 18px
+
+  --font-content-xl: 1.5rem; // 24px
+  --font-content-lg: 1.25rem; // 20px
+  --font-content-md: 1rem; // 16px
+  --font-content-sm: 0.875rem; // 14px
+  --font-content-xs: 0.75rem; // 12px
+
+  --font-label-xl: 1.25rem; // 20px
+  --font-label-lg: 1.125rem; // 18px
+  --font-label-md: 1rem; // 16px
+  --font-label-sm: 0.875rem; // 14px
+  --font-label-xs: 0.75rem; // 12px
+
+  /* Color - Primary */
+  --color-primary-100: #3692ff;
+
+  /* Color -Secondary */
+
+  --color-secondary-50: #fcfcfc;
+  --color-secondary-100: #e6f2ff;
+  --color-secondary-200: #cfe5ff;
+
+  /* Color -Neutral */
+  --color-neutral-50: #f9fafb;
+  --color-neutral-100: #f3f4f6;
+  --color-neutral-200: #e5e7eb;
+  --color-neutral-400: #9ca3af;
+  --color-neutral-500: #6b7280;
+  --color-neutral-600: #4b5563;
+  --color-neutral-700: #374151;
+  --color-neutral-800: #1f2937;
+  --color-neutral-900: #111827;
+
+  /* Color- Error */
+  --color-error: red;
+
+  /* Spacing */
+  --spacing-xs: 1rem; // 16px
+  --spacing-sm: 1.125rem; // 18px
+  --spacing-md: 1.5rem; // 24px
+  --spacing-lg: 2.5rem; // 40px
+  --spacing-xl: 8rem; // 128px
+
+  /* Layout */
+  --container-max-width: 1920px;
+  --container-padding: 200px;
+  --container-padding-tablet: 104px;
+  --container-top-margin: 231px;
+  --container-top-margin-sm: 80px;
+  --auth-container-max-width: 640px;
+  --auth-container-max-width-sm: 400px;
+  --market-container-max-width: 1200px;
+  --tablet-max-width: 1199px;
+  --mobile-max-width: 767px;
+
+  /* Border-radious */
+  --radius-button: 40px;
+}
+
+/* 미디어 쿼리 : scss */
+$mobile-max-width: 767px;
+$tablet-min-width: 768px;
+$tablet-max-width: 1199px;
+$desktop-min-width: 1200px;

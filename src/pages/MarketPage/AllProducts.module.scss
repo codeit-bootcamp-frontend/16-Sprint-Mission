@@ -1,0 +1,26 @@
+.all-products {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__list {
+    display: grid;
+    gap: var(--spacing-xs);
+    /* 모바일: 2*2 */
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    /* 태블릿: 3*2 */
+
+    @include tablet {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+    }
+    /* 랩톱: 5*2 */
+    @include laptop {
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+    }
+  }
+}

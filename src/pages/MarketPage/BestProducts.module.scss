@@ -1,0 +1,32 @@
+.best-products {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__title {
+    width: 100%;
+    font-size: var(--font-title-md);
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  &__list {
+    display: grid;
+    gap: var(--spacing-xs);
+    /* 모바일: 1열 */
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    /* 태블릿: 2열 */
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 1fr;
+    }
+    /* 랩톱: 4열 */
+    @include laptop {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 1fr;
+    }
+  }
+}
