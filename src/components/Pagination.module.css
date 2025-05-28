@@ -1,0 +1,39 @@
+.paginationWrapper {
+  margin: 40px auto 0;
+  width: 304px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.paginationWrapper button {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  background-color: #fff;
+  border: 1px solid var(--secondary-color-gray200);
+
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--secondary-color-gray500);
+}
+
+.paginationWrapper .active {
+  background-color: #2f80ed;
+  color: var(--secondary-color-gray200);
+}
+
+.prevBtn,
+.nextBtn {
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.prevBtn {
+  background-image: url(../assets/arrow_prev.svg);
+}
+.nextBtn {
+  background-image: url(../assets/arrow_next.svg);
+}

@@ -1,0 +1,119 @@
+/* Mobile styles */
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --secondary-color-gray900: #111827;
+  --secondary-color-gray800: #1f2937;
+  --secondary-color-gray600: #4b5563;
+  --secondary-color-gray500: #6b7280;
+  --secondary-color-gray400: #9ca3af;
+  --secondary-color-gray200: #e5e7eb;
+  --secondary-color-gray100: #f3f4f6;
+  --secondary-color-gray50: #f9fafb;
+  --background-color: #cfe5ff;
+  --border-color: #dfdfdf;
+
+  /* Primary color */
+  --blue: #3692ff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+}
+
+button {
+  background: none;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+img {
+  vertical-align: top;
+}
+
+body {
+  margin-top: 70px;
+  color: #374151;
+  word-break: keep-all;
+  font-family: "Pretendard", sans-serif;
+}
+
+/* #copyright {
+  order: 3;
+  flex-basis: 100%;
+}
+
+#footerMenu {
+  display: flex;
+  gap: 30px;
+  color: var(--gray-200);
+}
+
+#socialMedia {
+  display: flex;
+  gap: 12px;
+} */
+
+.container {
+  width: 100%;
+  max-width: 344px;
+  margin: 0 auto;
+}
+
+/* Tablet styles */
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 696px;
+  }
+}
+
+/* Desktop styles */
+
+@media (min-width: 1200px) {
+  header {
+    padding: 0 200px;
+  }
+
+  .container {
+    max-width: 1200px;
+  }
+
+  .navbar .container {
+    max-width: 1920px;
+  }
+}
