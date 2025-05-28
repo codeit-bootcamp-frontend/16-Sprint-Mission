@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import Button from "../components/button.jsx";
 import Input from "../components/input.jsx";
@@ -23,12 +23,12 @@ function Register() {
     message: "",
   });
   const [pwMatch, setPwMatch] = useState(false);
+  const pwRef = useRef({ pw: "", pwConfirm: "" });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    pwValidate.current = { ...pwValidate.current, [name]: value };
-    if (pwValidate.current.pw !== pwValidate.current.pwConfirm)
-      setPwMatch(false);
+    pwRef.current = { ...pwRef.current, [name]: value };
+    if (pwRef.current.pw !== pwRef.current.pwConfirm) setPwMatch(false);
     else setPwMatch(true);
   };
 
