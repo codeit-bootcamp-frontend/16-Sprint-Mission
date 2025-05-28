@@ -11,9 +11,9 @@ export const validateProductDescription = (value) => {
 };
 
 export const validateProductPrice = (value) => {
-  if (!String(value).trim() || String(value).trim() === "0")
+  if (!value.trim() || value.trim() === "0")
     return { isValid: false, message: "상품 가격을 입력해주세요." };
-  if (value < 0)
+  if (Number(value) < 0)
     return { isValid: false, message: "상품 가격은 0원 이상이어야 합니다." };
   return { isValid: true, message: "" };
 };

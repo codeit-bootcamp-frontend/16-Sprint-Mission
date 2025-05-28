@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { useEffect, useState } from "react";
 import SectionTitle from "../ui/SectionTitle";
 import Button from "../ui/Button";
 import FormControl from "../ui/Form/FormControl";
@@ -9,13 +8,7 @@ import ImageFileUploader from "../ImageFileUploader/ImageFileUploader";
 import Input from "../ui/Input";
 import Textarea from "../ui/Textarea";
 import TagsInput from "../ui/Tag/TagsInput";
-import {
-  validateProductName,
-  validateProductDescription,
-  validateProductPrice,
-} from "../../utils/validators";
-import debounce from "../../utils/debounce";
-import { formatPrice, unformatPrice } from "../../utils/formatPrice";
+import useForm from "../../hooks/useForm";
 
 const INITIAL_VALUES = {
   name: "",
@@ -24,72 +17,15 @@ const INITIAL_VALUES = {
   tags: [],
 };
 
-const CHECK_FORM_DEBOUNCE_MS = 100;
-
 const AddProductForm = ({ title }) => {
-  const [formData, setFormData] = useState(INITIAL_VALUES);
-  const [isFormValid, setIsFormValid] = useState(false);
-
-  const handleFormInputChange = (e) => {
-    const { name, value } = e.target;
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handlePriceInputChange = (e) => {
-    const { name, value } = e.target;
-    const raw = value;
-    const digits = unformatPrice(raw);
-    const formatted = formatPrice(digits);
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]: formatted,
-    }));
-  };
-
-  const handleTagsChange = (updatedTags) => {
-    setFormData((prev) => ({
-      ...prev,
-      tags: updatedTags,
-    }));
-  };
-
-  const validateForm = (formData) => {
-    const { name, description, price, tags } = formData;
-
-    const isNameValid = validateProductName(name).isValid;
-    const isDescriptionValid = validateProductDescription(description).isValid;
-    const isPriceValid = validateProductPrice(price).isValid;
-    const isTagsValid = tags.length > 0;
-
-    const isAllValid =
-      isNameValid && isDescriptionValid && isPriceValid && isTagsValid;
-    setIsFormValid(isAllValid);
-  };
-
-  const handleFormInputBlur = (e) => {
-    const { name, value } = e.target;
-
-    if (name === "price") {
-      let priceValue = value;
-      priceValue = priceValue.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-      setFormData((prev) => ({
-        ...prev,
-        [name]: priceValue,
-      }));
-    }
-
-    validateForm(formData);
-  };
-
-  useEffect(() => {
-    debounce(validateForm(formData), CHECK_FORM_DEBOUNCE_MS);
-  }, [formData]);
+  const {
+    formData,
+    isFormValid,
+    handleChange,
+    handlePriceChange,
+    handleTagsChange,
+    handleBlur,
+  } = useForm(INITIAL_VALUES);
 
   return (
     <form css={ProductFormContainer}>
@@ -112,8 +48,8 @@ const AddProductForm = ({ title }) => {
           name="name"
           placeholder="상품명을 입력해주세요"
           value={formData.name}
-          onChange={handleFormInputChange}
-          onBlur={handleFormInputBlur}
+          onChange={handleChange}
+          onBlur={handleBlur}
         />
       </FormControl>
 
@@ -124,8 +60,8 @@ const AddProductForm = ({ title }) => {
           name="description"
           placeholder="상품 소개를 입력해주세요"
           value={formData.description}
-          onChange={handleFormInputChange}
-          onBlur={handleFormInputBlur}
+          onChange={handleChange}
+          onBlur={handleBlur}
         />
       </FormControl>
 
@@ -137,8 +73,8 @@ const AddProductForm = ({ title }) => {
           type="text"
           placeholder="판매 가격을 입력해주세요"
           value={formData.price}
-          onChange={handlePriceInputChange}
-          onBlur={handleFormInputBlur}
+          onChange={handlePriceChange}
+          onBlur={handleBlur}
         />
       </FormControl>
 
@@ -148,7 +84,7 @@ const AddProductForm = ({ title }) => {
           id="tags"
           placeholder="태그를 입력해주세요"
           onTagsChange={handleTagsChange}
-          onBlur={handleFormInputBlur}
+          onBlur={handleBlur}
         />
       </FormControl>
     </form>
