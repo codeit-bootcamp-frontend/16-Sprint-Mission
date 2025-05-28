@@ -2,6 +2,12 @@
   color: var(--secondary-900);
   font-size: var(--font-size-md);
   font-weight: 700;
+  flex-grow: 1;
+}
 
+.h3 {
+  color: var(--secondary-900);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
   flex-grow: 1;
 }

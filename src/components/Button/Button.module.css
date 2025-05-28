@@ -5,6 +5,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
   padding: 12px 23px;
   border-radius: 8px;
   order: 1;
@@ -12,6 +14,10 @@
 
 .button:hover {
   background-color: var(--primary-300);
+}
+
+.button:disabled {
+  background-color: var(--cool-gray-400);
 }
 
 /* Tablet  Desktop*/

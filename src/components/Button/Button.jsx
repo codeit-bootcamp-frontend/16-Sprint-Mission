@@ -1,10 +1,14 @@
+import { Link } from "react-router-dom";
 import styles from "./Button.module.css";
 
-function Button({ href, buttonText, type }) {
+function Button({ href, buttonText, type = 'button', disabled }) {
+
+  const buttonClasses = `${styles.button}`;
   return (
-    <a className={styles[type]} href={href}>
-      {buttonText}
-    </a>
+    <button type={type} className={buttonClasses} disabled={disabled}>
+      {disabled ? <span>{buttonText}</span> : <Link to={href}>{buttonText}</Link>}
+    </button>
+    
   );
 }
 
