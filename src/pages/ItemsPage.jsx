@@ -1,16 +1,15 @@
 import useBreakpoint from "../components/Hooks/useBreakpoint";
 import BestItemsSection from "../components/BestItemsSection";
-import AllItemsSection from "../components/AllitemsSection";
-import styles  from "./ItemsPage.module.css"
-
+import AllItemsSection from "../components/AllItemsSection";
+import styles from "./ItemsPage.module.css";
 
 function ItemsPage() {
- const bp = useBreakpoint();
+  const bp = useBreakpoint();
 
   return (
     <div className={`container ${styles.wrap}`}>
-      <BestItemsSection bp={bp}/>
-      <AllItemsSection bp={bp}/>
+      <BestItemsSection bp={bp} />
+      <AllItemsSection bp={bp} />
     </div>
   );
 }
