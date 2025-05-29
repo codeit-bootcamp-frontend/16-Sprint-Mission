@@ -10,13 +10,11 @@ function BestItemCard({ limit = 4 }) {
   useEffect(() => {
     axios
       .get(
-        "https://panda-market-api.vercel.app/products?page=1&pageSize=10&orderBy=recent"
+        "https://panda-market-api.vercel.app/products?page=1&pageSize=100&orderBy=favorite"
       )
       .then((response) => {
-        const sorted = response.data.list
-          .sort((a, b) => b.favoriteCount - a.favoriteCount)
-          .slice(0, limit);
-        setItems(sorted);
+        const top4 = response.data.list.slice(0, limit);
+        setItems(top4);
       });
   }, []);
 

@@ -39,7 +39,13 @@
   margin-top: 0.5rem;
 }
 
-.heart-icon {
-  width: 16px;
-  height: 16px;
+.best-item-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.item-card img.heart-icon {
+  width: 14px;
+  height: 14px;
 }
