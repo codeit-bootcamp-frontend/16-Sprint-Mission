@@ -2,6 +2,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ItemCard from "./ItemCard";
+import "./BestItemCard.css";
 
 function BestItemCard({ limit = 4 }) {
   const [items, setItems] = useState([]);
