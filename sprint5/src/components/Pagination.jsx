@@ -1,16 +1,22 @@
 //하단 페이지네이션
-import React, { useState } from "react";
+import React from "react";
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const getPageNumbers = () => {
-    let startPage = Math.max(1, Math.min(currentPage - 2, totalPages - 4));
-    const endPage = Math.min(startPage + 4, totalPages);
+    const maxPageButtons = 5;
+    const half = Math.floor(maxPageButtons / 2);
 
-    return Array.from(
-      { length: endPage - startPage + 1 },
-      (_, i) => startPage + i
-    );
+    let start = Math.max(currentPage - half, 1);
+    let end = start + maxPageButtons - 1;
+
+    if (end > totalPages) {
+      end = totalPages;
+      start = Math.max(end - maxPageButtons + 1, 1);
+    }
+
+    return Array.from({ length: end - start + 1 }, (_, i) => start + i);
   };
+
   return (
     <div style={{ marginTop: "1rem" }}>
       <button
@@ -32,6 +38,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
           {page}
         </button>
       ))}
+
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
