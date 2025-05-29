@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
 import Navi from "./components/Navi.jsx";
 import ItemsMarket from "./pages/ItemsMarket.jsx";
 import SearchBar from "./components/SearchBar.jsx";
@@ -37,7 +36,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navi />
+      <Navi style={{ paddingTop: "80px" }} />
 
       <Routes>
         <Route path="/items" element={<ItemsMarket />} />
