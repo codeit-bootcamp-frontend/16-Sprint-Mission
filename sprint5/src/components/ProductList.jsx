@@ -1,4 +1,3 @@
-// 정렬 드롭다운 기능 구현
 import { useEffect, useState } from "react";
 import axios from "axios";
 import SortDropdown from "./SortDropdown";

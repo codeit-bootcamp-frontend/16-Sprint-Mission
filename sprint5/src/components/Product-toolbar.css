@@ -13,11 +13,6 @@
   margin-bottom: 1rem;
 }
 
-.section-title {
-  font-size: 1.3rem;
-  font-weight: bold;
-}
-
 .toolbar-actions {
   display: flex;
   gap: 1rem;

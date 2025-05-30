@@ -19,7 +19,7 @@ function BestItemCard({ limit = 4 }) {
   }, []);
 
   return (
-    <section className="item-card-container">
+    <section className="best-item-card">
       {items.map((item) => (
         <ItemCard key={item.id} item={item} />
       ))}

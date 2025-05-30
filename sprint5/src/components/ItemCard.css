@@ -1,10 +1,18 @@
 /* 아이템카드 스타일 */
+.item-card-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* PC 기본 */
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
 .item-card {
-  width: 282px;
-  height: 378px;
+  max-width: 250px;
+  width: 100%;
   background-color: #fcfcfc;
-  border-radius: 12px;
-  padding: 1rem;
+  border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
@@ -48,4 +56,44 @@
 .item-card img.heart-icon {
   width: 14px;
   height: 14px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+  .item-card-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .item-card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .item-card {
+    max-width: 100%;
+    padding: 0.8rem;
+  }
+
+  .item-card img:first-of-type {
+    height: 160px;
+  }
+
+  .item-card h3 {
+    font-size: 0.95rem;
+  }
+
+  .item-card p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .item-card-container {
+    grid-template-columns: 1fr;
+  }
+
+  .item-card img:first-of-type {
+    height: 140px;
+  }
 }

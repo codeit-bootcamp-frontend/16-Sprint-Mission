@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./components/App.css";
 import Navi from "./components/Navi.jsx";
 import ItemsMarket from "./pages/ItemsMarket.jsx";
 import "./components/Product-toolbar.css";
@@ -12,6 +13,8 @@ import "./components/ProductList.jsx";
 import Pagination from "./components/Pagination.jsx";
 import BestItemCard from "./components/BestItemCard.jsx";
 import AllItemCard from "./components/AllItemCard.jsx";
+import AllItemSection from "./components/AllItemSection.jsx";
+import "./components/AllItemSection.css";
 
 function App() {
   const [sortOption, setSortOption] = useState("recent");
@@ -43,8 +46,12 @@ function App() {
         <Route path="/items" element={<ItemsMarket />} />
       </Routes>
       <main style={{ paddingTop: "80px" }}>
-        <section className="best-item-section">
-          <h2>베스트 상품</h2>
+        <section className="product-toolbar">
+          {" "}
+          {/* 전체상품과 텍스트 위치 맞추기 위해서 */}
+          <div className="toolbar-header">
+            <h2 className="section-title">베스트 상품</h2>
+          </div>
           <BestItemCard />
         </section>
 
@@ -59,7 +66,7 @@ function App() {
             </div>
           </div>
 
-          <AllItemCard items={items} />
+          <AllItemSection items={items} />
         </section>
 
         <Pagination

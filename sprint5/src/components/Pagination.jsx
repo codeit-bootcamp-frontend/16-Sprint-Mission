@@ -1,5 +1,6 @@
 //하단 페이지네이션
 import React from "react";
+import "./Pagination.css";
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const getPageNumbers = () => {
@@ -18,8 +19,9 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   };
 
   return (
-    <div style={{ marginTop: "1rem" }}>
+    <div className="pagination">
       <button
+        className="page-button"
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
       >
@@ -30,10 +32,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         <button
           key={page}
           onClick={() => onPageChange(page)}
-          style={{
-            fontWeight: currentPage === page ? "bold" : "normal",
-            margin: "0 4px",
-          }}
+          className={`page-button ${currentPage === page ? "active" : ""}`}
         >
           {page}
         </button>
@@ -42,6 +41,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
+        className="page-button"
       >
         ▶
       </button>
