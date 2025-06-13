@@ -1,9 +1,9 @@
-import styles from "./styles/Footer.module.css";
 import facebookIcon from "@assets/icon/ic_facebook.png";
 import instaIcon from "@assets/icon/ic_instagram.png";
 import twitterIcon from "@assets/icon/ic_twitter.png";
 import youtubeIcon from "@assets/icon/ic_youtube.png";
 import { Link } from "react-router-dom";
+import styles from "./styles/Footer.module.css";
 
 function Footer() {
   return (

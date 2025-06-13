@@ -1,16 +1,16 @@
-import { Link, useNavigate } from "react-router-dom";
-import logo from "@assets/images/logo-title.png";
-import MemoizedFormInput from "./FormInput";
-import { useValidate, checkAllValid } from "@hooks/useValidate";
-import styles from "./styles/SignUp.module.css";
 import { useState, useEffect } from "react";
+import logo from "@assets/images/logo-title.png";
 import SocialLogin from "@components/SocialLogin";
+import { useValidate, checkAllValid } from "@hooks/useValidate";
+import { Link, useNavigate } from "react-router-dom";
+import MemoizedFormInput from "./FormInput";
+import styles from "./styles/SignUp.module.css";
 
 function SignUp() {
   const [passwordToggle, setPasswordToggle] = useState(false);
   const [passwordCheckToggle, setPasswordCheckToggle] = useState(false);
   const toLoginNavigate = useNavigate();
-  const {getFieldState, validate} = useValidate();
+  const { getFieldState, validate } = useValidate();
   const emailValidationState = getFieldState("user-email");
   const nameValidationState = getFieldState("user-name");
   const passwordValidationState = getFieldState("user-password");
@@ -19,7 +19,7 @@ function SignUp() {
     emailValidationState,
     nameValidationState,
     passwordValidationState,
-    passwordChekcValidationState
+    passwordChekcValidationState,
   );
 
   //비밀번호 값 변경 시 비밀번호 확인도 유효성 검사 다시

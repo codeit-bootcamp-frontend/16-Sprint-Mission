@@ -1,14 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from "./components/Header/Header";
+import AddItem from "./pages/AddItem/AddItem";
+import Login from "./pages/Auth/Login";
+import SignUp from "./pages/Auth/SignUp";
 import Home from "./pages/Home/Home";
 import Items from "./pages/Items/Items";
-import Header from "./components/Header/Header";
 import "./styles/reset.css";
 import "./styles/global.css";
 import "./App.css";
-import Login from "./pages/Auth/Login";
-import SignUp from "./pages/Auth/SignUp";
-import AddItem from './pages/AddItem/AddItem'
-
 
 function App() {
   return (
@@ -17,7 +16,7 @@ function App() {
         <Route element={<Header />}>
           <Route path="/" element={<Home />} />
           <Route path="/items" element={<Items />} />
-          <Route path="/additem" element={<AddItem/>} />
+          <Route path="/additem" element={<AddItem />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/sign_up" element={<SignUp />} />

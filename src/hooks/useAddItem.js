@@ -37,7 +37,7 @@ export function useAddItem() {
 
       return { inputValue, isPassed };
     },
-    [addItemValues]
+    [addItemValues],
   );
 
   return { checkFilled, getInputValues };

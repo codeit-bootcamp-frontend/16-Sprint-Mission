@@ -1,6 +1,6 @@
-import styles from "@pages/Auth/styles/Login.module.css";
-import kakaoIcon from "@assets/icon/login_kakao.png";
 import googleIcon from "@assets/icon/login_google.png";
+import kakaoIcon from "@assets/icon/login_kakao.png";
+import styles from "@pages/Auth/styles/Login.module.css";
 
 function SocialLogin() {
   return (

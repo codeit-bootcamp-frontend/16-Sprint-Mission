@@ -1,6 +1,5 @@
 import React from "react";
 
-
 function AddPriceField(props) {
   const { className, value, checkFilled, name } = props;
 
@@ -23,6 +22,5 @@ function AddPriceField(props) {
   );
 }
 
-
 const MemoizedPriceField = React.memo(AddPriceField);
-export default MemoizedPriceField
+export default MemoizedPriceField;

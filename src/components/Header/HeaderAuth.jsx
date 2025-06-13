@@ -1,8 +1,8 @@
+import userImg from "@assets/icon/ic_user.png";
 import styles from "@styles/Header.module.css";
 import { Link } from "react-router-dom";
-import userImg from "@assets/icon/ic_user.png";
 
-function HeaderAuth({isLoggedIn}) {
+function HeaderAuth({ isLoggedIn }) {
   return (
     <>
       {isLoggedIn ? (

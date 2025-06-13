@@ -30,11 +30,11 @@
   color: #fff;
 }
 
-.add-item__header button.isActive{
+.add-item__header button.isActive {
   background-color: var(--primary-color);
 }
 
-.add-item__header button.isActive:hover{
+.add-item__header button.isActive:hover {
   background-color: var(--primary-hover);
 }
 
@@ -66,7 +66,7 @@
 }
 
 /* 이미지 추가 필드 */
-.form__field-image{  
+.form__field-image {
   display: flex;
   gap: 10px;
 }
@@ -88,13 +88,12 @@
   border-radius: 12px;
 }
 
-
-.form__field-image #delete-button{
+.form__field-image #delete-button {
   width: 20px;
   height: 20px;
 }
 
-.form__field-image p{
+.form__field-image p {
   font-size: 16px;
   color: red;
   font-weight: 400;

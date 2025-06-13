@@ -12,7 +12,7 @@ function AddTagField(props) {
   function handleClick(e) {
     const target = e.target.id;
 
-    setTagList(tagList.filter((_,i) => i !== Number(target)));
+    setTagList(tagList.filter((_, i) => i !== Number(target)));
   }
 
   function handleKeyDown(e) {
@@ -22,7 +22,7 @@ function AddTagField(props) {
     setTagList((prevList) => {
       return [...prevList, e.target.value];
     });
-    e.target.value=""
+    e.target.value = "";
   }
 
   return (

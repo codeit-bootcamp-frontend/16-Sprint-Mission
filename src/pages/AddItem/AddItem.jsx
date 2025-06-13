@@ -1,13 +1,13 @@
-import styles from "./AddItem.module.css";
-import AddImageField from "./AddImageField";
-import MemoizedTitleField from "./AddTitleField";
-import MemoizedPriceField from "./AddPriceField";
-import MemoizedDescriptionField from "./AddDescriptionField";
-import MemoizedTagField from "./AddTagField";
 import { useAddItem } from "@hooks/useAddItem.js";
+import MemoizedDescriptionField from "./AddDescriptionField";
+import AddImageField from "./AddImageField";
+import styles from "./AddItem.module.css";
+import MemoizedPriceField from "./AddPriceField";
+import MemoizedTagField from "./AddTagField";
+import MemoizedTitleField from "./AddTitleField";
 
 function AddItem() {
-  const {checkFilled, getInputValues} = useAddItem();
+  const { checkFilled, getInputValues } = useAddItem();
 
   // const validField = ["title", "description", "price", "tag"];
 
@@ -22,10 +22,9 @@ function AddItem() {
     priceField.isPassed &&
     tagField.isPassed;
 
-
-// 이름 잘 다듬기
-//파일 인풋 비제어 컴포넌트로 추가하기 
-//태그 엔터 누르면 지워지기 인풋
+  // 이름 잘 다듬기
+  //파일 인풋 비제어 컴포넌트로 추가하기
+  //태그 엔터 누르면 지워지기 인풋
 
   return (
     <main className={styles[`main__add-item`]}>

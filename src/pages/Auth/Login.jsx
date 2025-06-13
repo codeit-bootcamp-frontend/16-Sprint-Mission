@@ -1,20 +1,20 @@
-import styles from "./styles/Login.module.css";
-import logo from "@assets/images/logo-title.png";
-import MemoizedFormInput from "./FormInput";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useValidate, checkAllValid } from "@hooks/useValidate";
+import logo from "@assets/images/logo-title.png";
 import SocialLogin from "@components/SocialLogin";
+import { useValidate, checkAllValid } from "@hooks/useValidate";
+import { Link, useNavigate } from "react-router-dom";
+import MemoizedFormInput from "./FormInput";
+import styles from "./styles/Login.module.css";
 
 function Login() {
   const [passwordToggle, setPasswordToggle] = useState(false);
   const toItemsNavigation = useNavigate();
-  const {getFieldState, validate} = useValidate();
+  const { getFieldState, validate } = useValidate();
   const emailValidationState = getFieldState("user-email"); //email관련 값만 받아오기 생성x조회o
   const passwordValidationState = getFieldState("user-password");
   const isAllValid = checkAllValid(
     emailValidationState,
-    passwordValidationState
+    passwordValidationState,
   );
 
   function handleSubmit(e) {

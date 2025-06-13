@@ -3,7 +3,6 @@ import React from "react";
 function AddDescriptionField(props) {
   const { className, value, checkFilled, name } = props;
 
-
   function handleChange(e) {
     checkFilled(name, e.target.value);
   }

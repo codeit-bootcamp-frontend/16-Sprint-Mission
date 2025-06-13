@@ -128,7 +128,8 @@
 
   .filter__select {
     order: 2;
-    background: url("../../..//assets/icon/ic_arrow_down.png") no-repeat 86px 8px;
+    background: url("../../..//assets/icon/ic_arrow_down.png") no-repeat 86px
+      8px;
     color: var(--secondary-gray800);
   }
 }
