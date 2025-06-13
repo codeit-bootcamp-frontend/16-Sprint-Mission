@@ -1,4 +1,4 @@
-import styles from "@styles/Login.module.css";
+import styles from "@pages/Auth/styles/Login.module.css";
 import kakaoIcon from "@assets/icon/login_kakao.png";
 import googleIcon from "@assets/icon/login_google.png";
 

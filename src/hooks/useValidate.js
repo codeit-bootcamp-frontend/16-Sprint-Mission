@@ -83,7 +83,7 @@ export function useValidate() {
     })
   }, [validationStates])
 
-  return [getFieldState, validate];
+  return {getFieldState, validate};
 }
 
 //useCallback으로 해도 어차피 isValid변할 때마다 다시 만들거면

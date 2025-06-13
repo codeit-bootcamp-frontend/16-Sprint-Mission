@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "@assets/images/logo-title.png";
 import MemoizedFormInput from "./FormInput";
 import { useValidate, checkAllValid } from "@hooks/useValidate";
-import styles from "@styles/SignUp.module.css";
+import styles from "./styles/SignUp.module.css";
 import { useState, useEffect } from "react";
 import SocialLogin from "@components/SocialLogin";
 
@@ -10,7 +10,7 @@ function SignUp() {
   const [passwordToggle, setPasswordToggle] = useState(false);
   const [passwordCheckToggle, setPasswordCheckToggle] = useState(false);
   const toLoginNavigate = useNavigate();
-  const [getFieldState, validate] = useValidate();
+  const {getFieldState, validate} = useValidate();
   const emailValidationState = getFieldState("user-email");
   const nameValidationState = getFieldState("user-name");
   const passwordValidationState = getFieldState("user-password");

@@ -1,8 +1,4 @@
 .items {
-  /* 컬러 */
-  --cool-gray500: #6b7280;
-  --cool-gray600: #4b5563;
-  --cool-gray200: #e5e7eb;
   /* 모바일 : .items 내부 변수들 */
   /* 컨테이너 */
   --init-zero: 0;

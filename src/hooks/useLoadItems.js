@@ -21,5 +21,5 @@ export function useLoadItems(queryStrings) {
     loadItemsByQuery();
   }, [queryStrings])
 
-  return [loadFail, result];
+  return {loadFail, result};
 }

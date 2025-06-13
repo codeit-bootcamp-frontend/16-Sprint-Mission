@@ -1,4 +1,4 @@
-import styles from "@styles/ErrMsg.module.css";
+import styles from "./styles/ErrMsg.module.css";
 import React from "react";
 
 function FormInput(props) {

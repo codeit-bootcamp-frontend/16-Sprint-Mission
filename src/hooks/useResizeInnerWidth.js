@@ -31,6 +31,6 @@ export function useResizeInnerWidth(type) {
         setPageSize(newPageSize)
     }, [innerWidth, type]);
 
-    return [pageSize]
+    return {pageSize}
 }
 

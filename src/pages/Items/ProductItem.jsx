@@ -1,4 +1,4 @@
-import styles from "@styles/ProductItem.module.css";
+import styles from "./styles/ProductItem.module.css";
 import heartIcon from "@assets/icon/ic_heart.png";
 import loadFailImg from "@assets/images/loadFailImg.png";
 

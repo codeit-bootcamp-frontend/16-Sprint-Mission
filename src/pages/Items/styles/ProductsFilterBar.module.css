@@ -42,7 +42,7 @@
 .filter__search-icon {
   width: 24px;
   height: 24px;
-  background: url("../assets/icon/ic_search.png") center no-repeat;
+  background: url("../../../assets/icon/ic_search.png") center no-repeat;
   background-size: cover;
   position: absolute;
   top: 9px;
@@ -58,7 +58,7 @@
   padding: 12px 20px;
   display: block;
   position: relative;
-  background: url("../assets/icon/ic_sort.png") no-repeat center;
+  background: url("../../../assets/icon/ic_sort.png") no-repeat center;
   text-align: left;
   cursor: pointer;
   color: transparent;
@@ -128,7 +128,7 @@
 
   .filter__select {
     order: 2;
-    background: url("../assets/icon/ic_arrow_down.png") no-repeat 86px 8px;
+    background: url("../../..//assets/icon/ic_arrow_down.png") no-repeat 86px 8px;
     color: var(--secondary-gray800);
   }
 }

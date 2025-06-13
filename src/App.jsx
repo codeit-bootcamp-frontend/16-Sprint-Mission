@@ -7,6 +7,8 @@ import "./styles/global.css";
 import "./App.css";
 import Login from "./pages/Auth/Login";
 import SignUp from "./pages/Auth/SignUp";
+import AddItem from './pages/AddItem/AddItem'
+
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
         <Route element={<Header />}>
           <Route path="/" element={<Home />} />
           <Route path="/items" element={<Items />} />
+          <Route path="/additem" element={<AddItem/>} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/sign_up" element={<SignUp />} />

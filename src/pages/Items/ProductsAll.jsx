@@ -1,4 +1,4 @@
-import styles from "@styles/ProductsAll.module.css";
+import styles from "./styles/ProductsAll.module.css";
 import ProductItem from "./ProductItem";
 import ProductsFilterBar from "./ProductsFilterBar";
 import Pagination from "./Pagination";
@@ -12,14 +12,14 @@ function ProductsAll() {
   const { products, setProducts, setTotal, queryStrings, setQueryStrings } = useContext(ProductData);
 
   //resize발생하면 페이지사이즈 다시 가져다줘
-  const [pageSize] = useResizeInnerWidth("all");
+  const {pageSize} = useResizeInnerWidth("all");
 
   useEffect(() => {
     setQueryStrings((prev) => ({ ...prev, pageSize }));
   }, [pageSize]);
 
   // 쿼리스트링으로 아이템 가져오기 가져다줘
-  const [loadFail, result] = useLoadItems(queryStrings);
+  const {loadFail, result} = useLoadItems(queryStrings);
 
   useEffect(() => {
     if (result.list) {

@@ -30,5 +30,10 @@ body {
   --secondary-gray200: #e5e7eb;
   --secondary-gray100: #f3f4f6;
   --secondary-gray50: #f9fafb;
+  --cool-gray500: #6b7280;
+  --cool-gray400: #9ca3af;
+  --cool-gray600: #4b5563;
+  --cool-gray200: #e5e7eb;
+  --cool-gray100: #f3f4f6;
   --footer-text: #cfcfcf;
 }

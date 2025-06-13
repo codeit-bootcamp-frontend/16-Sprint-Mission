@@ -1,4 +1,4 @@
-import styles from "@styles/ProductsFavorite.module.css";
+import styles from "./styles/ProductsFavorite.module.css";
 import { useEffect, useState } from "react";
 import ProductItem from "./ProductItem";
 import { useResizeInnerWidth } from "@hooks/useResizeInnerWidth";
@@ -14,14 +14,14 @@ function ProductsFavorite() {
   });
 
   //resize 발생 시 pageSize 새로 가져다줘
-  const [pageSize] = useResizeInnerWidth("favor");
+  const {pageSize} = useResizeInnerWidth("favor");
 
   useEffect(() => {
     setFavoriteQueryStrings((prev) => ({ ...prev, pageSize }));
   }, [pageSize]);
 
   //쿼리 변경 시 가져오기
-  const [loadFail, result] = useLoadItems(favoriteQueryStrings);
+  const {loadFail, result} = useLoadItems(favoriteQueryStrings);
 
   useEffect(() => {
     if (result.list) {

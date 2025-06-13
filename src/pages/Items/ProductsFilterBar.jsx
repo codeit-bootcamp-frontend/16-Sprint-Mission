@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ProductData } from "./ProductDataProvider";
 import { Link } from "react-router-dom";
-import styles from "@styles/ProductsFilterBar.module.css";
+import styles from "./styles/ProductsFilterBar.module.css";
 
 function ProductsFilterBar() {
   const { queryStrings, setQueryStrings } = useContext(ProductData);
