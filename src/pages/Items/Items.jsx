@@ -6,7 +6,7 @@ import styles from "./styles/item.module.css";
 function Items() {
   return (
     <main className={styles.items}>
-      <div className={styles.items__container}>
+      <div className={styles.container}>
         <ProductsFavorite />
         <ProductDataProvider>
           <ProductsAll />

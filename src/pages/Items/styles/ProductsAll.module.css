@@ -8,7 +8,7 @@
 }
 
 /* 필터 (검색, 조회순서 등) 컨테이너 */
-.items__all-filter {
+.filterArea {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,27 +18,29 @@
   padding-top: 5px;
 }
 
-.items__all-filter > h2 {
+.filterArea > h2 {
   font-weight: 700;
   font-size: 20px;
   line-height: 32px;
 }
 
-.items__all-list {
+.allList {
   margin-top: var(--products-list-margin-top);
   display: flex;
   gap: var(--products-flex-gap);
   flex-wrap: wrap;
+  max-height: 696px;
+  overflow: hidden;
 }
 
-.all-list__card {
+.card {
   width: var(--products-card-size);
   /* gap(8)+24 */
   margin-bottom: 24px;
   cursor: pointer;
 }
 
-.all-list__item img {
+.item img {
   width: 100%;
   height: var(--products-card-size);
   border-radius: 12px;
@@ -54,7 +56,7 @@
     --products-card-size: 220px;
   }
 
-  .items__all-filter {
+  .filterArea {
     flex-wrap: nowrap;
     padding-top: var(--init-zero);
   }
@@ -69,7 +71,7 @@
     --products-flex-gap: 24px;
   }
 
-  .all-list__card {
+  .card {
     margin-bottom: 16px;
   }
 }

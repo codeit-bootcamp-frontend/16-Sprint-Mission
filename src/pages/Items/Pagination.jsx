@@ -24,9 +24,9 @@ function Pagination() {
   return (
     <ul
       aria-label="페이지 네비게이션"
-      className={styles[`items__all-pagination`]}
+      className={styles.pagination}
     >
-      <li className={styles.pagination__prev} onClick={handlePrevBtn}>
+      <li className={styles.prevBtn} onClick={handlePrevBtn}>
         <img
           src={isPrevDisabled ? prevBtn_inactive : prevBtn_active}
           alt="페이지 이전 목록으로 가기"
@@ -36,7 +36,7 @@ function Pagination() {
         <li
           aria-label={`${i}페이지로 이동`}
           className={
-            queryStrings.page == i ? styles[`pagination--activate`] : ""
+            queryStrings.page == i ? styles.activate : null
           }
           onClick={handlePageRequest}
           key={`page${i}`}
@@ -44,7 +44,7 @@ function Pagination() {
           {i}
         </li>
       ))}
-      <li className={styles.pagination__next} onClick={handleNextBtn}>
+      <li className={styles.nextBtn} onClick={handleNextBtn}>
         <img
           src={isNextDisabled ? nextBtn_inactive : nextBtn_active}
           alt="페이지 다음 목록으로 가기"

@@ -8,7 +8,7 @@
   color: var(--secondary-gray900);
 }
 
-.items__container {
+.container {
   max-width: var(--container-width);
   width: 100%;
   margin: 0 auto;

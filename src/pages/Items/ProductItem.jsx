@@ -10,11 +10,11 @@ function ProductItem({ className, item }) {
         onError={(e) => (e.currentTarget.src = loadFailImg)}
         alt="상품이미지"
       />
-      <div className={styles.card__name}>{item.name}</div>
-      <div className={styles.card__price}>
+      <div className={styles.name}>{item.name}</div>
+      <div className={styles.price}>
         {`${item.price.toLocaleString("ko-KR")}원`}
       </div>
-      <div className={styles.card__favorite}>
+      <div className={styles.favorite}>
         <img src={heartIcon} alt="좋아요 아이콘" />
         {item.favoriteCount}
       </div>

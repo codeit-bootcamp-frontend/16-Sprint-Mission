@@ -1,19 +1,19 @@
-import { useContext, useEffect } from "react";
-import { useLoadItems } from "@hooks/useLoadItems";
-import { useResizeInnerWidth } from "@hooks/useResizeInnerWidth";
-import LoadFailed from "./LoadFailed";
-import Pagination from "./Pagination";
-import { ProductData } from "./ProductDataProvider";
-import ProductItem from "./ProductItem";
-import ProductsFilterBar from "./ProductsFilterBar";
-import styles from "./styles/ProductsAll.module.css";
+import { useContext, useEffect } from 'react';
+import { useLoadItems } from '@hooks/useLoadItems';
+import { useResizeInnerWidth } from '@hooks/useResizeInnerWidth';
+import LoadFailed from './LoadFailed';
+import Pagination from './Pagination';
+import { ProductData } from './ProductDataProvider';
+import ProductItem from './ProductItem';
+import ProductsFilterBar from './ProductsFilterBar';
+import styles from './styles/ProductsAll.module.css';
 
 function ProductsAll() {
   const { products, setProducts, setTotal, queryStrings, setQueryStrings } =
     useContext(ProductData);
 
   //resize발생하면 페이지사이즈 다시 가져다줘
-  const { pageSize } = useResizeInnerWidth("all");
+  const { pageSize } = useResizeInnerWidth('all');
 
   useEffect(() => {
     setQueryStrings((prev) => ({ ...prev, pageSize }));
@@ -32,19 +32,19 @@ function ProductsAll() {
   return (
     <>
       <section className={styles.items__all}>
-        <div className={styles[`items__all-filter`]}>
+        <div className={styles.filterArea}>
           <h2>전체 상품</h2>
           <ProductsFilterBar />
         </div>
         {loadFail ? (
           <LoadFailed />
         ) : (
-          <ul className={styles[`items__all-list`]}>
+          <ul className={styles.allList}>
             {products.map((item) => {
               return (
-                <li className={styles[`all-list__card`]} key={item.id}>
+                <li className={styles.card} key={item.id}>
                   <ProductItem
-                    className={styles[`all-list__item`]}
+                    className={styles.item}
                     item={item}
                   ></ProductItem>
                 </li>

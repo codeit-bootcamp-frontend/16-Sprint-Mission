@@ -1,4 +1,4 @@
-.filter-bar {
+.filterContainer {
   /* 모바일 변수 */
   --search-input-width: 288px;
   --filter-select-width: 42px;
@@ -12,7 +12,7 @@
   top: 0px;
 }
 
-.filter-bar button {
+.filterContainer button {
   background-color: var(--primary-color);
   padding: 12px 23px;
   font-size: 16px;
@@ -21,15 +21,19 @@
   margin-bottom: 8px;
 }
 
-.filter-bar button a {
+.filterContainer button a {
   color: var(--secondary-gray100);
 }
 
-.filter__search {
+.filterContainer button:hover {
+    background-color: var(--primary-hover);
+  }
+
+.search {
   position: relative;
 }
 
-.filter__search-input {
+.searchInput {
   width: var(--search-input-width);
   height: 42px;
   padding: 9px 44px;
@@ -39,7 +43,7 @@
   margin-right: 14px;
 }
 
-.filter__search-icon {
+.searchIcon {
   width: 24px;
   height: 24px;
   background: url("../../../assets/icon/ic_search.png") center no-repeat;
@@ -50,7 +54,7 @@
 }
 
 /* 커스텀 셀렉터 */
-.filter__select {
+.selector {
   width: var(--filter-select-width);
   height: var(--filter-select-height);
   border: 1px solid var(--secondary-gray200);
@@ -64,7 +68,7 @@
   color: transparent;
 }
 
-.filter__select ul {
+.selector ul {
   text-align: center;
   display: none;
   position: absolute;
@@ -73,11 +77,11 @@
   margin-top: 8px;
 }
 
-.filter__select input {
+.selector input {
   display: none;
 }
 
-.filter__select ul li {
+.selector ul li {
   background-color: #fff;
   width: 130px;
   height: var(--filter-select-height);
@@ -87,23 +91,23 @@
   color: var(--secondary-gray800);
 }
 
-.filter__select ul li:first-child {
+.selector ul li:first-child {
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
   border-bottom: none;
 }
 
-.filter__select ul li:nth-child(2) {
+.selector ul li:nth-child(2) {
   border-bottom-right-radius: 12px;
   border-bottom-left-radius: 12px;
 }
 
-.filter__select input:checked + ul {
+.selector input:checked + ul {
   display: block;
 }
 
 @media screen and (min-width: 768px) {
-  .filter-bar {
+  .filterContainer {
     /* 태블릿 변수 */
     --search-input-width: 242px;
     --filter-select-width: 130px;
@@ -113,20 +117,16 @@
     position: relative;
   }
 
-  .filter-bar button {
+  .filterContainer button {
     margin-bottom: var(--init-zero);
     order: 1;
   }
 
-  .filter-bar button:hover {
-    background-color: var(--primary-hover);
-  }
-
-  .filter__search-input {
+  .searchInput {
     margin-right: var(--init-zero);
   }
 
-  .filter__select {
+  .selector {
     order: 2;
     background: url("../../..//assets/icon/ic_arrow_down.png") no-repeat 86px
       8px;
@@ -135,7 +135,7 @@
 }
 
 @media screen and (min-width: 1200px) {
-  .filter-bar {
+  .filterContainer {
     /* 데스크탑 변수 */
     --search-input-width: 325px;
   }

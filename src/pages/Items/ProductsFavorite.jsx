@@ -35,11 +35,11 @@ function ProductsFavorite() {
       {loadFail ? (
         <LoadFailed />
       ) : (
-        <ul className={styles["favorite-list"]}>
+        <ul className={styles.favoriteList}>
           {favoriteItems.map((item) => (
-            <li className={styles[`favorite-list__card`]} key={item.id}>
+            <li className={styles.card} key={item.id}>
               <ProductItem
-                className={styles["favorite-list__item"]}
+                className={styles.item}
                 item={item}
               ></ProductItem>
             </li>

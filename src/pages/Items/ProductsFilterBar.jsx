@@ -17,23 +17,23 @@ function ProductsFilterBar() {
   };
 
   return (
-    <div className={styles[`filter-bar`]}>
+    <div className={styles.filterContainer}>
       <button>
         <Link to="/addItem">상품 등록하기</Link>
       </button>
-      <div className={styles.filter__search}>
+      <div className={styles.search}>
         <label
-          className={styles[`filter__search-icon`]}
+          className={styles.searchIcon}
           htmlFor="searchInput"
           aria-label="검색창 아이콘"
         />
         <input
           id="searchInput"
-          className={styles[`filter__search-input`]}
+          className={styles.searchInput}
           placeholder="검색할 상품을 입력해주세요"
         ></input>
       </div>
-      <label htmlFor="showDropdown" className={styles.filter__select}>
+      <label htmlFor="showDropdown" className={styles.selector}>
         {queryStrings.orderBy === "recent" ? "최신 순" : "좋아요 순"}
         <input
           aria-haspopup="listbox"

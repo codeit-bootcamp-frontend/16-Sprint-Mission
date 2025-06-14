@@ -10,24 +10,25 @@
   line-height: 32px;
 }
 
-.favorite-list {
+.favoriteList {
   margin-top: 16px;
   display: flex;
+  overflow: hidden;
 }
 
-.favorite-list__card {
+.card {
   width: var(--favorite-card-size);
   cursor: pointer;
 }
 
-.favorite-list__item img {
+.item img {
   height: var(--favorite-card-size);
   border-radius: 19.46px;
   margin-bottom: 10px;
 }
 
 @media screen and (min-width: 768px) {
-  .favorite-list {
+  .favoriteList {
     gap: 10px;
   }
 }
@@ -39,7 +40,7 @@
   }
 
   /* 베스트상품 */
-  .favorite-list {
+  .favoriteList {
     gap: 24px;
   }
 
