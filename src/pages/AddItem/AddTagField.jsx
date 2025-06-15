@@ -1,13 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import deleteIcon from "@assets/icon/ic_X.png";
+import styles from './styles/AddTagField.module.css'
 
 function AddTagField(props) {
-  const { className, value, checkFilled, name } = props;
+  const { value, checkFilled, name } = props;
   const [tagList, setTagList] = useState([]);
 
   function handleChange(e) {
     checkFilled(name, e.target.value);
   }
+  // => 이걸 단순 문자열의 길이X taglist가 현재 배열이니까 tagList.length
+
+  useEffect(()=>{
+    //태그리스트 변경 시 유효한 상태인지 다시 평가
+    checkFilled('tag', value)
+
+    //엔터 눌러서 태그리스트에 추가되면 인풋 칸 초기화
+    checkFilled('tag', value, true)
+  },[tagList])
+
 
   function handleClick(e) {
     const target = e.target.id;
@@ -26,7 +37,7 @@ function AddTagField(props) {
   }
 
   return (
-    <div className={className}>
+    <div className={styles.tagField}>
       <label htmlFor="tag-input">태그</label>
       <input
         onKeyDown={handleKeyDown}

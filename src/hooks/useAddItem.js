@@ -18,6 +18,13 @@ function addItemReducer(state, action) {
       };
     }
 
+    case "set_init": {
+      return {
+        ...state,
+        values: { ...state.values, [name]: "" },
+      };
+    }
+
     default:
       return state;
   }
@@ -26,8 +33,12 @@ function addItemReducer(state, action) {
 export function useAddItem() {
   const [addItemValues, dispatch] = useReducer(addItemReducer, initialState);
 
-  const checkFilled = useCallback((name, value) => {
-    dispatch({ type: "set_value", payload: { name, value } });
+  const checkFilled = useCallback((name, value, init) => {
+    if (init) {
+      dispatch({ type: "set_init", payload: { name, value } });
+    } else {
+      dispatch({ type: "set_value", payload: { name, value } });
+    }
   }, []);
 
   const getInputValues = useCallback(
@@ -37,7 +48,7 @@ export function useAddItem() {
 
       return { inputValue, isPassed };
     },
-    [addItemValues],
+    [addItemValues]
   );
 
   return { checkFilled, getInputValues };

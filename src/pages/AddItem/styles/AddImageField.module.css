@@ -1,0 +1,43 @@
+.imageField {
+  display: flex;
+  gap: 10px;
+}
+
+.imageField label {
+  margin-bottom: var(--add-item-gap);
+  width: var(--file-input-size);
+  cursor: pointer;
+}
+
+.imageField input {
+  display: none;
+}
+
+.imageField img {
+  width: var(--file-input-size);
+  height: var(--file-input-size);
+  margin-top: 16px;
+  border-radius: 12px;
+}
+
+/* 37 */
+.previewContainer {
+  margin-top: 18px;
+  position: relative;
+}
+
+.imageField .deleteBtn {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 14px;
+  right: 13px;
+}
+
+.errMsg {
+  font-size: 16px;
+  color: red;
+  font-weight: 400;
+  margin-bottom: 24px;
+  display: none;
+}

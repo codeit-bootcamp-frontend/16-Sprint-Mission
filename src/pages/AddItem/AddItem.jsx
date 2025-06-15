@@ -1,7 +1,7 @@
 import { useAddItem } from "@hooks/useAddItem.js";
 import MemoizedDescriptionField from "./AddDescriptionField";
 import AddImageField from "./AddImageField";
-import styles from "./AddItem.module.css";
+import styles from "./styles/AddItem.module.css";
 import MemoizedPriceField from "./AddPriceField";
 import MemoizedTagField from "./AddTagField";
 import MemoizedTitleField from "./AddTitleField";
@@ -22,46 +22,38 @@ function AddItem() {
     priceField.isPassed &&
     tagField.isPassed;
 
-  // 이름 잘 다듬기
-  //파일 인풋 비제어 컴포넌트로 추가하기
-  //태그 엔터 누르면 지워지기 인풋
 
   return (
-    <main className={styles[`main__add-item`]}>
-      <div className={styles[`add-item__container`]}>
-        <div className={styles[`add-item__header`]}>
+    <main className={styles.addItem}>
+      <div className={styles.addItemContainer}>
+        <div className={styles.header}>
           <h2>상품 등록하기</h2>
-          <button className={isReady ? styles.isActive : ""}>등록</button>
+          <button className={isReady ? styles.isActive : null}>등록</button>
         </div>
-        <form className={styles[`add-item__form`]}>
+        <form className={styles.form}>
           <AddImageField
             checkFilled={checkFilled}
             getInputValues={getInputValues}
-            className={styles[`form__field-image`]}
           />
           <MemoizedTitleField
             checkFilled={checkFilled}
             value={titleField.inputValue}
             name="title"
-            className={styles[`form__field-title`]}
           />
           <MemoizedDescriptionField
             checkFilled={checkFilled}
             value={descriptionField.inputValue}
             name="description"
-            className={styles[`form__field-description`]}
           />
           <MemoizedPriceField
             checkFilled={checkFilled}
             value={priceField.inputValue}
             name="price"
-            className={styles[`form__field-price`]}
           />
           <MemoizedTagField
             checkFilled={checkFilled}
             value={tagField.inputValue}
             name="tag"
-            className={styles[`form__field-tag`]}
           />
         </form>
       </div>

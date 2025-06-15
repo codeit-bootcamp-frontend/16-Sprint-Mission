@@ -1,19 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
+function parsePriceInput(text) {
+  const parsedText = Number(text.split(",").join(""));
+  return parsedText;
+}
 
 function AddPriceField(props) {
-  const { className, value, checkFilled, name } = props;
+  const { value, checkFilled, name } = props;
 
   function handleChange(e) {
-    checkFilled(name, e.target.value);
+    const parsedPrice = parsePriceInput(e.target.value);
+
+    if (isNaN(parsedPrice)) return;
+    checkFilled(name, parsedPrice);
   }
 
   return (
-    <div className={className}>
+    <div>
       <label htmlFor="price-input">판매가격</label>
       <input
         onChange={handleChange}
-        value={value}
-        type="number"
+        value={value.toLocaleString("ko-KR")}
+        type="text"
         id="price-input"
         name="price"
         placeholder="판매 가격을 입력해주세요"

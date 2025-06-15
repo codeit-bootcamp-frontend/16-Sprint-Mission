@@ -1,4 +1,4 @@
-.main__add-item {
+.addItem {
   /* 모바일 변수 */
   --container-width: 344px;
   --add-item-gap: 24px;
@@ -10,42 +10,42 @@
   padding-bottom: var(--main-padding-bottom);
 }
 
-.add-item__container {
+.addItemContainer {
   max-width: var(--container-width);
   width: 100%;
   margin: 0 auto;
 }
 
-.add-item__header {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: var(--add-item-gap);
 }
 
-.add-item__header button {
+.header button {
   padding: 12px 23px;
   border-radius: 8px;
   background-color: var(--cool-gray400);
   color: #fff;
 }
 
-.add-item__header button.isActive {
+.header button.isActive {
   background-color: var(--primary-color);
 }
 
-.add-item__header button.isActive:hover {
+.header button.isActive:hover {
   background-color: var(--primary-hover);
 }
 
-.add-item__header h2 {
+.header h2 {
   font-weight: 700;
   font-size: 20px;
   line-height: 100%;
 }
 
 /* 공통 */
-.add-item__form label {
+.form label {
   font-size: 18px;
   font-weight: 700;
   line-height: 100%;
@@ -53,8 +53,8 @@
   display: block;
 }
 
-.add-item__form input,
-.add-item__form textarea {
+.form input,
+.form textarea {
   margin-bottom: var(--add-item-gap);
   background-color: var(--cool-gray100);
   height: 56px;
@@ -65,74 +65,9 @@
   border-radius: 12px;
 }
 
-/* 이미지 추가 필드 */
-.form__field-image {
-  display: flex;
-  gap: 10px;
-}
-
-.form__field-image label {
-  margin-bottom: var(--add-item-gap);
-  width: var(--file-input-size);
-  cursor: pointer;
-}
-
-.form__field-image input {
-  display: none;
-}
-
-.form__field-image img {
-  width: var(--file-input-size);
-  height: var(--file-input-size);
-  margin-top: 16px;
-  border-radius: 12px;
-}
-
-.form__field-image #delete-button {
-  width: 20px;
-  height: 20px;
-}
-
-.form__field-image p {
-  font-size: 16px;
-  color: red;
-  font-weight: 400;
-  margin-top: 16px;
-  display: none;
-}
-
-/* 상품소개는 높이 282고정 */
-.form__field-description textarea {
-  height: 282px;
-  width: 100%;
-}
-
-/* 태그추가 인풋 */
-.form__field-tag input {
-  margin-bottom: 14px;
-}
-
-.form__field-tag ul {
-  display: flex;
-  gap: 12px;
-}
-
-.form__field-tag ul li {
-  padding: 6px 12px;
-  background-color: var(--cool-gray100);
-  border-radius: 26px;
-  color: var(--secondary-gray800);
-}
-
-.form__field-tag li > img {
-  width: 20px;
-  height: 20px;
-  margin-left: 8px;
-}
-
 /* 테블릿 */
 @media screen and (min-width: 768px) {
-  .main__add-item {
+  .addItem {
     /* 태블릿 변수들 */
     --container-width: 696px;
     --main-padding-top: 16px;
@@ -141,7 +76,7 @@
 }
 
 @media screen and (min-width: 1200px) {
-  .main__add-item {
+  .addItem {
     /* 데스크탑 변수들 */
     --container-width: 1200px;
     --main-padding-top: 24px;

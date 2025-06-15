@@ -1,14 +1,15 @@
 import React from "react";
+import styles from './styles/AddDescriptionField.module.css'
 
 function AddDescriptionField(props) {
-  const { className, value, checkFilled, name } = props;
+  const {value, checkFilled, name } = props;
 
   function handleChange(e) {
     checkFilled(name, e.target.value);
   }
 
   return (
-    <div className={className}>
+    <div className={styles.descriptionField}>
       <label htmlFor="description-input">상품 소개</label>
       <textarea
         onChange={handleChange}

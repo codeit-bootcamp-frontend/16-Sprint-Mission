@@ -1,14 +1,14 @@
 import React from "react";
 
 function AddTitleField(props) {
-  const { className, value, checkFilled, name } = props;
+  const { value, checkFilled, name } = props;
 
   function handleChange(e) {
     checkFilled(name, e.target.value);
   }
 
   return (
-    <div className={className}>
+    <div>
       <label htmlFor="title-input">상품명</label>
       <input
         onChange={handleChange}
