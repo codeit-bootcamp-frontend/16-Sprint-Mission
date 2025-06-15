@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import deleteIcon from "@assets/icon/ic_X.png";
-import styles from './styles/AddTagField.module.css'
+import styles from "./styles/AddTagField.module.css";
 
 function AddTagField(props) {
   const { value, checkFilled, name } = props;
@@ -11,17 +11,16 @@ function AddTagField(props) {
   }
   // => 이걸 단순 문자열의 길이X taglist가 현재 배열이니까 tagList.length
 
-  useEffect(()=>{
+  useEffect(() => {
     //태그리스트 변경 시 유효한 상태인지 다시 평가
-    checkFilled('tag', value)
+    checkFilled("tag", value);
 
     //엔터 눌러서 태그리스트에 추가되면 인풋 칸 초기화
-    checkFilled('tag', value, true)
-  },[tagList])
-
+    checkFilled("tag", value, true);
+  }, [tagList]);
 
   function handleClick(e) {
-    const target = e.target.id;
+    const target = e.target.dataset.index;
 
     setTagList(tagList.filter((_, i) => i !== Number(target)));
   }
@@ -52,10 +51,10 @@ function AddTagField(props) {
       <ul>
         {tagList.map((item, i) => {
           return (
-            <li key={`tag${i}`}>
+            <li key={`${item + i}`}>
               #{item}
               <img
-                id={i}
+                data-index={i}
                 onClick={handleClick}
                 src={deleteIcon}
                 alt="태그 삭제 버튼"

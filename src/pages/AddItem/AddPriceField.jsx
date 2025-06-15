@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 function parsePriceInput(text) {
   const parsedText = Number(text.split(",").join(""));

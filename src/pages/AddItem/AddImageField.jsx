@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import deleteIcon from "@assets/icon/ic_X.png";
 import addItemImg from "@assets/images/addItemImg.png";
-
 import styles from "./styles/AddImageField.module.css";
 
-function AddImageField(props) {
+function AddImageField() {
   const [preview, setPreview] = useState(null);
   const messageRef = useRef(null);
 

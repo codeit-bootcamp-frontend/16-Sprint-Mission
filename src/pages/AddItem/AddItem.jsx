@@ -1,10 +1,10 @@
 import { useAddItem } from "@hooks/useAddItem.js";
 import MemoizedDescriptionField from "./AddDescriptionField";
 import AddImageField from "./AddImageField";
-import styles from "./styles/AddItem.module.css";
 import MemoizedPriceField from "./AddPriceField";
 import MemoizedTagField from "./AddTagField";
 import MemoizedTitleField from "./AddTitleField";
+import styles from "./styles/AddItem.module.css";
 
 function AddItem() {
   const { checkFilled, getInputValues } = useAddItem();
@@ -21,7 +21,6 @@ function AddItem() {
     descriptionField.isPassed &&
     priceField.isPassed &&
     tagField.isPassed;
-
 
   return (
     <main className={styles.addItem}>

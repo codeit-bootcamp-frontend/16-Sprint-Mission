@@ -22,10 +22,7 @@ function Pagination() {
   } = usePagination(queryStrings, setQueryStrings, total, PAGINATION_MAX);
 
   return (
-    <ul
-      aria-label="페이지 네비게이션"
-      className={styles.pagination}
-    >
+    <ul aria-label="페이지 네비게이션" className={styles.pagination}>
       <li className={styles.prevBtn} onClick={handlePrevBtn}>
         <img
           src={isPrevDisabled ? prevBtn_inactive : prevBtn_active}
@@ -35,9 +32,7 @@ function Pagination() {
       {pageList.map((i) => (
         <li
           aria-label={`${i}페이지로 이동`}
-          className={
-            queryStrings.page == i ? styles.activate : null
-          }
+          className={queryStrings.page == i ? styles.activate : null}
           onClick={handlePageRequest}
           key={`page${i}`}
         >

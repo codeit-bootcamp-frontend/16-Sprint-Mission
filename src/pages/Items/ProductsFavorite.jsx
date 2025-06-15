@@ -38,10 +38,7 @@ function ProductsFavorite() {
         <ul className={styles.favoriteList}>
           {favoriteItems.map((item) => (
             <li className={styles.card} key={item.id}>
-              <ProductItem
-                className={styles.item}
-                item={item}
-              ></ProductItem>
+              <ProductItem className={styles.item} item={item}></ProductItem>
             </li>
           ))}
         </ul>
