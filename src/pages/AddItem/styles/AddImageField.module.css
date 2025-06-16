@@ -20,7 +20,6 @@
   border-radius: 12px;
 }
 
-/* 37 */
 .previewContainer {
   margin-top: 18px;
   position: relative;
@@ -32,6 +31,7 @@
   position: absolute;
   top: 14px;
   right: 13px;
+  cursor: pointer;
 }
 
 .errMsg {
@@ -39,5 +39,4 @@
   color: red;
   font-weight: 400;
   margin-bottom: 24px;
-  display: none;
 }
