@@ -1,13 +1,18 @@
 import styles from '@styles/Header.module.css';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 function Navigations() {
+  const location = useLocation();
+  const isMarketLocation =
+    location.pathname.startsWith('/items') ||
+    location.pathname.startsWith('/addItem');
+
   return (
     <div className={styles.nav__category}>
       <Link>자유게시판</Link>
       <NavLink
         to="/items"
-        className={({ isActive }) => (isActive ? `${styles.isActive}` : '')}
+        className={() => (isMarketLocation ? `${styles.isActive}` : null)}
       >
         중고마켓
       </NavLink>
