@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
-import deleteIcon from '@assets/icon/ic_X.png';
-import addItemImg from '@assets/images/addItemImg.png';
-import styles from './styles/AddImageField.module.css';
+import { useEffect, useRef, useState } from "react";
+import deleteIcon from "@assets/icon/ic_X.png";
+import addItemImg from "@assets/images/addItemImg.png";
+import styles from "./styles/AddImageField.module.css";
 
 function AddImageField() {
   const [preview, setPreview] = useState(null);
@@ -15,6 +15,8 @@ function AddImageField() {
   }
 
   useEffect(() => {
+    setShowErrMsg(false);
+
     return () => {
       if (preview) {
         URL.revokeObjectURL(preview);
@@ -24,7 +26,6 @@ function AddImageField() {
 
   function handleClick(e) {
     if (preview) {
-      console.log(showErrMsg);
       setShowErrMsg(true);
       e.preventDefault();
     } else {
@@ -56,7 +57,7 @@ function AddImageField() {
         </label>
         {preview && (
           <div className={styles.previewContainer}>
-            <img src={preview} alt="등록할 상품 미리보기" />{' '}
+            <img src={preview} alt="등록할 상품 미리보기" />
             <img
               onClick={handleDelete}
               className={styles.deleteBtn}
