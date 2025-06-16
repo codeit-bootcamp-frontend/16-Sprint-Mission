@@ -1,4 +1,7 @@
 .imageField {
+  --file-input-size: 168px;
+  --add-item-gap: 24px;
+
   display: flex;
   gap: 10px;
 }
@@ -6,7 +9,23 @@
 .imageField label {
   margin-bottom: var(--add-item-gap);
   width: var(--file-input-size);
+}
+
+.imageField label > div {
+  background-color: var(--secondary-gray200);
   cursor: pointer;
+  width: var(--file-input-size);
+  height: var(--file-input-size);
+  margin-top: 16px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageField label > div img {
+  width: 74px;
+  height: 86px;
 }
 
 .imageField input {
@@ -39,4 +58,10 @@
   color: red;
   font-weight: 400;
   margin-bottom: 24px;
+}
+
+@media screen and (min-width: 1200px) {
+  .imageField {
+    --file-input-size: 282px;
+  }
 }

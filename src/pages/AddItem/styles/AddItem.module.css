@@ -4,7 +4,6 @@
   --add-item-gap: 24px;
   --main-padding-top: 24px;
   --main-padding-bottom: 70px;
-  --file-input-size: 168px;
 
   padding-top: var(--main-padding-top);
   padding-bottom: var(--main-padding-bottom);
@@ -81,6 +80,5 @@
     --container-width: 1200px;
     --main-padding-top: 24px;
     --main-padding-bottom: 59px;
-    --file-input-size: 282px;
   }
 }

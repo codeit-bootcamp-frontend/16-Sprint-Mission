@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import addItemIcon from '@assets/icon/addItemIcon.png';
 import deleteIcon from '@assets/icon/ic_X.png';
-import addItemImg from '@assets/images/addItemImg.png';
 import styles from './styles/AddImageField.module.css';
 
 function AddImageField() {
@@ -40,10 +40,12 @@ function AddImageField() {
   return (
     <>
       <div className={styles.imageField}>
-        <label htmlFor="image-input">
+        <label htmlFor="image-input" aria-label="이미지 등록하기 버튼">
           상품 이미지
           <div>
-            <img src={addItemImg} alt="이미지 등록하기 버튼" />
+            <div>
+              <img src={addItemIcon} />
+            </div>
             <input
               ref={imageValueRef}
               onClick={handleClick}
