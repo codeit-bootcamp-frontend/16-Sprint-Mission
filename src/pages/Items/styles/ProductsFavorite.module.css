@@ -1,10 +1,10 @@
-.items__favorite {
+.itemsFavorite {
   /* 모바일 변수 */
-  --favorite-card-size: 343px;
+  --products-card-size: 343px;
 }
 
 /* 베스트상품 */
-.items__favorite h2 {
+.itemsFavorite h2 {
   font-size: 20px;
   font-weight: 700;
   line-height: 32px;
@@ -17,12 +17,12 @@
 }
 
 .card {
-  width: var(--favorite-card-size);
+  width: var(--products-card-size);
   cursor: pointer;
 }
 
 .item img {
-  height: var(--favorite-card-size);
+  height: var(--products-card-size);
   border-radius: 19.46px;
   margin-bottom: 10px;
 }
@@ -34,9 +34,9 @@
 }
 
 @media screen and (min-width: 1200px) {
-  .items__favorite {
+  .itemsFavorite {
     /* 데스크탑 변수 */
-    --favorite-card-size: 282px;
+    --products-card-size: 282px;
   }
 
   /* 베스트상품 */
@@ -44,7 +44,7 @@
     gap: 24px;
   }
 
-  .items__favorite ul li .card img {
+  .itemsFavorite ul li .card img {
     border-radius: 16px;
   }
 }

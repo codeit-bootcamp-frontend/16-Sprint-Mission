@@ -1,12 +1,13 @@
-import { useContext, useEffect } from "react";
+import React, { useContext, useEffect, Suspense } from "react";
 import { useLoadItems } from "@hooks/useLoadItems";
 import { useResizeInnerWidth } from "@hooks/useResizeInnerWidth";
 import LoadFailed from "./LoadFailed";
 import Pagination from "./Pagination";
 import { ProductData } from "./ProductDataProvider";
-import ProductItem from "./ProductItem";
+// import ProductItem from './ProductItem'
 import ProductsFilterBar from "./ProductsFilterBar";
 import styles from "./styles/ProductsAll.module.css";
+import SkeletonUi from "../../components/SkeletonUi";
 
 function ProductsAll() {
   const { products, setProducts, setTotal, queryStrings, setQueryStrings } =
@@ -29,9 +30,11 @@ function ProductsAll() {
     }
   }, [result]);
 
+  const LazyProductItem = React.lazy(() => import("./ProductItem"));
+
   return (
     <>
-      <section className={styles.items__all}>
+      <section className={styles.itemsAll}>
         <div className={styles.filterArea}>
           <h2>전체 상품</h2>
           <ProductsFilterBar />
@@ -42,12 +45,14 @@ function ProductsAll() {
           <ul className={styles.allList}>
             {products.map((item) => {
               return (
-                <li className={styles.card} key={item.id}>
-                  <ProductItem
-                    className={styles.item}
-                    item={item}
-                  ></ProductItem>
-                </li>
+                <Suspense
+                  key={item.id}
+                  fallback={<SkeletonUi className="allItemsSkeleton" />}
+                >
+                  <li className={styles.card}>
+                    <LazyProductItem className={styles.item} item={item} />
+                  </li>
+                </Suspense>
               );
             })}
           </ul>

@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
+import SkeletonUi from "@components/SkeletonUi";
 import { useLoadItems } from "@hooks/useLoadItems";
 import { useResizeInnerWidth } from "@hooks/useResizeInnerWidth";
 import LoadFailed from "./LoadFailed";
-import ProductItem from "./ProductItem";
 import styles from "./styles/ProductsFavorite.module.css";
 
 function ProductsFavorite() {
@@ -29,17 +29,24 @@ function ProductsFavorite() {
     }
   }, [result]);
 
+  const LazyProductItem = React.lazy(() => import("./ProductItem"));
+
   return (
-    <section className={styles.items__favorite}>
+    <section className={styles.itemsFavorite}>
       <h2>베스트 상품</h2>
       {loadFail ? (
         <LoadFailed />
       ) : (
         <ul className={styles.favoriteList}>
           {favoriteItems.map((item) => (
-            <li className={styles.card} key={item.id}>
-              <ProductItem className={styles.item} item={item}></ProductItem>
-            </li>
+            <Suspense
+              key={item.id}
+              fallback={<SkeletonUi className="favoriteItemsSkeleton" />}
+            >
+              <li className={styles.card}>
+                <LazyProductItem className={styles.item} item={item} />
+              </li>
+            </Suspense>
           ))}
         </ul>
       )}
