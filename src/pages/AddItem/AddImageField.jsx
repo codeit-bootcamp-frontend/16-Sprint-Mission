@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
-import deleteIcon from "@assets/icon/ic_X.png";
-import addItemImg from "@assets/images/addItemImg.png";
-import styles from "./styles/AddImageField.module.css";
+import { useEffect, useRef, useState } from 'react';
+import deleteIcon from '@assets/icon/ic_X.png';
+import addItemImg from '@assets/images/addItemImg.png';
+import styles from './styles/AddImageField.module.css';
 
 function AddImageField() {
   const [preview, setPreview] = useState(null);
@@ -15,8 +15,6 @@ function AddImageField() {
   }
 
   useEffect(() => {
-    setShowErrMsg(false);
-
     return () => {
       if (preview) {
         URL.revokeObjectURL(preview);
@@ -36,6 +34,7 @@ function AddImageField() {
   function handleDelete() {
     setPreview(null);
     imageValueRef.current.value = null;
+    setShowErrMsg(false);
   }
 
   return (
