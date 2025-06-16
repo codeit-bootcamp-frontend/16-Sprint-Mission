@@ -43,15 +43,11 @@ header {
   background-color: var(--primary-hover);
 }
 
-.nav__category {
-  margin-left: 32px;
-}
-
 .nav__category a {
   display: inline-block;
-  padding: 21px 15px;
+  font-size: 16px;
   font-weight: 700;
-  font-size: 18px;
+  margin-left: 8px;
   color: var(--secondary-gray600);
 }
 
@@ -73,6 +69,15 @@ header {
     /* nav */
     --nav-margin: 0 24px;
   }
+
+  .nav__category {
+    margin-left: 20px;
+  }
+
+  .nav__category a {
+    padding: 21px 15px;
+    font-size: 18px;
+  }
 }
 
 /*데스크탑*/
@@ -84,5 +89,9 @@ header {
 
   .nav {
     flex: 0 1 1120px;
+  }
+
+  .nav__category {
+    margin-left: 32px;
   }
 }
