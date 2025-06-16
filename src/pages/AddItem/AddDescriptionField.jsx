@@ -2,10 +2,10 @@ import React from "react";
 import styles from "./styles/AddDescriptionField.module.css";
 
 function AddDescriptionField(props) {
-  const { value, checkFilled, name } = props;
+  const { value, updateFieldState, name } = props;
 
   function handleChange(e) {
-    checkFilled(name, e.target.value);
+    updateFieldState(name, e.target.value);
   }
 
   return (

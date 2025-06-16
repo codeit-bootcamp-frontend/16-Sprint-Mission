@@ -6,13 +6,13 @@ function parsePriceInput(text) {
 }
 
 function AddPriceField(props) {
-  const { value, checkFilled, name } = props;
+  const { value, updateFieldState, name } = props;
 
   function handleChange(e) {
     const parsedPrice = parsePriceInput(e.target.value);
 
     if (isNaN(parsedPrice)) return;
-    checkFilled(name, parsedPrice);
+    updateFieldState(name, parsedPrice);
   }
 
   return (

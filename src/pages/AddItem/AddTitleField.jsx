@@ -1,10 +1,10 @@
 import React from "react";
 
 function AddTitleField(props) {
-  const { value, checkFilled, name } = props;
+  const { value, updateFieldState, name } = props;
 
   function handleChange(e) {
-    checkFilled(name, e.target.value);
+    updateFieldState(name, e.target.value);
   }
 
   return (

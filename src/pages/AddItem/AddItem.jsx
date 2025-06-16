@@ -1,4 +1,5 @@
-import { useAddItem } from "@hooks/useAddItem.js";
+import { useState } from "react";
+import { useAddItemFormState } from "@hooks/useAddItemFormState .js";
 import MemoizedDescriptionField from "./AddDescriptionField";
 import AddImageField from "./AddImageField";
 import MemoizedPriceField from "./AddPriceField";
@@ -7,16 +8,14 @@ import MemoizedTitleField from "./AddTitleField";
 import styles from "./styles/AddItem.module.css";
 
 function AddItem() {
-  const { checkFilled, getInputValues } = useAddItem();
+  const { updateFieldState, getFieldState } = useAddItemFormState();
+  const [tagList, setTagList] = useState([]); //추후 요청 보낼 때 여기서 보내야하니까 프롭으로 내려주기
+  const titleField = getFieldState("title");
+  const descriptionField = getFieldState("description");
+  const priceField = getFieldState("price");
+  const tagField = getFieldState("tag");
 
-  // const validField = ["title", "description", "price", "tag"];
-
-  const titleField = getInputValues("title");
-  const descriptionField = getInputValues("description");
-  const priceField = getInputValues("price");
-  const tagField = getInputValues("tag");
-
-  let isReady =
+  const isReady =
     titleField.isPassed &&
     descriptionField.isPassed &&
     priceField.isPassed &&
@@ -30,29 +29,28 @@ function AddItem() {
           <button className={isReady ? styles.isActive : null}>등록</button>
         </div>
         <form className={styles.form}>
-          <AddImageField
-            checkFilled={checkFilled}
-            getInputValues={getInputValues}
-          />
+          <AddImageField />
           <MemoizedTitleField
-            checkFilled={checkFilled}
+            updateFieldState={updateFieldState}
             value={titleField.inputValue}
             name="title"
           />
           <MemoizedDescriptionField
-            checkFilled={checkFilled}
+            updateFieldState={updateFieldState}
             value={descriptionField.inputValue}
             name="description"
           />
           <MemoizedPriceField
-            checkFilled={checkFilled}
+            updateFieldState={updateFieldState}
             value={priceField.inputValue}
             name="price"
           />
           <MemoizedTagField
-            checkFilled={checkFilled}
+            updateFieldState={updateFieldState}
             value={tagField.inputValue}
             name="tag"
+            tagList={tagList}
+            setTagList={setTagList}
           />
         </form>
       </div>
