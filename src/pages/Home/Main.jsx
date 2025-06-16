@@ -1,10 +1,10 @@
-import bannerImg from "@assets/images/bottom_banner.png";
-import hotItemImg from "@assets/images/hot_item.png";
-import registerImg from "@assets/images/register.png";
-import searchImg from "@assets/images/search.png";
-import heroImg from "@assets/images/top_main.png";
-import { Link } from "react-router-dom";
-import styles from "./styles/Main.module.css";
+import bannerImg from '@assets/images/bottom_banner.png';
+import hotItemImg from '@assets/images/hot_item.png';
+import registerImg from '@assets/images/register.png';
+import searchImg from '@assets/images/search.png';
+import heroImg from '@assets/images/top_main.png';
+import { Link } from 'react-router-dom';
+import styles from './styles/Main.module.css';
 
 function Main() {
   return (
@@ -28,12 +28,12 @@ function Main() {
           />
         </article>
       </section>
-      <section className={styles["main__hot-item"]}>
+      <section className={styles['main__hot-item']}>
         <article
-          className={`${styles["hot-item__content"]} ${styles.container} container`}
+          className={`${styles['hot-item__content']} ${styles.container} container`}
         >
           <img src={hotItemImg} alt="핫아이템" />
-          <div className={styles["hot-item__text"]}>
+          <div className={styles['hot-item__text']}>
             <span>Hot item</span>
             <h2>인기 상품을 확인해 보세요</h2>
             <p>가장 HOT한 중고거래 물품을 판다 마켓에서 확인해 보세요</p>

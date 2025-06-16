@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 function AddTitleField(props) {
   const { value, updateFieldState, name } = props;

@@ -1,5 +1,5 @@
-import { useEffect, useState, useRef } from "react";
-import { reCalculatePageSize } from "../utils/reCalculatePageSize";
+import { useEffect, useState, useRef } from 'react';
+import { reCalculatePageSize } from '../utils/reCalculatePageSize';
 
 export function useResizeInnerWidth(type) {
   const [innerWidth, setInnerWidth] = useState(null);
@@ -16,11 +16,11 @@ export function useResizeInnerWidth(type) {
       }, 300);
     }
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
     return () => {
       clearTimeout(debounceTimer.current);
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 

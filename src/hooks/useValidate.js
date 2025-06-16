@@ -1,38 +1,38 @@
-import { useCallback, useReducer } from "react";
+import { useCallback, useReducer } from 'react';
 
 const validRuleObj = {
-  "user-email": {
+  'user-email': {
     isValid(value) {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
     },
     getErrorMessage(value) {
-      return value ? "잘못된 이메일입니다." : "이메일을 입력해주세요";
+      return value ? '잘못된 이메일입니다.' : '이메일을 입력해주세요';
     },
   },
-  "user-password": {
+  'user-password': {
     isValid(value) {
       return value.length >= 8;
     },
     getErrorMessage(value) {
       return value.length == 0
-        ? "비밀번호를 입력해주세요."
-        : "비밀번호를 8자 이상 입력해주세요.";
+        ? '비밀번호를 입력해주세요.'
+        : '비밀번호를 8자 이상 입력해주세요.';
     },
   },
-  "user-name": {
+  'user-name': {
     isValid(value) {
       return value;
     },
     getErrorMessage() {
-      return "닉네임을 입력해주세요";
+      return '닉네임을 입력해주세요';
     },
   },
-  "user-password-check": {
+  'user-password-check': {
     isValid(value, pwValue) {
       return pwValue === value && value.length !== 0;
     },
     getErrorMessage() {
-      return "비밀번호가 일치하지 않습니다.";
+      return '비밀번호가 일치하지 않습니다.';
     },
   },
 };
@@ -48,13 +48,13 @@ const initialValidationStates = {
 function validationReducer(state, action) {
   //state는 validationStates
   switch (action.type) {
-    case "set_validationState": {
+    case 'set_validationState': {
       const { name, value } = action.payload;
       const validator = validRuleObj[name];
       const isValid = Boolean(
-        validator.isValid(value, state.values["user-password"]),
+        validator.isValid(value, state.values['user-password']),
       );
-      const errMsg = isValid ? "" : validator.getErrorMessage(value);
+      const errMsg = isValid ? '' : validator.getErrorMessage(value);
 
       return {
         //여기서 새로 만들어서 set해주기
@@ -76,7 +76,7 @@ export function useValidate() {
   );
 
   const validate = useCallback((name, value) => {
-    dispatch({ type: "set_validationState", payload: { name, value } });
+    dispatch({ type: 'set_validationState', payload: { name, value } });
   }, []);
 
   //아 이렇게 필드 만들어서 가져오면 독립적으로 따로 렌더링할 수 있구나
@@ -86,9 +86,9 @@ export function useValidate() {
   const getFieldState = useCallback(
     (name) => {
       return {
-        value: validationStates.values[name] || "",
+        value: validationStates.values[name] || '',
         error: validationStates.errors[name] || false,
-        errorMessage: validationStates.errorMessages[name] || "",
+        errorMessage: validationStates.errorMessages[name] || '',
         isValid: validationStates.isValid[name] || false, //초기에만 false로 주기
       };
     },

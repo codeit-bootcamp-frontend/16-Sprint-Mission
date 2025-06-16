@@ -7,7 +7,7 @@ export async function getProducts(queryStrings) {
     `${BASEURL}/products?orderBy=${orderBy}&page=${page}&pageSize=${pageSize}`,
   );
 
-  if (!response.ok) throw new Error("응답에 문제 있음");
+  if (!response.ok) throw new Error('응답에 문제 있음');
   const result = await response.json();
 
   return result;

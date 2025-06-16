@@ -1,4 +1,4 @@
-import styles from "@styles/SkeletonUi.module.css";
+import styles from '@styles/SkeletonUi.module.css';
 
 function SkeletonUi({ className }) {
   return (

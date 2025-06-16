@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "./styles/AddDescriptionField.module.css";
+import React from 'react';
+import styles from './styles/AddDescriptionField.module.css';
 
 function AddDescriptionField(props) {
   const { value, updateFieldState, name } = props;

@@ -1,12 +1,12 @@
-import userImg from "@assets/icon/ic_user.png";
-import styles from "@styles/Header.module.css";
-import { Link } from "react-router-dom";
+import userImg from '@assets/icon/ic_user.png';
+import styles from '@styles/Header.module.css';
+import { Link } from 'react-router-dom';
 
 function HeaderAuth({ isLoggedIn }) {
   return (
     <>
       {isLoggedIn ? (
-        <div className={styles[`nav__my-page`]}>
+        <div className={styles['nav__my-page']}>
           <img src={userImg} alt="마이페이지 아이콘" />
         </div>
       ) : (

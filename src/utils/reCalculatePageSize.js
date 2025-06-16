@@ -22,11 +22,11 @@ export function reCalculatePageSize(type, innerWidth) {
   let pageSizeKey;
 
   if (innerWidth < md) {
-    pageSizeKey = "sm";
+    pageSizeKey = 'sm';
   } else if (innerWidth < lg) {
-    pageSizeKey = "md";
+    pageSizeKey = 'md';
   } else {
-    pageSizeKey = "lg";
+    pageSizeKey = 'lg';
   }
 
   const pageSize = pageSizeByType[type][pageSizeKey];

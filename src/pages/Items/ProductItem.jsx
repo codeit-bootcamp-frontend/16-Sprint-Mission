@@ -1,6 +1,6 @@
-import heartIcon from "@assets/icon/ic_heart.png";
-import loadFailImg from "@assets/images/loadFailImg.png";
-import styles from "./styles/ProductItem.module.css";
+import heartIcon from '@assets/icon/ic_heart.png';
+import loadFailImg from '@assets/images/loadFailImg.png';
+import styles from './styles/ProductItem.module.css';
 
 function ProductItem({ className, item }) {
   return (
@@ -12,7 +12,7 @@ function ProductItem({ className, item }) {
       />
       <div className={styles.name}>{item.name}</div>
       <div className={styles.price}>
-        {`${item.price.toLocaleString("ko-KR")}원`}
+        {`${item.price.toLocaleString('ko-KR')}원`}
       </div>
       <div className={styles.favorite}>
         <img src={heartIcon} alt="좋아요 아이콘" />

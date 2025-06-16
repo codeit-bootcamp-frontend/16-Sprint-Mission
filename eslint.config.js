@@ -48,6 +48,7 @@ export default [
       },
     },
     rules: {
+      'quotes': ['error', 'single', { avoidEscape: true }],
       'react/react-in-jsx-scope': 'off', // React 17부터 JSX 변환이 자동으로 되므로 제거
       'react/prop-types': 'off', // JavaScript에서도 prop-types 사용 여부에 따라 설정 (여기서는 비활성화)
       'react/jsx-uses-react': 'off', // New JSX Transform 관련 설정
@@ -101,5 +102,3 @@ export default [
     },
   },
 ];
-
-

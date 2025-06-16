@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import deleteIcon from "@assets/icon/ic_X.png";
-import styles from "./styles/AddTagField.module.css";
+import React, { useEffect } from 'react';
+import deleteIcon from '@assets/icon/ic_X.png';
+import styles from './styles/AddTagField.module.css';
 
 function AddTagField(props) {
   const { value, updateFieldState, name, tagList, setTagList } = props;
@@ -10,7 +10,7 @@ function AddTagField(props) {
   }
 
   useEffect(() => {
-    updateFieldState("tag", value, tagList);
+    updateFieldState('tag', value, tagList);
   }, [tagList]);
 
   function handleClick(e) {
@@ -21,7 +21,7 @@ function AddTagField(props) {
 
   function handleKeyDown(e) {
     if (e.target.value.length === 0) return;
-    if (e.key !== "Enter") return;
+    if (e.key !== 'Enter') return;
 
     setTagList((prevList) => {
       return [...prevList, e.target.value];

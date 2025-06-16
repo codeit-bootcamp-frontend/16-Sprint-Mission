@@ -1,20 +1,20 @@
-import React, { Suspense, useEffect, useState } from "react";
-import SkeletonUi from "@components/SkeletonUi";
-import { useLoadItems } from "@hooks/useLoadItems";
-import { useResizeInnerWidth } from "@hooks/useResizeInnerWidth";
-import LoadFailed from "./LoadFailed";
-import styles from "./styles/ProductsFavorite.module.css";
+import React, { Suspense, useEffect, useState } from 'react';
+import SkeletonUi from '@components/SkeletonUi';
+import { useLoadItems } from '@hooks/useLoadItems';
+import { useResizeInnerWidth } from '@hooks/useResizeInnerWidth';
+import LoadFailed from './LoadFailed';
+import styles from './styles/ProductsFavorite.module.css';
 
 function ProductsFavorite() {
   const [favoriteItems, setFavoriteItems] = useState([]);
   const [favoriteQueryStrings, setFavoriteQueryStrings] = useState({
     page: 1,
-    orderBy: "favorite",
+    orderBy: 'favorite',
     pageSize: 4,
   });
 
   //resize 발생 시 pageSize 새로 가져다줘
-  const { pageSize } = useResizeInnerWidth("favor");
+  const { pageSize } = useResizeInnerWidth('favor');
 
   useEffect(() => {
     setFavoriteQueryStrings((prev) => ({ ...prev, pageSize }));
@@ -29,7 +29,7 @@ function ProductsFavorite() {
     }
   }, [result]);
 
-  const LazyProductItem = React.lazy(() => import("./ProductItem"));
+  const LazyProductItem = React.lazy(() => import('./ProductItem'));
 
   return (
     <section className={styles.itemsFavorite}>

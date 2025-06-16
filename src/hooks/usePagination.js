@@ -1,9 +1,8 @@
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo } from 'react';
 
 /*
 맨처음에 useCallback이랑 useMemo로 메모이제이션 하면 더 좋을까 하고 만들고 보니까
 사실 상 어딜 눌러도 pageStart나 page가 변해서 의미가 없는 것 같음 -> 일단 재사용이라도 가능하게 뽑아두자.
--> 아니면 합성 컴포넌트? 이걸 알아볼까?
  */
 export function usePagination(
   queryStrings,

@@ -1,14 +1,14 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
-import { ProductData } from "./ProductDataProvider";
-import styles from "./styles/ProductsFilterBar.module.css";
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { ProductData } from './ProductDataProvider';
+import styles from './styles/ProductsFilterBar.module.css';
 
 function ProductsFilterBar() {
   const { queryStrings, setQueryStrings } = useContext(ProductData);
 
   // dataset.value에 의한 queryStrings변경
   const handleChange = (e) => {
-    if (e.target.tagName !== "LI") return;
+    if (e.target.tagName !== 'LI') return;
 
     setQueryStrings((prev) => ({
       ...prev,
@@ -34,7 +34,7 @@ function ProductsFilterBar() {
         ></input>
       </div>
       <label htmlFor="showDropdown" className={styles.selector}>
-        {queryStrings.orderBy === "recent" ? "최신 순" : "좋아요 순"}
+        {queryStrings.orderBy === 'recent' ? '최신 순' : '좋아요 순'}
         <input
           aria-haspopup="listbox"
           id="showDropdown"
@@ -43,14 +43,14 @@ function ProductsFilterBar() {
         <ul role="listbox" onClick={handleChange}>
           <li
             role="option"
-            aria-selected={queryStrings.orderBy === "recent"}
+            aria-selected={queryStrings.orderBy === 'recent'}
             data-value="recent"
           >
             최신 순
           </li>
           <li
             role="option"
-            aria-selected={queryStrings.orderBy === "favorite"}
+            aria-selected={queryStrings.orderBy === 'favorite'}
             data-value="favorite"
           >
             좋아요 순

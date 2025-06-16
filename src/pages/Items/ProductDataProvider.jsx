@@ -1,11 +1,11 @@
-import { createContext, useState } from "react";
+import { createContext, useState } from 'react';
 
 export const ProductData = createContext();
 
 function ProductDataProvider({ children }) {
   const [products, setProducts] = useState([]);
   const [queryStrings, setQueryStrings] = useState({
-    orderBy: "recent",
+    orderBy: 'recent',
     page: 1,
     pageSize: 10,
   });

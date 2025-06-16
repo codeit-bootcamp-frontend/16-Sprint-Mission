@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 function parsePriceInput(text) {
-  const parsedText = Number(text.split(",").join(""));
+  const parsedText = Number(text.split(',').join(''));
   return parsedText;
 }
 
@@ -20,7 +20,7 @@ function AddPriceField(props) {
       <label htmlFor="price-input">판매가격</label>
       <input
         onChange={handleChange}
-        value={value.toLocaleString("ko-KR")}
+        value={value.toLocaleString('ko-KR')}
         type="text"
         id="price-input"
         name="price"

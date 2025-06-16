@@ -1,13 +1,13 @@
-import { useState } from "react";
-import logoTextImg from "@assets/images/logo-text.png";
-import logoImg from "@assets/images/logo.png";
-import styles from "@styles/Header.module.css";
-import { Link, Outlet } from "react-router-dom";
-import HeaderAuth from "./HeaderAuth";
-import Navigations from "./Navigations";
+import { useState } from 'react';
+import logoTextImg from '@assets/images/logo-text.png';
+import logoImg from '@assets/images/logo.png';
+import styles from '@styles/Header.module.css';
+import { Link, Outlet } from 'react-router-dom';
+import HeaderAuth from './HeaderAuth';
+import Navigations from './Navigations';
 
 function Header() {
-  const [isLoggedIn] = useState(sessionStorage.getItem("loggedIn"));
+  const [isLoggedIn] = useState(sessionStorage.getItem('loggedIn'));
 
   return (
     <>
