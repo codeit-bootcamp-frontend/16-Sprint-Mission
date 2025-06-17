@@ -90,8 +90,6 @@ const ProductList = ({ title, pageSize = DEFAULT_ITEM_PAGE_SIZE }) => {
       <ProductListResults
         products={products}
         pageSize={pageSize}
-        isLoading={isLoading}
-        loadingError={loadingError}
         isEmpty={() => setSearchParams("")}
       />
       <Pagination
