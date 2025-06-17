@@ -1,3 +1,5 @@
+import Button from "../components/common/Button/Button.jsx";
+
 function Home() {
   return (
     <div>

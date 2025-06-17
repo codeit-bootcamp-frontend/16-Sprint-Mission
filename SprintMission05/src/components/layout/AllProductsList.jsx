@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getProducts } from "../api/getProducts";
 import Pagination from "./Pagination";
+import Button from "../common/Button/Button";
 
 const LIMIT = 10;
 
@@ -70,21 +71,6 @@ const StyledForm = styled.form`
     color: #9ca3af;
   }
 
-  button {
-    width: auto;
-    height: 42px;
-    background-color: #3692ff;
-    border: 1px solid #3692ff;
-    border-radius: 8px;
-    color: #f3f4f6;
-    font-size: 16px;
-    font-weight: 600;
-    padding: 8px 23px;
-
-    &:hover {
-      background-color: #1e5bb8;
-    }
-  }
   select {
     width: 130px;
     height: 42px;
@@ -179,9 +165,12 @@ function AllProductsList() {
         <h2>전체상품</h2>
         <StyledForm>
           <input type="text" placeholder="검색할 상품을 입력하세요" />
-          <button type="button" onClick={handleClick}>
-            상품 등록하기
-          </button>
+          <Button
+            state="inactive"
+            size="small"
+            text="상품 등록하기"
+            onClick={handleClick}
+          />
           <select
             name="sort"
             value={order}

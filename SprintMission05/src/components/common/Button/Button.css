@@ -1,0 +1,68 @@
+.Button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 23px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--gray-100);
+  cursor: pointer;
+  text-align: center;
+  border-radius: 6px;
+  background: #ccc;
+  height: 48px;
+  width: auto;
+}
+
+.Button:hover {
+  background: var(--Blue-200);
+}
+
+.btn-round {
+  border-radius: 9999px;
+}
+
+.btn-active {
+  background: var(--Blue-100);
+}
+
+.btn-click {
+  background: var(--Blue-300);
+}
+
+.btn-inactive {
+  background: var(--gray-400);
+}
+
+.btn-white {
+  background: var(--gray-50);
+  color: var(--Blue-100);
+  border: 1px solid var(--Blue-100);
+}
+
+.btn-img {
+  width: 19px;
+  height: 16px;
+}
+
+.btn-small {
+  padding: 12px 23px;
+  height: 42px;
+}
+
+.btn-medium {
+  padding: 12px 71px;
+  width: 240px;
+}
+
+.btn-large {
+  padding: 16px 124px;
+  width: 357px;
+  height: 56px;
+}
+
+.Button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
