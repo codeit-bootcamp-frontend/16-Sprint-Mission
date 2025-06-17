@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './styles/AddDescriptionField.module.css';
 
 function AddDescriptionField(props) {
@@ -22,5 +21,4 @@ function AddDescriptionField(props) {
   );
 }
 
-const MemoizedDescriptionField = React.memo(AddDescriptionField);
-export default MemoizedDescriptionField;
+export default AddDescriptionField;

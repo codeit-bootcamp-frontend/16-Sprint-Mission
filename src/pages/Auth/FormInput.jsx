@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './styles/ErrMsg.module.css';
 
 function FormInput(props) {
@@ -30,6 +29,4 @@ function FormInput(props) {
   );
 }
 
-const MemoizedFormInput = React.memo(FormInput);
-
-export default MemoizedFormInput;
+export default FormInput;

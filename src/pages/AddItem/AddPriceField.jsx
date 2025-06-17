@@ -1,5 +1,3 @@
-import React from 'react';
-
 function parsePriceInput(text) {
   const parsedText = Number(text.split(',').join(''));
   return parsedText;
@@ -30,5 +28,4 @@ function AddPriceField(props) {
   );
 }
 
-const MemoizedPriceField = React.memo(AddPriceField);
-export default MemoizedPriceField;
+export default AddPriceField;

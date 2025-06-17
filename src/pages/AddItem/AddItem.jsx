@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useAddItemFormState } from '@hooks/useAddItemFormState .js';
-import MemoizedDescriptionField from './AddDescriptionField';
+import AddDescriptionField from './AddDescriptionField';
 import AddImageField from './AddImageField';
-import MemoizedPriceField from './AddPriceField';
-import MemoizedTagField from './AddTagField';
-import MemoizedTitleField from './AddTitleField';
+import AddPriceField from './AddPriceField';
+import AddTagField from './AddTagField';
+import AddTitleField from './AddTitleField';
 import styles from './styles/AddItem.module.css';
 
 function AddItem() {
@@ -30,22 +30,22 @@ function AddItem() {
         </div>
         <form className={styles.form}>
           <AddImageField />
-          <MemoizedTitleField
+          <AddTitleField
             updateFieldState={updateFieldState}
             value={titleField.inputValue}
             name="title"
           />
-          <MemoizedDescriptionField
+          <AddDescriptionField
             updateFieldState={updateFieldState}
             value={descriptionField.inputValue}
             name="description"
           />
-          <MemoizedPriceField
+          <AddPriceField
             updateFieldState={updateFieldState}
             value={priceField.inputValue}
             name="price"
           />
-          <MemoizedTagField
+          <AddTagField
             updateFieldState={updateFieldState}
             value={tagField.inputValue}
             name="tag"

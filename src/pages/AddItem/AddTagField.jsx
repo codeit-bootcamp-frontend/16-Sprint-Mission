@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import deleteIcon from '@assets/icon/ic_X.png';
 import styles from './styles/AddTagField.module.css';
 
@@ -60,5 +60,4 @@ function AddTagField(props) {
   );
 }
 
-const MemoizedTagField = React.memo(AddTagField);
-export default MemoizedTagField;
+export default AddTagField;

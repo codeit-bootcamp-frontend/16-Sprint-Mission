@@ -1,5 +1,3 @@
-import React from 'react';
-
 function AddTitleField(props) {
   const { value, updateFieldState, name } = props;
 
@@ -22,5 +20,4 @@ function AddTitleField(props) {
   );
 }
 
-const MemoizedTitleField = React.memo(AddTitleField);
-export default MemoizedTitleField;
+export default AddTitleField;

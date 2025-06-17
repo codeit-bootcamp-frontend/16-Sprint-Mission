@@ -3,7 +3,7 @@ import logo from '@assets/images/logo-title.png';
 import SocialLogin from '@components/SocialLogin';
 import { useValidate, checkAllValid } from '@hooks/useValidate';
 import { Link, useNavigate } from 'react-router-dom';
-import MemoizedFormInput from './FormInput';
+import FormInput from './FormInput';
 import styles from './styles/Login.module.css';
 
 function Login() {
@@ -45,7 +45,7 @@ function Login() {
         <form onSubmit={handleSubmit} className={styles.login__form}>
           <fieldset>
             <label htmlFor="user-email">이메일</label>
-            <MemoizedFormInput
+            <FormInput
               validate={validate}
               {...emailValidationState}
               type="text"
@@ -55,7 +55,7 @@ function Login() {
             />
             <div className={styles['container__position-relative']}>
               <label htmlFor="user-password">비밀번호</label>
-              <MemoizedFormInput
+              <FormInput
                 validate={validate}
                 {...passwordValidationState}
                 id="user-password"

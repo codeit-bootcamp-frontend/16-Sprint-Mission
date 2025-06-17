@@ -3,7 +3,7 @@ import logo from '@assets/images/logo-title.png';
 import SocialLogin from '@components/SocialLogin';
 import { useValidate, checkAllValid } from '@hooks/useValidate';
 import { Link, useNavigate } from 'react-router-dom';
-import MemoizedFormInput from './FormInput';
+import FormInput from './FormInput';
 import styles from './styles/SignUp.module.css';
 
 function SignUp() {
@@ -63,7 +63,7 @@ function SignUp() {
         <form onSubmit={handleSubmit} className={styles['sign-up__form']}>
           <fieldset>
             <label htmlFor="user-email">이메일</label>
-            <MemoizedFormInput
+            <FormInput
               validate={validate}
               {...emailValidationState}
               type="text"
@@ -72,7 +72,7 @@ function SignUp() {
               placeholder="이메일을 입력해주세요"
             />
             <label htmlFor="user-name">닉네임</label>
-            <MemoizedFormInput
+            <FormInput
               validate={validate}
               {...nameValidationState}
               id="user-name"
@@ -82,7 +82,7 @@ function SignUp() {
             />
             <div className={styles['container__position-relative']}>
               <label htmlFor="user-password">비밀번호</label>
-              <MemoizedFormInput
+              <FormInput
                 validate={validate}
                 {...passwordValidationState}
                 id="user-password"
@@ -104,7 +104,7 @@ function SignUp() {
             </div>
             <div className={styles['container__position-relative']}>
               <label htmlFor="user-password">비밀번호 확인</label>
-              <MemoizedFormInput
+              <FormInput
                 validate={validate}
                 {...passwordChekcValidationState}
                 passwordInputValue={pwValue}
