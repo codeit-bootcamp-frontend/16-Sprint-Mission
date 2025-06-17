@@ -21,7 +21,7 @@ function ProductsFavorite() {
   }, [pageSize]);
 
   //쿼리 변경 시 가져오기
-  const { loadFail, result } = useLoadItems(favoriteQueryStrings);
+  const { loadFailed, result } = useLoadItems(favoriteQueryStrings);
 
   useEffect(() => {
     if (result.list) {
@@ -34,7 +34,7 @@ function ProductsFavorite() {
   return (
     <section className={styles.itemsFavorite}>
       <h2>베스트 상품</h2>
-      {loadFail ? (
+      {loadFailed ? (
         <LoadFailed />
       ) : (
         <ul className={styles.favoriteList}>

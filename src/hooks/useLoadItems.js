@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getProducts } from '../service/api';
 
 export function useLoadItems(queryStrings) {
-  const [loadFail, setLoadFail] = useState('');
+  const [loadFailed, setLoadFailed] = useState(true);
   const [result, setResult] = useState({});
 
   useEffect(() => {
@@ -12,14 +12,14 @@ export function useLoadItems(queryStrings) {
       try {
         const result = await getProducts(queryStrings);
         setResult(result);
-        setLoadFail(''); //빈 문자열 false
+        setLoadFailed(false);
       } catch (err) {
-        setLoadFail('fail'); //문자열이니까 true
+        setLoadFailed(true);
       }
     }
 
     loadItemsByQuery();
   }, [queryStrings]);
 
-  return { loadFail, result };
+  return { loadFailed, result };
 }

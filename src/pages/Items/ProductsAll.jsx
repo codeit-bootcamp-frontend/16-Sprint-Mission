@@ -21,7 +21,7 @@ function ProductsAll() {
   }, [pageSize]);
 
   // 쿼리스트링으로 아이템 가져오기 가져다줘
-  const { loadFail, result } = useLoadItems(queryStrings);
+  const { loadFailed, result } = useLoadItems(queryStrings);
 
   useEffect(() => {
     if (result.list) {
@@ -39,7 +39,7 @@ function ProductsAll() {
           <h2>전체 상품</h2>
           <ProductsFilterBar />
         </div>
-        {loadFail ? (
+        {loadFailed ? (
           <LoadFailed />
         ) : (
           <ul className={styles.allList}>
