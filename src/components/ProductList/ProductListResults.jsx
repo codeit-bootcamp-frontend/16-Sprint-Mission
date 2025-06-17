@@ -1,22 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { ProductListStyle } from "./ProductList";
 import ProductCard from "../ProductCard";
-import ProductCardSkeleton from "../ui/Skeletons/ProductCardSkeleton";
 import Button from "../ui/Button";
 
-const ProductListResults = ({
-  products,
-  pageSize,
-  listType,
-  isLoading,
-  loadingError,
-  isEmpty,
-}) => {
-  const isLoadingError = !isLoading && loadingError;
-
-  if (isLoading)
-    return <ProductListLoading pageSize={pageSize} listType={listType} />;
-  if (isLoadingError) return <ProductListError />;
+const ProductListResults = ({ products, pageSize, listType, isEmpty }) => {
   if (products.length === 0) return <ProductListEmpty isEmpty={isEmpty} />;
 
   return (
@@ -40,28 +27,6 @@ const ProductListRenderer = ({ products, pageSize, listType }) => {
           );
         })}
       </ul>
-    </div>
-  );
-};
-
-const ProductListLoading = ({ pageSize, listType }) => {
-  return (
-    <div css={ProductListStyle}>
-      <ul className={`product-list-ul ${listType}`}>
-        {Array.from({ length: pageSize }).map((_, index) => (
-          <li key={index} className="product-list">
-            <ProductCardSkeleton />
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
-const ProductListError = () => {
-  return (
-    <div css={ProductListStyle}>
-      <p>상품 목록을 가져오지 못했습니다.</p>
     </div>
   );
 };
