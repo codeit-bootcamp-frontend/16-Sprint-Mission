@@ -11,7 +11,7 @@ const ListContainer = styled.div`
   margin: 0 auto;
 `;
 
-function Main() {
+function List() {
   return (
     <ListContainer>
       <BestProductsList />
@@ -20,4 +20,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default List;

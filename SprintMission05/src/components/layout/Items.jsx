@@ -1,5 +1,5 @@
 import Header from "./Header";
-import Main from "./Main";
+import List from "./List";
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -17,7 +17,7 @@ function Items() {
     <>
       <GlobalStyle />
       <Header />
-      <Main />
+      <List />
     </>
   );
 }

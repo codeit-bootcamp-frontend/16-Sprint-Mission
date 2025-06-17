@@ -6,6 +6,12 @@ export const getProducts = async ({
   limit = 10,
 }) => {
   const query = new URLSearchParams({ order, offset, limit }).toString();
+
+  console.log(
+    "API 요청 URL 쿼리:",
+    `https://panda-market-api.vercel.app/products?${query}`
+  );
+
   const response = await fetch(
     `https://panda-market-api.vercel.app/products?${query}`
   );

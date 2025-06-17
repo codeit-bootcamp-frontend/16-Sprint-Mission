@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { getProducts } from "../api/getProducts";
 import Pagination from "./Pagination";
 
+const LIMIT = 10;
+
 const Header = styled.header`
   display: flex;
   align-items: center;
@@ -121,14 +123,20 @@ function AllProductsList() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  const [page, setPage] = useState(1);
+  const [hasNextPage, setHasNextPage] = useState(false);
+  const [totalCount, setTotalCount] = useState(0);
+
   useEffect(() => {
     const fetchProducts = async () => {
       setIsLoading(true);
       try {
+        const offset = (page - 1) * LIMIT;
+
         const data = await getProducts({
-          order: "createdAt",
-          offset: 0,
-          limit: 10,
+          order: order,
+          offset: offset,
+          limit: LIMIT,
         });
 
         const sorted = [...data.list].sort((a, b) => {
@@ -142,6 +150,8 @@ function AllProductsList() {
         });
 
         setItems(sorted);
+        setTotalCount(data.totalCount);
+        setHasNextPage(data.totalCount > offset + LIMIT);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -150,7 +160,7 @@ function AllProductsList() {
     };
 
     fetchProducts();
-  }, [order]);
+  }, [order, page]);
 
   if (isLoading && items.length === 0) return <p>로딩중...</p>;
   if (error) return <p>에러 발생: {error.message}</p>;
@@ -160,6 +170,8 @@ function AllProductsList() {
   const handleClick = () => {
     nav("/additem");
   };
+
+  const totalPages = Math.ceil(totalCount / LIMIT);
 
   return (
     <div>
@@ -172,7 +184,9 @@ function AllProductsList() {
           </button>
           <select
             name="sort"
+            value={order}
             onChange={(e) => {
+              setPage(1);
               if (e.target.value === "createdAt") handleNewestClick();
               if (e.target.value === "favoriteCount") handleFavoriteClick();
             }}
@@ -182,6 +196,7 @@ function AllProductsList() {
           </select>
         </StyledForm>
       </Header>
+
       <StyledProductList>
         {items.map((item) => {
           return (
@@ -191,7 +206,13 @@ function AllProductsList() {
           );
         })}
       </StyledProductList>
-      <Pagination />
+
+      <Pagination
+        currentPage={page}
+        onPageChange={setPage}
+        hasNextPage={hasNextPage}
+        totalPages={totalPages}
+      />
     </div>
   );
 }
