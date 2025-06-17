@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback } from 'react';
 
 /*
 맨처음에 useCallback이랑 useMemo로 메모이제이션 하면 더 좋을까 하고 만들고 보니까
@@ -12,9 +12,7 @@ export function usePagination(
 ) {
   const { page, pageSize } = queryStrings;
 
-  const maxPageLength = useMemo(() => {
-    return Math.ceil(total / pageSize);
-  }, [total, pageSize]); //이건 자주 안 바뀌니까 해도 되겠다.
+  const maxPageLength = Math.ceil(total / pageSize);
 
   const pageStart =
     Math.floor((page - 1) / PAGINATION_MAX) * PAGINATION_MAX + 1;
