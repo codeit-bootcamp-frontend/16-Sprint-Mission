@@ -6,6 +6,7 @@ import SectionTitle from "../ui/SectionTitle";
 import ProductListResults from "./ProductListResults";
 import useAsync from "../../hooks/useAsync";
 import ProductListSkeleton from "../ui/Skeletons/ProductListSkeleton";
+import ProductListError from "./ProductListError";
 
 const ORDER_BY = "favorite";
 const LIST_TYPE = "best";
@@ -39,7 +40,7 @@ const BestProductList = ({ title, pageSize }) => {
       {isLoading && (
         <ProductListSkeleton pageSize={pageSize} listType={LIST_TYPE} />
       )}
-      {loadingError && <p>상품 목록을 가져오지 못했습니다.</p>}
+      {loadingError && <ProductListError />}
       <ProductListResults
         products={products}
         pageSize={pageSize}
