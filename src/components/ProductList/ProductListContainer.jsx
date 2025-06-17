@@ -49,14 +49,6 @@ const ProductListContainer = ({ title, pageSize = DEFAULT_ITEM_PAGE_SIZE }) => {
     });
   }, [pageSize, order, keyword, handleLoad]);
 
-  // 새로고침 시 검색값 초기화
-  useEffect(() => {
-    if (searchParams.has("keyword")) {
-      searchParams.delete("keyword");
-      setSearchParams(searchParams);
-    }
-  }, []);
-
   return (
     <div css={ProductListContainerStyle}>
       <div className="product-list-header">
