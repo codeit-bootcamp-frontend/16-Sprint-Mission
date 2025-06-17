@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { ProductListStyle } from "../../ProductList/ProductList";
+import ProductListStyle from "../../ProductList/ProductListStyle";
 import ProductCardSkeleton from "./ProductCardSkeleton";
 
 const ProductListLoading = ({ pageSize, listType }) => {
