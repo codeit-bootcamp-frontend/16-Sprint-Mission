@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'ROKAF Sans';
+  src: url('../assets/fonts/ROKAFSans-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ROKAF Sans';
+  src: url('../assets/fonts/ROKAFSans-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+html {
+  font-size: var(--font-base); /* 기본 글자 크기 */
+}
+
+body {
+  font-family: var(--font-family);
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
