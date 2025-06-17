@@ -1,4 +1,4 @@
-import Nav from "./Nav";
+import Nav from "../layout/Nav";
 import styled from "styled-components";
 
 const HeaderWrapper = styled.header`

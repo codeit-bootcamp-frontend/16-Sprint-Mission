@@ -1,6 +1,6 @@
-import Header from "./Header";
-import List from "./List";
+import Header from "../components/common/Header";
 import { createGlobalStyle } from "styled-components";
+import List from "../components/layout/List";
 
 const GlobalStyle = createGlobalStyle`
   * {

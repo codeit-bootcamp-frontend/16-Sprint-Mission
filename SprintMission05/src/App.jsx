@@ -1,12 +1,12 @@
 import "./App.css";
 import { createGlobalStyle } from "styled-components";
-import Items from "./components/layout/Items";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./components/layout/Home";
-import Login from "./components/layout/Login";
-import Privacy from "./components/layout/Privacy";
-import FAQ from "./components/layout/FAQ";
-import NotFound from "./components/layout/NotFound";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Privacy from "./pages/Privacy";
+import FAQ from "./pages/FAQ";
+import NotFound from "./pages/NotFound";
+import Items from "./pages/Items";
 
 const GlobalStyle = createGlobalStyle`
   * {
