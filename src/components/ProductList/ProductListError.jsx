@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { ProductListStyle } from "./ProductList";
+import ProductListStyle from "./ProductListContainerStyle";
 
 const ProductListError = () => {
   return (

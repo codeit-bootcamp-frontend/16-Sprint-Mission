@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import ProductListStyle from "./ProductListStyle";
+import ProductListStyle from "./ProductListContainerStyle";
 import { useEffect, useState, useCallback } from "react";
 import { getProducts } from "../../services/api";
 import SectionTitle from "../ui/SectionTitle";

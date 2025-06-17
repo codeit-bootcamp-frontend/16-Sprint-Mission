@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import ProductListStyle from "./ProductListStyle";
+import ProductListContainerStyle from "./ProductListContainerStyle";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
 import { getProducts } from "../../services/api";
@@ -16,16 +16,12 @@ import ProductListResults from "./ProductListResults";
 const DEFAULT_ORDER = Object.keys(ITEMS_ORDER_MAP)[0];
 const dropdownMenuItems = Object.keys(ITEMS_ORDER_MAP);
 
-const ProductList = ({ title, pageSize = DEFAULT_ITEM_PAGE_SIZE }) => {
+const ProductListContainer = ({ title, pageSize = DEFAULT_ITEM_PAGE_SIZE }) => {
   const [products, setProducts] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
   const [order, setOrder] = useState(DEFAULT_ORDER);
   const navigate = useNavigate();
-  const {
-    isLoading,
-    loadingError,
-    runAsync: getProductsAsync,
-  } = useAsync(getProducts);
+  const { runAsync: getProductsAsync } = useAsync(getProducts);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const keyword = searchParams.get("keyword") || "";
@@ -62,7 +58,7 @@ const ProductList = ({ title, pageSize = DEFAULT_ITEM_PAGE_SIZE }) => {
   }, []);
 
   return (
-    <div css={ProductListStyle}>
+    <div css={ProductListContainerStyle}>
       <div className="product-list-header">
         <SectionTitle title={title} />
         <Button
@@ -103,4 +99,4 @@ const ProductList = ({ title, pageSize = DEFAULT_ITEM_PAGE_SIZE }) => {
   );
 };
 
-export default ProductList;
+export default ProductListContainer;

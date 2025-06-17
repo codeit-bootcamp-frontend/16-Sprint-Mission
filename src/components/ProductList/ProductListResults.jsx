@@ -1,45 +1,53 @@
 /** @jsxImportSource @emotion/react */
-import ProductListStyle from "./ProductListStyle";
+import ProductListContainerStyle from "./ProductListContainerStyle";
 import ProductCard from "../ProductCard";
 import Button from "../ui/Button";
 
 const ProductListResults = ({ products, pageSize, listType, isEmpty }) => {
-  if (products.length === 0) return <ProductListEmpty isEmpty={isEmpty} />;
+  if (products.length === 0) {
+    return (
+      <ProductList>
+        <ProductList.Empty onEmpty={isEmpty} />
+      </ProductList>
+    );
+  }
 
   return (
-    <ProductListRenderer
-      products={products}
-      pageSize={pageSize}
-      listType={listType}
-    />
+    <ProductList>
+      <ProductList.Content
+        products={products}
+        pageSize={pageSize}
+        listType={listType}
+      />
+    </ProductList>
   );
 };
 
-const ProductListRenderer = ({ products, pageSize, listType }) => {
+const ProductList = ({ children }) => {
+  return <div css={ProductListContainerStyle}>{children}</div>;
+};
+
+ProductList.Content = ({ products, pageSize, listType }) => {
   return (
-    <div css={ProductListStyle}>
-      <ul className={`product-list-ul ${listType}`}>
-        {products.slice(0, pageSize).map(({ id, ...itemData }) => {
-          return (
-            <li key={id} className="product-list">
-              <ProductCard key={id} data={itemData} loading="eager" />
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+    <ul className={`product-list-ul ${listType}`}>
+      {products.slice(0, pageSize).map(({ id, ...itemData }) => {
+        return (
+          <li key={id} className="product-list">
+            <ProductCard key={id} data={itemData} loading="eager" />
+          </li>
+        );
+      })}
+    </ul>
   );
 };
 
-const ProductListEmpty = ({ isEmpty }) => {
+ProductList.Empty = ({ isEmpty }) => {
   return (
-    <div css={ProductListStyle}>
-      <div className="product-list-empty">
-        <p>상품이 없습니다.</p>
-        <Button type="button" variant="primary" size="sm" onClick={isEmpty}>
-          돌아가기
-        </Button>
-      </div>
+    <div className="product-list-empty">
+      <p>상품이 없습니다.</p>
+      <Button type="button" variant="primary" size="sm" onClick={isEmpty}>
+        돌아가기
+      </Button>
     </div>
   );
 };
