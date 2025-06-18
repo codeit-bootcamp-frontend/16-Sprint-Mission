@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import likeImg from "../../assets/images/ic-like.svg";
 import pandaLogoImg from "../../assets/images/logo-panda.svg";
 
-const ProductCard = ({ data, loading = "lazy" }) => {
+const ProductCard = ({ productId, data, loading = "lazy" }) => {
   const { images, name, description, price, favoriteCount } = data;
 
   return (
     <div css={ProductCardStyle}>
-      <Link to="/products">
+      <Link to={`/products/${productId}`} state={data}>
         <span className="img-wrap">
           <img
             src={images}

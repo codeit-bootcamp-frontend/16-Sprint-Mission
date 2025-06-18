@@ -33,7 +33,12 @@ ProductList.Content = ({ products, pageSize, listType }) => {
       {products.slice(0, pageSize).map(({ id, ...itemData }) => {
         return (
           <li key={id} className="product-list">
-            <ProductCard key={id} data={itemData} loading="eager" />
+            <ProductCard
+              key={id}
+              data={itemData}
+              loading="eager"
+              productId={id}
+            />
           </li>
         );
       })}
