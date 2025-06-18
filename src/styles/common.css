@@ -18,32 +18,10 @@
   font-display: swap;
 }
 
-/* layout */
-.page-content {
-  width: 100%;
-  margin: 24px auto;
-  padding: 16px;
-}
-
 /*================ 반응형 ================*/
-/* tablet */
-@media (min-width: 600px) {
-  .page-content {
-    padding: 24px;
-  }
-}
-
 @media (min-width: 768px) {
   html {
     font-size: 16px;
-  }
-}
-
-/* desktop */
-@media (min-width: 1200px) {
-  .page-content {
-    width: var(--page-content-width);
-    padding: 0;
   }
 }
 

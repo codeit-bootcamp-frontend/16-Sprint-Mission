@@ -1,11 +1,21 @@
-import styles from "./Avatar.module.css";
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 
 const Avatar = ({ imgSrc, onClick, className }) => {
   return (
-    <button onClick={onClick} className={`avatar ${className}`}>
-      <img src={imgSrc} alt="프로필 이미지" className={styles["avatar-img"]} />
+    <button
+      css={AvatarStyle}
+      className={`avatar ${className}`}
+      onClick={onClick}
+    >
+      <img src={imgSrc} alt="프로필 이미지" />
     </button>
   );
 };
 
 export default Avatar;
+
+const AvatarStyle = css`
+  width: 40px;
+  height: 40px;
+`;

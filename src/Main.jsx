@@ -1,18 +1,23 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
-import ItemsPage from "./pages/ItemsPage";
-import BoardPage from "./pages/BoardPage";
-import AddItemPage from "./pages/AddItemPage";
+import ProductsPage from "./pages/products/ProductsPage";
+import BoardPage from "./pages/board/BoardPage";
+import AddProductPage from "./pages/products/AddProductPage";
+import ProductsLayout from "./pages/products/ProductsLayout";
 
 const Main = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route index element={<ItemsPage />} />
-          <Route path="/items" element={<ItemsPage />} />
+          <Route index element={<ProductsPage />} />
+
+          <Route path="/products" element={<ProductsLayout />}>
+            <Route index element={<ProductsPage />} />
+            <Route path="addProduct" element={<AddProductPage />} />
+          </Route>
+
           <Route path="/board" element={<BoardPage />} />
-          <Route path="/addItem" element={<AddItemPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
