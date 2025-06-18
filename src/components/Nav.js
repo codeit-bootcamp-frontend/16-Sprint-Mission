@@ -4,13 +4,7 @@ import logoIcon from "../img/logo.svg";
 import userIcon from "../img/user.svg";
 import "../css/components/Nav.css";
 
-function getLinkStyle({ isActive }) {
-  return {
-    color: isActive ? `var(--color-primary-100)` : undefined,
-  };
-}
-
-function Nav() {
+const Nav = () => {
   return (
     <header className="header">
       <div className="header__content">
@@ -26,13 +20,23 @@ function Nav() {
           </Link>
           <ul>
             <li>
-              <NavLink to="board" style={getLinkStyle}>
+              <NavLink
+                to="board"
+                className={({ isActive }) =>
+                  isActive ? "header__content__link--active" : ""
+                }
+              >
                 자유게시판
               </NavLink>
             </li>
 
             <li>
-              <NavLink to="items" style={getLinkStyle}>
+              <NavLink
+                to="items"
+                className={({ isActive }) =>
+                  isActive ? "header__content__link--active" : ""
+                }
+              >
                 중고마켓
               </NavLink>
             </li>
@@ -50,6 +54,6 @@ function Nav() {
       </div>
     </header>
   );
-}
+};
 
 export default Nav;

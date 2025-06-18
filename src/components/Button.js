@@ -1,17 +1,23 @@
-import { Link } from "react-router-dom";
 import "../css/components/Button.css";
 
-function Button({ className, type, to }) {
+const Button = ({ className, type, children, onClick }) => {
   const btnStyleClass = {
     register: "btn-register",
     small: "btn-small",
     large: "btn-large",
   };
+
+  const btnClassName = `btn ${btnStyleClass[type] || ""} ${className}`;
+
+  const onClickButton = () => {
+    onClick();
+  };
+
   return (
-    <button className={`btn ${btnStyleClass[type]} ${className}`}>
-      <Link to={to}>상품 등록하기</Link>
+    <button type="button" className={btnClassName} onClick={onClickButton}>
+      {children}
     </button>
   );
-}
+};
 
 export default Button;

@@ -1,4 +1,5 @@
 import "../css/pages/ItemListPage.css";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getFavoriteItems, getAllItems } from "../api/Items.js";
 import Card from "../components/Card";
@@ -6,8 +7,11 @@ import SearchInput from "../components/SearchInput.js";
 import Button from "../components/Button.js";
 import Dropdown from "../components/Dropdown.js";
 import Pagination from "../components/Pagination.js";
+import usePagination from "../hooks/usePagination.js";
 
 function ItemListPage() {
+  const navigate = useNavigate();
+
   const [orderBy, setOrderBy] = useState({
     name: "최신순",
     value: "recent",
@@ -17,7 +21,15 @@ function ItemListPage() {
   const [keyword, setKeyword] = useState("");
 
   const [totalCount, setTotalCount] = useState(0);
-  const [paginationCurrentPage, setPaginationCurrentPage] = useState(1);
+
+  /* usePagination: 페이지네이션 훅 */
+  const {
+    onClickNextPage,
+    onClickPrevPage,
+    onClickPage,
+    paginationCurrentPage,
+    setPaginationCurrentPage,
+  } = usePagination();
 
   const [bestItems, setBestItems] = useState([
     {
@@ -120,16 +132,8 @@ function ItemListPage() {
 
   const allPageSize = devicePageSize[deviceType]["all"];
 
-  const onClickNextPage = () => {
-    setPaginationCurrentPage(paginationCurrentPage + 1);
-  };
-
-  const onClickPrevPage = () => {
-    setPaginationCurrentPage(paginationCurrentPage - 1);
-  };
-
-  const onClickPage = (page) => {
-    setPaginationCurrentPage(page);
+  const handleOnClickRegister = () => {
+    navigate("addItem");
   };
 
   useEffect(() => {
@@ -195,9 +199,11 @@ function ItemListPage() {
               <Button
                 className="items__container__registerBtn"
                 type="register"
+                onClick={handleOnClickRegister}
                 to="addItem"
-                text="상품 등록하기"
-              />
+              >
+                상품 등록하기
+              </Button>
               <Dropdown
                 className="items__container__dropdown"
                 onClickDropdown={onClickDropdown}

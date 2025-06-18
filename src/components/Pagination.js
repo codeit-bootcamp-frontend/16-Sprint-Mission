@@ -4,14 +4,14 @@ import arrowLeftInactive from "../img/arrow_left_inactive.svg";
 import arrowRightActive from "../img/arrow_right_active.svg";
 import arrowRightInactive from "../img/arrow_right_inactive.svg";
 
-function Pagination({
+const Pagination = ({
   totalCount,
   pageSize,
   currentPage,
   onClickNext,
   onClickPrev,
   onClickPage,
-}) {
+}) => {
   const pageTotal = Math.ceil(totalCount / pageSize);
   const totalPageList = Array(pageTotal)
     .fill()
@@ -58,6 +58,6 @@ function Pagination({
       </button>
     </div>
   );
-}
+};
 
 export default Pagination;

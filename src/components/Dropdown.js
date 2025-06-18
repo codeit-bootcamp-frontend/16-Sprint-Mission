@@ -2,14 +2,14 @@ import "../css/components/Dropdown.css";
 import sortIcon from "../img/sort.svg";
 import arrowDownIcon from "../img/arrow_down.svg";
 
-function Dropdown({
+const Dropdown = ({
   className,
   onClickDropdown,
   onClickDropdownItem,
   dropdownList,
   showDropdown,
   value,
-}) {
+}) => {
   return (
     <div
       className={`dropdown__container ${className}`}
@@ -26,8 +26,11 @@ function Dropdown({
       </div>
       {showDropdown && (
         <ul className="dropdown__list">
-          {dropdownList?.map((item) => (
-            <li key={item.value} onClick={() => onClickDropdownItem(item)}>
+          {dropdownList?.map((item, index) => (
+            <li
+              key={`${item.value}-${index}`}
+              onClick={() => onClickDropdownItem(item)}
+            >
               {item.name}
             </li>
           ))}
@@ -35,6 +38,6 @@ function Dropdown({
       )}
     </div>
   );
-}
+};
 
 export default Dropdown;

@@ -1,7 +1,7 @@
 import searchIcon from "../img/search.svg";
 import "../css/components/SearchInput.css";
 
-function SearchInput({ value, onInput, onKeyDown, onClick, className }) {
+const SearchInput = ({ value, onInput, onKeyDown, onClick, className }) => {
   return (
     <div className={`search__input__container ${className}`}>
       <input
@@ -19,6 +19,6 @@ function SearchInput({ value, onInput, onKeyDown, onClick, className }) {
       />
     </div>
   );
-}
+};
 
 export default SearchInput;
