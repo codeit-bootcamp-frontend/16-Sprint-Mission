@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { fetchProducts } from "../api/products";
-import { getLimitFromWindowWidth } from "../utils/getLimitFromWindowWidth";
+import { fetchProducts } from "../../../../api/products";
+import { getLimitFromWindowWidth } from "../../../../utils/getLimitFromWindowWidth";
+import ProductSection from "../ProductSection/ProductSection";
 
-export default function useBestProducts(itemsPerDevice) {
+function BestProducts({ title, itemsPerDevice }) {
   const [bestProducts, setBestProducts] = useState([]);
 
   useEffect(() => {
@@ -23,5 +24,8 @@ export default function useBestProducts(itemsPerDevice) {
 
     return () => window.removeEventListener("resize", resizeHandler);
   }, [itemsPerDevice]);
-  return bestProducts;
+
+  return <ProductSection title={title} products={bestProducts} />;
 }
+
+export default BestProducts;

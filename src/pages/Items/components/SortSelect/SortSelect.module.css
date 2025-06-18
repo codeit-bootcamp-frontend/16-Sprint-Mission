@@ -24,11 +24,11 @@
 }
 
 .dropdown {
+  z-index: var(--z-dropdown);
   position: absolute;
   top: calc(100% + 4px);
   right: 0;
   width: 120px;
-  /* 리스트 너비는 고정 */
   margin: 0;
   padding: 0;
   background-color: var(--color-white);

@@ -1,11 +1,10 @@
 import styles from "./ProductCard.module.css";
-import ImageWithFallback from "../ImageWithFallback";
-import replaceImg from "../../assets/images/no-image-icon.png";
+import ImageWithFallback from "./ImageWithFallback";
+import replaceImg from "../../../../assets/images/no-image-icon.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
 
-function ProductCard({ product}) {
-
+function ProductCard({ product }) {
   return (
     <div className={styles.card}>
       <ImageWithFallback

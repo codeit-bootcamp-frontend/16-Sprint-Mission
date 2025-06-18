@@ -1,10 +1,12 @@
 import styles from "./Pagination.module.css";
 
+const DEFAULT_MAX_PAGE_BUTTONS = 5;
+
 function Pagination({
   currentPage,
   totalPages,
   onPageChange,
-  maxPageButtons = 5,
+  maxPageButtons = DEFAULT_MAX_PAGE_BUTTONS,
 }) {
   const groupStart =
     Math.floor((currentPage - 1) / maxPageButtons) * maxPageButtons + 1;

@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Items from "./pages/Items";
+import Items from "./pages/Items/Items.js";
 import DefaultLayout from "./layouts/DefaultLayout";
 import "pretendard/dist/web/static/pretendard.css";
 import "./styles/global.css";
