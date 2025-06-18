@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
-import debounce from "../utils/debounce";
+import debounce from "@/utils/debounce";
 import {
   validateProductName,
   validateProductDescription,
   validateProductPrice,
-} from "../utils/validators";
-import { formatPrice, unformatPrice } from "../utils/formatPrice";
+} from "@/utils/validators";
+import { formatPrice, unformatPrice } from "@/utils/formatPrice";
 
 const CHECK_FORM_DEBOUNCE_MS = 300;
 
-const useForm = () => {
+const useForm = (formRef) => {
   const [isFormValid, setIsFormValid] = useState(false);
   const [tags, setTags] = useState([]);
 
@@ -25,14 +25,23 @@ const useForm = () => {
   };
 
   const validateForm = () => {
-    const name = document.querySelector("#productName")?.value ?? "";
-    const description = document.querySelector("#productDesc")?.value ?? "";
-    const priceString = document.querySelector("#productPrice")?.value ?? 0;
-    const price = priceString.replace(",", "");
+    const elements = formRef.current?.elements;
+    const values = {};
 
-    const isNameValid = validateProductName(name).isValid;
-    const isDescriptionValid = validateProductDescription(description).isValid;
-    const isPriceValid = validateProductPrice(price).isValid;
+    // input:text, textarea 폼 요소 자동 추가
+    for (const el of elements) {
+      if (el.type === "text" || el.tagName === "TEXTAREA") {
+        values[el.name] = el.value;
+      }
+    }
+
+    values.productPrice = values.productPrice?.replace(",", "");
+
+    const isNameValid = validateProductName(values.name || "").isValid;
+    const isDescriptionValid = validateProductDescription(
+      values.description || ""
+    ).isValid;
+    const isPriceValid = validateProductPrice(values.price || "").isValid;
     const isTagsValid = tags.length > 0;
 
     setIsFormValid(

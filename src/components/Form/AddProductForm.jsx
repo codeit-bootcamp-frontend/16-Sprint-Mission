@@ -1,4 +1,5 @@
 /** @jsxImportSource @emotion/react */
+import { useRef } from "react";
 import * as styles from "./AddProductFormStyle";
 import SectionTitle from "../ui/SectionTitle";
 import Button from "../ui/Button";
@@ -11,6 +12,8 @@ import TagsInput from "../ui/Tag/TagsInput";
 import useForm from "../../hooks/useForm";
 
 const AddProductForm = ({ title }) => {
+  const formRef = useRef(null);
+
   const {
     tags,
     handleTagsChange,
@@ -18,10 +21,14 @@ const AddProductForm = ({ title }) => {
     handleBlur,
     validateForm,
     isFormValid,
-  } = useForm();
+  } = useForm(formRef);
 
   return (
-    <form css={styles.ProductFormContainer} onSubmit={validateForm}>
+    <form
+      css={styles.ProductFormContainer}
+      onSubmit={validateForm}
+      ref={formRef}
+    >
       <header css={styles.FormHeader}>
         <SectionTitle title={title} />
         <Button
