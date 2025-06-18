@@ -3,13 +3,36 @@ import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
 import likeImg from "../../assets/images/ic-like.svg";
 import pandaLogoImg from "../../assets/images/logo-panda.svg";
+import { getProduct } from "@/services/api";
+import useAsync from "@/hooks/useAsync";
+import { useEffect, useState } from "react";
+import { useCallback } from "react";
 
 const ProductCard = ({ productId, data, loading = "lazy" }) => {
+  const [productData, setProductData] = useState(null);
   const { images, name, description, price, favoriteCount } = data;
+  const { runAsync: getProductAsync } = useAsync(getProduct);
+
+  const handleLoad = useCallback(
+    async (productId) => {
+      try {
+        const result = await getProductAsync(productId);
+        if (!result) return;
+        setProductData(result);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    [getProductAsync]
+  );
+
+  useEffect(() => {
+    handleLoad(productId);
+  }, [handleLoad, productId]);
 
   return (
     <div css={ProductCardStyle}>
-      <Link to={`/products/${productId}`} state={data}>
+      <Link to={`/products/${productId}`} state={productData}>
         <span className="img-wrap">
           <img
             src={images}
