@@ -1,5 +1,5 @@
 import "../css/components/Card.css";
-import heartIcon from "../img/heart.svg";
+import HeartIcon from "./HeartIcon.js";
 import defaultImg from "../img/img_default.svg";
 
 const Card = ({ data }) => {
@@ -22,7 +22,7 @@ const Card = ({ data }) => {
         </div>
 
         <div className="card__icon__group">
-          <img src={heartIcon} alt="하트 아이콘" className="heart__icon" />
+          <HeartIcon />
           <span className="heart__icon__count">{favoriteCount}</span>
         </div>
       </div>
