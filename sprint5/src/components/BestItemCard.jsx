@@ -1,22 +1,26 @@
 // 베스트 상품 리스트
-import axios from "axios";
 import { useEffect, useState } from "react";
 import ItemCard from "./ItemCard";
 import "./BestItemCard.css";
+import axiosInstance from "../lib/axiosInstance";
 
 function BestItemCard({ limit = 4 }) {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(
-        "https://panda-market-api.vercel.app/products?page=1&pageSize=100&orderBy=favorite"
-      )
+    axiosInstance
+      .get("/products", {
+        params: {
+          page: 1,
+          pageSize: 100,
+          orderBy: "favorite",
+        },
+      })
       .then((response) => {
-        const top4 = response.data.list.slice(0, limit);
-        setItems(top4);
+        const topItems = response.data.list.slice(0, limit);
+        setItems(topItems);
       });
-  }, []);
+  }, [limit]);
 
   return (
     <section className="best-item-card">
