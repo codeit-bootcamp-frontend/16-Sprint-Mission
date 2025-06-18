@@ -17,11 +17,7 @@ const useForm = () => {
     const { name, value } = e.target;
     const digits = unformatPrice(value);
     const formatted = formatPrice(digits);
-
-    // formDataRef.current = {
-    //   ...formDataRef.current,
-    //   [name]: formatted,
-    // };
+    console.log(formatted);
   };
 
   const handleTagsChange = (updatedTags) => {
@@ -29,14 +25,13 @@ const useForm = () => {
   };
 
   const validateForm = () => {
-    const nameInput = document.querySelector("#productName")?.value;
-    const descriptionInput = document.querySelector("#productDesc")?.value;
-    const priceInput = document.querySelector("#productPrice")?.value;
+    const name = document.querySelector("#productName")?.value ?? "";
+    const description = document.querySelector("#productDesc")?.value ?? "";
+    const price = document.querySelector("#productPrice")?.value ?? 0;
 
-    const isNameValid = validateProductName(nameInput).isValid;
-    const isDescriptionValid =
-      validateProductDescription(descriptionInput).isValid;
-    const isPriceValid = validateProductPrice(priceInput).isValid;
+    const isNameValid = validateProductName(name).isValid;
+    const isDescriptionValid = validateProductDescription(description).isValid;
+    const isPriceValid = validateProductPrice(price).isValid;
     const isTagsValid = tags.length > 0;
 
     setIsFormValid(
@@ -50,11 +45,14 @@ const useForm = () => {
     const { name, value } = e.target;
 
     if (name === "price") {
-      const formatted = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-      // formDataRef.current = {
-      //   ...formDataRef.current,
-      //   [name]: formatted,
-      // };
+      const raw = value.replaceAll(",", "");
+      const formatted = raw.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+      // 값이 실제로 변경되었을 때만 업데이트
+      if (value !== formatted) {
+        const priceInputEl = document.querySelector("#productPrice");
+        priceInputEl.value = formatted;
+      }
     }
 
     debouncedValidateForm(); // blur될 때만 폼 유효성 검사
