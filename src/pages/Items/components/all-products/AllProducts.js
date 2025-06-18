@@ -1,10 +1,10 @@
 import styles from "./AllProducts.module.css";
 import useProductsPagination from "../../hooks/useProductsPagination";
 import ProductSection from "../product-section/ProductSection";
-import Pagination from "../pagination/Pagination";
+import Pagination from "../Pagination/Pagination";
 
 function AllProducts({ title, itemsPerDevice }) {
-  const { products, totalPages, page, changePage, sort, handleSortChange, } =
+  const { products, totalPages, page, changePage, sort, handleSortChange } =
     useProductsPagination(itemsPerDevice);
 
   return (
