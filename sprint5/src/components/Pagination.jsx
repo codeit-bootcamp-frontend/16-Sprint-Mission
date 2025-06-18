@@ -1,23 +1,12 @@
 //하단 페이지네이션
 import React from "react";
 import "./Pagination.css";
+import usePagination from "../hooks/usePagination.jsx";
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
-  const getPageNumbers = () => {
-    const maxPageButtons = 5;
-    const half = Math.floor(maxPageButtons / 2);
+  const { pageNumbers } = usePagination(currentPage, totalPages); //페이지네이션 기능을 훅으로 빼두기
 
-    let start = Math.max(currentPage - half, 1);
-    let end = start + maxPageButtons - 1;
-
-    if (end > totalPages) {
-      end = totalPages;
-      start = Math.max(end - maxPageButtons + 1, 1);
-    }
-
-    return Array.from({ length: end - start + 1 }, (_, i) => start + i);
-  };
-
+  //페이지 네이션 ui 부분
   return (
     <div className="pagination">
       <button
@@ -28,7 +17,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         ◀
       </button>
 
-      {getPageNumbers().map((page) => (
+      {pageNumbers.map((page) => (
         <button
           key={page}
           onClick={() => onPageChange(page)}

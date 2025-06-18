@@ -1,5 +1,6 @@
 // main 태그 부분
-import React from "react";
+import React, { useState } from "react";
+import useFetchItems from "../hooks/useFetchItems";
 import BestItemCard from "../components/BestItemCard";
 import SearchBar from "../components/SearchBar";
 import AddProductButton from "../components/AddProductButton";
@@ -7,14 +8,11 @@ import SortDropdown from "../components/SortDropdown";
 import AllItemSection from "../components/AllItemSection";
 import Pagination from "../components/Pagination";
 
-const Main = ({
-  sortOption,
-  setSortOption,
-  items,
-  currentPage,
-  totalPages,
-  setCurrentPage,
-}) => {
+const Main = () => {
+  const [sortOption, setSortOption] = useState("recent");
+  const [currentPage, setCurrentPage] = useState(1);
+  const { items, totalPages } = useFetchItems(sortOption, currentPage); //  커스텀 훅 사용
+
   return (
     <main style={{ paddingTop: "80px" }}>
       <section className="product-toolbar">
