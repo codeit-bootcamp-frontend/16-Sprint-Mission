@@ -6,7 +6,7 @@ import { getProducts } from "../api/getProducts";
 import Pagination from "./Pagination";
 import Button from "../common/Button/Button";
 
-const LIMIT = 10;
+const PAGESIZE = 10;
 
 const Header = styled.header`
   display: flex;
@@ -104,7 +104,7 @@ function AllProductsListItem({ item }) {
 
 function AllProductsList() {
   const nav = useNavigate();
-  const [order, setOrder] = useState("createdAt");
+  const [order, setOrder] = useState("recent");
   const [items, setItems] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -117,19 +117,16 @@ function AllProductsList() {
     const fetchProducts = async () => {
       setIsLoading(true);
       try {
-        const offset = (page - 1) * LIMIT;
-
         const data = await getProducts({
           order: order,
-          offset: offset,
-          limit: LIMIT,
+          page: page,
         });
 
         const sorted = [...data.list].sort((a, b) => {
-          if (order === "createdAt") {
+          if (order === "recent") {
             return new Date(b.createdAt) - new Date(a.createdAt);
           }
-          if (order === "favoriteCount") {
+          if (order === "favorite") {
             return b.favoriteCount - a.favoriteCount;
           }
           return 0;
@@ -137,7 +134,7 @@ function AllProductsList() {
 
         setItems(sorted);
         setTotalCount(data.totalCount);
-        setHasNextPage(data.totalCount > offset + LIMIT);
+        setHasNextPage(data.totalCount - page * PAGESIZE > PAGESIZE);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -151,13 +148,13 @@ function AllProductsList() {
   if (isLoading && items.length === 0) return <p>로딩중...</p>;
   if (error) return <p>에러 발생: {error.message}</p>;
 
-  const handleNewestClick = () => setOrder("createdAt");
-  const handleFavoriteClick = () => setOrder("favoriteCount");
+  const handleNewestClick = () => setOrder("recent");
+  const handleFavoriteClick = () => setOrder("favorite");
   const handleClick = () => {
     nav("/additem");
   };
 
-  const totalPages = Math.ceil(totalCount / LIMIT);
+  const totalPages = Math.ceil(totalCount / PAGESIZE);
 
   return (
     <div>
@@ -176,12 +173,12 @@ function AllProductsList() {
             value={order}
             onChange={(e) => {
               setPage(1);
-              if (e.target.value === "createdAt") handleNewestClick();
-              if (e.target.value === "favoriteCount") handleFavoriteClick();
+              if (e.target.value === "recent") handleNewestClick();
+              if (e.target.value === "favorite") handleFavoriteClick();
             }}
           >
-            <option value="createdAt">최신순</option>
-            <option value="favoriteCount">좋아요순</option>
+            <option value="recent">최신순</option>
+            <option value="favorite">좋아요순</option>
           </select>
         </StyledForm>
       </Header>

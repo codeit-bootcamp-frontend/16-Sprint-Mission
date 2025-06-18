@@ -1,11 +1,11 @@
 //컴포넌트안에서 사용하도록
 // getProducts
 export const getProducts = async ({
-  order = "createdAt",
-  offset = 0,
-  limit = 10,
+  order = "recent",
+  page = 1,
+  pageSize = 10,
 }) => {
-  const query = new URLSearchParams({ order, offset, limit }).toString();
+  const query = `page=${page}&pageSize=${pageSize}&orderBy=${order}`;
 
   console.log(
     "API 요청 URL 쿼리:",

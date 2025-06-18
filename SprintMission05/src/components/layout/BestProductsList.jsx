@@ -64,9 +64,7 @@ function BestProductsList() {
     const fetchProducts = async () => {
       try {
         const data = await getProducts({
-          order: "favoriteCount",
-          offset: 0,
-          limit: 4,
+          order: "favorite",
         });
         const sortedTop4 = data.list
           .sort((a, b) => b.favoriteCount - a.favoriteCount)
