@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { getProducts } from "../api/getProducts";
 import Pagination from "./Pagination";
 import Button from "../common/Button/Button";
+import optionIcon from "../../assets/ic_sort.png";
 
 const PAGESIZE = 10;
 
@@ -24,18 +25,32 @@ const Header = styled.header`
 
 const StyledProductList = styled.ul`
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 221px));
-  grid-template-rows: repeat(2, minmax(0, 317px));
-  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 66px auto 0;
+  max-width: 344px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 696px;
+    gap: 16px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    max-width: 1200px;
+    gap: 24px;
+  }
 `;
 
 const StyledProductImage = styled.img`
-  width: 221px;
-  height: 221px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   object-fit: cover; // 이미지가 찌그러지지 않고 잘림
+  border-radius: 16px;
 `;
 
 const ProductName = styled.p`
@@ -56,11 +71,16 @@ const ProductFavorite = styled.p`
 `;
 
 const StyledForm = styled.form`
+  position: relative;
   display: flex;
   gap: 12px;
 
   input {
-    width: 470px;
+    position: absolute;
+    top: 50px;
+    right: 56px;
+
+    width: 288px;
     height: 42px;
     background-color: #f3f4f6;
     border: 1px solid #f3f4f6;
@@ -69,10 +89,23 @@ const StyledForm = styled.form`
     font-size: 16px;
     font-weight: 400;
     color: #9ca3af;
+
+    @media (min-width: 768px) {
+      width: 242px;
+      position: static;
+    }
+
+    @media (min-width: 1200px) {
+      width: 470px;
+    }
   }
 
   select {
-    width: 130px;
+    position: absolute;
+    top: 50px;
+    right: 0;
+
+    width: 42px;
     height: 42px;
     background-color: #ffffff;
     border: 1px solid #e5e7eb;
@@ -81,6 +114,17 @@ const StyledForm = styled.form`
     font-size: 16px;
     font-weight: 400;
     color: #1f2937;
+    appearance: none; /* 기본 화살표 없애기 */
+    background-image: url(${optionIcon}); /* 화살표 아이콘 넣기 (이미지 직접 준비해) */
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+
+    @media (min-width: 768px) {
+      appearance: auto;
+      background-image: none;
+      position: static;
+      width: 130px;
+    }
 
     option {
       text-align: center;
@@ -112,6 +156,30 @@ function AllProductsList() {
   const [page, setPage] = useState(1);
   const [hasNextPage, setHasNextPage] = useState(false);
   const [totalCount, setTotalCount] = useState(0);
+
+  const [visibleCount, setVisibleCount] = useState(4);
+
+  useEffect(() => {
+    const updateVisibleCount = () => {
+      const width = window.innerWidth;
+
+      if (width >= 1200) {
+        // 데스크탑
+        setVisibleCount(10);
+      } else if (width >= 768) {
+        // 태블릿
+        setVisibleCount(6);
+      } else {
+        // 모바일
+        setVisibleCount(4);
+      }
+    };
+
+    updateVisibleCount(); // 처음 한 번 실행
+    window.addEventListener("resize", updateVisibleCount);
+
+    return () => window.removeEventListener("resize", updateVisibleCount);
+  }, []);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -184,7 +252,7 @@ function AllProductsList() {
       </Header>
 
       <StyledProductList>
-        {items.map((item) => {
+        {items.slice(0, visibleCount).map((item) => {
           return (
             <li key={item.id}>
               <AllProductsListItem item={item} />

@@ -23,6 +23,10 @@ const PaginationButton = styled.button`
     background-color: #2f80ed;
     color: #f9fafb;
   }
+  &.active {
+    background-color: #2f80ed;
+    color: #f9fafb;
+  }
 `;
 
 function Pagination({ currentPage, onPageChange, hasNextPage, totalPages }) {
