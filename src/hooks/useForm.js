@@ -9,43 +9,34 @@ import { formatPrice, unformatPrice } from "../utils/formatPrice";
 
 const CHECK_FORM_DEBOUNCE_MS = 300;
 
-const useForm = (initialValues) => {
-  const [formData, setFormData] = useState(initialValues);
+const useForm = () => {
   const [isFormValid, setIsFormValid] = useState(false);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+  const [tags, setTags] = useState([]);
 
   const handlePriceChange = (e) => {
     const { name, value } = e.target;
     const digits = unformatPrice(value);
     const formatted = formatPrice(digits);
 
-    setFormData((prev) => ({
-      ...prev,
-      [name]: formatted,
-    }));
+    // formDataRef.current = {
+    //   ...formDataRef.current,
+    //   [name]: formatted,
+    // };
   };
 
   const handleTagsChange = (updatedTags) => {
-    setFormData((prev) => ({
-      ...prev,
-      tags: updatedTags,
-    }));
+    setTags(updatedTags);
   };
 
-  const validateForm = (data) => {
-    const { name, description, price, tags } = data;
+  const validateForm = () => {
+    const nameInput = document.querySelector("#productName")?.value;
+    const descriptionInput = document.querySelector("#productDesc")?.value;
+    const priceInput = document.querySelector("#productPrice")?.value;
 
-    const isNameValid = validateProductName(name).isValid;
-    const isDescriptionValid = validateProductDescription(description).isValid;
-    const isPriceValid = validateProductPrice(price).isValid;
+    const isNameValid = validateProductName(nameInput).isValid;
+    const isDescriptionValid =
+      validateProductDescription(descriptionInput).isValid;
+    const isPriceValid = validateProductPrice(priceInput).isValid;
     const isTagsValid = tags.length > 0;
 
     setIsFormValid(
@@ -60,27 +51,27 @@ const useForm = (initialValues) => {
 
     if (name === "price") {
       const formatted = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-      setFormData((prev) => ({
-        ...prev,
-        [name]: formatted,
-      }));
+      // formDataRef.current = {
+      //   ...formDataRef.current,
+      //   [name]: formatted,
+      // };
     }
 
-    debouncedValidateForm(formData);
+    debouncedValidateForm(); // blur될 때만 폼 유효성 검사
   };
 
   useEffect(() => {
-    debouncedValidateForm(formData);
+    debouncedValidateForm();
     return () => debouncedValidateForm.cancel();
-  }, [formData, debouncedValidateForm]);
+  }, [debouncedValidateForm]);
 
   return {
-    formData,
+    tags,
     isFormValid,
-    handleChange,
     handlePriceChange,
     handleTagsChange,
     handleBlur,
+    validateForm,
   };
 };
 

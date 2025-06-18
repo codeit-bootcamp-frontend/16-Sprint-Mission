@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import styled from "@emotion/styled/macro";
 import { useEffect, useState } from "react";
 import { InputStyle } from "../Input/Input";
 import { validateTag } from "../../../utils/validators";
@@ -9,9 +8,8 @@ import Tag from ".";
 
 const ADD_TAG_DEBOUNCE_MS = 100;
 
-const TagsInput = ({ id, placeholder, onTagsChange }) => {
+const TagsInput = ({ id, placeholder, tags, onTagsChange }) => {
   const [inputValue, setInputValue] = useState("");
-  const [tags, setTags] = useState([]);
   const [errorMessage, setErrorMessage] = useState(false);
 
   const handleKeyDown = debounce((e) => {
@@ -28,7 +26,6 @@ const TagsInput = ({ id, placeholder, onTagsChange }) => {
     }
 
     const updatedTags = [...tags, newTag];
-    setTags(updatedTags);
     onTagsChange(updatedTags);
 
     setInputValue("");
@@ -37,7 +34,6 @@ const TagsInput = ({ id, placeholder, onTagsChange }) => {
 
   const removeTag = (tag) => {
     const updatedTags = tags.filter((prevTag) => prevTag !== tag);
-    setTags(updatedTags);
     onTagsChange(updatedTags);
   };
 
@@ -57,13 +53,13 @@ const TagsInput = ({ id, placeholder, onTagsChange }) => {
         placeholder={placeholder}
       />
       {errorMessage && <div css={errorMessageStyle}>{errorMessage}</div>}
-      <TagList>
+      <div className="tag-list" css={TagListStyle}>
         {tags.map((tag, i) => (
           <Tag key={`tag ${i}`} onClick={() => removeTag(tag)}>
             {tag}
           </Tag>
         ))}
-      </TagList>
+      </div>
     </div>
   );
 };
@@ -80,7 +76,7 @@ const TagsInputStyle = css`
   }
 `;
 
-const TagList = styled.div`
+const TagListStyle = css`
   display: flex;
   flex-wrap: wrap;
   gap: 12px;

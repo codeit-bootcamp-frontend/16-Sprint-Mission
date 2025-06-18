@@ -10,28 +10,26 @@ import Textarea from "../ui/Textarea";
 import TagsInput from "../ui/Tag/TagsInput";
 import useForm from "../../hooks/useForm";
 
-const INITIAL_VALUES = {
-  name: "",
-  description: "",
-  price: "",
-  tags: [],
-};
-
 const AddProductForm = ({ title }) => {
   const {
-    formData,
-    isFormValid,
-    handleChange,
+    tags,
     handlePriceChange,
     handleTagsChange,
     handleBlur,
-  } = useForm(INITIAL_VALUES);
+    validateForm,
+    isFormValid,
+  } = useForm();
 
   return (
-    <form css={ProductFormContainer}>
+    <form css={ProductFormContainer} onSubmit={validateForm}>
       <header css={FormHeader}>
         <SectionTitle title={title} />
-        <Button size="sm" variant="primary" disabled={!isFormValid}>
+        <Button
+          size="sm"
+          variant="primary"
+          disabled={!isFormValid}
+          type="submit"
+        >
           등록
         </Button>
       </header>
@@ -47,8 +45,6 @@ const AddProductForm = ({ title }) => {
           id="productName"
           name="name"
           placeholder="상품명을 입력해주세요"
-          value={formData.name}
-          onChange={handleChange}
           onBlur={handleBlur}
         />
       </FormControl>
@@ -59,8 +55,6 @@ const AddProductForm = ({ title }) => {
           id="productDesc"
           name="description"
           placeholder="상품 소개를 입력해주세요"
-          value={formData.description}
-          onChange={handleChange}
           onBlur={handleBlur}
         />
       </FormControl>
@@ -72,7 +66,6 @@ const AddProductForm = ({ title }) => {
           name="price"
           type="text"
           placeholder="판매 가격을 입력해주세요"
-          value={formData.price}
           onChange={handlePriceChange}
           onBlur={handleBlur}
         />
@@ -83,6 +76,7 @@ const AddProductForm = ({ title }) => {
         <TagsInput
           id="tags"
           placeholder="태그를 입력해주세요"
+          tags={tags}
           onTagsChange={handleTagsChange}
           onBlur={handleBlur}
         />
