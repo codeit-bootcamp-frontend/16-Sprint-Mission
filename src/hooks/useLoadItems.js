@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getProducts } from '../service/api';
 
 export function useLoadItems(queryStrings) {
-  const [loadFailed, setLoadFailed] = useState(true);
+  const [loadFailed, setLoadFailed] = useState(false);
   const [result, setResult] = useState({});
 
   useEffect(() => {
