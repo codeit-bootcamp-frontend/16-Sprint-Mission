@@ -1,5 +1,8 @@
-function AddTitleField(props) {
-  const { value, updateFieldState, name } = props;
+import { addItemStore, useSelector } from './addItemStore';
+
+function AddTitleField({ name }) {
+  const inputValue = useSelector((state) => state.values[name]) || '';
+  const updateFieldState = addItemStore((state) => state.updateFieldValue);
 
   function handleChange(e) {
     updateFieldState(name, e.target.value);
@@ -10,7 +13,7 @@ function AddTitleField(props) {
       <label htmlFor="title-input">상품명</label>
       <input
         onChange={handleChange}
-        value={value}
+        value={inputValue}
         type="text"
         id="title-input"
         name="title"

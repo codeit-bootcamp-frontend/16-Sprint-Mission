@@ -1,16 +1,20 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import deleteIcon from '@assets/icon/ic_X.png';
+import { addItemStore, useSelector } from './addItemStore';
 import styles from './styles/AddTagField.module.css';
 
-function AddTagField(props) {
-  const { value, updateFieldState, name, tagList, setTagList } = props;
+function AddTagField({ name }) {
+  const [tagList, setTagList] = useState([]);
+  const inputValue = useSelector((state) => state.values[name]) || '';
+  const updateFieldState = addItemStore((state) => state.updateFieldValue);
+  const updateTagField = addItemStore((state) => state.updateTagField);
 
   function handleChange(e) {
     updateFieldState(name, e.target.value);
   }
 
   useEffect(() => {
-    updateFieldState('tag', value, tagList);
+    updateTagField(tagList);
   }, [tagList]);
 
   function handleClick(e) {
@@ -34,7 +38,7 @@ function AddTagField(props) {
       <input
         onKeyDown={handleKeyDown}
         onChange={handleChange}
-        value={value}
+        value={inputValue}
         type="text"
         id="tag-input"
         name="tag"

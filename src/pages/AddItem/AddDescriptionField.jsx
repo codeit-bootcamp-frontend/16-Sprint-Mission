@@ -1,7 +1,9 @@
+import { addItemStore, useSelector } from './addItemStore';
 import styles from './styles/AddDescriptionField.module.css';
 
-function AddDescriptionField(props) {
-  const { value, updateFieldState, name } = props;
+function AddDescriptionField({ name }) {
+  const inputValue = useSelector((state) => state.values[name]) || '';
+  const updateFieldState = addItemStore((state) => state.updateFieldValue);
 
   function handleChange(e) {
     updateFieldState(name, e.target.value);
@@ -12,7 +14,7 @@ function AddDescriptionField(props) {
       <label htmlFor="description-input">상품 소개</label>
       <textarea
         onChange={handleChange}
-        value={value}
+        value={inputValue}
         id="description-input"
         name="description"
         placeholder="상품 소개를 입력해주세요"

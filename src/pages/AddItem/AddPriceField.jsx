@@ -1,10 +1,13 @@
+import { addItemStore, useSelector } from './addItemStore';
+
 function parsePriceInput(text) {
   const parsedText = Number(text.split(',').join(''));
   return parsedText;
 }
 
-function AddPriceField(props) {
-  const { value, updateFieldState, name } = props;
+function AddPriceField({ name }) {
+  const inputValue = useSelector((state) => state.values[name]) || '';
+  const updateFieldState = addItemStore((state) => state.updateFieldValue);
 
   function handleChange(e) {
     const parsedPrice = parsePriceInput(e.target.value);
@@ -18,7 +21,7 @@ function AddPriceField(props) {
       <label htmlFor="price-input">판매가격</label>
       <input
         onChange={handleChange}
-        value={value.toLocaleString('ko-KR')}
+        value={inputValue.toLocaleString('ko-KR')}
         type="text"
         id="price-input"
         name="price"
