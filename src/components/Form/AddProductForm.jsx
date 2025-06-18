@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
+import * as styles from "./AddProductFormStyle";
 import SectionTitle from "../ui/SectionTitle";
 import Button from "../ui/Button";
 import FormControl from "../ui/Form/FormControl";
@@ -21,8 +21,8 @@ const AddProductForm = ({ title }) => {
   } = useForm();
 
   return (
-    <form css={ProductFormContainer} onSubmit={validateForm}>
-      <header css={FormHeader}>
+    <form css={styles.ProductFormContainer} onSubmit={validateForm}>
+      <header css={styles.FormHeader}>
         <SectionTitle title={title} />
         <Button
           size="sm"
@@ -86,20 +86,3 @@ const AddProductForm = ({ title }) => {
 };
 
 export default AddProductForm;
-
-const ProductFormContainer = css`
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding-bottom: 70px;
-`;
-
-const FormHeader = css`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  h4 {
-    margin-bottom: 0;
-  }
-`;
