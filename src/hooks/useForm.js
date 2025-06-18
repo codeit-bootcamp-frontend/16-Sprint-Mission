@@ -13,11 +13,11 @@ const useForm = () => {
   const [isFormValid, setIsFormValid] = useState(false);
   const [tags, setTags] = useState([]);
 
-  const handlePriceChange = (e) => {
-    const { name, value } = e.target;
-    const digits = unformatPrice(value);
-    const formatted = formatPrice(digits);
-    console.log(formatted);
+  const handlePriceInput = (e) => {
+    const { value } = e.target;
+    // 숫자만 입력 받기
+    if (!/^\d*$/.test(value))
+      e.target.value = e.target.value.replace(/[^\d]/g, "");
   };
 
   const handleTagsChange = (updatedTags) => {
@@ -27,7 +27,8 @@ const useForm = () => {
   const validateForm = () => {
     const name = document.querySelector("#productName")?.value ?? "";
     const description = document.querySelector("#productDesc")?.value ?? "";
-    const price = document.querySelector("#productPrice")?.value ?? 0;
+    const priceString = document.querySelector("#productPrice")?.value ?? 0;
+    const price = priceString.replace(",", "");
 
     const isNameValid = validateProductName(name).isValid;
     const isDescriptionValid = validateProductDescription(description).isValid;
@@ -45,10 +46,10 @@ const useForm = () => {
     const { name, value } = e.target;
 
     if (name === "price") {
-      const raw = value.replaceAll(",", "");
-      const formatted = raw.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      const raw = unformatPrice(value);
+      const formatted = formatPrice(raw);
 
-      // 값이 실제로 변경되었을 때만 업데이트
+      // 업데이트 값에 따라 다시 포맷팅
       if (value !== formatted) {
         const priceInputEl = document.querySelector("#productPrice");
         priceInputEl.value = formatted;
@@ -66,7 +67,7 @@ const useForm = () => {
   return {
     tags,
     isFormValid,
-    handlePriceChange,
+    handlePriceInput,
     handleTagsChange,
     handleBlur,
     validateForm,

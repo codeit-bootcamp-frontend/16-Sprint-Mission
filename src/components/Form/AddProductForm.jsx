@@ -11,8 +11,14 @@ import TagsInput from "../ui/Tag/TagsInput";
 import useForm from "../../hooks/useForm";
 
 const AddProductForm = ({ title }) => {
-  const { tags, handleTagsChange, handleBlur, validateForm, isFormValid } =
-    useForm();
+  const {
+    tags,
+    handleTagsChange,
+    handlePriceInput,
+    handleBlur,
+    validateForm,
+    isFormValid,
+  } = useForm();
 
   return (
     <form css={styles.ProductFormContainer} onSubmit={validateForm}>
@@ -60,6 +66,7 @@ const AddProductForm = ({ title }) => {
           name="price"
           type="text"
           placeholder="판매 가격을 입력해주세요"
+          onChange={handlePriceInput}
           onBlur={handleBlur}
         />
       </FormControl>
