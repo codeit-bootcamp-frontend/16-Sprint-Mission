@@ -1,0 +1,13 @@
+@use "../../styles/variables" as var;
+
+.bestProductArea {
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var.$gray900;
+  }
+
+  &__content {
+    margin-top: 16px;
+  }
+}

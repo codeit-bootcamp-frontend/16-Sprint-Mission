@@ -1,0 +1,52 @@
+@use "../../styles/variables" as var;
+@use "../../styles/mixin" as mixin;
+
+.productItem {
+  display: block;
+
+  &__image {
+    position: relative;
+    padding-top: 100%;
+    overflow: hidden;
+    border-radius: 16px;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    margin-top: 16px;
+    color: var.$gray800;
+  }
+
+  &__subject {
+    font-size: 14px;
+    font-weight: 500;
+    @include mixin.ellipsis();
+  }
+
+  &__price {
+    display: block;
+    margin-top: 6px;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  &__favorite {
+    display: block;
+    margin-top: 6px;
+    padding-left: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var.$gray600;
+    line-height: 1.5;
+    background: url("../../assets/images/icons/ic_favorite.svg") left center
+      no-repeat;
+  }
+}

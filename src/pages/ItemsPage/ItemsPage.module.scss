@@ -1,0 +1,27 @@
+@use "../../styles/variables" as var;
+@use "../../styles/mixin" as mixin;
+
+.itemsPage {
+  &__inner {
+    width: calc(100% - 48px);
+    max-width: 1200px;
+    margin: 24px auto;
+
+    @include mixin.mobile {
+      width: calc(100% - 32px);
+      margin-top: 17px;
+    }
+  }
+
+  &__section {
+    margin-bottom: 40px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    @include mixin.mobile {
+      margin-bottom: 24px;
+    }
+  }
+}

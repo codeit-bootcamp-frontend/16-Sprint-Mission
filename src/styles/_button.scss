@@ -1,0 +1,60 @@
+@use "variables" as var;
+@use "mixin" as mixin;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  padding: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background-color: var.$btn-primary;
+  border-radius: 8px;
+  transition: 0.2s ease;
+
+  &:hover {
+    background-color: var.$btn-hover;
+  }
+
+  &:active {
+    background-color: var.$btn-click;
+  }
+
+  &:disabled {
+    background-color: var.$btn-disabled;
+  }
+
+  &.sm {
+    min-width: 88px;
+  }
+
+  &.md {
+    min-width: 240px;
+    height: 48px;
+    font-size: 18px;
+    border-radius: 40px;
+  }
+
+  &.lg {
+    min-width: 357px;
+    height: 56px;
+    font-size: 20px;
+    border-radius: 40px;
+  }
+
+  &.h48 {
+    height: 48px;
+  }
+}
+
+@include mixin.mobile {
+  .btn {
+    &.lg {
+      min-width: 240px;
+      height: 48px;
+      font-size: 18px;
+    }
+  }
+}

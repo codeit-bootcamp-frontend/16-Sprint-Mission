@@ -1,0 +1,151 @@
+@use "../../styles/variables" as var;
+@use "../../styles/mixin" as mixin;
+
+.allProductArea {
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var.$gray900;
+  }
+
+  &__utils {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    @include mixin.mobile {
+      flex-wrap: wrap;
+      gap: 8px 14px;
+    }
+
+    .utils {
+      $height: 42px;
+
+      &__searchBox {
+        width: 325px;
+        margin-left: auto;
+
+        @include mixin.tablet {
+          width: 242px;
+        }
+
+        @include mixin.mobile {
+          margin: 0;
+          width: calc(100% - 56px);
+          order: 3;
+        }
+
+        input {
+          display: block;
+          width: 100%;
+          height: $height;
+          padding: 0 12px 0 44px;
+          background: var.$gray100
+            url("../../assets/images/icons/ic_search.svg") 16px center no-repeat;
+          border-radius: 12px;
+        }
+      }
+
+      &__productAdd {
+        display: block;
+        width: 132px;
+        line-height: $height;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 600;
+        color: var.$gray100;
+        background: var.$primary-color;
+        border-radius: 8px;
+
+        @include mixin.mobile {
+          margin-left: auto;
+        }
+      }
+
+      &__sortSelectBox {
+        position: relative;
+        width: 130px;
+
+        @include mixin.mobile {
+          width: auto;
+          order: 4;
+        }
+
+        .sortSelectBox {
+          &__current {
+            display: block;
+            width: 100%;
+            padding: 0 42px 0 20px;
+            height: $height;
+            border: 1px solid var.$gray200;
+            font-size: 16px;
+            text-align: left;
+            color: var.$gray800;
+            background: url("../../assets/images/icons/ic_select_arrow.svg")
+              right 20px center no-repeat;
+            border-radius: 12px;
+
+            @include mixin.mobile {
+              width: $height;
+              padding: 0;
+              background: url("../../assets/images/icons/ic_sort.svg") center
+                center no-repeat;
+
+              span {
+                display: none;
+              }
+            }
+          }
+
+          &__list {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 130px;
+            margin-top: 8px;
+            z-index: 1;
+            overflow: hidden;
+
+            ul {
+              border: 1px solid var.$gray200;
+              background: var.$white;
+              border-radius: 12px;
+              transform: translateY(-100%);
+              animation: showSortList 0.3s ease forwards;
+
+              @keyframes showSortList {
+                100% {
+                  transform: translateY(0);
+                }
+              }
+
+              li {
+                border-bottom: 1px solid var.$gray200;
+
+                &:last-of-type {
+                  border-bottom: none;
+                }
+
+                button {
+                  display: block;
+                  width: 100%;
+                  height: $height;
+                  font-size: 16px;
+                  color: var.$gray800;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__content {
+    margin-top: 24px;
+
+    @include mixin.mobile {
+      margin-top: 16px;
+    }
+  }
+}
