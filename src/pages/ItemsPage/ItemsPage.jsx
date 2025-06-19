@@ -1,18 +1,18 @@
 import "./ItemsPage.css";
-import Nav from "../../components/Nav";
 import { usePageSizeByBreakPoint } from "../../hooks/usePageSizeByBreakPoint";
-import BestItemsSection from "../../components/BestItemsSection";
-import CurrentItemsSection from "../../components/CurrentItemsSection";
+
+import Nav from "../../components/layout/Nav/Nav";
+import BestItemsSection from "./sections/BestItemsSection";
+import CurrentItemsSection from "./sections/CurrentItemsSection";
 
 const ItemsPage = () => {
   const { pageSizeList } = usePageSizeByBreakPoint();
-
   return (
     <>
       <Nav currentSection={"items"} />
       <main className={"items-page-main"}>
-        <BestItemsSection pageSize={pageSizeList.best} />
-        <CurrentItemsSection pageSize={pageSizeList.current} />
+        <BestItemsSection pageSize={pageSizeList?.best} />
+        <CurrentItemsSection pageSize={pageSizeList?.current} />
       </main>
     </>
   );

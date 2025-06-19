@@ -1,0 +1,30 @@
+.profile-container {
+	display: flex;
+	flex-direction: row;
+	gap: 8px;
+	align-items: start;
+}
+
+.profile-image {
+	aspect-ratio: 1/1;
+}
+
+.profile-context {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.profile-name {
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 18px;
+	color: var(--color-gray600);
+}
+
+.time-stamp {
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 18px;
+	color: var(--color-gray400);
+}

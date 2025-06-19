@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { LoginStateProvider } from "./contexts/LoginStateContext";
+import { LoginProvider } from "./contexts/LoginContext";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/AuthPage/LoginPage";
 import SignupPage from "./pages/AuthPage/SignupPage";
@@ -8,15 +8,19 @@ import AddItemPage from "./pages/AddItemPage/AddItemPage";
 import PrivacyPage from "./pages/PrivacyPage/PrivacyPage";
 import FaqPage from "./pages/FaqPage/FaqPage";
 import BoardPage from "./pages/BoardPage/BoardPage";
+import ItemDetailsPage from "./pages/ItemDetailsPage/ItemDetailsPage";
 
 function App() {
   return (
     <BrowserRouter>
-      <LoginStateProvider>
+      <LoginProvider>
         <Routes>
           <Route path="/">
             <Route index element={<HomePage />} />
-            <Route path="items" element={<ItemsPage />} />
+            <Route path="items">
+              <Route index element={<ItemsPage />} />
+              <Route path=":itemId" element={<ItemDetailsPage />} />
+            </Route>
             <Route path="board" element={<BoardPage />} />
             <Route path="additem" element={<AddItemPage />} />
             <Route path="privacy" element={<PrivacyPage />} />
@@ -25,7 +29,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
         </Routes>
-      </LoginStateProvider>
+      </LoginProvider>
     </BrowserRouter>
   );
 }

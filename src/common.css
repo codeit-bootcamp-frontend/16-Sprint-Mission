@@ -34,6 +34,7 @@ body {
   font-weight: 600;
   font-family: 'Pretendard';
   border: none;
+	cursor: pointer;
 }
 
 .button-style:hover {
@@ -42,6 +43,7 @@ body {
 
 .button-style:disabled {
   background-color: var(--color-gray400);
+	cursor: auto;
 }
 
 @font-face {

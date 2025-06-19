@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+	cursor: pointer;
+}
+
+.context {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.image {
+  aspect-ratio: 1/1;
+  width: 100%;
+  border-radius: 16px;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  min-height: 24px;
+}
+.price {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 26px;
+  min-height: 26px;
+}
+
+.favorite-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3.35px;
+  min-height: 18px;
+}
+
+.favorite-image {
+  aspect-ratio: 1/1;
+  width: 16px;
+}
+
+.favorite-count {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+}

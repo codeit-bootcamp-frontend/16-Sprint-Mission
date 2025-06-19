@@ -1,0 +1,28 @@
+
+.section-header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.section-title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+  color: var(--color-gray900);
+  flex-grow: 1;
+  min-width: 200px;
+}
+
+.search-submit {
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+  padding: 0 23px;
+  color: var(--color-gray100);
+  height: 42px;
+}

@@ -1,16 +1,16 @@
-import { Link } from 'react-router-dom';
-import './Banner.css';
-import './Main.css';
-import './Cards.css';
-import './Card.css';
-import './BannerBottom.css';
-import './Footer.css';
-import Nav from '../../components/Nav';
+import { Link } from "react-router-dom";
+import "./Banner.css";
+import "./Main.css";
+import "./Cards.css";
+import "./Card.css";
+import "./BannerBottom.css";
+import "./Footer.css";
+import Nav from "../../components/layout/Nav/Nav";
 
 const HomePage = () => {
   return (
     <>
-      <Nav currentSection={''} />
+      <Nav currentSection={""} />
       <main className="page-main">
         <section className="banner">
           <article className="banner-container">
@@ -32,17 +32,15 @@ const HomePage = () => {
           </article>
         </section>
         <section className="page-cards">
-          <article className={'card-container'}>
+          <article className={"card-container"}>
             <img
               className="card-image"
-              src={'./images/Img_home_01/Img_home_01@1x.png'}
+              src={"./images/Img_home_01/Img_home_01@1x.png"}
               width="344"
             ></img>
             <div className={`card-context`}>
               <h3 className="card-context-tag">Hot item</h3>
-              <h2 className="card-context-title">
-                {'인기 상품을 확인해 보세요'}
-              </h2>
+              <h2 className="card-context-title">{"인기 상품을 확인해 보세요"}</h2>
               <p className="card-context-subtitle">
                 가장 HOT한 중고거래 물품을
                 <br />
@@ -50,17 +48,15 @@ const HomePage = () => {
               </p>
             </div>
           </article>
-          <article className={'card-container reverse'}>
+          <article className={"card-container reverse"}>
             <img
               className="card-image"
-              src={'./images/Img_home_02/Img_home_02@1x.png'}
+              src={"./images/Img_home_02/Img_home_02@1x.png"}
               width="344"
             ></img>
             <div className={`card-context`}>
               <h3 className="card-context-tag">Search</h3>
-              <h2 className="card-context-title">
-                구매를 원하는 상품을 검색하세요
-              </h2>
+              <h2 className="card-context-title">구매를 원하는 상품을 검색하세요</h2>
               <p className="card-context-subtitle">
                 구매하고 싶은 물품을 검색해서
                 <br />
@@ -68,17 +64,15 @@ const HomePage = () => {
               </p>
             </div>
           </article>
-          <article className={'card-container'}>
+          <article className={"card-container"}>
             <img
               className="card-image"
-              src={'./images/Img_home_03/Img_home_03@1x.png'}
+              src={"./images/Img_home_03/Img_home_03@1x.png"}
               width="344"
             ></img>
             <div className={`card-context`}>
               <h3 className="card-context-tag">Register</h3>
-              <h2 className="card-context-title">
-                판매를 원하는 상품을 등록하세요
-              </h2>
+              <h2 className="card-context-title">판매를 원하는 상품을 등록하세요</h2>
               <p className="card-context-subtitle">
                 어떤 물건이든 판매하고 싶은 상품을
                 <br />
@@ -112,33 +106,21 @@ const HomePage = () => {
             <Link to="/faq">FAQ</Link>
           </div>
           <div className="footer-social">
-            <a
-              href="https://www.google.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://www.google.com/" target="_blank" rel="noopener noreferrer">
               <img
                 className="footer-social-image"
                 src="./images/ic_facebook.png"
                 width={18}
               />
             </a>
-            <a
-              href="https://x.com/?lang=ko"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://x.com/?lang=ko" target="_blank" rel="noopener noreferrer">
               <img
                 className="footer-social-image"
                 src="./images/ic_twitter.png"
                 width={18}
               />
             </a>
-            <a
-              href="https://www.youtube.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
               <img
                 className="footer-social-image"
                 src="./images/ic_youtube.png"

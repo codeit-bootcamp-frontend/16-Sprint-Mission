@@ -1,0 +1,11 @@
+.pagination-container {
+  display: flex;
+  flex-direction: row;
+  padding-top: var(--items-pagination-padding-top);
+  padding-bottom: var(--items-pagination-padding-bottom);
+  padding: 43px 0 58px;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-gray050);
+  gap: 4px;
+}
