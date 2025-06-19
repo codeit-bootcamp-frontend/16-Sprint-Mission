@@ -1,0 +1,61 @@
+.Products__header h1 {
+  font-size: var(--font-size-xl);
+}
+
+.Products__header--items {
+  display: grid;
+  align-items: center;
+  grid-template: 1fr auto / repeat(3, auto) 40px;
+  gap: 8px;
+}
+
+button.Products__register {
+  grid-column: 3 / span 2;
+  padding: 10px 24px;
+}
+
+.Products__form {
+  grid-column: 1 / span 3;
+  width: 100%;
+}
+
+.Products__form input {
+  background-image: url(../../assets/ic_search.png);
+  background-repeat: no-repeat;
+  background-position: 14px center;
+  width: inherit;
+  padding: 11px 24px 11px 40px;
+}
+
+.Products__sort {
+  grid-column: 4;
+}
+
+/* 타블렛 (768px~) */
+@media (min-width: 768px) {
+  .Products__header--items {
+    display: grid;
+    align-items: center;
+    grid-template: 1fr / auto 242px 130px 130px;
+    gap: 12px;
+  }
+
+  button.Products__register {
+    grid-column: 3;
+  }
+
+  .Products__form {
+    grid-row: 1;
+    grid-column: 2;
+    width: 100%;
+  }
+
+  .Products__form input {
+    width: inherit;
+  }
+
+  .Products__sort {
+    grid-row: 1;
+    grid-column: 4;
+  }
+}

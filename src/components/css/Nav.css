@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  gap: 8px;
+  inset: auto 0 auto 0;
+  padding: var(--spacing-left-right-16);
+  height: 70px;
+  background-color: var(--color-background-white);
+  z-index: 99;
+}
+
+.header__logo-img {
+  width: auto;
+  height: auto;
+  display: block;
+}
+
+ul.nav {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-600);
+  margin-right: auto;
+  display: flex;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+/*** 반응형 ***/
+/* 타블렛 (768px~) */
+@media (min-width: 768px) {
+  /* 헤더 영역 */
+  .header {
+    padding: var(--spacing-left-right-24);
+  }
+}
