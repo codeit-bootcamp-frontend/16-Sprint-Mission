@@ -1,30 +1,36 @@
 import styled from "styled-components";
 
-function Header({ leftChild, rightChild }) {
+function Footer({ leftChild, centerChild, rightChild }) {
   return (
-    <StyledHeader>
+    <StyledFooter>
       <StyledContent>
         <div>{leftChild}</div>
+        <div>{centerChild}</div>
         <div>{rightChild}</div>
       </StyledContent>
-    </StyledHeader>
+    </StyledFooter>
   );
 }
 
-export default Header;
+export default Footer;
 
-const StyledHeader = styled.header`
-  border-bottom: 1px solid #dfdfdf;
+const StyledFooter = styled.div`
+  background-color: var(--gray-900);
+  color: var(--gray-200);
+  height: 160px;
+  font-size: 16px;
+  font-weight: 400;
+  width: 100%;
+  padding: 32px;
 `;
 
 const StyledContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 auto;
-  width: 100%;
   max-width: 344px;
   padding: 0 16px;
+  margin: 0 auto;
 
   @media (min-width: 768px) {
     padding: 0 24px;
