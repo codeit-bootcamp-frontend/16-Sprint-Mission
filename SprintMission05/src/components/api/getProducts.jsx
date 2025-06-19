@@ -1,5 +1,3 @@
-//컴포넌트안에서 사용하도록
-// getProducts
 export const getProducts = async ({
   order = "recent",
   page = 1,
@@ -16,5 +14,3 @@ export const getProducts = async ({
   const body = await response.json();
   return body;
 };
-
-// useProducts 커스텀 훅 : 적용 예시가 잘못되었다-> 반복되는 로직이 즁요 : 좀 더 고민
