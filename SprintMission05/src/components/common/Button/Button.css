@@ -1,67 +1,57 @@
+/* 공통 */
 .Button {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 23px;
   border: none;
   font-size: 16px;
   font-weight: 600;
-  color: var(--gray-100);
-  cursor: pointer;
   text-align: center;
+  cursor: pointer;
   border-radius: 6px;
-  background: #ccc;
   height: 48px;
-  width: auto;
+  padding: 12px 23px;
+  background: #ccc;
+  color: var(--gray-100);
 }
 
-.Button:hover {
+/* 상태 기반 variant */
+.primary {
+  background: var(--Blue-100);
+  color: white;
+}
+.primary:hover {
   background: var(--Blue-200);
 }
 
-.btn-round {
-  border-radius: 9999px;
-}
-
-.btn-active {
-  background: var(--Blue-100);
-}
-
-.btn-click {
-  background: var(--Blue-300);
-}
-
-.btn-inactive {
-  background: var(--gray-400);
-}
-
-.btn-white {
+.secondary {
   background: var(--gray-50);
   color: var(--Blue-100);
   border: 1px solid var(--Blue-100);
 }
 
-.btn-img {
-  width: 19px;
-  height: 16px;
+.inactive {
+  background: var(--gray-400);
+  cursor: default;
 }
 
-.btn-small {
-  padding: 12px 23px;
+/* 크기 기반 variant */
+.small {
   height: 42px;
 }
 
-.btn-medium {
+.medium {
   padding: 12px 71px;
   width: 240px;
 }
 
-.btn-large {
+.large {
   padding: 16px 124px;
   width: 357px;
   height: 56px;
 }
 
-.Button:disabled {
-  cursor: pointer;
+/* 모양 */
+.round {
+  border-radius: 9999px;
 }

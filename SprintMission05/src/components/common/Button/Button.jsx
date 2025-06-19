@@ -1,11 +1,12 @@
 import "./Button.css";
+import classNames from "classnames";
 
-const Button = ({ alt, corner, text, state, size, onClick }) => {
+const Button = ({ variant = "primary", text, onClick }) => {
   return (
     <button
       onClick={onClick}
-      disabled={state === "inactive"}
-      className={`Button btn-${corner} btn-${state} btn-${size}`}
+      className={classNames("Button", variant)}
+      disabled={variant === "inactive"}
     >
       <span>{text}</span>
     </button>

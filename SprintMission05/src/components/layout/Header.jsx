@@ -1,5 +1,16 @@
 import styled from "styled-components";
 
+function Header({ leftChild, rightChild }) {
+  return (
+    <HeaderWrapper>
+      <div>{leftChild}</div>
+      <div>{rightChild}</div>
+    </HeaderWrapper>
+  );
+}
+
+export default Header;
+
 const HeaderWrapper = styled.header`
   display: flex;
   align-items: center;
@@ -20,14 +31,3 @@ const HeaderWrapper = styled.header`
     max-width: 1200px
   }
 `;
-
-function Header({ leftChild, rightChild }) {
-  return (
-    <HeaderWrapper>
-      <div>{leftChild}</div>
-      <div>{rightChild}</div>
-    </HeaderWrapper>
-  );
-}
-
-export default Header;

@@ -2,73 +2,6 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { getProducts } from "../api/getProducts";
 
-const BestProductsListWrapper = styled.div`
-  width: 344px;
-  margin: 0 auto;
-
-  @media (min-width: 768px) {
-    width: 696px;
-  }
-
-  @media (min-width: 1200px) {
-    width: 1200px;
-  }
-`;
-
-const StyledProductList = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(1, minmax(0, 282px));
-  gap: 10px;
-  list-style: none;
-  padding: 0;
-  margin: 0 auto;
-  justify-content: center;
-
-  max-width: 344px;
-
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    max-width: 696px;
-  }
-
-  @media (min-width: 1200px) {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    max-width: 1200px;
-    gap: 24px;
-  }
-`;
-
-const Header = styled.header`
-  font-size: 20px;
-  font-weight: 700;
-  margin: 0;
-  color: #111827;
-  margin: 24px auto;
-`;
-
-const StyledProductImage = styled.img`
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover; // 이미지가 찌그러지지 않고 잘림
-  border-radius: 16px;
-`;
-
-const ProductName = styled.p`
-  font-size: 16px;
-  font-weight: 500;
-  color: #1f2937;
-`;
-
-const ProductPrice = styled.p`
-  font-size: 12px;
-  font-weight: 500;
-  color: #1f2937;
-`;
-const ProductFavorite = styled.p`
-  font-size: 12px;
-  color: #4b5563; /* 회색 */
-`;
-
 function BestProductsListItem({ item }) {
   return (
     <div>
@@ -144,3 +77,70 @@ function BestProductsList() {
 }
 
 export default BestProductsList;
+
+const BestProductsListWrapper = styled.div`
+  width: 344px;
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+    width: 696px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 1200px;
+  }
+`;
+
+const StyledProductList = styled.ul`
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 282px));
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  justify-content: center;
+
+  max-width: 344px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 696px;
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    max-width: 1200px;
+    gap: 24px;
+  }
+`;
+
+const Header = styled.header`
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+  color: #111827;
+  margin: 24px auto;
+`;
+
+const StyledProductImage = styled.img`
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover; // 이미지가 찌그러지지 않고 잘림
+  border-radius: 16px;
+`;
+
+const ProductName = styled.p`
+  font-size: 16px;
+  font-weight: 500;
+  color: #1f2937;
+`;
+
+const ProductPrice = styled.p`
+  font-size: 12px;
+  font-weight: 500;
+  color: #1f2937;
+`;
+const ProductFavorite = styled.p`
+  font-size: 12px;
+  color: #4b5563; /* 회색 */
+`;

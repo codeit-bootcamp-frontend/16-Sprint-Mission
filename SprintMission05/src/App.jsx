@@ -8,16 +8,6 @@ import FAQ from "./pages/FAQ";
 import NotFound from "./pages/NotFound";
 import Items from "./pages/Items";
 
-const GlobalStyle = createGlobalStyle`
-  * {
-    box-sizing: border-box;
-  }
-
-  body {
-    font-family: 'Noto Sans KR', sans-serif;
-  }
-`;
-
 function App() {
   return (
     <>
@@ -37,3 +27,13 @@ function App() {
 }
 
 export default App;
+
+const GlobalStyle = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+`;

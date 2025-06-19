@@ -3,16 +3,6 @@ import List from "../components/layout/List";
 import Header from "../components/layout/Header";
 import Nav from "../components/layout/Nav";
 
-const GlobalStyle = createGlobalStyle`
-  * {
-    box-sizing: border-box;
-  }
-
-  body {
-    font-family: 'Noto Sans KR', sans-serif;
-  }
-`;
-
 function Items() {
   return (
     <>
@@ -33,3 +23,13 @@ function Items() {
 }
 
 export default Items;
+
+const GlobalStyle = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+`;

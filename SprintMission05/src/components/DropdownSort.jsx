@@ -1,6 +1,34 @@
 import { Menu } from "@headlessui/react";
 import styled from "styled-components";
 
+export default function DropdownSort({ order, setOrder }) {
+  return (
+    <Menu as="div" style={{ position: "relative" }}>
+      <Menu.Button as={DropdownButton}>
+        {order === "recent" ? "최신순" : "좋아요순"}
+      </Menu.Button>
+      <Menu.Items
+        style={{
+          position: "absolute",
+          right: 0,
+          marginTop: "8px",
+          background: "white",
+          border: "1px solid #e5e7eb",
+          borderRadius: "12px",
+          overflow: "hidden",
+        }}
+      >
+        <MenuItem as="div" onClick={() => setOrder("recent")}>
+          최신순
+        </MenuItem>
+        <MenuItem as="div" onClick={() => setOrder("favorite")}>
+          좋아요순
+        </MenuItem>
+      </Menu.Items>
+    </Menu>
+  );
+}
+
 const DropdownButton = styled.button`
   background-color: white;
   border: 1px solid #e5e7eb;
@@ -38,31 +66,3 @@ const DesktopOnly = styled.div`
     display: block;
   }
 `;
-
-export default function DropdownSort({ order, setOrder }) {
-  return (
-    <Menu as="div" style={{ position: "relative" }}>
-      <Menu.Button as={DropdownButton}>
-        {order === "recent" ? "최신순" : "좋아요순"}
-      </Menu.Button>
-      <Menu.Items
-        style={{
-          position: "absolute",
-          right: 0,
-          marginTop: "8px",
-          background: "white",
-          border: "1px solid #e5e7eb",
-          borderRadius: "12px",
-          overflow: "hidden",
-        }}
-      >
-        <MenuItem as="div" onClick={() => setOrder("recent")}>
-          최신순
-        </MenuItem>
-        <MenuItem as="div" onClick={() => setOrder("favorite")}>
-          좋아요순
-        </MenuItem>
-      </Menu.Items>
-    </Menu>
-  );
-}

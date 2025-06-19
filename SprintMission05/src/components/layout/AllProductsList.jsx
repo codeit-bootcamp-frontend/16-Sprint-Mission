@@ -9,132 +9,6 @@ import optionIcon from "../../assets/ic_sort.png";
 
 const PAGESIZE = 10;
 
-const Header = styled.header`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 24px auto;
-
-  h2 {
-    font-size: 20px;
-    font-weight: 700;
-    margin: 0;
-    color: #111827;
-  }
-`;
-
-const StyledProductList = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
-  list-style: none;
-  padding: 0;
-  margin: 66px auto 0;
-  max-width: 344px;
-
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    max-width: 696px;
-    gap: 16px;
-    margin: 0 auto;
-  }
-
-  @media (min-width: 1200px) {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    max-width: 1200px;
-    gap: 24px;
-  }
-`;
-
-const StyledProductImage = styled.img`
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover; // 이미지가 찌그러지지 않고 잘림
-  border-radius: 16px;
-`;
-
-const ProductName = styled.p`
-  font-size: 16px;
-  font-weight: 500;
-  color: #1f2937;
-`;
-
-const ProductPrice = styled.p`
-  font-size: 12px;
-  font-weight: 500;
-  color: #1f2937;
-`;
-
-const ProductFavorite = styled.p`
-  font-size: 12px;
-  color: #4b5563; /* 회색 */
-`;
-
-const StyledForm = styled.form`
-  position: relative;
-  display: flex;
-  gap: 12px;
-
-  input {
-    position: absolute;
-    top: 50px;
-    right: 56px;
-
-    width: 288px;
-    height: 42px;
-    background-color: #f3f4f6;
-    border: 1px solid #f3f4f6;
-    border-radius: 12px;
-    padding: 9px 20px 0 16px;
-    font-size: 16px;
-    font-weight: 400;
-    color: #9ca3af;
-
-    @media (min-width: 768px) {
-      width: 242px;
-      position: static;
-    }
-
-    @media (min-width: 1200px) {
-      width: 470px;
-    }
-  }
-
-  select {
-    position: absolute;
-    top: 50px;
-    right: 0;
-
-    width: 42px;
-    height: 42px;
-    background-color: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    padding: 12px 20px;
-    font-size: 16px;
-    font-weight: 400;
-    color: #1f2937;
-    appearance: none; /* 기본 화살표 없애기 */
-    background-image: url(${optionIcon}); /* 화살표 아이콘 넣기 (이미지 직접 준비해) */
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-
-    @media (min-width: 768px) {
-      appearance: auto;
-      background-image: none;
-      position: static;
-      width: 130px;
-    }
-
-    option {
-      text-align: center;
-      color: #1f2937;
-      font-size: 16px;
-      font-weight: 400;
-    }
-  }
-`;
-
 function AllProductsListItem({ item }) {
   return (
     <div>
@@ -272,3 +146,129 @@ function AllProductsList() {
 }
 
 export default AllProductsList;
+
+const Header = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 24px auto;
+
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    color: #111827;
+  }
+`;
+
+const StyledProductList = styled.ul`
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 66px auto 0;
+  max-width: 344px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 696px;
+    gap: 16px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    max-width: 1200px;
+    gap: 24px;
+  }
+`;
+
+const StyledProductImage = styled.img`
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover; // 이미지가 찌그러지지 않고 잘림
+  border-radius: 16px;
+`;
+
+const ProductName = styled.p`
+  font-size: 16px;
+  font-weight: 500;
+  color: #1f2937;
+`;
+
+const ProductPrice = styled.p`
+  font-size: 12px;
+  font-weight: 500;
+  color: #1f2937;
+`;
+
+const ProductFavorite = styled.p`
+  font-size: 12px;
+  color: #4b5563; /* 회색 */
+`;
+
+const StyledForm = styled.form`
+  position: relative;
+  display: flex;
+  gap: 12px;
+
+  input {
+    position: absolute;
+    top: 50px;
+    right: 56px;
+
+    width: 288px;
+    height: 42px;
+    background-color: #f3f4f6;
+    border: 1px solid #f3f4f6;
+    border-radius: 12px;
+    padding: 9px 20px 0 16px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #9ca3af;
+
+    @media (min-width: 768px) {
+      width: 242px;
+      position: static;
+    }
+
+    @media (min-width: 1200px) {
+      width: 470px;
+    }
+  }
+
+  select {
+    position: absolute;
+    top: 50px;
+    right: 0;
+
+    width: 42px;
+    height: 42px;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #1f2937;
+    appearance: none; /* 기본 화살표 없애기 */
+    background-image: url(${optionIcon}); /* 화살표 아이콘 넣기 (이미지 직접 준비해) */
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+
+    @media (min-width: 768px) {
+      appearance: auto;
+      background-image: none;
+      position: static;
+      width: 130px;
+    }
+
+    option {
+      text-align: center;
+      color: #1f2937;
+      font-size: 16px;
+      font-weight: 400;
+    }
+  }
+`;
