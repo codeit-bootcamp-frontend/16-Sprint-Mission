@@ -1,0 +1,51 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.imageWrapper {
+  width: 100%;
+  height: 164px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.imageWrapper img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--secondary-color-gray800);
+}
+
+.price {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--secondary-color-gray800);
+}
+
+.favorite {
+  font-size: 12px;
+  color: var(--secondary-color-gray600);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.favorite img {
+  width: 16px;
+  height: 16px;
+}
+
+@media (min-width: 768px) {
+  .allItems .imageWrapper {
+    height: 221px;
+  }
+}
