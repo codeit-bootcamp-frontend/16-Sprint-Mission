@@ -1,31 +1,32 @@
 import { useEffect, useState } from "react";
 
-import { getProducts } from "../api/ProductApi";
-import ProductItem from "./ProductItem";
+import { getProducts } from "../../api/ProductApi";
+import ProductItem from "./ProductItem.jsx";
 
 import styles from "./ProductList.module.css";
 
-function ProductList({ orderBy, pageSize, keyword, page, isBestProduct }) {
+function ProductList({  orderBy, pageSize, keyword, page, type = "small" }) {
   const [items, setItems] = useState([]);
 
-  const handleProduct = async (orderBy) => {
+  const handleProduct = async () => {
     try {
       const { list } = await getProducts({ orderBy, pageSize, keyword, page });
-      setItems([...list]);
+      setItems(list);
     } catch (error) {
       console.error("상품 목록을 가져오는 중 오류 발생:", error);
+      setItems([]);
     }
   };
 
   useEffect(() => {
-    handleProduct(orderBy, pageSize, keyword, page);
+    handleProduct();
   }, [orderBy, pageSize, keyword, page]);
 
   return (
-    <ul className={isBestProduct ? styles.bestItem : styles.allItem}>
+    <ul className={styles[type]}>
       {items.map((item) => (
         <li key={item.id} className={styles.card}>
-          <ProductItem item={item} isBestProduct={isBestProduct} />
+          <ProductItem item={item} type={type} />
         </li>
       ))}
     </ul>

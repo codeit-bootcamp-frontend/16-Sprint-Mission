@@ -3,7 +3,7 @@
   align-items: center;
 }
 
-.bestItem {
+.large {
   display: grid;
   justify-content: flex-start;
   column-gap: 0;
@@ -12,7 +12,7 @@
   margin: 0 auto;
   margin-top: 16px;
 }
-.allItem {
+.small {
   display: grid;
   justify-content: flex-start;
   column-gap: 8px;
@@ -23,12 +23,12 @@
 
 /* Tablet */
 @media screen and (min-width: 768px) and (max-width: 1199px) {
-  .bestItem {
+  .large {
     column-gap: 10px;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(1, 1fr);
   }
-  .allItem {
+  .small {
     column-gap: 16px;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -37,12 +37,12 @@
 
 /* Desktop */
 @media (min-width: 1200px) {
-  .bestItem {
+  .large {
     column-gap: 24px;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(1, 1fr);
   }
-  .allItem {
+  .small {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(2, 1fr);

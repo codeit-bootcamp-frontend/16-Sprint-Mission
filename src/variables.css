@@ -16,8 +16,10 @@
   --secondary-200: rgba(229, 231, 235, 1);
   --secondary-100: rgba(243, 244, 246, 1);
   --secondary-50: rgba(249, 250, 251, 1);
-  --cool-gray-200: rgba(229, 231, 235, 1);
   --cool-gray-600: rgba(75, 85, 99, 1);
+  --cool-gray-400: rgba(156, 163, 175, 1);
+  --cool-gray-200: rgba(229, 231, 235, 1);
+  --cool-gray-100: rgba(243, 244, 246, 1);
 
   --header-height: 70px;
   --content-width: 1120px;

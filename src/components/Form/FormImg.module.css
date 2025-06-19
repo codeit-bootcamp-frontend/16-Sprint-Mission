@@ -1,0 +1,32 @@
+.imgContainer{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin: 24px 0 24px 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.imagePreview {
+  display: flex;
+  position: relative;
+}
+
+.previewImage {
+  width: 168px;
+  height: 168px;
+  border-radius: 12px;
+}
+
+.imageDeleteBtn {
+  position: relative;
+  top: 10px;
+  right: 39px;
+  display: flex;
+  align-items: start;
+  border: 0;
+  background-color: transparent;
+}

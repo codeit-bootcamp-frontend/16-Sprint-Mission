@@ -1,25 +1,29 @@
 import { useEffect, useState } from "react";
 
 import { CiHeart } from "react-icons/ci";
-import noImg from "../assets/img/noimg.jpg";
+import noImg from "../../assets/img/noimg.jpg";
 
 import styles from "./ProductItem.module.css";
 
-function ProductItem({ item, isBestProduct }) {
+function ProductItem({ item, type = "small" }) {
   const { images, name, price, favoriteCount } = item;
-  const [url, setURL] = useState(images || noImg);
+  const [imgSrc, setImgSrc] = useState(images?.[0] || noImg);
 
-  const handleError = () => {
-    setURL(noImg);
+  useEffect(() => {
+    setImgSrc(images?.[0] || noImg);
+  }, [images]);
+
+  const handleImageError = () => {
+    setImgSrc(noImg);
   };
 
   return (
     <a href="#" className={styles.card}>
       <img
-        className={isBestProduct ? styles.bestImg : styles.img}
-        src={url}
+        className={styles[type]}
+        src={imgSrc}
         alt={name}
-        onError={handleError}
+        onError={handleImageError}
       />
       <p>{name}</p>
       <h3 className={styles.price}>{price}원</h3>
