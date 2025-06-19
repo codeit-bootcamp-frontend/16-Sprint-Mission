@@ -1,0 +1,53 @@
+body {
+  font-family: "Pretendard Variable";
+}
+
+a {
+  cursor: pointer;
+}
+
+input {
+  font-family: "Pretendard Variable";
+  font-size: var(--font-size-xs);
+  color: var(--color-secondary-800);
+  background-color: var(--color-secondary-100);
+  padding: 16px 20px;
+  border-radius: 12px;
+  height: 56px;
+  border: none;
+}
+
+input::placeholder {
+  color: var(--color-secondary-400);
+  font-size: var(--font-size-xs);
+}
+
+input.success {
+  outline: 1px solid var(--color-primary-100);
+}
+
+input.error {
+  outline: 1px solid var(--color-error);
+}
+
+input {
+  outline: none;
+}
+
+label {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-secondary-800);
+}
+
+.msg {
+  font-size: var(--font-size-xxs);
+  font-weight: 600;
+  padding-left: 16px;
+  display: none;
+  color: var(--color-error);
+}
+
+.msg.error {
+  display: block;
+}

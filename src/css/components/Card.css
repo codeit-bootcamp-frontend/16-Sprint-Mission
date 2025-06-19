@@ -1,0 +1,41 @@
+.card__image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  margin-bottom: 16px;
+}
+
+.card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card__info__title {
+  font-size: var(--font-size-xxs);
+  font-weight: 500;
+  color: var(--color-secondary-800);
+}
+
+.card__info__price {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  color: var(--color-secondary-800);
+}
+
+.card__icon__group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.heart__icon {
+  width: 16px;
+  height: 16px;
+}
+
+.heart__icon__count {
+  font-size: var(--font-size-xxxs);
+  font-weight: 500;
+  color: var(--color-secondary-600);
+}

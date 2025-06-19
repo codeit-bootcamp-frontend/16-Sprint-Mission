@@ -1,0 +1,40 @@
+.btn {
+  background-color: var(--color-primary-100);
+  text-decoration: none;
+  color: var(--color-secondary-100);
+  padding: 12px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+}
+
+.btn-register {
+  border-radius: var(--border-radius-sm);
+  min-width: 133px;
+  height: 42px;
+  font-size: var(--font-size-xs);
+}
+
+.btn-small {
+  border-radius: var(--border-radius-sm);
+  min-width: 128px;
+  height: 48px;
+  font-size: var(--font-size-xs);
+}
+
+.btn-large {
+  border-radius: var(--border-radius-lg);
+  width: 240px;
+  height: 48px;
+  font-size: var(--font-size-sm);
+}
+
+.btn a {
+  text-decoration: none;
+  color: var(--color-secondary-100);
+}
+
+.btn:disabled {
+  background-color: var(--color-secondary-400);
+}
