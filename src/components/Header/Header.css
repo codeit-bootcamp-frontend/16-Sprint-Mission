@@ -1,0 +1,38 @@
+.Header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Header__menu .Header__menu__items.active {
+  color: #3692ff;
+  font-weight: bold;
+  background-color: transparent;
+}
+
+.Header__logo {
+  width: 153px;
+  height: 51px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Header__menu__items {
+  color: #000000;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.Header__menu {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex: 1;
+  margin: 0 50px;
+}
+
+.Header__user {
+  width: 30px;
+  height: 30px;
+}
