@@ -1,0 +1,20 @@
+/* 검색바, 상품 등록, 정렬 드롭다운 등 툴바바 */
+.product-toolbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: left;
+}
+
+.toolbar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.toolbar-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}

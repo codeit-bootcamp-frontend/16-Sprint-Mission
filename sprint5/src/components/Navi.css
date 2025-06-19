@@ -1,0 +1,52 @@
+/* 상단 네비게이션바 스타일 */
+.navi {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  background-color: white;
+  padding: 0 2rem;
+  border-bottom: 1px solid #dfdfdf;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.logo-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+}
+
+.logo {
+  height: 40px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.menu-section {
+  display: flex;
+  gap: 2rem;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.menu-section a:link,
+.menu-section a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+}
+
+.profile-pic {
+  height: 40px;
+  border-radius: 50%;
+}
