@@ -2,7 +2,7 @@
 import ProductListContainerStyle from "./ProductListContainerStyle";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
-import { getProducts } from "../../services/api";
+import { getProducts } from "@/services/get/getProducts";
 import { DEFAULT_ITEM_PAGE_SIZE } from "../../constants/pagesize";
 import { ITEMS_ORDER_MAP } from "../../constants/sortOptions";
 import useAsync from "../../hooks/useAsync";

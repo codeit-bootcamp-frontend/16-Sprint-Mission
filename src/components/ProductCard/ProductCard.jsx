@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
 import likeImg from "../../assets/images/ic-like.svg";
 import pandaLogoImg from "../../assets/images/logo-panda.svg";
-import { getProduct } from "@/services/api";
+import { getProduct } from "@/services/get/getProduct";
 import useAsync from "@/hooks/useAsync";
 import { useEffect, useState } from "react";
 import { useCallback } from "react";
