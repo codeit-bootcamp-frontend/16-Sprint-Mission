@@ -7,13 +7,9 @@ import AddTitleField from './AddTitleField';
 import styles from './styles/AddItem.module.css';
 
 function AddItem() {
-  const titleFilled = useSelector((state) => state.isFilled.title) || false;
-  const descriptionFilled =
-    useSelector((state) => state.isFilled.description) || false;
-  const priceFilled = useSelector((state) => state.isFilled.price) || false;
-  const tagFilled = useSelector((state) => state.isFilled.tag) || false;
-
-  const isReady = titleFilled && descriptionFilled && priceFilled && tagFilled;
+  const isReady = useSelector((state) =>
+    Object.values(state.isFilled).every((isFilled) => isFilled === true),
+  );
 
   return (
     <main className={styles.addItem}>

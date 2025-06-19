@@ -6,12 +6,12 @@ const initialState = {
   isFilled: {},
 };
 
-export const addItemStore = create((set) => {
+export const useAddItemStore = create((set) => {
   return {
     ...initialState,
     updateFieldValue: (name, value) => {
       return set((state) => {
-        const isPassed = name === 'tag' ? false : value > 0 ? true : false;
+        const isPassed = name === 'tag' ? state.isFilled.tag : value > 0 ? true : false;
 
         return {
           ...state,
@@ -62,5 +62,5 @@ export const addItemStore = create((set) => {
 // }
 
 export function useSelector(selector) {
-  return addItemStore(selector, shallow);
+  return useAddItemStore(selector, shallow);
 }

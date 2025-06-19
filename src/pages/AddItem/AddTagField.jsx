@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import deleteIcon from '@assets/icon/ic_X.png';
-import { addItemStore, useSelector } from './addItemStore';
+import { useAddItemStore, useSelector } from './addItemStore';
 import styles from './styles/AddTagField.module.css';
 
 function AddTagField({ name }) {
   const [tagList, setTagList] = useState([]);
   const inputValue = useSelector((state) => state.values[name]) || '';
-  const updateFieldState = addItemStore((state) => state.updateFieldValue);
-  const updateTagField = addItemStore((state) => state.updateTagField);
+  const updateFieldState = useAddItemStore((state) => state.updateFieldValue);
+  const updateTagField = useAddItemStore((state) => state.updateTagField);
 
   function handleChange(e) {
     updateFieldState(name, e.target.value);

@@ -1,4 +1,4 @@
-import { addItemStore, useSelector } from './addItemStore';
+import { useAddItemStore, useSelector } from './addItemStore';
 
 function parsePriceInput(text) {
   const parsedText = Number(text.split(',').join(''));
@@ -7,7 +7,7 @@ function parsePriceInput(text) {
 
 function AddPriceField({ name }) {
   const inputValue = useSelector((state) => state.values[name]) || '';
-  const updateFieldState = addItemStore((state) => state.updateFieldValue);
+  const updateFieldState = useAddItemStore((state) => state.updateFieldValue);
 
   function handleChange(e) {
     const parsedPrice = parsePriceInput(e.target.value);
