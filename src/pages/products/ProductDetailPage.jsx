@@ -15,11 +15,14 @@ import { getComments } from "@/services/get/getComments";
 import kebabIcon from "@/assets/images/ic_kebab.svg";
 import inquiryEmptyImg from "@/assets/images/img_inquiry_empty.png";
 import arrowLeftIcon from "@/assets/images/ic_arrow_left.svg";
+import Dropdown from "@/components/ui/Dropdown";
+import { updateComment } from "@/services/patch/updateComment";
+import { deleteComment } from "@/services/delete/deleteComment";
+
+const dropdownMenuItems = ["수정하기", "삭제하기"];
 
 const ProductDetailPage = () => {
   const location = useLocation();
-  const formRef = useRef(null);
-
   const {
     id,
     images,
@@ -32,14 +35,26 @@ const ProductDetailPage = () => {
     createdAt,
   } = location.state;
 
+  const formRef = useRef(null);
   const { handleBlur, isFormValid } = useForm(formRef);
 
   const [comments, setComments] = useState([]);
+  const [isEditCommentId, setIsEditCommentId] = useState(null);
+  const {
+    isLoading: updateCommentLoading,
+    loadingError: updateCommentError,
+    runAsync: updateCommentAsync,
+  } = useAsync(updateComment);
   const {
     isLoading,
     loadingError,
     runAsync: getCommentAsync,
   } = useAsync(getComments);
+  const {
+    isLoading: deleteCommentLoading,
+    loadingError: deleteCommentError,
+    runAsync: deleteCommentAsync,
+  } = useAsync(deleteComment);
 
   const handleCommentLoad = useCallback(async () => {
     try {
@@ -50,6 +65,29 @@ const ProductDetailPage = () => {
       console.log(err);
     }
   }, [getCommentAsync, id]);
+
+  const [dropdownCommentId, setDropdownCommentId] = useState(null);
+
+  const toggleDropdown = (commentId) => {
+    setDropdownCommentId((prevId) => (prevId === commentId ? null : commentId));
+  };
+
+  const handleDropdownSelect = (value, commentId) => {
+    if (value === "수정하기") {
+      setIsEditCommentId((prevId) => (prevId === commentId ? null : commentId));
+    }
+    if (value === "삭제하기") {
+      deleteCommentAsync(commentId);
+    }
+  };
+
+  const handleUpdateComment = (commentId) => {
+    const textarea = document.querySelector(`[data-comment-id="${commentId}"]`);
+    const updated = textarea?.value;
+    if (!updated) return;
+
+    updateCommentAsync(commentId, updated);
+  };
 
   useEffect(() => {
     handleCommentLoad();
@@ -125,17 +163,49 @@ const ProductDetailPage = () => {
             </div>
           )}
           {comments?.map((cmt) => (
-            <li className="comment">
-              <p>{cmt.content}</p>
+            <li className="comment" key={cmt.id}>
+              {isEditCommentId === cmt.id ? (
+                <div className="comment-edit">
+                  <Textarea
+                    defaultValue={cmt.content}
+                    data-comment-id={cmt.id}
+                  />
+                  <span>commentId: {cmt.id}</span>
+                  <div className="comment-edit-actions">
+                    <Button onClick={() => setIsEditCommentId(null)}>
+                      취소
+                    </Button>
+                    <Button
+                      variant="primary"
+                      size="sm"
+                      onClick={() => handleUpdateComment(cmt.id)}
+                    >
+                      수정 완료
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                <p>{cmt.content}</p>
+              )}
               <div className="profile-area">
                 <div className="profile">
                   <img src={cmt.image || avatarImg} alt="기본 프로필 이미지" />
                   <span className="owner-name">{cmt.writer.nickname}</span>
                   <span className="createAt">{cmt.createdAt}</span>
                 </div>
-                <button type="button" className="kebab-btn">
+                <button
+                  type="button"
+                  className="kebab-btn"
+                  onClick={() => toggleDropdown(cmt.id)}
+                >
                   <img src={kebabIcon} alt="댓글 수정/삭제하기" />
                 </button>
+                {dropdownCommentId === cmt.id && (
+                  <Dropdown
+                    menu={dropdownMenuItems}
+                    onClickMenu={(value) => handleDropdownSelect(value, cmt.id)}
+                  />
+                )}
               </div>
             </li>
           ))}
