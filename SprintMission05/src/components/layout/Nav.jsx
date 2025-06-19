@@ -30,7 +30,6 @@ function Nav() {
 
   return (
     <NavList>
-      <img src="/src/assets/Logo.jpg" alt="Logo" />
       <NavItem active={pathname === "/"} onClick={() => navigate("/")}>
         자유게시판
       </NavItem>
