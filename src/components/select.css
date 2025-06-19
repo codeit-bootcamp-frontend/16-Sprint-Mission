@@ -1,0 +1,39 @@
+@import './select.css';
+
+.select {
+  position: relative;
+  width: 130px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  border: 1px solid var(--secondary-200);
+  border-radius: 12px;
+  background-color: transparent;
+  padding: 12px 20px;
+}
+
+.option {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: inherit;
+  box-sizing: border-box;
+  border: 1px solid var(--secondary-200);
+  border-radius: 12px;
+  padding: 6px;
+  background-color: #fff;
+  list-style: none;
+}
+
+.option>li {
+  padding: 8px 0px;
+
+  &:hover {
+    background-color: var(--secondary-200)
+  }
+
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--secondary-200);
+  }
+}
