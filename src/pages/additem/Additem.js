@@ -1,63 +1,81 @@
 import styles from "./Additem.module.css";
 import { useRef, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import ImageUpload from "./components/ImageUpload";
+import { validateField } from "./hooks/useValidation";
+import TextInputField from "./components/TextInputField";
+import TagInput from "./components/TagInput";
 
 function Additem() {
   const formRef = useRef(null);
-  const uploadImgRef = useRef();
-  const [previewUrl, setPreviewUrl] = useState("");  // 프리뷰 이미지 URL
+  const [errors, setErrors] = useState("");
+  const [imageFile, setImageFile] = useState(null);
+  const [imagePreviewUrl, setImagePreviewUrl] = useState(null);
+  const [tags, setTags] = useState([]);
 
-  const validateProductName = (value) => {
-    if (!value.trim()) return "상품명을 입력해 주세요";
-    return "";
-  };
-  const validateProductDescription = (value) => {
-    if (!value.trim()) return "상품 소개를 입력해주세요.";
-    return "";
-  };
-  const validatePrice = (value) => {
-    if (!value.trim()) return "가격을 입력해주세요.";
-    if (isNaN(value)) return "숫자만 입력해주세요.";
-    return "";
-  };
-  const validateField = (name, value) => {
-    const validators = {
-      productName: validateProductName,
-      productDescription: validateProductDescription,
-      price: validatePrice,
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = formRef.current;
 
-    return validators[name] ? validators[name](value) : "";
+    const newErrors = {};
+    let isValid = true;
+
+    for (const field of form.elements) {
+      if (!field.name) continue;
+
+      // 태그는 상태에서 검사
+      const value =
+        field.name === "productTag"
+          ? tags
+          : field.name === "uploadImage"
+          ? imageFile
+          : field.value;
+
+      const error = validateField(field.name, value);
+
+      if (error) {
+        isValid = false;
+        newErrors[field.name] = error;
+      }
+    }
+
+    setErrors(newErrors);
+    if (!isValid) return;
+
+    // 유효하면 데이터 수집
+    const formData = {};
+    for (const field of form.elements) {
+      if (
+        !field.name ||
+        field.name === "productTag" ||
+        field.name === "uploadImage"
+      )
+        continue;
+      formData[field.name] = field.value;
+    }
+
+    formData["productTag"] = tags;
+    formData["uploadImage"] = imageFile;
+
+    console.log("제출 데이터:", formData);
   };
 
-  // 이미지 등록 버튼을 누르면 숨겨져 있는 실제 file타입 input태그 클릭함
-  const handleUpload = () => {
-    if (uploadImgRef.current) {
-      uploadImgRef.current.value = ""; // ← 같은 파일도 다시 선택 가능하게
-      uploadImgRef.current.click();
-    }
+  const handleImageChange = (file, previewUrl) => {
+    setImageFile(file);
+    setImagePreviewUrl(previewUrl);
   };
-  // URL.createObjectURL(file)로 임시 URL 생성해서 프리뷰 띄우는 함수
-  const handleFileChange = () => {
-    console.log(`파일 현ㅈ`,uploadImgRef.current.files);
-    const file = uploadImgRef.current?.files?.[0];
-    console.log(file);
-    if(file){
-      const url = URL.createObjectURL(file)
-      setPreviewUrl(url);
-    }
-  }
-  // 파일 내용 확인용(나중에 지워야함)
-  const handleChange = (e) => {
-    const files = e.target.files;
-    if (files && files.length > 0) {
-      console.log("선택된 파일:", files);
-    }
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    const error = validateField(name, value);
+
+    setErrors((prev) => ({
+      ...prev,
+      [name]: error,
+    }));
   };
 
   return (
-    <form ref={formRef} className={styles.form}>
+    <form ref={formRef} className={styles.form} onSubmit={handleSubmit}>
       <header className={styles.header}>
         <h1 className={styles.title}>상품 등록하기</h1>
         <button type="submit" className={styles.submitButton}>
@@ -65,65 +83,55 @@ function Additem() {
         </button>
       </header>
       <div className={styles.inputContainer}>
-        {/* 상품 이미지 등록 관련 컴포넌트 S */}
-        <div className={styles.inputWrapper}>
-          <h3>상품 이미지</h3>
-          {/* 안 보이게 숨겨져 있음 */}
-          <input
-            type="file"
-            accept="image/*"
-            ref={uploadImgRef}
-            style={{ display: "none" }}
-            onChange={handleFileChange}
-          />
-          {/* 실제로 보이는 부분 */}
-          <div className={styles.imageWrapper}>
-            <div className={styles.imageUploadBox} onClick={handleUpload}>
-              <FontAwesomeIcon icon={faPlus} className={styles.plus} />
-              <div>이미지 등록</div>
-            </div>
-          </div>
-        </div>
-        {/* 상품 이미지 등록 관련 컴포넌트 E */}
-        {previewUrl && <img src={previewUrl} alt="미리보기" width={200} />}
-
-        <div className={styles.inputWrapper}>
-          <h3>상품명</h3>
-          <input
-            name="productName"
-            className={styles.input}
-            placeholder="상품명을 입력해주세요"
-          />
-        </div>
-        <div className={styles.inputWrapper}>
-          <h3>상품 소개</h3>
-          <textarea
-            name="productDescription"
-            className={styles.textArea}
-            placeholder="상품 소개를 입력해주세요"
-          />
-          {/* {errors.productDescription && (
-              <p className={styles.errorText}>{errors.productDescription}</p>
-            )} */}
-        </div>
-        <div className={styles.inputWrapper}>
-          <h3>판매 가격</h3>
-          <input
-            name="price"
-            className={styles.input}
-            placeholder="판매 가격을 입력해주세요"
-          />
-        </div>
-        <div className={styles.inputWrapper}>
-          <h3>태그</h3>
-          <input
-            type="text"
-            placeholder="태그를 입력하고 Enter키를 눌러주세요"
-            className={styles.input}
-          />
-
-          <div className={styles.tagsContainer}></div>
-        </div>
+        <ImageUpload onImageChange={handleImageChange} />
+        <TextInputField
+          label="상품명"
+          name="productName"
+          onChange={handleBlur}
+          onBlur={handleBlur}
+          placeholder="상품명을 입력해주세요"
+          error={errors.productName}
+          wrapperClass={styles.inputWrapper}
+          inputClass={styles.input}
+          errorClass={styles.errorText}
+        />
+        <TextInputField
+          label="상품 소개"
+          name="productDescription"
+          onChange={handleBlur}
+          onBlur={handleBlur}
+          placeholder="상품 소개를 입력해주세요"
+          as="textarea"
+          error={errors.productDescription}
+          wrapperClass={styles.inputWrapper}
+          textAreaClass={styles.textArea}
+          errorClass={styles.errorText}
+        />
+        <TextInputField
+          label="상품가격"
+          name="productPrice"
+          onChange={handleBlur}
+          onBlur={handleBlur}
+          placeholder="상품가격을 입력해주세요"
+          error={errors.productPrice}
+          wrapperClass={styles.inputWrapper}
+          inputClass={styles.input}
+          errorClass={styles.errorText}
+        />
+        <TagInput
+          name="productTag"
+          label="태그"
+          tags={tags}
+          setTags={setTags}
+          error={errors.productTag}
+          onBlur={handleBlur}
+          wrapperClass={styles.inputWrapper}
+          inputClass={styles.input}
+          errorClass={styles.errorText}
+          tagContainerClass={styles.tagsContainer}
+          tagClass={styles.tag}
+          removeButtonClass={styles.removeTagButton}
+        />
       </div>
     </form>
   );

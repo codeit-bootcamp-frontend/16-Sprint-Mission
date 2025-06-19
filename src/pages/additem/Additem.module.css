@@ -30,66 +30,6 @@
     gap: 16px;
 }
 
-.imageWrapper {
-    display: flex;
-    gap: 10px;
-}
-
-.imageUploadBox {
-    width: var(--preview-image-width);
-    height: var(--preview-image-height);
-    border: none;
-    border-radius: 12px;
-    background-color: #F3F4F6;
-
-    display: flex;
-    gap: 12px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    color: #9CA3AF;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: var(--line-height-relaxed);
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.imageUploadBox:hover {
-    background-color: #eaeaea;
-}
-
-.plus {
-    font-size: 48px;
-}
-
-.imagePreviewWrapper {
-    position: relative;
-    display: inline-block;
-}
-
-.imagePreview {
-    display: block;
-    object-fit: cover;
-    width: var(--preview-image-width);
-    height: var(--preview-image-height);
-    border-radius: 12px;
-}
-
-.removeImageButton {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: #FFFFFF;
-    border-radius: 50%;
-    color: #9CA3AF;
-    font-size: 22px;
-    display: flex;
-    cursor: pointer;
-}
-
-
 .submitButton {
     background-color: #3692ff;
     color: white;
