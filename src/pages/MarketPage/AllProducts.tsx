@@ -8,7 +8,9 @@ import getMediaCount from '@/utils/getMediaCount';
 import ProductCard from '@/components/Cards/ProductCard';
 import SkeletonCard from '@/components/Cards/SkeletonCard';
 import useDebounce from '@/hooks/useDebounce';
+import { useNavigate } from 'react-router-dom';
 function AllProducts() {
+  const navigate = useNavigate();
   // 미디어 쿼리에 따라 페이지당 제품의 개수를 설정합니다.
   const { allProductsCount: pageSize } = getMediaCount();
 
@@ -43,9 +45,12 @@ function AllProducts() {
     setSort(newSort);
     setPage(1); // 정렬 변경 시에도 1페이지로
   };
+
   // 상품 추가 버튼 클릭 핸들러
   const handleAddClick = () => {
-    // todo:  /additem 으로 이동
+    // /additem 으로 이동
+    navigate('/additem');
+    console.log('상품 추가 버튼 클릭');
   };
 
   return (

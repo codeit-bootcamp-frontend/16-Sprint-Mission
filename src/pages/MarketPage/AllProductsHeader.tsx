@@ -29,7 +29,10 @@ function AllProductsHeader({
           className={style['all-products-header__search']}
           onChange={(e) => onKeywordChange(e.currentTarget.value)}
         />
-        <button className={style['all-products-header__add']}>
+        <button
+          className={style['all-products-header__add']}
+          onClick={onAddClick}
+        >
           상품 등록하기
         </button>
 
