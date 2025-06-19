@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import PageContent from "@/components/layout/PageContent";
 import avatarImg from "@/assets/images/img-avatar.png";
@@ -10,12 +10,18 @@ import FormControl from "@/components/ui/Form/FormControl";
 import FormLabel from "@/components/ui/Form/FormLabel";
 import useForm from "@/hooks/useForm";
 import Button from "@/components/ui/Button";
+import useAsync from "@/hooks/useAsync";
+import { getComments } from "@/services/get/getComments";
+import kebabIcon from "@/assets/images/ic_kebab.svg";
+import inquiryEmptyImg from "@/assets/images/img_inquiry_empty.png";
+import arrowLeftIcon from "@/assets/images/ic_arrow_left.svg";
 
 const ProductDetailPage = () => {
   const location = useLocation();
   const formRef = useRef(null);
 
   const {
+    id,
     images,
     name,
     description,
@@ -27,6 +33,27 @@ const ProductDetailPage = () => {
   } = location.state;
 
   const { handleBlur, isFormValid } = useForm(formRef);
+
+  const [comments, setComments] = useState([]);
+  const {
+    isLoading,
+    loadingError,
+    runAsync: getCommentAsync,
+  } = useAsync(getComments);
+
+  const handleCommentLoad = useCallback(async () => {
+    try {
+      const result = await getCommentAsync(id);
+      if (!result) return;
+      setComments(result.list);
+    } catch (err) {
+      console.log(err);
+    }
+  }, [getCommentAsync, id]);
+
+  useEffect(() => {
+    handleCommentLoad();
+  }, [handleCommentLoad]);
 
   return (
     <PageContent>
@@ -53,7 +80,7 @@ const ProductDetailPage = () => {
             <span className="description-title">상품 태그</span>
             <div className="tag-list">{tags}</div>
           </div>
-          <div className="owner-profile">
+          <div className="profile-area">
             <div className="profile">
               <img src={avatarImg} alt="기본 프로필 이미지" />
               <span className="owner-name">{ownerNickname}</span>
@@ -85,6 +112,37 @@ const ProductDetailPage = () => {
             등록
           </Button>
         </form>
+        <ol className="comments">
+          {isLoading && <p>댓글 로딩중...</p>}
+          {loadingError && <p>댓글을 불러오는 데 문제가 발생했습니다.</p>}
+          {!isLoading && comments.length === 0 && (
+            <div className="inquiry-empty">
+              <img
+                src={inquiryEmptyImg}
+                alt="전화기 들고 물음표 띄우는 판다 이미지"
+              />
+              <p>아직 문의가 없어요</p>
+            </div>
+          )}
+          {comments?.map((cmt) => (
+            <li className="comment">
+              <p>{cmt.content}</p>
+              <div className="profile-area">
+                <div className="profile">
+                  <img src={cmt.image || avatarImg} alt="기본 프로필 이미지" />
+                  <span className="owner-name">{cmt.writer.nickname}</span>
+                  <span className="createAt">{cmt.createdAt}</span>
+                </div>
+                <button type="button" className="kebab-btn">
+                  <img src={kebabIcon} alt="댓글 수정/삭제하기" />
+                </button>
+              </div>
+            </li>
+          ))}
+        </ol>
+        <Button variant="primary" size="sm">
+          목록으로 돌아가기 <img src={arrowLeftIcon} alt="왼쪽 화살표" />
+        </Button>
       </section>
     </PageContent>
   );
