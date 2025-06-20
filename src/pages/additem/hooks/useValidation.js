@@ -6,11 +6,6 @@ const validateProductDescription = (value) => {
   return !value.trim() ? "상품 소개를 입력해주세요." : "";
 };
 
-const validateProductPrice = (value) => {
-  if (!value.trim()) return "가격을 입력해주세요.";
-  return isNaN(value) ? "숫자만 입력해주세요." : "";
-};
-
 export function useValidation() {
   return {
     validations: {
