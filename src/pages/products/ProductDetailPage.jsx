@@ -3,7 +3,6 @@ import { css } from "@emotion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import PageContent from "@/components/layout/PageContent";
-import avatarImg from "@/assets/images/img-avatar.png";
 import pandaLogoImg from "@/assets/images/logo-panda.svg";
 import Textarea from "@/components/ui/Textarea";
 import FormControl from "@/components/ui/Form/FormControl";
@@ -12,7 +11,6 @@ import useForm from "@/hooks/useForm";
 import Button from "@/components/ui/Button";
 import useAsync from "@/hooks/useAsync";
 import { getComments } from "@/services/get/getComments";
-import kebabIcon from "@/assets/images/ic_kebab.svg";
 import inquiryEmptyImg from "@/assets/images/img_inquiry_empty.png";
 import arrowLeftIcon from "@/assets/images/ic_arrow_left.svg";
 import Dropdown from "@/components/ui/Dropdown";
@@ -20,6 +18,7 @@ import { updateComment } from "@/services/patch/updateComment";
 import { deleteComment } from "@/services/delete/deleteComment";
 import CursorPagination from "@/components/Pagination/CursorPagination";
 import ProfileSummary from "@/components/ProfileSummary/ProfileSummary";
+import KebabButton from "@/components/ui/Button/KebabButton";
 
 const dropdownItems = ["수정하기", "삭제하기"];
 
@@ -218,13 +217,10 @@ const ProductDetailPage = () => {
                   imgSrc={cmt.image}
                   createdAt={cmt.createdAt}
                 />
-                <button
-                  type="button"
-                  className="kebab-btn"
+                <KebabButton
                   onClick={() => toggleDropdown(cmt.id)}
-                >
-                  <img src={kebabIcon} alt="댓글 수정/삭제하기" />
-                </button>
+                  alt="댓글 수정/삭제"
+                />
                 {dropdownCommentId === cmt.id && (
                   <Dropdown
                     items={dropdownItems}
