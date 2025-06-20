@@ -15,9 +15,15 @@ function TagInput({
   tagClass,
   removeButtonClass,
   onBlur,
+  onChange,
 }) {
   const inputRef = useRef(null);
   const [isComposing, setIsComposing] = useState(false);
+
+  const notifyChange = (newTags) => {
+    // 업데이트된 태그 배열로 onChange 호출
+    onChange?.({ target: { name, value: newTags } });
+  };
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter" && !isComposing) {
@@ -27,9 +33,7 @@ function TagInput({
         const newTags = [...tags, trimmed];
         setTags(newTags);
         inputRef.current.value = "";
-
-        // Enter로 태그 추가되었을 때도 onBlur 호출 (유효성 갱신)
-        onBlur?.({ target: { name, value: newTags } });
+        notifyChange(newTags);
       }
     }
   };
@@ -39,12 +43,12 @@ function TagInput({
     setTags(newTags);
 
     // 삭제 후에도 유효성 검사
-    onBlur?.({ target: { name, value: newTags } });
+    notifyChange(newTags);
   };
 
   return (
     <div className={wrapperClass}>
-      <label htmlFor={name}>{label}</label>
+      <h3>{label}</h3>
       <input
         id={name}
         name={name}
@@ -59,7 +63,7 @@ function TagInput({
         onCompositionStart={() => setIsComposing(true)}
         onCompositionEnd={() => setIsComposing(false)}
       />
-      {error && error.length > 0 && <p className={errorClass}>{error}</p>}
+      {error && <p className={errorClass}>{error}</p>}
       <div className={tagContainerClass}>
         {tags.map((tag, idx) => (
           <div key={idx} className={tagClass}>
