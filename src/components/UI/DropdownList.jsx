@@ -5,12 +5,13 @@ import { ColorTypes, FontTypes } from '../../styles/theme';
 import { applyFontStyles } from '../../styles/mixins';
 import sort from '../../assets/images/icons/ic_sort.svg';
 
-function DropdownList() {
+function DropdownList({ onChange }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState('최신순');
+  const [selected, setSelected] = useState('recent');
 
   const handleSelect = (value) => {
     setSelected(value);
+    onChange(value);
     setIsOpen(false);
   };
 
@@ -24,7 +25,7 @@ function DropdownList() {
           />
         ) : (
           <SortWrapper>
-            <SortText>{selected}</SortText>
+            <SortText>{selected === 'recent' ? '최신순' : '좋아요순'}</SortText>
             <SortText>▾</SortText>
           </SortWrapper>
         )}
@@ -32,9 +33,9 @@ function DropdownList() {
 
       {isOpen && (
         <DropdownMenu>
-          <li onClick={() => handleSelect('최신순')}>최신순</li>
+          <li onClick={() => handleSelect('recent')}>최신순</li>
           <Divider />
-          <li onClick={() => handleSelect('좋아요순')}>좋아요순</li>
+          <li onClick={() => handleSelect('favorite')}>좋아요순</li>
         </DropdownMenu>
       )}
     </DropdownListContainer>

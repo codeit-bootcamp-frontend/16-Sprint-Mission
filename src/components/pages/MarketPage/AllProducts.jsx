@@ -26,9 +26,11 @@ const getPageSize = () => {
 function AllProducts() {
   const [items, setItems] = useState([]);
   const [pageSize, setPageSize] = useState(getPageSize());
+  const [orderBy, setOrderBy] = useState('recent');
+
   useEffect(() => {
     const fetchItems = async () => {
-      const res = await getProducts({ pageSize: pageSize });
+      const res = await getProducts({ pageSize: pageSize, orderBy: orderBy });
       setItems(res.list);
     };
     fetchItems();
@@ -38,7 +40,7 @@ function AllProducts() {
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [pageSize]);
+  }, [pageSize, orderBy]);
 
   return (
     <AllProductsContainer>
@@ -49,7 +51,7 @@ function AllProducts() {
             <HeaderWrapper>
               <SearchBar />
               <AddItemButton />
-              <DropdownList />
+              <DropdownList onChange={(value) => setOrderBy(value)} />
             </HeaderWrapper>
           </HeaderContainer>
         </>
@@ -63,7 +65,7 @@ function AllProducts() {
 
             <SecondHeaderWrapper>
               <SearchBar />
-              <DropdownList />
+              <DropdownList onChange={(value) => setOrderBy(value)} />
             </SecondHeaderWrapper>
           </HeaderContainer>
         </>
@@ -145,7 +147,7 @@ const SecondHeaderWrapper = styled.div`
 const ItemCardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
+  gap: 32px 8px;
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(3, 1fr);
