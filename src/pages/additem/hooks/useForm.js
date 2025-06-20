@@ -4,55 +4,41 @@ export const useForm = (options) => {
   const [data, setData] = useState(options?.initialValues || {});
   const [errors, setErrors] = useState({});
 
-  const handleChange = (key, sanitizeFn) => (e) => {
-    const value = sanitizeFn ? sanitizeFn(e.target.value) : e.target.value;
-    setData({
-      ...data,
-      [key]: value,
-    });
-       const validations = options?.validations;
-    if (!validations) return;
+  // 공통 검증 로직
+  const runValidation = (key, value) => {
+    const validations = options?.validations;
+    if (!validations) return "";
     const validation = validations[key];
-    let message = "";
+    if (!validation) return "";
 
-    if (validation?.required?.value && !value) {
-      message = validation.required.message;
-    } else if (
-      validation?.pattern?.value &&
+    if (validation.required?.value && !value) {
+      return validation.required.message;
+    }
+    if (
+      validation.pattern?.value &&
       !RegExp(validation.pattern.value).test(value)
     ) {
-      message = validation.pattern.message;
-    } else if (
-      validation?.custom?.isValid &&
-      !validation.custom.isValid(value)
-    ) {
-      message = validation.custom.message;
+      return validation.pattern.message;
     }
+    if (validation.custom?.isValid && !validation.custom.isValid(value)) {
+      return validation.custom.message;
+    }
+    return "";
+  };
 
+  const handleChange = (key, sanitizeFn) => (e) => {
+    const raw = e.target.value;
+    const value = sanitizeFn ? sanitizeFn(raw) : raw;
+    setData((prev) => ({ ...prev, [key]: value }));
+    // Change 단계 검증
+    const message = runValidation(key, value);
     setErrors((prev) => ({ ...prev, [key]: message }));
   };
 
   const handleBlur = (key) => () => {
-    const validations = options?.validations;
-    if (!validations) return;
-    const validation = validations[key];
     const value = data[key];
-    let message = "";
-
-    if (validation?.required?.value && !value) {
-      message = validation.required.message;
-    } else if (
-      validation?.pattern?.value &&
-      !RegExp(validation.pattern.value).test(value)
-    ) {
-      message = validation.pattern.message;
-    } else if (
-      validation?.custom?.isValid &&
-      !validation.custom.isValid(value)
-    ) {
-      message = validation.custom.message;
-    }
-
+    // Blur 단계 검증
+    const message = runValidation(key, value);
     setErrors((prev) => ({ ...prev, [key]: message }));
   };
 
@@ -63,37 +49,19 @@ export const useForm = (options) => {
       let valid = true;
       const newErrors = {};
       for (const key in validations) {
-        const value = data[key];
-        const validation = validations[key];
-        if (validation?.required?.value && !value) {
-          valid = false;
-          newErrors[key] = validation?.required?.message;
-        }
-
-        const pattern = validation?.pattern;
-        if (pattern?.value && !RegExp(pattern.value).test(value)) {
-          valid = false;
-          newErrors[key] = pattern.message;
-        }
-
-        const custom = validation?.custom;
-        if (custom?.isValid && !custom.isValid(value)) {
-          valid = false;
-          newErrors[key] = custom.message;
-        }
+        const message = runValidation(key, data[key]);
+        if (message) valid = false;
+        newErrors[key] = message;
       }
-
       if (!valid) {
         setErrors(newErrors);
         return;
       }
     }
 
+    // 모든 필드 유효
     setErrors({});
-
-    if (options?.onSubmit) {
-      options.onSubmit(data);
-    }
+    options?.onSubmit?.(data);
   };
 
   return {

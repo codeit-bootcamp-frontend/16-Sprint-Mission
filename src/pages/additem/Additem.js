@@ -65,7 +65,7 @@ export default function Additem() {
       </header>
       <div className={styles.inputContainer}>
         <ImageUpload
-          onImageChange={(file, previewUrl) => {
+          onImageChange={(file) => {
             handleChange(
               "uploadImage",
               () => file
