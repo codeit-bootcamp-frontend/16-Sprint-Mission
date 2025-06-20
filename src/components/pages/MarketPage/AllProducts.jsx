@@ -5,6 +5,11 @@ import ItemCard from './ItemCard';
 import SearchBar from '../../UI/SearchBar';
 import AddItemButton from './AddItemButton';
 import DropdownList from '../../UI/DropdownList';
+import left from '../../../assets/images/icons/arrow_left.svg';
+import right from '../../../assets/images/icons/arrow_right.svg';
+
+import { ColorTypes, FontTypes } from '../../../styles/theme';
+import { applyFontStyles } from '../../../styles/mixins';
 import { getProducts } from '../../../api/api';
 
 const getPageSize = () => {
@@ -72,6 +77,26 @@ function AllProducts() {
           />
         ))}
       </ItemCardContainer>
+
+      <Pagination>
+        <Circle>
+          <img
+            src={left}
+            alt="이전"
+          />
+        </Circle>
+        <Circle>1</Circle>
+        <Circle>2</Circle>
+        <Circle>3</Circle>
+        <Circle>4</Circle>
+        <Circle>5</Circle>
+        <Circle>
+          <img
+            src={right}
+            alt="다음"
+          />
+        </Circle>
+      </Pagination>
     </AllProductsContainer>
   );
 }
@@ -83,6 +108,7 @@ const AllProductsContainer = styled.div`
   flex-direction: column;
   gap: 24px;
   margin-top: 29px;
+  margin-bottom: 40px;
 `;
 
 const HeaderContainer = styled.div`
@@ -128,4 +154,23 @@ const ItemCardContainer = styled.div`
   @media (min-width: 1024px) {
     grid-template-columns: repeat(5, 1fr);
   }
+`;
+
+const Pagination = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+`;
+
+const Circle = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid ${({ theme }) => theme.colors[ColorTypes.SECONDARY_GRAY_200]};
+  cursor: pointer;
+  ${applyFontStyles(FontTypes.SEMIBOLD16, ColorTypes.SECONDARY_GRAY_500)};
 `;
