@@ -1,8 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 
-const Textarea = ({ ...props }) => {
-  const { id, name, placeholder, onChange, onBlur } = props;
+const Textarea = ({ id, name, placeholder, onChange, onBlur, ...props }) => {
   return (
     <textarea
       id={id}
@@ -11,6 +10,7 @@ const Textarea = ({ ...props }) => {
       css={TextareaStyle}
       onChange={onChange}
       onBlur={onBlur}
+      {...props}
     />
   );
 };
