@@ -18,13 +18,14 @@ import arrowLeftIcon from "@/assets/images/ic_arrow_left.svg";
 import Dropdown from "@/components/ui/Dropdown";
 import { updateComment } from "@/services/patch/updateComment";
 import { deleteComment } from "@/services/delete/deleteComment";
+import CursorPagination from "@/components/Pagination/CursorPagination";
 
 const dropdownMenuItems = ["수정하기", "삭제하기"];
 
 const ProductDetailPage = () => {
   const location = useLocation();
   const {
-    id,
+    id: productId,
     images,
     name,
     description,
@@ -39,6 +40,8 @@ const ProductDetailPage = () => {
   const { handleBlur, isFormValid } = useForm(formRef);
 
   const [comments, setComments] = useState([]);
+  const [nextCursor, setNextCursor] = useState(null);
+  const [isCommentPageReady, setIsCommentPageReady] = useState(false);
   const [isEditCommentId, setIsEditCommentId] = useState(null);
   const {
     isLoading: updateCommentLoading,
@@ -56,15 +59,29 @@ const ProductDetailPage = () => {
     runAsync: deleteCommentAsync,
   } = useAsync(deleteComment);
 
-  const handleCommentLoad = useCallback(async () => {
-    try {
-      const result = await getCommentAsync(id);
-      if (!result) return;
-      setComments(result.list);
-    } catch (err) {
-      console.log(err);
-    }
-  }, [getCommentAsync, id]);
+  const handleCommentLoad = useCallback(
+    async (currentCursor = null, setNextCursorFromPagination) => {
+      try {
+        const result = await getCommentAsync(productId, currentCursor);
+        if (!result) return;
+        setComments(result.list);
+
+        setNextCursor(result.nextCursor);
+        setNextCursorFromPagination?.(result.nextCursor);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    [getCommentAsync, productId]
+  );
+
+  const handleUpdateComment = (commentId) => {
+    const textarea = document.querySelector(`[data-comment-id="${commentId}"]`);
+    const updated = textarea?.value;
+    if (!updated) return;
+
+    updateCommentAsync(commentId, updated);
+  };
 
   const [dropdownCommentId, setDropdownCommentId] = useState(null);
 
@@ -81,17 +98,26 @@ const ProductDetailPage = () => {
     }
   };
 
-  const handleUpdateComment = (commentId) => {
-    const textarea = document.querySelector(`[data-comment-id="${commentId}"]`);
-    const updated = textarea?.value;
-    if (!updated) return;
-
-    updateCommentAsync(commentId, updated);
-  };
-
   useEffect(() => {
-    handleCommentLoad();
-  }, [handleCommentLoad]);
+    const loadInitialComments = async () => {
+      try {
+        const result = await getCommentAsync(productId, null);
+        if (!result) return;
+
+        setComments(result.list);
+        setNextCursor(result.nextCursor);
+        setIsCommentPageReady(true); // 최초 렌더링 준비 완료
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    loadInitialComments();
+  }, [getCommentAsync, productId]);
+
+  // useEffect(() => {
+  //   handleCommentLoad(null); // cursor=null
+  // }, [handleCommentLoad]);
 
   return (
     <PageContent>
@@ -210,6 +236,14 @@ const ProductDetailPage = () => {
             </li>
           ))}
         </ol>
+
+        {isCommentPageReady && (
+          <CursorPagination
+            firstCursor={nextCursor}
+            handleLoad={handleCommentLoad}
+          />
+        )}
+
         <Button variant="primary" size="sm">
           목록으로 돌아가기 <img src={arrowLeftIcon} alt="왼쪽 화살표" />
         </Button>

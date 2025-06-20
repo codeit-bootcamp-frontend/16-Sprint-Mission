@@ -1,8 +1,9 @@
 const BASE_URL = "https://panda-market-api.vercel.app";
 const limit = 5;
 
-export const getComments = async (productId) => {
-  const query = `limit=${limit}`;
+export const getComments = async (productId, cursor) => {
+  const queryCursor = `&cursor=${cursor}`;
+  const query = `limit=${limit}${cursor ? queryCursor : ""}`;
   const response = await fetch(
     `${BASE_URL}/products/${productId}/comments?${query}`
   );

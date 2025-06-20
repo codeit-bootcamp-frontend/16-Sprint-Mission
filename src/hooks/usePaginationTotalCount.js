@@ -1,6 +1,6 @@
 import { useState, useMemo, useCallback, useRef } from "react";
 
-const usePagination = ({
+const usePaginationTotalCount = ({
   pageSize = 10,
   totalCount,
   paginationSize = 5,
@@ -73,4 +73,4 @@ const usePagination = ({
   };
 };
 
-export default usePagination;
+export default usePaginationTotalCount;
