@@ -27,11 +27,14 @@ function AllProducts() {
   const [items, setItems] = useState([]);
   const [pageSize, setPageSize] = useState(getPageSize());
   const [orderBy, setOrderBy] = useState('recent');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalCount, setTotalCount] = useState(0);
 
   useEffect(() => {
     const fetchItems = async () => {
-      const res = await getProducts({ pageSize: pageSize, orderBy: orderBy });
+      const res = await getProducts({ pageSize: pageSize, orderBy: orderBy, page: currentPage });
       setItems(res.list);
+      setTotalCount(res.totalCount);
     };
     fetchItems();
 
@@ -40,7 +43,19 @@ function AllProducts() {
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [pageSize, orderBy]);
+  }, [pageSize, orderBy, currentPage]);
+
+  const totalPages = Math.ceil(totalCount / pageSize);
+  const visiblePageCount = 5;
+  const safeCurrentPage = Math.max(currentPage, 1);
+  const currentGroup = Math.floor((safeCurrentPage - 1) / visiblePageCount);
+  const startPage = currentGroup * visiblePageCount + 1;
+  const endPage = Math.min(startPage + visiblePageCount - 1, totalPages);
+
+  const pageNumbers = [];
+  for (let i = startPage; i <= endPage; i++) {
+    pageNumbers.push(i);
+  }
 
   return (
     <AllProductsContainer>
@@ -81,18 +96,22 @@ function AllProducts() {
       </ItemCardContainer>
 
       <Pagination>
-        <Circle>
+        <Circle onClick={() => setCurrentPage(currentPage - 1)}>
           <img
             src={left}
             alt="이전"
           />
         </Circle>
-        <Circle>1</Circle>
-        <Circle>2</Circle>
-        <Circle>3</Circle>
-        <Circle>4</Circle>
-        <Circle>5</Circle>
-        <Circle>
+        {pageNumbers.map((pageNum) => (
+          <Circle
+            key={pageNum}
+            onClick={() => setCurrentPage(pageNum)}
+            $isActive={pageNum === currentPage}
+          >
+            {pageNum}
+          </Circle>
+        ))}
+        <Circle onClick={() => setCurrentPage(currentPage + 1)}>
           <img
             src={right}
             alt="다음"
@@ -174,5 +193,10 @@ const Circle = styled.div`
   border-radius: 50%;
   border: 1px solid ${({ theme }) => theme.colors[ColorTypes.SECONDARY_GRAY_200]};
   cursor: pointer;
-  ${applyFontStyles(FontTypes.SEMIBOLD16, ColorTypes.SECONDARY_GRAY_500)};
+
+  background-color: ${({ $isActive, theme }) => ($isActive ? theme.colors[ColorTypes.PRIMARY_100] : 'transparent')};
+  ${({ $isActive }) =>
+    $isActive
+      ? applyFontStyles(FontTypes.SEMIBOLD16, ColorTypes.SECONDARY_WHITE)
+      : applyFontStyles(FontTypes.SEMIBOLD16, ColorTypes.SECONDARY_GRAY_500)};
 `;
