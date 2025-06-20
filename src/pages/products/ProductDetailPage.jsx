@@ -20,7 +20,7 @@ import { updateComment } from "@/services/patch/updateComment";
 import { deleteComment } from "@/services/delete/deleteComment";
 import CursorPagination from "@/components/Pagination/CursorPagination";
 
-const dropdownMenuItems = ["수정하기", "삭제하기"];
+const dropdownItems = ["수정하기", "삭제하기"];
 
 const ProductDetailPage = () => {
   const location = useLocation();
@@ -89,13 +89,19 @@ const ProductDetailPage = () => {
     setDropdownCommentId((prevId) => (prevId === commentId ? null : commentId));
   };
 
-  const handleDropdownSelect = (value, commentId) => {
+  const handleDropdownSelect = ({ target }, commentId) => {
+    const value = target.textContent;
     if (value === "수정하기") {
       setIsEditCommentId((prevId) => (prevId === commentId ? null : commentId));
     }
     if (value === "삭제하기") {
       deleteCommentAsync(commentId);
     }
+  };
+
+  const handleUpdateCommentCancel = () => {
+    setIsEditCommentId(null);
+    setDropdownCommentId(null);
   };
 
   useEffect(() => {
@@ -114,10 +120,6 @@ const ProductDetailPage = () => {
 
     loadInitialComments();
   }, [getCommentAsync, productId]);
-
-  // useEffect(() => {
-  //   handleCommentLoad(null); // cursor=null
-  // }, [handleCommentLoad]);
 
   return (
     <PageContent>
@@ -196,11 +198,8 @@ const ProductDetailPage = () => {
                     defaultValue={cmt.content}
                     data-comment-id={cmt.id}
                   />
-                  <span>commentId: {cmt.id}</span>
                   <div className="comment-edit-actions">
-                    <Button onClick={() => setIsEditCommentId(null)}>
-                      취소
-                    </Button>
+                    <Button onClick={handleUpdateCommentCancel}>취소</Button>
                     <Button
                       variant="primary"
                       size="sm"
@@ -228,8 +227,9 @@ const ProductDetailPage = () => {
                 </button>
                 {dropdownCommentId === cmt.id && (
                   <Dropdown
-                    menu={dropdownMenuItems}
-                    onClickMenu={(value) => handleDropdownSelect(value, cmt.id)}
+                    items={dropdownItems}
+                    onClick={(e) => handleDropdownSelect(e, cmt.id)}
+                    isDropdownOpen={dropdownCommentId === cmt.id}
                   />
                 )}
               </div>
@@ -256,4 +256,8 @@ export default ProductDetailPage;
 
 const ProductInfoStyle = css``;
 
-const ProductCommentStyle = css``;
+const ProductCommentStyle = css`
+  .profile-area {
+    position: relative;
+  }
+`;

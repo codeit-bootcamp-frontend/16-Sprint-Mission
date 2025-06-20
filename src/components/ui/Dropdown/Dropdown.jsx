@@ -1,46 +1,50 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { useState } from "react";
-import DropdownBtn from "./DropdownBtn";
-import DropdownMenu from "./DropdownMenu";
 
-const Dropdown = ({ menu, onClickMenu, defaultSelected, iconType }) => {
-  const [selected, setSelected] = useState(defaultSelected);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isDropdownBtnActive, setIsDropdownBtnActive] = useState(false);
-
-  const handleMenuClick = (e) => {
-    const selectedValue = e.target.textContent;
-    setSelected(selectedValue);
-    onClickMenu(selectedValue);
-    setIsDropdownOpen((prev) => !prev);
-    setIsDropdownBtnActive((prev) => !prev);
-  };
-
-  const handleDropdown = () => {
-    setIsDropdownOpen((prev) => !prev);
-    setIsDropdownBtnActive((prev) => !prev);
-  };
-
+const Dropdown = ({ items = [], onClick, isDropdownOpen }) => {
   return (
-    <div css={DropdownStyle}>
-      <DropdownBtn
-        selected={selected}
-        onClickDropdownBtn={handleDropdown}
-        isActive={isDropdownBtnActive}
-        iconType={iconType}
-      />
-      <DropdownMenu
-        items={menu}
-        onClick={handleMenuClick}
-        isDropdownOpen={isDropdownOpen}
-      />
-    </div>
+    <ul css={DropdownMenuStyle(isDropdownOpen)}>
+      {items.map((item) => (
+        <li key={item}>
+          <button onClick={onClick} className="dropdown-menu-btn">
+            {item}
+          </button>
+        </li>
+      ))}
+    </ul>
   );
 };
 
 export default Dropdown;
 
-const DropdownStyle = css`
-  position: relative;
+const DropdownMenuStyle = (isActive) => css`
+  position: absolute;
+  right: 0;
+  top: 110%;
+  width: 100%;
+  min-width: 130px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  overflow: hidden;
+  display: ${isActive ? "block" : "none"};
+  z-index: 9;
+
+  li {
+    width: 100%;
+    background: #fff;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+
+  li + li {
+    border-top: 1px solid var(--border-color);
+  }
+
+  .dropdown-menu-btn {
+    width: 100%;
+    padding: 12px 8px;
+    font-size: 1rem;
+  }
 `;

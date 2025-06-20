@@ -8,7 +8,7 @@ import { ITEMS_ORDER_MAP } from "@/constants/sortOptions";
 import useAsync from "@/hooks/useAsync";
 import SectionTitle from "@/components/ui/SectionTitle/SectionTitle";
 import Button from "@/components/ui/Button";
-import Dropdown from "@/components/ui/Dropdown";
+import DropdownWithBtn from "@/components/ui/Dropdown/DropdownWithBtn";
 import InputSearch from "@/components/ui/Input/InputSearch";
 import ProductListResults from "./ProductListResults";
 import TotalCountPagination from "@/components/Pagination/TotalCountPagination";
@@ -68,7 +68,7 @@ const ProductListContainer = ({ title, pageSize = DEFAULT_ITEM_PAGE_SIZE }) => {
           className="product-list-header-search"
           placeholder="검색할 상품을 입력해주세요"
         />
-        <Dropdown
+        <DropdownWithBtn
           menu={dropdownMenuItems}
           onClickMenu={handleDropdownSelect}
           defaultSelected={order}
