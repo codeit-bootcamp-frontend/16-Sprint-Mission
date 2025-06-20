@@ -19,6 +19,7 @@ import Dropdown from "@/components/ui/Dropdown";
 import { updateComment } from "@/services/patch/updateComment";
 import { deleteComment } from "@/services/delete/deleteComment";
 import CursorPagination from "@/components/Pagination/CursorPagination";
+import ProfileSummary from "@/components/ProfileSummary/ProfileSummary";
 
 const dropdownItems = ["수정하기", "삭제하기"];
 
@@ -146,14 +147,11 @@ const ProductDetailPage = () => {
             <span className="description-title">상품 태그</span>
             <div className="tag-list">{tags}</div>
           </div>
-          <div className="profile-area">
-            <div className="profile">
-              <img src={avatarImg} alt="기본 프로필 이미지" />
-              <span className="owner-name">{ownerNickname}</span>
-              <span className="createAt">{createdAt}</span>
-            </div>
-            <span className="favorite-count">{favoriteCount}</span>
-          </div>
+          <ProfileSummary
+            name={ownerNickname}
+            createdAt={createdAt}
+            favoriteCount={favoriteCount}
+          />
         </div>
       </section>
       <section css={ProductCommentStyle}>
@@ -190,6 +188,7 @@ const ProductDetailPage = () => {
               <p>아직 문의가 없어요</p>
             </div>
           )}
+
           {comments?.map((cmt) => (
             <li className="comment" key={cmt.id}>
               {isEditCommentId === cmt.id ? (
@@ -212,12 +211,13 @@ const ProductDetailPage = () => {
               ) : (
                 <p>{cmt.content}</p>
               )}
-              <div className="profile-area">
-                <div className="profile">
-                  <img src={cmt.image || avatarImg} alt="기본 프로필 이미지" />
-                  <span className="owner-name">{cmt.writer.nickname}</span>
-                  <span className="createAt">{cmt.createdAt}</span>
-                </div>
+
+              <div className="comment-container">
+                <ProfileSummary
+                  name={cmt.writer.nickname}
+                  imgSrc={cmt.image}
+                  createdAt={cmt.createdAt}
+                />
                 <button
                   type="button"
                   className="kebab-btn"
@@ -257,7 +257,7 @@ export default ProductDetailPage;
 const ProductInfoStyle = css``;
 
 const ProductCommentStyle = css`
-  .profile-area {
+  .comment-container {
     position: relative;
   }
 `;
