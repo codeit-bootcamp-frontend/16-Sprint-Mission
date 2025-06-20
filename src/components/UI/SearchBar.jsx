@@ -52,10 +52,12 @@ const StInput = styled.input`
   width: 100%;
   border-radius: 12px;
   padding: 9px 0px 9px 44px;
-  /* box-sizing: content-box; */
-
-  ${applyFontStyles(FontTypes.REGULAR16, ColorTypes.SECONDARY_GRAY_400)}
+  ${applyFontStyles(FontTypes.REGULAR16, ColorTypes.SECONDARY_GRAY_800)}
   background-color: ${({ theme }) => theme.colors[ColorTypes.SECONDARY_WHITE]};
+
+  &::placeholder {
+    ${applyFontStyles(FontTypes.REGULAR16, ColorTypes.SECONDARY_GRAY_400)}
+  }
 `;
 
 const StSearchIcon = styled.img`
