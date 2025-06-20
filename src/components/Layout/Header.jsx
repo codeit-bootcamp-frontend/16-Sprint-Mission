@@ -1,0 +1,106 @@
+import { Link } from 'react-router-dom';
+import { FontTypes, ColorTypes } from '../../styles/theme';
+import { applyFontStyles } from '../../styles/mixins';
+
+import logo from '../../assets/images/logo/logo.svg';
+import textLogo from '../../assets/images/logo/textlogo.svg';
+import profile from '../../assets/images/icons/ic_profile.png';
+import styled from 'styled-components';
+
+function Header() {
+  return (
+    <HeaderContainer>
+      <HeaderLeft>
+        <Link
+          to="/"
+          aria-label="홈으로 이동"
+        >
+          <TextLogo
+            src={textLogo}
+            alt="마켓로고"
+          />
+          <Imglogo
+            src={logo}
+            alt="마켓로고"
+          />
+        </Link>
+
+        <nav>
+          <Ul>
+            <Li>
+              <Link to="/community">자유게시판</Link>
+            </Li>
+            <Li>
+              <Link to="/items">중고마켓</Link>
+            </Li>
+          </Ul>
+        </nav>
+      </HeaderLeft>
+
+      <Link to="/login">
+        <img
+          src={profile}
+          alt="로그인"
+        />
+      </Link>
+    </HeaderContainer>
+  );
+}
+
+export default Header;
+
+const HeaderContainer = styled.header`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  border-bottom: 1px solid #dfdfdf;
+  padding: 0 var(--page-spacing-x-mobile);
+
+  @media (min-width: 768px) {
+    padding: 0 var(--page-spacing-x-tablet);
+  }
+
+  @media (min-width: 1200px) {
+    padding: 0 var(--page-spacing-x-desktop);
+  }
+`;
+
+const HeaderLeft = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
+const Ul = styled.ul`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+`;
+
+const Li = styled.li`
+  ${applyFontStyles(FontTypes.BOLD16, ColorTypes.SECONDARY_GRAY_600)};
+
+  &:hover {
+    color: ${({ theme }) => theme.colors[ColorTypes.PRIMARY_100]};
+  }
+`;
+
+const TextLogo = styled.img`
+  width: 81px;
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
+
+const Imglogo = styled.img`
+  width: 153px;
+  display: block;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
