@@ -36,15 +36,23 @@
           />
         </a>
       </div>
-      <form class="auth-form">
-        <label for="username">이메일</label>
-        <input
-          id="username"
-          name="email"
-          type="email"
-          autocomplete="email"
-          placeholder="이메일을 입력해 주세요"
-        />
+      <form class="auth-form" id="loginForm">
+        <label for="email">이메일</label>
+        <div class="input-box">
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            placeholder="이메일을 입력해 주세요"
+          />
+          <span id="emailEmptyError" class="error-message"
+            >이메일을 입력해주세요.</span
+          >
+          <span id="emailInputError" class="error-message"
+            >잘못된 이메일 형식입니다.</span
+          >
+        </div>
         <label for="password">비밀번호</label>
         <div class="password-wrapper">
           <input
@@ -58,8 +66,14 @@
             alt="비밀번호 숨김"
             class="toggle-password"
           />
+          <span id="passwordEmptyError" class="error-message"
+            >비밀번호를 입력해주세요.</span
+          >
+          <span id="passwordLengthError" class="error-message"
+            >비밀번호를 8자 이상 입력해주세요.</span
+          >
         </div>
-        <button id="auth-form_btn">로그인</button>
+        <button type="submit" id="auth-form_btn" disabled>로그인</button>
       </form>
       <div class="auth-footer">
         <div>간편 로그인하기</div>
@@ -87,5 +101,6 @@
         <a href="signup.html">회원가입</a>
       </div>
     </div>
+    <script src="../scripts/auth.js" ;></script>
   </body>
 </html>
