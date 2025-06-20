@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { applyFontStyles } from '../../../styles/mixins';
 import { ColorTypes, FontTypes } from '../../../styles/theme';
 import heart from '../../../assets/images/icons/ic_heart.svg';

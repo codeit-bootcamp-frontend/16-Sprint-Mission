@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
 import { FontTypes, ColorTypes } from '../../styles/theme';
 import { applyFontStyles } from '../../styles/mixins';
-
 import logo from '../../assets/images/logo/logo.svg';
 import textLogo from '../../assets/images/logo/textlogo.svg';
 import profile from '../../assets/images/icons/ic_profile.png';
-import styled from 'styled-components';
 
 function Header() {
   return (

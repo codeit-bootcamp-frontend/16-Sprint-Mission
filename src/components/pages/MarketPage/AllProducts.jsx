@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { getProducts } from '../../../api/api';
+import styled from 'styled-components';
+
 import ItemCard from './ItemCard';
 import SearchBar from '../../UI/SearchBar';
 import AddItemButton from './AddItemButton';
 import DropdownList from '../../UI/DropdownList';
-import styled from 'styled-components';
+import { getProducts } from '../../../api/api';
 
 const getPageSize = () => {
   const width = window.innerWidth;

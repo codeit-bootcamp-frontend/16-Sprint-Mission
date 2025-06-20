@@ -1,7 +1,7 @@
 import styled from 'styled-components';
+
 import { ColorTypes, FontTypes } from '../../styles/theme';
 import { applyFontStyles } from '../../styles/mixins';
-
 import search from '../../assets/images/icons/ic_search.svg';
 
 function SearchBar() {

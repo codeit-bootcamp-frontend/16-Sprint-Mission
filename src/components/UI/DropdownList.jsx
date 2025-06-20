@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import sort from '../../assets/images/icons/ic_sort.svg';
+
 import { ColorTypes, FontTypes } from '../../styles/theme';
 import { applyFontStyles } from '../../styles/mixins';
+import sort from '../../assets/images/icons/ic_sort.svg';
 
 function DropdownList() {
   const [isOpen, setIsOpen] = useState(false);
