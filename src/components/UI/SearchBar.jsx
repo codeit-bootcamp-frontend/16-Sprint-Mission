@@ -4,13 +4,18 @@ import { ColorTypes, FontTypes } from '../../styles/theme';
 import { applyFontStyles } from '../../styles/mixins';
 import search from '../../assets/images/icons/ic_search.svg';
 
-function SearchBar() {
+function SearchBar({ onSearch }) {
+  const handleChange = (e) => {
+    onSearch(e.target.value);
+  };
+
   return (
     <SearchBarContainer>
       <InputWrapper>
         <StInput
           type="text"
           placeholder="검색할 상품을 입력해주세요"
+          onChange={handleChange}
         />
         <StSearchIcon
           src={search}

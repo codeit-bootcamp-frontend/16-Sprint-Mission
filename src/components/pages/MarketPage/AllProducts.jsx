@@ -26,16 +26,24 @@ const getPageSize = () => {
 function AllProducts() {
   const [items, setItems] = useState([]);
   const [pageSize, setPageSize] = useState(getPageSize());
+  const [keyword, setKeyword] = useState('');
+  const [debouncedKeyword, setDebouncedKeyword] = useState('');
   const [orderBy, setOrderBy] = useState('recent');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
 
+  const fetchItems = async () => {
+    const res = await getProducts({
+      pageSize: pageSize,
+      orderBy: orderBy,
+      page: currentPage,
+      keyword: debouncedKeyword,
+    });
+    setItems(res.list);
+    setTotalCount(res.totalCount);
+  };
+
   useEffect(() => {
-    const fetchItems = async () => {
-      const res = await getProducts({ pageSize: pageSize, orderBy: orderBy, page: currentPage });
-      setItems(res.list);
-      setTotalCount(res.totalCount);
-    };
     fetchItems();
 
     const handleResize = () => {
@@ -43,7 +51,19 @@ function AllProducts() {
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [pageSize, orderBy, currentPage]);
+  }, [pageSize, orderBy, currentPage, debouncedKeyword]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedKeyword(keyword);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [keyword]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [debouncedKeyword]);
 
   const totalPages = Math.ceil(totalCount / pageSize);
   const visiblePageCount = 5;
@@ -64,7 +84,7 @@ function AllProducts() {
           <HeaderContainer>
             <div>전체 상품</div>
             <HeaderWrapper>
-              <SearchBar />
+              <SearchBar onSearch={setKeyword} />
               <AddItemButton />
               <DropdownList onChange={(value) => setOrderBy(value)} />
             </HeaderWrapper>
@@ -79,7 +99,7 @@ function AllProducts() {
             </HeaderWrapper>
 
             <SecondHeaderWrapper>
-              <SearchBar />
+              <SearchBar onSearch={setKeyword} />
               <DropdownList onChange={(value) => setOrderBy(value)} />
             </SecondHeaderWrapper>
           </HeaderContainer>
