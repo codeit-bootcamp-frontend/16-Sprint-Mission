@@ -1,7 +1,6 @@
 const useValidation = () => {
   const validators = {
     image: (value) => {
-      console.log(value);
       if (value)
         return {
           isValid: false,
