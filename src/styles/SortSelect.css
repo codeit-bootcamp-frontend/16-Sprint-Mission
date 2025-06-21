@@ -1,3 +1,8 @@
+.Products__sort {
+  grid-column: 4;
+  position: relative;
+}
+
 .sort__button--drop {
   position: relative;
   padding: 9px;
@@ -13,14 +18,15 @@ div.sort__button--drop {
   height: 42px;
   text-align: left;
   padding: 9px 20px;
-  background-image: url(../../assets/arrow_down.png);
+  background-image: url(../assets/images/arrow_down.png);
   background-repeat: no-repeat;
   background-position: 90% center;
   line-height: 22px;
 }
+
 .Products__sortdown {
   position: absolute;
-  right: 16px;
+  right: 0px;
   width: 130px;
   background-color: white;
   text-align: center;

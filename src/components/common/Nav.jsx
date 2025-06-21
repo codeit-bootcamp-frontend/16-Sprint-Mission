@@ -1,16 +1,21 @@
-import { NavLink } from "react-router-dom";
-import mobileLogeImg from "../assets/img_logo_m.png";
-import logeImg from "../assets/img_logo.png";
-import ProfileImg from "../assets/profile.png";
-import "./css/Nav.css";
-
-function getLinkStyle({ isActive }) {
-  return {
-    color: isActive ? "#3692FF" : "#333",
-  };
-}
+import { NavLink, useLocation } from "react-router-dom";
+import mobileLogeImg from "../../assets/images/img_logo_m.png";
+import logeImg from "../../assets/images/img_logo.png";
+import ProfileImg from "../../assets/images/profile.png";
+import "../../styles/Nav.css";
 
 function Nav() {
+  const location = useLocation();
+
+  const getMarketLinkStyle = () => {
+    const isActive = location.pathname === "/items" || location.pathname === "/additem";
+    return {
+      color: isActive ? "#3692FF" : "#333",
+    };
+  };
+
+  const getLinkStyle = ({ isActive }) => ({ color: isActive ? "#3692FF" : "#333" });
+
   return (
     <header className="header">
       <div className="header__logo">
@@ -31,7 +36,7 @@ function Nav() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/items" style={getLinkStyle}>
+          <NavLink to="/items" style={getMarketLinkStyle}>
             중고마켓
           </NavLink>
         </li>

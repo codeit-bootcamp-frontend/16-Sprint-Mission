@@ -53,7 +53,7 @@
 
 body {
   font-family: 'Pretendard';
-  background-color: var(--color-background-white);
+  background-color: #FCFCFC;
   color: var(--color-gray700);
 }
 
@@ -62,20 +62,62 @@ label {
   font-size: var(--font-size-lg);
 }
 
-input {
+input,
+textarea {
   padding: 14px 24px;
   font-size: var(--font-size-md);
   background-color: var(--color-gray200);
   border-radius: var(--border-radius-sm);
+  border: none;
 }
 
-input::placeholder {
+input::placeholder,
+textarea::placeholder {
   color: var(--color-gray400);
 }
 
+/* 웹킷 브라우저 */
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox 브라우저용 */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+textarea {
+  height: 344px;
+  resize: none;
+}
+
+.input__wrapper {
+  margin-top: 24px;
+}
+
+.input__wrapper:first-of-type {
+  margin-top: 0px;
+}
+
+form.row .input__wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+form.row .input__wrapper label {
+ align-self: flex-start; 
+}
+
+form.row label {
+  margin-bottom: 16px;
+}
+
+
 select {
   appearance: none;
-  background-image: url(../../assets/arrow_down.png);
+  background-image: url(../assets/images/arrow_down.png);
   background-repeat: no-repeat;
   background-position: 90% center;
   width: 130px;
@@ -87,27 +129,24 @@ select {
 
 /* 버튼 btn */
 .btn {
+  width: var(--btn-width);
   cursor: pointer;
-  display: inline-block;
   text-align: center;
   white-space: nowrap;
 }
 
 .btn--large {
-  padding: 12px 124px;
-  border-radius: var(--border-radius-lg);
+  height: 56px;
   font-size: var(--font-size-xl);
 }
 
 .btn--medium {
-  padding: 11px 71px;
-  border-radius: var(--border-radius-lg);
+  height: 48px;
   font-size: var(--font-size-lg);
 }
 
 .btn--small {
-  padding: 8px 23px;
-  border-radius: var(--border-radius-xs);
+  height: 42px;
   font-size: var(--font-size-md);
 }
 

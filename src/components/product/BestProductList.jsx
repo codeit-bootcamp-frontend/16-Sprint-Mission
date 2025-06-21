@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
-import { useProductData } from "../api.jsx";
-import { pageSizebyScreenWidth } from "./pageSizebyScreenWidth.jsx";
+import { pageSizebyScreenWidth } from "../../utils/pageSizebyScreenWidth.js";
+import { useProductData } from "../../hooks/useProductData.jsx";
 import ProductDisplay from "./ProductDisplay.jsx";
-import "./css/ProductList.css";
+import { useSortedItems } from "../../hooks/useSortedItems.jsx";
+import "../../styles/ProductList.css";
 
 function BestProductList() {
   const [visibleCount, setVisibleCount] = useState(1); // 보여줄 상품 개수
 
-  // api 불러오기, 20개 불러온 뒤 반응형에 따라 자름
-  const { products } = useProductData({ pageSize: 20, isPageinated: false });
+  const { products } = useProductData({ pageSize: 20 });
 
-  const sortedItems = [...products].sort((a, b) => b.favoriteCount - a.favoriteCount).slice(0, visibleCount);
+  const sortedItems = useSortedItems(products, "favoriteCount");
 
   // 브라우저 크기에 따라 상품 개수 변경
   useEffect(() => {
@@ -24,7 +24,7 @@ function BestProductList() {
       <div className="Products__header mb16">
         <h1>베스트 상품</h1>
       </div>
-      <ProductDisplay sortedItems={sortedItems} bestList={true} />
+      <ProductDisplay sortedItems={sortedItems.slice(0, visibleCount)} bestList={true} />
     </div>
   );
 }

@@ -1,6 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import Main from "./Main.jsx";
+import { BrowserRouter } from "react-router-dom";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "../src/styles/reset.css";
+import "../src/styles/common.css";
+import "../src/styles/font.css";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Main />);
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);
