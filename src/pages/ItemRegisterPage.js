@@ -64,10 +64,12 @@ const ItemRegisterPage = () => {
   /* 가격 입력 시 숫자만 입력 가능하게 */
   /* type=number로 했을 때 한글 입력 시 오류 발생하여 type=text로 처리 */
   const onPriceChange = (name, value) => {
-    const changedVal = value.replace(/[^0-9]/g, "");
+    let changedVal = value.replace(/[^0-9]/g, "");
 
-    /* 기존 값과 동일한 경우 변경x */
-    if (formData.price === changedVal) return;
+    if (changedVal !== "") {
+      changedVal = changedVal.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
     onChangeTextfield(name, changedVal);
   };
 
