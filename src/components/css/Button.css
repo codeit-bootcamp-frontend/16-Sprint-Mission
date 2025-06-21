@@ -11,9 +11,9 @@
 
 .btn-register {
   border-radius: var(--border-radius-sm);
-  min-width: 133px;
   height: 42px;
   font-size: var(--font-size-xs);
+  padding: 8px 23px;
 }
 
 .btn-small {

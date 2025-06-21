@@ -1,0 +1,26 @@
+.textfield__container {
+  width: 100%;
+}
+
+.textfield__input {
+  width: 100%;
+  font-family: "Pretendard Variable";
+  font-size: var(--font-size-xs);
+  color: var(--color-secondary-800);
+  background-color: var(--color-secondary-100);
+  padding: 16px 20px;
+  border-radius: 12px;
+  height: 56px;
+  border: none;
+  outline: none;
+}
+
+.textfield::placeholder {
+  color: var(--color-secondary-400);
+  font-size: var(--font-size-xs);
+}
+
+.textfield__message--error {
+  margin-top: 16px;
+  color: #f74747;
+}

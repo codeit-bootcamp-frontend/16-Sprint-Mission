@@ -1,4 +1,4 @@
-import "../css/components/Card.css";
+import "./css/Card.css";
 import HeartIcon from "./HeartIcon.js";
 import defaultImg from "../img/img_default.svg";
 

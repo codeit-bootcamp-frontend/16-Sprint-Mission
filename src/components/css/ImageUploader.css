@@ -1,0 +1,20 @@
+.image__uploader {
+  display: flex;
+  flex-direction: column;
+}
+
+.image__uploader__card {
+  display: flex;
+  gap: 24px;
+}
+
+.image__uploader__message {
+  color: #f74747;
+  font-size: 16px;
+  display: block;
+}
+
+.image__uploader__message--error {
+  margin-top: 16px;
+  color: #f74747;
+}

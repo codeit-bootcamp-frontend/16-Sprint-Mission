@@ -1,10 +1,12 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import textLogoIcon from "../img/logo_text.jpg";
 import logoIcon from "../img/logo.svg";
 import userIcon from "../img/user.svg";
-import "../css/components/Nav.css";
+import "./css/Nav.css";
 
 const Nav = () => {
+  const location = useLocation();
+
   return (
     <header className="header">
       <div className="header__content">
@@ -32,9 +34,11 @@ const Nav = () => {
 
             <li>
               <NavLink
-                to="items"
+                to="/items"
                 className={({ isActive }) =>
-                  isActive ? "header__content__link--active" : ""
+                  isActive || location.pathname === "/additem"
+                    ? "header__content__link--active"
+                    : ""
                 }
               >
                 중고마켓

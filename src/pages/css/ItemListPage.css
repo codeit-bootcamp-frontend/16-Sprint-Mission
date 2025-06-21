@@ -92,7 +92,7 @@
 
 @media screen and (min-width: 1200px) {
   .items__container__best__header {
-    min-width: 1152px;
+    min-width: 1200px;
   }
 }
 
@@ -115,7 +115,7 @@
 
 @media screen and (min-width: 1200px) {
   .items__container__all__header {
-    min-width: 1152px;
+    min-width: 1200px;
   }
 }
 
