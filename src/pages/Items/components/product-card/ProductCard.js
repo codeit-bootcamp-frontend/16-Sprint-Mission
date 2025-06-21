@@ -3,10 +3,11 @@ import ImageWithFallback from "./ImageWithFallback";
 import replaceImg from "../../../../assets/images/no-image-icon.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
+import { Link } from "react-router-dom";
 
 function ProductCard({ product }) {
   return (
-    <div className={styles.card}>
+      <Link to={`/items/${product.id}`} className={styles.card} >
       <ImageWithFallback
         src={product.images?.[0] || replaceImg}
         alt={product.name}
@@ -23,7 +24,7 @@ function ProductCard({ product }) {
           ️ <span>{product.favoriteCount}</span>
         </p>
       </div>
-    </div>
+      </Link>
   );
 }
 

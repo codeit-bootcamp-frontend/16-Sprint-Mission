@@ -5,6 +5,7 @@ import "pretendard/dist/web/static/pretendard.css";
 import "./styles/global.css";
 import Additem from "./pages/additem/Additem.js";
 import Items from "./pages/Items/Items.js";
+import ItemsDetail from "./pages/ItemsDetail/ItemsDetail.js";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route element={<DefaultLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/items" element={<Items />} />
+          <Route path="/items/:productId" element={<ItemsDetail />} />
           <Route path="/additem" element={<Additem />} />
         </Route>
       </Routes>
