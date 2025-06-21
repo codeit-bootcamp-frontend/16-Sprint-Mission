@@ -6,11 +6,11 @@ function HeaderAuth({ isLoggedIn }) {
   return (
     <>
       {isLoggedIn ? (
-        <div className={styles['nav__my-page']}>
+        <div className={styles.myPage}>
           <img src={userImg} alt="마이페이지 아이콘" />
         </div>
       ) : (
-        <Link to="login" className={styles.nav__button}>
+        <Link to="login" className={styles.navButton}>
           로그인
         </Link>
       )}

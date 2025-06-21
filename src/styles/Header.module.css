@@ -1,10 +1,8 @@
 /* 모바일 */
-:root {
-  /* nav */
+.header {
+  /* 변수 */
   --nav-margin: 0 16px;
-}
 
-header {
   justify-content: center;
   align-items: center;
   position: sticky;
@@ -26,7 +24,7 @@ header {
   flex-grow: 1;
 }
 
-.nav__button {
+.navButton {
   display: inline-block;
   background-color: var(--primary-color);
   color: var(--secondary-gray100);
@@ -39,11 +37,11 @@ header {
   width: 128px;
 }
 
-.nav__button:hover {
+.navButton:hover {
   background-color: var(--primary-hover);
 }
 
-.nav__category a {
+.navCategory a {
   display: inline-block;
   font-size: 16px;
   font-weight: 700;
@@ -51,7 +49,7 @@ header {
   color: var(--secondary-gray600);
 }
 
-.nav__my-page {
+.myPage {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -65,16 +63,15 @@ header {
 
 /* 태블릿 */
 @media screen and (min-width: 768px) {
-  :root {
-    /* nav */
+  .header {
     --nav-margin: 0 24px;
   }
 
-  .nav__category {
+  .navCategory {
     margin-left: 20px;
   }
 
-  .nav__category a {
+  .navCategory a {
     padding: 21px 15px;
     font-size: 18px;
   }
@@ -82,8 +79,8 @@ header {
 
 /*데스크탑*/
 @media screen and (min-width: 1200px) {
-  :root {
-    /* nav */
+  .header {
+    /* nav변수 */
     --nav-margin: 0 200px;
   }
 
@@ -91,7 +88,7 @@ header {
     flex: 0 1 1120px;
   }
 
-  .nav__category {
+  .navCategory {
     margin-left: 32px;
   }
 }

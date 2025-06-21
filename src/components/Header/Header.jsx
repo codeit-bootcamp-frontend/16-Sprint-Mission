@@ -13,11 +13,7 @@ function Header() {
     <>
       <header className={styles.header}>
         <nav className={styles.nav}>
-          <Link
-            className={styles.nav__logo}
-            aria-label="판다마켓 메인으로 이동"
-            to="/"
-          >
+          <Link aria-label="판다마켓 메인으로 이동" to="/">
             <picture>
               <source media="(max-width: 767px)" srcSet={logoTextImg} />
               <img src={logoImg} alt="판다마켓로고" />

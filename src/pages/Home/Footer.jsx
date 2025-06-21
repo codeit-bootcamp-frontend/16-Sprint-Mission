@@ -8,9 +8,7 @@ import styles from './styles/Footer.module.css';
 function Footer() {
   return (
     <footer className={styles.footer}>
-      <div
-        className={`${styles.footer__container} ${styles.container} container`}
-      >
+      <div className={`${styles.container} container`}>
         <span>©codeit - 2024</span>
         <div>
           <Link aria-label="약관으로 이동" to="/privacy">
@@ -20,7 +18,7 @@ function Footer() {
             FAQ
           </Link>
         </div>
-        <ul className={styles['footer__sns-list']}>
+        <ul className={styles.snsList}>
           <li>
             <a
               rel="noopener noreferer"

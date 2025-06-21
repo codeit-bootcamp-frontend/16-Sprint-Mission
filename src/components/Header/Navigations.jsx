@@ -8,7 +8,7 @@ function Navigations() {
     location.pathname.startsWith('/addItem');
 
   return (
-    <div className={styles.nav__category}>
+    <div className={styles.navCategory}>
       <Link>자유게시판</Link>
       <NavLink
         to="/items"
