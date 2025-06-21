@@ -84,6 +84,7 @@ const AddProductForm = ({ title }) => {
           id="tags"
           placeholder="태그를 입력해주세요"
           tags={tags}
+          isFormTag={true}
           onTagsChange={handleTagsChange}
           onBlur={handleBlur}
         />

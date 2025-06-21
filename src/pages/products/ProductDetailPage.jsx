@@ -19,6 +19,9 @@ import { deleteComment } from "@/services/delete/deleteComment";
 import CursorPagination from "@/components/Pagination/CursorPagination";
 import ProfileSummary from "@/components/ProfileSummary/ProfileSummary";
 import KebabButton from "@/components/ui/Button/KebabButton";
+import { BREAKPOINTS } from "@/constants/responsive";
+import Divider from "@/components/ui/Divider/Divider";
+import TagList from "@/components/ui/Tag/TagList";
 
 const dropdownItems = ["수정하기", "삭제하기"];
 
@@ -129,30 +132,41 @@ const ProductDetailPage = () => {
             src={images}
             alt={name}
             className="item-img"
+            width="486"
+            height="486"
             // onLoad={}
             onError={(e) => {
+              e.target.onerror = null;
               e.currentTarget.src = pandaLogoImg;
             }}
           />
         </div>
-        <div className="product-description">
-          <h5>{name}</h5>
-          <h3>{price}</h3>
-          <div className="description-area">
-            <span className="description-title">상품 소개</span>
-            <p>{description}</p>
+        <div className="product-info">
+          <h5 className="product-name">{name}</h5>
+          <h3 className="product-price">{price.toLocaleString("ko-KR")}원</h3>
+          <Divider />
+          <div className="product-description">
+            <div className="description-item">
+              <span className="description-title">상품 소개</span>
+              <p className="description">{description}</p>
+            </div>
+            <div className="description-item">
+              <span className="description-title">상품 태그</span>
+              <TagList tags={tags} isFormTag={false} />
+            </div>
           </div>
-          <div className="description-area">
-            <span className="description-title">상품 태그</span>
-            <div className="tag-list">{tags}</div>
-          </div>
+
           <ProfileSummary
             name={ownerNickname}
             createdAt={createdAt}
             favoriteCount={favoriteCount}
+            style={{ marginTop: "auto" }}
           />
         </div>
       </section>
+
+      <Divider style={{ marginBottom: 40 }} />
+
       <section css={ProductCommentStyle}>
         <form className="comment-form" ref={formRef}>
           <FormControl>
@@ -175,6 +189,7 @@ const ProductDetailPage = () => {
             등록
           </Button>
         </form>
+
         <ol className="comments">
           {isLoading && <p>댓글 로딩중...</p>}
           {loadingError && <p>댓글을 불러오는 데 문제가 발생했습니다.</p>}
@@ -250,7 +265,88 @@ const ProductDetailPage = () => {
 
 export default ProductDetailPage;
 
-const ProductInfoStyle = css``;
+const ProductInfoStyle = css`
+  display: flex;
+  gap: 16px;
+  margin-bottom: 40px;
+
+  @media (min-width: ${BREAKPOINTS.desktop}px) {
+    gap: 24px;
+  }
+
+  .product-img {
+    aspect-ratio: 1/1;
+    border-radius: var(--thumb-border-radius);
+    overflow: hidden;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    @media (min-width: ${BREAKPOINTS.desktop}px) {
+      max-width: 486px;
+      max-height: 486px;
+    }
+  }
+
+  .product-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .product-name {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: var(--secondary-color);
+
+    @media (min-width: ${BREAKPOINTS.tablet}px) {
+      font-size: 20px;
+    }
+
+    @media (min-width: ${BREAKPOINTS.desktop}px) {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+  }
+
+  .product-price {
+    font-size: 24px;
+    margin-bottom: 16px;
+    color: var(--secondary-color);
+
+    @media (min-width: ${BREAKPOINTS.tablet}px) {
+      font-size: 32px;
+    }
+
+    @media (min-width: ${BREAKPOINTS.desktop}px) {
+      font-size: 40px;
+    }
+  }
+
+  .description-item {
+    margin-bottom: 24px;
+
+    .description-title {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: var(--text-primary);
+      font-weight: 600;
+
+      @media (min-width: ${BREAKPOINTS.desktop}px) {
+        margin-bottom: 16px;
+        font-size: 16px;
+      }
+    }
+
+    .description {
+      color: var(--secondary-color);
+    }
+  }
+`;
 
 const ProductCommentStyle = css`
   .comment-container {

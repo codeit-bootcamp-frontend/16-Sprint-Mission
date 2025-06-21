@@ -3,16 +3,18 @@ import { css } from "@emotion/react";
 import IconButton from "../Button/IconButton";
 import closeIcon from "../../../assets/images/ic_close_white.svg";
 
-const Tag = ({ children, onClick }) => {
+const Tag = ({ children, isFormTag, onClick }) => {
   return (
     <span css={tagStyle}>
       #{children}
-      <IconButton
-        imgSrc={closeIcon}
-        imgAlt="첨부 이미지 제거"
-        radius="round"
-        onClick={onClick}
-      />
+      {isFormTag && (
+        <IconButton
+          imgSrc={closeIcon}
+          imgAlt="첨부 이미지 제거"
+          radius="round"
+          onClick={onClick}
+        />
+      )}
     </span>
   );
 };
