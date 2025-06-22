@@ -4,9 +4,9 @@ import styles from '@pages/Auth/styles/Login.module.css';
 
 function SocialLogin() {
   return (
-    <div className={styles.login__alert}>
+    <div className={styles.loginAlert}>
       간편 로그인하기
-      <div className={styles.icon__container}>
+      <div className={styles.iconContainer}>
         <a
           aria-label="구글로 로그인"
           rel="noopener"

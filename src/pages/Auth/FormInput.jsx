@@ -16,7 +16,7 @@ function FormInput(props) {
     <>
       <input
         value={value}
-        className={error ? styles['error-line'] : ''}
+        className={error && styles.inputErrorBorder}
         onChange={handleChange}
         onBlur={handleBlur}
         type={type}
@@ -24,7 +24,7 @@ function FormInput(props) {
         name={name}
         placeholder={placeholder}
       />
-      <div className={styles['error-message']}>{errorMessage}</div>
+      <div className={styles.errorMessage}>{errorMessage}</div>
     </>
   );
 }

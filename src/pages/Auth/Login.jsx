@@ -36,13 +36,13 @@ function Login() {
 
   return (
     <main className={styles.main}>
-      <section className={styles.main__login}>
-        <div className={styles.login__logo}>
+      <section className={styles.loginSection}>
+        <div className={styles.logo}>
           <Link to="/" aria-label="판다마켓 홈으로 이동">
             <img src={logo} alt="판다마켓 로고" />
           </Link>
         </div>
-        <form onSubmit={handleSubmit} className={styles.login__form}>
+        <form onSubmit={handleSubmit} className={styles.form}>
           <fieldset>
             <label htmlFor="user-email">이메일</label>
             <FormInput
@@ -53,7 +53,7 @@ function Login() {
               name="user-email"
               placeholder="이메일을 입력해주세요"
             />
-            <div className={styles['container__position-relative']}>
+            <div className={styles.containerRelative}>
               <label htmlFor="user-password">비밀번호</label>
               <FormInput
                 validate={validate}
@@ -64,7 +64,7 @@ function Login() {
                 placeholder="비밀번호를 입력해주세요"
               />
               <input
-                className={styles['toggle-visibility-pw']}
+                className={styles.pwToggle}
                 id="toggle-visibility-pw"
                 type="checkbox"
                 onChange={handlePwToggle}
@@ -77,7 +77,7 @@ function Login() {
             </div>
             <button
               className={
-                !isAllValid ? styles['button-fail'] : styles['button-pass']
+                !isAllValid ? styles.inActivateBtn : styles.activateBtn
               }
               type="submit"
             >
@@ -85,7 +85,7 @@ function Login() {
             </button>
           </fieldset>
           <SocialLogin />
-          <div className={styles['login__sign-up']}>
+          <div className={styles.signUpGuide}>
             판다마켓이 처음이신가요?&nbsp;
             <Link to="/sign_up" aria-label="회원가입 페이지로 이동">
               회원가입

@@ -1,4 +1,4 @@
-.error-message {
+.errorMessage {
   /* err메세지 */
   color: red;
   font-size: 14px;
@@ -9,7 +9,7 @@
   margin-bottom: 16px;
 }
 
-.error-line {
+.inputErrorBorder {
   /* 인풋 빨간 라인*/
   border: 1px solid red !important;
 }

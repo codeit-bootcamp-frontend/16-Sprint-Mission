@@ -11,7 +11,8 @@ export const useAddItemStore = create((set) => {
     ...initialState,
     updateFieldValue: (name, value) => {
       return set((state) => {
-        const isPassed = name === 'tag' ? state.isFilled.tag : value > 0 ? true : false;
+        const isPassed =
+          name === 'tag' ? state.isFilled.tag : value > 0 ? true : false;
 
         return {
           ...state,

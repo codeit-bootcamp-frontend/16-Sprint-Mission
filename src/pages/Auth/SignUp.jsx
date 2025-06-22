@@ -54,13 +54,13 @@ function SignUp() {
 
   return (
     <main className={styles.main}>
-      <section className={styles['main__sign-up']}>
-        <div className={styles['sign-up__logo']}>
+      <section className={styles.signUp}>
+        <div className={styles.logo}>
           <Link aria-label="판다마켓 홈으로 이동" to="/">
             <img src={logo} alt="판다마켓 로고" />
           </Link>
         </div>
-        <form onSubmit={handleSubmit} className={styles['sign-up__form']}>
+        <form onSubmit={handleSubmit} className={styles.form}>
           <fieldset>
             <label htmlFor="user-email">이메일</label>
             <FormInput
@@ -80,7 +80,7 @@ function SignUp() {
               name="user-name"
               placeholder="닉네임을 입력해주세요"
             />
-            <div className={styles['container__position-relative']}>
+            <div className={styles.containerRelative}>
               <label htmlFor="user-password">비밀번호</label>
               <FormInput
                 validate={validate}
@@ -93,7 +93,7 @@ function SignUp() {
               <input
                 id="toggle-visibility-pw"
                 onChange={handlePwToggle}
-                className={styles['toggle-visibility-pw']}
+                className={styles.pwToggle}
                 type="checkbox"
               />
               <label
@@ -102,7 +102,7 @@ function SignUp() {
                 htmlFor="toggle-visibility-pw"
               ></label>
             </div>
-            <div className={styles['container__position-relative']}>
+            <div className={styles.containerRelative}>
               <label htmlFor="user-password">비밀번호 확인</label>
               <FormInput
                 validate={validate}
@@ -116,7 +116,7 @@ function SignUp() {
               <input
                 id="toggle-visibility-pwcheck"
                 onChange={handlePwCheckToggle}
-                className={styles['toggle-visibility-pwcheck']}
+                className={styles.pwCheckToggle}
                 type="checkbox"
               />
               <label
@@ -127,7 +127,7 @@ function SignUp() {
             </div>
             <button
               className={
-                !isAllValid ? styles['button-fail'] : styles['button-pass']
+                !isAllValid ? styles.inActivateBtn : styles.activateBtn
               }
               type="submit"
             >
@@ -135,7 +135,7 @@ function SignUp() {
             </button>
           </fieldset>
           <SocialLogin />
-          <div className={styles['sign-up__login']}>
+          <div className={styles.loginGuide}>
             이미 회원이신가요?&nbsp;
             <Link aria-label="로그인 페이지로 이동" to="/login">
               로그인
