@@ -110,7 +110,7 @@ if (nicknameInput) {
   nicknameInput.addEventListener("focusout", checkNicknameValidity);
 }
 if (passwordInput) {
-  passwordInput.addEventListener("input", checkPasswordValidity);
+  passwordInput.addEventListener("focusout", checkPasswordValidity);
 }
 
 if (passwordCheckInput) {
