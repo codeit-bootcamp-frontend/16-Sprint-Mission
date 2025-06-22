@@ -62,7 +62,7 @@ function checkNicknameValidity() {
   updateSubmitButton();
 }
 
-//2. 비번 유효성 확인
+//3. 비번 유효성 확인
 function checkPasswordValidity() {
   const passwordValue = passwordInput.value.trim();
   isPasswordValid = false;
@@ -80,7 +80,7 @@ function checkPasswordValidity() {
   updateSubmitButton();
 }
 
-//비번 더블 체크
+//4. 비번 더블 체크
 
 function checkPasswordMatchValidity() {
   const passwordCheckValue = passwordCheckInput.value.trim();
@@ -102,7 +102,7 @@ function checkPasswordMatchValidity() {
   updateSubmitButton();
 }
 
-//3. 이벤트 리스너
+//5. 이벤트 리스너
 if (emailInput) {
   emailInput.addEventListener("focusout", checkEmailValidity);
 }
@@ -118,7 +118,7 @@ if (passwordCheckInput) {
   passwordCheckInput.addEventListener("input", checkPasswordMatchValidity);
 }
 
-//4. input 에 빈 값이 있거나 에러 메세지가 있으면  ‘로그인’, '회원가입' 버튼은 비활성화 됩니다.
+//6. input 에 빈 값이 있거나 에러 메세지가 있으면  ‘로그인’, '회원가입' 버튼은 비활성화 됩니다.
 function updateSubmitButton() {
   let isFormValid = isEmailValid && isPasswordValid;
 
@@ -129,7 +129,7 @@ function updateSubmitButton() {
   submitButton.disabled = !isFormValid;
 }
 
-//5.활성화된 ‘로그인’ 버튼을 누르면  “/items” 로 이동합니다
+//7.활성화된 ‘로그인’ 버튼을 누르면  “/items” 로 이동합니다
 
 updateSubmitButton();
 
