@@ -15,6 +15,7 @@ import useAsync from "@/hooks/useAsync";
 import { getComments } from "@/services/get/getComments";
 import { updateComment } from "@/services/patch/updateComment";
 import { deleteComment } from "@/services/delete/deleteComment";
+import { BREAKPOINTS } from "@/constants/responsive";
 
 const dropdownItems = ["수정하기", "삭제하기"];
 
@@ -116,6 +117,7 @@ const ProductComments = ({ productId }) => {
             name="description"
             placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."
             onBlur={handleBlur}
+            maxHeight={104}
           />
         </FormControl>
         <Button
@@ -123,6 +125,7 @@ const ProductComments = ({ productId }) => {
           variant="primary"
           disabled={!isFormValid}
           type="submit"
+          className="btn-submit"
         >
           등록
         </Button>
@@ -198,5 +201,20 @@ export default ProductComments;
 const ProductCommentsStyle = css`
   .comment-container {
     position: relative;
+  }
+
+  .comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 40px;
+
+    @media (min-width: ${BREAKPOINTS.desktop}px) {
+      margin-bottom: 24px;
+    }
+
+    .btn-submit {
+      margin-left: auto;
+    }
   }
 `;

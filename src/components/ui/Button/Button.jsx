@@ -36,7 +36,10 @@ const ButtonStyle = (props) => css`
 
   ${ButtonStylesMap.size[props.size]}
   ${ButtonStylesMap.variant[props.variant]}
-  ${ButtonStylesMap.round}
+  ${props.round &&
+  css`
+    border-radius: var(--border-radius-lg);
+  `}
 `;
 
 const ButtonStylesMap = {
