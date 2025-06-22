@@ -3,13 +3,7 @@ import { css } from "@emotion/react";
 import avatarImg from "@/assets/images/img-avatar.png";
 import formatDate from "@/utils/formatDate";
 
-const ProfileSummary = ({
-  name,
-  imgSrc,
-  createdAt,
-  favoriteCount,
-  ...props
-}) => {
+const ProfileSummary = ({ name, imgSrc, createdAt, ...props }) => {
   return (
     <div className="profile-area" css={ProfileSummaryStyle} style={props.style}>
       <div className="profile">
@@ -29,7 +23,6 @@ const ProfileSummary = ({
           <span className="createdAt">{formatDate(createdAt)}</span>
         </div>
       </div>
-      <span className="favorite-count">{favoriteCount}</span>
     </div>
   );
 };
@@ -58,10 +51,5 @@ const ProfileSummaryStyle = css`
       color: var(--gray400);
       font-size: 14px;
     }
-  }
-
-  .favorite-count {
-    margin-left: auto;
-    flex-shrink: 0;
   }
 `;

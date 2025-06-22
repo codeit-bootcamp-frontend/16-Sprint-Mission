@@ -13,7 +13,7 @@ import useAsync from "@/hooks/useAsync";
 import { getComments } from "@/services/get/getComments";
 import inquiryEmptyImg from "@/assets/images/img_inquiry_empty.png";
 import arrowLeftIcon from "@/assets/images/ic_arrow_left.svg";
-import Dropdown from "@/components/ui/Dropdown";
+import Dropdown from "@/components/ui/Dropdown/Dropdown";
 import { updateComment } from "@/services/patch/updateComment";
 import { deleteComment } from "@/services/delete/deleteComment";
 import CursorPagination from "@/components/Pagination/CursorPagination";
@@ -22,6 +22,8 @@ import KebabButton from "@/components/ui/Button/KebabButton";
 import { BREAKPOINTS } from "@/constants/responsive";
 import Divider from "@/components/ui/Divider/Divider";
 import TagList from "@/components/ui/Tag/TagList";
+// import HeartIcon from "@/assets/images/ic-like.svg";
+import { ReactComponent as HeartIcon } from "@/assets/images/ic-like.svg";
 
 const dropdownItems = ["수정하기", "삭제하기"];
 
@@ -156,12 +158,35 @@ const ProductDetailPage = () => {
             </div>
           </div>
 
-          <ProfileSummary
-            name={ownerNickname}
-            createdAt={createdAt}
-            favoriteCount={favoriteCount}
-            style={{ marginTop: "auto" }}
-          />
+          <div className="product-info-footer">
+            <ProfileSummary
+              name={ownerNickname}
+              createdAt={createdAt}
+              favoriteCount={favoriteCount}
+              style={{ marginTop: "auto" }}
+            />
+            <div className="actions">
+              <Button
+                variant="outlined"
+                round={true}
+                size="sm"
+                className="btn-favorite"
+                style={{
+                  padding: "8px 14px",
+                  minWidth: "88px",
+                  height: "auto",
+                }}
+              >
+                <HeartIcon
+                  aria-label="좋아요 갯수"
+                  width="24"
+                  height="24"
+                  style={{ stroke: "var(--gray500)" }}
+                />
+                <span className="favorite-count">{favoriteCount}</span>
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -344,6 +369,19 @@ const ProductInfoStyle = css`
 
     .description {
       color: var(--secondary-color);
+    }
+  }
+
+  .product-info-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+
+    .actions {
+      margin-left: 24px;
+      padding-left: 24px;
+      border-left: 1px solid var(--gray300);
     }
   }
 `;
