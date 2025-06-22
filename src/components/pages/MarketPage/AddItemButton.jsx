@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { applyFontStyles } from '../../../styles/mixins';
 import { FontTypes, ColorTypes } from '../../../styles/theme';
@@ -5,9 +6,11 @@ import { FontTypes, ColorTypes } from '../../../styles/theme';
 function AddItemButton() {
   return (
     <div>
+      <Link to= "/additem">
       <StButton>
         <div>상품 등록하기</div>
       </StButton>
+      </Link>
     </div>
   );
 }
