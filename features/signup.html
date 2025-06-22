@@ -38,28 +38,32 @@
       </div>
       <form class="auth-form" id="signupForm">
         <label for="email">이메일</label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          placeholder="이메일을 입력해 주세요"
-        />
-        <span id="emailEmptyError" class="error-message"
-          >이메일을 입력해주세요.</span
-        >
-        <span id="emailInputError" class="error-message"
-          >잘못된 이메일 형식입니다.</span
-        >
+        <div class="input-box">
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="이메일을 입력해 주세요"
+          />
+          <span id="emailEmptyError" class="error-message"
+            >이메일을 입력해주세요.</span
+          >
+          <span id="emailInputError" class="error-message"
+            >잘못된 이메일 형식입니다.</span
+          >
+        </div>
         <label for="nickname">닉네임</label>
-        <input
-          id="nickname"
-          name="nickname"
-          type="text"
-          placeholder="닉네임을 입력해 주세요"
-        />
-        <span id="nicknameEmptyError" class="error-message"
-          >닉네임을 입력해주세요.</span
-        >
+        <div class="input-box">
+          <input
+            id="nickname"
+            name="nickname"
+            type="text"
+            placeholder="닉네임을 입력해 주세요"
+          />
+          <span id="nicknameEmptyError" class="error-message"
+            >닉네임을 입력해주세요.</span
+          >
+        </div>
         <label for="password">비밀번호</label>
         <div class="password-wrapper">
           <input
@@ -93,8 +97,17 @@
             alt="비밀번호 숨김"
             class="toggle-password"
           />
+          <span id="passwordCheckEmptyError" class="error-message"
+            >비밀번호를 입력해주세요.</span
+          >
+          <span id="passwordMatchError" class="error-message"
+            >비밀번호가 일치하지 않습니다.</span
+          >
+          <span id="passwordCheckLengthError" class="error-message"
+            >비밀번호를 8자 이상 입력해주세요.</span
+          >
         </div>
-        <button type="submit" id="auth-form_btn">회원가입</button>
+        <button type="submit" id="auth-form_btn" disabled>회원가입</button>
       </form>
       <div class="auth-footer">
         <div>간편 로그인하기</div>
