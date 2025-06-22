@@ -47,6 +47,7 @@ export default DropdownList;
 const DropdownListContainer = styled.div`
   position: relative;
   display: flex;
+  flex-shrink: 0;
 
   width: 42px;
   height: 42px;

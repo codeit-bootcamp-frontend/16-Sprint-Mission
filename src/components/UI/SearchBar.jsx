@@ -35,7 +35,8 @@ const SearchBarContainer = styled.div`
 
 const InputWrapper = styled.div`
   position: relative;
-  min-width: 288px;
+  width:100%;
+  flex-grow: 1;
   height: 42px;
 
   @media (min-width: 768px) {
