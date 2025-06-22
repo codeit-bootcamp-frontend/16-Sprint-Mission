@@ -129,7 +129,7 @@ function updateSubmitButton() {
   submitButton.disabled = !isFormValid;
 }
 
-//7.활성화된 ‘로그인’ 버튼을 누르면  “/items” 로 이동합니다
+//7.활성화된 ‘로그인’ 버튼을 누르면  “/items” 로 이동합니다. /'회원가입' 버튼을 누르면 로그인페이지로 이동
 
 updateSubmitButton();
 
@@ -145,3 +145,37 @@ if (signupForm) {
     window.location.href = "../features/signin.html";
   });
 }
+
+/*8. 눈 모양 아이콘 클릭시 비밀번호의 문자열이 보이기도 하고, 가려지기도 합니다.
+비밀번호의 문자열이 가려질 때는 눈 모양 아이콘에는 사선이 그어져있고, 비밀번호의 문자열이 보일 때는 사선이 없는 눈 모양 아이콘이 보이도록 합니다.*/
+
+const showEye = document.querySelector(".showEye");
+const hideEye = document.querySelector(".hideEye");
+const showEyeCheck = document.querySelector(".showEye-check");
+const hideEyeCheck = document.querySelector(".hideEye-check");
+
+function showPassword() {
+  hideEye.style.visibility = "hidden";
+  showEye.style.visibility = "visible";
+  passwordInput.setAttribute("type", "text");
+}
+function hidePassword() {
+  hideEye.style.visibility = "visible";
+  showEye.style.visibility = "hidden";
+  passwordInput.setAttribute("type", "password");
+}
+function showPasswordCheck() {
+  hideEyeCheck.style.visibility = "hidden";
+  showEyeCheck.style.visibility = "visible";
+  passwordCheckInput.setAttribute("type", "text");
+}
+function hidePasswordCheck() {
+  hideEyeCheck.style.visibility = "visible";
+  showEyeCheck.style.visibility = "hidden";
+  passwordCheckInput.setAttribute("type", "password");
+}
+
+hideEye.addEventListener("click", showPassword);
+showEye.addEventListener("click", hidePassword);
+hideEyeCheck.addEventListener("click", showPasswordCheck);
+showEyeCheck.addEventListener("click", hidePasswordCheck);
