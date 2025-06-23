@@ -3,12 +3,19 @@ import { css } from "@emotion/react";
 import avatarImg from "@/assets/images/img-avatar.png";
 import formatDate from "@/utils/formatDate";
 
-const ProfileSummary = ({ name, imgSrc, createdAt, ...props }) => {
+const ProfileSummary = ({
+  name,
+  imgSrc,
+  createdAt,
+  imgSize = 40,
+  metaSize = 14,
+  imgInfoGap = 16,
+  ...props
+}) => {
   return (
     <div
       className="profile-area"
-      css={ProfileSummaryStyle}
-      size={props.size}
+      css={ProfileSummaryStyle({ metaSize, imgInfoGap })}
       style={props.style}
     >
       <div className="profile">
@@ -20,8 +27,8 @@ const ProfileSummary = ({ name, imgSrc, createdAt, ...props }) => {
             e.target.onerror = null;
             e.currentTarget.src = avatarImg;
           }}
-          width={props.size}
-          height={props.size}
+          width={imgSize}
+          height={imgSize}
         />
         <div className="info">
           <span className="name">{name}</span>
@@ -34,12 +41,12 @@ const ProfileSummary = ({ name, imgSrc, createdAt, ...props }) => {
 
 export default ProfileSummary;
 
-const ProfileSummaryStyle = css`
+const ProfileSummaryStyle = ({ metaSize, imgInfoGap }) => css`
   display: flex;
 
   .profile {
     display: flex;
-    gap: 16px;
+    gap: ${imgInfoGap}px;
 
     img {
       flex-shrink: 0;
@@ -47,14 +54,13 @@ const ProfileSummaryStyle = css`
 
     .info .name {
       display: block;
-      margin-bottom: 2px;
       color: var(--text-primary);
-      font-size: 14px;
+      font-size: ${metaSize}px;
     }
 
     .info .createdAt {
       color: var(--gray400);
-      font-size: 14px;
+      font-size: ${metaSize}px;
     }
   }
 `;

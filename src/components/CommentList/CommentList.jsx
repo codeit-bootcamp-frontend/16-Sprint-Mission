@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 import { useState, useEffect, useCallback } from "react";
 import useAsync from "@/hooks/useAsync";
 import { getComments } from "@/services/get/getComments";
@@ -19,17 +21,17 @@ const CommentList = ({ productId }) => {
   const [isCommentPageReady, setIsCommentPageReady] = useState(false);
   const [isEditCommentId, setIsEditCommentId] = useState(null);
   const {
-    isLoading: updateCommentLoading,
-    loadingError: updateCommentError,
-    runAsync: updateCommentAsync,
-  } = useAsync(updateComment);
-  const {
     isLoading,
     loadingError,
     runAsync: getCommentAsync,
   } = useAsync(getComments);
   const {
-    isLoading: deleteCommentLoading,
+    isLoading: updatingComment,
+    loadingError: updateCommentError,
+    runAsync: updateCommentAsync,
+  } = useAsync(updateComment);
+  const {
+    isLoading: deletingComment,
     loadingError: deleteCommentError,
     runAsync: deleteCommentAsync,
   } = useAsync(deleteComment);
@@ -97,7 +99,7 @@ const CommentList = ({ productId }) => {
   }, [getCommentAsync, productId]);
 
   return (
-    <div className="comments-area">
+    <div css={CommentListStyle}>
       <ol className="comments">
         {isLoading && <p>댓글 로딩중...</p>}
         {loadingError && <p>댓글을 불러오는 데 문제가 발생했습니다.</p>}
@@ -128,7 +130,20 @@ const CommentList = ({ productId }) => {
                 </div>
               </div>
             ) : (
-              <p>{cmt.content}</p>
+              <p className="comment-content">{cmt.content}</p>
+            )}
+
+            <KebabButton
+              onClick={() => toggleDropdown(cmt.id)}
+              alt="댓글 수정/삭제"
+            />
+            {dropdownCommentId === cmt.id && (
+              <Dropdown
+                items={dropdownItems}
+                onClick={(e) => handleDropdownSelect(e, cmt.id)}
+                isDropdownOpen={dropdownCommentId === cmt.id}
+                isCommentDropdown={true}
+              />
             )}
 
             <div className="comment-container">
@@ -136,18 +151,10 @@ const CommentList = ({ productId }) => {
                 name={cmt.writer.nickname}
                 imgSrc={cmt.image}
                 createdAt={cmt.createdAt}
+                imgSize={32}
+                metaSize={12}
+                imgInfoGap={8}
               />
-              <KebabButton
-                onClick={() => toggleDropdown(cmt.id)}
-                alt="댓글 수정/삭제"
-              />
-              {dropdownCommentId === cmt.id && (
-                <Dropdown
-                  items={dropdownItems}
-                  onClick={(e) => handleDropdownSelect(e, cmt.id)}
-                  isDropdownOpen={dropdownCommentId === cmt.id}
-                />
-              )}
             </div>
           </li>
         ))}
@@ -164,3 +171,25 @@ const CommentList = ({ productId }) => {
 };
 
 export default CommentList;
+
+const CommentListStyle = css`
+  .comments > li {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--gray300);
+  }
+
+  .kebab-btn {
+    position: absolute;
+    right: 0;
+    top: 6px;
+  }
+
+  .comment-content {
+    margin-bottom: 24px;
+    font-size: 14px;
+  }
+`;
