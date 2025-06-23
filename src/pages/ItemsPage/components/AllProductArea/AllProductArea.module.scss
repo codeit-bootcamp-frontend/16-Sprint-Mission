@@ -1,5 +1,5 @@
-@use "../../styles/variables" as var;
-@use "../../styles/mixin" as mixin;
+@use "../../../../styles/variables" as var;
+@use "../../../../styles/mixin" as mixin;
 
 .allProductArea {
   &__title {
@@ -41,7 +41,8 @@
           height: $height;
           padding: 0 12px 0 44px;
           background: var.$gray100
-            url("../../assets/images/icons/ic_search.svg") 16px center no-repeat;
+            url("../../../../assets/images/icons/ic_search.svg") 16px center
+            no-repeat;
           border-radius: 12px;
         }
       }
@@ -81,15 +82,15 @@
             font-size: 16px;
             text-align: left;
             color: var.$gray800;
-            background: url("../../assets/images/icons/ic_select_arrow.svg")
+            background: url("../../../../assets/images/icons/ic_select_arrow.svg")
               right 20px center no-repeat;
             border-radius: 12px;
 
             @include mixin.mobile {
               width: $height;
               padding: 0;
-              background: url("../../assets/images/icons/ic_sort.svg") center
-                center no-repeat;
+              background: url("../../../../assets/images/icons/ic_sort.svg")
+                center center no-repeat;
 
               span {
                 display: none;

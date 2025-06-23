@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Pagination from "../Pagination/Pagination";
-import ProductList from "../ProductList/ProductList";
-import { getData } from "../../data/api";
+import Pagination from "../../../../components/Pagination/Pagination";
+import ProductList from "../../../../components/ProductList/ProductList";
+import { getData } from "../../../../data/api";
 import styles from "./AllProductArea.module.scss";
-import { getItemCount } from "../../utils/getItemCount";
+import { getItemCount } from "../../../../utils/getItemCount";
 
 const SORT_TYPE = {
   recent: "최신순",
