@@ -91,7 +91,7 @@ const CommentList = ({ productId }) => {
 
         setComments(result.list);
         setNextCursor(result.nextCursor);
-        setIsCommentPageReady(true); // 최초 렌더링 준비 완료
+        setIsCommentPageReady(true); // 댓글 목록 받은 이후 댓글 페이지네이션 렌더 준비
       } catch (err) {
         console.error(err);
       }
@@ -110,28 +110,24 @@ const CommentList = ({ productId }) => {
         {comments?.map((cmt) => (
           <li className="comment" key={cmt.id}>
             {isEditCommentId === cmt.id ? (
-              <div className="comment-edit">
-                <Textarea defaultValue={cmt.content} data-comment-id={cmt.id} />
-                <div className="comment-edit-actions">
-                  <Button onClick={handleUpdateCommentCancel}>취소</Button>
-                  <Button
-                    variant="primary"
-                    size="sm"
-                    onClick={() => handleUpdateComment(cmt.id)}
-                  >
-                    수정 완료
-                  </Button>
-                </div>
-              </div>
+              <CommentUpdate
+                content={cmt.content}
+                commentId={cmt.id}
+                onUpdate={handleUpdateComment}
+                onUpdateCancel={handleUpdateCommentCancel}
+              />
             ) : (
               <p className="comment-content">{cmt.content}</p>
             )}
 
-            <KebabButton
-              onClick={() => toggleDropdown(cmt.id)}
-              alt="댓글 수정/삭제"
-            />
-            {dropdownCommentId === cmt.id && (
+            {isEditCommentId !== cmt.id && (
+              <KebabButton
+                onClick={() => toggleDropdown(cmt.id)}
+                alt="댓글 수정/삭제"
+              />
+            )}
+
+            {dropdownCommentId === cmt.id && isEditCommentId !== cmt.id && (
               <Dropdown
                 items={dropdownItems}
                 onClick={(e) => handleDropdownSelect(e, cmt.id)}
@@ -215,5 +211,43 @@ const CommentEmptyStyle = css`
   .txt {
     color: var(--gray400);
     font-size: 16px;
+  }
+`;
+
+const CommentUpdate = ({ content, commentId, onUpdate, onUpdateCancel }) => {
+  return (
+    <div css={CommentUpdateStyle}>
+      <Textarea
+        id={commentId}
+        name="comment-content"
+        defaultValue={content}
+        data-comment-id={commentId}
+      />
+      <div className="comment-edit-actions">
+        <Button onClick={onUpdateCancel}>취소</Button>
+        <Button variant="primary" size="sm" onClick={() => onUpdate(commentId)}>
+          수정 완료
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+const CommentUpdateStyle = css`
+  textarea {
+    width: 100%;
+    max-height: 80px;
+    margin-bottom: 16px;
+  }
+
+  button {
+    padding: 14px 20px;
+  }
+
+  .comment-edit-actions {
+    position: absolute;
+    right: 0;
+    bottom: 16px;
+    z-index: 1;
   }
 `;

@@ -17,7 +17,7 @@ const Textarea = ({ id, name, placeholder, onChange, onBlur, ...props }) => {
 
 export default Textarea;
 
-const TextareaStyle = (maxheight) => css`
+const TextareaStyle = (maxheight = "var(--form-input-max-height)") => css`
   font-size: 1rem;
   padding: 16px 20px;
   background: var(--gray200);
