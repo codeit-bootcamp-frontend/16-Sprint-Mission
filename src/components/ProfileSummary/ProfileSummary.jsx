@@ -5,7 +5,12 @@ import formatDate from "@/utils/formatDate";
 
 const ProfileSummary = ({ name, imgSrc, createdAt, ...props }) => {
   return (
-    <div className="profile-area" css={ProfileSummaryStyle} style={props.style}>
+    <div
+      className="profile-area"
+      css={ProfileSummaryStyle}
+      size={props.size}
+      style={props.style}
+    >
       <div className="profile">
         <img
           src={imgSrc || avatarImg}
@@ -15,8 +20,8 @@ const ProfileSummary = ({ name, imgSrc, createdAt, ...props }) => {
             e.target.onerror = null;
             e.currentTarget.src = avatarImg;
           }}
-          width="48"
-          height="48"
+          width={props.size}
+          height={props.size}
         />
         <div className="info">
           <span className="name">{name}</span>

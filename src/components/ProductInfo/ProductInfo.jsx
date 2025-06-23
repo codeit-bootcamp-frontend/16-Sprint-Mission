@@ -56,6 +56,7 @@ const ProductInfo = ({ product }) => {
             name={ownerNickname}
             createdAt={createdAt}
             favoriteCount={favoriteCount}
+            size={40}
             style={{ marginTop: "auto" }}
           />
           <div className="actions">
