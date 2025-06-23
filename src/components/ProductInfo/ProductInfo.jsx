@@ -8,7 +8,7 @@ import Button from "@/components/ui/Button";
 import Divider from "@/components/ui/Divider";
 import { BREAKPOINTS } from "@/constants/responsive";
 
-const ProductInfo = ({ product }) => {
+const ProductInfo = ({ product, thumbSize }) => {
   const {
     name,
     images,
@@ -21,14 +21,14 @@ const ProductInfo = ({ product }) => {
   } = product;
 
   return (
-    <section css={ProductInfoStyle}>
+    <section css={ProductInfoStyle({ thumbSize })}>
       <div className="product-img">
         <img
           src={images}
           alt={name}
           className="item-img"
-          width="486"
-          height="486"
+          width={thumbSize}
+          height={thumbSize}
           // onLoad={}
           onError={(e) => {
             e.target.onerror = null;
@@ -88,16 +88,23 @@ const ProductInfo = ({ product }) => {
 
 export default ProductInfo;
 
-const ProductInfoStyle = css`
+const ProductInfoStyle = ({ thumbSize }) => css`
   display: flex;
   gap: 16px;
+  flex-wrap: wrap;
   margin-bottom: 40px;
+
+  @media (min-width: ${BREAKPOINTS.tablet + 200}px) {
+    flex-wrap: nowrap;
+  }
 
   @media (min-width: ${BREAKPOINTS.desktop}px) {
     gap: 24px;
   }
 
   .product-img {
+    width: ${typeof thumbSize === "number" ? `${thumbSize}px` : thumbSize};
+    height: ${typeof thumbSize === "number" ? `${thumbSize}px` : thumbSize};
     aspect-ratio: 1/1;
     border-radius: var(--thumb-border-radius);
     overflow: hidden;
@@ -105,12 +112,8 @@ const ProductInfoStyle = css`
 
     img {
       width: 100%;
+      height: 100%;
       object-fit: cover;
-    }
-
-    @media (min-width: ${BREAKPOINTS.desktop}px) {
-      max-width: 486px;
-      max-height: 486px;
     }
   }
 

@@ -5,15 +5,27 @@ import arrowLeftIcon from "@/assets/images/ic_arrow_left.svg";
 import Divider from "@/components/ui/Divider/Divider";
 import ProductInfo from "@/components/ProductInfo";
 import ProductComments from "@/components/ProductComments/ProductComments";
+import { BREAKPOINTS } from "@/constants/responsive";
+import useWindowDimensions from "@/hooks/useWindowDimensions";
 
 const ProductDetailPage = () => {
   const location = useLocation();
   const { id: productId } = location.state;
   const navigate = useNavigate();
+  const { width } = useWindowDimensions();
 
   return (
     <PageContent>
-      <ProductInfo product={location.state} />
+      <ProductInfo
+        product={location.state}
+        thumbSize={
+          width >= BREAKPOINTS.desktop - 300
+            ? 486
+            : width >= BREAKPOINTS.tablet + 200
+            ? 340
+            : "100%"
+        }
+      />
       <Divider style={{ marginBottom: 40 }} />
       <ProductComments productId={productId} />
       <div className="page-footer">
