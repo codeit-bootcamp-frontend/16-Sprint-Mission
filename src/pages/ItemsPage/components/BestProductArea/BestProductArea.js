@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import ProductList from "../ProductList/ProductList";
-import { getData } from "../../data/api";
+import ProductList from "../../../../components/ProductList/ProductList";
+import { getData } from "../../../../data/api";
 import styles from "./BestProductArea.module.scss";
-import { getItemCount } from "../../utils/getItemCount";
+import { getItemCount } from "../../../../utils/getItemCount";
 
 const INIT_PAGE_SIZE = 4;
 const ITEM_COUNT = {
