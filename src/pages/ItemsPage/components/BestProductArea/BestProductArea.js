@@ -26,14 +26,14 @@ const BestProductArea = () => {
   };
 
   useEffect(() => {
-    getProductList({ orderBy: "favorite", pageSize: pageSize, page: 1 });
-  }, [pageSize]);
+    getProductList({ orderBy: "favorite", pageSize: INIT_PAGE_SIZE, page: 1 });
+  }, []);
 
   return (
     <>
       <h2 className={styles.bestProductArea__title}>베스트 상품</h2>
       <div className={styles.bestProductArea__content}>
-        <ProductList list={bestList} type="best" />
+        <ProductList list={bestList} type="best" pageSize={pageSize} />
       </div>
     </>
   );
