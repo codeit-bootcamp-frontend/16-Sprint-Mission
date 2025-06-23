@@ -7,6 +7,7 @@ import { ReactComponent as HeartIcon } from "@/assets/images/ic-like.svg";
 import Button from "@/components/ui/Button";
 import Divider from "@/components/ui/Divider";
 import { BREAKPOINTS } from "@/constants/responsive";
+import { useState } from "react";
 
 const ProductInfo = ({ product, thumbSize }) => {
   const {
@@ -20,8 +21,13 @@ const ProductInfo = ({ product, thumbSize }) => {
     favoriteCount,
   } = product;
 
+  const [addFavorite, setAddFavorite] = useState(false);
+  const toggleFavoriteCount = () => {
+    setAddFavorite((prev) => !prev);
+  };
+
   return (
-    <section css={ProductInfoStyle({ thumbSize })}>
+    <section css={ProductInfoStyle({ thumbSize, addFavorite })}>
       <div className="product-img">
         <img
           src={images}
@@ -70,14 +76,17 @@ const ProductInfo = ({ product, thumbSize }) => {
                 minWidth: "88px",
                 height: "auto",
               }}
+              onClick={toggleFavoriteCount}
             >
               <HeartIcon
                 aria-label="좋아요 갯수"
+                className="heart-icon"
                 width="24"
                 height="24"
-                style={{ stroke: "var(--gray500)" }}
               />
-              <span className="favorite-count">{favoriteCount}</span>
+              <span className="favorite-count">
+                {addFavorite ? favoriteCount + 1 : favoriteCount}
+              </span>
             </Button>
           </div>
         </div>
@@ -88,7 +97,7 @@ const ProductInfo = ({ product, thumbSize }) => {
 
 export default ProductInfo;
 
-const ProductInfoStyle = ({ thumbSize }) => css`
+const ProductInfoStyle = ({ thumbSize, addFavorite }) => css`
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
@@ -188,5 +197,20 @@ const ProductInfoStyle = ({ thumbSize }) => css`
       padding-left: 24px;
       border-left: 1px solid var(--gray300);
     }
+  }
+
+  .btn-favorite {
+    border-color: ${addFavorite ? "var(--primary-color)" : "var(--gray300)"};
+    color: ${addFavorite ? "var(--primary-color)" : "var(--gray500)"};
+
+    &:hover {
+      border-color: var(--primary-color);
+    }
+  }
+  .heart-icon {
+    fill: ${addFavorite ? "var(--primary-color)" : "#fff"};
+    stroke: ${addFavorite
+      ? "1px solid transparent"
+      : "1px solid var(--gray500)"};
   }
 `;

@@ -174,8 +174,9 @@ const CommentListStyle = css`
 
   .kebab-btn {
     position: absolute;
-    right: 0;
-    top: 6px;
+    right: -12px;
+    top: -4px;
+    padding: 10px 12px;
   }
 
   .comment-content {

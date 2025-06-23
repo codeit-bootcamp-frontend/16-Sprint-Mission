@@ -33,6 +33,7 @@ const ButtonStyle = (props) => css`
   justify-content: center;
   align-items: center;
   gap: 6px;
+  transition: background-color 0.3s, border 0.3s;
 
   ${ButtonStylesMap.size[props.size]}
   ${ButtonStylesMap.variant[props.variant]}
@@ -74,6 +75,10 @@ const ButtonStylesMap = {
       background: #fff;
       border: 1px solid var(--gray300);
       color: var(--gray500);
+
+      &:hover {
+        border: 1px solid var(--primary-color);
+      }
     `,
   },
   round: css`
