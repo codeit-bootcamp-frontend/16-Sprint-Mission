@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import pandaLogoImg from "@/assets/images/logo-panda.svg";
 import ProfileSummary from "@/components/ProfileSummary/ProfileSummary";
 import TagList from "@/components/ui/Tag/TagList";
 import { ReactComponent as HeartIcon } from "@/assets/images/ic-like.svg";
@@ -8,6 +7,7 @@ import Button from "@/components/ui/Button";
 import Divider from "@/components/ui/Divider";
 import { BREAKPOINTS } from "@/constants/responsive";
 import { useState } from "react";
+import ImageSkeleton from "@/components/ui/Skeletons/ImageSkeleton";
 
 const ProductInfo = ({ product, thumbSize }) => {
   const {
@@ -29,17 +29,11 @@ const ProductInfo = ({ product, thumbSize }) => {
   return (
     <section css={ProductInfoStyle({ thumbSize, addFavorite })}>
       <div className="product-img">
-        <img
+        <ImageSkeleton
           src={images}
           alt={name}
-          className="item-img"
           width={thumbSize}
           height={thumbSize}
-          // onLoad={}
-          onError={(e) => {
-            e.target.onerror = null;
-            e.currentTarget.src = pandaLogoImg;
-          }}
         />
       </div>
       <div className="product-info">
