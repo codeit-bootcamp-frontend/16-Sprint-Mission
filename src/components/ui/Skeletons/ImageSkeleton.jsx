@@ -35,8 +35,8 @@ export default ImageSkeleton;
 
 const ImageSkeletonStyle = (width, height) => css`
   position: relative;
-  width: ${width}px;
-  height: ${height}px;
+  width: ${typeof width === "number" ? `${width}px` : width};
+  height: ${typeof height === "number" ? `${height}px` : height};
 `;
 
 const ImageStyle = (isLoaded) => css`
