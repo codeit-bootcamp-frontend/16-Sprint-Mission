@@ -28,6 +28,8 @@ const ImageUploader = ({
   };
 
   const onClickDelete = () => {
+    // 메모리 해제
+    URL.revokeObjectURL(imageUrl);
     fileInputRef.current.value = null;
     setImageUrl("");
     onDelete();

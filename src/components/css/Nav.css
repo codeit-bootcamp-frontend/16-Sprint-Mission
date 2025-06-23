@@ -77,6 +77,11 @@ header {
   color: var(--color-primary-100);
 }
 
+.header__content__user {
+  display: flex;
+  align-items: center;
+}
+
 .header__content__user__icon {
   width: 40px;
   vertical-align: middle;
