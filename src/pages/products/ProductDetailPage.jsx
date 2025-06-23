@@ -15,9 +15,16 @@ const ProductDetailPage = () => {
       <ProductInfo product={location.state} />
       <Divider style={{ marginBottom: 40 }} />
       <ProductComments productId={productId} />
-      <Button variant="primary" size="sm">
-        목록으로 돌아가기 <img src={arrowLeftIcon} alt="왼쪽 화살표" />
-      </Button>
+      <div className="page-footer">
+        <Button
+          variant="primary"
+          size="sm"
+          round={true}
+          style={{ padding: "12px 40px" }}
+        >
+          목록으로 돌아가기 <img src={arrowLeftIcon} alt="왼쪽 화살표" />
+        </Button>
+      </div>
     </PageContent>
   );
 };

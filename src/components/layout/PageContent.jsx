@@ -23,5 +23,11 @@ const PageContentStyle = css`
     width: var(--page-content-width);
     margin: 24px auto;
     padding: 0;
+    padding-bottom: 60px;
+  }
+
+  .page-footer {
+    margin-top: 64px;
+    text-align: center;
   }
 `;
