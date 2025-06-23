@@ -21,7 +21,7 @@ const ProductDetailPage = () => {
         thumbSize={
           width >= BREAKPOINTS.desktop - 300
             ? 486
-            : width >= BREAKPOINTS.tablet + 200
+            : width >= BREAKPOINTS.tablet + 120
             ? 340
             : "100%"
         }

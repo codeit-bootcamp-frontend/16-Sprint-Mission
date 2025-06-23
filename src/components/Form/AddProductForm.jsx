@@ -28,6 +28,7 @@ const AddProductForm = ({ title }) => {
       css={styles.ProductFormContainer}
       onSubmit={validateForm}
       ref={formRef}
+      data-include-tags="true"
     >
       <header css={styles.FormHeader}>
         <SectionTitle title={title} />

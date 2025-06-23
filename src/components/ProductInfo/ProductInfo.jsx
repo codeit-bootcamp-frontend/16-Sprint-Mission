@@ -94,7 +94,7 @@ const ProductInfoStyle = ({ thumbSize }) => css`
   flex-wrap: wrap;
   margin-bottom: 40px;
 
-  @media (min-width: ${BREAKPOINTS.tablet + 200}px) {
+  @media (min-width: ${BREAKPOINTS.tablet + 120}px) {
     flex-wrap: nowrap;
   }
 
@@ -150,6 +150,10 @@ const ProductInfoStyle = ({ thumbSize }) => css`
     @media (min-width: ${BREAKPOINTS.desktop}px) {
       font-size: 40px;
     }
+  }
+
+  .product-description {
+    margin-bottom: 16px;
   }
 
   .description-item {

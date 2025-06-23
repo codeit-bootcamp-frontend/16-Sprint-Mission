@@ -9,9 +9,16 @@ import { formatPrice, unformatPrice } from "@/utils/formatPrice";
 
 const CHECK_FORM_DEBOUNCE_MS = 300;
 
+const validatorMap = {
+  name: validateProductName,
+  description: validateProductDescription,
+  price: validateProductPrice,
+};
+
 const useForm = (formRef) => {
   const [isFormValid, setIsFormValid] = useState(false);
   const [tags, setTags] = useState([]);
+  const shouldCheckTags = formRef.current?.dataset.includeTags === "true";
 
   const handlePriceInput = (e) => {
     const { value } = e.target;
@@ -26,27 +33,34 @@ const useForm = (formRef) => {
 
   const validateForm = () => {
     const elements = formRef.current?.elements;
-    const values = {};
+    if (!elements) return;
 
-    // input:text, textarea 폼 요소 자동 추가
+    const values = {};
+    const results = [];
+
     for (const el of elements) {
       if (el.type === "text" || el.tagName === "TEXTAREA") {
+        // text input, textarea 폼 요소 values에 추가
         values[el.name] = el.value;
       }
     }
 
-    values.productPrice = values.productPrice?.replace(",", "");
+    if (values.productPrice) {
+      values.productPrice = values.productPrice?.replace(",", "");
+    }
 
-    const isNameValid = validateProductName(values.name || "").isValid;
-    const isDescriptionValid = validateProductDescription(
-      values.description || ""
-    ).isValid;
-    const isPriceValid = validateProductPrice(values.price || "").isValid;
-    const isTagsValid = tags.length > 0;
+    if (shouldCheckTags) {
+      results.push(tags.length > 0);
+    }
 
-    setIsFormValid(
-      isNameValid && isDescriptionValid && isPriceValid && isTagsValid
-    );
+    for (const key in values) {
+      const validator = validatorMap[key];
+      if (validator) {
+        results.push(validator(values[key]).isValid);
+      }
+    }
+
+    setIsFormValid(results.every(Boolean));
   };
 
   const debouncedValidateForm = debounce(validateForm, CHECK_FORM_DEBOUNCE_MS);
