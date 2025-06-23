@@ -2,6 +2,7 @@
 import { css } from "@emotion/react";
 import avatarImg from "@/assets/images/img-avatar.png";
 import formatDate from "@/utils/formatDate";
+import ImageSkeleton from "@/components/ui/Skeletons/ImageSkeleton";
 
 const ProfileSummary = ({
   name,
@@ -19,14 +20,9 @@ const ProfileSummary = ({
       style={props.style}
     >
       <div className="profile">
-        <img
+        <ImageSkeleton
           src={imgSrc || avatarImg}
           alt="기본 프로필 이미지"
-          // onLoad={ }
-          onError={(e) => {
-            e.target.onerror = null;
-            e.currentTarget.src = avatarImg;
-          }}
           width={imgSize}
           height={imgSize}
         />
