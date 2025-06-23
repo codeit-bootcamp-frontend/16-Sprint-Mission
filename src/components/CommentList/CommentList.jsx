@@ -12,6 +12,8 @@ import Dropdown from "@/components/ui/Dropdown/Dropdown";
 import CursorPagination from "@/components/Pagination/CursorPagination";
 import KebabButton from "@/components/ui/Button/KebabButton";
 import Textarea from "@/components/ui/Textarea";
+import useWindowDimensions from "@/hooks/useWindowDimensions";
+import { BREAKPOINTS } from "@/constants/responsive";
 
 const dropdownItems = ["수정하기", "삭제하기"];
 
@@ -100,19 +102,11 @@ const CommentList = ({ productId }) => {
 
   return (
     <div css={CommentListStyle}>
-      <ol className="comments">
-        {isLoading && <p>댓글 로딩중...</p>}
-        {loadingError && <p>댓글을 불러오는 데 문제가 발생했습니다.</p>}
-        {!isLoading && comments.length === 0 && (
-          <div className="inquiry-empty">
-            <img
-              src={inquiryEmptyImg}
-              alt="전화기 들고 물음표 띄우는 판다 이미지"
-            />
-            <p>아직 문의가 없어요</p>
-          </div>
-        )}
+      {isLoading && <p>댓글 로딩중...</p>}
+      {loadingError && <p>댓글을 불러오는 데 문제가 발생했습니다.</p>}
+      {!isLoading && comments.length === 0 && <CommentEmpty />}
 
+      <ol className="comments">
         {comments?.map((cmt) => (
           <li className="comment" key={cmt.id}>
             {isEditCommentId === cmt.id ? (
@@ -191,5 +185,35 @@ const CommentListStyle = css`
   .comment-content {
     margin-bottom: 24px;
     font-size: 14px;
+  }
+`;
+
+const CommentEmpty = () => {
+  const { width: innerWidth } = useWindowDimensions();
+
+  return (
+    <div css={CommentEmptyStyle}>
+      <img
+        src={inquiryEmptyImg}
+        alt="전화기 들고 물음표 띄우는 판다 이미지"
+        width={innerWidth > BREAKPOINTS.desktop ? 174 : 124}
+        height={innerWidth > BREAKPOINTS.desktop ? 138 : 98}
+      />
+      <p className="txt">아직 문의가 없어요</p>
+    </div>
+  );
+};
+
+const CommentEmptyStyle = css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 30px 0 0;
+
+  .txt {
+    color: var(--gray400);
+    font-size: 16px;
   }
 `;

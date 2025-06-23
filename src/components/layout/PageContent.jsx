@@ -22,8 +22,7 @@ const PageContentStyle = css`
   @media (min-width: 1280px) {
     width: var(--page-content-width);
     margin: 24px auto;
-    padding: 0;
-    padding-bottom: 60px;
+    padding: 6px 0 60px;
   }
 
   .page-footer {
