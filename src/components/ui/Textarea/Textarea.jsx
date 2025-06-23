@@ -7,7 +7,7 @@ const Textarea = ({ id, name, placeholder, onChange, onBlur, ...props }) => {
       id={id}
       name={name}
       placeholder={placeholder}
-      css={TextareaStyle(props.maxHeight)}
+      css={TextareaStyle(props.maxheight)}
       onChange={onChange}
       onBlur={onBlur}
       {...props}
@@ -17,7 +17,7 @@ const Textarea = ({ id, name, placeholder, onChange, onBlur, ...props }) => {
 
 export default Textarea;
 
-const TextareaStyle = (maxHeight) => css`
+const TextareaStyle = (maxheight) => css`
   font-size: 1rem;
   padding: 16px 20px;
   background: var(--gray200);
@@ -25,7 +25,7 @@ const TextareaStyle = (maxHeight) => css`
   border: none;
   resize: none;
   height: var(--form-input-max-height);
-  max-height: ${maxHeight !== "auto" ? `${maxHeight}px` : maxHeight};
+  max-height: ${maxheight !== "auto" ? `${maxheight}px` : maxheight};
 
   &::placeholder {
     color: var(--gray400);
