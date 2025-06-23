@@ -4,7 +4,7 @@ import Pagination from "../../../../components/Pagination/Pagination";
 import ProductList from "../../../../components/ProductList/ProductList";
 import { getData } from "../../../../data/api";
 import styles from "./AllProductArea.module.scss";
-import { getItemCount } from "../../../../utils/getItemCount";
+import usePagination from "../../../../hooks/usePagination";
 
 const SORT_TYPE = {
   recent: "최신순",
@@ -50,20 +50,11 @@ const ITEM_COUNT = {
   MOBILE: 4,
 };
 
-const INIT_PAGE_SIZE = getItemCount(ITEM_COUNT);
-
 const AllProductArea = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [orderBy, setOrderBy] = useState("recent");
-  const [pageSize, setPageSize] = useState(INIT_PAGE_SIZE);
-  const [productList, setProductList] = useState([]);
+  const { currentPage, setCurrentPage, pageSize } = usePagination(ITEM_COUNT);
   const [totalCount, setTotalCount] = useState(0);
-
-  // 요구 정의서
-  // 1. orderby="recent", 10가지 상품을 전체 상품 리스트에 렌더링
-  // 2. 반응형에 따라 웹에선 10, 타블렛에선 6, 모바일에선 4 보여주기 (미디어 쿼리 사용하기)
-  // 3. 전체 상품에서 드롭다운으로 최신순/좋아요순 정렬 기능 추가
-  // 4. [심화] 페이지네이션 기능 구현
+  const [orderBy, setOrderBy] = useState("recent");
+  const [productList, setProductList] = useState([]);
 
   const getProductList = async (options) => {
     try {
@@ -75,20 +66,6 @@ const AllProductArea = () => {
       console.error(error);
     }
   };
-
-  const updatePageSize = () => {
-    const itemCount = getItemCount(ITEM_COUNT);
-    setPageSize(itemCount);
-  };
-
-  useEffect(() => {
-    updatePageSize();
-    window.addEventListener("resize", updatePageSize);
-
-    return () => {
-      window.removeEventListener("resize", updatePageSize);
-    };
-  }, []);
 
   useEffect(() => {
     getProductList({
