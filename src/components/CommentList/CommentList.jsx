@@ -152,7 +152,7 @@ const CommentList = ({ productId }) => {
               <ProfileSummary
                 name={cmt.writer.nickname}
                 imgSrc={cmt.image}
-                createdAt={cmt.createdAt}
+                createdAt={cmt.updatedAt}
                 imgSize={32}
                 metaSize={12}
                 imgInfoGap={8}
