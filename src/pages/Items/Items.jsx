@@ -1,12 +1,12 @@
-import ProductsFavorite from "./ProductsFavorite";
-import ProductsAll from "./ProductsAll";
-import ProductDataProvider from "./ProductDataProvider";
-import "@styles/item.css";
+import ProductDataProvider from './ProductDataProvider';
+import ProductsAll from './ProductsAll';
+import ProductsFavorite from './ProductsFavorite';
+import styles from './styles/item.module.css';
 
 function Items() {
   return (
-    <main className="items">
-      <div className="items__container">
+    <main className={styles.items}>
+      <div className={styles.container}>
         <ProductsFavorite />
         <ProductDataProvider>
           <ProductsAll />

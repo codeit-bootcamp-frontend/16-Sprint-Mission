@@ -1,4 +1,4 @@
-.container__position-relative {
+.containerRelative {
   position: relative;
 }
 
@@ -6,8 +6,8 @@
   padding: 0 16px;
 }
 
-.main__sign-up {
-  margin: 24px auto;
+.loginSection {
+  margin: 80px auto;
   max-width: 400px;
   width: 100%;
   display: flex;
@@ -17,56 +17,42 @@
   gap: 24px;
 }
 
-.sign-up__logo img {
+.logo img {
   width: 198px;
 }
 
-.sign-up__form {
+.form {
   width: 100%;
 }
 
-.sign-up__form fieldset {
+.form fieldset {
   display: flex;
   flex-direction: column;
   width: 100%;
   border: none;
 }
 
-.sign-up__form label[for="toggle-visibility-pw"] {
+.form label[for='toggle-visibility-pw'] {
   position: absolute;
-  top: 46px;
+  top: 52px;
   right: 24px;
   display: inline-block;
   width: 24px;
   height: 24px;
-  background: url(../assets/icon/pw_hide.png) center center;
+  background: url(../../../assets/icon/pw_hide.png) center center;
   background-size: cover;
   cursor: pointer;
 }
 
-.sign-up__form label[for="toggle-visibility-pwcheck"] {
-  position: absolute;
-  top: 46px;
-  right: 24px;
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  background: url(../assets/icon/pw_hide.png) center center;
-  background-size: cover;
-  cursor: pointer;
+.pwToggle:checked ~ label[for='toggle-visibility-pw'] {
+  background-image: url(../../../assets/icon/pw_show.png);
 }
 
-.toggle-visibility-pw,
-.toggle-visibility-pwcheck {
+.pwToggle {
   display: none;
 }
 
-.toggle-visibility-pwcheck:checked ~ label[for="toggle-visibility-pwcheck"],
-.toggle-visibility-pw:checked ~ label[for="toggle-visibility-pw"] {
-  background-image: url(../assets/icon/pw_show.png);
-}
-
-.sign-up__form label {
+.form label {
   display: inline-block;
   line-height: 24px;
   font-size: 14px;
@@ -74,7 +60,7 @@
   color: var(--secondary-color);
 }
 
-.sign-up__form input {
+.form input {
   margin-top: 8px;
   margin-bottom: 16px;
   border: none;
@@ -85,7 +71,7 @@
   width: 100%;
 }
 
-.sign-up__form button {
+.form button {
   height: 56px;
   padding: 16px 124px;
   border-radius: 40px;
@@ -94,11 +80,11 @@
   font-size: 20px;
 }
 
-.button-fail {
+.inActivateBtn {
   background-color: var(--secondary-gray400);
 }
 
-.sign-up__alert {
+.loginAlert {
   height: 74px;
   background-color: #e6f2ff;
   padding: 16px 23px;
@@ -112,62 +98,65 @@
   margin-bottom: 24px;
 }
 
-.sign-up__alert img {
+.loginAlert img {
   width: 42px;
   height: 42px;
   cursor: pointer;
 }
 
-.sign-up__login {
+.iconContainer a:last-child {
+  margin-left: 16px;
+}
+
+.signUpGuide {
   font-size: 14px;
   font-weight: 500;
   line-height: 24px;
   text-align: center;
 }
 
-.sign-up__login a {
+.signUpGuide a {
   text-decoration: underline;
   color: var(--primary-color);
 }
 
 /* validation err 관련 스타일 */
-.button-pass {
+.activateBtn {
   background-color: var(--primary-color);
 }
 
-.button-pass:hover {
+.activateBtn:hover {
   background-color: var(--primary-hover);
 }
 
 @media screen and (min-width: 768px) {
-  .main__sign-up {
+  .loginSection {
     max-width: 640px;
-    margin-top: 48px;
+    margin-top: 190px;
     gap: 40px;
   }
 
-  .sign-up__logo img {
+  .logo img {
     width: 396px;
   }
 
-  .sign-up__form label {
+  .form label[for='toggle-visibility-pw'] {
+    top: 60px;
+  }
+
+  .form label {
     line-height: 26px;
     font-size: 18px;
   }
 
-  .sign-up__form input {
+  .form input {
     margin-top: 16px;
     margin-bottom: 24px;
-  }
-
-  .sign-up__form label[for="toggle-visibility-pw"],
-  .sign-up__form label[for="toggle-visibility-pwcheck"] {
-    top: 58px;
   }
 }
 
 @media screen and (min-width: 1200px) {
-  .main__sign-up {
-    margin-top: 60px;
+  .loginSection {
+    margin-top: 231px;
   }
 }

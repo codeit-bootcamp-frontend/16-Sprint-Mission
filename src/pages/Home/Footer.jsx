@@ -1,16 +1,14 @@
-import styles from "@styles/Footer.module.css";
-import facebookIcon from "@assets/icon/ic_facebook.png";
-import instaIcon from "@assets/icon/ic_instagram.png";
-import twitterIcon from "@assets/icon/ic_twitter.png";
-import youtubeIcon from "@assets/icon/ic_youtube.png";
-import { Link } from "react-router-dom";
+import facebookIcon from '@assets/icon/ic_facebook.png';
+import instaIcon from '@assets/icon/ic_instagram.png';
+import twitterIcon from '@assets/icon/ic_twitter.png';
+import youtubeIcon from '@assets/icon/ic_youtube.png';
+import { Link } from 'react-router-dom';
+import styles from './styles/Footer.module.css';
 
 function Footer() {
   return (
     <footer className={styles.footer}>
-      <div
-        className={`${styles.footer__container} ${styles.container} container`}
-      >
+      <div className={`${styles.container} container`}>
         <span>©codeit - 2024</span>
         <div>
           <Link aria-label="약관으로 이동" to="/privacy">
@@ -20,7 +18,7 @@ function Footer() {
             FAQ
           </Link>
         </div>
-        <ul className={styles["footer__sns-list"]}>
+        <ul className={styles.snsList}>
           <li>
             <a
               rel="noopener noreferer"

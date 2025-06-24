@@ -1,0 +1,6 @@
+.descriptionField label + textarea {
+  height: 282px;
+  width: 100%;
+  resize: none;
+  font-family: inherit;
+}

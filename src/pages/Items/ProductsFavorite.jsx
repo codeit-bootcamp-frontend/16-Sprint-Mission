@@ -1,27 +1,27 @@
-import styles from "@styles/ProductsFavorite.module.css";
-import { useEffect, useState } from "react";
-import ProductItem from "./ProductItem";
-import { useResizeInnerWidth } from "@hooks/useResizeInnerWidth";
-import LoadFailed from "./LoadFailed";
-import { useLoadItems } from "@hooks/useLoadItems";
+import React, { Suspense, useEffect, useState } from 'react';
+import SkeletonUi from '@components/SkeletonUi';
+import { useLoadItems } from '@hooks/useLoadItems';
+import { useResizeInnerWidth } from '@hooks/useResizeInnerWidth';
+import LoadFailed from './LoadFailed';
+import styles from './styles/ProductsFavorite.module.css';
 
 function ProductsFavorite() {
   const [favoriteItems, setFavoriteItems] = useState([]);
   const [favoriteQueryStrings, setFavoriteQueryStrings] = useState({
     page: 1,
-    orderBy: "favorite",
+    orderBy: 'favorite',
     pageSize: 4,
   });
 
   //resize 발생 시 pageSize 새로 가져다줘
-  const [pageSize] = useResizeInnerWidth("favor");
+  const { pageSize } = useResizeInnerWidth('favor');
 
   useEffect(() => {
     setFavoriteQueryStrings((prev) => ({ ...prev, pageSize }));
   }, [pageSize]);
 
   //쿼리 변경 시 가져오기
-  const [loadFail, result] = useLoadItems(favoriteQueryStrings);
+  const { loadFailed, result } = useLoadItems(favoriteQueryStrings);
 
   useEffect(() => {
     if (result.list) {
@@ -29,20 +29,24 @@ function ProductsFavorite() {
     }
   }, [result]);
 
+  const LazyProductItem = React.lazy(() => import('./ProductItem'));
+
   return (
-    <section className={styles.items__favorite}>
+    <section className={styles.itemsFavorite}>
       <h2>베스트 상품</h2>
-      {loadFail ? (
+      {loadFailed ? (
         <LoadFailed />
       ) : (
-        <ul className={styles["favorite-list"]}>
+        <ul className={styles.favoriteList}>
           {favoriteItems.map((item) => (
-            <li className={styles[`favorite-list__card`]} key={item.id}>
-              <ProductItem
-                className={styles["favorite-list__item"]}
-                item={item}
-              ></ProductItem>
-            </li>
+            <Suspense
+              key={item.id}
+              fallback={<SkeletonUi className="favoriteItemsSkeleton" />}
+            >
+              <li className={styles.card}>
+                <LazyProductItem className={styles.item} item={item} />
+              </li>
+            </Suspense>
           ))}
         </ul>
       )}

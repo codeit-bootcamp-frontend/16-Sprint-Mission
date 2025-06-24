@@ -1,50 +1,47 @@
-:root {
-  /* footer */
-  --footer-padding: 32px 32px 30px;
-  --footer-flex-basis: 181.11px;
-}
-
 /* footer */
 .footer {
+  --footer-padding: 32px 32px 30px;
+  --footer-flex-basis: 181.11px;
+
   background-color: var(--secondary-gray900);
   height: 160px;
   padding: var(--footer-padding);
   position: relative;
 }
 
-.footer__container {
+.container {
   display: flex;
   justify-content: space-between;
   height: 20px;
   color: var(--footer-text);
 }
 
-.footer__container > div {
+.container > div {
   display: flex;
   align-items: center;
   flex-basis: var(--footer-flex-basis);
   gap: 30px;
 }
 
-.footer__container > div a {
+.container > div a {
   display: inline-block;
   color: inherit;
 }
 
-.footer__sns-list {
+.snsList {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 116px;
 }
 
-.footer__sns-list li img {
+.snsList li img {
   width: 20px;
   height: 20px;
   gap: 12px;
 }
 
-.footer__container span {
+.container span {
   position: absolute;
   width: 112px;
   bottom: 30px;
@@ -55,7 +52,7 @@
     --footer-padding: 32px 104px 108px;
   }
 
-  .footer__container span {
+  .container span {
     position: relative;
     bottom: 0;
   }
@@ -69,11 +66,11 @@
   }
 
   /* footer */
-  .footer__container {
+  .container {
     color: var(--secondary-gray400);
   }
 
-  .footer__container > div a {
+  .container > div a {
     color: var(--secondary-gray200);
   }
 }

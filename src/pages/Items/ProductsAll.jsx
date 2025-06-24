@@ -1,25 +1,27 @@
-import styles from "@styles/ProductsAll.module.css";
-import ProductItem from "./ProductItem";
-import ProductsFilterBar from "./ProductsFilterBar";
-import Pagination from "./Pagination";
-import LoadFailed from "./LoadFailed";
-import { useResizeInnerWidth } from "@hooks/useResizeInnerWidth";
-import { useContext, useEffect } from "react";
-import { ProductData } from "./ProductDataProvider";
-import { useLoadItems } from "@hooks/useLoadItems";
+import React, { useContext, useEffect, Suspense } from 'react';
+import { useLoadItems } from '@hooks/useLoadItems';
+import { useResizeInnerWidth } from '@hooks/useResizeInnerWidth';
+import LoadFailed from './LoadFailed';
+import Pagination from './Pagination';
+import { ProductData } from './ProductDataProvider';
+// import ProductItem from './ProductItem'
+import ProductsFilterBar from './ProductsFilterBar';
+import styles from './styles/ProductsAll.module.css';
+import SkeletonUi from '../../components/SkeletonUi';
 
 function ProductsAll() {
-  const { products, setProducts, setTotal, queryStrings, setQueryStrings } = useContext(ProductData);
+  const { products, setProducts, setTotal, queryStrings, setQueryStrings } =
+    useContext(ProductData);
 
   //resize발생하면 페이지사이즈 다시 가져다줘
-  const [pageSize] = useResizeInnerWidth("all");
+  const { pageSize } = useResizeInnerWidth('all');
 
   useEffect(() => {
     setQueryStrings((prev) => ({ ...prev, pageSize }));
   }, [pageSize]);
 
   // 쿼리스트링으로 아이템 가져오기 가져다줘
-  const [loadFail, result] = useLoadItems(queryStrings);
+  const { loadFailed, result } = useLoadItems(queryStrings);
 
   useEffect(() => {
     if (result.list) {
@@ -28,25 +30,29 @@ function ProductsAll() {
     }
   }, [result]);
 
+  const LazyProductItem = React.lazy(() => import('./ProductItem'));
+
   return (
     <>
-      <section className={styles.items__all}>
-        <div className={styles[`items__all-filter`]}>
+      <section className={styles.itemsAll}>
+        <div className={styles.filterArea}>
           <h2>전체 상품</h2>
           <ProductsFilterBar />
         </div>
-        {loadFail ? (
+        {loadFailed ? (
           <LoadFailed />
         ) : (
-          <ul className={styles[`items__all-list`]}>
+          <ul className={styles.allList}>
             {products.map((item) => {
               return (
-                <li className={styles[`all-list__card`]} key={item.id}>
-                  <ProductItem
-                    className={styles[`all-list__item`]}
-                    item={item}
-                  ></ProductItem>
-                </li>
+                <Suspense
+                  key={item.id}
+                  fallback={<SkeletonUi className="allItemsSkeleton" />}
+                >
+                  <li className={styles.card}>
+                    <LazyProductItem className={styles.item} item={item} />
+                  </li>
+                </Suspense>
               );
             })}
           </ul>

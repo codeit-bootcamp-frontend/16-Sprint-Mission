@@ -1,12 +1,12 @@
-import styles from "@styles/Login.module.css";
-import kakaoIcon from "@assets/icon/login_kakao.png";
-import googleIcon from "@assets/icon/login_google.png";
+import googleIcon from '@assets/icon/login_google.png';
+import kakaoIcon from '@assets/icon/login_kakao.png';
+import styles from '@pages/Auth/styles/Login.module.css';
 
 function SocialLogin() {
   return (
-    <div className={styles.login__alert}>
+    <div className={styles.loginAlert}>
       간편 로그인하기
-      <div className={styles.icon__container}>
+      <div className={styles.iconContainer}>
         <a
           aria-label="구글로 로그인"
           rel="noopener"

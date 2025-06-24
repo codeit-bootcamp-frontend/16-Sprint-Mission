@@ -1,4 +1,4 @@
-import styles from "@styles/FailLoad.module.css";
+import styles from './styles/FailLoad.module.css';
 
 function LoadFailed() {
   return (

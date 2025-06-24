@@ -1,4 +1,4 @@
-:root {
+.main {
   /* hero */
   --hero-padding-top: 48px;
   --hero-height: 540px;
@@ -43,14 +43,14 @@
   height: var(--section-img-height);
 }
 
-.main .container > div > span {
+.main article > div > span {
   /* 각 영역의 파란색 글씨들(Hot item, Search, Register) */
   font-weight: 700;
   color: var(--primary-color);
   line-height: 140%;
 }
 
-.main .container > div > h2 {
+.main article > div > h2 {
   /* 각 영역의 굵은 글씨 */
   font-weight: 700;
   line-height: 32px;
@@ -58,7 +58,7 @@
   margin-top: var(--container-title-margin-top);
 }
 
-.main .container > div p {
+.main article > div p {
   /*각 영역의 설명(p태그)*/
   font-weight: 500;
   line-height: 26px;
@@ -66,12 +66,12 @@
 }
 
 /* main-hero */
-.main__hero {
+.heroSection {
   background-color: var(--background-color);
   overflow-x: hidden;
 }
 
-.hero__content {
+.heroContent {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -80,13 +80,13 @@
   padding-top: var(--hero-padding-top);
 }
 
-.hero__content .hero__text {
+.heroContent .heroText {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.hero__content .hero__text h2 {
+.heroContent .heroText h2 {
   text-align: center;
   font-weight: 700;
   line-height: 140%;
@@ -94,7 +94,7 @@
   margin-top: 0;
 }
 
-.hero__text button {
+.heroText button {
   border-radius: 40px;
   background-color: var(--primary-color);
   height: var(--hero-button-height);
@@ -102,27 +102,27 @@
   margin-top: var(--hero-button-margin-top);
 }
 
-.hero__text button:hover {
+.heroText button:hover {
   background-color: var(--primary-hover);
 }
 
-.hero__content .hero__text button span {
+.heroContent .heroText button span {
   color: var(--secondary-gray50);
   font-size: 18px;
   font-weight: 600;
   line-height: 26px;
 }
 
-.main .hero__img {
+.main .heroImg {
   width: var(--hero-img-width);
   height: var(--hero-img-height);
   border-radius: 0;
 }
 
 /* hot-item, search, register 공통 */
-.main__hot-item,
-.main__search,
-.main__register {
+.hotItemSection,
+.searchSection,
+.registerSection {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -130,9 +130,9 @@
   margin-top: var(--section-card-margin-top);
 }
 
-.hot-item__content,
-.search__content,
-.register__content {
+.hotItemContent,
+.searchContent,
+.registerContent {
   /*각 영역 article 공통 설정*/
   display: flex;
   flex-direction: column;
@@ -142,57 +142,58 @@
 }
 
 /* main-hot-item */
-.main__hot-item {
+.hotItemSection {
   margin-top: var(--hot-item-margin-top);
 }
 
-.hot-item__text {
+.hotItemText {
   width: var(--hot-item-text-width);
 }
 
-.hot-item__text p {
+.hotItemText p {
   margin-right: var(--hot-item-paragraph-margin-right);
 }
+
 /* main-search */
-.search__content {
+.searchContent {
   align-items: flex-end;
 }
 
-.search__text {
+.searchText {
   width: var(--search-text-width);
   order: 1;
   text-align: right;
 }
 
-.search__text p {
+.searchText p {
   margin-left: var(--search-paragraph-margin-left);
   /* 피그마에 search부분만 18px */
   font-size: 18px;
 }
 
 /* main-register */
-.register__text {
+.registerText {
   width: var(--register-text-width);
 }
 
-.register__text p {
+.registerText p {
   margin-right: var(--register-paragraph-margin-right);
 }
 
 /* main-banner */
-.main__banner {
+.bannerSection {
   margin-top: var(--banner-margin-top);
   background-color: var(--background-color);
 }
 
-.main__banner > div {
+.bannerSection > div {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
 
-.banner__text {
+.bannerText {
   margin-top: var(--banner-text-margin-top);
   font-size: 32px;
   font-weight: 700;
@@ -200,14 +201,14 @@
   text-align: center;
 }
 
-.main__banner > div img {
+.bannerSection > div img {
   width: var(--banner-img-width);
   height: var(--banner-img-height);
   margin-top: var(--banner-img-margin-top);
 }
 
 @media screen and (min-width: 768px) {
-  :root {
+  .main {
     /* hero */
     --hero-padding-top: 84px;
     --hero-height: 717px;
@@ -242,36 +243,36 @@
   }
 
   /* main 공통 */
-  .main .container > div > h2 {
+  .main article > div > h2 {
     line-height: 42px;
     font-size: 32px;
   }
-  .main .container > div > span {
+  .main article > div > span {
     font-size: 18px;
   }
 
-  .main .container > div p {
+  .main article > div p {
     font-size: 18px;
   }
 
   /* hero */
-  .hero__content .hero__text h2 {
+  .heroContent .heroText h2 {
     font-size: 40px;
   }
 
-  .hero__content .hero__text button span {
+  .heroContent .hero__text button span {
     font-size: 20px;
     line-height: 32px;
   }
 
   /* banner */
-  .banner__text {
+  .bannerText {
     font-size: 40px;
   }
 }
 
 @media screen and (min-width: 1200px) {
-  :root {
+  .main {
     /* hero */
     --hero-padding-top: 200px;
     --hero-height: auto;
@@ -286,6 +287,7 @@
 
     /* hot-item */
     --hot-item-paragraph-margin-right: 23px;
+    --hot-item-margin-top: 0px;
 
     /* search */
     --search-paragraph-margin-left: 29px;
@@ -301,17 +303,17 @@
   }
 
   /* main 공통 */
-  .main .container > div > span {
+  .main article > div > span {
     line-height: 26px;
   }
 
-  .main .container > div > h2 {
+  .main article > div > h2 {
     letter-spacing: 0.02em;
     line-height: 140%;
     font-size: 40px;
   }
 
-  .main .container > div > p {
+  .main article > div > p {
     line-height: 32px;
     font-size: 24px;
   }
@@ -321,33 +323,33 @@
   }
 
   /* main-hero */
-  .hero__content {
+  .heroContent {
     justify-content: center;
     flex-direction: row;
     gap: 7px;
   }
 
-  .hero__content .hero__text {
+  .heroContent .heroText {
     gap: 32px;
     padding-bottom: 60px;
   }
 
-  .hero__content .hero__text h2 {
+  .heroContent .heroText h2 {
     text-align: left;
     margin: 0;
   }
 
   /* hot-item, search, register 공통 */
-  .main__hot-item,
-  .main__search,
-  .main__register {
+  .hotItemSection,
+  .searchSection,
+  .registerSection {
     height: 720px;
     background-color: var(--white-color);
   }
 
-  .hot-item__content,
-  .search__content,
-  .register__content {
+  .hotItemContent,
+  .searchContent,
+  .registerContent {
     flex-direction: row;
     align-items: center;
     width: 988px;
@@ -357,45 +359,45 @@
   }
 
   /* main-hot-item */
-  .hot-item__text h2 {
+  .hotItemText h2 {
     margin-right: 52px;
   }
 
   /* main-search */
-  .search__content {
+  .searchContent {
     padding: 0 14px;
   }
 
-  .search__text {
+  .searchText {
     order: 0;
   }
 
-  .search__text h2 {
+  .searchText h2 {
     margin-left: 23px;
   }
 
   /* main-register */
-  .register__content {
+  .registerContent {
     /* 양 옆 패딩 없음 */
     padding: 0;
   }
 
-  .register__text h2 {
+  .registerText h2 {
     margin-right: 42px;
   }
 
   /* main-banner */
-  .main__banner {
+  .bannerSection {
     height: 540px;
     padding-top: 143px;
   }
 
-  .main__banner > div {
+  .bannerSection > div {
     flex-direction: row;
     gap: 69px;
   }
 
-  .banner__text {
+  .bannerText {
     text-align-last: left;
   }
 }
