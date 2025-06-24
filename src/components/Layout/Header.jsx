@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { FontTypes, ColorTypes } from '../../styles/theme';
 import { applyFontStyles } from '../../styles/mixins';
+import theme from '../../styles/theme';
 import logo from '../../assets/images/logo/logo.svg';
 import textLogo from '../../assets/images/logo/textlogo.svg';
 import profile from '../../assets/images/icons/ic_profile.png';
@@ -55,14 +56,14 @@ const HeaderContainer = styled.header`
   align-items: center;
   height: 70px;
   border-bottom: 1px solid #dfdfdf;
-  padding: 0 var(--page-spacing-x-mobile);
+  padding: 0 ${({ theme }) => theme.spacing.mobile};
 
   @media (min-width: 768px) {
-    padding: 0 var(--page-spacing-x-tablet);
+    padding: 0 ${({ theme }) => theme.spacing.tablet};
   }
 
   @media (min-width: 1200px) {
-    padding: 0 var(--page-spacing-x-desktop);
+    padding: 0 ${({ theme }) => theme.spacing.desktop};
   }
 `;
 

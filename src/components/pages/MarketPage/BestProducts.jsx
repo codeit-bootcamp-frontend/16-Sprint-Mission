@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 
 import { getProducts } from '../../../api/api';
@@ -8,19 +8,19 @@ import ItemCard from './ItemCard';
 function BestProducts() {
   const { isMobile, isTablet, isDesktop } = useDeviceSize();
 
-  const getPageSize = () => {
+  const deviceSize = useMemo(() => {
     if (isMobile) return 1;
     if (isTablet) return 2;
     if (isDesktop) return 4;
     return 1;
-  };
+  }, [isMobile, isTablet, isDesktop]);
 
   const [bestItems, setBestItems] = useState([]);
-  const [pageSize, setPageSize] = useState(getPageSize());
+  const [pageSize, setPageSize] = useState(deviceSize);
 
   useEffect(() => {
-    setPageSize(getPageSize());
-  }, [isMobile, isTablet, isDesktop]);
+    setPageSize(deviceSize);
+  }, [deviceSize]);
 
   useEffect(() => {
     const fetchItems = async () => {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 
 import ItemCard from './ItemCard';
@@ -16,20 +16,24 @@ import useDeviceSize from '../../../hooks/useDeviceSize';
 function AllProducts() {
   const { isMobile, isTablet, isDesktop } = useDeviceSize();
 
-  const getPageSize = () => {
+  const deviceSize = useMemo(() => {
     if (isMobile) return 4;
     if (isTablet) return 6;
     if (isDesktop) return 10;
     return 4;
-  };
+  }, [isMobile, isTablet, isDesktop]);
 
+  const [pageSize, setPageSize] = useState(deviceSize);
   const [items, setItems] = useState([]);
-  const [pageSize, setPageSize] = useState(getPageSize());
   const [keyword, setKeyword] = useState('');
   const [debouncedKeyword, setDebouncedKeyword] = useState('');
   const [orderBy, setOrderBy] = useState('recent');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
+
+  useEffect(() => {
+    setPageSize(deviceSize);
+  }, [deviceSize]);
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -44,7 +48,6 @@ function AllProducts() {
     };
 
     fetchItems();
-    setPageSize(getPageSize());
   }, [pageSize, orderBy, currentPage, debouncedKeyword]);
 
   useEffect(() => {
@@ -73,7 +76,7 @@ function AllProducts() {
 
   return (
     <AllProductsContainer>
-      {isMobile ? (
+      {isDesktop ? (
         <>
           <HeaderContainer>
             <div>전체 상품</div>
