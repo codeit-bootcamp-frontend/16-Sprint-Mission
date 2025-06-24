@@ -1,0 +1,14 @@
+.emptyComments img {
+  display: block;
+  margin: 0 auto;
+
+  width: 140px;
+  height: 174px;
+}
+
+@media screen and (min-width: 1200px) {
+  .emptyComments img {
+    width: 196px;
+    height: 230px;
+  }
+}

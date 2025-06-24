@@ -12,3 +12,22 @@ export async function getProducts(queryStrings) {
 
   return result;
 }
+
+export async function getProductDetail(productId) {
+  const response = await fetch(`${BASEURL}/products/${productId}`);
+
+  if (!response.ok) throw new Error('응답에 문제 있음');
+  const result = await response.json();
+  return result;
+}
+
+export async function getProductComment(productId) {
+  const response = await fetch(
+    `${BASEURL}/products/${productId}/comments?limit=3`,
+  );
+
+  if (!response.ok) throw new Error('응답에 문제 있음');
+  const result = await response.json();
+
+  return result;
+}

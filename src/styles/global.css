@@ -10,6 +10,7 @@
 body {
   font-family: "Pretendard-Regular", sans-serif;
   word-break: keep-all;
+  color:var(--secondary-gray800)
 }
 
 :root {

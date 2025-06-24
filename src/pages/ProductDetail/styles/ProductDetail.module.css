@@ -1,0 +1,21 @@
+.main {
+  --page-mt: 16px;
+  --page-pb: 42px;
+
+  margin-top: var(--page-mt);
+  padding-bottom: var(--page-pb);
+}
+
+@media screen and (min-width: 768px) {
+  .main {
+    --page-mt: 24px;
+    --page-pb: 167px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .main {
+    --page-mt: 30px;
+    --page-pb: 155px;
+  }
+}

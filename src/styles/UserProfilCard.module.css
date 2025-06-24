@@ -1,0 +1,44 @@
+.userInfo {
+  display: flex;
+  font-size: 14px;
+  line-height: 24px;
+  gap: 16px;
+  align-items: center;
+}
+
+.post .userInfo img {
+  width: 40px;
+  height: 40px;
+}
+
+.post .userName {
+  font-weight: 500;
+  margin-bottom: 2px;
+  color: var(--secondary-gray600);
+}
+
+.post .postTime {
+  font-weight: 400;
+  color: var(--cool-gray400);
+}
+
+.comment .userInfo {
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.comment .userInfo img {
+  width: 32px;
+  height: 32px;
+}
+
+.comment .userName {
+  margin-bottom: 4px;
+}
+
+.comment .postTime {
+  color: var(--cool-gray400);
+}
