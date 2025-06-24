@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 
 const useAsync = (asyncFunc) => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [loadingError, setLoadingError] = useState(null);
 
   const runAsync = useCallback(
@@ -20,7 +20,11 @@ const useAsync = (asyncFunc) => {
     [asyncFunc]
   );
 
-  return { isLoading, loadingError, runAsync };
+  const resetError = useCallback(() => {
+    setLoadingError(null);
+  }, []);
+
+  return { isLoading, loadingError, runAsync, resetError };
 };
 
 export default useAsync;

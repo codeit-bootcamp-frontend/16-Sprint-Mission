@@ -41,11 +41,13 @@ const BestProductList = ({ title, pageSize }) => {
         <ProductListSkeleton pageSize={pageSize} listType={LIST_TYPE} />
       )}
       {loadingError && <ProductListError />}
-      <ProductListResults
-        products={products}
-        pageSize={pageSize}
-        listType={LIST_TYPE}
-      />
+      {!isLoading && (
+        <ProductListResults
+          products={products}
+          pageSize={pageSize}
+          listType={LIST_TYPE}
+        />
+      )}
     </div>
   );
 };

@@ -18,10 +18,6 @@ import { BREAKPOINTS } from "@/constants/responsive";
 const dropdownItems = ["수정하기", "삭제하기"];
 
 const CommentList = ({ productId }) => {
-  const [comments, setComments] = useState([]);
-  const [nextCursor, setNextCursor] = useState(null);
-  const [isCommentPageReady, setIsCommentPageReady] = useState(false);
-  const [isEditCommentId, setIsEditCommentId] = useState(null);
   const {
     isLoading,
     loadingError,
@@ -31,12 +27,17 @@ const CommentList = ({ productId }) => {
     isLoading: updatingComment,
     loadingError: updateCommentError,
     runAsync: updateCommentAsync,
+    resetError: resetUpdateError,
   } = useAsync(updateComment);
   const {
     isLoading: deletingComment,
     loadingError: deleteCommentError,
     runAsync: deleteCommentAsync,
   } = useAsync(deleteComment);
+
+  // 댓글 페이지네이션 (커서 기반)
+  const [comments, setComments] = useState([]);
+  const [nextCursor, setNextCursor] = useState(null);
 
   const handleCommentLoad = useCallback(
     async (currentCursor = null, setNextCursorFromPagination) => {
@@ -54,6 +55,9 @@ const CommentList = ({ productId }) => {
     [getCommentAsync, productId]
   );
 
+  // 댓글 수정
+  const [isEditCommentId, setIsEditCommentId] = useState(null);
+
   const handleUpdateComment = (commentId) => {
     const textarea = document.querySelector(`[data-comment-id="${commentId}"]`);
     const updated = textarea?.value;
@@ -62,6 +66,13 @@ const CommentList = ({ productId }) => {
     updateCommentAsync(commentId, updated);
   };
 
+  const handleUpdateCommentCancel = () => {
+    setIsEditCommentId(null);
+    setDropdownCommentId(null);
+    resetUpdateError(null);
+  };
+
+  // 댓글 드롭다운
   const [dropdownCommentId, setDropdownCommentId] = useState(null);
 
   const toggleDropdown = (commentId) => {
@@ -75,13 +86,12 @@ const CommentList = ({ productId }) => {
     }
     if (value === "삭제하기") {
       deleteCommentAsync(commentId);
+      if (deleteCommentError) alert("댓글 삭제에 실패했습니다.");
     }
   };
 
-  const handleUpdateCommentCancel = () => {
-    setIsEditCommentId(null);
-    setDropdownCommentId(null);
-  };
+  // 초기 댓글 목록 로드
+  const [isCommentPageReady, setIsCommentPageReady] = useState(false);
 
   useEffect(() => {
     const loadInitialComments = async () => {
@@ -115,6 +125,8 @@ const CommentList = ({ productId }) => {
                 commentId={cmt.id}
                 onUpdate={handleUpdateComment}
                 onUpdateCancel={handleUpdateCommentCancel}
+                isUpdating={updatingComment}
+                isError={updateCommentError}
               />
             ) : (
               <p className="comment-content">{cmt.content}</p>
@@ -185,6 +197,63 @@ const CommentListStyle = css`
   }
 `;
 
+const CommentUpdate = ({
+  content,
+  commentId,
+  onUpdate,
+  onUpdateCancel,
+  isUpdating,
+  isError,
+}) => {
+  return (
+    <div css={CommentUpdateStyle}>
+      <Textarea
+        id={commentId}
+        name="comment-content"
+        defaultValue={content}
+        data-comment-id={commentId}
+      />
+      <div className="comment-actions">
+        {isError && <p className="error-msg">댓글 수정에 실패했습니다.</p>}
+        <Button size="sm" onClick={onUpdateCancel}>
+          취소
+        </Button>
+        <Button variant="primary" size="sm" onClick={() => onUpdate(commentId)}>
+          {isUpdating ? "수정중" : "수정 완료"}
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+const CommentUpdateStyle = css`
+  textarea {
+    width: 100%;
+    max-height: 80px;
+    margin-bottom: 16px;
+  }
+
+  button {
+    padding: 14px 20px;
+  }
+
+  .comment-actions {
+    position: absolute;
+    right: 0;
+    bottom: 16px;
+    z-index: 1;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    .error-msg {
+      margin-right: 20px;
+      font-size: 14px;
+      color: var(--error-color);
+    }
+  }
+`;
+
 const CommentEmpty = () => {
   const { width: innerWidth } = useWindowDimensions();
 
@@ -212,43 +281,5 @@ const CommentEmptyStyle = css`
   .txt {
     color: var(--gray400);
     font-size: 16px;
-  }
-`;
-
-const CommentUpdate = ({ content, commentId, onUpdate, onUpdateCancel }) => {
-  return (
-    <div css={CommentUpdateStyle}>
-      <Textarea
-        id={commentId}
-        name="comment-content"
-        defaultValue={content}
-        data-comment-id={commentId}
-      />
-      <div className="comment-edit-actions">
-        <Button onClick={onUpdateCancel}>취소</Button>
-        <Button variant="primary" size="sm" onClick={() => onUpdate(commentId)}>
-          수정 완료
-        </Button>
-      </div>
-    </div>
-  );
-};
-
-const CommentUpdateStyle = css`
-  textarea {
-    width: 100%;
-    max-height: 80px;
-    margin-bottom: 16px;
-  }
-
-  button {
-    padding: 14px 20px;
-  }
-
-  .comment-edit-actions {
-    position: absolute;
-    right: 0;
-    bottom: 16px;
-    z-index: 1;
   }
 `;
