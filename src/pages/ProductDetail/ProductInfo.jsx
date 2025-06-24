@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import heartIcon from '@assets/icon/ic_heart.png';
+import KebabMenu from '@components/KebabMenu';
 import UserProfileCard from '@components/userProfileCard';
 import { getProductDetail } from '@service/api.js';
 import styles from './styles/ProductInfo.module.css';
-import KebabMenu from '@components/KebabMenu';
 
 function formatDate(time) {
   if (!time) return;

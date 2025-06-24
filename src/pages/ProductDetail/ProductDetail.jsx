@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
-import ProductAsk from './ProductAsk';
-import styles from './styles/ProductDetail.module.css';
-import ProductInfo from './ProductInfo';
 import BackLink from '@components/BackLink';
+import ProductAsk from './ProductAsk';
+import ProductInfo from './ProductInfo';
+import styles from './styles/ProductDetail.module.css';
 
 function ProductDetail() {
   const { id } = useParams();

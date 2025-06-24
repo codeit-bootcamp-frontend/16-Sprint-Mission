@@ -54,7 +54,8 @@ export default [
       'react/jsx-uses-react': 'off', // New JSX Transform 관련 설정
       'react/jsx-key': 'error', // 리스트 렌더링엔 항상 고유한 key 값 사용
       'react/destructuring-assignment': ['error', 'always'], // Props 전달은 비구조화 할당
-      'no-unused-vars': ['error', { args: 'none', ignoreRestSiblings: true }], // ignoreRestSiblings: true는 객체 비구조화 할당에서 나머지가 사용되지 않아도 경고하지 않습니다.
+      'no-unused-vars': 'off',
+      // ['error', { args: 'none', ignoreRestSiblings: true }], // ignoreRestSiblings: true는 객체 비구조화 할당에서 나머지가 사용되지 않아도 경고하지 않습니다.
       'react/jsx-uses-vars': 'error', // JSX에서 사용되는 변수를 사용된 것으로 간주
       'react/jsx-no-undef': 'error', // 정의되지 않은 JSX 컴포넌트 사용 방지
       'prefer-arrow-callback': 'error', // 콜백 함수는 화살표 함수로

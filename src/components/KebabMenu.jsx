@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import styles from '../styles/KebabMenu.module.css';
 import kebabIcon from '@assets/icon/ic_kebab.png';
+import styles from '../styles/KebabMenu.module.css';
 
 function makeHtmlAttr(selector, selected) {
   const dropDownHtmlAttr = {
