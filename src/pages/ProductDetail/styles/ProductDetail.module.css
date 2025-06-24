@@ -2,7 +2,7 @@
   --page-mt: 16px;
   --page-pb: 42px;
 
-  margin-top: var(--page-mt);
+  margin-top: var(--page-mt) !important;
   padding-bottom: var(--page-pb);
 }
 

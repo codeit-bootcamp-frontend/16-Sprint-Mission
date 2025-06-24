@@ -3,6 +3,7 @@ import heartIcon from '@assets/icon/ic_heart.png';
 import UserProfileCard from '@components/userProfileCard';
 import { getProductDetail } from '@service/api.js';
 import styles from './styles/ProductInfo.module.css';
+import KebabMenu from '@components/KebabMenu';
 
 function formatDate(time) {
   if (!time) return;
@@ -29,6 +30,7 @@ function ProductInfo({ productId }) {
           <h2>{productDetail.name}</h2>
           <div>{productDetail.price?.toLocaleString('ko-KR')}원</div>
         </article>
+        <KebabMenu />
         <article className={styles.description}>
           <h3>상품 소개</h3>
           <p>{productDetail.description}</p>

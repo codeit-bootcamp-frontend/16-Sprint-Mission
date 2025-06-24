@@ -19,6 +19,8 @@
   display: flex;
   flex-direction: column;
   width: var(--product-text-width);
+  /* 케밥 기준위치*/
+  position: relative;
 }
 
 .title {

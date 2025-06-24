@@ -1,0 +1,32 @@
+.kebab {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.kebab button {
+  background-color: transparent;
+}
+
+.kebab button img {
+  width: 24px;
+  height: 24px;
+}
+
+.kebab > ul {
+  position: absolute;
+  right: 0;
+  top: 34px;
+  border: 1px solid var(--cool-gray300);
+  border-radius: 8px;
+  z-index: 1;
+  background-color: var(--white-color);
+}
+
+.kebab > ul li {
+  padding: 12px 42px;
+  border: none;
+  font-size: 16px;
+  color: var(--secondary-gray500);
+  cursor: pointer;
+}
