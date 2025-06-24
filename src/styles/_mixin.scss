@@ -19,3 +19,15 @@
   -webkit-line-clamp: $line;
   -webkit-box-orient: vertical;
 }
+
+@mixin defaultInput($height: 56px) {
+  display: block;
+  width: 100%;
+  height: $height;
+  padding: 0 24px;
+  font-size: 16px;
+  font-weight: 400;
+  color: var.$gray800;
+  background: var.$gray100;
+  border-radius: 12px;
+}
