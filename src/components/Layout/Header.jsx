@@ -1,9 +1,8 @@
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { FontTypes, ColorTypes } from '../../styles/theme';
 import { applyFontStyles } from '../../styles/mixins';
-import theme from '../../styles/theme';
 import logo from '../../assets/images/logo/logo.svg';
 import textLogo from '../../assets/images/logo/textlogo.svg';
 import profile from '../../assets/images/icons/ic_profile.png';
@@ -29,10 +28,10 @@ function Header() {
         <nav>
           <Ul>
             <Li>
-              <Link to="/community">자유게시판</Link>
+              <StNavLink to="/community">자유게시판</StNavLink>
             </Li>
             <Li>
-              <Link to="/items">중고마켓</Link>
+              <StNavLink to="/items">중고마켓</StNavLink>
             </Li>
           </Ul>
         </nav>
@@ -84,6 +83,12 @@ const Li = styled.li`
   ${applyFontStyles(FontTypes.BOLD16, ColorTypes.SECONDARY_GRAY_600)};
 
   &:hover {
+    color: ${({ theme }) => theme.colors[ColorTypes.PRIMARY_100]};
+  }
+`;
+
+const StNavLink = styled(NavLink)`
+  &.active {
     color: ${({ theme }) => theme.colors[ColorTypes.PRIMARY_100]};
   }
 `;
