@@ -35,6 +35,13 @@ const ButtonStyle = (props) => css`
   gap: 6px;
   transition: background-color 0.3s, border 0.3s;
 
+  ${!props.variant &&
+  css`
+    &:hover {
+      background-color: var(--gray300);
+    }
+  `}
+
   ${ButtonStylesMap.size[props.size]}
   ${ButtonStylesMap.variant[props.variant]}
   ${props.round &&
