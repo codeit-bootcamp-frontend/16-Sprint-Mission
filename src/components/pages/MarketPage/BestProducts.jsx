@@ -2,35 +2,32 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import { getProducts } from '../../../api/api';
+import useDeviceSize from '../../../hooks/useDeviceSize';
 import ItemCard from './ItemCard';
 
-export const getPageSize = () => {
-  const width = window.innerWidth;
-  if (width < 768) {
-    return 1;
-  } else if (width < 1024) {
-    return 2;
-  } else {
-    return 4;
-  }
-};
-
 function BestProducts() {
+  const { isMobile, isTablet, isDesktop } = useDeviceSize();
+
+  const getPageSize = () => {
+    if (isMobile) return 1;
+    if (isTablet) return 2;
+    if (isDesktop) return 4;
+    return 1;
+  };
+
   const [bestItems, setBestItems] = useState([]);
   const [pageSize, setPageSize] = useState(getPageSize());
 
   useEffect(() => {
+    setPageSize(getPageSize());
+  }, [isMobile, isTablet, isDesktop]);
+
+  useEffect(() => {
     const fetchItems = async () => {
-      const res = await getProducts({ orderBy: 'favorite', pageSize: pageSize });
+      const res = await getProducts({ orderBy: 'favorite', pageSize });
       setBestItems(res.list);
     };
     fetchItems();
-
-    const handleResize = () => {
-      setPageSize(getPageSize());
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
   }, [pageSize]);
 
   return (

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function useDevideSize() {
+function useDeviceSize() {
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -17,4 +17,4 @@ function useDevideSize() {
   return { isMobile, isTablet, isDesktop };
 }
 
-export default useDevideSize;
+export default useDeviceSize;

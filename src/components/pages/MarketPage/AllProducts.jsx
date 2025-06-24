@@ -13,18 +13,16 @@ import { applyFontStyles } from '../../../styles/mixins';
 import { getProducts } from '../../../api/api';
 import useDeviceSize from '../../../hooks/useDeviceSize';
 
-const getPageSize = () => {
-  const width = window.innerWidth;
-  if (width < 768) {
-    return 4;
-  } else if (width < 1024) {
-    return 6;
-  } else {
-    return 10;
-  }
-};
-
 function AllProducts() {
+  const { isMobile, isTablet, isDesktop } = useDeviceSize();
+
+  const getPageSize = () => {
+    if (isMobile) return 4;
+    if (isTablet) return 6;
+    if (isDesktop) return 10;
+    return 4;
+  };
+
   const [items, setItems] = useState([]);
   const [pageSize, setPageSize] = useState(getPageSize());
   const [keyword, setKeyword] = useState('');
@@ -32,27 +30,21 @@ function AllProducts() {
   const [orderBy, setOrderBy] = useState('recent');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
-  const { isMobile } = useDeviceSize();
-
-  const fetchItems = async () => {
-    const res = await getProducts({
-      pageSize: pageSize,
-      orderBy: orderBy,
-      page: currentPage,
-      keyword: debouncedKeyword,
-    });
-    setItems(res.list);
-    setTotalCount(res.totalCount);
-  };
 
   useEffect(() => {
-    fetchItems();
-
-    const handleResize = () => {
-      setPageSize(getPageSize());
+    const fetchItems = async () => {
+      const res = await getProducts({
+        pageSize: pageSize,
+        orderBy: orderBy,
+        page: currentPage,
+        keyword: debouncedKeyword,
+      });
+      setItems(res.list);
+      setTotalCount(res.totalCount);
     };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+
+    fetchItems();
+    setPageSize(getPageSize());
   }, [pageSize, orderBy, currentPage, debouncedKeyword]);
 
   useEffect(() => {
