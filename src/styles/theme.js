@@ -47,6 +47,12 @@ export const FontTypes = {
 };
 
 const theme = {
+  spacing: {
+    mobile: '16px',
+    tablet: '32px',
+    desktop: '64px',
+  },
+
   colors: {
     pri100: '#3692ff',
     pri200: '#1967d6',

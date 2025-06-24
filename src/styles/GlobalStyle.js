@@ -4,13 +4,6 @@ import { applyFontStyles } from './mixins';
 import { ColorTypes, FontTypes } from './theme';
 
 const GlobalStyle = createGlobalStyle`
-  :root {
-    --content-max-width: 1200px;
-    --page-spacing-x-mobile: 16px;
-    --page-spacing-x-tablet: 24px;
-    --page-spacing-x-desktop: 200px;
-  }
-
   * {
     margin: 0;
     padding: 0;
