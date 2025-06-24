@@ -4,10 +4,12 @@ import styled from 'styled-components';
 import { ColorTypes, FontTypes } from '../../styles/theme';
 import { applyFontStyles } from '../../styles/mixins';
 import sort from '../../assets/images/icons/ic_sort.svg';
+import useDeviceSize from '../../hooks/useDeviceSize';
 
 function DropdownList({ onChange }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState('recent');
+  const { isMobile } = useDeviceSize();
 
   const handleSelect = (value) => {
     setSelected(value);
@@ -18,7 +20,7 @@ function DropdownList({ onChange }) {
   return (
     <DropdownListContainer>
       <StSortButton onClick={() => setIsOpen((prev) => !prev)}>
-        {window.innerWidth < 768 ? (
+        {isMobile ? (
           <StSortIcon
             src={sort}
             alt="sort"

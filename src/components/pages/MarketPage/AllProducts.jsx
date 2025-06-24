@@ -11,6 +11,7 @@ import right from '../../../assets/images/icons/arrow_right.svg';
 import { ColorTypes, FontTypes } from '../../../styles/theme';
 import { applyFontStyles } from '../../../styles/mixins';
 import { getProducts } from '../../../api/api';
+import useDeviceSize from '../../../hooks/useDeviceSize';
 
 const getPageSize = () => {
   const width = window.innerWidth;
@@ -31,6 +32,7 @@ function AllProducts() {
   const [orderBy, setOrderBy] = useState('recent');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
+  const { isMobile } = useDeviceSize();
 
   const fetchItems = async () => {
     const res = await getProducts({
@@ -79,7 +81,7 @@ function AllProducts() {
 
   return (
     <AllProductsContainer>
-      {window.innerWidth >= 768 ? (
+      {isMobile ? (
         <>
           <HeaderContainer>
             <div>전체 상품</div>
