@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'https://panda-market-api.vercel.app';
+const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 export const getProducts = async ({ page = 1, pageSize = 10, orderBy = 'recent', keyword = '' }) => {
   try {
