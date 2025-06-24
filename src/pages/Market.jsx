@@ -6,6 +6,7 @@ import ItemsList from "../components/ItemsList";
 import Pagetnation from "../components/Pagination";
 import { useWindowWidth } from "../hooks/useWindowWidth";
 import SearchInput from "../components/SearchInput";
+import CustomSortSelect from "../components/CustomSortSelect";
 const MarketWrapper = styled.div`
   padding: 16px;
   max-width: 1200px;
@@ -20,6 +21,10 @@ const BestItemTitle = styled.h1`
   font-weight: bold;
   padding-bottom: 16px;
 `;
+const AllItemTitle = styled(BestItemTitle)`
+  padding: 0;
+  flex: 1;
+`;
 const ProductRegistration = styled.button`
   width: 133px;
   height: 42px;
@@ -29,8 +34,22 @@ const ProductRegistration = styled.button`
   border-radius: 8px;
   background-color: #3692ff;
   border: 0;
+  @media all and (min-width: 768px) {
+    order: 2;
+  }
 `;
-const AllProductsWrapper = styled.div``;
+
+const AllProductsWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 0;
+  padding-bottom: 16px;
+  @media all and (min-width: 768px) {
+    flex-wrap: nowrap;
+    gap: 12px;
+  }
+`;
 const breakpoints = [
   { max: 600, bestPageSize: 1, itemsPageSize: 4 },
   { max: 768, bestPageSize: 2, itemsPageSize: 6 },
@@ -88,9 +107,6 @@ function Market() {
   const bestItems = favoriteData.sort(
     (a, b) => b["favoriteCount"] - a["favoriteCount"]
   );
-  const handleSortChange = (e) => {
-    setOrder(e.target.value);
-  };
   const sortItems = items.sort((a, b) => b[order] - a[order]);
 
   const handlerSearchItems = (value) => {
@@ -108,13 +124,11 @@ function Market() {
       </BestItemWrapper>
 
       <AllProductsWrapper>
-        <BestItemTitle>전체상품</BestItemTitle>
+        <AllItemTitle>전체상품</AllItemTitle>
         <ProductRegistration>상품 등록하기</ProductRegistration>
+
         <SearchInput handlerSearchItems={handlerSearchItems} />
-        <select value={order} onChange={handleSortChange}>
-          <option value="recent">최신순</option>
-          <option value="favorite">좋아요순</option>
-        </select>
+        <CustomSortSelect value={order} setOrder={setOrder} />
       </AllProductsWrapper>
 
       <ItemsList itemsCount={itemPageSize} items={sortItems} />

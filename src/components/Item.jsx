@@ -15,15 +15,10 @@ const ItemStyle = styled.div`
   padding: ${(props) => (props.$bestItemChk ? "0" : "0 4px 32px")};
 `;
 const ItemImage = styled.img`
-  // width: ${(props) => (props.$bestItemChk ? "343px" : "100%")};
-  // height: ${(props) => (props.$bestItemChk ? "343px" : "auto")};
   border-radius: 19.46px;
   object-fit: cover;
   width: 100%;
-  // @media all and (min-width: 768px) {
-  //   width: ${(props) => (props.$bestItemChk ? "282px" : "221px")};
-  //   height: ${(props) => (props.$bestItemChk ? "282px" : "221px")};
-  // }
+  aspect-ratio: 1 / 1;
 `;
 const ItemInfoWrapper = styled.div`
   padding-top: 10px;

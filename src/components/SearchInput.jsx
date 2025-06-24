@@ -2,9 +2,17 @@ import styled from "styled-components";
 import searchIcon from "../assets/searchIcon.png";
 const SearchInputWrapper = styled.div`
   position: relative;
+  width: calc(100% - 42px);
+  @media all and (min-width: 768px) {
+    width: 242px;
+    order: 1;
+  }
+  @media all and (min-width: 1024px) {
+    width: 325px;
+  }
 `;
 const SearchInputStyled = styled.input`
-  width: 288px;
+  width: calc(100% - 9px);
   height: 42px;
   border: 0;
   background-color: #f3f4f6;
@@ -12,6 +20,12 @@ const SearchInputStyled = styled.input`
   padding-left: 34px;
   &:active {
     outline: 0;
+  }
+  @media all and (min-width: 768px) {
+    width: 242px;
+  }
+  @media all and (min-width: 1024px) {
+    width: 325px;
   }
 `;
 const SearchInputLabel = styled.label`

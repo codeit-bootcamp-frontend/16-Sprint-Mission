@@ -12,6 +12,7 @@ const NavWrap = styled.div`
   width: 100%;
   padding: 0 16px;
   border-bottom: 1px solid #dfdfdf;
+  min-width: 1024px;
   a {
     text-decoration: none;
     color: #4b5563;
@@ -55,8 +56,8 @@ function Navigation() {
       <Logo>
         <a href="/">
           <picture>
-            <source media="(max-width: 768px)" srcset={moLogoImg} />
-            <source media="(min-width: 767px)" srcset={logoImg} />
+            <source media="(max-width: 768px)" srcSet={moLogoImg} />
+            <source media="(min-width: 767px)" srcSet={logoImg} />
             <img src={moLogoImg} alt="판다마켓" aria-hidden="true" />
           </picture>
         </a>
