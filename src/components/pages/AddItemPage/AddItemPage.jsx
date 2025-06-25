@@ -4,12 +4,13 @@ import { useState } from 'react';
 import InputField from '../../UI/InputField';
 import ImageUpload from '../../UI/ImageUpload';
 import TagInput from '../../UI/Taginput';
+import useFormatNumber from '../../../hooks/useFormatNumber';
 import { ColorTypes } from '../../../styles/theme';
 
 function AddItemPage() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const [price, setPrice] = useState('');
+  const [price, handlePriceChange] = useFormatNumber('');
   const [tags, setTags] = useState([]);
 
   const isDisabled = name.trim() && description.trim() && price.trim() && tags.length > 0;
@@ -47,11 +48,11 @@ function AddItemPage() {
         />
         <InputField
           label="판매 가격"
-          type="number"
+          type="text"
           placeholder="판매 가격을 입력해주세요"
           isTextArea={false}
           value={price}
-          onChange={(e) => setPrice(e.target.value)}
+          onChange={handlePriceChange}
         />
         <TagInput
           tags={tags}
