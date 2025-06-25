@@ -1,0 +1,99 @@
+import PageContent from "@/components/layout/PageContent";
+
+const LoginPage = () => {
+  return (
+    <PageContent>
+      <div class="form-container">
+        <form class="form" id="loginForm" method="POST">
+          <div class="form-logo">
+            <a href="/login.html" aria-label="새로고침">
+              <img
+                src="images/logo.svg"
+                alt="판다마켓 로고"
+                width="396"
+                height="132"
+              />
+            </a>
+          </div>
+          <div class="form-contents">
+            <div class="form-control">
+              <label class="form-label" for="userEmail">
+                이메일
+              </label>
+              <input
+                class="form-input"
+                type="email"
+                id="userEmail"
+                name="userEmail"
+                autocomplete="email"
+                placeholder="이메일"
+                required
+              />
+              <span class="form-input-hint"></span>
+            </div>
+            <div class="form-control">
+              <label class="form-label" for="userPassword">
+                비밀번호
+              </label>
+              <div class="visible-wrap">
+                <input
+                  class="form-input"
+                  type="password"
+                  id="userPassword"
+                  name="userPassword"
+                  autocomplete="current-password"
+                  placeholder="비밀번호"
+                  required
+                />
+                <button
+                  type="button"
+                  class="btn-password-visible"
+                  id="passwordVisibleBtn"
+                  title="비밀번호 표시/숨김"
+                  aria-label="비밀번호 표시/숨김"
+                  aria-pressed="false"
+                ></button>
+              </div>
+              <span class="form-input-hint"></span>
+            </div>
+            <button
+              type="submit"
+              class="btn-lg btn-primary"
+              id="loginBtn"
+              disabled
+            >
+              로그인
+            </button>
+            <div class="easy-login">
+              간편 로그인하기
+              <div class="easy-login-icons">
+                <a
+                  href="https://www.google.com"
+                  aria-label="구글 계정으로 로그인하기"
+                  title="클릭 시 구글 계정과 연동합니다."
+                >
+                  <img src="images/ic_google-44.png" alt="구글 아이콘" />
+                </a>
+                <a
+                  href="https://www.kakaocorp.com/page"
+                  aria-label="카카오 계정으로 로그인하기"
+                  title="클릭 시 카카오 계정과 연동합니다."
+                >
+                  <img src="images/ic_kakao-44.png" alt="카카오 아이콘" />
+                </a>
+              </div>
+            </div>
+            <div class="form-footer">
+              판다마켓이 처음이신가요?
+              <a class="form-footer-link" href="signup.html">
+                회원가입
+              </a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </PageContent>
+  );
+};
+
+export default LoginPage;
