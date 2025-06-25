@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchProducts } from "../../../../api/products";
 import { getLimitFromWindowWidth } from "../../../../utils/getLimitFromWindowWidth";
-import ProductSection from "../ProductSection/ProductSection";
+import ProductSection from "../product-section/ProductSection";
 
 function BestProducts({ title, itemsPerDevice }) {
   const [bestProducts, setBestProducts] = useState([]);

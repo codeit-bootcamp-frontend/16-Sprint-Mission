@@ -1,0 +1,99 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    color: var(--color-gray-800);
+}
+
+.title {
+    font-size: var(--font-size-md-lg);
+    font-weight: var(--font-weight-bold);
+    vertical-align: middle;
+    padding-bottom: 24px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.inputWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.submitButton {
+    background-color: #3692ff;
+    color: white;
+    padding: var(--form-submit-button);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.submitButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.input{
+    border: none;
+    border-radius: 12px;
+    color: #1F2937;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: #F3F4F6;
+    height: 56px;
+    padding: 16px 24px;
+}
+
+.textArea{
+    resize: none;
+    border: none;
+    border-radius: 12px;
+    color: #1F2937;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: #F3F4F6;
+    height: var(--text-area-height);
+    padding: 16px 24px;
+}
+
+.errorText {
+    color: red;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.tagsContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tag {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 12px;
+    background-color: #F3F4F6;
+    border-radius: 26px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.removeTagButton {
+    margin-left: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}

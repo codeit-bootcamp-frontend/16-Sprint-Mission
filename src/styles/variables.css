@@ -30,6 +30,9 @@
   --pagination-line-height: var(--line-height-relaxed-);
   --pagination-button-border: 1px solid var(--color-gray-200);
 
+  --form-submit-button: 12px 23px;
+  --text-area-height: 282px;
+
   /* ===================== */
   /*      Font Family      */
   /* ===================== */
@@ -142,22 +145,22 @@
 
   /* ===================== */
   /*        z-index        */
-  /* ===================== */ 
+  /* ===================== */
   /* Base layers */
   --z-base: 0;
   --z-above-base: 1;
-  
+
   /* UI Components */
   --z-dropdown: 1000;
   --z-modal: 2000;
   --z-toast: 3000;
   --z-tooltip: 4000;
-  
+
   /* Fixed elements */
   --z-header: 100;
   --z-footer: 100;
   --z-sidebar: 200;
-  
+
   /* Overlay elements */
   --z-overlay: 1500;
   --z-overlay-above: 2500;
@@ -173,6 +176,8 @@
   --product-img-height-best: 343px;
   --product-img-width-all: 185px;
   --product-img-height-all: 185px;
+  --preview-image-width: 168px;
+  --preview-image-height: 168px;
 }
 
 
@@ -197,6 +202,8 @@
     --product-img-height-best: 343px;
     --product-img-width-all: 221px;
     --product-img-height-all: 221px;
+    --preview-image-width: 168px;
+    --preview-image-height: 168px;
   }
 }
 
@@ -221,5 +228,7 @@
     --product-img-height-best: 282px;
     --product-img-width-all: 221px;
     --product-img-height-all: 221px;
+    --preview-image-width: 282px;
+    --preview-image-height: 282px;
   }
 }

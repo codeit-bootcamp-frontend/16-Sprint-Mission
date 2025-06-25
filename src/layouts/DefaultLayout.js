@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "../components/Navbar/Navbar.js";
-import styles from "./DefaultLayout.module.css"
-
+import styles from "./DefaultLayout.module.css";
+import Navbar from "../components/Navbar/Navbar";
 
 function DefaultLayout({ children }) {
   return (
