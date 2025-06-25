@@ -1,28 +1,59 @@
+import { useState } from 'react';
 import PlusIcon from '../../assets/images/icons/ic_plus.svg';
 import styled from 'styled-components';
 import { ColorTypes, FontTypes } from '../../styles/theme';
 import { applyFontStyles } from '../../styles/mixins';
+import XIcon from '../../assets/images/icons/ic_X.svg';
 
 function ImageUpload() {
+  const [previewUrl, setPreviewUrl] = useState(null);
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const preview = URL.createObjectURL(file);
+    setPreviewUrl(preview);
+  };
+
   return (
     <Container>
       <label>상품 이미지</label>
+
       <Wrapper>
         <StInput
           type="file"
           placeholder="이미지를 추가해주세요"
           accept="image/*"
           id="file-input"
+          onChange={handleImageUpload}
         />
-        <StLabel htmlFor="file-input">
-          <img
-            src={PlusIcon}
-            alt="plus"
-            width={28}
-            height={28}
-          />
-          이미지 등록
-        </StLabel>
+        <ImageWrapper>
+          <StLabel htmlFor="file-input">
+            <img
+              src={PlusIcon}
+              alt="plus"
+              width={28}
+              height={28}
+            />
+            이미지 등록
+          </StLabel>
+        </ImageWrapper>
+
+        {previewUrl && (
+          <PreviewImage>
+            <StXIcon
+              src={XIcon}
+              alt="x"
+              width={20}
+              height={20}
+            />
+            <StImage
+              src={previewUrl}
+              alt="샘플이미지"
+            />
+          </PreviewImage>
+        )}
       </Wrapper>
     </Container>
   );
@@ -38,6 +69,12 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
   position: relative;
+  display: flex;
+  gap: 24px;
+`;
+
+const ImageWrapper = styled.div`
+  display: flex;
 `;
 
 const StInput = styled.input`
@@ -66,4 +103,20 @@ const StLabel = styled.label`
   &:hover {
     background-color: ${({ theme }) => theme.colors[ColorTypes.SECONDARY_GRAY_200]};
   }
+`;
+
+const PreviewImage = styled.div`
+  position: relative;
+`;
+
+const StImage = styled.img`
+  width: 168px;
+  height: 168px;
+  border-radius: 12px;
+`;
+
+const StXIcon = styled.img`
+  position: absolute;
+  top: 14px;
+  right: 13px;
 `;
