@@ -1,0 +1,66 @@
+.askForm {
+  --ask-form-mb: 40px;
+
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--ask-form-mb);
+}
+
+.askForm label {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+  margin-bottom: 16px;
+}
+
+.askForm textarea {
+  margin-top: 16px;
+  width: 100%;
+  resize: none;
+  border: none;
+  border-radius: 12px;
+  height: 129px;
+  padding: 16px 24px;
+  font-family: inherit;
+  color: var(--secondary-gray400);
+  background-color: var(--cool-gray100);
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.askForm textarea::placeholder {
+  color: var(--secondary-gray400);
+}
+
+.askForm button {
+  /* 버튼 공통 */
+  padding: 8px 23px;
+  border-radius: 8px;
+  height: 42px;
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+  color: var(--cool-gray100);
+  background-color: var(--cool-gray400);
+  margin-left: auto;
+}
+
+.askForm button.isActive {
+  background-color: var(--primary-color);
+}
+
+.updateBtn {
+  margin-left: auto;
+}
+
+.updateBtn button:first-child {
+  /* 업데이트 버튼의 취소 버튼 */
+  background-color: var(--white-color);
+  color: #737373;
+}
+
+@media screen and (min-width: 1200px) {
+  .askForm {
+    --ask-form-mb: 24px;
+  }
+}

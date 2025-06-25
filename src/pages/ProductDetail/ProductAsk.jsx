@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import KebabMenu from '@components/KebabMenu';
-import UserProfileCard from '@components/userProfileCard';
 import { getProductComment } from '@service/api.js';
+import AskForm from './AskForm';
+import CommentItem from './CommentItem';
 import EmptyComments from './EmptyComments';
 import styles from './styles/ProductAsk.module.css';
 
@@ -21,29 +21,15 @@ function ProductAsk({ productId }) {
 
   return (
     <section className={styles.productAsk}>
-      <form>
-        <label>
-          문의하기
-          <textarea name="" id="" placeholder={placeholder}></textarea>
-        </label>
-        <button>등록</button>
-      </form>
-
+      <AskForm productId={productId} placeholder={placeholder} method={'POST'}>
+        문의하기
+      </AskForm>
       {commentList?.length === 0 ? (
-        <EmptyComments />
+        <EmptyComments placeholder={placeholder} />
       ) : (
         <ul>
           {commentList?.map((comment) => (
-            <li key={comment.id}>
-              {comment.content}
-              <UserProfileCard
-                authority={'comment'}
-                image={comment.writer.image}
-                name={comment.writer.nickname}
-                time={comment.updatedAt}
-              />
-              <KebabMenu />
-            </li>
+            <CommentItem key={comment.id} comment={comment} />
           ))}
         </ul>
       )}

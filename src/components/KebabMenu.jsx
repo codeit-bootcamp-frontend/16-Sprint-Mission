@@ -2,10 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import kebabIcon from '@assets/icon/ic_kebab.png';
 import styles from '../styles/KebabMenu.module.css';
 
-function makeHtmlAttr(selector, selected) {
+function makeHtmlAttr(selector) {
   const dropDownHtmlAttr = {
     ['role']: 'option',
-    ['aria-selected']: selector === selected,
     ['data-value']: selector,
   };
 
@@ -14,7 +13,6 @@ function makeHtmlAttr(selector, selected) {
 
 function KebabMenu({ dataList = ['수정하기', '삭제하기'], onSelect }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState(dataList[0]);
   const kebabRef = useRef(null);
 
   function handleToggleDropDown() {
@@ -22,8 +20,7 @@ function KebabMenu({ dataList = ['수정하기', '삭제하기'], onSelect }) {
   }
 
   function handleClick(e) {
-    setSelected(e.currentTarget.textContent);
-    onSelect(e.currentTarget.textContent);
+    onSelect();
     setIsOpen(false);
   }
 
@@ -50,7 +47,7 @@ function KebabMenu({ dataList = ['수정하기', '삭제하기'], onSelect }) {
           {dataList?.map((selector) => (
             <li
               key={`${selector}`}
-              {...makeHtmlAttr(selector, selected)}
+              {...makeHtmlAttr(selector)}
               onClick={(e) => handleClick(e)}
             >
               {selector}
