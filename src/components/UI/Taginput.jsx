@@ -1,13 +1,10 @@
 import styled from 'styled-components';
-import { useState } from 'react';
 
 import { applyFontStyles } from '../../styles/mixins';
 import { ColorTypes, FontTypes } from '../../styles/theme';
 import XIcon from '../../assets/images/icons/IC_X.svg';
 
-function TagInput() {
-  const [tags, setTags] = useState([]);
-
+function TagInput({ tags, setTags }) {
   const handleTagChange = (e) => {
     if (e.key === 'Enter') {
       const newTag = e.target.value.trim();

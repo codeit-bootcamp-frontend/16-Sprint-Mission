@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-function InputField({ label, type, placeholder, isTextArea }) {
+function InputField({ label, type, placeholder, isTextArea, value, onChange }) {
   return isTextArea ? (
     <Container>
       <label htmlFor="textarea">{label}</label>
@@ -8,6 +8,8 @@ function InputField({ label, type, placeholder, isTextArea }) {
         id="textarea"
         as="textarea"
         placeholder={placeholder}
+        value={value}
+        onChange={onChange}
       />
     </Container>
   ) : (
@@ -17,6 +19,8 @@ function InputField({ label, type, placeholder, isTextArea }) {
         id="input"
         type={type}
         placeholder={placeholder}
+        value={value}
+        onChange={onChange}
       />
     </Container>
   );

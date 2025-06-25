@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useState } from 'react';
 
 import InputField from '../../UI/InputField';
 import ImageUpload from '../../UI/ImageUpload';
@@ -6,11 +7,23 @@ import { ColorTypes } from '../../../styles/theme';
 import TagInput from '../../UI/Taginput';
 
 function AddItemPage() {
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [price, setPrice] = useState('');
+  const [tags, setTags] = useState([]);
+
+  const isDisabled = name.trim() && description.trim() && price.trim() && tags.length > 0;
+
   return (
     <Container>
       <HeaderSection>
         <h3>상품 등록하기</h3>
-        <StButton type="submit">등록</StButton>
+        <StButton
+          type="submit"
+          disabled={isDisabled}
+        >
+          등록
+        </StButton>
       </HeaderSection>
 
       <FormSection>
@@ -21,20 +34,29 @@ function AddItemPage() {
           type="text"
           placeholder="상품명을 입력해주세요"
           isTextArea={false}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
         <InputField
           label="상품 소개"
           type="text"
           placeholder="상품 소개를 입력해주세요"
           isTextArea={true}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
         />
         <InputField
           label="판매 가격"
           type="number"
           placeholder="판매 가격을 입력해주세요"
           isTextArea={false}
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
         />
-        <TagInput />
+        <TagInput
+          tags={tags}
+          setTags={setTags}
+        />
       </FormSection>
     </Container>
   );
