@@ -1,42 +1,40 @@
 import styled from 'styled-components';
 
-import XIcon from '../../../assets/images/icons/ic_X.svg';
-import { applyFontStyles } from '../../../styles/mixins';
-import { FontTypes, ColorTypes } from '../../../styles/theme';
 import InputField from '../../UI/InputField';
 import ImageUpload from '../../UI/ImageUpload';
+import { ColorTypes } from '../../../styles/theme';
+import TagInput from '../../UI/Taginput';
 
 function AddItemPage() {
   return (
     <Container>
       <HeaderSection>
         <h3>상품 등록하기</h3>
-        <button type="submit">상품 등록</button>
+        <StButton type="submit">등록</StButton>
       </HeaderSection>
 
       <FormSection>
         <ImageUpload />
+
+        <InputField
+          label="상품명"
+          type="text"
+          placeholder="상품명을 입력해주세요"
+          isTextArea={false}
+        />
         <InputField
           label="상품 소개"
           type="text"
+          placeholder="상품 소개를 입력해주세요"
           isTextArea={true}
         />
         <InputField
           label="판매 가격"
           type="number"
+          placeholder="판매 가격을 입력해주세요"
           isTextArea={false}
         />
-        <InputField
-          label="태그"
-          type="text"
-          isTextArea={false}
-        />
-        <img
-          src={XIcon}
-          alt="x"
-          width={22}
-          height={24}
-        />
+        <TagInput />
       </FormSection>
     </Container>
   );
@@ -50,6 +48,7 @@ const Container = styled.div`
   gap: 29px;
   padding: 0 ${({ theme }) => theme.spacing.mobile};
   margin-top: 30px;
+  margin-bottom: 60px;
 
   @media (min-width: 768px) {
     padding: 0 ${({ theme }) => theme.spacing.tablet};
@@ -66,6 +65,16 @@ const HeaderSection = styled.div`
   align-items: center;
 `;
 
+const StButton = styled.button`
+  width: 74px;
+  height: 42px;
+  background-color: ${({ theme }) => theme.colors[ColorTypes.SECONDARY_GRAY_400]};
+
+  &:disabled {
+    background-color: ${({ theme }) => theme.colors[ColorTypes.PRIMARY_100]};
+  }
+`;
+
 const FormSection = styled.form`
   display: flex;
   flex-direction: column;
@@ -74,8 +83,4 @@ const FormSection = styled.form`
   @media (max-width: 1024px) {
     gap: 32px;
   }
-`;
-
-const Label = styled.label`
-  ${applyFontStyles(FontTypes.BOLD18, ColorTypes.SECONDARY_GRAY_800)}
 `;

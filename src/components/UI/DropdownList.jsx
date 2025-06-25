@@ -64,14 +64,18 @@ const DropdownListContainer = styled.div`
   }
 `;
 
+const StSortButton = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const StSortIcon = styled.img`
   width: 26px;
   height: 26px;
-`;
-
-const StSortButton = styled.button`
-  width: 100%;
-  height: 100%;
+  display: inline-block;
 `;
 
 const SortWrapper = styled.div`
