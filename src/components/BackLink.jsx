@@ -6,8 +6,8 @@ function BackLink() {
   const navigator = useNavigate();
 
   return (
-    <button className={styles.backLink} onClick={() => navigator(-1)}>
-      목록으로 돌아가기 <img src={backLinkIcon} alt="뒤로가기 아이콘" />
+    <button className={styles.backLink} onClick={() => navigator('/items')}>
+      목록으로 돌아가기 <img src={backLinkIcon} alt="목록으로 가기 아이콘" />
     </button>
   );
 }
