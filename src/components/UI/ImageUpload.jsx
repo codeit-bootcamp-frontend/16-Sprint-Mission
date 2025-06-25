@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
-import PlusIcon from '../../assets/images/icons/ic_plus.svg';
 import styled from 'styled-components';
+
 import { ColorTypes, FontTypes } from '../../styles/theme';
 import { applyFontStyles } from '../../styles/mixins';
+
+import PlusIcon from '../../assets/images/icons/ic_plus.svg';
 import XIcon from '../../assets/images/icons/ic_X.svg';
 
 function ImageUpload() {

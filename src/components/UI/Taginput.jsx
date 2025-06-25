@@ -12,8 +12,10 @@ function TagInput({ tags, setTags }) {
     if (e.key === 'Enter') {
       const trimmed = inputValue.trim();
       if (trimmed === '') return;
+
       const newTag = `#${trimmed}`;
       if (tags.includes(newTag)) return;
+
       setTags([...tags, newTag]);
       setInputValue('');
     }
@@ -26,6 +28,7 @@ function TagInput({ tags, setTags }) {
   return (
     <Container>
       <label htmlFor="tag">태그</label>
+
       <Wrapper>
         <input
           id="tag"
@@ -35,6 +38,7 @@ function TagInput({ tags, setTags }) {
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
         />
+
         <TagList>
           {tags.map((tag) => (
             <TagWrapper key={tag}>

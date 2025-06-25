@@ -3,8 +3,8 @@ import { useState } from 'react';
 
 import InputField from '../../UI/InputField';
 import ImageUpload from '../../UI/ImageUpload';
-import { ColorTypes } from '../../../styles/theme';
 import TagInput from '../../UI/Taginput';
+import { ColorTypes } from '../../../styles/theme';
 
 function AddItemPage() {
   const [name, setName] = useState('');
