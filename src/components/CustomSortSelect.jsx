@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import MoSelectIcon from "../assets/MOsortIcon.png";
 import PcSelectIcon from "../assets/PCsortIcon.png";
 import styled from "styled-components";
@@ -43,6 +43,7 @@ const OptionList = styled.ul`
   overflow: hidden;
   border: 1px solid #e5e7eb;
   right: 0;
+  z-index: 2;
 `;
 
 // 4. 각 옵션 아이템
