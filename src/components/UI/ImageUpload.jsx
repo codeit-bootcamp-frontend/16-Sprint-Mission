@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PlusIcon from '../../assets/images/icons/ic_plus.svg';
 import styled from 'styled-components';
 import { ColorTypes, FontTypes } from '../../styles/theme';
@@ -7,6 +7,7 @@ import XIcon from '../../assets/images/icons/ic_X.svg';
 
 function ImageUpload() {
   const [previewUrl, setPreviewUrl] = useState(null);
+  const [error, setError] = useState('');
 
   const handleImageUpload = (e) => {
     const file = e.target.files?.[0];
@@ -14,7 +15,27 @@ function ImageUpload() {
 
     const preview = URL.createObjectURL(file);
     setPreviewUrl(preview);
+
+    if (previewUrl) {
+      setError('*이미지 등록은 최대 1개까지 가능합니다.');
+      e.target.value = '';
+      return;
+    }
+
+    setError('');
   };
+
+  const handleImageRemove = () => {
+    setPreviewUrl(null);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (previewUrl) {
+        URL.revokeObjectURL(previewUrl);
+      }
+    };
+  }, [previewUrl]);
 
   return (
     <Container>
@@ -47,6 +68,7 @@ function ImageUpload() {
               alt="x"
               width={20}
               height={20}
+              onClick={handleImageRemove}
             />
             <StImage
               src={previewUrl}
@@ -55,6 +77,8 @@ function ImageUpload() {
           </PreviewImage>
         )}
       </Wrapper>
+
+      {error && <ErrorMessage>{error}</ErrorMessage>}
     </Container>
   );
 }
@@ -119,4 +143,8 @@ const StXIcon = styled.img`
   position: absolute;
   top: 14px;
   right: 13px;
+`;
+
+const ErrorMessage = styled.span`
+  ${applyFontStyles(FontTypes.REGULAR16, ColorTypes.ERROR)}
 `;
