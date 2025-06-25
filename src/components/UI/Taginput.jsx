@@ -1,16 +1,21 @@
 import styled from 'styled-components';
+import { useState } from 'react';
 
 import { applyFontStyles } from '../../styles/mixins';
 import { ColorTypes, FontTypes } from '../../styles/theme';
 import XIcon from '../../assets/images/icons/IC_X.svg';
 
 function TagInput({ tags, setTags }) {
+  const [inputValue, setInputValue] = useState('');
+
   const handleTagChange = (e) => {
     if (e.key === 'Enter') {
-      const newTag = e.target.value.trim();
-      if (newTag === '') return;
+      const trimmed = inputValue.trim();
+      if (trimmed === '') return;
+      const newTag = `#${trimmed}`;
       if (tags.includes(newTag)) return;
       setTags([...tags, newTag]);
+      setInputValue('');
     }
   };
 
@@ -26,7 +31,9 @@ function TagInput({ tags, setTags }) {
           id="tag"
           type="text"
           placeholder="태그를 입력해주세요"
-          onKeyDown={handleTagChange}
+          onKeyUp={handleTagChange}
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
         />
         <TagList>
           {tags.map((tag) => (
