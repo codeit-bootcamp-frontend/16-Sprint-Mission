@@ -69,14 +69,14 @@ const Container = styled.div`
   flex-direction: column;
   gap: 29px;
   padding: 0 ${({ theme }) => theme.spacing.mobile};
-  margin-top: 30px;
-  margin-bottom: 60px;
+  margin: 30px auto 60px;
 
   @media (min-width: 768px) {
     padding: 0 ${({ theme }) => theme.spacing.tablet};
   }
 
   @media (min-width: 1024px) {
+    max-width: 1200px;
     padding: 0 ${({ theme }) => theme.spacing.desktop};
   }
 `;

@@ -4,12 +4,12 @@ function InputField({ label, type, placeholder, isTextArea, value, onChange }) {
   return isTextArea ? (
     <Container>
       <label htmlFor="textarea">{label}</label>
-      <input
+      <textarea
         id="textarea"
-        as="textarea"
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        rows={10}
       />
     </Container>
   ) : (
