@@ -29,6 +29,7 @@ const FooterStyle = css`
   .sns {
     display: flex;
     gap: 12px;
+    align-items: center;
   }
 `;
 
