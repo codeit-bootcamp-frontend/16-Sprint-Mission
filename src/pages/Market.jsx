@@ -126,7 +126,6 @@ function Market() {
       <AllProductsWrapper>
         <AllItemTitle>전체상품</AllItemTitle>
         <ProductRegistration>상품 등록하기</ProductRegistration>
-
         <SearchInput handlerSearchItems={handlerSearchItems} />
         <CustomSortSelect value={order} setOrder={setOrder} />
       </AllProductsWrapper>

@@ -12,7 +12,6 @@ const NavWrap = styled.div`
   width: 100%;
   padding: 0 16px;
   border-bottom: 1px solid #dfdfdf;
-  min-width: 1024px;
   a {
     text-decoration: none;
     color: #4b5563;

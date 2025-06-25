@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import searchIcon from "../assets/searchIcon.png";
+import { debounce } from "lodash";
 const SearchInputWrapper = styled.div`
   position: relative;
   width: calc(100% - 42px);
@@ -42,18 +43,16 @@ const SearchInputLabel = styled.label`
 `;
 
 function SearchInput({ handlerSearchItems }) {
-  const onSearchItems = (e) => {
-    if (e.key === "Enter") {
-      handlerSearchItems(e.target.value);
-    }
-  };
+  const onSearchItems = debounce((e) => {
+    handlerSearchItems(e.target.value);
+  }, 500);
   return (
     <SearchInputWrapper>
       <SearchInputLabel />
       <SearchInputStyled
         placeholder="검색할 상품을 입력해주세요"
         type="text"
-        onKeyDown={(e) => onSearchItems(e)}
+        onChange={(e) => onSearchItems(e)}
       />
     </SearchInputWrapper>
   );
