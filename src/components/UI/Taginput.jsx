@@ -1,10 +1,26 @@
 import styled from 'styled-components';
+import { useState } from 'react';
 
 import { applyFontStyles } from '../../styles/mixins';
 import { ColorTypes, FontTypes } from '../../styles/theme';
 import XIcon from '../../assets/images/icons/IC_X.svg';
 
 function TagInput() {
+  const [tags, setTags] = useState([]);
+
+  const handleTagChange = (e) => {
+    if (e.key === 'Enter') {
+      const newTag = e.target.value.trim();
+      if (newTag === '') return;
+      if (tags.includes(newTag)) return;
+      setTags([...tags, newTag]);
+    }
+  };
+
+  const handleTagRemove = (removeTag) => {
+    setTags(tags.filter((tag) => tag !== removeTag));
+  };
+
   return (
     <Container>
       <label htmlFor="tag">태그</label>
@@ -13,16 +29,22 @@ function TagInput() {
           id="tag"
           type="text"
           placeholder="태그를 입력해주세요"
+          onKeyDown={handleTagChange}
         />
-        <TagWrapper>
-          <span>#태그</span>
-          <img
-            src={XIcon}
-            alt="x"
-            width={22}
-            height={24}
-          />
-        </TagWrapper>
+        <TagList>
+          {tags.map((tag) => (
+            <TagWrapper key={tag}>
+              <span>{tag}</span>
+              <img
+                src={XIcon}
+                alt="x"
+                width={22}
+                height={24}
+                onClick={() => handleTagRemove(tag)}
+              />
+            </TagWrapper>
+          ))}
+        </TagList>
       </Wrapper>
     </Container>
   );
@@ -43,12 +65,20 @@ const Wrapper = styled.div`
   gap: 14px;
 `;
 
+const TagList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+`;
+
 const TagWrapper = styled.div`
   display: flex;
   justify-content: center;
   gap: 10px;
 
-  width: 93px;
+  max-width: 93px;
+  width: fit-content;
+  max-width: 100%;
   height: 36px;
   background-color: ${({ theme }) => theme.colors[ColorTypes.SECONDARY_GRAY_100]};
   border-radius: 26px;
