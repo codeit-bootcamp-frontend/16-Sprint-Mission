@@ -72,3 +72,37 @@
 .favourite {
     display: flex;
 }
+
+.inquiryComments{
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+}
+
+.inquiryComment{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.inquiryContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.inquiryCommentHeader{
+    display: flex;
+    justify-content: space-between;
+}
+
+.inquiryCommentFooter{
+    display: flex;
+    gap: 8px;
+}
+
+.inquiryCommentFooterInfo{
+    display: flex;
+    flex-direction: column;
+    gap:4px;
+}
