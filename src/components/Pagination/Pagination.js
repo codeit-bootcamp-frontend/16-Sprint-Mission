@@ -5,16 +5,16 @@ import styles from "./Pagination.module.scss";
 const LIMIT = 5;
 const Pagination = ({ pageSize, totalCount, currentPage, setCurrentPage }) => {
   const [currentGroup, setCurrentGroup] = useState([]);
-  const [totalPager, setTotalPager] = useState(0);
+  const [totalPage, setTotalPage] = useState(0);
 
   useEffect(() => {
     if (!totalCount) return;
 
     const getTotalPager = Math.ceil(totalCount / pageSize); // 페이지네이션 총 개수
-    setTotalPager(getTotalPager);
+    setTotalPage(getTotalPager);
 
     // 페이지네이션 5개(LIMIT)로 끊어서 2차원 배열로 생성
-    const pagerArr = Array.from({ length: totalPager }).reduce(
+    const pagerArr = Array.from({ length: totalPage }).reduce(
       (acc, cur, idx) => {
         const groupIdx = Math.floor(idx / LIMIT);
         if (!acc[groupIdx]) acc[groupIdx] = [];
@@ -27,7 +27,7 @@ const Pagination = ({ pageSize, totalCount, currentPage, setCurrentPage }) => {
     // currentPage 값이 있는 배열 반환
     const currentGroup = pagerArr.find((item) => item.includes(currentPage));
     setCurrentGroup(currentGroup);
-  }, [currentPage, totalCount, pageSize, totalPager]);
+  }, [currentPage, totalCount, pageSize, totalPage]);
 
   // prev 버튼 클릭
   const handleClickPrev = () => {
@@ -37,7 +37,7 @@ const Pagination = ({ pageSize, totalCount, currentPage, setCurrentPage }) => {
 
   // next 버튼 클릭
   const handleClickNext = () => {
-    const totalPageNum = totalPager;
+    const totalPageNum = totalPage;
     const changeCurrentPage =
       currentPage + 1 >= totalPageNum ? totalPageNum : currentPage + 1;
     setCurrentPage(changeCurrentPage);
@@ -75,7 +75,7 @@ const Pagination = ({ pageSize, totalCount, currentPage, setCurrentPage }) => {
             type="button"
             className={`${styles["pagination__button"]} ${styles["pagination__button-next"]}`}
             onClick={handleClickNext}
-            disabled={currentPage === totalPager}
+            disabled={currentPage === totalPage}
           >
             <img src={arrow} alt="다음으로" />
           </button>
