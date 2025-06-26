@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './styles/AskForm.module.css';
-import { postComment } from '../../service/api';
 
-function AskForm({
-  placeholder,
-  productId,
-  method,
-  comment,
-  setIsEditNow,
-  children,
-}) {
+const formHeight = {
+  POST: { height: '129px' },
+  UPDATE: { height: '80px' },
+};
+
+function AskForm({ placeholder, method, comment, setIsEditNow, children }) {
   const [value, setValue] = useState(comment);
   const notEmpty = value?.length || false;
 
@@ -17,13 +14,12 @@ function AskForm({
     setValue(e.target.value);
   }
 
-  function handleSubmit(e, method) {
-    // e.preventDefault();
-    // async function sendPost() {
-    //   await postComment({ method, productId, value });
-    // }
-    // sendPost();
-    alert('준비 중인 기능입니다')
+  function handleSubmit(e) {
+    // 추후 메서드 다르게 받아서 수정, 등록 나눠서 보내기
+
+    if (method === 'POST') alert('준비 중인 기능입니다(댓글 등록)');
+    else if (method === 'UPDATE') alert('준비 중인 기능입니다(댓글 수정)');
+    e.preventDefault();
   }
 
   return (
@@ -36,6 +32,7 @@ function AskForm({
           id="comment"
           placeholder={placeholder}
           value={value}
+          style={formHeight[method]}
         />
       </label>
       {method === 'POST' ? (

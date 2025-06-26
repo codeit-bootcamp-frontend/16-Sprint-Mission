@@ -36,7 +36,7 @@ export async function getProductComment(productId) {
 //   const responese
 // }
 
-export async function postComment({productId, value, method}) {
+export async function postComment({ productId, value, method }) {
   const result = await fetch(`${BASEURL}/products/${productId}/comments`, {
     method,
     headers: {

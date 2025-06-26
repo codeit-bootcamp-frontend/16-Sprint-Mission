@@ -17,11 +17,11 @@ function ProductAsk({ productId }) {
       setCommentList(comments.list);
     }
     getFetch();
-  }, []);
+  }, [productId]);
 
   return (
     <section className={styles.productAsk}>
-      <AskForm productId={productId} placeholder={placeholder} method={'POST'}>
+      <AskForm placeholder={placeholder} method={'POST'}>
         문의하기
       </AskForm>
       {commentList?.length === 0 ? (

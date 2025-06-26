@@ -20,7 +20,13 @@ function ProductInfo({ productId }) {
       setProductDetail(productInfo);
     }
     getFetch();
-  }, []);
+  }, [productId]);
+
+  function onSelect(selector) {
+    if (selector === '수정하기') alert('준비 중인 기능입니다(게시글 수정)');
+    else if (selector === '삭제하기')
+      alert('준비 중인 기능입니다(게시글 삭제)');
+  }
 
   return (
     <div className={styles.productInfo}>
@@ -30,7 +36,7 @@ function ProductInfo({ productId }) {
           <h2>{productDetail.name}</h2>
           <div>{productDetail.price?.toLocaleString('ko-KR')}원</div>
         </article>
-        <KebabMenu />
+        <KebabMenu onSelect={onSelect} />
         <article className={styles.description}>
           <h3>상품 소개</h3>
           <p>{productDetail.description}</p>
@@ -50,7 +56,7 @@ function ProductInfo({ productId }) {
             time={formatDate(productDetail.updatedAt)}
           />
           <div className={styles.buttonContainer}>
-            <button>
+            <button onClick={() => alert('준비 중인 기능입니다(좋아요 수정)')}>
               <img src={heartIcon} alt="하트 아이콘" />
               {productDetail.favoriteCount}
             </button>
