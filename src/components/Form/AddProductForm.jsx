@@ -14,6 +14,12 @@ import useForm from "../../hooks/useForm";
 const AddProductForm = ({ title }) => {
   const formRef = useRef(null);
 
+  const formOptions = {
+    customFieldValidators: {
+      tags: (tags) => tags.length > 0,
+    },
+  };
+
   const {
     tags,
     handleTagsChange,
@@ -21,7 +27,7 @@ const AddProductForm = ({ title }) => {
     handleBlur,
     validateForm,
     isFormValid,
-  } = useForm(formRef);
+  } = useForm(formRef, formOptions);
 
   return (
     <form
