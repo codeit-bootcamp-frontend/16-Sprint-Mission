@@ -56,6 +56,10 @@
   line-height: 24px;
 }
 
+.tags {
+  margin-bottom: 40px;
+}
+
 .tags h3 {
   margin-top: 24px;
 }
@@ -70,7 +74,6 @@
 }
 
 .userInfo {
-  /* margin-top: 40px; */
   margin-top: auto;
   display: flex;
   justify-content: space-between;
