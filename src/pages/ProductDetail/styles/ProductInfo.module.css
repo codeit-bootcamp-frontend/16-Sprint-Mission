@@ -99,7 +99,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .main {
+  .productInfo {
     --product-info-pb: 32px;
     --product-text-width: 340px;
   }
@@ -121,7 +121,7 @@
 }
 
 @media screen and (min-width: 1200px) {
-  .main {
+  .productInfo {
     --product-info-pb: 40px;
     --product-text-width: 690px;
     --product-info-image-size: 486px;

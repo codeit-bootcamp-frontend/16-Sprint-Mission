@@ -30,3 +30,7 @@
   color: var(--secondary-gray500);
   cursor: pointer;
 }
+
+.kebab > ul li:hover {
+  color: var(--secondary-gray800);
+}
