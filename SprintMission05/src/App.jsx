@@ -7,6 +7,7 @@ import Privacy from "./pages/Privacy";
 import FAQ from "./pages/FAQ";
 import NotFound from "./pages/NotFound";
 import Items from "./pages/Items";
+import AddItem from "./pages/AddItem";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/items" element={<Items />} />
+          <Route path="/additem" element={<AddItem />} />
           <Route path="/login" element={<Login />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/faq" element={<FAQ />} />

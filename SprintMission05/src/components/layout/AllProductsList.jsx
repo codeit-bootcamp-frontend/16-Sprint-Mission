@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getProducts } from "../api/getProducts";
+import { getProducts } from "../../api/getProducts";
 import Pagination from "./Pagination";
 import Button from "../common/Button/Button";
 import optionIcon from "../../assets/ic_sort.png";
+import Input from "../common/input/Input";
 
 const PAGESIZE = 10;
 
@@ -103,7 +104,7 @@ function AllProductsList() {
       <Header>
         <h2>전체상품</h2>
         <StyledForm>
-          <input type="text" placeholder="검색할 상품을 입력하세요" />
+          <Input placeholder="검색할 상품을 입력하세요" />
           <Button
             state="inactive"
             size="small"

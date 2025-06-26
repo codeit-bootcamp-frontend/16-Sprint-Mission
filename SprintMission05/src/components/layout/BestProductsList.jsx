@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { getProducts } from "../api/getProducts";
+import { getProducts } from "../../api/getProducts";
 
 function BestProductsListItem({ item }) {
   return (
