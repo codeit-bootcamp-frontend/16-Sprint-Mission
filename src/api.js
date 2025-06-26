@@ -11,6 +11,7 @@ export async function getProducts(params = {}) {
   return body;
 }
 
+
 export async function postProducts(data) {
   const response = await fetch(`${BASE_URL}/products`, {
     method: "POST",
