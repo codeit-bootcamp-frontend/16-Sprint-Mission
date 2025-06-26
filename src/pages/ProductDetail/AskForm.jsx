@@ -15,8 +15,8 @@ function AskForm({ placeholder, method, comment, setIsEditNow, children }) {
   }
 
   function handleSubmit(e) {
+    //이것도 그럼 useCallback이 낫나?  //[v]
     // 추후 메서드 다르게 받아서 수정, 등록 나눠서 보내기
-
     if (method === 'POST') alert('준비 중인 기능입니다(댓글 등록)');
     else if (method === 'UPDATE') alert('준비 중인 기능입니다(댓글 수정)');
     e.preventDefault();

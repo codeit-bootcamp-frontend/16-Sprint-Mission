@@ -21,9 +21,9 @@ export async function getProductDetail(productId) {
   return result;
 }
 
-export async function getProductComment(productId) {
+export async function getProductComment(productId, cursor = 0) {
   const response = await fetch(
-    `${BASEURL}/products/${productId}/comments?limit=3`,
+    `${BASEURL}/products/${productId}/comments?limit=3&cursor=${cursor}`,
   );
 
   if (!response.ok) throw new Error('응답에 문제 있음');
