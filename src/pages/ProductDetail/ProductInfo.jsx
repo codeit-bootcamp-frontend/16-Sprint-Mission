@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import heartIcon from '@assets/icon/ic_heart.png';
 import KebabMenu from '@components/KebabMenu';
 import UserProfileCard from '@components/userProfileCard';
@@ -22,11 +22,12 @@ function ProductInfo({ productId }) {
     getFetch();
   }, [productId]);
 
-  function onSelect(selector) {
+  const onSelect = useCallback((selector) => {
+    //프로덕트인포 컴포넌트에서 케밥에 내려줄 함수
     if (selector === '수정하기') alert('준비 중인 기능입니다(게시글 수정)');
     else if (selector === '삭제하기')
       alert('준비 중인 기능입니다(게시글 삭제)');
-  }
+  }, []);
 
   return (
     <div className={styles.productInfo}>

@@ -50,7 +50,9 @@
 }
 
 .updateBtn {
-  margin-left: auto;
+  position: absolute;
+  right: 0;
+  bottom: 12px;
 }
 
 .updateBtn button:first-child {

@@ -42,3 +42,8 @@
 .comment .postTime {
   color: var(--cool-gray400);
 }
+
+/* .comment .userInfo{
+  position: absolute;
+  left: 0;
+} */

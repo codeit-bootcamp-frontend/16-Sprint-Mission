@@ -70,7 +70,8 @@
 }
 
 .userInfo {
-  margin-top: 40px;
+  /* margin-top: 40px; */
+  margin-top: auto;
   display: flex;
   justify-content: space-between;
 }
@@ -102,11 +103,13 @@
   .productInfo {
     --product-info-pb: 32px;
     --product-text-width: 340px;
-  }
 
-  .productInfo {
     display: flex;
     gap: 16px;
+  }
+
+  .productInfo > img {
+    margin-bottom: 0;
   }
 
   .title h2 {
@@ -125,9 +128,7 @@
     --product-info-pb: 40px;
     --product-text-width: 690px;
     --product-info-image-size: 486px;
-  }
 
-  .productInfo {
     gap: 24px;
   }
 
