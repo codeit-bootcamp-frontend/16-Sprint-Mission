@@ -4,6 +4,7 @@ import KebabMenu from '@components/KebabMenu';
 import UserProfileCard from '@components/userProfileCard';
 import { getProductDetail } from '@service/api.js';
 import styles from './styles/ProductInfo.module.css';
+import emptyImg from '@assets/images/loadFailImg.png';
 
 function formatDate(time) {
   if (!time) return;
@@ -31,7 +32,11 @@ function ProductInfo({ productId }) {
 
   return (
     <div className={styles.productInfo}>
-      <img src={productDetail.images} alt="상품이미지" />
+      <img
+        src={productDetail.images}
+        onError={(e) => (e.currentTarget.src = emptyImg)}
+        alt="상품이미지"
+      />
       <section className={styles.productText}>
         <article className={styles.title}>
           <h2>{productDetail.name}</h2>
