@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { checkValidEmail, checkValidPassword } from "../../utils/authUtils";
+import {
+  checkValidEmail,
+  checkValidPassword,
+  getIsAllValid,
+} from "../../utils/authUtils";
 import getLogo from "../../utils/getLogo";
 import AuthSns from "../../components/AuthSns/AuthSns";
 import AuthGuide from "../../components/AuthGuide/AuthGuide";
 import "../../styles/auth.scss";
 import styles from "./LoginPage.module.scss";
-import getIsAllValid from "../../utils/getIsAllValid";
 import AuthFormInput from "../../components/AuthFormInput/AuthFormInput";
 
 const INIT_VALID = {
@@ -51,15 +54,17 @@ const LoginPage = () => {
     const { validEmail, validPassword } = getUserValidation(name, value);
     setValidUserEmail(() => validEmail);
     setValidUserPassword(() => validPassword);
-
-    // 버튼 활성화 여부
-    setIsAllValid(() => getIsAllValid([validEmail, validPassword]));
   };
 
   const handleClickSubmit = (e) => {
     e.preventDefault();
     nav("/");
   };
+
+  useEffect(() => {
+    // 버튼 활성화 여부
+    setIsAllValid(getIsAllValid([validUserEmail, validUserPassword]));
+  }, [validUserEmail, validUserPassword]);
 
   return (
     <div id="wrap" className={styles.loginPage}>
