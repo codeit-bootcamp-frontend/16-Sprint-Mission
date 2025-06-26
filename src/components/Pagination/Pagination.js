@@ -3,6 +3,7 @@ import arrow from "../../assets/images/icons/ic_pagination_arrow.svg";
 import styles from "./Pagination.module.scss";
 
 const LIMIT = 5;
+
 const Pagination = ({ pageSize, totalCount, currentPage, setCurrentPage }) => {
   const [currentGroup, setCurrentGroup] = useState([]);
   const [totalPage, setTotalPage] = useState(0);
@@ -10,22 +11,22 @@ const Pagination = ({ pageSize, totalCount, currentPage, setCurrentPage }) => {
   useEffect(() => {
     if (!totalCount) return;
 
-    const getTotalPager = Math.ceil(totalCount / pageSize); // 페이지네이션 총 개수
-    setTotalPage(getTotalPager);
+    const getTotalPage = Math.ceil(totalCount / pageSize); // 페이지네이션 총 개수
+    setTotalPage(getTotalPage);
 
-    // 페이지네이션 5개(LIMIT)로 끊어서 2차원 배열로 생성
-    const pagerArr = Array.from({ length: totalPage }).reduce(
-      (acc, cur, idx) => {
-        const groupIdx = Math.floor(idx / LIMIT);
-        if (!acc[groupIdx]) acc[groupIdx] = [];
-        acc[groupIdx].push(idx + 1);
-        return acc;
-      },
-      []
-    );
+    const getCurrentPageGroup = (currentPage, limit = LIMIT) => {
+      const groupIdx = Math.floor((currentPage - 1) / limit);
+      const startPage = groupIdx * limit + 1;
+      const endPage = Math.min(startPage + limit - 1, totalPage);
 
-    // currentPage 값이 있는 배열 반환
-    const currentGroup = pagerArr.find((item) => item.includes(currentPage));
+      return Array.from(
+        { length: endPage - startPage + 1 },
+        (_, i) => startPage + i
+      );
+    };
+
+    const currentGroup = getCurrentPageGroup(currentPage);
+
     setCurrentGroup(currentGroup);
   }, [currentPage, totalCount, pageSize, totalPage]);
 
