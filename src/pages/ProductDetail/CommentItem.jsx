@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 import KebabMenu from '@components/KebabMenu';
 import UserProfileCard from '@components/userProfileCard';
+import { calculateRelativeTime } from '@utils/calculateRelativeTime';
 import AskForm from './AskForm';
 import styles from './styles/CommentItem.module.css';
 
@@ -28,7 +29,7 @@ function CommentItem({ comment }) {
         authority={'comment'}
         image={comment.writer.image}
         name={comment.writer.nickname}
-        time={comment.updatedAt}
+        time={calculateRelativeTime(comment.updatedAt)}
       />
       {!isEditNow && <KebabMenu onSelect={onSelect} />}
     </li>
