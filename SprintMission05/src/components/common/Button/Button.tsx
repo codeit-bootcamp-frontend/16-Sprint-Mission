@@ -1,7 +1,13 @@
 import "./Button.css";
 import classNames from "classnames";
 
-const Button = ({ variant = "primary", text, onClick }) => {
+interface ButtonProps {
+  variant?: "primary" | "secondary" | "inactive";
+  text: string;
+  onClick?: () => void;
+}
+
+const Button = ({ variant = "primary", text, onClick }: ButtonProps) => {
   return (
     <button
       onClick={onClick}

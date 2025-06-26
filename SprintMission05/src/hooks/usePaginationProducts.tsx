@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getProducts } from "./api";
+import { getProducts } from "../api/getProducts";
 
 const LIMIT = 10;
 
@@ -11,7 +11,7 @@ export default function usePaginationProducts() {
   useEffect(() => {
     const fetch = async () => {
       const offset = (page - 1) * LIMIT;
-      const data = await getProducts({ offset, limit: LIMIT });
+      const data = await getProducts({ page, pageSize: LIMIT });
       setProducts(data);
 
       // 다음 페이지가 존재하는지 확인
