@@ -8,11 +8,6 @@ const DELAY_LOADING_MS = 2000;
 
 const useComment = (productId) => {
   const {
-    isLoading,
-    loadingError,
-    runAsync: getCommentAsync,
-  } = useAsync(getComments);
-  const {
     isLoading: updatingComment,
     loadingError: updateCommentError,
     runAsync: updateCommentAsync,
@@ -28,22 +23,8 @@ const useComment = (productId) => {
   // 댓글 페이지네이션 (커서 기반)
   const [comments, setComments] = useState([]);
   const [nextCursor, setNextCursor] = useState(null);
-
-  const handleCommentLoad = useCallback(
-    async (currentCursor = null, setNextCursorFromPagination) => {
-      try {
-        const result = await getCommentAsync(productId, currentCursor);
-        if (!result) return;
-        setComments(result.list);
-
-        setNextCursor(result.nextCursor);
-        setNextCursorFromPagination?.(result.nextCursor);
-      } catch (err) {
-        console.error(err);
-      }
-    },
-    [getCommentAsync, productId]
-  );
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLoadError, setIsLoadError] = useState(null);
 
   // 댓글 수정
   const [isEditCommentId, setIsEditCommentId] = useState(null);
@@ -80,25 +61,33 @@ const useComment = (productId) => {
     }
   };
 
+  const handleCommentLoad = useCallback(
+    async (currentCursor = null, setNextCursorFromPagination) => {
+      try {
+        setIsLoading(true);
+        setIsLoadError(null);
+        const result = await getComments(productId, currentCursor);
+        if (!result) return;
+        setComments(result.list);
+
+        setNextCursor(result.nextCursor);
+        setNextCursorFromPagination?.(result.nextCursor);
+      } catch (err) {
+        setIsLoadError(err);
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [productId]
+  );
+
   // 초기 댓글 목록 로드
   const [isCommentPageReady, setIsCommentPageReady] = useState(false);
 
   useEffect(() => {
-    const loadInitialComments = async () => {
-      try {
-        const result = await getCommentAsync(productId, null);
-        if (!result) return;
-
-        setComments(result.list);
-        setNextCursor(result.nextCursor);
-        setIsCommentPageReady(true); // 댓글 목록 받은 이후 댓글 페이지네이션 렌더 준비
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    loadInitialComments();
-  }, [getCommentAsync, productId]);
+    handleCommentLoad(null); // 초기에는 커서 없이 호출
+    setIsCommentPageReady(true); // 페이지네이션 준비 완료 표시
+  }, [productId, handleCommentLoad]);
 
   // 댓글 로딩 오래 걸릴 때만 fallback UI 표시
   useEffect(() => {
@@ -124,7 +113,7 @@ const useComment = (productId) => {
 
     // 로딩/에러
     isLoading,
-    loadingError,
+    isLoadError,
     updatingComment,
     updateCommentError,
     deletingComment,

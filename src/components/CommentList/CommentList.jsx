@@ -24,7 +24,7 @@ const CommentList = ({ productId }) => {
 
     // 로딩/에러
     isLoading,
-    loadingError,
+    isLoadError,
     updatingComment,
     updateCommentError,
     showFallback,
@@ -44,7 +44,7 @@ const CommentList = ({ productId }) => {
   return (
     <div css={CommentListStyle}>
       {isLoadingDelayed && <p>댓글 로딩중...</p>}
-      {loadingError && <p>댓글을 불러오는 데 문제가 발생했습니다.</p>}
+      {isLoadError && <p>댓글을 불러오는 데 문제가 발생했습니다.</p>}
       {isCommentEmpty && <CommentEmpty />}
 
       <ol className="comments">
