@@ -26,6 +26,7 @@ const TextareaStyle = (maxheight = "var(--form-input-max-height)") => css`
   resize: none;
   height: var(--form-input-max-height);
   max-height: ${maxheight !== "auto" ? `${maxheight}px` : maxheight};
+  line-height: 1.5;
 
   &::placeholder {
     color: var(--gray400);
