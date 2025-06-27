@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, Suspense } from 'react';
+import SkeletonUi from '@components/SkeletonUi';
 import { useLoadItems } from '@hooks/useLoadItems';
 import { useResizeInnerWidth } from '@hooks/useResizeInnerWidth';
 import LoadFailed from './LoadFailed';
@@ -6,7 +7,6 @@ import Pagination from './Pagination';
 import { ProductData } from './ProductDataProvider';
 import ProductsFilterBar from './ProductsFilterBar';
 import styles from './styles/ProductsAll.module.css';
-import SkeletonUi from '@components/SkeletonUi';
 
 function ProductsAll() {
   const { products, setProducts, setTotal, queryStrings, setQueryStrings } =
