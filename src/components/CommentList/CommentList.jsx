@@ -38,12 +38,14 @@ const CommentList = ({ productId }) => {
   } = useComment(productId);
 
   const isLoadingDelayed = isLoading && showFallback;
+  const isCommentEmpty = !isLoading && comments.length === 0;
+  const isCommentReady = isCommentPageReady && comments.length !== 0;
 
   return (
     <div css={CommentListStyle}>
       {isLoadingDelayed && <p>댓글 로딩중...</p>}
       {loadingError && <p>댓글을 불러오는 데 문제가 발생했습니다.</p>}
-      {!isLoading && comments.length === 0 && <CommentEmpty />}
+      {isCommentEmpty && <CommentEmpty />}
 
       <ol className="comments">
         {comments?.map((cmt) => (
@@ -89,7 +91,7 @@ const CommentList = ({ productId }) => {
         ))}
       </ol>
 
-      {isCommentPageReady && (
+      {isCommentReady && (
         <CursorPagination
           firstCursor={nextCursor}
           handleLoad={handleCommentLoad}
