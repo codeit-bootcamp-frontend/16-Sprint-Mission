@@ -3,28 +3,17 @@ import { css } from "@emotion/react";
 import avatarImg from "@/assets/images/img-avatar.png";
 import formatDate from "@/utils/formatDate";
 import ImageSkeleton from "@/components/ui/Skeletons/ImageSkeleton";
+import styles from "./ProfileSummaryStylesMap";
 
-const ProfileSummary = ({
-  name,
-  imgSrc,
-  createdAt,
-  imgSize = 40,
-  metaSize = 14,
-  imgInfoGap = 16,
-  ...props
-}) => {
+const ProfileSummary = ({ name, imgSrc, createdAt, size = "md" }) => {
   return (
-    <div
-      className="profile-area"
-      css={ProfileSummaryStyle({ metaSize, imgInfoGap })}
-      style={props.style}
-    >
+    <div className="profile-area" css={ProfileSummaryStyle(size)}>
       <div className="profile">
         <ImageSkeleton
           src={imgSrc || avatarImg}
           alt="기본 프로필 이미지"
-          width={imgSize}
-          height={imgSize}
+          width={styles.imgSize[size]}
+          height={styles.imgSize[size]}
         />
         <div className="info">
           <span className="name">{name}</span>
@@ -37,12 +26,15 @@ const ProfileSummary = ({
 
 export default ProfileSummary;
 
-const ProfileSummaryStyle = ({ metaSize, imgInfoGap }) => css`
+const getProfileSize = (size) => styles.size[size];
+
+const ProfileSummaryStyle = (size) => css`
   display: flex;
 
   .profile {
+    ${getProfileSize(size)};
+
     display: flex;
-    gap: ${imgInfoGap}px;
 
     img {
       flex-shrink: 0;
@@ -51,12 +43,10 @@ const ProfileSummaryStyle = ({ metaSize, imgInfoGap }) => css`
     .info .name {
       display: block;
       color: var(--text-primary);
-      font-size: ${metaSize}px;
     }
 
     .info .createdAt {
       color: var(--gray400);
-      font-size: ${metaSize}px;
     }
   }
 `;
