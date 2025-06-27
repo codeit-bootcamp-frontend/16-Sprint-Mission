@@ -6,11 +6,10 @@ import Textfield from "../components/Textfield";
 import TextArea from "../components/TextArea";
 import ImageUploader from "../components/ImageUploader";
 import TagInput from "../components/TagInput";
-import useValidation from "../hooks/useValidation";
+import { validateInput } from "../utils/formValidation";
 
 const ItemRegisterPage = () => {
   /* 유효성 체크 관련 훅  */
-  const { validateInput } = useValidation();
 
   const [formData, setFormData] = useState({
     image: "",
