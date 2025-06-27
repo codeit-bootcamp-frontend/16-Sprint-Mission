@@ -13,7 +13,7 @@ function AddItemPage() {
   const [price, handlePriceChange] = useFormatNumber('');
   const [tags, setTags] = useState([]);
 
-  const isDisabled = name.trim() && description.trim() && price.trim() && tags.length > 0;
+  const isValid = name.trim() && description.trim() && price.trim() && tags.length > 0;
 
   return (
     <Container>
@@ -21,7 +21,7 @@ function AddItemPage() {
         <h3>상품 등록하기</h3>
         <StButton
           type="submit"
-          disabled={isDisabled}
+          disabled={isValid}
         >
           등록
         </StButton>
