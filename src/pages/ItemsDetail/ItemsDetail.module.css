@@ -162,7 +162,7 @@
     padding: 16px;
     border: none;
     background-color: var(--color-gray-100);
-    color: var(--color-gray-400);
+    color: var(--color-gray-800);
     font-size: var(--font-size-sm);
     border-radius: 12px;
     resize: none;
@@ -187,6 +187,11 @@
     font-weight: var(--font-weight-button);
     line-height: var(--line-height-relaxed);
     cursor: not-allowed;
+}
+
+.submitButton.active {
+  background-color: var(--color-blue-200);
+  cursor: pointer;
 }
 
 .inquiryCommentHeader {

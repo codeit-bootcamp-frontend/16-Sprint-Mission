@@ -7,10 +7,13 @@ import TextInputField from "../additem/components/TextInputField";
 import profileImage from "../../assets/images/profile-image.png";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faCircleArrowLeft } from "@fortawesome/free-solid-svg-icons/faCircleArrowLeft";
+import { useState } from "react";
 
 export default function ItemsDetail() {
   const { productId } = useParams();
   const { data: product, loading, error } = useProduct(productId);
+  const [inquiry, setInquiry] = useState("");
+  const isValid = inquiry.trim() !== "";
 
   if (loading) return <p>로딩 중…</p>;
   if (error) return <p>오류: {error.message}</p>;
@@ -87,9 +90,16 @@ export default function ItemsDetail() {
           wrapperClass={styles.inputWrapper}
           textAreaClass={styles.textArea}
           errorClass={styles.errorText}
+          value={inquiry}
+          onChange={(e) => setInquiry(e.target.value)}
         />
         <div className={styles.submitButtonWrapper}>
-          <button className={styles.submitButton}>등록</button>
+          <button
+            className={`${styles.submitButton} ${isValid ? styles.active : ""}`}
+            disabled={!isValid}
+          >
+            등록
+          </button>
         </div>
       </div>
       <CommentList productId={productId} />
