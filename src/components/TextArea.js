@@ -26,7 +26,9 @@ const TextArea = ({
     false: "textarea__message--error",
   };
 
-  const showMessage = message && isValid === false;
+  const hasMessage = !!message;
+  const isInvalid = isValid === false;
+  const showMessage = hasMessage && isInvalid;
 
   return (
     <div>
