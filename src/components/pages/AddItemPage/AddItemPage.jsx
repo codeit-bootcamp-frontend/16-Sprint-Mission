@@ -16,18 +16,18 @@ function AddItemPage() {
   const isValid = name.trim() && description.trim() && price.trim() && tags.length > 0;
 
   return (
-    <Container>
-      <HeaderSection>
+    <StyledContainer>
+      <StyledHeaderSection>
         <h3>상품 등록하기</h3>
-        <StButton
+        <StyledButton
           type="submit"
           disabled={isValid}
         >
           등록
-        </StButton>
-      </HeaderSection>
+        </StyledButton>
+      </StyledHeaderSection>
 
-      <FormSection>
+      <StyledFormSection>
         <ImageUpload />
 
         <InputField
@@ -58,14 +58,14 @@ function AddItemPage() {
           tags={tags}
           setTags={setTags}
         />
-      </FormSection>
-    </Container>
+      </StyledFormSection>
+    </StyledContainer>
   );
 }
 
 export default AddItemPage;
 
-const Container = styled.div`
+const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 29px;
@@ -82,13 +82,13 @@ const Container = styled.div`
   }
 `;
 
-const HeaderSection = styled.div`
+const StyledHeaderSection = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
-const StButton = styled.button`
+const StyledButton = styled.button`
   width: 74px;
   height: 42px;
   background-color: ${({ theme }) => theme.colors[ColorTypes.SECONDARY_GRAY_400]};
@@ -98,7 +98,7 @@ const StButton = styled.button`
   }
 `;
 
-const FormSection = styled.form`
+const StyledFormSection = styled.form`
   display: flex;
   flex-direction: column;
   gap: 24px;

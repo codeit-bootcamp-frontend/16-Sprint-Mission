@@ -31,31 +31,31 @@ function BestProducts() {
   }, [pageSize]);
 
   return (
-    <BestProductsContainer>
+    <StyledBestProductsContainer>
       <div>베스트 상품</div>
 
-      <ItemCardContainer>
+      <StyledItemCardContainer>
         {bestItems?.map((item) => (
           <ItemCard
             key={item.id}
             item={item}
           />
         ))}
-      </ItemCardContainer>
-    </BestProductsContainer>
+      </StyledItemCardContainer>
+    </StyledBestProductsContainer>
   );
 }
 
 export default BestProducts;
 
-const BestProductsContainer = styled.div`
+const StyledBestProductsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
   margin-top: 20px;
 `;
 
-const ItemCardContainer = styled.div`
+const StyledItemCardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 8px;

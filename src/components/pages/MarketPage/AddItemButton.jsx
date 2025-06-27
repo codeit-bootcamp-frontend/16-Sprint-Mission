@@ -5,9 +5,9 @@ function AddItemButton() {
   return (
     <div>
       <Link to="/additem">
-        <StButton>
+        <StyledButton>
           <div>상품 등록하기</div>
-        </StButton>
+        </StyledButton>
       </Link>
     </div>
   );
@@ -15,7 +15,7 @@ function AddItemButton() {
 
 export default AddItemButton;
 
-const StButton = styled.button`
+const StyledButton = styled.button`
   width: 133px;
   height: 42px;
 `;

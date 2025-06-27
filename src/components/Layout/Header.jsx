@@ -12,38 +12,38 @@ function Header() {
   const isMarketActive = location.pathname === '/items' || location.pathname === '/additem';
 
   return (
-    <HeaderContainer>
-      <HeaderLeft>
+    <StyledHeaderContainer>
+      <StyledHeaderLeft>
         <Link
           to="/"
           aria-label="홈으로 이동"
         >
-          <TextLogo
+          <StyledTextLogo
             src={textLogo}
             alt="마켓로고"
           />
-          <Imglogo
+          <StyledImglogo
             src={logo}
             alt="마켓로고"
           />
         </Link>
 
         <nav>
-          <Ul>
-            <Li>
-              <StNavLink to="/community">자유게시판</StNavLink>
-            </Li>
-            <Li>
-              <StNavLink
+          <StyledUl>
+            <StyledLi>
+              <StyledNavLink to="/community">자유게시판</StyledNavLink>
+            </StyledLi>
+            <StyledLi>
+              <StyledNavLink
                 to="/items"
                 $isActive={isMarketActive}
               >
                 중고마켓
-              </StNavLink>
-            </Li>
-          </Ul>
+              </StyledNavLink>
+            </StyledLi>
+          </StyledUl>
         </nav>
-      </HeaderLeft>
+      </StyledHeaderLeft>
 
       <Link to="/login">
         <img
@@ -51,13 +51,13 @@ function Header() {
           alt="로그인"
         />
       </Link>
-    </HeaderContainer>
+    </StyledHeaderContainer>
   );
 }
 
 export default Header;
 
-const HeaderContainer = styled.header`
+const StyledHeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -74,20 +74,20 @@ const HeaderContainer = styled.header`
   }
 `;
 
-const HeaderLeft = styled.div`
+const StyledHeaderLeft = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
 `;
 
-const Ul = styled.ul`
+const StyledUl = styled.ul`
   display: flex;
   align-items: center;
   gap: 8px;
   margin-top: 4px;
 `;
 
-const Li = styled.li`
+const StyledLi = styled.li`
   ${applyFontStyles(FontTypes.BOLD16, ColorTypes.SECONDARY_GRAY_600)};
 
   &:hover {
@@ -95,7 +95,7 @@ const Li = styled.li`
   }
 `;
 
-const StNavLink = styled(NavLink)`
+const StyledNavLink = styled(NavLink)`
   color: ${({ $isActive, theme }) =>
     $isActive ? theme.colors[ColorTypes.PRIMARY_100] : theme.colors[ColorTypes.SECONDARY_GRAY_600]};
 
@@ -104,7 +104,7 @@ const StNavLink = styled(NavLink)`
   }
 `;
 
-const TextLogo = styled.img`
+const StyledTextLogo = styled.img`
   width: 81px;
   display: none;
 
@@ -113,7 +113,7 @@ const TextLogo = styled.img`
   }
 `;
 
-const Imglogo = styled.img`
+const StyledImglogo = styled.img`
   width: 153px;
   display: block;
 

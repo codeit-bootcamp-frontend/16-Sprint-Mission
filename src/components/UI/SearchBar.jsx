@@ -10,32 +10,32 @@ function SearchBar({ onSearch }) {
   };
 
   return (
-    <SearchBarContainer>
-      <InputWrapper>
-        <StInput
+    <StyledContainer>
+      <StyledInputWrapper>
+        <StyledInput
           type="text"
           placeholder="검색할 상품을 입력해주세요"
           onChange={handleChange}
         />
-        <StSearchIcon
+        <StyledSearchIcon
           src={search}
           alt="검색 아이콘"
         />
-      </InputWrapper>
-    </SearchBarContainer>
+      </StyledInputWrapper>
+    </StyledContainer>
   );
 }
 
 export default SearchBar;
 
-const SearchBarContainer = styled.div`
+const StyledContainer = styled.div`
   display: flex;
   width: 100%;
 `;
 
-const InputWrapper = styled.div`
+const StyledInputWrapper = styled.div`
   position: relative;
-  width:100%;
+  width: 100%;
   flex-grow: 1;
   height: 42px;
 
@@ -49,7 +49,7 @@ const InputWrapper = styled.div`
   }
 `;
 
-const StInput = styled.input`
+const StyledInput = styled.input`
   width: 100%;
   border-radius: 12px;
   padding: 9px 0px 9px 44px;
@@ -61,7 +61,7 @@ const StInput = styled.input`
   }
 `;
 
-const StSearchIcon = styled.img`
+const StyledSearchIcon = styled.img`
   position: absolute;
   width: 24px;
   height: 24px;

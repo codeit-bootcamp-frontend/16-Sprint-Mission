@@ -5,16 +5,16 @@ import AllProducts from './AllProducts';
 
 function MarketPage() {
   return (
-    <MarketPageContainer>
+    <StyledMarketPageContainer>
       <BestProducts />
       <AllProducts />
-    </MarketPageContainer>
+    </StyledMarketPageContainer>
   );
 }
 
 export default MarketPage;
 
-const MarketPageContainer = styled.div`
+const StyledMarketPageContainer = styled.div`
   padding: 0 ${({ theme }) => theme.spacing.mobile};
 
   @media (min-width: 768px) {

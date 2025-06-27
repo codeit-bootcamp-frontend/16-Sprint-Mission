@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 function InputField({ label, type, placeholder, isTextArea, value, onChange }) {
   return isTextArea ? (
-    <Container>
+    <StyledContainer>
       <label htmlFor="textarea">{label}</label>
       <textarea
         id="textarea"
@@ -11,9 +11,9 @@ function InputField({ label, type, placeholder, isTextArea, value, onChange }) {
         onChange={onChange}
         rows={10}
       />
-    </Container>
+    </StyledContainer>
   ) : (
-    <Container>
+    <StyledContainer>
       <label htmlFor="input">{label}</label>
       <input
         id="input"
@@ -22,13 +22,13 @@ function InputField({ label, type, placeholder, isTextArea, value, onChange }) {
         value={value}
         onChange={onChange}
       />
-    </Container>
+    </StyledContainer>
   );
 }
 
 export default InputField;
 
-const Container = styled.div`
+const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;

@@ -6,59 +6,59 @@ import heart from '../../../assets/images/icons/ic_heart.svg';
 
 function ItemCard({ item }) {
   return (
-    <ItemCardContainer>
-      <ItemImage
+    <StyledItemCardContainer>
+      <StyledItemImage
         src={item?.images[0]}
         alt={item?.name}
       />
-      <ItemName>{item?.name}</ItemName>
-      <ItemPrice>{item?.price.toLocaleString()}원</ItemPrice>
+      <StyledItemName>{item?.name}</StyledItemName>
+      <StyledItemPrice>{item?.price.toLocaleString()}원</StyledItemPrice>
 
-      <LikeCount>
-        <LikeIcon
+      <StyledLikeCount>
+        <StyledLikeIcon
           src={heart}
           alt="좋아요"
         />
-        <ItemLikes>{item?.favoriteCount.toLocaleString()}</ItemLikes>
-      </LikeCount>
-    </ItemCardContainer>
+        <StyledItemLikes>{item?.favoriteCount.toLocaleString()}</StyledItemLikes>
+      </StyledLikeCount>
+    </StyledItemCardContainer>
   );
 }
 
 export default ItemCard;
 
-const ItemCardContainer = styled.div`
+const StyledItemCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 6px;
 `;
 
-const ItemImage = styled.img`
+const StyledItemImage = styled.img`
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
   border-radius: 30px;
 `;
 
-const ItemName = styled.div`
+const StyledItemName = styled.div`
   ${applyFontStyles(FontTypes.MEDIUM14, ColorTypes.SECONDARY_GRAY_800)};
 `;
 
-const ItemPrice = styled.div`
+const StyledItemPrice = styled.div`
   ${applyFontStyles(FontTypes.BOLD16, ColorTypes.SECONDARY_GRAY_800)};
 `;
 
-const LikeCount = styled.div`
+const StyledLikeCount = styled.div`
   display: flex;
   align-items: flex-start;
   gap: 4px;
 `;
 
-const LikeIcon = styled.img`
+const StyledLikeIcon = styled.img`
   width: 14px;
   height: 14px;
 `;
 
-const ItemLikes = styled.span`
+const StyledItemLikes = styled.span`
   ${applyFontStyles(FontTypes.MEDIUM12, ColorTypes.SECONDARY_GRAY_800)};
 `;
