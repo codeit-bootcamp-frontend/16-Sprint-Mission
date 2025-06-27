@@ -24,14 +24,14 @@ const Pagination = ({ pageData, pageActions }) => {
       </button>
 
       {isCursor ? (
-        <div className="actions">
-          <Button size="sm" onClick={goToPrev}>
+        <>
+          <Button size="sm" onClick={goToPrev} disabled={!hasPrev}>
             이전 페이지
           </Button>
-          <Button size="sm" onClick={goToNext}>
+          <Button size="sm" onClick={goToNext} disabled={!hasNext}>
             다음 페이지
           </Button>
-        </div>
+        </>
       ) : (
         currentPages.map((page) => (
           <button
