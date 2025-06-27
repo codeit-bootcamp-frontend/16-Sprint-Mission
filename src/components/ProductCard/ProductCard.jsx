@@ -4,31 +4,18 @@ import { Link } from "react-router-dom";
 import { ReactComponent as HeartIcon } from "@/assets/images/ic-like.svg";
 import pandaLogoImg from "../../assets/images/logo-panda.svg";
 import { getProduct } from "@/services/get/getProduct";
+import { useEffect } from "react";
 import useAsync from "@/hooks/useAsync";
-import { useEffect, useState } from "react";
-import { useCallback } from "react";
 
 const ProductCard = ({ productId, data, loading = "lazy" }) => {
-  const [productData, setProductData] = useState(null);
   const { images, name, description, price, favoriteCount } = data;
-  const { runAsync: getProductAsync } = useAsync(getProduct);
-
-  const handleLoad = useCallback(
-    async (productId) => {
-      try {
-        const result = await getProductAsync(productId);
-        if (!result) return;
-        setProductData(result);
-      } catch (err) {
-        console.log(err);
-      }
-    },
-    [getProductAsync]
+  const { data: productData, runAsync: getProductAsync } = useAsync(() =>
+    getProduct(productId)
   );
 
   useEffect(() => {
-    handleLoad(productId);
-  }, [handleLoad, productId]);
+    getProductAsync();
+  }, [getProductAsync]);
 
   return (
     <div css={ProductCardStyle}>
