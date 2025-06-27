@@ -34,8 +34,10 @@ function ProductAsk({ productId }) {
     try {
       const res = await getProductComment(productId, cursorRef.current);
 
-      if (res.list?.length > 0)
+      if (res.list?.length > 0) {
         setCommentList((prev) => [...prev, ...res.list]);
+      }
+      
       cursorRef.current = res.nextCursor;
     } catch (err) {
       console.log('추가 댓글 불러오기 실패', err);
