@@ -11,52 +11,91 @@ import { validateInput } from "../utils/formValidation";
 const ItemRegisterPage = () => {
   /* 유효성 체크 관련 훅  */
 
-  const [formData, setFormData] = useState({
-    image: "",
-    title: "",
-    content: "",
-    price: "",
-    tagList: [],
-  });
+  // 폼 데이터
+  const [image, setImage] = useState("");
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [price, setPrice] = useState("");
+  const [tagList, setTagList] = useState([]);
 
-  const [validInfo, setValidInfo] = useState({
-    image: { isValid: null, message: "" },
-    title: { isValid: null, message: "" },
-    content: { isValid: null, message: "" },
-    price: { isValid: null, message: "" },
-    tagList: { isValid: null, message: "" },
+  // 폼 데이터 유효성 체크
+  const [imageValidate, setImageValidate] = useState({
+    isValid: null,
+    message: "",
+  });
+  const [titleValidate, setTitleValidate] = useState({
+    isValid: null,
+    message: "",
+  });
+  const [contentValidate, setContentValidate] = useState({
+    isValid: null,
+    message: "",
+  });
+  const [priceValidate, setPriceValidate] = useState({
+    isValid: null,
+    message: "",
+  });
+  const [tagListValidate, setTagListValidate] = useState({
+    isValid: null,
+    message: "",
   });
 
   /* 유효성 체크 */
   const updateValidate = (name, val) => {
     const validateResult = validateInput(name, val);
-    setValidInfo((prev) => ({ ...prev, [name]: validateResult }));
+    switch (name) {
+      case "image":
+        setImageValidate(validateResult);
+        break;
+      case "title":
+        setTitleValidate(validateResult);
+        break;
+      case "content":
+        setContentValidate(validateResult);
+        break;
+      case "price":
+        setPriceValidate(validateResult);
+        break;
+      case "tagList":
+        setTagListValidate(validateResult);
+        break;
+      default:
+        break;
+    }
   };
 
   /* 이미지 컴포넌트 관련 */
   const onClickAddImage = () => {
-    updateValidate("image", formData.image);
+    updateValidate("image", image);
   };
 
   const onChangeImage = (value) => {
-    setFormData((prev) => ({
-      ...prev,
-      image: value,
-    }));
+    setImage(value);
   };
 
   const onDeleteImage = () => {
-    setFormData((prev) => ({
-      ...prev,
-      image: "",
-    }));
+    setImage("");
     updateValidate("image", "");
   };
 
   /* 텍스트필드 데이터 세팅과 유효성 체크 */
   const onChangeTextfield = (name, value) => {
     let trimVal = value.trim();
-    setFormData((prev) => ({ ...prev, [name]: value }));
+
+    switch (name) {
+      case "title":
+        setTitle(value);
+        break;
+      case "content":
+        setContent(value);
+        break;
+      case "price":
+        setPrice(value);
+        break;
+      default:
+        break;
+    }
+    // setFormData((prev) => ({ ...prev, [name]: value }));
     updateValidate(name, trimVal);
   };
 
@@ -75,19 +114,13 @@ const ItemRegisterPage = () => {
   /* 태그 컴포넌트 관련  */
   const onAddTag = (tagVal) => {
     const newTagList = [...formData.tagList, tagVal];
-    setFormData((prev) => ({
-      ...prev,
-      tagList: newTagList,
-    }));
+    setTagList(newTagList);
     updateValidate("tagList", newTagList);
   };
 
   const onDeleteTag = (index) => {
     const changedTagList = formData.tagList.filter((_, i) => i !== index);
-    setFormData((prev) => ({
-      ...prev,
-      tagList: changedTagList,
-    }));
+    setTagList(changedTagList);
     updateValidate("tagList", changedTagList);
   };
 
@@ -114,8 +147,8 @@ const ItemRegisterPage = () => {
             <div className="register__form__group">
               <Label>상품이미지</Label>
               <ImageUploader
-                message={validInfo.image.message}
-                isValid={validInfo.image.isValid}
+                message={imageValidate.message}
+                isValid={imageValidate.isValid}
                 onAdd={onClickAddImage}
                 onChange={onChangeImage}
                 onDelete={onDeleteImage}
@@ -125,9 +158,9 @@ const ItemRegisterPage = () => {
               <Label>상품명</Label>
               <Textfield
                 name="title"
-                value={formData.title}
-                message={validInfo.title.message}
-                isValid={validInfo.title.isValid}
+                value={title}
+                message={titleValidate.message}
+                isValid={titleValidate.isValid}
                 placeholder="상품명을 입력해주세요"
                 onChange={onChangeTextfield}
               />
@@ -137,9 +170,9 @@ const ItemRegisterPage = () => {
               <Label>상품 소개</Label>
               <TextArea
                 name="content"
-                value={formData.content}
-                message={validInfo.content.message}
-                isValid={validInfo.content.isValid}
+                value={content}
+                message={contentValidate.message}
+                isValid={contentValidate.isValid}
                 placeholder="상품 소개를 입력해주세요"
                 onChange={onChangeTextfield}
               />
@@ -150,10 +183,10 @@ const ItemRegisterPage = () => {
               <Textfield
                 type="text"
                 name="price"
-                value={formData.price}
+                value={price}
                 min="1"
-                message={validInfo.price.message}
-                isValid={validInfo.price.isValid}
+                message={priceValidate.message}
+                isValid={priceValidate.isValid}
                 placeholder="판매 가격을 입력해주세요"
                 onChange={onPriceChange}
               />
@@ -163,9 +196,9 @@ const ItemRegisterPage = () => {
               <Label>태그</Label>
               <TagInput
                 name="tagList"
-                tagList={formData.tagList}
-                message={validInfo.tagList.message}
-                isValid={validInfo.tagList.isValid}
+                tagList={tagList}
+                message={tagListValidate.message}
+                isValid={tagListValidate.isValid}
                 onAdd={onAddTag}
                 onDelete={onDeleteTag}
               />
