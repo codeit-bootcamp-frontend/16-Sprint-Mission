@@ -1,13 +1,31 @@
 .productImage {
-    height: 343px;
-    width: 343px;
+    height: auto;
+    width: 100%;
+    max-width: var(--product-image-width);
     border-radius: 12px;
+    flex-shrink: 0;
+}
+
+.pageTitle {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-button);
+    line-height: var(--line-height-tight);
+}
+
+.productPrice {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-button);
+    line-height: var(--line-height-comfortable);
 }
 
 .productInfoContainer {
     display: flex;
-    flex-direction: column;
+    flex-direction: var(--product-info-container-display);
     gap: 16px;
+}
+
+.productInfoWrapper {
+    flex: 1;
 }
 
 .productInfo {
@@ -23,13 +41,35 @@
 }
 
 .divider {
-    /* flex 컨테이너 안에서 전체 너비 차지 */
-    flex-basis: 100%;
-    /* 수평 구분선 */
-    border: none;
-    border-top: 1px solid #ccc;
-    /* 위아래 여백 */
-    margin: 16px 0;
+    border-top: 1px solid var(--color-gray-200);
+    margin: 0 0 8px 0;
+}
+
+.categoryTitle {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-button);
+    line-height: var(--line-height-relaxed);
+}
+
+.categoryText {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-relaxed);
+}
+
+.tags {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3개씩 정렬 */
+    gap: 8px;
+    /* 태그 사이 간격 */
+}
+
+.tagText {
+    padding: 6px 16px;
+    background-color: var(--color-gray-100);
+    border-radius: 26px;
+    text-align: center;
 }
 
 .divider2 {
@@ -54,10 +94,6 @@
     gap: 8px;
 }
 
-.tags {
-    display: flex;
-}
-
 .userInfoContainer {
     display: flex;
     align-items: center;
@@ -67,19 +103,41 @@
 
 .userInfo {
     display: flex;
+    gap: 16px;
+}
+
+.writerUpdatedAt {
+    color: var(--color-gray-400);
+}
+
+.favouriteContainer {
+    display: flex;
+    gap: 24px;
+    /* ← 여기 추가 */
 }
 
 .favourite {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 12px;
+    border-radius: 35px;
+    border: 1px solid var(--color-gray-200);
 }
 
-.inquiryComments{
+.verticalDivider {
+    width: 1px;
+    background-color: #ddd;
+}
+
+.inquiryComments {
     display: flex;
     flex-direction: column;
-    gap:16px;
+    gap: 16px;
 }
 
-.inquiryComment{
+.inquiryComment {
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -88,21 +146,80 @@
 .inquiryContainer {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 16px;
+    margin-bottom: 40px;
 }
 
-.inquiryCommentHeader{
+.inputWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: var(--input-wrapper-margin-top);
+}
+
+/* 텍스트박스 스타일 */
+.textArea {
+    padding: 16px;
+    border: none;
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-400);
+    font-size: var(--font-size-sm);
+    border-radius: 12px;
+    resize: none;
+    line-height: 1.5;
+    min-height: 100px;
+}
+
+/* 버튼 wrapper */
+.submitButtonWrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* 버튼 스타일 */
+.submitButton {
+    background-color: var(--color-gray-400);
+    color: var(--color-gray-100);
+    border: none;
+    border-radius: 8px;
+    padding: 12px 23px;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-button);
+    line-height: var(--line-height-relaxed);
+    cursor: not-allowed;
+}
+
+.inquiryCommentHeader {
     display: flex;
     justify-content: space-between;
 }
 
-.inquiryCommentFooter{
+.inquiryCommentFooter {
     display: flex;
     gap: 8px;
 }
 
-.inquiryCommentFooterInfo{
+.inquiryCommentFooterInfo {
     display: flex;
     flex-direction: column;
-    gap:4px;
+    gap: 4px;
+}
+
+.backButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    gap: 8px;
+    color: var(--color-gray-100);
+    padding: 12px 64px;
+    border-radius: 40px;
+    background-color: var(--color-blue-200);
+    transition: background-color 0.2s, box-shadow 0.2s;
+    width: fit-content;
+}
+
+.backButton:hover {
+    background-color: var(--color-blue-300);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }

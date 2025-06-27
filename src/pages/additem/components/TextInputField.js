@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 const TextInputField = forwardRef(
   (
     {
@@ -15,11 +15,12 @@ const TextInputField = forwardRef(
       inputClass,
       textAreaClass,
       errorClass,
+      labelClass,
     },
     ref
   ) => (
     <div className={wrapperClass}>
-      <h3>{label}</h3>
+      <h5 className={labelClass}>{label}</h5>
       {as === "textarea" ? (
         <textarea
           type={type}

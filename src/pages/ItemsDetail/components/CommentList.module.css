@@ -1,0 +1,4 @@
+.noIquiryImg {
+    width: var(--product-image-width);
+    opacity: 0.5;
+}
