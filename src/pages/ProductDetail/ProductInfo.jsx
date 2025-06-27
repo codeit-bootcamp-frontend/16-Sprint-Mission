@@ -32,23 +32,23 @@ function ProductInfo({ productId }) {
         alt="상품이미지"
       />
       <section className={styles.productText}>
-        <article className={styles.title}>
+        <section className={styles.title}>
           <h2>{productDetail.name}</h2>
           <div>{productDetail.price?.toLocaleString('ko-KR')}원</div>
-        </article>
+        </section>
         <KebabMenu onSelect={onSelect} />
-        <article className={styles.description}>
+        <section className={styles.description}>
           <h3>상품 소개</h3>
           <p>{productDetail.description}</p>
-        </article>
-        <article className={styles.tags}>
+        </section>
+        <section className={styles.tags}>
           <h3>상품태그</h3>
           <ul>
             {productDetail.tags?.map((tag, i) => (
               <li key={`tag-${i}`}>#{tag}</li>
             ))}
           </ul>
-        </article>
+        </section>
         <div className={styles.userInfo}>
           <UserProfileCard
             authority={'post'}

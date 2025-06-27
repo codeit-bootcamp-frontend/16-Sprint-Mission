@@ -50,7 +50,7 @@
   margin-top: 8px;
 }
 
-.productInfo article h3 {
+.productInfo section h3 {
   font-size: 14px;
   font-weight: 600;
   line-height: 24px;
@@ -135,7 +135,7 @@
     gap: 24px;
   }
 
-  .productInfo article h3 {
+  .productInfo section h3 {
     font-size: 16px;
     line-height: 26px;
   }
