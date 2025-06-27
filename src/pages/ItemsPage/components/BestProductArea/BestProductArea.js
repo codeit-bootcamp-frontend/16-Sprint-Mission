@@ -14,6 +14,7 @@ const ITEM_COUNT = {
 const BestProductArea = () => {
   const { pageSize } = usePagination(ITEM_COUNT);
   const [bestList, setBestList] = useState([]);
+  const [changeBestList, setChangeBestList] = useState([]);
 
   const getProductList = async (options) => {
     try {
@@ -29,11 +30,15 @@ const BestProductArea = () => {
     getProductList({ orderBy: "favorite", pageSize: INIT_PAGE_SIZE, page: 1 });
   }, []);
 
+  useEffect(() => {
+    setChangeBestList(() => bestList.slice(0, pageSize));
+  }, [bestList, pageSize]);
+
   return (
     <>
       <h2 className={styles.bestProductArea__title}>베스트 상품</h2>
       <div className={styles.bestProductArea__content}>
-        <ProductList list={bestList} type="best" pageSize={pageSize} />
+        <ProductList list={changeBestList} type="best" pageSize={pageSize} />
       </div>
     </>
   );
