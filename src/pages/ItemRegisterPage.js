@@ -9,8 +9,6 @@ import TagInput from "../components/TagInput";
 import { validateInput } from "../utils/formValidation";
 
 const ItemRegisterPage = () => {
-  /* 유효성 체크 관련 훅  */
-
   // 폼 데이터
   const [image, setImage] = useState("");
   const [title, setTitle] = useState("");
@@ -95,7 +93,6 @@ const ItemRegisterPage = () => {
       default:
         break;
     }
-    // setFormData((prev) => ({ ...prev, [name]: value }));
     updateValidate(name, trimVal);
   };
 
@@ -113,22 +110,24 @@ const ItemRegisterPage = () => {
 
   /* 태그 컴포넌트 관련  */
   const onAddTag = (tagVal) => {
-    const newTagList = [...formData.tagList, tagVal];
+    const newTagList = [...tagList, tagVal];
     setTagList(newTagList);
     updateValidate("tagList", newTagList);
   };
 
   const onDeleteTag = (index) => {
-    const changedTagList = formData.tagList.filter((_, i) => i !== index);
+    const changedTagList = tagList.filter((_, i) => i !== index);
     setTagList(changedTagList);
     updateValidate("tagList", changedTagList);
   };
 
   /* 등록 버튼 활성화 여부  */
   const disableRegisterButton = () => {
-    const isAllValid = Object.keys(validInfo)
-      .filter((key) => key !== "image")
-      .every((key) => validInfo[key].isValid === true);
+    const isAllValid =
+      titleValidate.isValid &&
+      contentValidate.isValid &&
+      priceValidate.isValid &&
+      tagListValidate.isValid;
     return !Boolean(isAllValid);
   };
 
