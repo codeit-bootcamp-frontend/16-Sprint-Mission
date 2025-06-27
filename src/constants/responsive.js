@@ -14,3 +14,8 @@ export const ALL_PRODUCTS_PAGESIZE = {
   tablet: 6,
   mobile: 4,
 };
+
+export const PRODUCT_DETAIL_THUMB = {
+  desktop: 486,
+  tablet: 340,
+};

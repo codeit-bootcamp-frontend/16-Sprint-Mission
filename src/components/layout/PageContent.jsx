@@ -22,6 +22,11 @@ const PageContentStyle = css`
   @media (min-width: 1280px) {
     width: var(--page-content-width);
     margin: 24px auto;
-    padding: 0;
+    padding: 6px 0 60px;
+  }
+
+  .page-footer {
+    margin-top: 64px;
+    text-align: center;
   }
 `;

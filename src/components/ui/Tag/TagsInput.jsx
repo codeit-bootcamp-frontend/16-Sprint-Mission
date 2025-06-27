@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import { InputStyle } from "../Input/Input";
 import { validateTag } from "../../../utils/validators";
 import debounce from "../../../utils/debounce";
-import Tag from ".";
+import TagList from "./TagList";
 
 const ADD_TAG_DEBOUNCE_MS = 100;
 
-const TagsInput = ({ id, placeholder, tags, onTagsChange }) => {
+const TagsInput = ({ id, placeholder, tags, isFormTag, onTagsChange }) => {
   const [inputValue, setInputValue] = useState("");
   const [errorMessage, setErrorMessage] = useState(false);
 
@@ -53,13 +53,7 @@ const TagsInput = ({ id, placeholder, tags, onTagsChange }) => {
         placeholder={placeholder}
       />
       {errorMessage && <div css={errorMessageStyle}>{errorMessage}</div>}
-      <div className="tag-list" css={TagListStyle}>
-        {tags.map((tag, i) => (
-          <Tag key={`tag ${i}`} onClick={() => removeTag(tag)}>
-            {tag}
-          </Tag>
-        ))}
-      </div>
+      <TagList tags={tags} removeTag={removeTag} isFormTag={isFormTag} />
     </div>
   );
 };
@@ -74,12 +68,6 @@ const TagsInputStyle = css`
   input {
     width: 100%;
   }
-`;
-
-const TagListStyle = css`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
 `;
 
 const errorMessageStyle = css`

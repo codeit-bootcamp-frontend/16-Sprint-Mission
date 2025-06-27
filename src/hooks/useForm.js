@@ -1,17 +1,24 @@
 import { useState, useEffect } from "react";
-import debounce from "../utils/debounce";
+import debounce from "@/utils/debounce";
 import {
   validateProductName,
   validateProductDescription,
   validateProductPrice,
-} from "../utils/validators";
-import { formatPrice, unformatPrice } from "../utils/formatPrice";
+} from "@/utils/validators";
+import { formatPrice, unformatPrice } from "@/utils/formatPrice";
 
 const CHECK_FORM_DEBOUNCE_MS = 300;
 
-const useForm = () => {
+const validatorMap = {
+  name: validateProductName,
+  description: validateProductDescription,
+  price: validateProductPrice,
+};
+
+const useForm = (formRef, formOptions) => {
   const [isFormValid, setIsFormValid] = useState(false);
   const [tags, setTags] = useState([]);
+  const shouldCheckTags = formRef.current?.dataset.includeTags === "true";
 
   const handlePriceInput = (e) => {
     const { value } = e.target;
@@ -25,19 +32,35 @@ const useForm = () => {
   };
 
   const validateForm = () => {
-    const name = document.querySelector("#productName")?.value ?? "";
-    const description = document.querySelector("#productDesc")?.value ?? "";
-    const priceString = document.querySelector("#productPrice")?.value ?? 0;
-    const price = priceString.replace(",", "");
+    const elements = formRef.current?.elements;
+    if (!elements) return;
 
-    const isNameValid = validateProductName(name).isValid;
-    const isDescriptionValid = validateProductDescription(description).isValid;
-    const isPriceValid = validateProductPrice(price).isValid;
-    const isTagsValid = tags.length > 0;
+    const values = {};
+    const results = [];
 
-    setIsFormValid(
-      isNameValid && isDescriptionValid && isPriceValid && isTagsValid
-    );
+    for (const el of elements) {
+      if (el.type === "text" || el.tagName === "TEXTAREA") {
+        // text input, textarea 폼 요소 values에 추가
+        values[el.name] = el.value;
+      }
+    }
+
+    if (values.productPrice) {
+      values.productPrice = values.productPrice?.replace(",", "");
+    }
+
+    if (shouldCheckTags) {
+      results.push(formOptions.customFieldValidators.tags(tags));
+    }
+
+    for (const key in values) {
+      const validator = validatorMap[key];
+      if (validator) {
+        results.push(validator(values[key]).isValid);
+      }
+    }
+
+    setIsFormValid(results.every(Boolean));
   };
 
   const debouncedValidateForm = debounce(validateForm, CHECK_FORM_DEBOUNCE_MS);

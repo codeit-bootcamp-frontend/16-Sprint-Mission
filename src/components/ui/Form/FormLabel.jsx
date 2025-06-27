@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 
-const FormLabel = ({ inputId, children }) => {
+const FormLabel = ({ inputId, children, size }) => {
   return (
-    <label htmlFor={inputId} css={FormLabelStyle}>
+    <label htmlFor={inputId} css={FormLabelStyle({ size })}>
       {children}
     </label>
   );
@@ -11,7 +11,7 @@ const FormLabel = ({ inputId, children }) => {
 
 export default FormLabel;
 
-const FormLabelStyle = css`
-  font-size: 18px;
+const FormLabelStyle = ({ size }) => css`
+  font-size: ${size === "xs" ? 16 : 18}px;
   font-weight: 700;
 `;

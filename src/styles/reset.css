@@ -50,10 +50,11 @@ button {
 }
 button:disabled {
   cursor: default;
-  background-color: var(--gray400);
+  background-color: var(--gray200);
+  color: var(--gray400);
 }
 button:disabled:hover {
-  background-color: var(--gray400);
+  background-color: var(--gray200);
 }
 a {
   text-decoration: none;

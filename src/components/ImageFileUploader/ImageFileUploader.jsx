@@ -80,7 +80,9 @@ const ImageFileUploader = () => {
           </div>
         )}
       </div>
-      <p className="hint">*이미지 등록은 최대 1개까지 가능합니다.</p>
+      {!previewUrl && (
+        <p className="hint">*이미지 등록은 최대 1개까지 가능합니다.</p>
+      )}
     </div>
   );
 };

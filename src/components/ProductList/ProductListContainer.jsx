@@ -2,16 +2,16 @@
 import ProductListContainerStyle from "./ProductListContainerStyle";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
-import { getProducts } from "../../services/api";
-import { DEFAULT_ITEM_PAGE_SIZE } from "../../constants/pagesize";
-import { ITEMS_ORDER_MAP } from "../../constants/sortOptions";
-import useAsync from "../../hooks/useAsync";
-import SectionTitle from "../ui/SectionTitle/SectionTitle";
-import Button from "../ui/Button";
-import Dropdown from "../ui/Dropdown";
-import InputSearch from "../ui/Input/InputSearch";
-import Pagination from "../Pagination";
+import { getProducts } from "@/services/get/getProducts";
+import { DEFAULT_ITEM_PAGE_SIZE } from "@/constants/pagesize";
+import { ITEMS_ORDER_MAP } from "@/constants/sortOptions";
+import useAsync from "@/hooks/useAsync";
+import SectionTitle from "@/components/ui/SectionTitle/SectionTitle";
+import Button from "@/components/ui/Button";
+import DropdownWithBtn from "@/components/ui/Dropdown/DropdownWithBtn";
+import InputSearch from "@/components/ui/Input/InputSearch";
 import ProductListResults from "./ProductListResults";
+import TotalCountPagination from "@/components/Pagination/TotalCountPagination";
 
 const DEFAULT_ORDER = Object.keys(ITEMS_ORDER_MAP)[0];
 const dropdownMenuItems = Object.keys(ITEMS_ORDER_MAP);
@@ -68,7 +68,7 @@ const ProductListContainer = ({ title, pageSize = DEFAULT_ITEM_PAGE_SIZE }) => {
           className="product-list-header-search"
           placeholder="검색할 상품을 입력해주세요"
         />
-        <Dropdown
+        <DropdownWithBtn
           menu={dropdownMenuItems}
           onClickMenu={handleDropdownSelect}
           defaultSelected={order}
@@ -80,9 +80,9 @@ const ProductListContainer = ({ title, pageSize = DEFAULT_ITEM_PAGE_SIZE }) => {
         pageSize={pageSize}
         isEmpty={() => setSearchParams("")}
       />
-      <Pagination
-        pageSize={pageSize}
+      <TotalCountPagination
         totalCount={totalCount}
+        pageSize={pageSize}
         handleLoad={handleLoad}
         orderStatus={ITEMS_ORDER_MAP[order]}
         searchKeyword={keyword}

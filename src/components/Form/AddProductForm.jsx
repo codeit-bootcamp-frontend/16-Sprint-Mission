@@ -1,4 +1,5 @@
 /** @jsxImportSource @emotion/react */
+import { useRef } from "react";
 import * as styles from "./AddProductFormStyle";
 import SectionTitle from "../ui/SectionTitle";
 import Button from "../ui/Button";
@@ -11,6 +12,14 @@ import TagsInput from "../ui/Tag/TagsInput";
 import useForm from "../../hooks/useForm";
 
 const AddProductForm = ({ title }) => {
+  const formRef = useRef(null);
+
+  const formOptions = {
+    customFieldValidators: {
+      tags: (tags) => tags.length > 0,
+    },
+  };
+
   const {
     tags,
     handleTagsChange,
@@ -18,10 +27,15 @@ const AddProductForm = ({ title }) => {
     handleBlur,
     validateForm,
     isFormValid,
-  } = useForm();
+  } = useForm(formRef, formOptions);
 
   return (
-    <form css={styles.ProductFormContainer} onSubmit={validateForm}>
+    <form
+      css={styles.ProductFormContainer}
+      onSubmit={validateForm}
+      ref={formRef}
+      data-include-tags="true"
+    >
       <header css={styles.FormHeader}>
         <SectionTitle title={title} />
         <Button
@@ -77,6 +91,7 @@ const AddProductForm = ({ title }) => {
           id="tags"
           placeholder="태그를 입력해주세요"
           tags={tags}
+          isFormTag={true}
           onTagsChange={handleTagsChange}
           onBlur={handleBlur}
         />

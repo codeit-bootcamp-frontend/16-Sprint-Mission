@@ -1,72 +1,51 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { useCallback, useEffect } from "react";
 import arrowLeft from "../../assets/images/ic_arrow_sm_left.svg";
 import arrowRight from "../../assets/images/ic_arrow_sm_right.svg";
-import usePagination from "../../hooks/usePagination";
-import { DEFAULT_ITEM_PAGE_SIZE } from "../../constants/pagesize.js";
+import Button from "../ui/Button";
 
-const PAGINATION_SIZE = 5;
-
-const Pagination = ({
-  pageSize = DEFAULT_ITEM_PAGE_SIZE,
-  totalCount,
-  paginationSize = PAGINATION_SIZE,
-  handleLoad,
-  orderStatus,
-  searchKeyword,
-}) => {
-  const { pageData, pageActions } = usePagination({
-    totalCount,
-    pageSize,
-    paginationSize,
-    onPageChange: useCallback(
-      (page) => {
-        handleLoad({
-          page,
-          pageSize,
-          orderBy: orderStatus,
-          keyword: searchKeyword,
-        });
-      },
-      [handleLoad, pageSize, orderStatus, searchKeyword]
-    ),
-  });
-
-  const { currentPage, currentPages, hasPrev, hasNext } = pageData;
-  const { goToPage, goPrevPages, goNextPages, updatePageWithResize } =
+const Pagination = ({ pageData, pageActions }) => {
+  const { currentPage, currentPages, currentCursor, hasPrev, hasNext } =
+    pageData;
+  const { goToPage, goPrevPages, goNextPages, goToPrev, goToNext } =
     pageActions;
 
-  // 정렬 바뀌면 첫번째 페이지로 이동
-  useEffect(() => {
-    goToPage(1);
-  }, [orderStatus, goToPage]);
-
-  // resize시 보고 있던 페이지 유지
-  useEffect(() => {
-    updatePageWithResize(pageSize);
-  }, [pageSize, updatePageWithResize]);
+  // 커서 기반 분기
+  const isCursor = !!currentCursor || (!currentPage && !currentPages);
 
   return (
     <div css={PaginationStyle}>
       <button
-        onClick={goPrevPages}
+        onClick={isCursor ? goToPrev : goPrevPages}
         css={PaginationBtnStyle(false)}
         disabled={!hasPrev}
       >
         <img src={arrowLeft} alt="이전 페이지" />
       </button>
-      {currentPages.map((page) => (
-        <button
-          key={page}
-          onClick={() => goToPage(page)}
-          css={PaginationBtnStyle(page === currentPage)}
-        >
-          {page}
-        </button>
-      ))}
+
+      {isCursor ? (
+        <>
+          <Button size="sm" onClick={goToPrev} disabled={!hasPrev}>
+            이전 페이지
+          </Button>
+          <Button size="sm" onClick={goToNext} disabled={!hasNext}>
+            다음 페이지
+          </Button>
+        </>
+      ) : (
+        currentPages.map((page) => (
+          <button
+            key={page}
+            onClick={() => goToPage(page)}
+            css={PaginationBtnStyle(page === currentPage)}
+          >
+            {page}
+          </button>
+        ))
+      )}
+
       <button
-        onClick={goNextPages}
+        onClick={isCursor ? goToNext : goNextPages}
         css={PaginationBtnStyle(false)}
         disabled={!hasNext}
       >

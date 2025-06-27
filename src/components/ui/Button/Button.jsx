@@ -1,20 +1,24 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { styles } from "./ButtonStylesMap";
 
 const Button = ({
   type = "button",
   variant,
   size,
+  round,
   children,
   className = "",
   disabled,
   onClick,
+  ...props
 }) => {
   return (
     <button
       type={type}
-      css={[styles.size[size], styles.variant[variant]]}
+      css={ButtonStyle({ size, variant, round })}
       className={className}
+      style={props.style}
       disabled={disabled}
       onClick={onClick}
     >
@@ -25,33 +29,24 @@ const Button = ({
 
 export default Button;
 
-const styles = {
-  size: {
-    sm: css`
-      padding: 12px 24px;
-      font-size: 16px;
-      border-radius: var(--border-radius-xs);
-    `,
-    lg: css`
-      padding: 12px;
-      border-radius: var(--border-radius-lg);
-      font-size: 20px;
-      font-weight: 600;
-      line-height: 32px;
-    `,
-  },
-  variant: {
-    primary: css`
-      background: var(--primary-color);
-      color: #fff;
+const ButtonStyle = (props) => css`
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.3s, border 0.3s;
 
-      &:hover {
-        background: var(--primary-hover-color);
-      }
+  ${!props.variant &&
+  css`
+    &:hover {
+      background-color: var(--gray300);
+    }
+  `}
 
-      &:active {
-        background: var(--primary-click-color);
-      }
-    `,
-  },
-};
+  ${styles.size[props.size]}
+  ${styles.variant[props.variant]}
+  ${props.round &&
+  css`
+    border-radius: var(--border-radius-lg);
+  `}
+`;

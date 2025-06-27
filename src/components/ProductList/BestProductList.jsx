@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import ProductListStyle from "./ProductListContainerStyle";
 import { useEffect, useState, useCallback } from "react";
-import { getProducts } from "../../services/api";
+import { getProducts } from "@/services/get/getProducts";
 import SectionTitle from "../ui/SectionTitle";
 import ProductListResults from "./ProductListResults";
 import useAsync from "../../hooks/useAsync";
@@ -41,11 +41,13 @@ const BestProductList = ({ title, pageSize }) => {
         <ProductListSkeleton pageSize={pageSize} listType={LIST_TYPE} />
       )}
       {loadingError && <ProductListError />}
-      <ProductListResults
-        products={products}
-        pageSize={pageSize}
-        listType={LIST_TYPE}
-      />
+      {!isLoading && (
+        <ProductListResults
+          products={products}
+          pageSize={pageSize}
+          listType={LIST_TYPE}
+        />
+      )}
     </div>
   );
 };
