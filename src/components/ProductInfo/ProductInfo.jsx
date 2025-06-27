@@ -59,8 +59,7 @@ const ProductInfo = ({ product, thumbSize }) => {
             name={ownerNickname}
             createdAt={createdAt}
             favoriteCount={favoriteCount}
-            size={40}
-            style={{ marginTop: "auto" }}
+            size="md"
           />
           <div className="actions">
             <Button

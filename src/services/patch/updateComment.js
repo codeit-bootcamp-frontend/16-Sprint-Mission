@@ -1,4 +1,4 @@
-const BASE_URL = "https://panda-market-api.vercel.app";
+const BASE_URL = process.env.REACT_APP_API_URL;
 
 export const updateComment = async (id, updatedComment) => {
   const response = await fetch(`${BASE_URL}/comments/${id}`, {

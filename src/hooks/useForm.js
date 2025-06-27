@@ -15,7 +15,7 @@ const validatorMap = {
   price: validateProductPrice,
 };
 
-const useForm = (formRef) => {
+const useForm = (formRef, formOptions) => {
   const [isFormValid, setIsFormValid] = useState(false);
   const [tags, setTags] = useState([]);
   const shouldCheckTags = formRef.current?.dataset.includeTags === "true";
@@ -50,7 +50,7 @@ const useForm = (formRef) => {
     }
 
     if (shouldCheckTags) {
-      results.push(tags.length > 0);
+      results.push(formOptions.customFieldValidators.tags(tags));
     }
 
     for (const key in values) {

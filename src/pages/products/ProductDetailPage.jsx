@@ -7,22 +7,27 @@ import ProductInfo from "@/components/ProductInfo";
 import ProductComments from "@/components/ProductComments/ProductComments";
 import { BREAKPOINTS } from "@/constants/responsive";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
+import { PRODUCT_DETAIL_THUMB } from "@/constants/responsive";
 
 const ProductDetailPage = () => {
   const location = useLocation();
   const { id: productId } = location.state;
   const navigate = useNavigate();
+
+  // 반응형
   const { width } = useWindowDimensions();
+  const isDesktop = width >= BREAKPOINTS.desktop - 300;
+  const isTablet = width >= BREAKPOINTS.tablet + 120;
 
   return (
     <PageContent>
       <ProductInfo
         product={location.state}
         thumbSize={
-          width >= BREAKPOINTS.desktop - 300
-            ? 486
-            : width >= BREAKPOINTS.tablet + 120
-            ? 340
+          isDesktop
+            ? PRODUCT_DETAIL_THUMB.desktop
+            : isTablet
+            ? PRODUCT_DETAIL_THUMB.tablet
             : "100%"
         }
       />
@@ -30,10 +35,9 @@ const ProductDetailPage = () => {
       <ProductComments productId={productId} />
       <div className="page-footer">
         <Button
-          variant="primary"
-          size="sm"
+          variant="bottom"
+          size="xl"
           round={true}
-          style={{ padding: "12px 40px" }}
           onClick={() => navigate("/products")}
         >
           목록으로 돌아가기 <img src={arrowLeftIcon} alt="왼쪽 화살표" />

@@ -29,18 +29,14 @@ const styles = {
     align-items: center;
     justify-content: center;
     gap: 12px;
-    width: calc(48% - 12px);
-    max-width: 168px;
+    width: 50%;
+    max-width: 50%;
     aspect-ratio: 1/1;
     flex-grow: 1;
     background-color: var(--gray200);
     color: var(--gray400);
     border-radius: var(--border-radius-sm);
     font-size: 1rem;
-
-    @media (min-width: 600px) {
-      max-width: var(--form-input-max-height);
-    }
 
     @media (min-width: 768px) {
       width: auto;
@@ -51,7 +47,7 @@ const styles = {
 
   ImagePreviewStyle: css`
     position: relative;
-    width: calc(48% - 12px);
+    width: 50%;
     aspect-ratio: 1/1;
     flex-grow: 1;
     border-radius: var(--border-radius-sm);
