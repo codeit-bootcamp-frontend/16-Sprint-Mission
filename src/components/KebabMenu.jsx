@@ -44,7 +44,6 @@ function KebabMenu({
       <button ref={kebabRef} onClick={handleToggleDropDown}>
         <img src={kebabIcon} alt="케밥 아이콘" />
       </button>
-
       {isOpen && (
         <ul role="listbox">
           {dataList?.map((selector) => (
