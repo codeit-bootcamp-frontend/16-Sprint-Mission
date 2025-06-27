@@ -1,3 +1,4 @@
+import "./css/InputCommon.css";
 import "./css/TextArea.css";
 
 /*
@@ -23,7 +24,7 @@ const TextArea = ({
 }) => {
   const statusMessageClass = {
     null: "",
-    false: "textarea__message--error",
+    false: "input__message--error",
   };
 
   const hasMessage = !!message;
@@ -35,16 +36,12 @@ const TextArea = ({
       <textarea
         name={name}
         placeholder={placeholder}
-        className="textarea"
+        className="input textarea"
         onChange={(e) => onChange(e.target.name, e.target.value)}
         {...rest}
       />
       {showMessage && (
-        <div
-          className={`${"textarea__message"} ${statusMessageClass[isValid]}`}
-        >
-          {message}
-        </div>
+        <div className={`${statusMessageClass[isValid]}`}>{message}</div>
       )}
     </div>
   );

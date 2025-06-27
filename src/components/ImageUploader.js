@@ -65,13 +65,7 @@ const ImageUploader = ({
       </div>
 
       {showMessage && (
-        <div
-          className={`${"image__uploader__message"} ${
-            statusMessageClass[isValid]
-          }`}
-        >
-          {message}
-        </div>
+        <div className={`${statusMessageClass[isValid]}`}>{message}</div>
       )}
     </div>
   );

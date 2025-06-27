@@ -1,4 +1,4 @@
-import "./css/Textfield.css";
+import "./css/InputCommon.css";
 
 /*
   [Textfield 필수 속성]
@@ -24,7 +24,7 @@ const Textfield = ({
 }) => {
   const statusMessageClass = {
     null: "",
-    false: "textfield__message--error",
+    false: "input__message--error",
   };
 
   const hasMessage = !!message;
@@ -32,22 +32,18 @@ const Textfield = ({
   const showMessage = hasMessage && isInvalid;
 
   return (
-    <div className="textfield__container">
+    <div className="input__container">
       <input
         name={name}
         type={type}
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.name, e.target.value)}
-        className={`textfield__input ${className}`}
+        className={`input textfield ${className}`}
         {...rest}
       />
       {showMessage && (
-        <div
-          className={`${"textfield__message"} ${statusMessageClass[isValid]}`}
-        >
-          {message}
-        </div>
+        <div className={`${statusMessageClass[isValid]}`}>{message}</div>
       )}
     </div>
   );
