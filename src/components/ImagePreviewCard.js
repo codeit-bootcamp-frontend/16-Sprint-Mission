@@ -2,11 +2,6 @@ import "./css/ImagePreviewCard.css";
 import deleteIcon from "../img/delete.svg";
 
 const ImagePreviewCard = ({ onClickDelete = () => {}, imageUrl }) => {
-  const imageStyle = {
-    backgroundImage: `url(${imageUrl})`,
-    backgroundPosition: "center center",
-    backgroundSize: "cover",
-  };
   const handleOnClickDelete = () => {
     onClickDelete();
   };
@@ -15,7 +10,7 @@ const ImagePreviewCard = ({ onClickDelete = () => {}, imageUrl }) => {
     <div
       className="preview__card"
       onClick={handleOnClickDelete}
-      style={imageStyle}
+      style={{ backgroundImage: `url(${imageUrl})` }}
     >
       <img
         src={deleteIcon}

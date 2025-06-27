@@ -10,6 +10,8 @@
   aspect-ratio: 1 / 1;
   border-radius: 12px;
   background-color: #f3f4f6;
+  background-position: center center;
+  background-size: cover;
 }
 
 .preview__card__icon {
