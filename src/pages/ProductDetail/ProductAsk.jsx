@@ -11,7 +11,7 @@ const placeholder =
 
 function ProductAsk({ productId }) {
   const [commentList, setCommentList] = useState([]);
-  const sectionRef = useRef(null);
+  const loadTriggerRef = useRef(null);
   const cursorRef = useRef(0);
 
   useEffect(() => {
@@ -30,25 +30,29 @@ function ProductAsk({ productId }) {
     const res = await getProductComment(productId, cursorRef.current);
 
     if (res.list?.length > 0) setCommentList((prev) => [...prev, ...res.list]);
+    cursorRef.current = res.nextCursor;
   }
 
-  useLoadMoreComments(sectionRef, onIntersect);
+  useLoadMoreComments(loadTriggerRef, onIntersect);
 
   return (
-    <section ref={sectionRef} className={styles.productAsk}>
-      <AskForm placeholder={placeholder} method={'POST'}>
-        문의하기
-      </AskForm>
-      {commentList?.length === 0 ? (
-        <EmptyComments />
-      ) : (
-        <ul>
-          {commentList?.map((comment) => (
-            <CommentItem key={comment.id} comment={comment} />
-          ))}
-        </ul>
-      )}
-    </section>
+    <>
+      <section className={styles.productAsk}>
+        <AskForm placeholder={placeholder} method={'POST'}>
+          문의하기
+        </AskForm>
+        {commentList?.length === 0 ? (
+          <EmptyComments />
+        ) : (
+          <ul>
+            {commentList?.map((comment) => (
+              <CommentItem key={comment.id} comment={comment} />
+            ))}
+          </ul>
+        )}
+      </section>
+      <div ref={loadTriggerRef} />
+    </>
   );
 }
 

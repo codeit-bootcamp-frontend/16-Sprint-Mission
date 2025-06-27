@@ -31,17 +31,3 @@ export async function getProductComment(productId, cursor = 0) {
 
   return result;
 }
-
-// export async function getAuth(){
-//   const responese
-// }
-
-export async function postComment({ productId, value, method }) {
-  const result = await fetch(`${BASEURL}/products/${productId}/comments`, {
-    method,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ content: value }),
-  });
-}

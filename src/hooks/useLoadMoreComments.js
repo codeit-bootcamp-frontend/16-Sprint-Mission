@@ -1,9 +1,11 @@
 import { useEffect, useRef } from 'react';
 
-export function useLoadMoreComments(targetRef, onIntersect = () => {}) {
+export function useLoadMoreComments(targetRef, onIntersect = () => { }) {
   const observerRef = useRef(null);
 
   useEffect(() => {
+    if (!targetRef.current) return;
+
     if (!observerRef.current) {
       observerRef.current = new IntersectionObserver(
         (entries) => {

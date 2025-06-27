@@ -6,7 +6,7 @@ import Pagination from './Pagination';
 import { ProductData } from './ProductDataProvider';
 import ProductsFilterBar from './ProductsFilterBar';
 import styles from './styles/ProductsAll.module.css';
-import SkeletonUi from '../../components/SkeletonUi';
+import SkeletonUi from '@components/SkeletonUi';
 
 function ProductsAll() {
   const { products, setProducts, setTotal, queryStrings, setQueryStrings } =
