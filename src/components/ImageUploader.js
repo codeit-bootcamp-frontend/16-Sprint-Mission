@@ -15,7 +15,10 @@ const ImageUploader = ({
     false: "image__uploader__message--error",
   };
 
-  const showMessage = message && isValid === false;
+  const hasMessage = !!message;
+  const isInvalid = isValid === false;
+  const showMessage = hasMessage && isInvalid;
+
   const [imageUrl, setImageUrl] = useState("");
   const fileInputRef = useRef(null);
   const handleOnClickAdd = () => {
@@ -45,37 +48,32 @@ const ImageUploader = ({
   };
 
   return (
-    <>
-      <div className="image__uploader">
-        <div className="image__uploader__card">
-          <ImageAddCard onClickAdd={handleOnClickAdd}>
-            <input
-              ref={fileInputRef}
-              hidden
-              type="file"
-              accept="image/*"
-              onChange={onChangeFile}
-            />
-          </ImageAddCard>
-          {imageUrl && (
-            <ImagePreviewCard
-              onClickDelete={onClickDelete}
-              imageUrl={imageUrl}
-            />
-          )}
-        </div>
-
-        {showMessage && (
-          <div
-            className={`${"image__uploader__message"} ${
-              statusMessageClass[isValid]
-            }`}
-          >
-            {message}
-          </div>
+    <div className="image__uploader">
+      <div className="image__uploader__card">
+        <ImageAddCard onClickAdd={handleOnClickAdd}>
+          <input
+            ref={fileInputRef}
+            hidden
+            type="file"
+            accept="image/*"
+            onChange={onChangeFile}
+          />
+        </ImageAddCard>
+        {imageUrl && (
+          <ImagePreviewCard onClickDelete={onClickDelete} imageUrl={imageUrl} />
         )}
       </div>
-    </>
+
+      {showMessage && (
+        <div
+          className={`${"image__uploader__message"} ${
+            statusMessageClass[isValid]
+          }`}
+        >
+          {message}
+        </div>
+      )}
+    </div>
   );
 };
 
