@@ -11,8 +11,12 @@ function ProductInfo({ productId }) {
 
   useEffect(() => {
     async function getFetch() {
-      const productInfo = await getProductDetail(productId);
-      setProductDetail(productInfo);
+      try {
+        const productInfo = await getProductDetail(productId);
+        setProductDetail(productInfo);
+      } catch (err) {
+        console.log('상품 정보 불러오기 실패',err);
+      }
     }
     getFetch();
   }, [productId]);

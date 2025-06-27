@@ -16,9 +16,13 @@ function ProductAsk({ productId }) {
 
   useEffect(() => {
     async function getFetch() {
-      const comments = await getProductComment(productId);
-      setCommentList(comments.list);
-      cursorRef.current = comments.nextCursor;
+      try {
+        const comments = await getProductComment(productId);
+        setCommentList(comments.list);
+        cursorRef.current = comments.nextCursor;
+      } catch (err) {
+        console.log('댓글 정보 불러오기 실패', err);
+      }
     }
     getFetch();
   }, [productId]);
@@ -27,10 +31,15 @@ function ProductAsk({ productId }) {
     //초기패칭 이전 0, 더 받아올 댓글 없을 때 null
     if (!cursorRef.current) return;
 
-    const res = await getProductComment(productId, cursorRef.current);
+    try {
+      const res = await getProductComment(productId, cursorRef.current);
 
-    if (res.list?.length > 0) setCommentList((prev) => [...prev, ...res.list]);
-    cursorRef.current = res.nextCursor;
+      if (res.list?.length > 0)
+        setCommentList((prev) => [...prev, ...res.list]);
+      cursorRef.current = res.nextCursor;
+    } catch (err) {
+      console.log('추가 댓글 불러오기 실패', err);
+    }
   }
 
   useLoadMoreComments(loadTriggerRef, onIntersect);
