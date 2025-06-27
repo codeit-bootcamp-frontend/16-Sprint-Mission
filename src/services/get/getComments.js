@@ -1,4 +1,4 @@
-const BASE_URL = "https://panda-market-api.vercel.app";
+const BASE_URL = process.env.REACT_APP_API_URL;
 const limit = 5;
 
 export const getComments = async (productId, cursor) => {
