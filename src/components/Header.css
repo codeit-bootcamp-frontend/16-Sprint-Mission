@@ -8,6 +8,11 @@
   align-items: center;
 }
 
+
+.logo img {
+  display: none;
+}
+
 .logo {
   display: flex;
   justify-content: center;
@@ -42,6 +47,11 @@
 }
 
 @media (min-width: 768px) {
+
+  .logo img {
+    display: block;
+  }
+
   .logo a {
     font-size: 25.63px;
   }
