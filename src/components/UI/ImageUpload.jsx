@@ -15,20 +15,21 @@ function ImageUpload() {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    const preview = URL.createObjectURL(file);
-    setPreviewUrl(preview);
+    if (file) {
+      const preview = URL.createObjectURL(file);
+      setPreviewUrl(preview);
 
-    if (previewUrl) {
-      setError('*이미지 등록은 최대 1개까지 가능합니다.');
+      if (previewUrl) {
+        setError('*이미지 등록은 최대 1개까지 가능합니다.');
+      }
       e.target.value = '';
       return;
     }
-
-    setError('');
   };
 
   const handleImageRemove = () => {
     setPreviewUrl(null);
+    setError('');
   };
 
   useEffect(() => {
