@@ -1,4 +1,4 @@
-@import '../theme.css';
+@import "../theme.css";
 
 .button-big {
   border: 0;
@@ -25,6 +25,6 @@
   cursor: pointer;
 }
 
-.button:disabled {
+button:disabled {
   background-color: var(--secondary-400);
 }
