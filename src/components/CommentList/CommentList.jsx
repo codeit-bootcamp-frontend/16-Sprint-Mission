@@ -1,10 +1,5 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { useState, useEffect, useCallback } from "react";
-import useAsync from "@/hooks/useAsync";
-import { getComments } from "@/services/get/getComments";
-import { updateComment } from "@/services/patch/updateComment";
-import { deleteComment } from "@/services/delete/deleteComment";
 import inquiryEmptyImg from "@/assets/images/img_inquiry_empty.png";
 import Button from "@/components/ui/Button";
 import ProfileSummary from "@/components/ProfileSummary";
@@ -14,105 +9,39 @@ import KebabButton from "@/components/ui/Button/KebabButton";
 import Textarea from "@/components/ui/Textarea";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
 import { BREAKPOINTS } from "@/constants/responsive";
+import useComment from "@/hooks/useComment";
 
 const dropdownItems = ["수정하기", "삭제하기"];
 
 const CommentList = ({ productId }) => {
   const {
+    // 상태
+    comments,
+    nextCursor,
+    isEditCommentId,
+    dropdownCommentId,
+    isCommentPageReady,
+
+    // 로딩/에러
     isLoading,
     loadingError,
-    runAsync: getCommentAsync,
-  } = useAsync(getComments);
-  const {
-    isLoading: updatingComment,
-    loadingError: updateCommentError,
-    runAsync: updateCommentAsync,
-    resetError: resetUpdateError,
-  } = useAsync(updateComment);
-  const {
-    isLoading: deletingComment,
-    loadingError: deleteCommentError,
-    runAsync: deleteCommentAsync,
-  } = useAsync(deleteComment);
+    updatingComment,
+    updateCommentError,
+    showFallback,
 
-  // 댓글 페이지네이션 (커서 기반)
-  const [comments, setComments] = useState([]);
-  const [nextCursor, setNextCursor] = useState(null);
+    // 핸들러
+    handleCommentLoad,
+    handleUpdateComment,
+    handleUpdateCommentCancel,
+    toggleDropdown,
+    handleDropdownSelect,
+  } = useComment(productId);
 
-  const handleCommentLoad = useCallback(
-    async (currentCursor = null, setNextCursorFromPagination) => {
-      try {
-        const result = await getCommentAsync(productId, currentCursor);
-        if (!result) return;
-        setComments(result.list);
-
-        setNextCursor(result.nextCursor);
-        setNextCursorFromPagination?.(result.nextCursor);
-      } catch (err) {
-        console.error(err);
-      }
-    },
-    [getCommentAsync, productId]
-  );
-
-  // 댓글 수정
-  const [isEditCommentId, setIsEditCommentId] = useState(null);
-
-  const handleUpdateComment = (commentId) => {
-    const textarea = document.querySelector(`[data-comment-id="${commentId}"]`);
-    const updated = textarea?.value;
-    if (!updated) return;
-
-    updateCommentAsync(commentId, updated);
-  };
-
-  const handleUpdateCommentCancel = () => {
-    setIsEditCommentId(null);
-    setDropdownCommentId(null);
-    resetUpdateError(null);
-  };
-
-  // 댓글 드롭다운
-  const [dropdownCommentId, setDropdownCommentId] = useState(null);
-
-  const toggleDropdown = (commentId) => {
-    setDropdownCommentId((prevId) => (prevId === commentId ? null : commentId));
-  };
-
-  const handleDropdownSelect = ({ target }, commentId) => {
-    const value = target.textContent;
-    if (value === "수정하기") {
-      setIsEditCommentId((prevId) => (prevId === commentId ? null : commentId));
-    }
-    if (value === "삭제하기") {
-      deleteCommentAsync(commentId);
-      if (deleteCommentError) alert("댓글 삭제에 실패했습니다.");
-    }
-  };
-
-  // 초기 댓글 목록 로드
-  const [isCommentPageReady, setIsCommentPageReady] = useState(false);
-
-  useEffect(() => {
-    const loadInitialComments = async () => {
-      try {
-        const result = await getCommentAsync(productId, null);
-        if (!result) return;
-
-        setComments(result.list);
-        setNextCursor(result.nextCursor);
-        setIsCommentPageReady(true); // 댓글 목록 받은 이후 댓글 페이지네이션 렌더 준비
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    loadInitialComments();
-  }, [getCommentAsync, productId]);
+  const isLoadingDelayed = isLoading && showFallback;
 
   return (
     <div css={CommentListStyle}>
-      {isLoading && <p>댓글 로딩중...</p>}
+      {isLoadingDelayed && <p>댓글 로딩중...</p>}
       {loadingError && <p>댓글을 불러오는 데 문제가 발생했습니다.</p>}
       {!isLoading && comments.length === 0 && <CommentEmpty />}
 
