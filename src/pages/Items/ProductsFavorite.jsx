@@ -5,8 +5,6 @@ import { useResizeInnerWidth } from '@hooks/useResizeInnerWidth';
 import LoadFailed from './LoadFailed';
 import styles from './styles/ProductsFavorite.module.css';
 
-const LazyProductItem = React.lazy(() => import('./ProductItem'));
-
 function ProductsFavorite() {
   const [favoriteItems, setFavoriteItems] = useState([]);
   const [favoriteQueryStrings, setFavoriteQueryStrings] = useState({
@@ -30,6 +28,8 @@ function ProductsFavorite() {
       setFavoriteItems(result.list);
     }
   }, [result]);
+
+  const LazyProductItem = React.lazy(() => import('./ProductItem'));
 
   return (
     <section className={styles.itemsFavorite}>

@@ -40,7 +40,7 @@ function ProductAsk({ productId }) {
         문의하기
       </AskForm>
       {commentList?.length === 0 ? (
-        <EmptyComments placeholder={placeholder} />
+        <EmptyComments />
       ) : (
         <ul>
           {commentList?.map((comment) => (

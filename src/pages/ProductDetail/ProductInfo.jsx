@@ -6,12 +6,6 @@ import UserProfileCard from '@components/userProfileCard';
 import { getProductDetail } from '@service/api.js';
 import styles from './styles/ProductInfo.module.css';
 
-function formatDate(time) {
-  if (!time) return;
-
-  return time.slice(0, 10).replaceAll('-', '. ');
-}
-
 function ProductInfo({ productId }) {
   const [productDetail, setProductDetail] = useState({});
 
@@ -23,14 +17,12 @@ function ProductInfo({ productId }) {
     getFetch();
   }, [productId]);
 
-  const onSelect = useCallback((selector) => {
-    //[v]
+  function onSelect(selector) {
     //프로덕트인포 컴포넌트에서 케밥에 내려줄 함수
-    //매번 새로 만들 바엔 그냥 useCallback이 낫지 않을까?
     if (selector === '수정하기') alert('준비 중인 기능입니다(게시글 수정)');
     else if (selector === '삭제하기')
       alert('준비 중인 기능입니다(게시글 삭제)');
-  }, []);
+  }
 
   return (
     <div className={styles.productInfo}>
@@ -76,3 +68,9 @@ function ProductInfo({ productId }) {
 }
 
 export default ProductInfo;
+
+function formatDate(time) {
+  if (!time) return;
+
+  return time.slice(0, 10).replaceAll('-', '. ');
+}
