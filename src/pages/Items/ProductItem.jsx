@@ -6,12 +6,12 @@ import styles from './styles/ProductItem.module.css';
 function ProductItem({ className, item }) {
   const navigator = useNavigate();
 
-  function getItem() {
+  function showProductDetail() {
     navigator(`/items/${item.id}`);
   }
 
   return (
-    <div onClick={getItem} className={`${styles.card} ${className}`}>
+    <div onClick={showProductDetail} className={`${styles.card} ${className}`}>
       <img
         src={item.images[0] || loadFailImg}
         onError={(e) => (e.currentTarget.src = loadFailImg)}
