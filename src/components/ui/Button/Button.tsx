@@ -1,6 +1,25 @@
 /** @jsxImportSource @emotion/react */
+import { ReactNode, MouseEvent, CSSProperties } from "react";
 import { css } from "@emotion/react";
 import { styles } from "./ButtonStylesMap";
+
+type Size = keyof typeof styles.size; // 'sm' | 'lg', ...
+type Variant = keyof typeof styles.variant; // 'primary' | 'secondary', ...
+
+interface ButtonStyleProps {
+  size?: Size;
+  variant?: Variant;
+  round?: string;
+}
+
+interface ButtonProps extends ButtonStyleProps {
+  type?: "button" | "submit" | undefined;
+  children: ReactNode;
+  className?: string;
+  disabled?: boolean;
+  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
+  style: CSSProperties;
+}
 
 const Button = ({
   type = "button",
@@ -12,7 +31,7 @@ const Button = ({
   disabled,
   onClick,
   ...props
-}) => {
+}: ButtonProps) => {
   return (
     <button
       type={type}
@@ -29,7 +48,7 @@ const Button = ({
 
 export default Button;
 
-const ButtonStyle = (props) => css`
+const ButtonStyle = (props: ButtonStyleProps) => css`
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -43,8 +62,8 @@ const ButtonStyle = (props) => css`
     }
   `}
 
-  ${styles.size[props.size]}
-  ${styles.variant[props.variant]}
+  ${props.size && styles.size[props.size]}
+  ${props.variant && styles.variant[props.variant]}
   ${props.round &&
   css`
     border-radius: var(--border-radius-lg);
