@@ -39,7 +39,10 @@
     ]
   },
   "devDependencies": {
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
     "customize-cra": "^1.0.0",
-    "react-app-rewired": "^2.2.1"
+    "react-app-rewired": "^2.2.1",
+    "typescript": "^5.8.3"
   }
 }
