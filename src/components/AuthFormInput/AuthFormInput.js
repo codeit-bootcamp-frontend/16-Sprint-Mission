@@ -12,10 +12,6 @@ const AuthFormInput = ({
   placeholder,
   validInfo,
 }) => {
-  const handleChangeValue = (e) => {
-    onChange(e.target.value);
-  };
-
   const hasError = !validInfo.isValid;
 
   return (
@@ -27,7 +23,7 @@ const AuthFormInput = ({
         <PasswordInput
           name={name}
           value={value}
-          onChange={handleChangeValue}
+          onChange={onChange}
           placeholder={placeholder}
           className={getAuthValidClassName(validInfo.isValid)}
         />
@@ -36,7 +32,7 @@ const AuthFormInput = ({
           type={type}
           name={name}
           value={value}
-          onChange={handleChangeValue}
+          onChange={onChange}
           placeholder={placeholder}
           className={getAuthValidClassName(validInfo.isValid)}
         />

@@ -1,6 +1,10 @@
 import styles from "./Input.module.scss";
 
 const Input = ({ type, name, value, onChange, placeholder, className }) => {
+  const handleChangeValue = (e) => {
+    onChange(e.target.value);
+  };
+
   return (
     <input
       type={type}
@@ -9,7 +13,7 @@ const Input = ({ type, name, value, onChange, placeholder, className }) => {
       placeholder={placeholder}
       className={`${styles.input} ${className}`}
       value={value}
-      onChange={onChange}
+      onChange={handleChangeValue}
     />
   );
 };
