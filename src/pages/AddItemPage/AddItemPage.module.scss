@@ -1,0 +1,157 @@
+@use "../../styles/variables" as var;
+@use "../../styles/mixin" as mixin;
+
+.addItemPage {
+  padding: 24px 24px 70px;
+
+  @include mixin.tablet {
+    padding-top: 16px;
+  }
+
+  @include mixin.mobile {
+    padding: 24px 15px 70px;
+  }
+
+  &__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .form {
+    &__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    &__title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var.$gray800;
+    }
+
+    &__submitBtn {
+      min-width: 74px;
+    }
+
+    &__item {
+      margin-bottom: 24px;
+    }
+
+    &__label {
+      display: block;
+      margin-bottom: 16px;
+      font-size: 18px;
+      font-weight: 700;
+      color: var.$gray800;
+    }
+
+    &__imgArea {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+
+      @include mixin.tablet {
+        gap: 10px;
+      }
+
+      .imgArea {
+        &__item {
+          $size: 282px;
+
+          width: $size;
+          height: $size;
+          border-radius: 12px;
+          overflow: hidden;
+
+          @include mixin.mobile {
+            $size: 168px;
+
+            width: $size;
+            height: $size;
+          }
+        }
+
+        &__addItem {
+          input {
+            display: none;
+          }
+
+          label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            background: var.$gray200;
+            cursor: pointer;
+
+            span {
+              display: block;
+              padding-top: 60px;
+              background: url("../../assets/images/icons/ic_plus.svg") center
+                top no-repeat;
+            }
+          }
+        }
+
+        &__previewItem {
+          position: relative;
+          img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        &__delBtn {
+          display: block;
+          position: absolute;
+          top: 12px;
+          right: 12px;
+          width: 22px;
+          height: 24px;
+          text-indent: -9999em;
+          background: url("../../assets/images/icons/ic_delete.svg") center
+            center no-repeat;
+          border-radius: 50%;
+        }
+      }
+    }
+
+    &__errorMsg {
+      margin-top: 16px;
+      font-size: 16px;
+      font-weight: 400;
+      color: var.$error;
+    }
+
+    &__tagArea {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+
+      .tagArea {
+        &__tagItem {
+          display: flex;
+          align-items: center;
+          height: 36px;
+          padding: 5px 42px 5px 16px;
+          font-size: 16px;
+          color: var.$gray800;
+          background: var.$gray100
+            url("../../assets/images/icons/ic_delete.svg") right 12px center
+            no-repeat;
+          border-radius: 26px;
+
+          &::before {
+            content: "#";
+          }
+        }
+      }
+    }
+  }
+}

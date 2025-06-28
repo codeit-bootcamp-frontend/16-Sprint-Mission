@@ -1,0 +1,9 @@
+@use "../../styles/mixin" as mixin;
+
+.textarea {
+  @include mixin.defaultInput;
+  height: 282px;
+  padding: 16px 24px;
+  border: none;
+  resize: none;
+}
