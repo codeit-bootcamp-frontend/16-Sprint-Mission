@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { useNavigate } from "react-router-dom";
-import MainPageStyle from "./MainPageStyle";
-import PageContent from "@/components/layout/PageContent";
+import MainPageStyle from "./MainPageStyle.ts";
+// import PageContent from "@/components/layout/PageContent";
 import Footer from "@/components/ui/Footer";
 import Button from "@/components/ui/Button";
 import HomeTopImg from "@/assets/images/Img_home_top.png";
@@ -30,8 +30,9 @@ const MainPage = () => {
               <Button
                 onClick={() => navigate("/products")}
                 aria-label="상품 페이지로 이동"
-                variant="primary"
+                variant="bannerPrimary"
                 size="lg"
+                style={{ width: "356px" }}
               >
                 구경하러 가기
               </Button>

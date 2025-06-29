@@ -1,4 +1,5 @@
 /** @jsxImportSource @emotion/react */
+import { BREAKPOINTS } from "@/constants/responsive";
 import { css } from "@emotion/react";
 
 const MainPageStyle = css`
@@ -80,6 +81,14 @@ const MainPageStyle = css`
     font-size: var(--banner-font-size);
     margin-bottom: 18px;
     word-break: keep-all;
+
+    @media (min-width: ${BREAKPOINTS.tablet}px) {
+      margin-bottom: 24px;
+    }
+
+    @media (min-width: ${BREAKPOINTS.desktop}px) {
+      margin-bottom: 32px;
+    }
   }
 
   .banner-info {
