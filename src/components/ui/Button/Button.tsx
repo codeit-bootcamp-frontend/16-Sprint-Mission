@@ -13,12 +13,13 @@ interface ButtonStyleProps {
 }
 
 interface ButtonProps extends ButtonStyleProps {
+  id?: string;
   type?: "button" | "submit" | undefined;
   children: ReactNode;
   className?: string;
   disabled?: boolean;
   onClick: (e: MouseEvent<HTMLButtonElement>) => void;
-  style: CSSProperties;
+  style?: CSSProperties;
 }
 
 const Button = ({

@@ -70,6 +70,7 @@ const LoginPage = () => {
                 disabled
                 variant="primary"
                 size="lg"
+                onClick={() => console.log("test")}
               >
                 로그인
               </Button>

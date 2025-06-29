@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 
 export interface PageContentType {
   children: ReactNode;
-  className: string;
+  className?: string;
 }
 
 const PageContent = ({ children, className }: PageContentType) => {
