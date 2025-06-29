@@ -1,6 +1,6 @@
 import LogoHeader from '../../components/LogoHeader/LogoHeader';
 import HelperLink from './components/HelperLink';
-import SignInForm from './components/SigninForm';
+import SignInForm from './components/SignInForm';
 import SocialLogin from './components/SocialLogin';
 
 const SignInPage = () => {
