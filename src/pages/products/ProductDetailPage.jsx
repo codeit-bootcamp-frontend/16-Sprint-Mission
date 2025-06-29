@@ -35,7 +35,7 @@ const ProductDetailPage = () => {
       <ProductComments productId={productId} />
       <div className="page-footer">
         <Button
-          variant="bottom"
+          variant="bottomPrimary"
           size="xl"
           round={true}
           onClick={() => navigate("/products")}
