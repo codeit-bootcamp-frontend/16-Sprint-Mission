@@ -1,8 +1,18 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { ReactNode } from "react";
 
-const PageContent = ({ children }) => {
-  return <section css={PageContentStyle}>{children}</section>;
+export interface PageContentType {
+  children: ReactNode;
+  className: string;
+}
+
+const PageContent = ({ children, className }: PageContentType) => {
+  return (
+    <section css={PageContentStyle} className={className}>
+      {children}
+    </section>
+  );
 };
 
 export default PageContent;
