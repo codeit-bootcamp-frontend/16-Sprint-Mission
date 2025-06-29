@@ -6,7 +6,7 @@ import Header from './components/Layout/Header';
 import HomePage from './components/pages/HomePage';
 import LoginPage from './components/pages/LoginPage';
 import MarketPage from './components/pages/MarketPage/MarketPage';
-import AddItemPage from './components/pages/AddItemPage';
+import AddItemPage from './components/pages/AddItemPage/AddItemPage';
 import CommunityFeedPage from './components/pages/CommunityFeedPage';
 
 function App() {

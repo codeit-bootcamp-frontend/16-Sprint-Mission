@@ -1,4 +1,4 @@
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { FontTypes, ColorTypes } from '../../styles/theme';
@@ -8,6 +8,9 @@ import textLogo from '../../assets/images/logo/textlogo.svg';
 import profile from '../../assets/images/icons/ic_profile.png';
 
 function Header() {
+  const location = useLocation();
+  const isMarketActive = location.pathname === '/items' || location.pathname === '/additem';
+
   return (
     <HeaderContainer>
       <HeaderLeft>
@@ -31,7 +34,12 @@ function Header() {
               <StNavLink to="/community">자유게시판</StNavLink>
             </Li>
             <Li>
-              <StNavLink to="/items">중고마켓</StNavLink>
+              <StNavLink
+                to="/items"
+                $isActive={isMarketActive}
+              >
+                중고마켓
+              </StNavLink>
             </Li>
           </Ul>
         </nav>
@@ -88,6 +96,9 @@ const Li = styled.li`
 `;
 
 const StNavLink = styled(NavLink)`
+  color: ${({ $isActive, theme }) =>
+    $isActive ? theme.colors[ColorTypes.PRIMARY_100] : theme.colors[ColorTypes.SECONDARY_GRAY_600]};
+
   &.active {
     color: ${({ theme }) => theme.colors[ColorTypes.PRIMARY_100]};
   }

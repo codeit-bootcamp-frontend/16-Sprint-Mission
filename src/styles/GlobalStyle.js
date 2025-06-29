@@ -47,7 +47,37 @@ const GlobalStyle = createGlobalStyle`
   }
 
   button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ${applyFontStyles(FontTypes.SEMIBOLD16, ColorTypes.SECONDARY_WHITE)};
+    background-color: ${({ theme }) => theme.colors[ColorTypes.PRIMARY_100]};
+    border-radius: 8px;
+    white-space: nowrap;
     cursor: pointer;
+
+    &:hover {
+      background-color: ${ColorTypes.PRIMARY_200};
+    }
+  }
+
+  label {
+    ${applyFontStyles(FontTypes.BOLD18, ColorTypes.SECONDARY_GRAY_800)}
+  }
+
+  input, textarea {
+    ${applyFontStyles(FontTypes.REGULAR16, ColorTypes.SECONDARY_GRAY_800)}
+    background-color: ${({ theme }) => theme.colors[ColorTypes.SECONDARY_GRAY_100]};
+    border-radius: 12px;
+    padding: 16px 24px 14px;
+
+    &::placeholder {
+      ${applyFontStyles(FontTypes.REGULAR16, ColorTypes.SECONDARY_GRAY_400)}
+    }
+  }
+
+  textarea {
+    resize: none;
   }
 `;
 

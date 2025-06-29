@@ -76,7 +76,7 @@ function AllProducts() {
 
   return (
     <AllProductsContainer>
-      {isDesktop ? (
+      {isTablet ? (
         <>
           <HeaderContainer>
             <div>전체 상품</div>
