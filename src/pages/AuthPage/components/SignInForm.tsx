@@ -15,7 +15,7 @@ const SignInForm = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    navigate('/login');
+    navigate('/');
   };
 
   return (
