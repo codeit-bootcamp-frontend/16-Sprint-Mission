@@ -9,7 +9,7 @@ import Dropdown from "../components/Dropdown.js";
 import Pagination from "../components/Pagination.js";
 import usePagination from "../hooks/usePagination.js";
 
-function ItemListPage() {
+const ItemListPage = () => {
   const navigate = useNavigate();
 
   const [orderBy, setOrderBy] = useState({
@@ -132,8 +132,14 @@ function ItemListPage() {
 
   const allPageSize = devicePageSize[deviceType]["all"];
 
+  // 상품 등록페이지로 이동
   const handleOnClickRegister = () => {
     navigate("/additem");
+  };
+
+  // 상품 상세페이지로 이동
+  const onClickListItem = (id) => {
+    navigate(`${id}`);
   };
 
   useEffect(() => {
@@ -178,7 +184,7 @@ function ItemListPage() {
             </div>
             <ul className="items__container__best__list">
               {bestItems?.map((item, index) => (
-                <li key={index}>
+                <li key={index} onClick={() => onClickListItem(item.id)}>
                   <Card data={item} />
                 </li>
               ))}
@@ -214,7 +220,7 @@ function ItemListPage() {
             </div>
             <ul className="items__container__all__list">
               {allItems?.map((item, index) => (
-                <li key={index}>
+                <li key={index} onClick={() => onClickListItem(item.id)}>
                   <Card data={item} />
                 </li>
               ))}
@@ -233,6 +239,6 @@ function ItemListPage() {
       </main>
     </div>
   );
-}
+};
 
 export default ItemListPage;
