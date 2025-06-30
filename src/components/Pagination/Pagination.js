@@ -1,34 +1,34 @@
-import { useCallback, useMemo } from "react";
+import { useEffect, useState } from "react";
 import arrow from "../../assets/images/icons/ic_pagination_arrow.svg";
 import styles from "./Pagination.module.scss";
 
 const LIMIT = 5;
+
 const Pagination = ({ pageSize, totalCount, currentPage, setCurrentPage }) => {
-  // 페이지네이션 5개(LIMIT)로 끊어서 2차원 배열로 생성
-  const calcPager = useMemo(() => {
+  const [currentGroup, setCurrentGroup] = useState([]);
+  const [totalPage, setTotalPage] = useState(0);
+
+  useEffect(() => {
     if (!totalCount) return;
 
-    const totalPager = Math.ceil(totalCount / pageSize);
+    const getTotalPage = Math.ceil(totalCount / pageSize); // 페이지네이션 총 개수
+    setTotalPage(getTotalPage);
 
-    const pagerArr = [];
-    let pagerCounter = 0;
-    for (let i = 0; i < totalPager; i++) {
-      if (!pagerArr[pagerCounter]) pagerArr[pagerCounter] = [];
-      pagerArr[pagerCounter].push(i + 1);
-      if (pagerArr[pagerCounter].length === LIMIT) pagerCounter++;
-    }
+    const getCurrentPageGroup = (currentPage, limit = LIMIT) => {
+      const groupIdx = Math.floor((currentPage - 1) / limit);
+      const startPage = groupIdx * limit + 1;
+      const endPage = Math.min(startPage + limit - 1, totalPage);
 
-    return { pagerArr, totalPager };
-  }, [pageSize, totalCount]);
+      return Array.from(
+        { length: endPage - startPage + 1 },
+        (_, i) => startPage + i
+      );
+    };
 
-  // currentPage 값이 있는 배열 반환
-  const getCurrentGroup = useCallback(() => {
-    if (!calcPager) return;
+    const currentGroup = getCurrentPageGroup(currentPage);
 
-    return calcPager.pagerArr.filter((item) => item.includes(currentPage))[0];
-  }, [calcPager, currentPage]);
-
-  const currentGroup = getCurrentGroup();
+    setCurrentGroup(currentGroup);
+  }, [currentPage, totalCount, pageSize, totalPage]);
 
   // prev 버튼 클릭
   const handleClickPrev = () => {
@@ -38,7 +38,7 @@ const Pagination = ({ pageSize, totalCount, currentPage, setCurrentPage }) => {
 
   // next 버튼 클릭
   const handleClickNext = () => {
-    const totalPageNum = calcPager.totalPager;
+    const totalPageNum = totalPage;
     const changeCurrentPage =
       currentPage + 1 >= totalPageNum ? totalPageNum : currentPage + 1;
     setCurrentPage(changeCurrentPage);
@@ -76,7 +76,7 @@ const Pagination = ({ pageSize, totalCount, currentPage, setCurrentPage }) => {
             type="button"
             className={`${styles["pagination__button"]} ${styles["pagination__button-next"]}`}
             onClick={handleClickNext}
-            disabled={currentPage === calcPager.totalPager}
+            disabled={currentPage === totalPage}
           >
             <img src={arrow} alt="다음으로" />
           </button>

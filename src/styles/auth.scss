@@ -49,44 +49,6 @@
       }
     }
 
-    &__input-box {
-      position: relative;
-
-      input {
-        display: block;
-        width: 100%;
-        height: 56px;
-        padding: 0 24px;
-        font-size: 16px;
-        font-weight: 400;
-        color: var.$gray800;
-        background: var.$gray100;
-        border-radius: 12px;
-
-        &.isError {
-          border: 1px solid var.$error;
-        }
-
-        &.isPass {
-          border: 1px solid var.$primary-color;
-        }
-      }
-
-      &--pw {
-        input {
-          padding-right: 60px;
-        }
-      }
-    }
-
-    &__toggle-btn {
-      position: absolute;
-      top: 0;
-      right: 12px;
-      height: 100%;
-      padding: 0 12px;
-    }
-
     &__submit-btn {
       width: 100%;
     }
@@ -137,4 +99,12 @@
       color: var.$primary-color;
     }
   }
+}
+
+.isError {
+  border: 1px solid var.$error;
+}
+
+.isPass {
+  border: 1px solid var.$primary-color;
 }
