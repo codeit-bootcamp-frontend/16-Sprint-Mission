@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "./DropDownItems.module.css";
 
 const SORT_OPTIONS = [
@@ -5,10 +6,12 @@ const SORT_OPTIONS = [
   { value: "favorite", label: "좋아요순" },
 ];
 
-function DropDownItems({ onItemClick }) {
+function DropDownItems({className, onItemClick , option = SORT_OPTIONS}) {
+  const [options, setOption] = useState(option)
+
   return (
-    <ul className={styles.container}>
-      {SORT_OPTIONS.map(({ value, label }) => (
+    <ul className={!className ? styles.container : styles.commentDropDown}>
+      {options.map(({ value, label }) => (
         <li
           key={value}
           className={styles.items}

@@ -7,6 +7,15 @@
   transform: translate(-30%, 70px);
   cursor: pointer;
 }
+.commentDropDown {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translate(-110px, 10px);
+  cursor: pointer;
+}
 
 .items {
   width: 130px;
