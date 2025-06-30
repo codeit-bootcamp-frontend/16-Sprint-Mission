@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import heartIcon from '@assets/icon/ic_heart.png';
 import emptyImg from '@assets/images/loadFailImg.png';
 import KebabMenu from '@components/KebabMenu';
@@ -15,7 +15,7 @@ function ProductInfo({ productId }) {
         const productInfo = await getProductDetail(productId);
         setProductDetail(productInfo);
       } catch (err) {
-        console.log('상품 정보 불러오기 실패',err);
+        console.log('상품 정보 불러오기 실패', err);
       }
     }
     getFetch();

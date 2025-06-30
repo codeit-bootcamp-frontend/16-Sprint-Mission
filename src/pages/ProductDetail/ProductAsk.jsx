@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
+import { useIntersectionObserver } from '@hooks/useIntersectionObserver';
 import { getProductComment } from '@service/api.js';
 import AskForm from './AskForm';
 import CommentItem from './CommentItem';
 import EmptyComments from './EmptyComments';
 import styles from './styles/ProductAsk.module.css';
-import { useLoadMoreComments } from '../../hooks/useLoadMoreComments';
 
 const placeholder =
   '개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다.';
@@ -37,14 +37,14 @@ function ProductAsk({ productId }) {
       if (res.list?.length > 0) {
         setCommentList((prev) => [...prev, ...res.list]);
       }
-      
+
       cursorRef.current = res.nextCursor;
     } catch (err) {
       console.log('추가 댓글 불러오기 실패', err);
     }
   }
 
-  useLoadMoreComments(loadTriggerRef, onIntersect);
+  useIntersectionObserver(loadTriggerRef, onIntersect);
 
   return (
     <>
