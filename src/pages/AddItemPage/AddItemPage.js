@@ -2,8 +2,15 @@ import { useState } from "react";
 import Input from "../../components/Input/Input";
 import styles from "./AddItemPage.module.scss";
 import TextArea from "../../components/TextArea/TextArea";
+import ImagePreview from "../../components/ImagePreview/ImagePreview";
+import useImageUpload from "../../hooks/useImageUpload";
+import ImageUpload from "../../components/ImageUpload/ImageUpload";
+
+const IMG_MAX_LIMIT = 1;
 
 const AddItemPage = () => {
+  const { uploadImgs, imgValid, handleUploadImg, handleDeleteImg, fileRef } =
+    useImageUpload({ maxLength: IMG_MAX_LIMIT });
   const [prdName, setPrdName] = useState("");
   const [prdDesc, setPrdDesc] = useState("");
   const [prdPrice, setPrdPrice] = useState("");
@@ -19,32 +26,33 @@ const AddItemPage = () => {
               등록
             </button>
           </div>
+          {/* 상품 이미지 */}
           <div className={styles.form__item}>
-            <label htmlFor="" className={styles.form__label}>
-              상품 이미지
-            </label>
+            <span className={styles.form__label}>상품 이미지</span>
             <div className={styles.form__imgArea}>
-              <div
-                className={`${styles.imgArea__item} ${styles.imgArea__addItem}`}
-              >
-                <input type="file" name="imgAdd" id="imgAdd" />
-                <label htmlFor="imgAdd">
-                  <span>이미지 등록</span>
-                </label>
+              <div className={styles.imgArea__item}>
+                <ImageUpload
+                  name={"imgAdd"}
+                  onChange={handleUploadImg}
+                  ref={fileRef}
+                />
               </div>
-              <div
-                className={`${styles.imgArea__item} ${styles.imgArea__previewItem}`}
-              >
-                <img src="" alt="" />
-                <button type="button" className={styles["imgArea__delBtn"]}>
-                  닫기
-                </button>
-              </div>
+              {!!uploadImgs.length &&
+                uploadImgs.map((file, idx) => (
+                  <div className={styles.imgArea__item} key={idx}>
+                    <ImagePreview
+                      file={file}
+                      id={idx}
+                      onDelete={handleDeleteImg}
+                    />
+                  </div>
+                ))}
             </div>
-            <p className={styles.form__errorMsg}>
-              *이미지 등록은 최대 1개까지 가능합니다.
-            </p>
+            {imgValid.isValid === false && (
+              <p className={styles.form__errorMsg}>{imgValid.msg}</p>
+            )}
           </div>
+          {/* 상품명 */}
           <div className={styles.form__item}>
             <label htmlFor="title" className={styles.form__label}>
               상품명
@@ -57,6 +65,7 @@ const AddItemPage = () => {
               placeholder={"상품명을 입력해주세요"}
             />
           </div>
+          {/* 상품 소개 */}
           <div className={styles.form__item}>
             <label htmlFor="desc" className={styles.form__label}>
               상품 소개
@@ -69,6 +78,7 @@ const AddItemPage = () => {
               placeholder={"상품 소개를 입력해주세요"}
             />
           </div>
+          {/* 판매가격 */}
           <div className={styles.form__item}>
             <label htmlFor="price" className={styles.form__label}>
               판매가격
@@ -81,6 +91,7 @@ const AddItemPage = () => {
               placeholder={"판매 가격을 입력해주세요"}
             />
           </div>
+          {/* 태그 */}
           <div className={styles.form__item}>
             <label htmlFor="tag" className={styles.form__label}>
               태그
