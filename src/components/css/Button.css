@@ -5,8 +5,8 @@
   padding: 12px 20px;
   display: flex;
   justify-content: center;
-  align-items: center;
   font-weight: 600;
+  gap: 8px;
 }
 
 .btn-register {
@@ -14,6 +14,13 @@
   height: 42px;
   font-size: var(--font-size-xs);
   padding: 8px 23px;
+}
+
+.btn-return {
+  border-radius: var(--border-radius-xl);
+  height: 48px;
+  font-size: var(--font-size-sm);
+  padding: 11px 40px;
 }
 
 .btn-small {
@@ -24,7 +31,7 @@
 }
 
 .btn-large {
-  border-radius: var(--border-radius-lg);
+  border-radius: var(--border-radius-xl);
   width: 240px;
   height: 48px;
   font-size: var(--font-size-sm);

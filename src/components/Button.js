@@ -1,4 +1,5 @@
 import "./css/Button.css";
+import backIcon from "../img/back.svg";
 
 const Button = ({
   className,
@@ -9,11 +10,14 @@ const Button = ({
 }) => {
   const btnStyleClass = {
     register: "btn-register",
+    return: "btn-return",
     small: "btn-small",
     large: "btn-large",
   };
 
   const btnClassName = `btn ${btnStyleClass[type] || ""} ${className}`;
+
+  const isReturn = type === "return";
 
   const onClickButton = () => {
     onClick();
@@ -27,6 +31,7 @@ const Button = ({
       onClick={onClickButton}
     >
       {children}
+      {isReturn && <img src={backIcon} alt="목록으로 아이콘" />}
     </button>
   );
 };

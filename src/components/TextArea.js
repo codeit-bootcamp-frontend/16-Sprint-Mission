@@ -36,7 +36,7 @@ const TextArea = ({
       <textarea
         name={name}
         placeholder={placeholder}
-        className="input textarea"
+        className={`input textarea ${className}`}
         onChange={(e) => onChange(e.target.name, e.target.value)}
         {...rest}
       />
