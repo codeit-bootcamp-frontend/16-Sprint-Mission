@@ -1,24 +1,26 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import debounce from "@/utils/debounce";
-import {
-  validateProductName,
-  validateProductDescription,
-  validateProductPrice,
-} from "@/utils/validators";
+import * as validators from "@/utils/validators";
 import { formatPrice, unformatPrice } from "@/utils/formatPrice";
 
 const CHECK_FORM_DEBOUNCE_MS = 300;
 
 const validatorMap = {
-  name: validateProductName,
-  description: validateProductDescription,
-  price: validateProductPrice,
+  name: validators.validateProductName,
+  description: validators.validateProductDescription,
+  price: validators.validateProductPrice,
+  email: validators.validateEmail,
+  password: validators.validatePassword,
 };
 
 const useForm = (formRef, formOptions) => {
   const [isFormValid, setIsFormValid] = useState(false);
   const [tags, setTags] = useState([]);
   const shouldCheckTags = formRef.current?.dataset.includeTags === "true";
+
+  // 에러 메시지
+  const [emailMsg, setEmailMsg] = useState("");
+  const [passwordMsg, setPasswordMsg] = useState("");
 
   const handlePriceInput = (e) => {
     const { value } = e.target;
@@ -31,7 +33,9 @@ const useForm = (formRef, formOptions) => {
     setTags(updatedTags);
   };
 
-  const validateForm = () => {
+  const validateForm = (e) => {
+    e?.preventDefault();
+
     const elements = formRef.current?.elements;
     if (!elements) return;
 
@@ -39,10 +43,7 @@ const useForm = (formRef, formOptions) => {
     const results = [];
 
     for (const el of elements) {
-      if (el.type === "text" || el.tagName === "TEXTAREA") {
-        // text input, textarea 폼 요소 values에 추가
-        values[el.name] = el.value;
-      }
+      values[el.name] = el.value;
     }
 
     if (values.productPrice) {
@@ -79,6 +80,14 @@ const useForm = (formRef, formOptions) => {
       }
     }
 
+    // 에러 메시지 업데이트
+    const validator = validatorMap[name];
+    if (validator) {
+      const { message } = validator(value);
+      if (name === "email") setEmailMsg(message);
+      if (name === "password") setPasswordMsg(message);
+    }
+
     debouncedValidateForm(); // blur될 때만 폼 유효성 검사
   };
 
@@ -94,6 +103,10 @@ const useForm = (formRef, formOptions) => {
     handleTagsChange,
     handleBlur,
     validateForm,
+
+    // 에러 메시지
+    emailMsg,
+    passwordMsg,
   };
 };
 
