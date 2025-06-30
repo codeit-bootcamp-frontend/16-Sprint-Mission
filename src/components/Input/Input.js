@@ -1,6 +1,14 @@
 import styles from "./Input.module.scss";
 
-const Input = ({ type, name, value, onChange, placeholder, className }) => {
+const Input = ({
+  type,
+  name,
+  value,
+  onChange,
+  placeholder,
+  className,
+  ...params
+}) => {
   const handleChangeValue = (e) => {
     onChange(e.target.value);
   };
@@ -14,6 +22,7 @@ const Input = ({ type, name, value, onChange, placeholder, className }) => {
       className={`${styles.input} ${className}`}
       value={value}
       onChange={handleChangeValue}
+      {...params}
     />
   );
 };

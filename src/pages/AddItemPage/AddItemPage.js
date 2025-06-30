@@ -5,16 +5,18 @@ import TextArea from "../../components/TextArea/TextArea";
 import ImagePreview from "../../components/ImagePreview/ImagePreview";
 import useImageUpload from "../../hooks/useImageUpload";
 import ImageUpload from "../../components/ImageUpload/ImageUpload";
+import useTagUpdate from "../../hooks/useTagUpdate";
 
 const IMG_MAX_LIMIT = 1;
 
 const AddItemPage = () => {
   const { uploadImgs, imgValid, handleUploadImg, handleDeleteImg, fileRef } =
     useImageUpload({ maxLength: IMG_MAX_LIMIT });
+  const { tagList, tagInput, setTagInput, handleDeleteTag, handleAddTag } =
+    useTagUpdate();
   const [prdName, setPrdName] = useState("");
   const [prdDesc, setPrdDesc] = useState("");
   const [prdPrice, setPrdPrice] = useState("");
-  const [prdTag, setPrdTag] = useState("");
 
   return (
     <div id="container" className={styles.addItemPage}>
@@ -99,18 +101,27 @@ const AddItemPage = () => {
             <Input
               type={"text"}
               name={"tag"}
-              value={prdTag}
-              onChange={setPrdTag}
+              value={tagInput}
+              onChange={setTagInput}
               placeholder={"태그를 입력해주세요"}
+              onKeyDown={handleAddTag}
             />
-            <div className={styles.form__tagArea}>
-              <button type="button" className={styles.tagArea__tagItem}>
-                티셔츠
-              </button>
-              <button type="button" className={styles.tagArea__tagItem}>
-                상의
-              </button>
-            </div>
+            {tagList && (
+              <div className={styles.form__tagArea}>
+                {tagList.map((tag, id) => (
+                  <button
+                    type="button"
+                    className={styles.tagArea__tagItem}
+                    key={id}
+                    onClick={() => {
+                      handleDeleteTag(id);
+                    }}
+                  >
+                    {tag}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </form>
       </div>
