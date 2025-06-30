@@ -8,6 +8,7 @@ import Button from "../components/Button.js";
 import Dropdown from "../components/Dropdown.js";
 import Pagination from "../components/Pagination.js";
 import usePagination from "../hooks/usePagination.js";
+import SortDropdown from "../components/SortDropdown.js";
 
 const ItemListPage = () => {
   const navigate = useNavigate();
@@ -86,6 +87,10 @@ const ItemListPage = () => {
       setOrderBy(order);
       setPaginationCurrentPage(1);
     }
+  };
+
+  const onCloseDropdown = () => {
+    setShowDropdown(false);
   };
 
   const onKeywordChange = (e) => {
@@ -209,10 +214,11 @@ const ItemListPage = () => {
               >
                 상품 등록하기
               </Button>
-              <Dropdown
+              <SortDropdown
                 className="items__container__dropdown"
                 onClickDropdown={onClickDropdown}
                 onClickDropdownItem={onClickDropdownItem}
+                onCloseDropdown={onCloseDropdown}
                 dropdownList={dropdownList}
                 showDropdown={showDropdown}
                 value={orderBy}

@@ -1,0 +1,40 @@
+.comment {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.comment__content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment__profile__group {
+  display: flex;
+  gap: 8px;
+  align-items: start;
+}
+
+.comment__image {
+  width: 32px;
+}
+
+.comment__profile {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.comment__profile__name {
+  font-size: 12px;
+  font-weight: 400;
+  color: #4b5563;
+}
+
+.comment__profile__time {
+  font-size: 12px;
+  font-weight: 400;
+  color: #9ca3af;
+}

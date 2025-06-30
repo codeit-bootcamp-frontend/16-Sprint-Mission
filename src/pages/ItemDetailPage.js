@@ -8,6 +8,8 @@ import Button from "../components/Button";
 import userIcon from "../img/user.svg";
 import HeartButton from "../components/HeartButton";
 import TextArea from "../components/TextArea";
+import MoreDropdown from "../components/MoreDropdown";
+import Comment from "../components/Comment";
 
 const ItemDetailPage = () => {
   const navigate = useNavigate();
@@ -19,13 +21,18 @@ const ItemDetailPage = () => {
     name: "",
     description: "",
   });
-  const [comments, setComments] = useState({
-    image: [],
-    ownerNickname: "",
-    content: "",
-    description: "",
-    updatedAt: "",
-  });
+  const [comments, setComments] = useState([
+    {
+      id: 0,
+      content: "",
+      updatedAt: "",
+      writer: {
+        id: 0,
+        nickname: "",
+        image: null,
+      },
+    },
+  ]);
 
   const fetchItemDetail = async (params) => {
     try {
@@ -84,7 +91,7 @@ const ItemDetailPage = () => {
                     {detail.price?.toLocaleString("ko-KR")}원
                   </span>
                 </div>
-                <span>케밥 아이콘</span>
+                <MoreDropdown />
               </div>
               <div className="detail__description__group">
                 <span className="detail__subtitle">상품 소개</span>
@@ -126,33 +133,39 @@ const ItemDetailPage = () => {
           </div>
         </div>
 
-        <div className="deatil__comment">
-          <div className="detail__input__group">
-            <div className="detail__input">
-              <span className="detail__subtitle">문의하기</span>
-              <TextArea
-                placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다.
+        <div className="detail__comment__group">
+          <div className="detail__comment">
+            <div className="detail__input__group">
+              <div className="detail__input">
+                <span className="detail__subtitle">문의하기</span>
+                <TextArea
+                  placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다.
 
 "
-                className="detail__textarea"
-              />
+                  className="detail__textarea"
+                />
+              </div>
+              <Button
+                type="register"
+                disabled
+                className="detail__register__btn"
+              >
+                등록
+              </Button>
             </div>
-            <Button type="register" disabled className="detail__register__btn">
-              등록
-            </Button>
-          </div>
 
-          <div>
-            <span className="detail__subtitle">댓글 리스트</span>
+            <div>
+              <Comment />
+            </div>
           </div>
+          <Button
+            type="return"
+            className="detail__return__btn"
+            onClick={onClickReturn}
+          >
+            목록으로 돌아가기
+          </Button>
         </div>
-        <Button
-          type="return"
-          className="detail__return__btn"
-          onClick={onClickReturn}
-        >
-          목록으로 돌아가기
-        </Button>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import "./css/ItemRegisterPage.css";
-import { useReducer, useState } from "react";
+import { useReducer } from "react";
 import Button from "../components/Button";
 import Label from "../components/Label";
 import Textfield from "../components/Textfield";

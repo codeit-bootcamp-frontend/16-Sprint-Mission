@@ -135,7 +135,7 @@
 .detail__profile__info {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 6px;
 }
 
 .detail__profile__name {
@@ -154,8 +154,16 @@
   border-left: 1px solid var(--color-secondary-200);
 }
 
+.detail__comment__group {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
 .detail__comment {
   display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .detail__input__group {
@@ -173,6 +181,12 @@
 
 .detail__textarea {
   height: 104px;
+}
+
+.detail__comment__content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .detail__register__btn {
