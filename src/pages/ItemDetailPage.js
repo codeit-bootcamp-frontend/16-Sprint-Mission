@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getItemDetail, getItemDetailComments } from "../api/Items";
+import { formatDate, formatPrice } from "../utils/formatUtil";
 import Tag from "../components/Tag";
 import Button from "../components/Button";
 import userIcon from "../img/user.svg";
@@ -45,22 +46,11 @@ const ItemDetailPage = () => {
 
   const fetchItemDetailComments = async (params) => {
     try {
-      const data = await getItemDetailComments(params);
-      setComments(data);
+      const { list } = await getItemDetailComments(params);
+      setComments(list);
     } catch (error) {
     } finally {
     }
-  };
-
-  const formatDate = (newDate) => {
-    const date = new Date(newDate);
-    const formattedDate = date.toLocaleDateString("ko-KR", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    });
-
-    return formattedDate;
   };
 
   const onClickReturn = () => {
@@ -88,7 +78,7 @@ const ItemDetailPage = () => {
                 <div className="detail__title__group">
                   <span className="detail__title">{detail.name}</span>
                   <span className="detail__price">
-                    {detail.price?.toLocaleString("ko-KR")}원
+                    {formatPrice(detail.price)}원
                   </span>
                 </div>
                 <MoreDropdown />
@@ -154,8 +144,10 @@ const ItemDetailPage = () => {
               </Button>
             </div>
 
-            <div>
-              <Comment />
+            <div className="detail__comment__list">
+              {comments.map((comment) => (
+                <Comment key={comment.id} data={comment} />
+              ))}
             </div>
           </div>
           <Button

@@ -23,8 +23,8 @@ const Dropdown = ({
         onCloseDropdown();
       }
     };
-    window.addEventListener("mousedown", handleClickOutside);
-    return () => window.removeEventListener("mousedown", handleClickOutside);
+    window.addEventListener("click", handleClickOutside);
+    return () => window.removeEventListener("click", handleClickOutside);
   }, []);
 
   return (
@@ -39,11 +39,7 @@ const Dropdown = ({
         value,
       }}
     >
-      <div
-        ref={dropdownRef}
-        className={`dropdown__container ${className}`}
-        onClick={onClickDropdown}
-      >
+      <div ref={dropdownRef} className={`dropdown__container ${className}`}>
         {children}
       </div>
     </DropdownContext.Provider>
@@ -51,9 +47,9 @@ const Dropdown = ({
 };
 
 const Button = () => {
-  const { value } = useContext(DropdownContext);
+  const { value, onClickDropdown } = useContext(DropdownContext);
   return (
-    <div className="dropdown__button">
+    <div className="dropdown__button" onClick={onClickDropdown}>
       <span className="dropdown__text">{value.name}</span>
       <img
         src={arrowDownIcon}

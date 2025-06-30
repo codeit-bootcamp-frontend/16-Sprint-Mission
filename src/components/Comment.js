@@ -1,10 +1,11 @@
 import "./css/Comment.css";
 import { useState } from "react";
+import { formatDate } from "../utils/formatUtil";
 import userIcon from "../img/user.svg";
 import MoreDropdown from "./MoreDropdown";
 
 const Comment = ({ data }) => {
-  const { image, nickname, content, updatedAt } = data || {};
+  const { writer, content, updatedAt } = data || {};
   const [showDropdown, setShowDropdown] = useState(false);
 
   const onClickDropdown = () => {
@@ -17,7 +18,8 @@ const Comment = ({ data }) => {
   ];
 
   const onClickDropdownItem = () => {
-    console.log("드롭다운 선택");
+    // 동작 실행 후 닫기
+    onCloseDropdown();
   };
 
   const onCloseDropdown = () => {
@@ -27,7 +29,7 @@ const Comment = ({ data }) => {
   return (
     <div className="comment">
       <div className="comment__content">
-        <span>텍스트{content}</span>
+        <span>{content}</span>
         <MoreDropdown
           onClickDropdown={onClickDropdown}
           onClickDropdownItem={onClickDropdownItem}
@@ -38,7 +40,7 @@ const Comment = ({ data }) => {
       </div>
       <div className="comment__profile__group">
         <img
-          src={image?.[0] ?? userIcon}
+          src={writer.image ?? userIcon}
           alt="사용자 프로필 이미지"
           className="comment__image"
           onError={(e) => {
@@ -47,8 +49,10 @@ const Comment = ({ data }) => {
           }}
         />
         <div className="comment__profile">
-          <span className="comment__profile__name">판다씨{nickname}</span>
-          <span className="comment__profile__time">시간{updatedAt}</span>
+          <span className="comment__profile__name">{writer.nickname}</span>
+          <span className="comment__profile__time">
+            {formatDate(updatedAt)}
+          </span>
         </div>
       </div>
     </div>

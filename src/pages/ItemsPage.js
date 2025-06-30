@@ -87,6 +87,7 @@ const ItemListPage = () => {
       setOrderBy(order);
       setPaginationCurrentPage(1);
     }
+    onCloseDropdown();
   };
 
   const onCloseDropdown = () => {

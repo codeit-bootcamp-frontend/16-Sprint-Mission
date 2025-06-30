@@ -19,7 +19,6 @@
   max-width: 346px;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   margin: 0 auto;
   gap: 40px;
 }
@@ -175,7 +174,6 @@
 .detail__input {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   gap: 9px;
 }
 
@@ -191,6 +189,12 @@
 
 .detail__register__btn {
   align-self: flex-end;
+}
+
+.detail__comment__list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .detail__return__btn {

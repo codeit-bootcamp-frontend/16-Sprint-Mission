@@ -21,7 +21,11 @@ const MoreDropdown = ({
       showDropdown={showDropdown}
       value={value}
     >
-      <img src={moreIcon} alt="드롭다운 더보기 아이콘" />
+      <img
+        src={moreIcon}
+        alt="드롭다운 더보기 아이콘"
+        onClick={onClickDropdown}
+      />
       <Dropdown.List listClassName={"dropdown__list__more"} />
     </Dropdown>
   );
