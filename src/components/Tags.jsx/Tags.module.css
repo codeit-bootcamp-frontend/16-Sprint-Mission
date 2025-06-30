@@ -1,0 +1,19 @@
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+.tag {
+  cursor: pointer;
+  background-color: var(--cool-gray-100);
+  padding: 6px 16px;
+  border-radius: 26px; 
+  border: 1px solid var(--cool-gray-100);
+  flex: 0;
+}
+
+.tag:hover {
+  background-color: var(--cool-gray-200);
+}
