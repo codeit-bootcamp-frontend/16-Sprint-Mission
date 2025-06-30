@@ -6,6 +6,11 @@ import UserProfileCard from '@components/userProfileCard';
 import { getProductDetail } from '@service/api.js';
 import styles from './styles/ProductInfo.module.css';
 
+const DROPDOWN_LIST = {
+  UPDATE: '수정하기',
+  DELETE: '삭제하기',
+};
+
 function ProductInfo({ productId }) {
   const [productDetail, setProductDetail] = useState({});
 
@@ -40,7 +45,10 @@ function ProductInfo({ productId }) {
           <h2>{productDetail.name}</h2>
           <div>{productDetail.price?.toLocaleString('ko-KR')}원</div>
         </section>
-        <KebabMenu onSelect={onSelect} />
+        <KebabMenu
+          dropdownList={Object.values(DROPDOWN_LIST)}
+          onSelect={onSelect}
+        />
         <section className={styles.description}>
           <h3>상품 소개</h3>
           <p>{productDetail.description}</p>

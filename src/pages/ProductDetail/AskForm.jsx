@@ -1,17 +1,28 @@
 import { useState } from 'react';
 import styles from './styles/AskForm.module.css';
 
-const formHeightByMethod = {
-  POST: { height: '129px' },
-  UPDATE: { height: '80px' },
+const METHOD = {
+  POST: 'POST',
+  UPDATE: 'UPDATE',
 };
 
-const buttonByMethod = {
-  POST: ({ notEmpty }) => <PostBtn notEmpty={notEmpty} />,
-  UPDATE: ({ notEmpty, setIsEditNow }) => (
-    <UpdateBtn notEmpty={notEmpty} setIsEditNow={setIsEditNow} />
-  ),
+const FORM_HEIGHT_BY_METHOD = {
+  // POST: { height: '129px' },
+  // UPDATE: { height: '80px' },  지금은 그냥 이렇게 UPDATE라고만 키 줘도 되는데 나중에 METHOD객체 값이 바뀔 걸 대비
+  [METHOD.POST]: { height: '129px' },
+  [METHOD.UPDATE]: { height: '80px' },
 };
+
+function renderButton(method, { notEmpty, setIsEditNow }) {
+  switch (method) {
+    case METHOD.POST:
+      return <PostBtn notEmpty={notEmpty} />;
+    case METHOD.UPDATE:
+      return <UpdateBtn notEmpty={notEmpty} setIsEditNow={setIsEditNow} />;
+    default:
+      return null;
+  }
+}
 
 export default function AskForm({
   placeholder,
@@ -28,8 +39,8 @@ export default function AskForm({
   }
 
   function onSubmit(e) {
-    if (method === 'POST') alert('준비 중인 기능입니다(댓글 등록)');
-    else if (method === 'UPDATE') alert('준비 중인 기능입니다(댓글 수정)');
+    if (method === METHOD.POST) alert('준비 중인 기능입니다(댓글 등록)');
+    else if (method === METHOD.UPDATE) alert('준비 중인 기능입니다(댓글 수정)');
     e.preventDefault();
   }
 
@@ -43,10 +54,10 @@ export default function AskForm({
           id="comment"
           placeholder={placeholder}
           value={value}
-          style={formHeightByMethod[method]}
+          style={FORM_HEIGHT_BY_METHOD[method]}
         />
       </label>
-      {buttonByMethod[method]({ notEmpty, setIsEditNow })}
+      {renderButton(method, { notEmpty, setIsEditNow })}
     </form>
   );
 }
