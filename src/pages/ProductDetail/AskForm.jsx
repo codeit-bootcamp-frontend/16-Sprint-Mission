@@ -20,7 +20,7 @@ export default function AskForm({
   setIsEditNow,
   children,
 }) {
-  const [value, setValue] = useState(comment);
+  const [value, setValue] = useState(comment||'');
   const notEmpty = value?.length || false;
 
   function handleChange(e) {

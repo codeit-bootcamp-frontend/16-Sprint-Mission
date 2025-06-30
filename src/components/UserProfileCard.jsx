@@ -7,7 +7,7 @@ const classNameByauthority = {
 };
 
 function UserProfileCard({ authority, name, time, image }) {
-  const userImage = image ? image : profileImage;
+  const userImage = image || profileImage;
 
   return (
     <div className={classNameByauthority[authority]}>
