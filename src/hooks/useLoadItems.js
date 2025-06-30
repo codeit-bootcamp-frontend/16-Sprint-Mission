@@ -14,6 +14,7 @@ export function useLoadItems(queryStrings) {
         setResult(result);
         setLoadFailed(false);
       } catch (err) {
+        console.log('아이템 가져오기 실패', err);
         setLoadFailed(true);
       }
     }

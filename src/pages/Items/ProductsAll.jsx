@@ -8,6 +8,8 @@ import { ProductData } from './ProductDataProvider';
 import ProductsFilterBar from './ProductsFilterBar';
 import styles from './styles/ProductsAll.module.css';
 
+const LazyProductItem = React.lazy(() => import('./ProductItem'));
+
 function ProductsAll() {
   const { products, setProducts, setTotal, queryStrings, setQueryStrings } =
     useContext(ProductData);
@@ -28,8 +30,6 @@ function ProductsAll() {
       setTotal(result.totalCount);
     }
   }, [result]);
-
-  const LazyProductItem = React.lazy(() => import('./ProductItem'));
 
   return (
     <>
