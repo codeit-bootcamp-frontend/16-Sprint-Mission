@@ -11,6 +11,7 @@ const Button = ({
   const btnStyleClass = {
     register: "btn-register",
     return: "btn-return",
+    cancel: "btn-cancel",
     small: "btn-small",
     large: "btn-large",
   };

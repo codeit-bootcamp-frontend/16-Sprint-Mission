@@ -7,6 +7,7 @@ import { formatDate, formatPrice } from "../utils/formatUtil";
 import Tag from "../components/Tag";
 import Button from "../components/Button";
 import userIcon from "../img/user.svg";
+import inquiryEmpty from "../img/inquiry_empty.jpg";
 import HeartButton from "../components/HeartButton";
 import TextArea from "../components/TextArea";
 import MoreDropdown from "../components/MoreDropdown";
@@ -92,8 +93,10 @@ const ItemDetailPage = () => {
               <div className="detail__tag__group">
                 <span className="detail__subtitle">상품 태그</span>
                 <div className="detail__tagList">
-                  {detail.tags.map((tag) => (
-                    <Tag hideDeleteIcon>{tag}</Tag>
+                  {detail.tags.map((tag, index) => (
+                    <Tag key={`${tag}-${index}`} hideDeleteIcon>
+                      {tag}
+                    </Tag>
                   ))}
                 </div>
               </div>
@@ -145,6 +148,13 @@ const ItemDetailPage = () => {
             </div>
 
             <div className="detail__comment__list">
+              {!comments.length && (
+                <div className="detail__comment__empty">
+                  <img src={inquiryEmpty} alt="댓글 없음 이미지" />
+                  <span>아직 문의가 없어요</span>
+                </div>
+              )}
+
               {comments.map((comment) => (
                 <Comment key={comment.id} data={comment} />
               ))}

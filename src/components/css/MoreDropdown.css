@@ -4,6 +4,6 @@
 }
 
 .dropdown__list__more > li {
-  color: #6b7280;
+  color: var(--color-secondary-500);
   height: 46px;
 }

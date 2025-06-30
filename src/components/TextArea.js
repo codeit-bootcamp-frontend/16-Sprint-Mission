@@ -34,6 +34,7 @@ const TextArea = ({
   return (
     <div>
       <textarea
+        value={value}
         name={name}
         placeholder={placeholder}
         className={`input textarea ${className}`}

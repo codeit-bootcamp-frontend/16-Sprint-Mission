@@ -9,7 +9,7 @@
   max-width: 282px;
   aspect-ratio: 1 / 1;
   border-radius: 12px;
-  background-color: #f3f4f6;
+  background-color: var(--color-secondary-100);
   background-position: center center;
   background-size: cover;
 }

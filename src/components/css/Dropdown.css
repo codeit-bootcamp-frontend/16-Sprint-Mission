@@ -11,10 +11,10 @@
   height: 42px;
   border: 1px solid var(--color-secondary-200);
   border-radius: 12px;
-  background-color: #ffffff;
+  background-color: var(--color-background-white);
+  color: var(--color-secondary-800);
   font-size: var(--font-size-xs);
   font-weight: 400;
-  color: var(--color-secondary-800);
 }
 
 @media screen and (min-width: 744px) {

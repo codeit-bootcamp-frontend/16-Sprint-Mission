@@ -9,27 +9,25 @@
   align-items: center;
   font-weight: 500;
   gap: 4px;
+  transition: background-color 0.2s;
 }
 
 .heart__btn-small {
   border-radius: var(--border-radius-sm);
-  /* min-width: 128px; */
   height: 48px;
   font-size: var(--font-size-xs);
 }
 
 .heart__btn-large {
   border-radius: var(--border-radius-lg);
-  /* width: 240px; */
   height: 48px;
   font-size: var(--font-size-sm);
 }
 
-/* .btn a {
-  text-decoration: none;
-  color: var(--color-secondary-100);
-} */
-
 .heart__btn__text {
   color: var(--color-secondary-500);
+}
+
+.heart__btn:not(:disabled):hover {
+  background-color: var(--color-secondary-50);
 }
