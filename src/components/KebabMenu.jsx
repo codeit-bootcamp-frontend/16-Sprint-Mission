@@ -11,10 +11,9 @@ function makeHtmlAttr(selector) {
   return dropDownHtmlAttr;
 }
 
-function KebabMenu({
-  dataList = ['수정하기', '삭제하기'],
-  onSelect = () => {},
-}) {
+const DROPDOWN_LIST = ['수정하기', '삭제하기'];
+
+function KebabMenu({ onSelect = () => {} }) {
   const [isOpen, setIsOpen] = useState(false);
   const kebabRef = useRef(null);
 
@@ -46,7 +45,7 @@ function KebabMenu({
       </button>
       {isOpen && (
         <ul role="listbox">
-          {dataList?.map((selector) => (
+          {DROPDOWN_LIST?.map((selector) => (
             <li
               key={`${selector}`}
               {...makeHtmlAttr(selector)}
