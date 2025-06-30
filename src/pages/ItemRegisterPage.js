@@ -1,5 +1,5 @@
 import "./css/ItemRegisterPage.css";
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import Button from "../components/Button";
 import Label from "../components/Label";
 import Textfield from "../components/Textfield";
@@ -9,90 +9,86 @@ import TagInput from "../components/TagInput";
 import { validateInput } from "../utils/formValidation";
 
 const ItemRegisterPage = () => {
-  // 폼 데이터
-  const [image, setImage] = useState("");
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [price, setPrice] = useState("");
-  const [tagList, setTagList] = useState([]);
+  // 폼 리듀서 관련
+  const initialReducerState = {
+    image: { value: "", validInfo: { isValid: null, message: "" } },
+    title: { value: "", validInfo: { isValid: null, message: "" } },
+    content: { value: "", validInfo: { isValid: null, message: "" } },
+    price: { value: "", validInfo: { isValid: null, message: "" } },
+    tagList: { value: [], validInfo: { isValid: null, message: "" } },
+  };
 
-  // 폼 데이터 유효성 체크
-  const [imageValidate, setImageValidate] = useState({
-    isValid: null,
-    message: "",
-  });
-  const [titleValidate, setTitleValidate] = useState({
-    isValid: null,
-    message: "",
-  });
-  const [contentValidate, setContentValidate] = useState({
-    isValid: null,
-    message: "",
-  });
-  const [priceValidate, setPriceValidate] = useState({
-    isValid: null,
-    message: "",
-  });
-  const [tagListValidate, setTagListValidate] = useState({
-    isValid: null,
-    message: "",
-  });
+  const formReducer = (state, action) => {
+    switch (action.type) {
+      case "CHANGE_FIELD":
+        return {
+          ...state,
+          [action.field]: {
+            ...state[action.field],
+            value: action.value,
+          },
+        };
+      case "UPDATE_VALIDATE":
+        return {
+          ...state,
+          [action.field]: {
+            ...state[action.field],
+            validInfo: {
+              isValid: action.value.isValid,
+              message: action.value.message,
+            },
+          },
+        };
+      default:
+        return state;
+    }
+  };
+
+  const [formState, dispatchForm] = useReducer(
+    formReducer,
+    initialReducerState
+  );
 
   /* 유효성 체크 */
   const updateValidate = (name, val) => {
     const validateResult = validateInput(name, val);
-    switch (name) {
-      case "image":
-        setImageValidate(validateResult);
-        break;
-      case "title":
-        setTitleValidate(validateResult);
-        break;
-      case "content":
-        setContentValidate(validateResult);
-        break;
-      case "price":
-        setPriceValidate(validateResult);
-        break;
-      case "tagList":
-        setTagListValidate(validateResult);
-        break;
-      default:
-        break;
-    }
+    dispatchForm({
+      type: "UPDATE_VALIDATE",
+      field: name,
+      value: validateResult,
+    });
   };
 
   /* 이미지 컴포넌트 관련 */
   const onClickAddImage = () => {
-    updateValidate("image", image);
+    updateValidate("image", formState.image.value);
   };
 
   const onChangeImage = (value) => {
-    setImage(value);
+    dispatchForm({
+      type: "CHANGE_FIELD",
+      field: "image",
+      value,
+    });
   };
 
   const onDeleteImage = () => {
-    setImage("");
+    dispatchForm({
+      type: "CHANGE_FIELD",
+      field: "image",
+      value: "",
+    });
     updateValidate("image", "");
   };
 
   /* 텍스트필드 데이터 세팅과 유효성 체크 */
   const onChangeTextfield = (name, value) => {
     let trimVal = value.trim();
-
-    switch (name) {
-      case "title":
-        setTitle(value);
-        break;
-      case "content":
-        setContent(value);
-        break;
-      case "price":
-        setPrice(value);
-        break;
-      default:
-        break;
-    }
+    dispatchForm({
+      type: "CHANGE_FIELD",
+      field: name,
+      value,
+    });
     updateValidate(name, trimVal);
   };
 
@@ -110,24 +106,34 @@ const ItemRegisterPage = () => {
 
   /* 태그 컴포넌트 관련  */
   const onAddTag = (tagVal) => {
-    const newTagList = [...tagList, tagVal];
-    setTagList(newTagList);
+    const newTagList = [...formState.tagList.value, tagVal];
+    dispatchForm({
+      type: "CHANGE_FIELD",
+      field: "tagList",
+      value: newTagList,
+    });
     updateValidate("tagList", newTagList);
   };
 
   const onDeleteTag = (index) => {
-    const changedTagList = tagList.filter((_, i) => i !== index);
-    setTagList(changedTagList);
+    const changedTagList = formState.tagList.value.filter(
+      (_, i) => i !== index
+    );
+    dispatchForm({
+      type: "CHANGE_FIELD",
+      field: "tagList",
+      value: changedTagList,
+    });
     updateValidate("tagList", changedTagList);
   };
 
   /* 등록 버튼 활성화 여부  */
   const disableRegisterButton = () => {
     const isAllValid =
-      titleValidate.isValid &&
-      contentValidate.isValid &&
-      priceValidate.isValid &&
-      tagListValidate.isValid;
+      formState.title.validInfo.isValid &&
+      formState.content.validInfo.isValid &&
+      formState.price.validInfo.isValid &&
+      formState.tagList.validInfo.isValid;
     return !Boolean(isAllValid);
   };
 
@@ -146,8 +152,8 @@ const ItemRegisterPage = () => {
             <div className="register__form__group">
               <Label>상품이미지</Label>
               <ImageUploader
-                message={imageValidate.message}
-                isValid={imageValidate.isValid}
+                message={formState.image.validInfo.message}
+                isValid={formState.image.validInfo.isValid}
                 onAdd={onClickAddImage}
                 onChange={onChangeImage}
                 onDelete={onDeleteImage}
@@ -157,9 +163,9 @@ const ItemRegisterPage = () => {
               <Label>상품명</Label>
               <Textfield
                 name="title"
-                value={title}
-                message={titleValidate.message}
-                isValid={titleValidate.isValid}
+                value={formState.title.value}
+                message={formState.title.validInfo.message}
+                isValid={formState.title.validInfo.isValid}
                 placeholder="상품명을 입력해주세요"
                 onChange={onChangeTextfield}
               />
@@ -169,9 +175,9 @@ const ItemRegisterPage = () => {
               <Label>상품 소개</Label>
               <TextArea
                 name="content"
-                value={content}
-                message={contentValidate.message}
-                isValid={contentValidate.isValid}
+                value={formState.content.value}
+                message={formState.content.validInfo.message}
+                isValid={formState.content.validInfo.isValid}
                 placeholder="상품 소개를 입력해주세요"
                 onChange={onChangeTextfield}
               />
@@ -182,10 +188,10 @@ const ItemRegisterPage = () => {
               <Textfield
                 type="text"
                 name="price"
-                value={price}
+                value={formState.price.value}
                 min="1"
-                message={priceValidate.message}
-                isValid={priceValidate.isValid}
+                message={formState.price.validInfo.message}
+                isValid={formState.price.validInfo.isValid}
                 placeholder="판매 가격을 입력해주세요"
                 onChange={onPriceChange}
               />
@@ -195,9 +201,9 @@ const ItemRegisterPage = () => {
               <Label>태그</Label>
               <TagInput
                 name="tagList"
-                tagList={tagList}
-                message={tagListValidate.message}
-                isValid={tagListValidate.isValid}
+                tagList={formState.tagList.value}
+                message={formState.tagList.validInfo.message}
+                isValid={formState.tagList.validInfo.isValid}
                 onAdd={onAddTag}
                 onDelete={onDeleteTag}
               />

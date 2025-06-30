@@ -27,14 +27,12 @@
 @media screen and (min-width: 744px) {
   .register__container__inner {
     max-width: 696px;
-    /* gap: 40px; */
   }
 }
 
 @media screen and (min-width: 1200px) {
   .register__container__inner {
     max-width: 1200px;
-    /* gap: 40px; */
   }
 }
 
