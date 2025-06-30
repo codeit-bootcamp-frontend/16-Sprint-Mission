@@ -18,6 +18,11 @@ const AddItemPage = () => {
   const [prdDesc, setPrdDesc] = useState("");
   const [prdPrice, setPrdPrice] = useState("");
 
+  const handleChangePrice = (value) => {
+    const price = Number(value.replaceAll(",", ""));
+    setPrdPrice(price.toLocaleString("ko-kR"));
+  };
+
   return (
     <div id="container" className={styles.addItemPage}>
       <div className={styles.addItemPage__inner}>
@@ -89,7 +94,7 @@ const AddItemPage = () => {
               type={"tel"}
               name={"price"}
               value={prdPrice}
-              onChange={setPrdPrice}
+              onChange={handleChangePrice}
               placeholder={"판매 가격을 입력해주세요"}
             />
           </div>
