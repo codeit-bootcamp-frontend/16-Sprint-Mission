@@ -12,7 +12,7 @@ const AuthFormInput = ({
   placeholder,
   validInfo,
 }) => {
-  const hasError = !validInfo.isValid;
+  const hasError = validInfo.isValid === false;
 
   return (
     <div className="auth-form__item">
