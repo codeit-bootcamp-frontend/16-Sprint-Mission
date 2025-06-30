@@ -1,0 +1,50 @@
+.container {
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+}
+.inquire {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.inquire label {
+  font-weight: 600;
+  color: var(--secondary-800);
+}
+
+.inquire textarea {
+  resize: none;
+  height: 129px;
+  font-size: var(--font-size-xxs);
+  background: var(--cool-gray-100);
+  padding: 16px 24px;
+  border: none;
+  border-radius: 12px;
+}
+.red:focus {
+  outline-color: var(--error-red);
+}
+
+.submit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.message {
+  color: var(--error-red);
+}
+/* Tablet */
+@media (min-width: 768px) {
+  .inquire textarea {
+    height: 104px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1200px) {
+  
+}
