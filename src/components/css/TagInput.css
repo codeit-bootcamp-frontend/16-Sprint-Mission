@@ -1,0 +1,21 @@
+.taginput {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.taginput__textfield {
+  width: 100%;
+  align-self: stretch;
+}
+
+.taginput__tag {
+  width: auto;
+}
+
+.taginput__list {
+  display: flex;
+  gap: 12px;
+}

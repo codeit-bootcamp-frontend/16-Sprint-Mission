@@ -1,0 +1,25 @@
+.input__container {
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  font-family: "Pretendard Variable";
+  font-size: var(--font-size-xs);
+  color: var(--color-secondary-800);
+  background-color: var(--color-secondary-100);
+  padding: 16px 20px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--color-secondary-400);
+  font-size: var(--font-size-xs);
+}
+
+.input__message--error {
+  margin-top: 16px;
+  color: #f74747;
+}

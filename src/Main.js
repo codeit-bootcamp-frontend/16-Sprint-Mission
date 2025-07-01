@@ -13,8 +13,8 @@ function Main() {
         <Route path="/" element={<App />}>
           <Route path="items">
             <Route index element={<ItemsPage />}></Route>
-            <Route path="addItem" element={<ItemRegisterPage />}></Route>
           </Route>
+          <Route path="additem" element={<ItemRegisterPage />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

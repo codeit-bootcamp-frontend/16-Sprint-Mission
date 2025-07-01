@@ -1,4 +1,4 @@
-import "../css/pages/ItemListPage.css";
+import "./css/ItemListPage.css";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getFavoriteItems, getAllItems } from "../api/Items.js";
@@ -133,7 +133,7 @@ function ItemListPage() {
   const allPageSize = devicePageSize[deviceType]["all"];
 
   const handleOnClickRegister = () => {
-    navigate("addItem");
+    navigate("/additem");
   };
 
   useEffect(() => {
@@ -200,7 +200,6 @@ function ItemListPage() {
                 className="items__container__registerBtn"
                 type="register"
                 onClick={handleOnClickRegister}
-                to="addItem"
               >
                 상품 등록하기
               </Button>

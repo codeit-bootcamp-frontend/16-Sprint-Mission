@@ -1,5 +1,5 @@
 import searchIcon from "../img/search.svg";
-import "../css/components/SearchInput.css";
+import "./css/SearchInput.css";
 
 const SearchInput = ({ value, onInput, onKeyDown, onClick, className }) => {
   return (

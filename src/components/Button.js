@@ -1,6 +1,12 @@
-import "../css/components/Button.css";
+import "./css/Button.css";
 
-const Button = ({ className, type, children, onClick }) => {
+const Button = ({
+  className,
+  type,
+  disabled,
+  children,
+  onClick = () => {},
+}) => {
   const btnStyleClass = {
     register: "btn-register",
     small: "btn-small",
@@ -14,7 +20,12 @@ const Button = ({ className, type, children, onClick }) => {
   };
 
   return (
-    <button type="button" className={btnClassName} onClick={onClickButton}>
+    <button
+      disabled={disabled}
+      type="button"
+      className={btnClassName}
+      onClick={onClickButton}
+    >
       {children}
     </button>
   );

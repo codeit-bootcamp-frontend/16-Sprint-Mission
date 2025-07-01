@@ -1,4 +1,4 @@
-import "../css/components/Pagination.css";
+import "./css/Pagination.css";
 import arrowLeftActive from "../img/arrow_left_active.svg";
 import arrowLeftInactive from "../img/arrow_left_inactive.svg";
 import arrowRightActive from "../img/arrow_right_active.svg";

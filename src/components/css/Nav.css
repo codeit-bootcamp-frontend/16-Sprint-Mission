@@ -13,7 +13,6 @@ header {
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   box-sizing: border-box;
 }
 
@@ -76,6 +75,11 @@ header {
 
 .header__content__link--active {
   color: var(--color-primary-100);
+}
+
+.header__content__user {
+  display: flex;
+  align-items: center;
 }
 
 .header__content__user__icon {

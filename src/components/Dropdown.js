@@ -1,4 +1,4 @@
-import "../css/components/Dropdown.css";
+import "./css/Dropdown.css";
 import sortIcon from "../img/sort.svg";
 import arrowDownIcon from "../img/arrow_down.svg";
 
