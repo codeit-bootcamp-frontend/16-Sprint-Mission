@@ -35,7 +35,8 @@ const AddItemPage = () => {
 
   const handleChangePrice = (value) => {
     const price = Number(value.replaceAll(",", ""));
-    setPrdPrice(price.toLocaleString("ko-KR"));
+    const changePrice = isNaN(price) ? "0" : price.toLocaleString("ko-KR");
+    setPrdPrice(changePrice);
   };
 
   useEffect(() => {
