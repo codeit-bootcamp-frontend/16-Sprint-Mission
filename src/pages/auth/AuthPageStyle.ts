@@ -18,7 +18,7 @@ const AuthPageStyle = css`
 
   .form-label {
     display: block;
-    margin-bottom: var(--form-label-margin-bottom);
+    margin-bottom: 1rem;
     font-size: var(--form-label-font-size);
     font-weight: 700;
     color: var(--gray800);
@@ -82,23 +82,26 @@ const AuthPageStyle = css`
   }
 
   /*================ 로그인, 회원가입 ================*/
-  .auth .form {
+  .form {
     max-width: 400px;
     padding: 0 16px;
   }
 
-  .auth .form-logo {
+  .form-logo {
     width: 198px;
     margin: 0 0 2.5rem;
   }
 
-  .auth .form-footer {
-    text-align: center;
+  .form-footer {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
     font-size: 14px;
     font-weight: 500;
+    color: var(--gray800);
   }
 
-  .auth .form-footer-link {
+  .form-footer-link {
     text-decoration: underline;
     color: var(--primary-color);
     font-size: 14px;
@@ -106,7 +109,7 @@ const AuthPageStyle = css`
 
   /* 로그인 */
   .login .form-container {
-    padding-top: 80px;
+    padding: 80px 0;
   }
 
   /* 회원가입 */
@@ -136,11 +139,11 @@ const AuthPageStyle = css`
   /*================ 반응형 ================*/
   /* Tablet */
   @media (min-width: 640px) {
-    .auth .form {
+    .form {
       max-width: 640px;
     }
 
-    .auth .form-logo {
+    .form-logo {
       width: 396px;
     }
 
@@ -150,15 +153,8 @@ const AuthPageStyle = css`
   }
 
   @media (min-width: 768px) {
-    .auth .form {
+    .form {
       max-width: 40rem;
-    }
-  }
-
-  /* PC */
-  @media (min-width: 1200px) {
-    .login .form-container {
-      padding-top: 0;
     }
   }
 `;

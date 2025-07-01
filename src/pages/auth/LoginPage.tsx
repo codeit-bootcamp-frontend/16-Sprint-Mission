@@ -37,49 +37,54 @@ const LoginPage = () => {
                 />
               </Link>
             </div>
+
             <div className="form-contents">
               <FormControl>
                 <label className="form-label" htmlFor="userEmail">
                   이메일
                 </label>
-                <Input
-                  className="form-input"
-                  type="email"
-                  id="userEmail"
-                  name="email"
-                  autoComplete="email"
-                  placeholder="이메일"
-                  required
-                  onBlur={handleBlur}
-                />
-                <span className="form-input-hint">{emailMsg}</span>
+                <div className="input-hint-wrap">
+                  <Input
+                    className="form-input"
+                    type="email"
+                    id="userEmail"
+                    name="email"
+                    autoComplete="email"
+                    placeholder="이메일"
+                    required
+                    onBlur={handleBlur}
+                  />
+                  <span className="form-input-hint">{emailMsg}</span>
+                </div>
               </FormControl>
 
               <FormControl>
                 <label className="form-label" htmlFor="userPassword">
                   비밀번호
                 </label>
-                <div className="visible-wrap">
-                  <Input
-                    className="form-input"
-                    type="password"
-                    id="userPassword"
-                    name="password"
-                    autoComplete="current-password"
-                    placeholder="비밀번호"
-                    required
-                    onBlur={handleBlur}
-                  />
-                  <button
-                    type="button"
-                    className="btn-password-visible"
-                    id="passwordVisibleBtn"
-                    title="비밀번호 표시/숨김"
-                    aria-label="비밀번호 표시/숨김"
-                    aria-pressed="false"
-                  ></button>
+                <div className="input-hint-wrap">
+                  <div className="visible-wrap">
+                    <Input
+                      className="form-input"
+                      type="password"
+                      id="userPassword"
+                      name="password"
+                      autoComplete="current-password"
+                      placeholder="비밀번호"
+                      required
+                      onBlur={handleBlur}
+                    />
+                    <button
+                      type="button"
+                      className="btn-password-visible"
+                      id="passwordVisibleBtn"
+                      title="비밀번호 표시/숨김"
+                      aria-label="비밀번호 표시/숨김"
+                      aria-pressed="false"
+                    ></button>
+                  </div>
+                  <span className="form-input-hint">{passwordMsg}</span>
                 </div>
-                <span className="form-input-hint">{passwordMsg}</span>
               </FormControl>
 
               <Button

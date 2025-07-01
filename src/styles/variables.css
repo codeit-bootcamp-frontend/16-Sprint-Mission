@@ -36,8 +36,7 @@
 
   /* form */
   --form-padding-top: 24px;
-  --form-label-margin-bottom: 8px;
-  --form-contents-gap: 16px;
+  --form-contents-gap: 24px;
   --form-input-max-height: 282px;
 
   /* border-radius */
