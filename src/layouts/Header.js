@@ -5,7 +5,9 @@ import { useState } from "react";
 import Gnb from "../components/Gnb/Gnb";
 
 const Header = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
+
+  const handleClick = () => setIsLogin(false);
 
   return (
     <header id="header">
@@ -25,9 +27,9 @@ const Header = () => {
         <Gnb />
         <div className="header__member">
           {isLogin ? (
-            <Link to="/">
+            <button onClick={handleClick}>
               <img src={userThumbnail} alt="유저 썸네일" />
-            </Link>
+            </button>
           ) : (
             <Link
               to="/login"
