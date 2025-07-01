@@ -9,7 +9,7 @@ const ImageUpload = forwardRef(({ name, onChange, multiple = false }, ref) => {
         name={name}
         id={name}
         onChange={onChange}
-        accept=".jpg, .jpeg, .png"
+        accept="images/*"
         multiple={multiple}
         ref={ref}
         className={`${styles.imageUpload__input}`}
