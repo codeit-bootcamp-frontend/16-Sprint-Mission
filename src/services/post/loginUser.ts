@@ -10,7 +10,7 @@ const loginUser = async (userData: ReqData) => {
   });
 
   if (!res.ok) {
-    throw new Error("로그인에 실패했습니다.");
+    throw new Error("로그인에 실패했습니다. 계정 정보를 정확히 입력해주세요.");
   }
 
   const data = await res.json();

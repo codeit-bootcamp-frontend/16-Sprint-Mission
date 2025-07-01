@@ -35,7 +35,7 @@ const SignUpPage = () => {
 
   const signIn = useSignIn();
 
-  const handleSignUp = () => {
+  const handleSignUp = async () => {
     const form = formRef.current;
     if (!form) return;
 
@@ -50,7 +50,7 @@ const SignUpPage = () => {
     try {
       setIsSigningUp(true);
       setIsSignUpError(null);
-      createUser(userData);
+      await createUser(userData);
       signIn(); // 로그인 컨텍스트 처리 -> 상품 목록 페이지로 이동
     } catch (err) {
       if (err instanceof Error) {
@@ -201,9 +201,7 @@ const SignUpPage = () => {
               >
                 {isSigningUp ? "회원가입중..." : "회원가입"}
               </Button>
-              {isSignUpError && (
-                <p>회원가입에 실패했습니다. 다시 시도해 주세요.</p>
-              )}
+              {isSignUpError && <p>{`${isSignUpError}`}</p>}
               <div className="easy-login">
                 간편 로그인하기
                 <div className="easy-login-icons">

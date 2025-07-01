@@ -29,7 +29,7 @@ const LoginPage = () => {
   const { handleBlur, validateForm, isFormValid, emailMsg, passwordMsg } =
     useForm(formRef);
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     const form = formRef.current;
     if (!form) return;
 
@@ -43,7 +43,7 @@ const LoginPage = () => {
     try {
       setIsSigningIn(true);
       setIsSignInError(null);
-      loginUser(userData);
+      await loginUser(userData);
       signIn(); // 로그인 컨텍스트 처리 -> 상품 목록 페이지로 이동
     } catch (err) {
       if (err instanceof Error) {
@@ -137,9 +137,7 @@ const LoginPage = () => {
               >
                 {isSigningIn ? "로그인중..." : "로그인"}
               </Button>
-              {isSignInError && (
-                <p>로그인에 실패했습니다. 다시 시도해 주세요.</p>
-              )}
+              {isSignInError && <p>{`${isSignInError}`}</p>}
               <div className="easy-login">
                 간편 로그인하기
                 <div className="easy-login-icons">
