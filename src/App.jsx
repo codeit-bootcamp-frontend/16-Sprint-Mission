@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import AddItem from './pages/AddItem/AddItem';
-import Login from './pages/Auth/Login';
-import SignUp from './pages/Auth/SignUp';
+import Login from './pages/Auth/Login/Login';
+import SignUp from './pages/Auth/SignUp/SignUp';
 import Home from './pages/Home/Home';
 import Items from './pages/Items/Items';
 import ProductDetail from './pages/ProductDetail/ProductDetail';

@@ -39,13 +39,13 @@
   display: inline-block;
   width: 24px;
   height: 24px;
-  background: url(../../../assets/icon/pw_hide.png) center center;
+  background: url(../../../../assets/icon/pw_hide.png) center center;
   background-size: cover;
   cursor: pointer;
 }
 
 .pwToggle:checked ~ label[for='toggle-visibility-pw'] {
-  background-image: url(../../../assets/icon/pw_show.png);
+  background-image: url(../../../../assets/icon/pw_show.png);
 }
 
 .pwToggle {

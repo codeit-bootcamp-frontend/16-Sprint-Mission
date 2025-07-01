@@ -3,7 +3,7 @@ import logo from '@assets/images/logo-title.png';
 import SocialLogin from '@components/SocialLogin';
 import { useValidate, checkAllValid } from '@hooks/useValidate';
 import { Link, useNavigate } from 'react-router-dom';
-import FormInput from './FormInput';
+import FormInput from '../FormInput';
 import styles from './styles/SignUp.module.css';
 
 function SignUp() {

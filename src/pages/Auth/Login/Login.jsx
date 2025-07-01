@@ -1,0 +1,67 @@
+import logo from '@assets/images/logo-title.png';
+import SocialLogin from '@components/SocialLogin';
+import { FormProvider, useForm, useFormState } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
+import EmailField from './EmailField';
+import PasswordField from './PasswordField';
+import styles from './styles/Login.module.css';
+
+function Login() {
+  const toItemsNavigation = useNavigate();
+  const methods = useForm();
+
+  function onSubmit(data, e) {
+    if (!methods.isValid) {
+      sessionStorage.setItem('loggedIn', data['user-email']);
+      toItemsNavigation('/items');
+    } else {
+      e.preventDefault();
+    }
+  }
+
+  return (
+    <main className={styles.main}>
+      <section className={styles.loginSection}>
+        <div className={styles.logo}>
+          <Link to="/" aria-label="판다마켓 홈으로 이동">
+            <img src={logo} alt="판다마켓 로고" />
+          </Link>
+        </div>
+        <FormProvider {...methods}>
+          <form
+            onSubmit={methods.handleSubmit(onSubmit)}
+            className={styles.form}
+          >
+            <fieldset>
+              <EmailField />
+              <PasswordField />
+              <SubmitButton>로그인</SubmitButton>
+            </fieldset>
+            <SocialLogin />
+            <div className={styles.signUpGuide}>
+              판다마켓이 처음이신가요?&nbsp;
+              <Link to="/sign_up" aria-label="회원가입 페이지로 이동">
+                회원가입
+              </Link>
+            </div>
+          </form>
+        </FormProvider>
+      </section>
+    </main>
+  );
+}
+
+export default Login;
+
+export function SubmitButton({ children }) {
+  const { isValid } = useFormState();
+
+  return (
+    <button
+      type="submit"
+      className={!isValid ? styles.inActivateBtn : styles.activateBtn}
+    >
+      {children}
+    </button>
+  );
+}
