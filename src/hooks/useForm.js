@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import debounce from "@/utils/debounce";
 import * as validators from "@/utils/validators";
 import { formatPrice, unformatPrice } from "@/utils/formatPrice";
@@ -11,6 +11,8 @@ const validatorMap = {
   price: validators.validateProductPrice,
   email: validators.validateEmail,
   password: validators.validatePassword,
+  passwordCheck: validators.validatePasswordCheck,
+  nickname: validators.validateNickname,
 };
 
 const useForm = (formRef, formOptions) => {
@@ -21,6 +23,8 @@ const useForm = (formRef, formOptions) => {
   // 에러 메시지
   const [emailMsg, setEmailMsg] = useState("");
   const [passwordMsg, setPasswordMsg] = useState("");
+  const [passwordCheckMsg, setPasswordCheckMsg] = useState("");
+  const [nicknameMsg, setNicknameMsg] = useState("");
 
   const handlePriceInput = (e) => {
     const { value } = e.target;
@@ -86,6 +90,8 @@ const useForm = (formRef, formOptions) => {
       const { message } = validator(value);
       if (name === "email") setEmailMsg(message);
       if (name === "password") setPasswordMsg(message);
+      if (name === "passwordCheck") setPasswordCheckMsg(message);
+      if (name === "nickname") setNicknameMsg(message);
     }
 
     debouncedValidateForm(); // blur될 때만 폼 유효성 검사
@@ -107,6 +113,8 @@ const useForm = (formRef, formOptions) => {
     // 에러 메시지
     emailMsg,
     passwordMsg,
+    passwordCheckMsg,
+    nicknameMsg,
   };
 };
 

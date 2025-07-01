@@ -55,7 +55,7 @@ export function validatePassword(value) {
 
 /* 비밀번호 확인 유효성 */
 export function validatePasswordCheck(value) {
-  const inputPassword = document.querySelector("#userPassword");
+  const inputPassword = document.querySelector("input[name=password]");
   if (inputPassword.value !== value) {
     return { isValid: false, message: "비밀번호가 일치하지 않습니다." };
   }
