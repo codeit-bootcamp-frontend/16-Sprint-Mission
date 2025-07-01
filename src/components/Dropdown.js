@@ -25,7 +25,7 @@ const Dropdown = ({
     };
     window.addEventListener("click", handleClickOutside);
     return () => window.removeEventListener("click", handleClickOutside);
-  }, []);
+  }, [onCloseDropdown]);
 
   return (
     <DropdownContext.Provider
