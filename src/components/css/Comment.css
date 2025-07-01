@@ -15,7 +15,7 @@
 .comment__profile__group {
   display: flex;
   gap: 8px;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .comment__image {
