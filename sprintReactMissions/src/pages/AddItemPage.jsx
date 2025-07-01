@@ -1,5 +1,7 @@
 // 상품 등록 페이지
 import React from "react";
+import ItemImagesUpload from "../components/ItemImagesUpload";
+import "../styles/additempage.css";
 
 function AddItemPage() {
   return (
@@ -12,7 +14,7 @@ function AddItemPage() {
       <form>
         <div>
           <label>상품이미지</label>
-          {/* 이미지등록 기능 컴포넌트 자리 */}
+          <ItemImagesUpload />
         </div>
 
         <div>
