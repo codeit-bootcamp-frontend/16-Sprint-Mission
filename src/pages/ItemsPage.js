@@ -5,7 +5,6 @@ import { getFavoriteItems, getAllItems } from "../api/Items.js";
 import Card from "../components/Card";
 import SearchInput from "../components/SearchInput.js";
 import Button from "../components/Button.js";
-import Dropdown from "../components/Dropdown.js";
 import Pagination from "../components/Pagination.js";
 import usePagination from "../hooks/usePagination.js";
 import SortDropdown from "../components/SortDropdown.js";
