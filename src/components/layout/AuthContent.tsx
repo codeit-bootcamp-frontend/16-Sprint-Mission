@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { PageContentType } from "./PageContent";
+import { BREAKPOINTS } from "@/constants/responsive";
 
 const AuthContent = ({ children, className }: PageContentType) => {
   return (
@@ -65,12 +66,12 @@ const AuthContentStyle = css`
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: ${BREAKPOINTS.tablet}px) {
     max-width: 40rem;
   }
 
   /* desktop */
-  @media (min-width: 1200px) {
+  @media (min-width: ${BREAKPOINTS.desktop}px) {
     .login .form-container {
       padding-top: 0;
     }
