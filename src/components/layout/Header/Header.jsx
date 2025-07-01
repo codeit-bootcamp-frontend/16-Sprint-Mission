@@ -6,11 +6,11 @@ import logoTxtImg from "../../../assets/images/logo-txt.svg";
 import avatarImg from "../../../assets/images/img-avatar.png";
 import Nav from "../../Nav";
 import Avatar from "../../Avatar";
-import { useState } from "react";
 import Button from "@/components/ui/Button";
+import useAuth from "@/hooks/useAuth";
 
 const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { isSignedIn } = useAuth();
   const navigate = useNavigate();
 
   const handleAvatarClick = () => {
@@ -35,7 +35,7 @@ const Header = () => {
         <Nav />
 
         <div css={HeaderActionsStyle}>
-          {isLoggedIn ? (
+          {isSignedIn ? (
             <Avatar imgSrc={avatarImg} onClick={handleAvatarClick} />
           ) : (
             <Button

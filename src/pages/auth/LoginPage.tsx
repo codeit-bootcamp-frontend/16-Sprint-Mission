@@ -15,6 +15,7 @@ import eyeImg from "@/assets/images/ic_visibility_on.svg";
 import eyeCloseImg from "@/assets/images/ic_visibility_off.svg";
 import { ReqData } from "@/types/form";
 import loginUser from "@/services/post/loginUser";
+import useSignIn from "@/hooks/useSignIn";
 
 const LoginPage = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -22,6 +23,8 @@ const LoginPage = () => {
   const [isSignInError, setIsSignInError] = useState<Error | null>(null);
 
   const formRef = useRef(null);
+
+  const signIn = useSignIn();
 
   const { handleBlur, validateForm, isFormValid, emailMsg, passwordMsg } =
     useForm(formRef);
@@ -41,6 +44,7 @@ const LoginPage = () => {
       setIsSigningIn(true);
       setIsSignInError(null);
       loginUser(userData);
+      signIn(); // 로그인 컨텍스트 처리 -> 상품 목록 페이지로 이동
     } catch (err) {
       if (err instanceof Error) {
         setIsSignInError(err);
@@ -50,8 +54,6 @@ const LoginPage = () => {
     } finally {
       setIsSigningIn(false);
     }
-
-    // 로그인 컨텍스트 처리 -> 상품 목록 페이지로 이동
   };
 
   return (

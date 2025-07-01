@@ -15,6 +15,7 @@ import eyeImg from "@/assets/images/ic_visibility_on.svg";
 import eyeCloseImg from "@/assets/images/ic_visibility_off.svg";
 import createUser from "@/services/post/createUser";
 import { ReqData } from "@/types/form";
+import useSignIn from "@/hooks/useSignIn";
 
 const SignUpPage = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -32,6 +33,8 @@ const SignUpPage = () => {
     nicknameMsg,
   } = useForm(formRef);
 
+  const signIn = useSignIn();
+
   const handleSignUp = () => {
     const form = formRef.current;
     if (!form) return;
@@ -48,6 +51,7 @@ const SignUpPage = () => {
       setIsSigningUp(true);
       setIsSignUpError(null);
       createUser(userData);
+      signIn(); // 로그인 컨텍스트 처리 -> 상품 목록 페이지로 이동
     } catch (err) {
       if (err instanceof Error) {
         setIsSignUpError(err);
@@ -57,8 +61,6 @@ const SignUpPage = () => {
     } finally {
       setIsSigningUp(false);
     }
-
-    // 로그인 컨텍스트 처리 -> 상품 목록 페이지로 이동
   };
 
   return (
