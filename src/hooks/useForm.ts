@@ -1,11 +1,28 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, FormEvent, ChangeEvent, RefObject } from "react";
 import debounce from "@/utils/debounce";
 import * as validators from "@/utils/validators";
 import { formatPrice, unformatPrice } from "@/utils/formatPrice";
 
 const CHECK_FORM_DEBOUNCE_MS = 300;
 
-const validatorMap = {
+interface FormOptions<T> {
+  customFieldValidators?: {
+    [key: string]: (value: T) => boolean;
+  };
+}
+
+interface ValidationResult {
+  isValid: boolean;
+  message: string;
+}
+
+type ValidationFn = (value: string | string[] | number) => ValidationResult;
+
+type ValidatorMap = {
+  [key: string]: ValidationFn;
+};
+
+const validatorMap: ValidatorMap = {
   name: validators.validateProductName,
   description: validators.validateProductDescription,
   price: validators.validateProductPrice,
@@ -15,9 +32,12 @@ const validatorMap = {
   nickname: validators.validateNickname,
 };
 
-const useForm = (formRef, formOptions) => {
+const useForm = (
+  formRef: RefObject<HTMLFormElement | null>,
+  formOptions?: FormOptions<string | string[] | number | undefined>
+) => {
   const [isFormValid, setIsFormValid] = useState(false);
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState<string[]>([]);
   const shouldCheckTags = formRef.current?.dataset.includeTags === "true";
 
   // 에러 메시지
@@ -26,28 +46,37 @@ const useForm = (formRef, formOptions) => {
   const [passwordCheckMsg, setPasswordCheckMsg] = useState("");
   const [nicknameMsg, setNicknameMsg] = useState("");
 
-  const handlePriceInput = (e) => {
+  const handlePriceInput = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     // 숫자만 입력 받기
     if (!/^\d*$/.test(value))
       e.target.value = e.target.value.replace(/[^\d]/g, "");
   };
 
-  const handleTagsChange = (updatedTags) => {
+  const handleTagsChange = (updatedTags: string[]) => {
     setTags(updatedTags);
   };
 
-  const validateForm = (e) => {
+  const validateForm = (e: FormEvent) => {
     e?.preventDefault();
 
-    const elements = formRef.current?.elements;
-    if (!elements) return;
+    const form = formRef.current;
+    if (!form) return;
 
-    const values = {};
+    const formData = new FormData(form);
+
+    const values: Record<string, string> = {};
     const results = [];
 
-    for (const el of elements) {
-      values[el.name] = el.value;
+    // const elements = formRef.current?.elements;
+    // if (!elements) return;
+
+    // for (const el of elements) {
+    //   values[el.name] = el.value;
+    // }
+
+    for (const [name, value] of formData.entries()) {
+      values[name] = value.toString(); // Record<string, string>으로 타입을 선언했으므로, 문자열만 받기 위해 toString() 사용
     }
 
     if (values.productPrice) {
@@ -55,7 +84,7 @@ const useForm = (formRef, formOptions) => {
     }
 
     if (shouldCheckTags) {
-      results.push(formOptions.customFieldValidators.tags(tags));
+      results.push(formOptions?.customFieldValidators?.tags(tags));
     }
 
     for (const key in values) {
@@ -70,7 +99,7 @@ const useForm = (formRef, formOptions) => {
 
   const debouncedValidateForm = debounce(validateForm, CHECK_FORM_DEBOUNCE_MS);
 
-  const handleBlur = (e) => {
+  const handleBlur = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
     if (name === "price") {
@@ -79,7 +108,9 @@ const useForm = (formRef, formOptions) => {
 
       // 업데이트 값에 따라 다시 포맷팅
       if (value !== formatted) {
-        const priceInputEl = document.querySelector("#productPrice");
+        const priceInputEl = document.querySelector(
+          "#productPrice"
+        ) as HTMLInputElement;
         priceInputEl.value = formatted;
       }
     }
