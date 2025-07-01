@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import useForm from "@/hooks/useForm";
 import Input from "@/components/ui/Input";
@@ -10,8 +10,13 @@ import AuthContent from "@/components/layout/AuthContent";
 import AuthPageStyle from "./AuthPageStyle";
 import googleIcon from "@/assets/images/ic_google.png";
 import kakaoIcon from "@/assets/images/ic_kakao.png";
+import IconButton from "@/components/ui/Button/IconButton";
+import eyeImg from "@/assets/images/ic_visibility_on.svg";
+import eyeCloseImg from "@/assets/images/ic_visibility_off.svg";
 
 const SignUpPage = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
   const formRef = useRef(null);
   const {
     handleBlur,
@@ -95,7 +100,7 @@ const SignUpPage = () => {
                   <div className="visible-wrap">
                     <Input
                       className="form-input"
-                      type="password"
+                      type={isVisible ? "text" : "password"}
                       name="password"
                       id="userPassword"
                       autoComplete="new-password"
@@ -103,14 +108,19 @@ const SignUpPage = () => {
                       required
                       onBlur={handleBlur}
                     />
-                    <button
+                    <IconButton
                       type="button"
-                      className="btn-password-visible off"
+                      className="btn-password-visible"
                       id="passwordVisibleBtn"
                       title="비밀번호 표시/숨김"
                       aria-label="비밀번호 표시/숨김"
                       aria-pressed="false"
-                    ></button>
+                      imgSrc={isVisible ? eyeImg : eyeCloseImg}
+                      width={24}
+                      height={24}
+                      hasBgColor={false}
+                      onClick={() => setIsVisible((prev) => !prev)}
+                    />
                   </div>
                   <span className="form-input-hint">{passwordMsg}</span>
                 </div>
@@ -124,7 +134,7 @@ const SignUpPage = () => {
                   <div className="visible-wrap">
                     <Input
                       className="form-input"
-                      type="password"
+                      type={isVisible ? "text" : "password"}
                       name="passwordCheck"
                       id="userPasswordChk"
                       autoComplete="new-password"
@@ -132,14 +142,19 @@ const SignUpPage = () => {
                       required
                       onBlur={handleBlur}
                     />
-                    <button
+                    <IconButton
                       type="button"
                       className="btn-password-visible"
-                      id="passwordChkVisibleBtn"
+                      id="passwordVisibleBtn"
                       title="비밀번호 표시/숨김"
                       aria-label="비밀번호 표시/숨김"
                       aria-pressed="false"
-                    ></button>
+                      imgSrc={isVisible ? eyeImg : eyeCloseImg}
+                      width={24}
+                      height={24}
+                      hasBgColor={false}
+                      onClick={() => setIsVisible((prev) => !prev)}
+                    />
                   </div>
                   <span className="form-input-hint">{passwordCheckMsg}</span>
                 </div>

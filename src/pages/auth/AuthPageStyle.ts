@@ -75,10 +75,6 @@ const AuthPageStyle = css`
     width: 24px;
     height: 24px;
     z-index: 1;
-    background: url("/images/ic_visibility_off.svg") no-repeat center;
-  }
-  .btn-password-visible.on {
-    background: url("/images/ic_visibility_on.svg") no-repeat center;
   }
 
   /*================ 로그인, 회원가입 ================*/

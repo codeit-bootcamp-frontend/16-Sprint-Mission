@@ -10,7 +10,7 @@ const Tag = ({ children, isFormTag, onClick }) => {
       {isFormTag && (
         <IconButton
           imgSrc={closeIcon}
-          imgAlt="첨부 이미지 제거"
+          imgAlt="첨부 태그 제거"
           radius="round"
           onClick={onClick}
         />
