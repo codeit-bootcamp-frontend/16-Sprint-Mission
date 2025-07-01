@@ -8,7 +8,7 @@ import styles from './styles/Login.module.css';
 
 function Login() {
   const toItemsNavigation = useNavigate();
-  const methods = useForm();
+  const methods = useForm({ mode: 'all' }); //change,blur될 때 유효성 평가해줘
 
   function onSubmit(data, e) {
     if (!methods.isValid) {

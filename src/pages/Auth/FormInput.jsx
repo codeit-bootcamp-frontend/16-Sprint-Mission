@@ -1,4 +1,5 @@
 import styles from '@styles/ErrMsg.module.css';
+import { useFormContext, useFormState } from 'react-hook-form';
 
 const validRuleObj = {
   'user-email': {
@@ -18,7 +19,9 @@ const validRuleObj = {
 };
 
 function FormInput(props) {
-  const { placeholder, name, type, id, errors, register } = props;
+  const { placeholder, name, type, id } = props;
+  const { register } = useFormContext(); 
+  const { errors } = useFormState({ name });//여기서 name으로 따로 골라와야 개별로 감지하는듯...?
   const error = errors[name];
 
   return (

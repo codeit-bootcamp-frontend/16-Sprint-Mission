@@ -1,12 +1,9 @@
 import { useState } from 'react';
-import { useFormContext, useFormState } from 'react-hook-form';
 import FormInput from '../FormInput';
 import styles from './styles/Login.module.css';
 
 function PasswordField() {
   const [passwordToggle, setPasswordToggle] = useState(false);
-  const { register } = useFormContext();
-  const { errors } = useFormState({ name: 'user-password' });
 
   function handlePwToggle() {
     setPasswordToggle(!passwordToggle);
@@ -16,8 +13,6 @@ function PasswordField() {
     <div className={styles.containerRelative}>
       <label htmlFor="user-password">비밀번호</label>
       <FormInput
-        register={register}
-        errors={errors}
         id="user-password"
         type={passwordToggle ? 'text' : 'password'}
         name="user-password"
