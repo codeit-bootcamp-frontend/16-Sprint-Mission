@@ -1,6 +1,6 @@
 import "./css/ItemDetailPage.css";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useReducer } from "react";
 import { useParams } from "react-router-dom";
 import { getItemDetail, getItemDetailComments } from "../api/Items";
 import { formatDate, formatPrice } from "../utils/formatUtil";
@@ -12,6 +12,7 @@ import HeartButton from "../components/HeartButton";
 import TextArea from "../components/TextArea";
 import MoreDropdown from "../components/MoreDropdown";
 import Comment from "../components/Comment";
+import { validateInput } from "../utils/formValidation";
 
 const ItemDetailPage = () => {
   const navigate = useNavigate();
@@ -35,6 +36,67 @@ const ItemDetailPage = () => {
       },
     },
   ]);
+
+  // 리듀서 관련
+  const initialCommentReducerState = {
+    inquiry: { value: "", validInfo: { isValid: null, message: "" } },
+  };
+
+  const commentReducer = (state, action) => {
+    switch (action.type) {
+      case "CHANGE_FIELD":
+        return {
+          ...state,
+          [action.field]: {
+            ...state[action.field],
+            value: action.value,
+          },
+        };
+      case "UPDATE_VALIDATE":
+        return {
+          ...state,
+          [action.field]: {
+            ...state[action.field],
+            validInfo: {
+              isValid: action.value.isValid,
+              message: action.value.message,
+            },
+          },
+        };
+      default:
+        return state;
+    }
+  };
+
+  const [commentState, dispatchForm] = useReducer(
+    commentReducer,
+    initialCommentReducerState
+  );
+
+  /* 유효성 체크 */
+  const updateValidate = (name, val) => {
+    const validateResult = validateInput(name, val);
+    dispatchForm({
+      type: "UPDATE_VALIDATE",
+      field: name,
+      value: validateResult,
+    });
+  };
+
+  /* 문의하기 값 업데이트 */
+  const onChangeComment = (name, value) => {
+    let trimVal = value.trim();
+    dispatchForm({
+      type: "CHANGE_FIELD",
+      field: name,
+      value,
+    });
+    updateValidate(name, trimVal);
+  };
+
+  const disableInquiryRegisterButton = () => {
+    return !commentState.inquiry.validInfo.isValid;
+  };
 
   const fetchItemDetail = async (params) => {
     try {
@@ -132,15 +194,20 @@ const ItemDetailPage = () => {
               <div className="detail__input">
                 <span className="detail__subtitle">문의하기</span>
                 <TextArea
+                  name="inquiry"
+                  value={commentState.inquiry.value}
+                  message={commentState.inquiry.validInfo.message}
+                  isValid={commentState.inquiry.validInfo.isValid}
                   placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다.
 
 "
                   className="detail__textarea"
+                  onChange={onChangeComment}
                 />
               </div>
               <Button
                 type="register"
-                disabled
+                disabled={disableInquiryRegisterButton()}
                 className="detail__register__btn"
               >
                 등록
