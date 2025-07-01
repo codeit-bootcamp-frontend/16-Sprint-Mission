@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "../../components/Input/Input";
 import styles from "./AddItemPage.module.scss";
 import TextArea from "../../components/TextArea/TextArea";
@@ -6,8 +6,17 @@ import ImagePreview from "../../components/ImagePreview/ImagePreview";
 import useImageUpload from "../../hooks/useImageUpload";
 import ImageUpload from "../../components/ImageUpload/ImageUpload";
 import useTagUpdate from "../../hooks/useTagUpdate";
+import { getIsAllValid } from "../../utils/getIsAllValid";
 
 const IMG_MAX_LIMIT = 1;
+
+const checkValidInputLength = (value) => {
+  return { isValid: value.length > 0 };
+};
+
+const INIT_VALID = {
+  isValid: false,
+};
 
 const AddItemPage = () => {
   const { uploadImgs, imgValid, handleUploadImg, handleDeleteImg, fileRef } =
@@ -18,10 +27,38 @@ const AddItemPage = () => {
   const [prdDesc, setPrdDesc] = useState("");
   const [prdPrice, setPrdPrice] = useState("");
 
+  const [prdNameValid, setPrdNameValid] = useState(INIT_VALID);
+  const [prdDescValid, setPrdDescValid] = useState(INIT_VALID);
+  const [prdPriceValid, setPrdPriceValid] = useState(INIT_VALID);
+  const [prdTagValid, setPrdNTagValid] = useState(INIT_VALID);
+  const [isAllValid, setIsAllValid] = useState(false);
+
   const handleChangePrice = (value) => {
     const price = Number(value.replaceAll(",", ""));
-    setPrdPrice(price.toLocaleString("ko-kR"));
+    setPrdPrice(price.toLocaleString("ko-KR"));
   };
+
+  useEffect(() => {
+    setPrdNameValid(() => checkValidInputLength(prdName));
+  }, [prdName]);
+
+  useEffect(() => {
+    setPrdDescValid(() => checkValidInputLength(prdDesc));
+  }, [prdDesc]);
+
+  useEffect(() => {
+    setPrdPriceValid(() => checkValidInputLength(prdPrice));
+  }, [prdPrice]);
+
+  useEffect(() => {
+    setPrdNTagValid(() => checkValidInputLength(tagList));
+  }, [tagList]);
+
+  useEffect(() => {
+    setIsAllValid(() =>
+      getIsAllValid([prdNameValid, prdDescValid, prdPriceValid, prdTagValid])
+    );
+  }, [prdNameValid, prdDescValid, prdPriceValid, prdTagValid]);
 
   return (
     <div id="container" className={styles.addItemPage}>
@@ -29,7 +66,10 @@ const AddItemPage = () => {
         <form action="" className={styles.addItemPage__form}>
           <div className={styles.form__header}>
             <h2 className={styles.form__title}>상품 등록하기</h2>
-            <button className={`btn ${styles.form__submitBtn}`} disabled>
+            <button
+              className={`btn ${styles.form__submitBtn}`}
+              disabled={!isAllValid}
+            >
               등록
             </button>
           </div>
