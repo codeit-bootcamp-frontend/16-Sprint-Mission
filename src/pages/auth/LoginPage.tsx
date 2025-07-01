@@ -10,20 +10,48 @@ import logoImg from "@/assets/images/logo.svg";
 import useForm from "@/hooks/useForm";
 import Input from "@/components/ui/Input";
 import FormControl from "@/components/ui/Form/FormControl";
-import FormLabel from "@/components/ui/Form/FormLabel";
 import IconButton from "@/components/ui/Button/IconButton";
 import eyeImg from "@/assets/images/ic_visibility_on.svg";
 import eyeCloseImg from "@/assets/images/ic_visibility_off.svg";
+import { ReqData } from "@/types/form";
+import loginUser from "@/services/post/loginUser";
 
 const LoginPage = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isSigningIn, setIsSigningIn] = useState(false);
+  const [isSignInError, setIsSignInError] = useState<Error | null>(null);
+
   const formRef = useRef(null);
 
   const { handleBlur, validateForm, isFormValid, emailMsg, passwordMsg } =
     useForm(formRef);
 
   const handleLogin = () => {
-    // auth api 연결...
+    const form = formRef.current;
+    if (!form) return;
+
+    const formData = new FormData(form);
+    const userData: ReqData = {};
+
+    for (const [key, value] of formData.entries()) {
+      userData[key] = value;
+    }
+
+    try {
+      setIsSigningIn(true);
+      setIsSignInError(null);
+      loginUser(userData);
+    } catch (err) {
+      if (err instanceof Error) {
+        setIsSignInError(err);
+      } else {
+        setIsSignInError(new Error("알 수 없는 오류가 발생했습니다."));
+      }
+    } finally {
+      setIsSigningIn(false);
+    }
+
+    // 로그인 컨텍스트 처리 -> 상품 목록 페이지로 이동
   };
 
   return (
@@ -105,8 +133,11 @@ const LoginPage = () => {
                 size="lg"
                 onClick={handleLogin}
               >
-                로그인
+                {isSigningIn ? "로그인중..." : "로그인"}
               </Button>
+              {isSignInError && (
+                <p>로그인에 실패했습니다. 다시 시도해 주세요.</p>
+              )}
               <div className="easy-login">
                 간편 로그인하기
                 <div className="easy-login-icons">

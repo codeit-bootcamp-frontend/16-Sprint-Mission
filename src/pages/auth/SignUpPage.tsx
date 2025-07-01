@@ -13,11 +13,15 @@ import kakaoIcon from "@/assets/images/ic_kakao.png";
 import IconButton from "@/components/ui/Button/IconButton";
 import eyeImg from "@/assets/images/ic_visibility_on.svg";
 import eyeCloseImg from "@/assets/images/ic_visibility_off.svg";
+import createUser from "@/services/post/createUser";
+import { ReqData } from "@/types/form";
 
 const SignUpPage = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isSigningUp, setIsSigningUp] = useState(false);
+  const [isSignUpError, setIsSignUpError] = useState<Error | null>(null);
 
-  const formRef = useRef(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const {
     handleBlur,
     isFormValid,
@@ -29,7 +33,32 @@ const SignUpPage = () => {
   } = useForm(formRef);
 
   const handleSignUp = () => {
-    console.log("test");
+    const form = formRef.current;
+    if (!form) return;
+
+    const formData = new FormData(form);
+    const userData: ReqData = {};
+
+    for (const [key, value] of formData.entries()) {
+      const mappedKey = key === "passwordCheck" ? "passwordConfirmation" : key;
+      userData[mappedKey] = value;
+    }
+
+    try {
+      setIsSigningUp(true);
+      setIsSignUpError(null);
+      createUser(userData);
+    } catch (err) {
+      if (err instanceof Error) {
+        setIsSignUpError(err);
+      } else {
+        setIsSignUpError(new Error("알 수 없는 오류가 발생했습니다."));
+      }
+    } finally {
+      setIsSigningUp(false);
+    }
+
+    // 로그인 컨텍스트 처리 -> 상품 목록 페이지로 이동
   };
 
   return (
@@ -168,8 +197,11 @@ const SignUpPage = () => {
                 disabled={!isFormValid}
                 onClick={handleSignUp}
               >
-                회원가입
+                {isSigningUp ? "회원가입중..." : "회원가입"}
               </Button>
+              {isSignUpError && (
+                <p>회원가입에 실패했습니다. 다시 시도해 주세요.</p>
+              )}
               <div className="easy-login">
                 간편 로그인하기
                 <div className="easy-login-icons">
