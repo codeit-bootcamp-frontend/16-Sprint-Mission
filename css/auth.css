@@ -43,15 +43,30 @@ input {
   border: none;
   border-radius: 12px;
   height: 56px;
-  margin: 16px 0 24px;
   padding-left: 16px;
   font-size: 18px;
   width: 100%;
 }
 
+.input-box,
+.password-wrapper,
+.password-check-wrapper {
+  margin: 16px 0 24px;
+}
+
 label {
   font-size: 18px;
   font-weight: 600;
+}
+
+.error-message {
+  color: #f74747;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 18px;
+  margin-top: 8px;
+  display: none;
+  padding-left: 16px;
 }
 
 #auth-form_btn {
@@ -68,9 +83,15 @@ label {
   background-color: var(--blue);
 }
 
+#auth-form_btn:enabled {
+  background-color: var(--blue);
+  cursor: pointer;
+}
+
 .toggle-password {
   position: absolute;
   right: 24px;
+  top: 16px;
   cursor: pointer;
 }
 
@@ -78,7 +99,7 @@ label {
 .password-check-wrapper {
   position: relative;
   display: flex;
-  align-items: center;
+  flex-direction: column;
 }
 
 input:focus {

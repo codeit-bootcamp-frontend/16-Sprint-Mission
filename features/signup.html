@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <head>
-      <meta charset="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>판다마켓</title>
-      <link rel="stylesheet" href="../css/global.css" />
-      <link rel="stylesheet" href="../css/reset.css" />
-      <link rel="stylesheet" href="../css/auth.css" />
-      <link
-        rel="stylesheet"
-        as="style"
-        crossorigin
-        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
-      />
-    </head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>판다마켓</title>
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/auth.css" />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
   </head>
+
   <body>
     <div class="auth-page">
       <div class="auth-logo">
@@ -36,21 +35,34 @@
           />
         </a>
       </div>
-      <form class="auth-form">
-        <label for="username">이메일</label>
-        <input
-          id="username"
-          name="email"
-          type="email"
-          placeholder="이메일을 입력해 주세요"
-        />
+      <form class="auth-form" id="signupForm">
+        <label for="email">이메일</label>
+        <div class="input-box">
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="이메일을 입력해 주세요"
+          />
+          <span id="emailEmptyError" class="error-message"
+            >이메일을 입력해주세요.</span
+          >
+          <span id="emailInputError" class="error-message"
+            >잘못된 이메일 형식입니다.</span
+          >
+        </div>
         <label for="nickname">닉네임</label>
-        <input
-          id="nickname"
-          name="nickname"
-          type="text"
-          placeholder="닉네임을 입력해 주세요"
-        />
+        <div class="input-box">
+          <input
+            id="nickname"
+            name="nickname"
+            type="text"
+            placeholder="닉네임을 입력해 주세요"
+          />
+          <span id="nicknameEmptyError" class="error-message"
+            >닉네임을 입력해주세요.</span
+          >
+        </div>
         <label for="password">비밀번호</label>
         <div class="password-wrapper">
           <input
@@ -60,10 +72,24 @@
             placeholder="비밀번호를 입력해 주세요"
           />
           <img
-            src="../image/Property 1=Variant2.svg"
+            src="../image/hideeye.png"
             alt="비밀번호 숨김"
-            class="toggle-password"
+            class="toggle-password hideEye"
+            width="24"
           />
+          <img
+            src="../image/showeye.png"
+            alt="비밀번호 보임"
+            class="toggle-password showEye"
+            width="24"
+            style="visibility: hidden"
+          />
+          <span id="passwordEmptyError" class="error-message"
+            >비밀번호를 입력해주세요.</span
+          >
+          <span id="passwordLengthError" class="error-message"
+            >비밀번호를 8자 이상 입력해주세요.</span
+          >
         </div>
         <label for="password-check">비밀번호 확인</label>
         <div class="password-check-wrapper">
@@ -74,12 +100,29 @@
             placeholder="비밀번호를 다시 한 번 입력해 주세요"
           />
           <img
-            src="../image/Property 1=Variant2.svg"
+            src="../image/hideeye.png"
             alt="비밀번호 숨김"
-            class="toggle-password"
+            class="toggle-password hideEye-check"
+            width="24"
           />
+          <img
+            src="../image/showeye.png"
+            alt="비밀번호 보임"
+            class="toggle-password showEye-check"
+            width="24"
+            style="visibility: hidden"
+          />
+          <span id="passwordCheckEmptyError" class="error-message"
+            >비밀번호를 입력해주세요.</span
+          >
+          <span id="passwordMatchError" class="error-message"
+            >비밀번호가 일치하지 않습니다.</span
+          >
+          <span id="passwordCheckLengthError" class="error-message"
+            >비밀번호를 8자 이상 입력해주세요.</span
+          >
         </div>
-        <button id="auth-form_btn">회원가입</button>
+        <button type="submit" id="auth-form_btn" disabled>회원가입</button>
       </form>
       <div class="auth-footer">
         <div>간편 로그인하기</div>
@@ -107,5 +150,6 @@
         <a href="signin.html">로그인</a>
       </div>
     </div>
+    <script src="../scripts/auth.js"></script>
   </body>
 </html>
