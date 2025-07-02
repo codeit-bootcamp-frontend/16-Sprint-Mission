@@ -23,5 +23,8 @@ const StyledMarketPageContainer = styled.div`
 
   @media (min-width: 1200px) {
     padding: 0 ${({ theme }) => theme.spacing.desktop};
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
   }
 `;

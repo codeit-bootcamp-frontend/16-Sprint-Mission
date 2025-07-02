@@ -73,13 +73,13 @@ const StyledWrapper = styled.div`
   gap: 14px;
 `;
 
-const StyledTagList = styled.div`
+export const StyledTagList = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 `;
 
-const StyledTagWrapper = styled.div`
+export const StyledTagWrapper = styled.div`
   display: flex;
   justify-content: center;
   gap: 10px;

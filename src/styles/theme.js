@@ -17,6 +17,7 @@ export const ColorTypes = {
 };
 
 export const FontTypes = {
+  SEMIBOLD40: 'semibold40',
   BOLD32: 'bold32',
   SEMIBOLD32: 'semibold32',
   BOLD24: 'bold24',
@@ -71,6 +72,10 @@ const theme = {
   },
 
   fonts: {
+    semibold40: {
+      fontSize: '2.5rem',
+      fontWeight: 600,
+    },
     bold32: {
       fontSize: '2rem',
       fontWeight: 700,
