@@ -1,10 +1,11 @@
 import logo from '@assets/images/logo-title.png';
 import SocialLogin from '@components/SocialLogin';
-import { FormProvider, useForm, useFormState } from 'react-hook-form';
+import { FormProvider, useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import EmailField from './EmailField';
 import PasswordField from './PasswordField';
-import styles from './styles/Login.module.css';
+import styles from './styles/Auth.module.css';
+import SubmitButton from './SubmitButton';
 
 function Login() {
   const toItemsNavigation = useNavigate();
@@ -20,8 +21,8 @@ function Login() {
   }
 
   return (
-    <main className={styles.main}>
-      <section className={styles.loginSection}>
+    <main className={styles.auth}>
+      <section className={styles.authSection}>
         <div className={styles.logo}>
           <Link to="/" aria-label="판다마켓 홈으로 이동">
             <img src={logo} alt="판다마켓 로고" />
@@ -52,16 +53,3 @@ function Login() {
 }
 
 export default Login;
-
-export function SubmitButton({ children }) {
-  const { isValid } = useFormState();
-
-  return (
-    <button
-      type="submit"
-      className={!isValid ? styles.inActivateBtn : styles.activateBtn}
-    >
-      {children}
-    </button>
-  );
-}

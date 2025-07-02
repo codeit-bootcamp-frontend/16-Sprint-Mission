@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import FormInput from '../FormInput';
-import styles from './styles/Login.module.css';
+import FormInput from './FormInput';
+import styles from './styles/Auth.module.css';
 
 function PasswordField() {
   const [passwordToggle, setPasswordToggle] = useState(false);

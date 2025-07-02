@@ -16,18 +16,27 @@ const validRuleObj = {
       message: '비밀번호를 8자 이상 입력해주세요.',
     },
   },
+  'user-name': {
+    required: '비밀번호를 입력해주세요.',
+  },
+  'user-password-check': {
+    required: '비밀번호를 다시 입력해주세요.',
+  },
 };
 
 function FormInput(props) {
-  const { placeholder, name, type, id } = props;
-  const { register } = useFormContext(); 
-  const { errors } = useFormState({ name });//여기서 name으로 따로 골라와야 개별로 감지하는듯...?
+  const { placeholder, name, type, id, validatePwCheck } = props;
+  const { register } = useFormContext();
+  const { errors } = useFormState({ name }); //여기서 name으로 따로 골라와야 개별로 감지하는듯...?
   const error = errors[name];
 
   return (
     <>
       <input
-        {...register(name, validRuleObj[name])}
+        {...register(name, {
+          ...validRuleObj[name],
+          validate: validatePwCheck || undefined, //프롭에 validatePwCheck 없으면 undefined로
+        })}
         className={error && styles.inputErrorBorder}
         type={type}
         id={id}
