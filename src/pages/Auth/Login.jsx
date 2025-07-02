@@ -21,7 +21,7 @@ function Login() {
   }
 
   return (
-    <main className={styles.auth}>
+    <main className={styles.login}>
       <section className={styles.authSection}>
         <div className={styles.logo}>
           <Link to="/" aria-label="판다마켓 홈으로 이동">
