@@ -10,6 +10,7 @@ const Input = ({ ...props }) => {
     placeholder,
     onChange,
     onBlur,
+    isError,
   } = props;
   return (
     <input
@@ -18,7 +19,7 @@ const Input = ({ ...props }) => {
       name={name}
       value={value}
       placeholder={placeholder}
-      css={InputStyle}
+      css={InputStyle(isError)}
       onChange={onChange}
       onBlur={onBlur}
     />
@@ -27,12 +28,13 @@ const Input = ({ ...props }) => {
 
 export default Input;
 
-export const InputStyle = css`
+export const InputStyle = (isError) => css`
   width: 100%;
   font-size: 1rem;
   padding: 14px 20px;
   background: var(--gray200);
   border-radius: var(--border-radius-sm);
+  border: ${isError ? "1px solid var(--error-color)" : "1px solid transparent"};
 
   &::placeholder {
     color: var(--gray400);

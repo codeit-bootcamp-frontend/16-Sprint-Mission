@@ -87,6 +87,7 @@ const LoginPage = () => {
                     placeholder="이메일"
                     required
                     onBlur={handleBlur}
+                    isError={emailMsg}
                   />
                   <span className="form-input-hint">{emailMsg}</span>
                 </div>
@@ -107,6 +108,7 @@ const LoginPage = () => {
                       placeholder="비밀번호"
                       required
                       onBlur={handleBlur}
+                      isError={passwordMsg}
                     />
                     <IconButton
                       type="button"

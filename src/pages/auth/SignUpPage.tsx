@@ -100,6 +100,7 @@ const SignUpPage = () => {
                     placeholder="pandaMarket@email.com"
                     required
                     onBlur={handleBlur}
+                    isError={emailMsg}
                   />
                   <span className="form-input-hint">{emailMsg}</span>
                 </div>
@@ -118,6 +119,7 @@ const SignUpPage = () => {
                     placeholder="닉네임"
                     required
                     onBlur={handleBlur}
+                    isError={nicknameMsg}
                   />
                   <span className="form-input-hint">{nicknameMsg}</span>
                 </div>
@@ -138,6 +140,7 @@ const SignUpPage = () => {
                       placeholder="비밀번호 입력"
                       required
                       onBlur={handleBlur}
+                      isError={passwordMsg}
                     />
                     <IconButton
                       type="button"
@@ -172,6 +175,7 @@ const SignUpPage = () => {
                       placeholder="비밀번호 확인"
                       required
                       onBlur={handleBlur}
+                      isError={passwordCheckMsg}
                     />
                     <IconButton
                       type="button"
