@@ -1,0 +1,96 @@
+.addProduct__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.addProduct__title {
+  font-size: var(--font-size-xl);
+}
+
+.addProductImg__wrapper label {
+  width: auto;
+}
+
+.addProductImg__wrapper input {
+  display: none;
+}
+
+/* 상품 업로드 */
+.addProductImg__field {
+  display: flex;
+  gap: 10px;
+}
+
+.productImg__upload {
+  position: relative;
+  width: 168px;
+  height: 168px;
+  font-size: var(--font-size-md);
+  color: var(--color-gray400);
+  background-image: url(../assets/images/ic_plus.png);
+  background-repeat: no-repeat;
+  background-position: center 41px;
+  background-color: var(--color-gray200);
+  border-radius: 12px;
+}
+
+.productImg__upload::after {
+  content: "이미지 등록";
+  position: absolute;
+  bottom: 41px;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.productImg__preview {
+  position: relative;
+  width: 168px;
+  height: 168px;
+  background-color: var(--color-gray200);
+  border-radius: 12px;
+}
+
+.productImg__preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.productImg__preview-delete {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 22px;
+  height: 24px;
+  background-color: transparent;
+  background-image: url(../assets/images/ic_X.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+/* 상품 태크 */
+.addProduct__tags {
+  margin-top: 14px;
+}
+
+.addProduct__tag {
+  position: relative;
+  margin-right: 12px;
+  padding: 5px 32px 5px 16px;
+  background-color: var(--color-gray200);
+  border-radius: var(--border-radius-md);
+}
+
+.addProduct__tag::after {
+  content: '';
+  position: absolute;
+  top: 2.5px;
+  right: 6px;
+  width: 22px;
+  height: 24px;
+  background-image: url(../assets/images/ic_X.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}

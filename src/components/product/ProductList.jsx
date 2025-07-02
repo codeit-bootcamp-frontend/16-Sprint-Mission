@@ -1,26 +1,21 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useProductData } from "../api.jsx";
-import { pageSizebyScreenWidth } from "./pageSizebyScreenWidth.jsx";
-import SortSelect from "./SortSelect.jsx";
+import { pageSizebyScreenWidth } from "../../utils/pageSizebyScreenWidth.js";
+import { useProductData } from "../../hooks/useProductData.jsx";
+import { useSortedItems } from "../../hooks/useSortedItems.jsx";
+import SortSelect from "../SortSelect.jsx";
 import ProductDisplay from "./ProductDisplay.jsx";
 import Pagination from "./Pagination.jsx";
-import "./css/ProductList.css";
+import Button from "../Button.jsx";
+import "../../styles/ProductList.css";
 
 function ProductList() {
-  const [sortKey, setSortKey] = useState("updatedAt");
-  const [page, setPage] = useState(1); //현재 페이지
   const [pageSize, setPageSize] = useState(() => pageSizebyScreenWidth(window.innerWidth).all); //상품 개수
+  const [sortKey, setSortKey] = useState("updatedAt");
 
-  // api 불러오기
-  const { products, totalPages } = useProductData({ page, pageSize, isPageinated: true });
+  const { products, currentPage, goToPage, totalPages } = useProductData({ pageSize: pageSize });
 
-  // 원본 products를 직접 정렬하면 React가 상태가 바뀌었다고 인식하지 못해서 화면이 다시 렌더링되지 않는 일이 생긴다.
-  const sortedItems = [...products].sort((a, b) => {
-    if ("updatedAt" === sortKey) return a[sortKey] - b[sortKey];
-    if ("favoriteCount" === sortKey) return b[sortKey] - a[sortKey];
-    return 0;
-  });
+  const sortedItems = useSortedItems(products, sortKey);
 
   // 브라우저 크기에 따라 상품 개수 변경
   useEffect(() => {
@@ -34,9 +29,9 @@ function ProductList() {
     <div>
       <div className="Products__header Products__header--items mb16">
         <h1>전체 상품</h1>
-        <button className="btn btn--color1 btn--small Products__register">
+        <Button className="Products__register" btnSize="small" radius="xs">
           <Link to="/additem">상품 등록하기</Link>
-        </button>
+        </Button>
         <form className="Products__form">
           <input type="text" placeholder="검색할 상품을 입력해주세요" />
           <button></button>
@@ -44,7 +39,7 @@ function ProductList() {
         <SortSelect sortKey={sortKey} onChange={setSortKey} />
       </div>
       <ProductDisplay sortedItems={sortedItems} bestList={false} />
-      <Pagination currentPage={page} totalPages={totalPages} setPage={setPage} />
+      <Pagination currentPage={currentPage} totalPages={totalPages} setPage={goToPage} />
     </div>
   );
 }

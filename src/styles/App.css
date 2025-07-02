@@ -1,11 +1,11 @@
-.Products__warp {
+.sectionWrapper {
   margin: 0 auto;
   max-width: 1200px;
-  background-color: #FCFCFC;
+  /* background-color: #FCFCFC; */
   padding: 16px;
   padding-top: calc(70px + 18px);
   padding-bottom: 35px;
 }
-.Products__warp > div:first-child {
+.sectionWrapper > div:first-child {
   padding-bottom: 24px;
 }

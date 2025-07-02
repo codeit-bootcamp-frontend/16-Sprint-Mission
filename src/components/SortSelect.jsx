@@ -1,6 +1,6 @@
 import { useState } from "react";
-import mobailImg from "../assets/ic_sort.png";
-import "../components/css/SortSelect.css";
+import mobailImg from "../assets/images/ic_sort.png";
+import "../styles/SortSelect.css";
 
 function SortSelect({ sortKey, onChange }) {
   const [open, setOpen] = useState(false);

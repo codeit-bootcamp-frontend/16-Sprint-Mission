@@ -1,6 +1,6 @@
-import "../components/css/Pagination.css";
-import preve from "../assets/arrow_left.png";
-import next from "../assets/arrow_right.png";
+import preve from "../../assets/images/arrow_left.png";
+import next from "../../assets/images/arrow_right.png";
+import "../../styles/Pagination.css";
 
 function Pagination({ currentPage, totalPages, setPage }) {
   //페이지 변경

@@ -11,7 +11,13 @@
 
 button.Products__register {
   grid-column: 3 / span 2;
-  padding: 10px 24px;
+  /* padding: 10px 24px; */
+}
+
+button.Products__register a {
+  display: block;
+  height: 100%;
+  line-height: 42px;
 }
 
 .Products__form {
@@ -20,15 +26,11 @@ button.Products__register {
 }
 
 .Products__form input {
-  background-image: url(../../assets/ic_search.png);
+  background-image: url(../assets/images/ic_search.png);
   background-repeat: no-repeat;
   background-position: 14px center;
   width: inherit;
   padding: 11px 24px 11px 40px;
-}
-
-.Products__sort {
-  grid-column: 4;
 }
 
 /* 타블렛 (768px~) */
