@@ -8,6 +8,7 @@ import LoginPage from './components/pages/LoginPage';
 import MarketPage from './components/pages/MarketPage/MarketPage';
 import AddItemPage from './components/pages/AddItemPage/AddItemPage';
 import CommunityFeedPage from './components/pages/CommunityFeedPage';
+import ItemDetailPage from './components/pages/ItemDetailPage/ItemDetailPage';
 
 function App() {
   return (
@@ -38,6 +39,10 @@ function App() {
               <Route
                 path="/community"
                 element={<CommunityFeedPage />}
+              />
+              <Route
+                path="/items/:productId"
+                element={<ItemDetailPage />}
               />
             </Routes>
           </div>

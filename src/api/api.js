@@ -13,3 +13,13 @@ export const getProducts = async ({ page = 1, pageSize = 10, orderBy = 'recent',
     throw error;
   }
 };
+
+export const getProductDetail = async (productId) => {
+  try {
+    const res = await axios.get(`${baseURL}/products/${productId}`);
+    return res.data;
+  } catch (error) {
+    console.log('상품 상세 정보 api 호출 실패 :', error.message);
+    throw error;
+  }
+};
