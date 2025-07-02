@@ -68,13 +68,6 @@ const useForm = (
     const values: Record<string, string> = {};
     const results = [];
 
-    // const elements = formRef.current?.elements;
-    // if (!elements) return;
-
-    // for (const el of elements) {
-    //   values[el.name] = el.value;
-    // }
-
     for (const [name, value] of formData.entries()) {
       values[name] = value.toString(); // Record<string, string>으로 타입을 선언했으므로, 문자열만 받기 위해 toString() 사용
     }
