@@ -1,4 +1,5 @@
 /** @jsxImportSource @emotion/react */
+import { Link } from "react-router-dom";
 import FooterStyle from "./FooterStyle";
 import FacebookIcon from "@/assets/images/ic_facebook.svg";
 import InstagramIcon from "@/assets/images/ic_instagram.svg";
@@ -11,12 +12,12 @@ const Footer = () => {
       <div className="footer-container">
         <div className="copyright">©codeit - 2025</div>
         <div className="footer-menu">
-          <a href="privacy.html" aria-label="개인정보처리방침">
+          <Link to="/" aria-label="개인정보처리방침">
             Privacy Policy
-          </a>
-          <a href="faq.html" aria-label="자주 묻는 질문">
+          </Link>
+          <Link to="/" aria-label="자주 묻는 질문">
             FAQ
-          </a>
+          </Link>
         </div>
         <div className="sns" aria-label="SNS 바로가기">
           <a
