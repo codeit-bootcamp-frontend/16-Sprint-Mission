@@ -50,7 +50,8 @@ export const styles = {
     `,
     bannerPrimary: css`
       ${primaryBase};
-      width: 356px;
+      width: 100%;
+      max-width: 356px;
     `,
   },
   round: css`

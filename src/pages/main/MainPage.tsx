@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { useNavigate } from "react-router-dom";
 import MainPageStyle from "./MainPageStyle.ts";
-// import PageContent from "@/components/layout/PageContent";
 import Footer from "@/components/ui/Footer";
 import Button from "@/components/ui/Button";
 import HomeTopImg from "@/assets/images/Img_home_top.png";
@@ -20,7 +19,6 @@ const MainPage = () => {
   const navigate = useNavigate();
 
   return (
-    // <PageContent>
     <>
       <main css={MainPageStyle}>
         <div className="banner banner-hero" aria-label="상단 배너">
@@ -32,17 +30,14 @@ const MainPage = () => {
                 aria-label="상품 페이지로 이동"
                 variant="bannerPrimary"
                 size="lg"
-                style={{ width: "356px" }}
               >
                 구경하러 가기
               </Button>
             </div>
             <img
               className="banner-img"
-              srcSet={`${HomeTopImg} 746w, ${HomeTopImgSmall} 448w`}
-              sizes={`(min-width: ${BREAKPOINTS.tablet}) 746px, 448px`}
               loading="eager"
-              src="images/Img_home_top.png"
+              src={HomeTopImg}
               alt="팬더가 파란 장바구니를 메고 마을 가운데에 서있는 일러스트"
             />
           </div>
@@ -54,7 +49,7 @@ const MainPage = () => {
           >
             <div className="section-container">
               <img
-                srcSet={`${HomeImg1} 696w, ${HomeImg1Small} 344w`}
+                srcSet={`${HomeImg1Small} 696w, ${HomeImg1} 344w`}
                 sizes={`(min-width: ${BREAKPOINTS.tablet}) 580px, (min-width: 480px) 696px, 344px`}
                 loading="lazy"
                 src={HomeImg1}
@@ -75,7 +70,7 @@ const MainPage = () => {
           <section className="section section-search" aria-label="상품 검색">
             <div className="section-container">
               <img
-                srcSet={`${HomeImg2} 696w, ${HomeImg2Small} 344w`}
+                srcSet={`${HomeImg2Small} 696w, ${HomeImg2} 344w`}
                 sizes={`(min-width: ${BREAKPOINTS.tablet}) 580px, (min-width: 480px) 696px, 344px`}
                 loading="lazy"
                 src={HomeImg2}
@@ -98,7 +93,7 @@ const MainPage = () => {
           <section className="section section-register" aria-label="상품 등록">
             <div className="section-container">
               <img
-                srcSet={`${HomeImg3} 696w, ${HomeImg3Small} 344w`}
+                srcSet={`${HomeImg3Small} 696w, ${HomeImg3} 344w`}
                 sizes={`(min-width: ${BREAKPOINTS.tablet}) 580px, (min-width: 480px) 696px, 344px`}
                 loading="lazy"
                 src={HomeImg3}
@@ -130,8 +125,6 @@ const MainPage = () => {
             </div>
             <img
               className="banner-img"
-              srcSet={`${HomeBottomImg} 746w, ${HomeBottomImgSmall} 448w`}
-              sizes={`(min-width: ${BREAKPOINTS.tablet}) 746px, 448px`}
               loading="lazy"
               src={HomeBottomImg}
               alt="팬더 두 마리가 파란 장바구니를 메고 서로 상품 후기를 주고받는 일러스트"
@@ -141,7 +134,6 @@ const MainPage = () => {
       </main>
       <Footer />
     </>
-    // </PageContent>
   );
 };
 
