@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { BREAKPOINTS } from "@/constants/responsive";
 
 const AuthPageStyle = css`
   /* auth 폼 공통 */
@@ -148,7 +149,7 @@ const AuthPageStyle = css`
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: ${BREAKPOINTS.tablet}px) {
     .form {
       max-width: 40rem;
     }

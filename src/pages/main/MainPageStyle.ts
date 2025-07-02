@@ -132,7 +132,7 @@ const MainPageStyle = css`
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: ${BREAKPOINTS.tablet}px) {
     :root {
       --banner-btn-font-size: 20px;
     }
@@ -154,7 +154,7 @@ const MainPageStyle = css`
   }
 
   /* PC */
-  @media (min-width: 1200px) {
+  @media (min-width: ${BREAKPOINTS.desktop}px) {
     :root {
       --sections-padding: 138px 24px;
       --section-margin-bottom: 1.5rem;
