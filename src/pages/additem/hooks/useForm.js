@@ -49,9 +49,9 @@ export const useForm = (options) => {
     },
     [runValidation]
   );
-
+크
   // onChange관련 handle함수
-  // 리렌더링 최소화를 위해 에러체크 안 함
+  // 리렌더링 최소화(입력값 없을 때만)
   const handleChange = useCallback(
     (key, sanitizeFn) => (e) => {
       const raw = e.target.value;
@@ -60,7 +60,7 @@ export const useForm = (options) => {
       // ref에 데이터 저장 (비제어 컴포넌트)
       dataRef.current[key] = value;
 
-      // 렌더링 테스트용 (지워야 함)
+      // 입력값 에러 메세지(값이 없을 때) 지울 때만 실행되는 에러 체
      const message = runValidation(key, value);
       setErrors((prev) => {
         if (prev[key] === message) return prev;
