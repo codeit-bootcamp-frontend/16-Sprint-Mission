@@ -5,7 +5,6 @@ import ProductComments from './ProductComments';
 
 import { applyFontStyles } from '../../../styles/mixins';
 import { FontTypes, ColorTypes } from '../../../styles/theme';
-
 import back from '../../../assets/images/icons/ic_back.png';
 
 function ItemDetailPage() {

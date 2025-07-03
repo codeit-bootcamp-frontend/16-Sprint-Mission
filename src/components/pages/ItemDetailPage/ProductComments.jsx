@@ -8,15 +8,18 @@ import { applyFlexColumn } from '../../../styles/mixins';
 import useFormatTime from '../../../hooks/useFormatTime';
 import profile from '../../../assets/images/icons/ic_profile.png';
 import CommentEditList from '../../UI/CommentEditList';
+import noComment from '../../../assets/images/icons/ic_nocomment.png';
 
 function ProductComments() {
   const { productId } = useParams();
+  const [isNoComment, setIsNoComment] = useState(true);
   const [comments, setComments] = useState([]);
   const [nextCursor, setNextCursor] = useState(null);
 
   const fetchComments = async () => {
     try {
       const data = await getComments(productId, 3, nextCursor);
+      setIsNoComment(data.list.length === 0);
       setComments((prev) => [...prev, ...data.list]);
       setNextCursor(data.nextCursor);
     } catch (error) {
@@ -28,9 +31,12 @@ function ProductComments() {
     fetchComments();
   }, [productId]);
 
-  const time = useFormatTime(comments[0]?.createdAt);
-
-  return (
+  return isNoComment ? (
+    <img
+      src={noComment}
+      alt="noComment"
+    />
+  ) : (
     <StyledCommentContainer>
       <StyledCommentInput>
         <StyledCommentTitle>문의하기</StyledCommentTitle>
@@ -43,31 +49,33 @@ function ProductComments() {
         </StyledButtonWrapper>
       </StyledCommentInput>
       <StyledCommentList>
-        {comments?.map((comment) => (
-          <StyledCommentWrapper key={comment?.id}>
-            <StyledCommentContentWrapper>
-              <StyledCommentContent>{comment.content}</StyledCommentContent>
-
-              <StyledKebabWrapper>
-                <CommentEditList />
-              </StyledKebabWrapper>
-            </StyledCommentContentWrapper>
-            <StyledUserInfoWrapper>
-              <StyledUserInfo>
-                <StyledProfileWrapper>
-                  <img
-                    src={profile}
-                    alt="profile"
-                  />
-                </StyledProfileWrapper>
-                <StyledNameWrapper>
-                  <StyledName>{comment.writer.nickname}</StyledName>
-                  <StyledCreatedAt>{time}</StyledCreatedAt>
-                </StyledNameWrapper>
-              </StyledUserInfo>
-            </StyledUserInfoWrapper>
-          </StyledCommentWrapper>
-        ))}
+        {comments?.map((comment) => {
+          const time = useFormatTime(comment?.createdAt);
+          return (
+            <StyledCommentWrapper key={comment?.id}>
+              <StyledCommentContentWrapper>
+                <StyledCommentContent>{comment.content}</StyledCommentContent>
+                <StyledKebabWrapper>
+                  <CommentEditList />
+                </StyledKebabWrapper>
+              </StyledCommentContentWrapper>
+              <StyledUserInfoWrapper>
+                <StyledUserInfo>
+                  <StyledProfileWrapper>
+                    <img
+                      src={profile}
+                      alt="profile"
+                    />
+                  </StyledProfileWrapper>
+                  <StyledNameWrapper>
+                    <StyledName>{comment.writer.nickname}</StyledName>
+                    <StyledCreatedAt>{time}</StyledCreatedAt>
+                  </StyledNameWrapper>
+                </StyledUserInfo>
+              </StyledUserInfoWrapper>
+            </StyledCommentWrapper>
+          );
+        })}
       </StyledCommentList>
     </StyledCommentContainer>
   );

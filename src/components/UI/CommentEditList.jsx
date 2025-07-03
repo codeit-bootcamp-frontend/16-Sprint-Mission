@@ -44,7 +44,7 @@ const StyledEditButton = styled.div`
   height: 24px;
 `;
 
-const StyledEditList = styled.div`
+const StyledEditList = styled.ul`
   position: absolute;
   top: 34px;
   right: 0px;
@@ -62,7 +62,7 @@ const StyledEditList = styled.div`
   z-index: 1;
 `;
 
-const StyledEditItem = styled.div`
+const StyledEditItem = styled.li`
   display: flex;
 
   ${applyFontStyles(FontTypes.REGULAR16, ColorTypes.SECONDARY_GRAY_500)}
