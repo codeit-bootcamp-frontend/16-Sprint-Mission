@@ -1,3 +1,6 @@
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
+
 import Header from "./components/Header";
 import BestProductsItems from "./components/BestProducts";
 import ProductsList from "./components/ProductsList";
@@ -39,10 +42,21 @@ function App() {
     <>
       <GlobalStyle />
       <Header />
-      <BestProductsItems bestProducts={bestProducts} />
-      <ProductsList products={products} />
+      <section css={mainSection}>
+        <BestProductsItems bestProducts={bestProducts} />
+        <ProductsList products={products} />
+      </section>
     </>
   );
 }
 
 export default App;
+
+const mainSection = css`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 16px;
+  margin: 0 auto;
+  gap: 24px;
+`;

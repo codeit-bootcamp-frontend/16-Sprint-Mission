@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 
-function ProductItem({ product }) {
+function ProductItem({ product, customStyle }) {
   return (
-    <div css={productItemStyle}>
+    <div css={[productItemStyle, customStyle]}>
       <img src={product.images[0]} alt="이미지 미리보기" />
       <div>{product.name}</div>
       <div css={productPrice}>{product.price.toLocaleString() + "원"}</div>
