@@ -7,7 +7,7 @@ import { FontTypes, ColorTypes } from '../../../styles/theme';
 import { applyFlexColumn } from '../../../styles/mixins';
 import useFormatTime from '../../../hooks/useFormatTime';
 import profile from '../../../assets/images/icons/ic_profile.png';
-import kebab from '../../../assets/images/icons/ic_kebab.svg';
+import CommentEditList from '../../UI/CommentEditList';
 
 function ProductComments() {
   const { productId } = useParams();
@@ -29,7 +29,6 @@ function ProductComments() {
   }, [productId]);
 
   const time = useFormatTime(comments[0]?.createdAt);
-  console.log(time);
 
   return (
     <StyledCommentContainer>
@@ -50,10 +49,7 @@ function ProductComments() {
               <StyledCommentContent>{comment.content}</StyledCommentContent>
 
               <StyledKebabWrapper>
-                <img
-                  src={kebab}
-                  alt="kebab"
-                />
+                <CommentEditList />
               </StyledKebabWrapper>
             </StyledCommentContentWrapper>
             <StyledUserInfoWrapper>
