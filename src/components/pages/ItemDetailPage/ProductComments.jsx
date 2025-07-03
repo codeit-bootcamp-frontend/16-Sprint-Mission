@@ -5,6 +5,7 @@ import { getComments } from '../../../api/api';
 import { applyFontStyles } from '../../../styles/mixins';
 import { FontTypes, ColorTypes } from '../../../styles/theme';
 import { applyFlexColumn } from '../../../styles/mixins';
+import useFormatTime from '../../../hooks/useFormatTime';
 import profile from '../../../assets/images/icons/ic_profile.png';
 import kebab from '../../../assets/images/icons/ic_kebab.svg';
 
@@ -27,6 +28,9 @@ function ProductComments() {
     fetchComments();
   }, [productId]);
 
+  const time = useFormatTime(comments[0]?.createdAt);
+  console.log(time);
+
   return (
     <StyledCommentContainer>
       <StyledCommentInput>
@@ -43,7 +47,7 @@ function ProductComments() {
         {comments?.map((comment) => (
           <StyledCommentWrapper key={comment?.id}>
             <StyledCommentContentWrapper>
-              <StyledCommentContent>{comment?.content}</StyledCommentContent>
+              <StyledCommentContent>{comment.content}</StyledCommentContent>
 
               <StyledKebabWrapper>
                 <img
@@ -62,7 +66,7 @@ function ProductComments() {
                 </StyledProfileWrapper>
                 <StyledNameWrapper>
                   <StyledName>{comment.writer.nickname}</StyledName>
-                  <StyledCreatedAt>{comment.createdAt}</StyledCreatedAt>
+                  <StyledCreatedAt>{time}</StyledCreatedAt>
                 </StyledNameWrapper>
               </StyledUserInfo>
             </StyledUserInfoWrapper>
