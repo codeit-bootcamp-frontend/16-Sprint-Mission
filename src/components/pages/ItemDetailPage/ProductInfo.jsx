@@ -11,12 +11,14 @@ import kebab from '../../../assets/images/icons/ic_kebab.svg';
 
 function ProductInfo() {
   const [product, setProduct] = useState(null);
+  const [isTags, setIsTags] = useState(false);
   const { productId } = useParams();
 
   useEffect(() => {
     const fetchProductDetail = async () => {
       const res = await getProductDetail(productId);
       setProduct(res);
+      setIsTags(res.tags.length > 0);
     };
     fetchProductDetail();
   }, [productId]);
@@ -50,11 +52,15 @@ function ProductInfo() {
               <StyledProductTagWrapper>
                 <StyledSecTitle>상품 태그</StyledSecTitle>
                 <StyledTagList>
-                  {product?.tags.map((tag) => (
-                    <StyledTagWrapper key={tag}>
-                      <span>{`#${tag}`}</span>
-                    </StyledTagWrapper>
-                  ))}
+                  {isTags ? (
+                    product.tags.map((tag) => (
+                      <StyledTagWrapper key={tag}>
+                        <span>{`#${tag}`}</span>
+                      </StyledTagWrapper>
+                    ))
+                  ) : (
+                    <StyledNoTag>태그가 없습니다.</StyledNoTag>
+                  )}
                 </StyledTagList>
               </StyledProductTagWrapper>
             </StyledProductDesContainer>
@@ -193,6 +199,10 @@ const StyledProductDescription = styled.div`
 
 const StyledProductTagWrapper = styled.div`
   ${applyFlexColumn()}
+`;
+
+const StyledNoTag = styled.span`
+  ${applyFontStyles(FontTypes.REGULAR16, ColorTypes.SECONDARY_GRAY_400)}
 `;
 
 const StyledProductOwnerInfo = styled.div`
