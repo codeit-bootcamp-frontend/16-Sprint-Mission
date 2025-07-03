@@ -23,3 +23,18 @@ export const getProductDetail = async (productId) => {
     throw error;
   }
 };
+
+export const getComments = async (productId, limit = 10, cursor = null) => {
+  try {
+    const res = await axios.get(`${baseURL}/products/${productId}/comments`, {
+      params: {
+        limit,
+        cursor,
+      },
+    });
+    return res.data;
+  } catch (error) {
+    console.log('상품 댓글 목록 api 호출 실패 :', error.message);
+    throw error;
+  }
+};

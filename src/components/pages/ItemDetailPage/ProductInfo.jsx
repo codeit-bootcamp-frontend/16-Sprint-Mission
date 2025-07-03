@@ -22,7 +22,7 @@ function ProductInfo() {
   }, [productId]);
 
   return (
-    <div>
+    <StyledContainer>
       <StyledProductInfo>
         <StyledProductImage>
           <img
@@ -87,11 +87,16 @@ function ProductInfo() {
           </StyledProductOwnerInfo>
         </StyledProductInfoContainer>
       </StyledProductInfo>
-    </div>
+    </StyledContainer>
   );
 }
 
 export default ProductInfo;
+
+const StyledContainer = styled.div`
+  padding-bottom: 33px;
+  border-bottom: 1px solid ${({ theme }) => theme.colors[ColorTypes.SECONDARY_GRAY_200]};
+`;
 
 const StyledProductInfo = styled.div`
   ${applyFlexColumn('16px')}
