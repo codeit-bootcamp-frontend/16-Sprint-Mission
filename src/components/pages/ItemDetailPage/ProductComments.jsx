@@ -32,10 +32,13 @@ function ProductComments() {
   }, [productId]);
 
   return isNoComment ? (
-    <img
-      src={noComment}
-      alt="noComment"
-    />
+    <StyledNoCommentContainer>
+      <img
+        src={noComment}
+        alt="noComment"
+      />
+      <div>아직 문의가 없어요</div>
+    </StyledNoCommentContainer>
   ) : (
     <StyledCommentContainer>
       <StyledCommentInput>
@@ -82,6 +85,25 @@ function ProductComments() {
 }
 
 export default ProductComments;
+
+const StyledNoCommentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 59px;
+
+  img {
+    width: 196px;
+    height: 196px;
+  }
+
+  div {
+    ${applyFontStyles(FontTypes.REGULAR18, ColorTypes.SECONDARY_GRAY_400)}
+  }
+`;
 
 const StyledCommentContainer = styled.div`
   display: flex;
