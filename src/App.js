@@ -7,6 +7,7 @@ import ProductsList from "./components/ProductsList";
 import { getBestProducts, getProducts } from "./API/api";
 import { useEffect, useState } from "react";
 import GlobalStyle from "./style/GlobalStyle";
+import Buttons from "./components/Buttons";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -46,6 +47,7 @@ function App() {
         <BestProductsItems bestProducts={bestProducts} />
         <ProductsList products={products} />
       </section>
+      <Buttons />
     </>
   );
 }
