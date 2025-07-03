@@ -4,17 +4,40 @@ import { css } from "@emotion/react";
 import arrowLeft from "../assets/arrowLeft.svg";
 import arrowRight from "../assets/arrowRight.svg";
 
-function Buttons() {
+function Buttons({ page, pageSize, setPage, totalCount }) {
+  const totalPages = Math.ceil(totalCount / pageSize);
+  const groupSize = 5;
+  const currentGroup = Math.floor((page - 1) / groupSize);
+  const startPage = currentGroup * groupSize + 1;
+  const endPage = Math.min(startPage + groupSize - 1, totalPages);
+
+  const handlePageClick = (newPage) => {
+    if (newPage >= 1 && newPage <= totalPages) {
+      setPage(newPage);
+    }
+  };
+
+  const pageNums = [];
+  for (let i = startPage; i <= endPage; i++) {
+    pageNums.push(i);
+  }
+
   return (
     <div css={button}>
       <button>
         <img src={arrowLeft} alt="arrow left" />
       </button>
-      <button>1</button>
-      <button>2</button>
-      <button>3</button>
-      <button>4</button>
-      <button>5</button>
+
+      {pageNums.map((p) => (
+        <button
+          key={p}
+          onClick={() => handlePageClick(p)}
+          css={p === page ? selected : undefined}
+        >
+          {p}
+        </button>
+      ))}
+
       <button>
         <img src={arrowRight} alt="arrow right" />
       </button>
@@ -44,3 +67,5 @@ const button = css`
     color: #4b5563;
   }
 `;
+
+const selected = css``;

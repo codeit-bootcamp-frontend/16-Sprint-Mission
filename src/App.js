@@ -12,32 +12,36 @@ import Buttons from "./components/Buttons";
 function App() {
   const [products, setProducts] = useState([]);
   const [bestProducts, setBestProducts] = useState([]);
-  const [size, setSize] = useState(1);
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(4);
+  const [orderBy, setOrderBy] = useState("recent");
+  const [totalCount, setTotalCount] = useState();
 
   useEffect(() => {
     //베스트 상품 fetch 함수
     async function fetchBestProducts() {
       try {
-        const result = await getBestProducts({ size });
+        const result = await getBestProducts();
         setBestProducts(result.list);
       } catch (error) {
-        console.error("베스트 상품 불러오기 실패");
+        console.error("베스트 상품 불러오기 실패", error);
       }
     }
 
     fetchBestProducts();
-  }, [size]);
+  }, []);
 
   useEffect(() => {
     //전체상품 fetch 함수
     async function fetchProducts() {
-      const result = await getProducts();
+      const result = await getProducts({ page, pageSize, orderBy });
       if (!result) return;
       setProducts(result.list);
+      setTotalCount(result.totalCount);
     }
 
     fetchProducts();
-  }, []);
+  }, [page, pageSize, orderBy]);
 
   return (
     <>
@@ -45,9 +49,14 @@ function App() {
       <Header />
       <section css={mainSection}>
         <BestProductsItems bestProducts={bestProducts} />
-        <ProductsList products={products} />
+        <ProductsList products={products} pageSize={pageSize} />
       </section>
-      <Buttons />
+      <Buttons
+        page={page}
+        pageSize={pageSize}
+        setPage={setPage}
+        totalCount={totalCount}
+      />
     </>
   );
 }

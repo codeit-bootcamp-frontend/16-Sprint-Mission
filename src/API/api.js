@@ -1,9 +1,9 @@
 const BASE_URL = `https://panda-market-api.vercel.app`;
 
-export async function getBestProducts({ size = 1 }) {
+export async function getBestProducts() {
   try {
     const response = await fetch(
-      `${BASE_URL}/products?page=1&pageSize=${size}&orderBy=favorite`
+      `${BASE_URL}/products?page=1&pageSize=4&orderBy=favorite`
     );
     if (!response.ok) {
       throw new Error(`HTTP 오류: ${response.status}`);
