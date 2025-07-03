@@ -2,6 +2,7 @@
 import React from "react";
 import ItemImagesUpload from "../components/ItemImagesUpload";
 import "../styles/additempage.css";
+import TagInput from "../components/TagInput";
 
 function AddItemPage() {
   return (
@@ -34,7 +35,7 @@ function AddItemPage() {
 
         <div>
           <label>태그</label>
-          <input placeholder="태그를 입력해주세요"></input>
+          <TagInput />
         </div>
       </form>
     </section>
