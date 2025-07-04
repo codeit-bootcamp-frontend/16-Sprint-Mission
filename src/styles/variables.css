@@ -179,7 +179,6 @@
 
   --layout-default-max-width: 344px;
   --nav-img-logo: none;
-  --layout-default-padding: 17px 16px 35px 16px;
   --search-wrapper-width: 344px;
   --product-img-width-best: 343px;
   --product-img-height-best: 343px;
@@ -208,7 +207,6 @@
     --padding-horizontal: 24px;
     --nav-heading-gap: 20px;
     --nav-img-logo: display;
-    --layout-default-padding: 24px 24px 72px 24px;
     --font-size-logo: var(--font-size-lg);
     --font-size-link: var(--font-size-md);
     --layout-default-max-width: 960px;
@@ -244,7 +242,6 @@
     --padding-horizontal: 200px;
     --nav-heading-gap: 32px;
     --nav-img-logo: display;
-    --layout-default-padding: 24px 36px 141px 36px;
     --font-size-logo: var(--font-size-lg);
     --font-size-link: var(--font-size-md);
     --layout-default-max-width: 1200px;
