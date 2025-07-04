@@ -31,15 +31,7 @@ function ProductComments() {
     fetchComments();
   }, [productId]);
 
-  return isNoComment ? (
-    <StyledNoCommentContainer>
-      <img
-        src={noComment}
-        alt="noComment"
-      />
-      <div>아직 문의가 없어요</div>
-    </StyledNoCommentContainer>
-  ) : (
+  return (
     <StyledCommentContainer>
       <StyledCommentInput>
         <StyledCommentTitle>문의하기</StyledCommentTitle>
@@ -51,35 +43,46 @@ function ProductComments() {
           <StyledButton>등록</StyledButton>
         </StyledButtonWrapper>
       </StyledCommentInput>
-      <StyledCommentList>
-        {comments?.map((comment) => {
-          const time = useFormatTime(comment?.createdAt);
-          return (
-            <StyledCommentWrapper key={comment?.id}>
-              <StyledCommentContentWrapper>
-                <StyledCommentContent>{comment.content}</StyledCommentContent>
-                <StyledKebabWrapper>
-                  <CommentEditList />
-                </StyledKebabWrapper>
-              </StyledCommentContentWrapper>
-              <StyledUserInfoWrapper>
-                <StyledUserInfo>
-                  <StyledProfileWrapper>
-                    <img
-                      src={profile}
-                      alt="profile"
-                    />
-                  </StyledProfileWrapper>
-                  <StyledNameWrapper>
-                    <StyledName>{comment.writer.nickname}</StyledName>
-                    <StyledCreatedAt>{time}</StyledCreatedAt>
-                  </StyledNameWrapper>
-                </StyledUserInfo>
-              </StyledUserInfoWrapper>
-            </StyledCommentWrapper>
-          );
-        })}
-      </StyledCommentList>
+
+      {isNoComment ? (
+        <StyledNoCommentContainer>
+          <img
+            src={noComment}
+            alt="noComment"
+          />
+          <div>아직 문의가 없어요</div>
+        </StyledNoCommentContainer>
+      ) : (
+        <StyledCommentList>
+          {comments?.map((comment) => {
+            const time = useFormatTime(comment?.createdAt);
+            return (
+              <StyledCommentWrapper key={comment?.id}>
+                <StyledCommentContentWrapper>
+                  <StyledCommentContent>{comment.content}</StyledCommentContent>
+                  <StyledKebabWrapper>
+                    <CommentEditList />
+                  </StyledKebabWrapper>
+                </StyledCommentContentWrapper>
+                <StyledUserInfoWrapper>
+                  <StyledUserInfo>
+                    <StyledProfileWrapper>
+                      <img
+                        src={profile}
+                        alt="profile"
+                      />
+                    </StyledProfileWrapper>
+                    <StyledNameWrapper>
+                      <StyledName>{comment.writer.nickname}</StyledName>
+                      <StyledCreatedAt>{time}</StyledCreatedAt>
+                    </StyledNameWrapper>
+                  </StyledUserInfo>
+                </StyledUserInfoWrapper>
+              </StyledCommentWrapper>
+            );
+          })}
+        </StyledCommentList>
+      )}
     </StyledCommentContainer>
   );
 }
@@ -101,7 +104,7 @@ const StyledNoCommentContainer = styled.div`
   }
 
   div {
-    ${applyFontStyles(FontTypes.REGULAR18, ColorTypes.SECONDARY_GRAY_400)}
+    ${applyFlexColumn('16px')}
   }
 `;
 

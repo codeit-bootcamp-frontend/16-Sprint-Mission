@@ -38,3 +38,13 @@ export const getComments = async (productId, limit = 10, cursor = null) => {
     throw error;
   }
 };
+
+export const patchComment = async (commentId, content) => {
+  try {
+    const res = await axios.patch(`${baseURL}/comments/${commentId}`, { content: content });
+    return res.data;
+  } catch (error) {
+    console.log('상품 댓글 수정 api 호출 실패 :', error.message);
+    throw error;
+  }
+};
