@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 
-import arrowLeft from "../assets/arrowLeft.svg";
-import arrowRight from "../assets/arrowRight.svg";
+import { ReactComponent as ArrowLeft } from "../assets/arrowLeft.svg";
+import { ReactComponent as ArrowRight } from "../assets/arrowRight.svg";
 
 function Buttons({ page, pageSize, setPage, totalCount }) {
   const totalPages = Math.ceil(totalCount / pageSize);
@@ -24,8 +24,11 @@ function Buttons({ page, pageSize, setPage, totalCount }) {
 
   return (
     <div css={button}>
-      <button>
-        <img src={arrowLeft} alt="arrow left" />
+      <button
+        onClick={() => handlePageClick(startPage - 1)}
+        disabled={startPage === 1}
+      >
+        <ArrowLeft role="img" aria-label="왼쪽 화살표" />
       </button>
 
       {pageNums.map((p) => (
@@ -38,8 +41,11 @@ function Buttons({ page, pageSize, setPage, totalCount }) {
         </button>
       ))}
 
-      <button>
-        <img src={arrowRight} alt="arrow right" />
+      <button
+        onClick={() => handlePageClick(endPage + 1)}
+        disabled={endPage >= totalPages}
+      >
+        <ArrowRight role="img" aria-label="오른쪽 화살표" />
       </button>
     </div>
   );
@@ -65,7 +71,15 @@ const button = css`
     font-weight: 600;
     font-size: 16px;
     color: #4b5563;
+
+    &:active {
+      background-color: #2f80ed;
+      color: #f9fafb;
+    }
   }
 `;
 
-const selected = css``;
+const selected = css`
+  background-color: #2f80ed;
+  color: #f9fafb !important;
+`;
