@@ -6,7 +6,7 @@ import { getProducts } from "../../api/getProducts";
 import Pagination from "./Pagination";
 import Button from "../common/Button/Button";
 import optionIcon from "../../assets/ic_sort.png";
-import Input from "../common/input/Input";
+import Input from "../common/Input";
 
 const PAGESIZE = 10;
 

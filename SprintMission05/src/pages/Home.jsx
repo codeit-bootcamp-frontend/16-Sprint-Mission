@@ -23,7 +23,11 @@ function Home() {
       <Header
         leftChild={
           <Link to="/">
-            <img src="/src/assets/Logo.jpg" alt="Logo" />
+            <img
+              src="/src/assets/Logo.jpg"
+              alt="Logo"
+              className="w-[81px] h-10 object-contain md:w-[153px] md:h-[51px]"
+            />
           </Link>
         }
         rightChild={

@@ -35,9 +35,17 @@ const NavItem = styled.li`
   align-items: center;
   color: var(--gray-600);
   font-weight: 700;
-  font-size: 18px;
+  font-size: 14px;
   cursor: pointer;
   color: ${(props) => (props.active ? "var(--Blue-100)" : "var(--gray-600)")};
   &:hover {
     color: var(--Blue-200);
+
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
+
+  @media (min-width: 1200px) {
+    
+  }
 `;

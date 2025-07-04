@@ -12,7 +12,12 @@ function Items() {
         leftChild={
           <Link to="/">
             <div style={{ display: "flex", alignItems: "center" }}>
-              <img src="/src/assets/Logo.jpg" alt="Logo" /> <Nav />
+              <img
+                src="/src/assets/Logo.jpg"
+                alt="Logo"
+                className="w-[81px] h-10 object-contain md:w-[153px] md:h-[51px]"
+              />{" "}
+              <Nav />
             </div>
           </Link>
         }
