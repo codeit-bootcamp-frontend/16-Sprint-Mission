@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { FormInput } from "../../components/Form/FormInput";
+import googleLogo from "../../assets/images/google-logo.png";
+import kakaoLogo from "../../assets/images/kakao-logo.png";
+import pandaLogo from "../../assets/images/auth-logo.png"
 import styles from "./SignUp.module.css";
+import { Link } from "react-router-dom";
 
 export default function SignUp() {
   // input의 값들 설정
@@ -82,6 +86,7 @@ export default function SignUp() {
 
   return (
     <main className={styles.wrapper}>
+      <img className={styles.pandaLogo} src={pandaLogo} alt="판다마켓 로고"/>
       <form onSubmit={handleSubmit} className={styles.signupForm}>
         {inputs.map((input) => (
           <FormInput
@@ -92,8 +97,18 @@ export default function SignUp() {
           />
         ))}
         <button className={styles.submitButton} disabled={!isFormValid}>
-          Submit
+          회원가입
         </button>
+        <div className={styles.loginContainer}>
+          <div>간편 로그인하기</div>
+          <div className={styles.loginLogos}>
+            <img src={googleLogo} alt="구글 로고" width={42} height={42}/>
+            <img src={kakaoLogo} alt="카카오 로고" width={42} height={42} />
+          </div>
+        </div>
+        <p>
+          이미 회원이신가요? <Link className={styles.loginLink} to="/login">로그인</Link>
+        </p>
       </form>
     </main>
   );

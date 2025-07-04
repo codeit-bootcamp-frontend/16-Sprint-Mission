@@ -1,5 +1,4 @@
 import {useState } from "react";
-import styles from "./FormInput.module.css";
 
 // 폼이 받아오는 props타입 정의
 type FormInputProps = {
@@ -22,7 +21,7 @@ export const FormInput = (props: FormInputProps) => {
   };
 
   return (
-    <div className={styles.formInput}>
+    <div>
       <label>{label}</label>
       <input
         {...inputProps}
