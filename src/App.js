@@ -6,7 +6,7 @@ import DefaultLayout from "./layouts/DefaultLayout";
 import Additem from "./pages/additem/Additem.js";
 import Items from "./pages/Items/Items.js";
 import ItemsDetail from "./pages/ItemsDetail/ItemsDetail.js";
-// import Login from "./pages/login/Login";
+import Login from "./pages/login/Login";
 import SignUp from "./pages/signUp/SignUp";
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
           <Route path="/items" element={<Items />} />
           <Route path="/items/:productId" element={<ItemsDetail />} />
           <Route path="/additem" element={<Additem />} />
-          {/* <Route path="/login" element={<Login />} /> */}
+          <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
         </Route>
       </Routes>
