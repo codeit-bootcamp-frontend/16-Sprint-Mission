@@ -64,6 +64,8 @@ const useImageUpload = ({
       }
     }
 
+    // 추가된 파일에 대해 개수/용량 검증 완료 후, api 풑이기
+
     setUploadImgs((prev) => [...prev, ...files]);
     setImgValid({ isValid: true, msg: "" });
   };
