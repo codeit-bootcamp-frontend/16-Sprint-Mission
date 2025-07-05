@@ -34,7 +34,7 @@ const productItemStyle = css`
 
   img {
     width: 343px;
-    height: 343px;
+    aspect-ratio: 1 / 1;
   }
 `;
 

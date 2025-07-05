@@ -15,6 +15,7 @@ const GlobalStyle = () => (
 
       html,
       body {
+        min-width: 376px;
         width: 100%;
         height: 100%;
         font-family: "Noto Sans KR", sans-serif;
