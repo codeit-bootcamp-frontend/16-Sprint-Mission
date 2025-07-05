@@ -37,8 +37,10 @@ const useForm = (
   formOptions?: FormOptions<string | string[] | number | undefined>
 ) => {
   const [isFormValid, setIsFormValid] = useState(false);
+
   const [tags, setTags] = useState<string[]>([]);
   const shouldCheckTags = formRef.current?.dataset.includeTags === "true";
+  const checkTagsResult = formOptions?.customFieldValidators?.tags(tags);
 
   // 에러 메시지
   const [emailMsg, setEmailMsg] = useState("");
@@ -76,8 +78,8 @@ const useForm = (
       values.productPrice = values.productPrice?.replace(",", "");
     }
 
-    if (shouldCheckTags) {
-      results.push(formOptions?.customFieldValidators?.tags(tags) ?? false);
+    if (shouldCheckTags && checkTagsResult) {
+      results.push(checkTagsResult);
     }
 
     for (const key in values) {
