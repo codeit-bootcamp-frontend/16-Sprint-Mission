@@ -1,0 +1,31 @@
+article.best_product_list_wrapper h2 {
+  font-size: var(--text-xl);
+  color: var(--gray-900);
+  font-weight: var(--font-bold);
+  padding: 20px 0;
+}
+article.best_product_list_wrapper .best_product_list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ✅ Tablet: 768px ~ 1199px */
+@media (max-width: 1199px) and (min-width: 768px) {
+  article.best_product_list_wrapper {
+    padding: 20px 20px 0 20px;
+  }
+  article.best_product_list_wrapper .best_product_list {
+    gap: 10px;
+  }
+}
+
+/* ✅ Mobile: 375px ~ 767px */
+@media (max-width: 767px) and (min-width: 375px) {
+  article.best_product_list_wrapper {
+    padding: 20px 20px 0 20px;
+  }
+  article.best_product_list_wrapper .best_product_list {
+    display: block;
+  }
+}

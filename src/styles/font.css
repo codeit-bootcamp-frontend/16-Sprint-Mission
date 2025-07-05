@@ -1,0 +1,31 @@
+:root {
+  --text-3xl: 32px;
+  --lh-3xl: 42px;
+
+  --text-2xl: 24px;
+  --lh-2xl: 32px;
+
+  --text-xl: 20px;
+  --lh-xl: 32px;
+
+  --text-2lg: 18px;
+  --lh-2lg: 26px;
+
+  --text-lg: 16px;
+  --lh-lg: 26px;
+
+  --text-md: 14px;
+  --lh-md: 24px;
+
+  --text-sm: 13px;
+  --lh-sm: 22px;
+
+  --text-xs: 12px;
+  --lh-xs: 20px;
+  --lh-xs-tight: 18px;
+
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+}
