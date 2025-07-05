@@ -1,4 +1,20 @@
-const Input = ({
+import React, { ChangeEvent, KeyboardEvent } from "react";
+
+type InputProps = {
+  value: string;
+  onChange: (
+    e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
+  ) => void;
+  placeholder?: string;
+  type?: string;
+  disabled?: boolean;
+  name?: string;
+  onKeyDown?: (
+    e: KeyboardEvent<HTMLInputElement> | KeyboardEvent<HTMLTextAreaElement>
+  ) => void;
+};
+
+const Input: React.FC<InputProps> = ({
   value,
   onChange,
   placeholder = "",
