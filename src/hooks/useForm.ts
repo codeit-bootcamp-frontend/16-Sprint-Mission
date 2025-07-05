@@ -77,7 +77,7 @@ const useForm = (
     }
 
     if (shouldCheckTags) {
-      results.push(formOptions?.customFieldValidators?.tags(tags));
+      results.push(formOptions?.customFieldValidators?.tags(tags) ?? false);
     }
 
     for (const key in values) {
