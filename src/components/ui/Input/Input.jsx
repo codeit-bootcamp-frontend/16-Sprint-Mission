@@ -10,7 +10,7 @@ const Input = ({ ...props }) => {
     placeholder,
     onChange,
     onBlur,
-    isError,
+    isError = false,
   } = props;
   return (
     <input

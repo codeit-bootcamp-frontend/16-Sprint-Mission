@@ -46,7 +46,7 @@ const TagsInput = ({ id, placeholder, tags, isFormTag, onTagsChange }) => {
       <input
         type="text"
         id={id}
-        css={InputStyle}
+        css={InputStyle(errorMessage)}
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         onKeyDown={handleKeyDown}
