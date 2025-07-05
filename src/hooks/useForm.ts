@@ -66,7 +66,7 @@ const useForm = (
     const formData = new FormData(form);
 
     const values: Record<string, string> = {};
-    const results = [];
+    const results: boolean[] = [];
 
     for (const [name, value] of formData.entries()) {
       values[name] = value.toString(); // Record<string, string>으로 타입을 선언했으므로, 문자열만 받기 위해 toString() 사용
