@@ -32,6 +32,10 @@ const validatorMap: ValidatorMap = {
   nickname: validators.validateNickname,
 };
 
+interface FieldErrors {
+  [key: string]: string;
+}
+
 const useForm = (
   formRef: RefObject<HTMLFormElement | null>,
   formOptions?: FormOptions<string | string[] | number | undefined>
@@ -42,11 +46,8 @@ const useForm = (
   const shouldCheckTags = formRef.current?.dataset.includeTags === "true";
   const checkTagsResult = formOptions?.customFieldValidators?.tags(tags);
 
-  // 에러 메시지
-  const [emailMsg, setEmailMsg] = useState("");
-  const [passwordMsg, setPasswordMsg] = useState("");
-  const [passwordCheckMsg, setPasswordCheckMsg] = useState("");
-  const [nicknameMsg, setNicknameMsg] = useState("");
+  // 에러 메시지: 에러 발생은 순서가 없으므로, 약간의 비용을 감수하고 한번에 관리
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
 
   const handlePriceInput = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -114,10 +115,10 @@ const useForm = (
     const validator = validatorMap[name];
     if (validator) {
       const { message } = validator(value);
-      if (name === "email") setEmailMsg(message);
-      if (name === "password") setPasswordMsg(message);
-      if (name === "passwordCheck") setPasswordCheckMsg(message);
-      if (name === "nickname") setNicknameMsg(message);
+      setFieldErrors((prev) => ({
+        ...prev,
+        [name]: message,
+      }));
     }
 
     debouncedValidateForm(); // blur될 때만 폼 유효성 검사
@@ -137,10 +138,7 @@ const useForm = (
     validateForm,
 
     // 에러 메시지
-    emailMsg,
-    passwordMsg,
-    passwordCheckMsg,
-    nicknameMsg,
+    fieldErrors,
   };
 };
 

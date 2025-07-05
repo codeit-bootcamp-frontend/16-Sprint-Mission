@@ -27,10 +27,11 @@ const SignUpPage = () => {
     handleBlur,
     isFormValid,
     validateForm,
-    emailMsg,
-    passwordMsg,
-    passwordCheckMsg,
-    nicknameMsg,
+    fieldErrors,
+    // emailMsg,
+    // passwordMsg,
+    // passwordCheckMsg,
+    // nicknameMsg,
   } = useForm(formRef);
 
   const signIn = useSignIn();
@@ -100,9 +101,9 @@ const SignUpPage = () => {
                     placeholder="pandaMarket@email.com"
                     required
                     onBlur={handleBlur}
-                    isError={emailMsg}
+                    isError={fieldErrors.email}
                   />
-                  <span className="form-input-hint">{emailMsg}</span>
+                  <span className="form-input-hint">{fieldErrors.email}</span>
                 </div>
               </FormControl>
 
@@ -119,9 +120,11 @@ const SignUpPage = () => {
                     placeholder="닉네임"
                     required
                     onBlur={handleBlur}
-                    isError={nicknameMsg}
+                    isError={fieldErrors.nickname}
                   />
-                  <span className="form-input-hint">{nicknameMsg}</span>
+                  <span className="form-input-hint">
+                    {fieldErrors.nickname}
+                  </span>
                 </div>
               </FormControl>
 
@@ -140,7 +143,7 @@ const SignUpPage = () => {
                       placeholder="비밀번호 입력"
                       required
                       onBlur={handleBlur}
-                      isError={passwordMsg}
+                      isError={fieldErrors.password}
                     />
                     <IconButton
                       type="button"
@@ -156,7 +159,9 @@ const SignUpPage = () => {
                       onClick={() => setIsVisible((prev) => !prev)}
                     />
                   </div>
-                  <span className="form-input-hint">{passwordMsg}</span>
+                  <span className="form-input-hint">
+                    {fieldErrors.password}
+                  </span>
                 </div>
               </FormControl>
 
@@ -175,7 +180,7 @@ const SignUpPage = () => {
                       placeholder="비밀번호 확인"
                       required
                       onBlur={handleBlur}
-                      isError={passwordCheckMsg}
+                      isError={fieldErrors.passwordCheck}
                     />
                     <IconButton
                       type="button"
@@ -191,7 +196,9 @@ const SignUpPage = () => {
                       onClick={() => setIsVisible((prev) => !prev)}
                     />
                   </div>
-                  <span className="form-input-hint">{passwordCheckMsg}</span>
+                  <span className="form-input-hint">
+                    {fieldErrors.passwordCheck}
+                  </span>
                 </div>
               </FormControl>
 

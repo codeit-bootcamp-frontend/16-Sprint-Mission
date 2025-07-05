@@ -26,7 +26,7 @@ const LoginPage = () => {
 
   const signIn = useSignIn();
 
-  const { handleBlur, validateForm, isFormValid, emailMsg, passwordMsg } =
+  const { handleBlur, validateForm, isFormValid, fieldErrors } =
     useForm(formRef);
 
   const handleLogin = async () => {
@@ -87,9 +87,9 @@ const LoginPage = () => {
                     placeholder="이메일"
                     required
                     onBlur={handleBlur}
-                    isError={emailMsg}
+                    isError={fieldErrors.email}
                   />
-                  <span className="form-input-hint">{emailMsg}</span>
+                  <span className="form-input-hint">{fieldErrors.email}</span>
                 </div>
               </FormControl>
 
@@ -108,7 +108,7 @@ const LoginPage = () => {
                       placeholder="비밀번호"
                       required
                       onBlur={handleBlur}
-                      isError={passwordMsg}
+                      isError={fieldErrors.password}
                     />
                     <IconButton
                       type="button"
@@ -124,7 +124,9 @@ const LoginPage = () => {
                       onClick={() => setIsVisible((prev) => !prev)}
                     />
                   </div>
-                  <span className="form-input-hint">{passwordMsg}</span>
+                  <span className="form-input-hint">
+                    {fieldErrors.password}
+                  </span>
                 </div>
               </FormControl>
 
