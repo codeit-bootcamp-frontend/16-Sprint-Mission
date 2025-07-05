@@ -1,23 +1,19 @@
 import React from "react";
 
-export default function TagInput({ maxTags = 5, onChange }) {
-  const [tags, setTags] = React.useState([]);
-
+export default function TagInput({ tags, setTags, maxTags = 5 }) {
   const addTag = (e) => {
     if (e.key !== "Enter") return;
     const value = e.target.value.trim();
-    if (!value || tags.includes(value) || tags.length >= maxTags) return;
+    if (!value || tags.includes(value) || tags.lenth >= maxTags) return;
 
     const nextTags = [...tags, value];
     setTags(nextTags);
-    onChange?.(nextTags);
-    e.target.value = ""; // 입력 후 input 비우기
+    e.target.value = "";
   };
 
-  const removeTag = (targetTags) => {
-    const nextTags = tags.filter((tag) => tag !== targetTags);
+  const removeTag = (targetTag) => {
+    const nextTags = tags.filter((tag) => tag !== targetTag);
     setTags(nextTags);
-    onChange?.(nextTags);
   };
 
   return (
