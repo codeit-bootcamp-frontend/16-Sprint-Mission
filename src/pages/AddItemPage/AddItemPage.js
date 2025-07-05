@@ -7,6 +7,7 @@ import useImageUpload from "../../hooks/useImageUpload";
 import ImageUpload from "../../components/ImageUpload/ImageUpload";
 import useTagUpdate from "../../hooks/useTagUpdate";
 import useRequiredValidation from "../../hooks/useRequiredValidation";
+import { formatPrice } from "../../utils/formatters";
 
 const IMG_MAX_LIMIT = 1;
 
@@ -31,8 +32,7 @@ const AddItemPage = () => {
   const { isAllValid } = useRequiredValidation(formData);
 
   const handleChangePrice = (value) => {
-    const price = Number(value.replaceAll(",", ""));
-    const changePrice = isNaN(price) ? "0" : price.toLocaleString("ko-KR");
+    const changePrice = formatPrice(value);
     setPrdPrice(changePrice);
   };
 
