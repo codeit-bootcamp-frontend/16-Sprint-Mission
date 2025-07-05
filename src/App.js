@@ -24,14 +24,14 @@ function App() {
 
   useEffect(() => {
     if (width < BREAK_POINT.md) {
-      setPageSize(4);
       setBestPageSize(1);
+      setPageSize(4);
     } else if (width < BREAK_POINT.lg) {
-      setPageSize(6);
       setBestPageSize(2);
+      setPageSize(6);
     } else {
-      setPageSize(10);
       setBestPageSize(4);
+      setPageSize(10);
     }
   }, [width]);
 
@@ -70,7 +70,7 @@ function App() {
           bestProducts={bestProducts}
           bestPageSize={bestPageSize}
         />
-        <ProductsList products={products} pageSize={pageSize} />
+        <ProductsList products={products} setOrderBy={setOrderBy} />
       </section>
       <Buttons
         page={page}

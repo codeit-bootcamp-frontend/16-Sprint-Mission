@@ -3,8 +3,9 @@ import { css } from "@emotion/react";
 import { BREAK_POINT } from "../style/BreakPoints";
 import ProductItem from "./ProductItem";
 import searchIcon from "../assets/searchIcon.svg";
+import Dropdown from "./Dropdown";
 
-function ProductsList({ products }) {
+function ProductsList({ products, setOrderBy }) {
   return (
     <div css={sectionWrapper}>
       <section css={productsToolsSection}>
@@ -16,10 +17,7 @@ function ProductsList({ products }) {
             <img src={searchIcon} />
           </button>
         </div>
-        <select css={sectionDropdown}>
-          <option>최신순</option>
-          <option>좋아요순</option>
-        </select>
+        <Dropdown css={sectionDropdown} setOrderBy={setOrderBy} />
       </section>
 
       <div css={productItemsSection}>
