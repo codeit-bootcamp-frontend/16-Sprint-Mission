@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import styles from "./ImagePreview.module.scss";
-import useToast from "../../hooks/useToast";
 import Skeleton from "../Skeleton/Skeleton";
+import { useToastStore } from "../../store/toastStore";
 
 const ImagePreview = ({ file, id, onDelete }) => {
   const [preview, setPreview] = useState();
-  const { createToast } = useToast();
+  const createToast = useToastStore((state) => state.createToast);
 
   useEffect(() => {
     // 여기서 이미지 업로드 실패가 아니라, 나중에 api를 사용해서 이미지를 업로드 해야하니깐

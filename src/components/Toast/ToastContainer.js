@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom";
 import Toast from "./Toast";
 
-import { useToastStore } from "../../store/toast";
+import { useToastStore } from "../../store/toastStore";
 import styled from "@emotion/styled/macro";
 
 const ToastContainerStyled = styled.div`
@@ -18,7 +18,7 @@ const ToastContainerStyled = styled.div`
 `;
 
 const ToastContainer = () => {
-  const { toasts } = useToastStore();
+  const toasts = useToastStore((state) => state.toasts);
 
   return createPortal(
     <ToastContainerStyled>

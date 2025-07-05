@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useToastStore } from "../../store/toast";
+import { useToastStore } from "../../store/toastStore";
 import styled from "@emotion/styled/macro";
 import { keyframes } from "@emotion/react";
 
@@ -49,7 +49,7 @@ const ToastStyled = styled.div`
 `;
 
 const Toast = ({ id, message, delay = TOAST_DEFAULT.DELAY, order }) => {
-  const { deleteToast } = useToastStore();
+  const deleteToast = useToastStore((state) => state.deleteToast);
 
   useEffect(() => {
     const TIMER = setTimeout(() => {
