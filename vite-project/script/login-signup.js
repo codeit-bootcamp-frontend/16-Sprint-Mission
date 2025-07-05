@@ -137,7 +137,7 @@ function toggleButton() {
     const signupNickname = document.querySelector('.signup-nickname-input');
     const signupPw = document.querySelector('.signup-password-input');
     const signupCkPw = document.querySelector('.signup-ckpassword-input');
-
+    
     if (signupEmail && signupNickname && signupPw && signupCkPw) {
         const checkEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(signupEmail.value.trim());
         const checkNickname = signupNickname.value.trim() !== "";
