@@ -37,7 +37,7 @@ const ProductDetailPage = () => {
         <Button
           variant="bottomPrimary"
           size="xl"
-          round={true}
+          shape="round"
           onClick={() => navigate("/products")}
         >
           목록으로 돌아가기 <img src={arrowLeftIcon} alt="왼쪽 화살표" />

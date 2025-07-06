@@ -1,32 +1,13 @@
 /** @jsxImportSource @emotion/react */
-import { ReactNode, MouseEvent, CSSProperties } from "react";
 import { css } from "@emotion/react";
 import { styles } from "./ButtonStylesMap";
-
-type Size = keyof typeof styles.size; // 'sm' | 'lg', ...
-type Variant = keyof typeof styles.variant; // 'primary' | 'secondary', ...
-
-interface ButtonStyleProps {
-  size?: Size;
-  variant?: Variant;
-  round?: string;
-}
-
-interface ButtonProps extends ButtonStyleProps {
-  id?: string;
-  type?: "button" | "submit" | undefined;
-  children: ReactNode;
-  className?: string;
-  disabled?: boolean;
-  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
-  style?: CSSProperties;
-}
+import { ButtonProps } from "@/types/button";
 
 const Button = ({
   type = "button",
   variant,
   size,
-  round,
+  shape,
   children,
   className = "",
   disabled,
@@ -36,7 +17,13 @@ const Button = ({
   return (
     <button
       type={type}
-      css={ButtonStyle({ size, variant, round })}
+      css={[
+        baseStyle,
+        size && styles.size[size],
+        variant && styles.variant[variant],
+        shape && styles.shape[shape],
+        !variant && defaultHoverStyle,
+      ]}
       className={className}
       style={props.style}
       disabled={disabled}
@@ -49,24 +36,16 @@ const Button = ({
 
 export default Button;
 
-const ButtonStyle = (props: ButtonStyleProps) => css`
+const baseStyle = css`
   display: inline-flex;
   justify-content: center;
   align-items: center;
   gap: 6px;
   transition: background-color 0.3s, border 0.3s;
+`;
 
-  ${!props.variant &&
-  css`
-    &:hover {
-      background-color: var(--gray300);
-    }
-  `}
-
-  ${props.size && styles.size[props.size]}
-  ${props.variant && styles.variant[props.variant]}
-  ${props.round &&
-  css`
-    border-radius: var(--border-radius-lg);
-  `}
+const defaultHoverStyle = css`
+  &:hover {
+    background-color: var(--gray300);
+  }
 `;

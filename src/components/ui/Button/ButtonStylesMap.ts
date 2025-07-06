@@ -54,7 +54,12 @@ export const styles = {
       max-width: 356px;
     `,
   },
-  round: css`
-    border-radius: var(--border-radius-lg);
-  `,
+  shape: {
+    round: css`
+      border-radius: var(--border-radius-lg);
+    `,
+    default: css`
+      border-radius: var(--border-radius-xs);
+    `,
+  },
 };

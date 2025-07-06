@@ -64,7 +64,7 @@ const ProductInfo = ({ product, thumbSize }) => {
           <div className="actions">
             <Button
               variant="outlined"
-              round={true}
+              shape="round"
               size="sm"
               className="btn-favorite"
               style={{

@@ -46,7 +46,7 @@ const useForm = (
   const shouldCheckTags = formRef.current?.dataset.includeTags === "true";
   const checkTagsResult = formOptions?.customFieldValidators?.tags(tags);
 
-  // 에러 메시지: 에러 발생은 순서가 없으므로, 약간의 비용을 감수하고 한번에 관리
+  // 에러 메시지: 에러 발생은 순서가 없으므로, 리렌더링 비용을 감수하고 한번에 관리
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
 
   const handlePriceInput = (e: ChangeEvent<HTMLInputElement>) => {
