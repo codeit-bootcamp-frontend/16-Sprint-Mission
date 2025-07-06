@@ -22,9 +22,7 @@ export const validateProductPrice = (value) => {
 };
 
 /* 태그 유효성 */
-export const validateTag = (newTag, existingTags) => {
-  if (newTag.trim().length === 0)
-    return { isValid: false, message: "태그명을 입력해주세요." };
+export const validateTags = (newTag, existingTags) => {
   if (existingTags.includes(newTag.trim()))
     return { isValid: false, message: "중복된 태그명입니다." };
   return { isValid: true, message: "" };

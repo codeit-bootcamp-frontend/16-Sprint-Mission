@@ -101,18 +101,14 @@ const AddProductForm = ({ title }) => {
 
       <FormControl>
         <FormLabel inputId="tags">태그</FormLabel>
-        <div className="input-hint-wrap">
-          <TagsInput
-            id="tags"
-            placeholder="태그를 입력해주세요"
-            tags={tags}
-            isFormTag={true}
-            onTagsChange={handleTagsChange}
-            onBlur={handleBlur}
-            isError={fieldErrors.tags}
-          />
-          <span className="form-input-hint">{fieldErrors.tags}</span>
-        </div>
+        <TagsInput
+          id="tags"
+          placeholder="태그를 입력해주세요"
+          tags={tags}
+          isFormTag={true}
+          onTagsChange={handleTagsChange}
+          onBlur={handleBlur}
+        />
       </FormControl>
     </form>
   );

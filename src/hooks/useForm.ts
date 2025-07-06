@@ -43,8 +43,6 @@ const useForm = (
   const [isFormValid, setIsFormValid] = useState(false);
 
   const [tags, setTags] = useState<string[]>([]);
-  const shouldCheckTags = formRef.current?.dataset.includeTags === "true";
-  const checkTagsResult = formOptions?.customFieldValidators?.tags(tags);
 
   // 에러 메시지: 에러 발생은 순서가 없으므로, 리렌더링 비용을 감수하고 한번에 관리
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
@@ -79,8 +77,11 @@ const useForm = (
       values.productPrice = values.productPrice?.replace(",", "");
     }
 
+    const shouldCheckTags = formRef.current?.dataset.includeTags === "true";
+    const checkTagsResult = formOptions?.customFieldValidators?.tags(tags);
+
     if (shouldCheckTags) {
-      results.push(formOptions?.customFieldValidators?.tags(tags) ?? false);
+      results.push(checkTagsResult ?? false);
     }
 
     for (const key in values) {
