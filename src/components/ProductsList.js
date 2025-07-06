@@ -4,8 +4,16 @@ import { BREAK_POINT } from "../style/BreakPoints";
 import ProductItem from "./ProductItem";
 import searchIcon from "../assets/searchIcon.svg";
 import Dropdown from "./Dropdown";
+import { useRef } from "react";
 
-function ProductsList({ products, setOrderBy }) {
+function ProductsList({ products, setOrderBy, setKeyword }) {
+  const inputRef = useRef();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setKeyword(inputRef.current.value);
+  };
+
   return (
     <div css={sectionWrapper}>
       <section css={productsToolsSection}>
@@ -15,12 +23,17 @@ function ProductsList({ products, setOrderBy }) {
         <button css={sectionButton} className="pt-button">
           상품 등록하기
         </button>
-        <div css={searchWrapper} className="pt-search">
-          <input css={sectionInput} placeholder="검색할 상품을 입력해주세요" />
-          <button css={searchIconButton}>
+        <form css={searchWrapper} className="pt-search" onSubmit={handleSubmit}>
+          <input
+            css={sectionInput}
+            type="text"
+            placeholder="검색할 상품을 입력해주세요"
+            ref={inputRef}
+          />
+          <button css={searchIconButton} type="submit">
             <img src={searchIcon} />
           </button>
-        </div>
+        </form>
         <Dropdown
           customStyle={sectionDropdown}
           className="pt-select"

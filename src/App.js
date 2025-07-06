@@ -19,6 +19,7 @@ function App() {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(4);
   const [orderBy, setOrderBy] = useState("recent");
+  const [keyword, setKeyword] = useState("");
   const [totalCount, setTotalCount] = useState();
   const width = useViewportWidth();
 
@@ -52,14 +53,14 @@ function App() {
   useEffect(() => {
     //전체상품 fetch 함수
     async function fetchProducts() {
-      const result = await getProducts({ page, pageSize, orderBy });
+      const result = await getProducts({ page, pageSize, orderBy, keyword });
       if (!result) return;
       setProducts(result.list);
       setTotalCount(result.totalCount);
     }
 
     fetchProducts();
-  }, [page, pageSize, orderBy]);
+  }, [page, pageSize, orderBy, keyword]);
 
   return (
     <>
@@ -70,7 +71,11 @@ function App() {
           bestProducts={bestProducts}
           bestPageSize={bestPageSize}
         />
-        <ProductsList products={products} setOrderBy={setOrderBy} />
+        <ProductsList
+          products={products}
+          setOrderBy={setOrderBy}
+          setKeyword={setKeyword}
+        />
       </section>
       <Buttons
         page={page}

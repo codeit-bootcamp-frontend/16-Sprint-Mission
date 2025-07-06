@@ -19,8 +19,11 @@ export async function getProducts({
   page = 1,
   pageSize = 4,
   orderBy = "recent",
+  keyword,
 } = {}) {
-  const query = `page=${page}&pageSize=${pageSize}&orderBy=${orderBy}`;
+  const query =
+    `page=${page}&pageSize=${pageSize}&orderBy=${orderBy}` +
+    (keyword ? `&keyword=${encodeURIComponent(keyword)}` : "");
   try {
     const response = await fetch(`${BASE_URL}/products?${query}`);
     if (!response.ok) {
