@@ -79,8 +79,8 @@ const useForm = (
       values.productPrice = values.productPrice?.replace(",", "");
     }
 
-    if (shouldCheckTags && checkTagsResult) {
-      results.push(checkTagsResult);
+    if (shouldCheckTags) {
+      results.push(formOptions?.customFieldValidators?.tags(tags) ?? false);
     }
 
     for (const key in values) {
