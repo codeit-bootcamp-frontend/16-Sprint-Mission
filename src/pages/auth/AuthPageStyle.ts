@@ -1,82 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { BREAKPOINTS } from "@/constants/responsive";
+import FormStyle from "@/components/Form/FormStyle";
 
 const AuthPageStyle = css`
-  /* auth 폼 공통 */
-  .form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-
-  .form-label {
-    display: block;
-    margin-bottom: 1rem;
-    font-size: var(--form-label-font-size);
-    font-weight: 700;
-    color: var(--gray800);
-  }
-
-  .form-input {
-    width: 100%;
-    padding: 15px 24px;
-    background: var(--gray100);
-    border-radius: var(--border-radius-sm);
-    font-size: 16px;
-    line-height: 26px;
-  }
-  .form-input.invalid {
-    border: 1px solid var(--error-color);
-  }
-
-  .form-input-hint {
-    display: block;
-    margin: 8px 0 0 16px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--error-color);
-  }
-
-  .visible-wrap .form-input {
-    padding-right: 60px;
-  }
-
-  .form-logo img {
-    height: auto;
-  }
-
-  .form-contents {
-    display: flex;
-    flex-direction: column;
-    gap: var(--form-contents-gap);
-    width: 100%;
-  }
-
-  .visible-wrap {
-    position: relative;
-  }
-
-  .form .btn-lg {
-    width: 100%;
-  }
-
-  .btn-password-visible {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 24px;
-    width: 24px;
-    height: 24px;
-    z-index: 1;
-  }
+  ${FormStyle};
 
   /*================ 로그인, 회원가입 ================*/
   .form {
