@@ -112,6 +112,23 @@ const useForm = (
       }
     }
 
+    // 비밀번호, 비밀번호 확인 유효성 검사 연동
+    if (name === "password") {
+      const passwordCheckInput = document.querySelector(
+        "input[name=passwordCheck]"
+      ) as HTMLInputElement;
+
+      if (passwordCheckInput) {
+        const { message } = validators.validatePasswordCheck(
+          passwordCheckInput.value
+        );
+        setFieldErrors((prev) => ({
+          ...prev,
+          passwordCheck: message,
+        }));
+      }
+    }
+
     // 에러 메시지 업데이트
     const validator = validatorMap[name];
     if (validator) {
