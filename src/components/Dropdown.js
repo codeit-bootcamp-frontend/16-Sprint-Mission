@@ -7,7 +7,7 @@ import { BREAK_POINT } from "../style/BreakPoints";
 import { ReactComponent as SortIcon } from "../assets/sortIcon.svg";
 import useViewportWidth from "../hooks/useViewportWidth";
 
-function Dropdown({ setOrderBy }) {
+function Dropdown({ setOrderBy, customStyle, className }) {
   const [isOpen, setIsOpen] = useState(false);
   const [label, setLabel] = useState("recent");
   const containerRef = useRef();
@@ -28,21 +28,22 @@ function Dropdown({ setOrderBy }) {
   const handleChange = (val) => {
     setLabel(val);
     setOrderBy(val);
+    setIsOpen(false);
   };
 
   return (
-    <div ref={containerRef} css={dropdownWrapper}>
+    <div ref={containerRef} css={dropdownWrapper} className={className}>
       <button
         onClick={toggleOpen}
         onKeyDown={(e) => {
           if (e.key === "Escape") setIsOpen(false);
         }}
-        css={dropdownButton}
+        css={[dropdownButton, customStyle]}
       >
         {width < BREAK_POINT.md ? (
           <SortIcon />
         ) : (
-          (label === "recent" ? "최신순" : "인기순") + " ▼"
+          (label === "recent" ? "최신순" : "좋아요순") + " ▼"
         )}
       </button>
 
@@ -52,7 +53,7 @@ function Dropdown({ setOrderBy }) {
             최신순
           </li>
           <li css={dropdownOption} onClick={() => handleChange("favorite")}>
-            인기순
+            좋아요순
           </li>
         </ul>
       )}
@@ -69,10 +70,10 @@ const dropdownWrapper = css`
 const dropdownButton = css`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 
   width: 42px;
-  aspect-ratio: 1/1;
+  height: 42px;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
 `;

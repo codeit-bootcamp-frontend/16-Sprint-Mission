@@ -29,5 +29,5 @@ const bestProductsSection = css`
 
 const bestProductsWrapper = css`
   display: flex;
-  gap: 16px;
+  gap: 10px;
 `;

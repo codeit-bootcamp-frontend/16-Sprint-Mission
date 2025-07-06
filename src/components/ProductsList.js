@@ -9,15 +9,23 @@ function ProductsList({ products, setOrderBy }) {
   return (
     <div css={sectionWrapper}>
       <section css={productsToolsSection}>
-        <h2 css={sectionTitle}>전체상품</h2>
-        <button css={sectionButton}>상품 등록하기</button>
-        <div css={searchWrapper}>
+        <h2 css={sectionTitle} className="pt-title">
+          전체상품
+        </h2>
+        <button css={sectionButton} className="pt-button">
+          상품 등록하기
+        </button>
+        <div css={searchWrapper} className="pt-search">
           <input css={sectionInput} placeholder="검색할 상품을 입력해주세요" />
           <button css={searchIconButton}>
             <img src={searchIcon} />
           </button>
         </div>
-        <Dropdown css={sectionDropdown} setOrderBy={setOrderBy} />
+        <Dropdown
+          customStyle={sectionDropdown}
+          className="pt-select"
+          setOrderBy={setOrderBy}
+        />
       </section>
 
       <div css={productItemsSection}>
@@ -47,13 +55,29 @@ const sectionWrapper = css`
 `;
 
 const productsToolsSection = css`
-  width: 100%;
+  width: 344px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 10px;
   align-items: center;
   justify-content: space-between;
+
+  @media (min-width: ${BREAK_POINT.md}px) {
+    width: 100%;
+    .pt-title {
+      order: 1;
+    }
+    .pt-button {
+      order: 3;
+    }
+    .pt-search {
+      order: 2;
+    }
+    .pt-select {
+      order: 4;
+    }
+  }
 `;
 
 const sectionTitle = css`
@@ -81,6 +105,14 @@ const sectionInput = css`
   border-radius: 12px;
   background-color: #f3f4f6;
   padding: 9px 16px;
+
+  @media (min-width: ${BREAK_POINT.md}px) {
+    width: 242px;
+  }
+
+  @media (min-width: ${BREAK_POINT.lg}px) {
+    width: 325px;
+  }
 `;
 const searchIconButton = css`
   position: absolute;
@@ -89,10 +121,18 @@ const searchIconButton = css`
   top: 50%;
   right: 12px;
   transform: translateY(-50%);
+
+  img {
+    cursor: pointer;
+  }
 `;
 const sectionDropdown = css`
   width: 42px;
   height: 42px;
+
+  @media (min-width: ${BREAK_POINT.md}px) {
+    width: 130px;
+  }
 `;
 
 const productItemsSection = css`
@@ -100,11 +140,25 @@ const productItemsSection = css`
   grid-template-columns: repeat(2, 168px);
   gap: 32px 8px;
   margin: 0 auto;
+
+  @media (min-width: ${BREAK_POINT.md}px) {
+    grid-template-columns: repeat(3, 221px);
+    gap: 16px;
+  }
+
+  @media (min-width: ${BREAK_POINT.lg}px) {
+    grid-template-columns: repeat(5, 221px);
+    gap: 24px;
+  }
 `;
 
 const customProductItem = css`
   img {
     width: 168px;
     aspect-ratio: 1 / 1;
+
+    @media (min-width: ${BREAK_POINT.md}px) {
+      width: 221px;
+    }
   }
 `;

@@ -3,15 +3,30 @@ import { css } from "@emotion/react";
 
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
+import iconLogo from "../assets/iconLogo.svg";
 import userIcon from "../assets/userIcon.svg";
 import styled from "@emotion/styled";
+import useViewportWidth from "../hooks/useViewportWidth";
+import { useEffect, useState } from "react";
+import { BREAK_POINT } from "../style/BreakPoints";
 
 function Header() {
+  const width = useViewportWidth();
+  const [navLogo, setNavLogo] = useState(logo);
+  useEffect(() => {
+    if (width > BREAK_POINT.md - 1) {
+      setNavLogo(iconLogo);
+    }
+    if (width < BREAK_POINT.md) {
+      setNavLogo(logo);
+    }
+  }, [width]);
+
   return (
     <HeaderContainer>
       <InnerContainer>
         <Link to="/items">
-          <img src={logo} alt="logo" />
+          <img src={navLogo} alt="logo" />
         </Link>
         <div css={category}>
           <Link to="/" css={linkStyle}>
@@ -38,9 +53,19 @@ const InnerContainer = styled.div`
   display: flex;
   gap: 8px;
   align-items: center;
+  justify-content: center;
+  margin: 0 auto;
   height: 70px;
   padding: 0 16px;
-  max-width: 1520px;
+  max-width: 376px;
+
+  @media (min-width: ${BREAK_POINT.md}px) {
+    max-width: 744px;
+  }
+
+  @media (min-width: ${BREAK_POINT.lg}px) {
+    max-width: 1520px;
+  }
 `;
 
 const category = css`

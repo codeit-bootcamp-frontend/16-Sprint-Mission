@@ -76,6 +76,13 @@ const button = css`
       background-color: #2f80ed;
       color: #f9fafb;
     }
+
+    &:disabled {
+      cursor: auto;
+      opacity: 0.5;
+      background-color: #f3f4f6;
+      color: #9ca3af;
+    }
   }
 `;
 
