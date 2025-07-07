@@ -3,12 +3,6 @@ import Link from "next/link";
 import googleImg from "../../public/images/icons/ic_google.svg";
 import kakaoImg from "../../public/images/icons/ic_kakao.svg";
 
-/**
- * 소셜 로그인 버튼 UI를 렌더링하는 재사용 가능한 컴포넌트입니다.
- *
- * @note 이미지 파일 경로는 public 디렉터리를 기준으로 합니다.
- *       (예: /img/social/google-img.png)
- */
 export default function SocialLogin() {
   return (
     <div className="py-4 px-6 rounded-lg bg-blue-50 flex justify-between items-center gap-2.5">

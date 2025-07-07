@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import Input from "../input";
 import Button from "../button";
 import {
@@ -15,7 +15,7 @@ import {
 } from "../../lib/validation";
 
 export default function SignupForm() {
-  const router = useRouter();
+  // const router = useRouter();
   const [email, setEmail] = useState("");
   const [nickname, setNickname] = useState("");
   const [password, setPassword] = useState("");
@@ -79,11 +79,11 @@ export default function SignupForm() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (isFormValid) {
-      console.log("회원가입 성공:", { email, nickname, password });
-      // 성공 시 로그인 페이지로 이동 (기존 코드: window.location.href = '/login.html')
-      router.push("/auth/login");
-    }
+    // if (isFormValid) {
+    //   console.log("회원가입 성공:", { email, nickname, password });
+    //   // 성공 시 로그인 페이지로 이동 (기존 코드: window.location.href = '/login.html')
+    //   router.push("/auth/login");
+    // }
   };
 
   return (

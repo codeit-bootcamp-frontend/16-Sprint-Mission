@@ -9,7 +9,7 @@ export default function SignupPage() {
     <main className="flex flex-col justify-center items-center min-h-screen w-full gap-10 p-4">
       <Link href="/">
         <Image
-          src={logoImg} // public 폴더 기준 경로
+          src={logoImg}
           alt="판다마켓 로고"
           priority
           className="w-[198px] h-[66px] md:w-[396px] md:h-[132px]"
