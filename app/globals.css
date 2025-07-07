@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: Pretendard;
+  src: url("../public/fonts/PretendardVariable.woff2")
+    format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ROKAF-Sans";
+  src: url("../public/fonts/ROKAF_Sans_Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-pretendard: "Pretendard", "sans-serif";
+  --font-rokaf: "ROKAF-Sans", "sans-serif";
+
+  --color-background: rgba(255, 255, 255, 1);
+  --color-border: rgba(223, 223, 223, 1);
+  --color-content: rgba(252, 252, 252, 1);
+
+  --color-primary-100: rgba(54, 146, 255, 1);
+  --color-primary-200: rgba(47, 128, 237, 1);
+  --color-primary-300: rgba(18, 81, 170, 1);
+
+  --color-secondary-900: rgba(17, 24, 39, 1);
+  --color-secondary-800: rgba(31, 41, 55, 1);
+  --color-secondary-700: rgba(55, 65, 81, 1);
+  --color-secondary-600: rgba(75, 85, 99, 1);
+  --color-secondary-500: rgba(107, 114, 128, 1);
+  --color-secondary-400: rgba(156, 163, 175, 1);
+  --color-secondary-200: rgba(229, 231, 235, 1);
+  --color-secondary-100: rgba(243, 244, 246, 1);
+  --color-secondary-50: rgba(249, 250, 251, 1);
+
+  --color-gray-800: #1f2937;
+  --color-gray-600: rgba(75, 85, 99, 1);
+  --color-gray-500: #6b7280;
+  --color-gray-400: rgba(156, 163, 175, 1);
+  --color-gray-200: rgba(229, 231, 235, 1);
+  --color-gray-100: #f3f4f6;
+
+  --color-error: #f74747;
+}
+
+body {
+  font-family: "Pretendard", sans-serif;
+  background-color: var(--color-background);
+}
