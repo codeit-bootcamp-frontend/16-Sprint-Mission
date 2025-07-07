@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import { CiHeart } from "react-icons/ci";
 import noImg from "../../assets/img/noimg.jpg";
@@ -6,7 +7,7 @@ import noImg from "../../assets/img/noimg.jpg";
 import styles from "./ProductItem.module.css";
 
 function ProductItem({ item, type = "small" }) {
-  const { images, name, price, favoriteCount } = item;
+  const { id, images, name, price, favoriteCount } = item;
   const [imgSrc, setImgSrc] = useState(images?.[0] || noImg);
 
   useEffect(() => {
@@ -18,7 +19,7 @@ function ProductItem({ item, type = "small" }) {
   };
 
   return (
-    <a href="#" className={styles.card}>
+    <Link to={`items/${id}`} className={styles.card}>
       <img
         className={styles[type]}
         src={imgSrc}
@@ -33,7 +34,7 @@ function ProductItem({ item, type = "small" }) {
         </button>
         {favoriteCount}
       </span>
-    </a>
+    </Link>
   );
 }
 

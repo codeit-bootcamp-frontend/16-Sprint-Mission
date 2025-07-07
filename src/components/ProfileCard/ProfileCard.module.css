@@ -1,0 +1,20 @@
+.profileCard {
+  display: flex;
+  gap: 16px;
+  flex: 1;
+  
+}
+.profileText {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--font-size-xxs);
+  justify-content: space-between;
+  
+}
+.nickname {
+  font-weight: 500;
+  color: var(--secondary-600);
+}
+.date {
+  color: var(--cool-gray-400);
+}
