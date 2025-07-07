@@ -1,97 +1,52 @@
-import { useState } from 'react';
 import logo from '@assets/images/logo-title.png';
 import SocialLogin from '@components/SocialLogin';
-import { useValidate, checkAllValid } from '@hooks/useValidate';
+import { FormProvider, useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import FormInput from './FormInput';
-import styles from './styles/Login.module.css';
+import EmailField from './EmailField';
+import PasswordField from './PasswordField';
+import styles from './styles/Auth.module.css';
+import SubmitButton from './SubmitButton';
 
 function Login() {
-  const [passwordToggle, setPasswordToggle] = useState(false);
   const toItemsNavigation = useNavigate();
-  const { getFieldState, validate } = useValidate();
-  const emailValidationState = getFieldState('user-email'); //email관련 값만 받아오기 생성x조회o
-  const passwordValidationState = getFieldState('user-password');
-  const isAllValid = checkAllValid(
-    emailValidationState,
-    passwordValidationState,
-  );
+  const methods = useForm({ mode: 'all' }); //change,blur될 때 유효성 평가해줘
 
-  function handleSubmit(e) {
-    validate('user-email', emailValidationState.value);
-    validate('user-password', passwordValidationState.value);
-
-    if (isAllValid) {
-      sessionStorage.setItem('loggedIn', emailValidationState.value);
+  function onSubmit(data, e) {
+    if (!methods.isValid) {
+      sessionStorage.setItem('loggedIn', data['user-email']);
       toItemsNavigation('/items');
     } else {
       e.preventDefault();
     }
   }
 
-  // 토글 보이기 추가하기
-  function handlePwToggle() {
-    setPasswordToggle(!passwordToggle);
-  }
-
   return (
-    <main className={styles.main}>
-      <section className={styles.loginSection}>
+    <main className={styles.login}>
+      <section className={styles.authSection}>
         <div className={styles.logo}>
           <Link to="/" aria-label="판다마켓 홈으로 이동">
             <img src={logo} alt="판다마켓 로고" />
           </Link>
         </div>
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <fieldset>
-            <label htmlFor="user-email">이메일</label>
-            <FormInput
-              validate={validate}
-              {...emailValidationState}
-              type="text"
-              id="user-email"
-              name="user-email"
-              placeholder="이메일을 입력해주세요"
-            />
-            <div className={styles.containerRelative}>
-              <label htmlFor="user-password">비밀번호</label>
-              <FormInput
-                validate={validate}
-                {...passwordValidationState}
-                id="user-password"
-                type={passwordToggle ? 'text' : 'password'}
-                name="user-password"
-                placeholder="비밀번호를 입력해주세요"
-              />
-              <input
-                className={styles.pwToggle}
-                id="toggle-visibility-pw"
-                type="checkbox"
-                onChange={handlePwToggle}
-              />
-              <label
-                aria-label="비밀번호 표시 여부"
-                aria-checked={passwordToggle}
-                htmlFor="toggle-visibility-pw"
-              ></label>
+        <FormProvider {...methods}>
+          <form
+            onSubmit={methods.handleSubmit(onSubmit)}
+            className={styles.form}
+          >
+            <fieldset>
+              <EmailField />
+              <PasswordField />
+              <SubmitButton>로그인</SubmitButton>
+            </fieldset>
+            <SocialLogin />
+            <div className={styles.signUpGuide}>
+              판다마켓이 처음이신가요?&nbsp;
+              <Link to="/sign_up" aria-label="회원가입 페이지로 이동">
+                회원가입
+              </Link>
             </div>
-            <button
-              className={
-                !isAllValid ? styles.inActivateBtn : styles.activateBtn
-              }
-              type="submit"
-            >
-              로그인
-            </button>
-          </fieldset>
-          <SocialLogin />
-          <div className={styles.signUpGuide}>
-            판다마켓이 처음이신가요?&nbsp;
-            <Link to="/sign_up" aria-label="회원가입 페이지로 이동">
-              회원가입
-            </Link>
-          </div>
-        </form>
+          </form>
+        </FormProvider>
       </section>
     </main>
   );

@@ -1,0 +1,18 @@
+.productAsk {
+  --ask-page-mb: 40px;
+
+  margin-top: 24px;
+  margin-bottom: var(--ask-page-mb);
+}
+
+@media screen and (min-width: 768px) {
+  .productAsk {
+    --ask-page-mb: 56px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .productAsk {
+    --ask-page-mb: 64px;
+  }
+}

@@ -79,10 +79,6 @@ export function useValidate() {
     dispatch({ type: 'set_validationState', payload: { name, value } });
   }, []);
 
-  //아 이렇게 필드 만들어서 가져오면 독립적으로 따로 렌더링할 수 있구나
-  //++ dispatch를 발생시키는 인풋은 결국 부모 컴포넌트를 리렌더하니까
-  //    -> React.Memo써야 제대로 불필요한 리렌더링 막을 수 있는 거 아닐까?
-  // 아 그런데 그럼 password랑 passwordCheck랑  비교 될까...? -> 이건 useEffect로 validate 다시 실행하면 되겠다
   const getFieldState = useCallback(
     (name) => {
       return {

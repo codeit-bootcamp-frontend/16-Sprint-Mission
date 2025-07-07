@@ -1,0 +1,15 @@
+.backLink {
+  padding: 12px 64px;
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  line-height: 26px;
+  color: var(--cool-gray100);
+  background-color: var(--primary-color);
+  border-radius: 40px;
+  margin: 0 auto;
+}
+
+.backLink:hover {
+  background-color: var(--primary-hover);
+}

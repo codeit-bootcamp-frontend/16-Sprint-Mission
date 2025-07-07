@@ -1,10 +1,17 @@
 import heartIcon from '@assets/icon/ic_heart.png';
 import loadFailImg from '@assets/images/loadFailImg.png';
+import { useNavigate } from 'react-router-dom';
 import styles from './styles/ProductItem.module.css';
 
 function ProductItem({ className, item }) {
+  const navigator = useNavigate();
+
+  function showProductDetail() {
+    navigator(`/items/${item.id}`);
+  }
+
   return (
-    <div className={`${styles.card} ${className}`}>
+    <div onClick={showProductDetail} className={`${styles.card} ${className}`}>
       <img
         src={item.images[0] || loadFailImg}
         onError={(e) => (e.currentTarget.src = loadFailImg)}

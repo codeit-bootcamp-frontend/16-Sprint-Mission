@@ -1,0 +1,152 @@
+.productInfo {
+  --product-info-pb: 24px;
+  --product-text-width: 100%;
+  --product-info-image-size: 343px;
+
+  color: var(--secondary-gray800);
+  border-bottom: 1px solid var(--cool-gray200);
+  padding-bottom: var(--product-info-pb);
+}
+
+.productInfo > img {
+  width: var(--product-info-image-size);
+  height: var(--product-info-image-size);
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.productText {
+  display: flex;
+  flex-direction: column;
+  width: var(--product-text-width);
+  /* 케밥 기준위치*/
+  position: relative;
+}
+
+.title {
+  border-bottom: 1px solid var(--cool-gray200);
+  padding-bottom: 16px;
+}
+
+.title h2 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+  margin-bottom: 8px;
+}
+
+.title div {
+  /* 가격 */
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.description {
+  margin-top: 16px;
+}
+
+.description p {
+  margin-top: 8px;
+}
+
+.productInfo section h3 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.tags {
+  margin-bottom: 40px;
+}
+
+.tags h3 {
+  margin-top: 24px;
+}
+
+.tags ul li {
+  padding: 6px 16px;
+  background-color: var(--cool-gray100);
+  border-radius: 26px;
+  display: inline-block;
+  margin-right: 8px;
+  margin-top: 8px;
+}
+
+.userInfo {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttonContainer {
+  border-left: 1px solid var(--cool-gray200);
+  padding: 8px 0 8px 24px;
+}
+
+.userInfo button {
+  background-color: var(--white-color);
+  border: 1px solid var(--secondary-gray200);
+  padding: 4px 12px;
+  border-radius: 35px;
+  color: var(--cool-gray500);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+}
+
+.userInfo button img {
+  width: 24px;
+  height: 24px;
+  margin-right: 4px;
+  display: inline-block;
+}
+
+@media screen and (min-width: 768px) {
+  .productInfo {
+    --product-info-pb: 32px;
+    --product-text-width: 340px;
+
+    display: flex;
+    gap: 16px;
+  }
+
+  .productInfo > img {
+    margin-bottom: 0;
+  }
+
+  .title h2 {
+    font-size: 20px;
+    line-height: 32px;
+  }
+
+  .title div {
+    font-size: 32px;
+    line-height: 42px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .productInfo {
+    --product-info-pb: 40px;
+    --product-text-width: 690px;
+    --product-info-image-size: 486px;
+
+    gap: 24px;
+  }
+
+  .productInfo section h3 {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .title h2 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .title div {
+    font-size: 40px;
+    line-height: 100%;
+  }
+}
