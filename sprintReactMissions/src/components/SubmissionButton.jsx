@@ -2,7 +2,6 @@
 import React from "react";
 
 function SubmissionButton({ isEnabled }) {
-  console.log("버튼 상태:", isEnabled);
   return (
     <button type="submit" disabled={!isEnabled}>
       등록

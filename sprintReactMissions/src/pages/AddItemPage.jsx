@@ -15,9 +15,9 @@ function AddItemPage() {
     name.trim() && description.trim() && price.trim() && tags.length > 0;
 
   return (
-    <section>
-      <header>
-        <h3>상품 등록하기</h3>
+    <section className="add-item-page">
+      <header className="add-item-header">
+        <h3 className="add-item-title">상품 등록하기</h3>
         <SubmissionButton isEnabled={isFormFilled} />
       </header>
 
