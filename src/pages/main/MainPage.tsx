@@ -12,33 +12,30 @@ import HomeImg2Small from "@/assets/images/Img_home_02_sm.png";
 import HomeImg3 from "@/assets/images/Img_home_03.png";
 import HomeImg3Small from "@/assets/images/Img_home_03_sm.png";
 import { BREAKPOINTS } from "@/constants/responsive";
+import Banner from "@/components/Banner/Banner.tsx";
 
 const MainPage = () => {
   const navigate = useNavigate();
 
   return (
     <main css={MainPageStyle}>
-      <div className="banner banner-hero" aria-label="상단 배너">
-        <div className="banner-container">
-          <div className="banner-info">
-            <h2 className="banner-title">일상의 모든 물건을 거래해 보세요</h2>
-            <Button
-              onClick={() => navigate("/products")}
-              aria-label="상품 페이지로 이동"
-              variant="bannerPrimary"
-              size="lg"
-            >
-              구경하러 가기
-            </Button>
-          </div>
-          <img
-            className="banner-img"
-            loading="eager"
-            src={HomeTopImg}
-            alt="팬더가 파란 장바구니를 메고 마을 가운데에 서있는 일러스트"
-          />
-        </div>
-      </div>
+      <Banner
+        title="일상의 모든 물건을 거래해 보세요"
+        imgSrc={HomeTopImg}
+        imgAlt="팬더가 파란 장바구니를 메고 마을 가운데에 서있는 일러스트"
+        linkBtn={
+          <Button
+            onClick={() => navigate("/products")}
+            aria-label="상품 페이지로 이동"
+            variant="bannerPrimary"
+            size="lg"
+          >
+            구경하러 가기
+          </Button>
+        }
+        ariaLabel="상단 배너"
+      />
+
       <div className="sections">
         <section
           className="section section-hotitem"
@@ -107,23 +104,20 @@ const MainPage = () => {
           </div>
         </section>
       </div>
-      <div className="banner" aria-label="하단 배너">
-        <div className="banner-container">
-          <div className="banner-info">
-            <h2 className="banner-title">
-              믿을 수 있는
-              <br />
-              판다마켓 중고 거래
-            </h2>
-          </div>
-          <img
-            className="banner-img"
-            loading="lazy"
-            src={HomeBottomImg}
-            alt="팬더 두 마리가 파란 장바구니를 메고 서로 상품 후기를 주고받는 일러스트"
-          />
-        </div>
-      </div>
+
+      <Banner
+        title={
+          <>
+            믿을 수 있는
+            <br />
+            판다마켓 중고 거래
+          </>
+        }
+        imgSrc={HomeBottomImg}
+        imgAlt="팬더 두 마리가 파란 장바구니를 메고 서로 상품 후기를 주고받는 일러스트"
+        ariaLabel="하단 배너"
+        lazyLoading={true}
+      />
       <Footer />
     </main>
   );
