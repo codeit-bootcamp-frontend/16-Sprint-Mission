@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { InputStyle } from "../Input/Input";
-import { validateTag } from "../../../utils/validators";
+import { validateTags } from "../../../utils/validators";
 import debounce from "../../../utils/debounce";
 import TagList from "./TagList";
 
@@ -12,13 +12,21 @@ const TagsInput = ({ id, placeholder, tags, isFormTag, onTagsChange }) => {
   const [inputValue, setInputValue] = useState("");
   const [errorMessage, setErrorMessage] = useState(false);
 
-  const handleKeyDown = debounce((e) => {
+  const handleTagsError = () => {
+    if (tags.length === 0) {
+      setErrorMessage("태그를 1개 이상 등록해주세요.");
+    } else {
+      setErrorMessage("");
+    }
+  };
+
+  const handleAddTag = debounce((e) => {
     if (e.key !== "Enter") return;
     if (e.isComposing) return; // 한글 중복 입력 방지
     e.preventDefault();
 
     const newTag = inputValue.trim();
-    const { isValid, message } = validateTag(newTag, tags);
+    const { isValid, message } = validateTags(newTag, tags);
 
     if (!isValid) {
       setErrorMessage(message);
@@ -32,28 +40,31 @@ const TagsInput = ({ id, placeholder, tags, isFormTag, onTagsChange }) => {
     setErrorMessage("");
   }, ADD_TAG_DEBOUNCE_MS);
 
-  const removeTag = (tag) => {
+  const handleRemoveTag = (tag) => {
     const updatedTags = tags.filter((prevTag) => prevTag !== tag);
     onTagsChange(updatedTags);
-  };
 
-  useEffect(() => {
-    if (tags.length === 0) setErrorMessage("");
-  }, [tags]);
+    if (updatedTags.length === 0) {
+      setErrorMessage("태그를 1개 이상 등록해주세요.");
+    } else {
+      setErrorMessage("");
+    }
+  };
 
   return (
     <div css={TagsInputStyle}>
       <input
         type="text"
         id={id}
-        css={InputStyle}
+        css={InputStyle(errorMessage)}
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
-        onKeyDown={handleKeyDown}
+        onKeyDown={handleAddTag}
+        onBlur={handleTagsError}
         placeholder={placeholder}
       />
       {errorMessage && <div css={errorMessageStyle}>{errorMessage}</div>}
-      <TagList tags={tags} removeTag={removeTag} isFormTag={isFormTag} />
+      <TagList tags={tags} removeTag={handleRemoveTag} isFormTag={isFormTag} />
     </div>
   );
 };
@@ -72,5 +83,8 @@ const TagsInputStyle = css`
 
 const errorMessageStyle = css`
   display: block;
+  margin-left: 16px;
+  font-size: 14px;
+  font-weight: 600;
   color: var(--error-color);
 `;

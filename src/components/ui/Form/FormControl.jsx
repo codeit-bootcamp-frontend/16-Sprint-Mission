@@ -10,5 +10,4 @@ export default FormControl;
 const FormControlStyle = css`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
 `;

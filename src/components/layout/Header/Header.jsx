@@ -1,12 +1,18 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { Link, useNavigate } from "react-router-dom";
 import logoPandaImg from "../../../assets/images/logo-panda.svg";
 import logoTxtImg from "../../../assets/images/logo-txt.svg";
 import avatarImg from "../../../assets/images/img-avatar.png";
 import Nav from "../../Nav";
 import Avatar from "../../Avatar";
+import Button from "@/components/ui/Button";
+import useAuth from "@/hooks/useAuth";
 
 const Header = () => {
+  const { isSignedIn } = useAuth();
+  const navigate = useNavigate();
+
   const handleAvatarClick = () => {
     console.log("clicked user avatar");
   };
@@ -14,7 +20,7 @@ const Header = () => {
   return (
     <header css={HeaderStyle}>
       <div css={HeaderContainerStyle}>
-        <div css={LogoStyle}>
+        <Link to="/" css={LogoStyle}>
           <img
             src={logoPandaImg}
             alt="판다마켓 로고 이미지"
@@ -25,13 +31,22 @@ const Header = () => {
             alt="판다마켓 로고 텍스트"
             className="logo-txt"
           />
-        </div>
+        </Link>
         <Nav />
-        <Avatar
-          css={HeaderAvatarStyle}
-          imgSrc={avatarImg}
-          onClick={handleAvatarClick}
-        />
+
+        <div css={HeaderActionsStyle}>
+          {isSignedIn ? (
+            <Avatar imgSrc={avatarImg} onClick={handleAvatarClick} />
+          ) : (
+            <Button
+              variant="primary"
+              size="sm"
+              onClick={() => navigate("/login")}
+            >
+              로그인
+            </Button>
+          )}
+        </div>
       </div>
     </header>
   );
@@ -80,6 +95,6 @@ const LogoStyle = css`
   }
 `;
 
-const HeaderAvatarStyle = css`
+const HeaderActionsStyle = css`
   margin-left: auto;
 `;

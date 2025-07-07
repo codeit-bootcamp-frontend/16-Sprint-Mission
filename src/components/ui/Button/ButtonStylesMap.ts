@@ -42,14 +42,24 @@ export const styles = {
         border: 1px solid var(--primary-color);
       }
     `,
-    bottom: css`
+    bottomPrimary: css`
       ${primaryBase};
       padding: 14px 40px;
       font-size: 18px;
       gap: 8px;
     `,
+    bannerPrimary: css`
+      ${primaryBase};
+      width: 100%;
+      max-width: 356px;
+    `,
   },
-  round: css`
-    border-radius: var(--border-radius-lg);
-  `,
+  shape: {
+    round: css`
+      border-radius: var(--border-radius-lg);
+    `,
+    default: css`
+      border-radius: var(--border-radius-xs);
+    `,
+  },
 };

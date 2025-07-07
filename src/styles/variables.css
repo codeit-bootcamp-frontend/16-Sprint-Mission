@@ -36,8 +36,7 @@
 
   /* form */
   --form-padding-top: 24px;
-  --form-label-margin-bottom: 8px;
-  --form-contents-gap: 16px;
+  --form-contents-gap: 24px;
   --form-input-max-height: 282px;
 
   /* border-radius */
@@ -58,14 +57,41 @@
   }
 }
 
+/* Tablet */
+@media (min-width: 640px) {
+  :root {
+    --sections-padding: 24px 24px 56px;
+    --section-margin-bottom: 24px;
+  }
+
+  .banner-hero .banner-info {
+    padding: 84px 0 210px;
+    max-width: none;
+  }
+}
+
 @media (min-width: 768px) {
   :root {
     --header-padding-lr: 24px;
+    --banner-btn-font-size: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --sections-padding: 138px 24px;
+    --section-margin-bottom: 1.5rem;
   }
 }
 
 @media (min-width: 1280px) {
   :root {
     --header-padding-lr: 12.5rem;
+  }
+}
+
+@supports (font-size: clamp(1rem, 2vw, 3rem)) {
+  :root {
+    --banner-font-size: clamp(32px, 5vw, 40px);
   }
 }
