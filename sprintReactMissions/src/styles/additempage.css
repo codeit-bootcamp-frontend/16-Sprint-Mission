@@ -1,0 +1,83 @@
+/* 상품등록 페이지 css Mobile First */
+
+/* 전체 페이지 컨테이너 */
+
+.add-item-page {
+  padding: 20px;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-family: "Pretendard", sans-serif;
+}
+
+/* 헤더 */
+.add-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.add-item-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* 폼 */
+.add-item-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 폼 항목 */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.form-input {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: #f3f4f6;
+  color: #111827;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+/* 반응형 - 태블릿 */
+@media (min-width: 768px) {
+  .add-item-page {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .add-item-title {
+    font-size: 1.5rem;
+  }
+
+  .form-input {
+    font-size: 1rem;
+  }
+}
+
+/* 반응형 - 데스크탑 */
+@media (min-width: 1024px) {
+  .add-item-page {
+    max-width: 768px;
+  }
+
+  .add-item-header {
+    margin-bottom: 32px;
+  }
+
+  .form-group {
+    margin-bottom: 24px;
+  }
+}

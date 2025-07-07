@@ -21,41 +21,44 @@ function AddItemPage() {
         <SubmissionButton isEnabled={isFormFilled} />
       </header>
 
-      <form>
-        <div>
-          <label>상품이미지</label>
+      <form className="add-item-form">
+        <div className="form-group">
+          <label className="form-label">상품이미지</label>
           <ItemImagesUpload />
         </div>
 
-        <div>
-          <label>상품명</label>
+        <div className="form-group">
+          <label className="form-label">상품명</label>
           <input
+            className="form-input"
             placeholder="상품명을 입력해주세요"
             value={name}
             onChange={(e) => setName(e.target.value)}
           ></input>
         </div>
 
-        <div>
-          <label>상품 소개</label>
+        <div className="form-group">
+          <label className="form-label">상품 소개</label>
           <input
+            className="form-input"
             placeholder="상품 소개를 입력해주세요"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           ></input>
         </div>
 
-        <div>
-          <label>판매가격</label>
+        <div className="form-group">
+          <label className="form-label">판매가격</label>
           <input
+            className="form-input"
             placeholder="판매가격을 입력해주세요"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
           ></input>
         </div>
 
-        <div>
-          <label>태그</label>
+        <div className="form-group">
+          <label className="form-label">태그</label>
           <TagInput tags={tags} setTags={setTags} />
         </div>
       </form>
