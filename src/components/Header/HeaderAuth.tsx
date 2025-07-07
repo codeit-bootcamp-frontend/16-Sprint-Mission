@@ -2,7 +2,11 @@ import userImg from '@assets/icon/ic_user.png';
 import styles from '@styles/Header.module.css';
 import { Link } from 'react-router-dom';
 
-function HeaderAuth({ isLoggedIn }) {
+interface Props {
+  isLoggedIn: string | null;
+}
+
+function HeaderAuth({ isLoggedIn }: Props) {
   return (
     <>
       {isLoggedIn ? (

@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
-import AddItem from './pages/AddItem/AddItem';
-import Login from './pages/Auth/Login';
-import SignUp from './pages/Auth/SignUp';
-import Home from './pages/Home/Home';
-import Items from './pages/Items/Items';
-import ProductDetail from './pages/ProductDetail/ProductDetail';
+import AddItem from './pages/AddItem/AddItem.jsx';
+import Login from './pages/Auth/Login.jsx';
+import SignUp from './pages/Auth/SignUp.jsx';
+import Home from './pages/Home/Home.jsx';
+import Items from './pages/Items/Items.jsx';
+import ProductDetail from './pages/ProductDetail/ProductDetail.jsx';
 import './styles/reset.css';
 import './styles/global.css';
 import './App.css';

@@ -9,10 +9,10 @@ function Navigations() {
 
   return (
     <div className={styles.navCategory}>
-      <Link>자유게시판</Link>
+      <Link to={'/'}>자유게시판</Link>
       <NavLink
         to="/items"
-        className={() => (isMarketLocation ? `${styles.isActive}` : null)}
+        className={() => (isMarketLocation ? `${styles.isActive}` : '')}
       >
         중고마켓
       </NavLink>
