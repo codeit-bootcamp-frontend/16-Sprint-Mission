@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import AuthContent from "@/components/layout/AuthContent";
 import AuthPageStyle from "./AuthPageStyle";
 import Button from "@/components/ui/Button";
-import googleIcon from "@/assets/images/ic_google.png";
-import kakaoIcon from "@/assets/images/ic_kakao.png";
+import SocialLogin from "@/components/SocialLogin/SocialLogin";
 import logoImg from "@/assets/images/logo.svg";
 import useForm from "@/hooks/useForm";
 import Input from "@/components/ui/Input";
@@ -142,35 +141,9 @@ const LoginPage = () => {
                 {isSigningIn ? "로그인중..." : "로그인"}
               </Button>
               {isSignInError && <p>{`${isSignInError}`}</p>}
-              <div className="easy-login">
-                간편 로그인하기
-                <div className="easy-login-icons">
-                  <a
-                    href="https://www.google.com"
-                    aria-label="구글 계정으로 로그인하기"
-                    title="클릭 시 구글 계정과 연동합니다."
-                  >
-                    <img
-                      src={googleIcon}
-                      alt="구글 아이콘"
-                      width="40"
-                      height="40"
-                    />
-                  </a>
-                  <a
-                    href="https://www.kakaocorp.com/page"
-                    aria-label="카카오 계정으로 로그인하기"
-                    title="클릭 시 카카오 계정과 연동합니다."
-                  >
-                    <img
-                      src={kakaoIcon}
-                      alt="카카오 아이콘"
-                      width="40"
-                      height="40"
-                    />
-                  </a>
-                </div>
-              </div>
+
+              <SocialLogin />
+
               <div className="form-footer">
                 판다마켓이 처음이신가요?
                 <Link className="form-footer-link" to="/signUp">

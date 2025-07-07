@@ -8,14 +8,13 @@ import logoImg from "@/assets/images/logo.svg";
 import Button from "@/components/ui/Button";
 import AuthContent from "@/components/layout/AuthContent";
 import AuthPageStyle from "./AuthPageStyle";
-import googleIcon from "@/assets/images/ic_google.png";
-import kakaoIcon from "@/assets/images/ic_kakao.png";
 import IconButton from "@/components/ui/Button/IconButton";
 import eyeImg from "@/assets/images/ic_visibility_on.svg";
 import eyeCloseImg from "@/assets/images/ic_visibility_off.svg";
 import createUser from "@/services/post/createUser";
 import { ReqData } from "@/types/form";
 import useSignIn from "@/hooks/useSignIn";
+import SocialLogin from "@/components/SocialLogin/SocialLogin";
 
 const SignUpPage = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -213,35 +212,9 @@ const SignUpPage = () => {
                 {isSigningUp ? "회원가입중..." : "회원가입"}
               </Button>
               {isSignUpError && <p>{`${isSignUpError}`}</p>}
-              <div className="easy-login">
-                간편 로그인하기
-                <div className="easy-login-icons">
-                  <a
-                    href="https://www.google.com"
-                    aria-label="구글 계정으로 로그인하기"
-                    title="클릭 시 구글 계정과 연동합니다."
-                  >
-                    <img
-                      src={googleIcon}
-                      alt="구글 아이콘"
-                      width={40}
-                      height={40}
-                    />
-                  </a>
-                  <a
-                    href="https://www.kakaocorp.com/page"
-                    aria-label="카카오 계정으로 로그인하기"
-                    title="클릭 시 카카오 계정과 연동합니다."
-                  >
-                    <img
-                      src={kakaoIcon}
-                      alt="카카오 아이콘"
-                      width={40}
-                      height={40}
-                    />
-                  </a>
-                </div>
-              </div>
+
+              <SocialLogin />
+
               <div className="form-footer">
                 이미 회원이신가요?
                 <Link className="form-footer-link" to="/login">

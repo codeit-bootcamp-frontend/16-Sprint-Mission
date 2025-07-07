@@ -43,24 +43,6 @@ const AuthPageStyle = css`
     padding-bottom: 178px;
   }
 
-  /* 간편 로그인 */
-  .easy-login {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 8px 0;
-    padding: 16px 24px;
-    border-radius: var(--border-radius-xs);
-    background: var(--background-blue-light);
-    font-size: 16px;
-    color: var(--gray800);
-  }
-
-  .easy-login-icons {
-    display: flex;
-    gap: 1rem;
-  }
-
   /*================ 반응형 ================*/
   /* Tablet */
   @media (min-width: 640px) {
@@ -70,10 +52,6 @@ const AuthPageStyle = css`
 
     .form-logo {
       width: 396px;
-    }
-
-    .easy-login {
-      margin: 0;
     }
   }
 
