@@ -1,54 +1,29 @@
 /** @jsxImportSource @emotion/react */
-import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import useForm from "@/hooks/useForm";
 import logoImg from "@/assets/images/logo.svg";
 import Button from "@/components/ui/Button";
-import createUser from "@/services/post/createUser";
-import { ReqData } from "@/types/form";
-import useSignIn from "@/hooks/useSignIn";
 import SocialLogin from "@/components/SocialLogin/SocialLogin";
 import InputField from "@/components/ui/Form/InputField";
 import PasswordField from "@/components/ui/Form/PasswordField";
 import FormStyle from "./FormStyle";
+import useAuthForm from "@/hooks/useAuthForm";
+import createUser from "@/services/post/createUser";
 
 const SignUpForm = () => {
-  const [isSigningUp, setIsSigningUp] = useState(false);
-  const [isSignUpError, setIsSignUpError] = useState<Error | null>(null);
-
-  const formRef = useRef<HTMLFormElement>(null);
-  const { handleBlur, isFormValid, validateForm, fieldErrors } =
-    useForm(formRef);
-
-  const signIn = useSignIn();
-
-  const handleSignUp = async () => {
-    const form = formRef.current;
-    if (!form) return;
-
-    const formData = new FormData(form);
-    const userData: ReqData = {};
-
-    for (const [key, value] of formData.entries()) {
-      const mappedKey = key === "passwordCheck" ? "passwordConfirmation" : key;
-      userData[mappedKey] = value;
-    }
-
-    try {
-      setIsSigningUp(true);
-      setIsSignUpError(null);
+  const {
+    formRef,
+    isSubmitting,
+    submitError,
+    handleBlur,
+    validateForm,
+    isFormValid,
+    fieldErrors,
+    handleSubmit,
+  } = useAuthForm({
+    onSubmit: async (userData) => {
       await createUser(userData);
-      signIn(); // 로그인 컨텍스트 처리 -> 상품 목록 페이지로 이동
-    } catch (err) {
-      if (err instanceof Error) {
-        setIsSignUpError(err);
-      } else {
-        setIsSignUpError(new Error("알 수 없는 오류가 발생했습니다."));
-      }
-    } finally {
-      setIsSigningUp(false);
-    }
-  };
+    },
+  });
 
   return (
     <form
@@ -108,11 +83,12 @@ const SignUpForm = () => {
           size="lg"
           id="signupBtn"
           disabled={!isFormValid}
-          onClick={handleSignUp}
+          onClick={handleSubmit}
         >
-          {isSigningUp ? "회원가입중..." : "회원가입"}
+          {isSubmitting ? "회원가입중..." : "회원가입"}
         </Button>
-        {isSignUpError && <p>{`${isSignUpError}`}</p>}
+
+        {submitError && <p>{`${submitError}`}</p>}
 
         <SocialLogin />
 

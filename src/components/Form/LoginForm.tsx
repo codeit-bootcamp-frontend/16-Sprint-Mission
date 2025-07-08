@@ -1,53 +1,29 @@
 /** @jsxImportSource @emotion/react */
 import FormStyle from "./FormStyle";
-import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import Button from "@/components/ui/Button";
 import SocialLogin from "@/components/SocialLogin/SocialLogin";
 import logoImg from "@/assets/images/logo.svg";
-import useForm from "@/hooks/useForm";
-import { ReqData } from "@/types/form";
 import loginUser from "@/services/post/loginUser";
-import useSignIn from "@/hooks/useSignIn";
 import InputField from "../ui/Form/InputField";
 import PasswordField from "../ui/Form/PasswordField";
+import useAuthForm from "@/hooks/useAuthForm";
 
 const LoginForm = () => {
-  const [isSigningIn, setIsSigningIn] = useState(false);
-  const [isSignInError, setIsSignInError] = useState<Error | null>(null);
-  const formRef = useRef<HTMLFormElement>(null);
-
-  const signIn = useSignIn();
-
-  const { handleBlur, validateForm, isFormValid, fieldErrors } =
-    useForm(formRef);
-
-  const handleLogin = async () => {
-    const form = formRef.current;
-    if (!form) return;
-
-    const formData = new FormData(form);
-    const userData: ReqData = {};
-
-    for (const [key, value] of formData.entries()) {
-      userData[key] = value;
-    }
-
-    try {
-      setIsSigningIn(true);
-      setIsSignInError(null);
+  const {
+    formRef,
+    isSubmitting,
+    submitError,
+    handleBlur,
+    validateForm,
+    isFormValid,
+    fieldErrors,
+    handleSubmit,
+  } = useAuthForm({
+    onSubmit: async (userData) => {
       await loginUser(userData);
-      signIn(); // 로그인 컨텍스트 처리 -> 상품 목록 페이지로 이동
-    } catch (err) {
-      if (err instanceof Error) {
-        setIsSignInError(err);
-      } else {
-        setIsSignInError(new Error("알 수 없는 오류가 발생했습니다."));
-      }
-    } finally {
-      setIsSigningIn(false);
-    }
-  };
+    },
+  });
 
   return (
     <form
@@ -89,11 +65,12 @@ const LoginForm = () => {
           disabled={!isFormValid}
           variant="primary"
           size="lg"
-          onClick={handleLogin}
+          onClick={handleSubmit}
         >
-          {isSigningIn ? "로그인중..." : "로그인"}
+          {isSubmitting ? "로그인중..." : "로그인"}
         </Button>
-        {isSignInError && <p>{`${isSignInError}`}</p>}
+
+        {submitError && <p>{`${submitError}`}</p>}
 
         <SocialLogin />
 
