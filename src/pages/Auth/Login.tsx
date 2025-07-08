@@ -1,24 +1,28 @@
 import logo from '@assets/images/logo-title.png';
 import SocialLogin from '@components/SocialLogin';
-import { FormProvider, useForm } from 'react-hook-form';
+import { FormProvider, useForm, type SubmitHandler } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import EmailField from './EmailField';
 import PasswordField from './PasswordField';
 import styles from './styles/Auth.module.css';
 import SubmitButton from './SubmitButton';
 
+export interface FormValues {}
+
+export interface LoginValues extends FormValues {
+  'user-email': string;
+  'user-password': string;
+}
+
 function Login() {
   const toItemsNavigation = useNavigate();
-  const methods = useForm({ mode: 'all' }); //change,blur될 때 유효성 평가해줘
+  const methods = useForm<LoginValues>({ mode: 'all' }); //change,blur될 때 유효성 평가해줘
 
-  function onSubmit(data, e) {
-    if (!methods.isValid) {
-      sessionStorage.setItem('loggedIn', data['user-email']);
-      toItemsNavigation('/items');
-    } else {
-      e.preventDefault();
-    }
-  }
+  const onSubmit: SubmitHandler<LoginValues> = (data) => {
+    //data는 FormValues타입 /RHF의 SubmitHandler는 e를 못 받는다
+    sessionStorage.setItem('loggedIn', data['user-email']);
+    toItemsNavigation('/items');
+  };
 
   return (
     <main className={styles.login}>

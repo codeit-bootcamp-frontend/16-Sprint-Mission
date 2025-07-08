@@ -1,7 +1,11 @@
 import { useFormState } from 'react-hook-form';
 import styles from './styles/SubmitButton.module.css';
 
-export default function SubmitButton({ children }) {
+interface Props {
+  children: React.ReactNode;
+}
+
+export default function SubmitButton({ children }: Props) {
   const { isValid } = useFormState();
 
   return (

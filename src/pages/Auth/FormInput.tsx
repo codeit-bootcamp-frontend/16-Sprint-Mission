@@ -1,5 +1,9 @@
 import styles from '@styles/ErrMsg.module.css';
-import { useFormContext, useFormState } from 'react-hook-form';
+import {
+  useFormContext,
+  useFormState,
+  type FieldErrors,
+} from 'react-hook-form';
 
 const validRuleObj = {
   'user-email': {
@@ -17,18 +21,32 @@ const validRuleObj = {
     },
   },
   'user-name': {
-    required: '비밀번호를 입력해주세요.',
+    required: '이름을 입력해주세요.',
   },
   'user-password-check': {
     required: '비밀번호를 다시 입력해주세요.',
   },
 };
 
-function FormInput(props) {
+interface Props {
+  placeholder: string;
+  name: keyof typeof validRuleObj;
+  type: string;
+  id: string;
+  validatePwCheck?: (value: string) => boolean | string;
+}
+
+function FormInput(props: Props) {
   const { placeholder, name, type, id, validatePwCheck } = props;
   const { register } = useFormContext();
   const { errors } = useFormState({ name }); //여기서 name으로 따로 골라와야 개별로 감지하는듯...?
-  const error = errors[name];
+
+  function getErrorMessage(errors: FieldErrors) {
+    const errMsg = errors[name]?.message;
+    const result = errMsg && typeof errMsg === 'string' ? errMsg : '';
+
+    return result;
+  }
 
   return (
     <>
@@ -37,13 +55,15 @@ function FormInput(props) {
           ...validRuleObj[name],
           validate: validatePwCheck || undefined, //프롭에 validatePwCheck 없으면 undefined로
         })}
-        className={error && styles.inputErrorBorder}
+        className={errors[name] && styles.inputErrorBorder}
         type={type}
         id={id}
         name={name}
         placeholder={placeholder}
       />
-      <div className={styles.errorMessage}>{error?.message}</div>
+      <div role="alert" className={styles.errorMessage}>
+        {getErrorMessage(errors)}
+      </div>
     </>
   );
 }
