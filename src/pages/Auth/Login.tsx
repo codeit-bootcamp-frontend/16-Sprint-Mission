@@ -7,7 +7,9 @@ import PasswordField from './PasswordField';
 import styles from './styles/Auth.module.css';
 import SubmitButton from './SubmitButton';
 
-export interface FormValues {}
+export interface FormValues {
+  [key: string]: string;
+}
 
 export interface LoginValues extends FormValues {
   'user-email': string;
