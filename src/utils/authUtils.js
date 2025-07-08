@@ -16,7 +16,7 @@ export function checkValidEmail(value) {
 
   // 유효성 검사
   const PATTERN =
-    /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+    /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
   if (!PATTERN.test(value))
     return { isValid: false, msg: "잘못된 이메일 형식입니다." };
 
@@ -51,10 +51,6 @@ export function checkValidPasswordConfirm(value, password) {
 
   // 유효성 검사 통과시
   return { isValid: true, msg: "" };
-}
-
-export function getIsAllValid(valueValids) {
-  return valueValids.every((valid) => valid.isValid);
 }
 
 // 인풋 유효성 검사 결과에 따라 클래스명 전달

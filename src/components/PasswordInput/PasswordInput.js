@@ -10,6 +10,11 @@ const PasswordInput = ({
   isToggle = true,
 }) => {
   const { toggle, handleClickToggle, toggleImg } = usePasswordToggle();
+
+  const handleChangeValue = (e) => {
+    onChange(e.target.value);
+  };
+
   return (
     <div className={styles["password-box"]}>
       <input
@@ -19,7 +24,7 @@ const PasswordInput = ({
         placeholder={placeholder}
         className={`${styles["password-input"]} ${className}`}
         value={value}
-        onChange={onChange}
+        onChange={handleChangeValue}
       />
       {isToggle && (
         <button

@@ -1,0 +1,105 @@
+@use "../../styles/variables" as var;
+@use "../../styles/mixin" as mixin;
+
+.addItemPage {
+  padding: 24px 24px 70px;
+
+  @include mixin.tablet {
+    padding-top: 16px;
+  }
+
+  @include mixin.mobile {
+    padding: 24px 15px 70px;
+  }
+
+  &__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .form {
+    &__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    &__title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var.$gray800;
+    }
+
+    &__submitBtn {
+      min-width: 74px;
+    }
+
+    &__item {
+      margin-bottom: 24px;
+    }
+
+    &__label {
+      display: block;
+      margin-bottom: 16px;
+      font-size: 18px;
+      font-weight: 700;
+      color: var.$gray800;
+    }
+
+    &__imgArea {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+
+      @include mixin.tablet {
+        gap: 10px;
+      }
+
+      .imgArea {
+        &__item {
+          width: 282px;
+          border-radius: 12px;
+          overflow: hidden;
+
+          @include mixin.mobile {
+            width: 168px;
+          }
+        }
+      }
+    }
+
+    &__errorMsg {
+      margin-top: 16px;
+      font-size: 16px;
+      font-weight: 400;
+      color: var.$error;
+    }
+
+    &__tagArea {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+
+      .tagArea {
+        &__tagItem {
+          display: flex;
+          align-items: center;
+          height: 36px;
+          padding: 5px 42px 5px 16px;
+          font-size: 16px;
+          color: var.$gray800;
+          background: var.$gray100
+            url("../../assets/images/icons/ic_delete.svg") right 12px center
+            no-repeat;
+          border-radius: 26px;
+
+          &::before {
+            content: "#";
+          }
+        }
+      }
+    }
+  }
+}

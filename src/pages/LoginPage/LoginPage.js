@@ -1,16 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  checkValidEmail,
-  checkValidPassword,
-  getIsAllValid,
-} from "../../utils/authUtils";
+import { checkValidEmail, checkValidPassword } from "../../utils/authUtils";
 import getLogo from "../../utils/getLogo";
 import AuthSns from "../../components/AuthSns/AuthSns";
 import AuthGuide from "../../components/AuthGuide/AuthGuide";
 import "../../styles/auth.scss";
 import styles from "./LoginPage.module.scss";
 import AuthFormInput from "../../components/AuthFormInput/AuthFormInput";
+import { getIsAllValid } from "../../utils/getIsAllValid";
 
 const INIT_VALID = {
   isValid: null,
