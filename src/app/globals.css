@@ -3,6 +3,13 @@
 @layer theme, base, components, utilities;
 @theme{
   /*
+  * BREAKPOINT
+  */
+  --breakpoint-*: initial;
+  --breakpoint-md: 744px;
+  --breakpoint-lg: 1440px;
+
+  /*
   * COLOR
   */
   --color-slate-100: #F1F5F9;

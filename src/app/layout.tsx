@@ -1,6 +1,7 @@
 import "./globals.css";
 import { ReactNode } from "react";
 import localFont from "next/font/local";
+import SVGSprites from "./components/SVGSprites";
 
 // NanumSquare Regular
 const NanumSquareR = localFont({
@@ -37,7 +38,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       lang="ko"
       className={`${NanumSquareR.variable} ${NanumSquareB.variable} ${NanumSquareEB.variable}`}
     >
-      <body className={NanumSquareR.className}>{children}</body>
+      <body className={NanumSquareR.className}>
+        <SVGSprites/>
+        {children}
+      </body>
     </html>
   );
 }

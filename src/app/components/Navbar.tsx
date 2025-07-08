@@ -7,18 +7,21 @@ import useInnerWidth from "../hook/getWindowSize";
 
 const Navbar = () => {
   const isMobile = useInnerWidth() < 768;
+  const imgWidth = isMobile ? 71 : 151;
+  const imgHeight = 40;
 
   return (
     <nav
-      className="flex items-center h-[60px] px-4
+      className="flex items-center h-[60px] px-4 border border-slate-200
       md:px-6
       lg:px-[360px]"
     >
       <Image
         src={isMobile ? logoSmall : logoLarge}
         alt="사이트 이름 do it이 적혀있는 로고"
-        width={isMobile ? 71 : 151}
-        height={40}
+        width={imgWidth}
+        height={imgHeight}
+        style={{ width: imgWidth, height: imgHeight }}
         priority
       />
     </nav>
