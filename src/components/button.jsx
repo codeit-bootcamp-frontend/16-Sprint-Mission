@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import './button.css';
+import { Link } from "react-router-dom";
+import "./button.css";
 
 function Button({ children, disabled, link, radius, size }) {
   return (
@@ -8,7 +8,7 @@ function Button({ children, disabled, link, radius, size }) {
         {children}
       </button>
     </Link>
-  )
+  );
 }
 
 export default Button;

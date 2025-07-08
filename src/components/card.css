@@ -1,4 +1,4 @@
-@import '../theme.css';
+@import "../theme.css";
 
 .wrapper {
   width: 100%;
@@ -24,13 +24,13 @@
   gap: 10px;
 }
 
-.card-text-container>h2 {
+.card-text-container > h2 {
   font-weight: 500;
   font-size: 14px;
   margin: 0;
 }
 
-.card-text-container>h3 {
+.card-text-container > h3 {
   font-weight: 700;
   font-size: 16px;
   margin: 0;
@@ -45,7 +45,7 @@
   font-weight: 500;
 }
 
-.card-favorite-container>img {
+.card-favorite-container > img {
   width: 16px;
   height: 16px;
 }
