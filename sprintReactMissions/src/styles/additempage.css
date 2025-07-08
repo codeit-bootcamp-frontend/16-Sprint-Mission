@@ -42,12 +42,25 @@
 }
 
 .form-input {
-  padding: 10px;
+  padding: 12px 16px;
   border: none;
   border-radius: 10px;
   background-color: #f3f4f6;
   color: #111827;
   font-size: 1rem;
+  height: 48px;
+  box-sizing: border-box;
+}
+
+.form-big-input {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 10px;
+  background-color: #f3f4f6;
+  color: #111827;
+  font-size: 1rem;
+  height: 120px;
+  resize: none;
   box-sizing: border-box;
 }
 

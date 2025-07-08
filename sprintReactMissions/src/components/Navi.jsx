@@ -10,8 +10,12 @@ const Navi = () => {
           <img src="src/assets/Logo.png" alt="Logo" className="logo" />
         </Link>
         <div className="menu-section">
-          <Link to="/free-board">자유게시판</Link>
-          <Link to="/items">중고마켓</Link>
+          <Link to="/free-board" className="nav-link">
+            자유게시판
+          </Link>
+          <Link to="/items" className="nav-link">
+            중고마켓
+          </Link>
         </div>
       </div>
       <div className="profile-section">

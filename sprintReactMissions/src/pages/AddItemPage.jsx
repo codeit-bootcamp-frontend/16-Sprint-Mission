@@ -40,7 +40,7 @@ function AddItemPage() {
         <div className="form-group">
           <label className="form-label">상품 소개</label>
           <input
-            className="form-input"
+            className="form-big-input"
             placeholder="상품 소개를 입력해주세요"
             value={description}
             onChange={(e) => setDescription(e.target.value)}

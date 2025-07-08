@@ -5,7 +5,7 @@
   align-items: center;
   height: 70px;
   background-color: white;
-  padding: 0 2rem;
+  padding: 12px 16px;
   border-bottom: 1px solid #dfdfdf;
 
   position: sticky;
@@ -30,7 +30,8 @@
 
 .menu-section {
   display: flex;
-  gap: 2rem;
+  align-items: center;
+  gap: 1rem;
   font-weight: bold;
   font-size: 1rem;
 }
@@ -49,4 +50,27 @@
 .profile-pic {
   height: 40px;
   border-radius: 50%;
+}
+
+.nav-link {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #111827;
+  text-decoration: none;
+}
+
+/* 태블릿 (min-width: 768px) */
+@media (min-width: 768px) {
+  .nav-link {
+    font-size: 1.05rem;
+    margin-left: 24px;
+  }
+}
+
+/* 데스크탑 (min-width: 1024px) */
+@media (min-width: 1024px) {
+  .nav-link {
+    font-size: 1.15rem;
+    margin-left: 32px;
+  }
 }

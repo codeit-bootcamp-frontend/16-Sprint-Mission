@@ -1,4 +1,4 @@
-// 상품 등록하기기
+// 상품 등록하기
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/AddProductButton.css";

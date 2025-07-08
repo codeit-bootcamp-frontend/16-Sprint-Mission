@@ -2,6 +2,7 @@
 // 상품등록하기 기능 컴포넌트
 
 import { useEffect, useRef, useState } from "react";
+import "../styles/itemimagesupload.css";
 
 function ItemImagesUpload() {
   const [previewUrl, setPreviewUrl] = useState(null);
@@ -51,13 +52,26 @@ function ItemImagesUpload() {
           ref={fileInputRef}
         />
       </label>
-      {previewUrl && (
+      {previewUrl ? (
         <div className="image-preview">
           <img src={previewUrl} alt="미리보기 이미지" />
           <button className="remove-btn" onClick={handleRemoveImage}>
             ×
           </button>
         </div>
+      ) : (
+        <label className="image-upload-box">
+          <span>
+            ＋<br />
+            이미지 등록
+          </span>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImagesUpload}
+            ref={fileInputRef}
+          />
+        </label>
       )}
 
       {error && <p className="error-message">{error}</p>}
