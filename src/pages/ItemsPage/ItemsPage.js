@@ -1,6 +1,6 @@
 import styles from "./ItemsPage.module.scss";
-import AllProductArea from "../../components/AllProductArea/AllProductArea";
-import BestProductArea from "../../components/BestProductArea/BestProductArea";
+import AllProductArea from "./components/AllProductArea/AllProductArea";
+import BestProductArea from "./components/BestProductArea/BestProductArea";
 
 const ItemsPage = () => {
   return (

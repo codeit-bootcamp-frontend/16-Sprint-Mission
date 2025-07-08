@@ -1,62 +1,67 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import useAllValid from "../../hooks/useAllValid";
-import usePasswordToggle from "../../hooks/usePasswordToggle";
-import {
-  checkValidEmail,
-  checkValidPassword,
-  getAuthValidClassName,
-} from "../../utils/authUtils";
+import { checkValidEmail, checkValidPassword } from "../../utils/authUtils";
 import getLogo from "../../utils/getLogo";
 import AuthSns from "../../components/AuthSns/AuthSns";
 import AuthGuide from "../../components/AuthGuide/AuthGuide";
 import "../../styles/auth.scss";
 import styles from "./LoginPage.module.scss";
+import AuthFormInput from "../../components/AuthFormInput/AuthFormInput";
+import { getIsAllValid } from "../../utils/getIsAllValid";
 
-const INIT_VALUE = { email: "", password: "" };
 const INIT_VALID = {
-  email: {
-    isValid: null,
-    msg: "",
-  },
-  password: {
-    isValid: null,
-    msg: "",
-  },
-};
-
-const VALIDATOR = {
-  email: checkValidEmail,
-  password: checkValidPassword,
+  isValid: null,
+  msg: "",
 };
 
 const LoginPage = () => {
   const nav = useNavigate();
-  const [userValues, setUserValues] = useState(INIT_VALUE);
-  const [valueValids, setValueValids] = useState(INIT_VALID);
-  const pwToggle = usePasswordToggle();
-  const isAllValid = useAllValid(valueValids);
+  const [userEmail, setUserEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+  const [validUserEmail, setValidUserEmail] = useState(INIT_VALID);
+  const [validUserPassword, setValidUserPassword] = useState(INIT_VALID);
+  const [isAllValid, setIsAllValid] = useState(false);
 
-  const handleChangeUserValues = (e) => {
-    setUserValues({ ...userValues, [e.target.name]: e.target.value });
+  const getUserValidation = (name, value) => {
+    let validEmail = validUserEmail;
+    let validPassword = validUserPassword;
+
+    switch (name) {
+      case "email": {
+        validEmail = checkValidEmail(value);
+        break;
+      }
+      case "password": {
+        validPassword = checkValidPassword(value);
+        break;
+      }
+      // no default
+    }
+
+    return {
+      validEmail,
+      validPassword,
+    };
   };
 
   const handleFocusOut = (e) => {
     const { name, value } = e.target;
 
-    // 검증할 요소인지 확인
-    if (!VALIDATOR[name]) return;
-
-    setValueValids(() => ({
-      ...valueValids,
-      [name]: VALIDATOR[name](value),
-    }));
+    // 인풋 검증
+    const { validEmail, validPassword } = getUserValidation(name, value);
+    setValidUserEmail(() => validEmail);
+    setValidUserPassword(() => validPassword);
   };
 
   const handleClickSubmit = (e) => {
     e.preventDefault();
     nav("/");
   };
+
+  useEffect(() => {
+    // 버튼 활성화 여부
+    setIsAllValid(getIsAllValid([validUserEmail, validUserPassword]));
+  }, [validUserEmail, validUserPassword]);
 
   return (
     <div id="wrap" className={styles.loginPage}>
@@ -73,60 +78,27 @@ const LoginPage = () => {
         </h1>
         <form className="auth-form" onBlur={handleFocusOut}>
           {/* 이메일 */}
-          <div className="auth-form__item">
-            <label htmlFor="email" className="auth-form__label">
-              이메일
-            </label>
-            <div className="auth-form__input-box">
-              <input
-                type="email"
-                name="email"
-                id="email"
-                autoComplete="email"
-                placeholder="이메일을 입력해주세요."
-                className={getAuthValidClassName(valueValids.email.isValid)}
-                value={userValues.email}
-                onChange={handleChangeUserValues}
-              />
-            </div>
-            {!valueValids.email.isValid && (
-              <p className="auth-form__error-msg">{valueValids.email.msg}</p>
-            )}
-          </div>
+          <AuthFormInput
+            label="이메일"
+            type="email"
+            name="email"
+            value={userEmail}
+            onChange={setUserEmail}
+            placeholder="이메일을 입력해주세요."
+            validInfo={validUserEmail}
+          />
+
           {/* 비밀번호 */}
-          <div className="auth-form__item">
-            <label htmlFor="password" className="auth-form__label">
-              비밀번호
-            </label>
-            <div className="auth-form__input-box auth-form__input-box--pw">
-              <input
-                type={pwToggle.toggle ? "text" : "password"}
-                name="password"
-                id="password"
-                placeholder="비밀번호를 입력해주세요."
-                className={getAuthValidClassName(valueValids.password.isValid)}
-                value={userValues.password}
-                onChange={handleChangeUserValues}
-              />
-              <button
-                type="button"
-                className="auth-form__toggle-btn"
-                aria-label="비밀번호 표시"
-                aria-pressed={pwToggle.toggle}
-                onClick={pwToggle.handleClickToggle}
-              >
-                <img
-                  src={pwToggle.toggleImg}
-                  width="24"
-                  height="24"
-                  alt="비밀번호 보기 아이콘"
-                />
-              </button>
-            </div>
-            {!valueValids.password.isValid && (
-              <p className="auth-form__error-msg">{valueValids.password.msg}</p>
-            )}
-          </div>
+          <AuthFormInput
+            label="비밀번호"
+            type="password"
+            name="password"
+            value={userPassword}
+            onChange={setUserPassword}
+            placeholder="비밀번호를 입력해주세요."
+            validInfo={validUserPassword}
+          />
+
           <button
             disabled={!isAllValid}
             className="btn lg auth-form__submit-btn"

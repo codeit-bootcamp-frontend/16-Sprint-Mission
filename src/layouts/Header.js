@@ -1,16 +1,13 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import getLogo from "../utils/getLogo";
 import userThumbnail from "../assets/images/icons/ic_user_thumbnail.svg";
 import { useState } from "react";
-
-const GNB_MENU = [
-  { path: "/free", title: "자유게시판" },
-  { path: "/items", title: "중고마켓" },
-];
+import Gnb from "../components/Gnb/Gnb";
 
 const Header = () => {
-  const location = useLocation();
   const [isLogin, setIsLogin] = useState(true);
+
+  const handleClick = () => setIsLogin(false);
 
   return (
     <header id="header">
@@ -27,25 +24,12 @@ const Header = () => {
             />
           </Link>
         </h1>
-        <nav className="header__gnb">
-          <ul>
-            {GNB_MENU.map((gnb) => (
-              <li key={gnb.path}>
-                <Link
-                  to={gnb.path}
-                  className={location.pathname === gnb.path ? "current" : ""}
-                >
-                  {gnb.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <Gnb />
         <div className="header__member">
           {isLogin ? (
-            <Link to="/">
+            <button onClick={handleClick}>
               <img src={userThumbnail} alt="유저 썸네일" />
-            </Link>
+            </button>
           ) : (
             <Link
               to="/login"
