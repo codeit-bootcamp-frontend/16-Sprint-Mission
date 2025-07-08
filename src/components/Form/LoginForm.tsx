@@ -19,7 +19,8 @@ const LoginForm = () => {
 
   const signIn = useSignIn();
 
-  const { handleBlur, validateForm, isFormValid } = useForm(formRef);
+  const { handleBlur, validateForm, isFormValid, fieldErrors } =
+    useForm(formRef);
 
   const handleLogin = async () => {
     const form = formRef.current;
@@ -69,16 +70,16 @@ const LoginForm = () => {
           name="email"
           placeholder="이메일"
           required
-          form={formRef}
           onBlur={handleBlur}
+          fieldError={fieldErrors.email}
         />
         <PasswordField
           label="비밀번호"
           inputId="userPassword"
           name="password"
           placeholder="비밀번호"
-          form={formRef}
           onBlur={handleBlur}
+          fieldError={fieldErrors.password}
         />
 
         <Button

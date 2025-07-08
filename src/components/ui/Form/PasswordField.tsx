@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
 import { useState } from "react";
-import useForm from "@/hooks/useForm";
 import Input from "@/components/ui/Input";
 import FormControl from "./FormControl";
 import { FormField } from "@/types/form";
@@ -13,11 +12,10 @@ const PasswordField = ({
   inputId,
   name,
   placeholder,
-  form,
   onBlur,
+  fieldError,
 }: FormField) => {
   const [isVisible, setIsVisible] = useState(false);
-  const { fieldErrors } = useForm(form);
 
   return (
     <FormControl>
@@ -35,7 +33,7 @@ const PasswordField = ({
             placeholder={placeholder}
             required
             onBlur={onBlur}
-            isError={fieldErrors.password}
+            isError={fieldError}
           />
           <IconButton
             type="button"
@@ -51,7 +49,7 @@ const PasswordField = ({
             onClick={() => setIsVisible((prev) => !prev)}
           />
         </div>
-        <span className="form-input-hint">{fieldErrors.password}</span>
+        <span className="form-input-hint">{fieldError}</span>
       </div>
     </FormControl>
   );

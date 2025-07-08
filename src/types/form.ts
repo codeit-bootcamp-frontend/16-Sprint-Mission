@@ -1,4 +1,4 @@
-import { ChangeEvent, RefObject } from "react";
+import { ChangeEvent } from "react";
 
 export interface FormField {
   label: string;
@@ -7,8 +7,8 @@ export interface FormField {
   name: string;
   placeholder: string;
   required?: boolean;
-  form: RefObject<HTMLFormElement | null>;
   onBlur?: (e: ChangeEvent<HTMLInputElement>) => void;
+  fieldError?: string;
 }
 
 export interface ReqData {

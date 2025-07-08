@@ -1,5 +1,4 @@
 /** @jsxImportSource @emotion/react */
-import useForm from "@/hooks/useForm";
 import Input from "@/components/ui/Input";
 import FormControl from "./FormControl";
 import { FormField } from "@/types/form";
@@ -11,11 +10,9 @@ const InputField = ({
   name,
   placeholder,
   required,
-  form,
   onBlur,
+  fieldError,
 }: FormField) => {
-  const { fieldErrors } = useForm(form);
-
   return (
     <FormControl>
       <label className="form-label" htmlFor={inputId}>
@@ -31,9 +28,9 @@ const InputField = ({
           placeholder={placeholder}
           required={required}
           onBlur={onBlur}
-          isError={fieldErrors[name]}
+          isError={fieldError}
         />
-        <span className="form-input-hint">{fieldErrors[name]}</span>
+        <span className="form-input-hint">{fieldError}</span>
       </div>
     </FormControl>
   );
