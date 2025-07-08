@@ -1,20 +1,22 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { BREAKPOINTS } from "@/constants/responsive";
-import FormStyle from "@/components/Form/FormStyle";
 
 const AuthPageStyle = css`
-  ${FormStyle};
-
-  /*================ 로그인, 회원가입 ================*/
   .form {
     max-width: 400px;
     padding: 0 16px;
   }
 
   .form-logo {
-    width: 198px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
     margin: 0 0 2.5rem;
+
+    img {
+      max-width: 198px;
+    }
   }
 
   .form-footer {
@@ -32,26 +34,24 @@ const AuthPageStyle = css`
     font-size: 14px;
   }
 
-  /* 로그인 */
   .login .form-container {
     padding: 80px 0;
   }
 
-  /* 회원가입 */
   .signup .form-container {
     padding-top: var(--form-padding-top);
     padding-bottom: 178px;
   }
 
-  /*================ 반응형 ================*/
-  /* Tablet */
   @media (min-width: 640px) {
     .form {
       max-width: 640px;
     }
 
     .form-logo {
-      width: 396px;
+      img {
+        max-width: 396px;
+      }
     }
   }
 
