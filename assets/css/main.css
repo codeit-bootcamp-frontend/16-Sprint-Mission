@@ -1,0 +1,237 @@
+/* ====== main ====== */
+#main .inner {
+  padding: 0 5px;
+}
+
+#main .main_title {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+/* main_visual_sec */
+#main .main_visual_sec {
+  background: var(--main-banner-bg);
+}
+
+#main .main_visual_sec .inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 540px;
+}
+
+#main .main_visual_sec .text_box {
+  padding-bottom: 100px;
+  flex: 0 0 auto;
+}
+
+#main .main_visual_sec .text_box .btn {
+  margin-top: var(--space-md);
+}
+
+/* service_sec */
+#main .service_sec {
+  background: var(--white);
+}
+
+#main .service_article {
+  padding: 138px 0;
+}
+
+#main .service_cont {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  max-width: 988px;
+  margin: 0 auto;
+  background: #fcfcfc;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+#main .service_cont .category {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--service-cat-color);
+}
+
+#main .service_cont .desc {
+  margin-top: var(--space-sm);
+  font-size: 24px;
+  font-weight: 500;
+}
+
+#main .service_article:nth-of-type(even) .service_cont {
+  flex-direction: row-reverse;
+}
+
+#main .service_article:nth-of-type(even) .text_box {
+  text-align: right;
+}
+
+#main .service_article_hot .service_cont {
+  padding-left: var(--space-sm);
+}
+
+#main .service_article_search .service_cont {
+  padding-right: 14px;
+}
+
+/* banner_sec */
+#main .banner_sec {
+  margin-top: 138px;
+  background: var(--main-banner-bg);
+}
+
+#main .banner_sec .inner {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 540px;
+}
+
+#main .banner_sec .main_title {
+  padding-bottom: 172px;
+  flex: 0 0 auto;
+}
+
+@media screen and (max-width: 1199px) {
+  #main .inner {
+    padding: 0;
+  }
+
+  #main .main_visual_sec .inner {
+    display: block;
+    width: auto;
+    height: auto;
+  }
+
+  #main .main_visual_sec .text_box {
+    padding: 84px 0 210px;
+    text-align: center;
+  }
+
+  #main .main_visual_sec .main_title br {
+    display: none;
+  }
+
+  #main .main_visual_sec .text_box .btn {
+    margin-top: var(--space-sm);
+  }
+
+  #main .main_visual_sec img {
+    margin: 0 auto;
+  }
+
+  #main .service_sec {
+    padding: 24px 0 4px;
+    background: #fcfcfc;
+  }
+  #main .service_article {
+    padding: 0 0 52px;
+  }
+
+  #main .service_cont {
+    display: block;
+    max-width: 696px;
+    border-radius: 0;
+  }
+
+  #main .service_article_hot .service_cont {
+    padding-left: 0;
+  }
+
+  #main .service_article_search .service_cont {
+    padding-right: 0;
+  }
+
+  #main .service_cont .service_img img {
+    width: 100%;
+    border-radius: 14px;
+  }
+
+  #main .service_cont .text_box {
+    padding-top: var(--space-sm);
+  }
+
+  #main .service_cont .main_title {
+    font-size: 32px;
+  }
+
+  #main .service_cont .main_title br {
+    display: none;
+  }
+
+  #main .service_cont .desc {
+    font-size: 18px;
+  }
+
+  #main .banner_sec {
+    margin-top: 0;
+    text-align: center;
+  }
+
+  #main .banner_sec .inner {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  #main .banner_sec .main_title {
+    padding: 201px 0 217px;
+  }
+
+  #main .banner_sec img {
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #main .main_title {
+    font-size: 32px;
+  }
+
+  #main .main_visual_sec .text_box {
+    padding: 48px 0 132px;
+  }
+
+  #main .main_visual_sec .main_title br {
+    display: block;
+  }
+
+  #main .main_visual_sec .text_box .btn {
+    margin-top: 18px;
+  }
+
+  #main .main_visual_sec img {
+    width: 100%;
+  }
+
+  #main .service_sec {
+    padding: 52px 0 43px;
+  }
+
+  #main .service_article {
+    padding-bottom: 40px;
+  }
+
+  #main .service_cont .category {
+    margin-bottom: var(--space-xxs);
+    font-size: 16px;
+  }
+
+  #main .service_cont .main_title {
+    font-size: 24px;
+  }
+
+  #main .service_cont .desc {
+    margin-top: var(--space-xs);
+    font-size: 16px;
+  }
+
+  #main .banner_sec .main_title {
+    padding: 121px 0 131px;
+  }
+}
