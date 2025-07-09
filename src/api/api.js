@@ -94,3 +94,31 @@ export const deleteComment = async (commentId) => {
     throw error;
   }
 };
+
+export const postSignup = async (email, password, nickname, passwordConfirmation) => {
+  try {
+    const res = await axios.post(`${baseURL}/auth/signup`, {
+      email,
+      password,
+      nickname,
+      passwordConfirmation,
+    });
+    return res.data;
+  } catch (error) {
+    console.log('회원가입 api 호출 실패 :', error.message);
+    throw error;
+  }
+};
+
+export const postLogin = async (email, password) => {
+  try {
+    const res = await axios.post(`${baseURL}/auth/signin`, {
+      email,
+      password,
+    });
+    return res.data;
+  } catch (error) {
+    console.log('로그인 api 호출 실패 :', error.message);
+    throw error;
+  }
+};
