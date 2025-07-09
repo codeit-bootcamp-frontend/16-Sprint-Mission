@@ -6,13 +6,23 @@ import { useCallback, useReducer } from 'react';
   너무 파일 변경 사항이 없는 것 같아서 이 파일도 수정해봤습니다.
 */
 
-
-
 interface ValidationStates {
   values: { [key: string]: string };
   errors: { [key: string]: boolean };
   errorMessages: { [key: string]: string };
   isValid: { [key: string]: boolean };
+}
+
+interface Action {
+  type: 'set_validationState';
+  payload: { name: string; value: string };
+}
+
+interface validRules {
+  [key: string]: {
+    isValid: (value: string, pwValue?: string) => boolean;
+    getErrorMessage: (value: string) => string;
+  };
 }
 
 const initialValidationStates: ValidationStates = {
@@ -22,11 +32,6 @@ const initialValidationStates: ValidationStates = {
   errorMessages: {},
   isValid: {},
 };
-
-interface Action {
-  type: string;
-  payload: { name: string; value: string };
-}
 
 function validationReducer(state: ValidationStates, action: Action) {
   //state는 validationStates
@@ -57,6 +62,7 @@ export function useValidate() {
   );
 
   const validate = useCallback((name: string, value: string) => {
+    //name: 추가할 인풋 이름
     dispatch({ type: 'set_validationState', payload: { name, value } });
   }, []);
 
@@ -79,13 +85,6 @@ export function useValidate() {
 //  그냥 바깥에 빼는게 나을 것 같음
 export function checkAllValid(...args: ValidationStates[]) {
   return args.every((item) => item.isValid);
-}
-
-interface validRules {
-  [key: string]: {
-    isValid: (value: string, pwValue?: string) => boolean;
-    getErrorMessage: (value: string) => string;
-  };
 }
 
 const validRuleObj: validRules = {
