@@ -42,8 +42,8 @@ interface Props {
 function FormInput(props: Props) {
   const { placeholder, name, type, id, validatePwCheck } = props;
   const methods = useFormContext();
-  type inferredT = typeof methods extends UseFormReturn<infer U> ? U : never;
-  const { errors } = useFormState<inferredT>({ name }); //여기서 name으로 따로 골라와야 개별로 감지
+  type InferredT = typeof methods extends UseFormReturn<infer U> ? U : never;
+  const { errors } = useFormState<InferredT>({ name }); //여기서 name으로 따로 골라와야 개별로 감지
 
   function getErrorMessage(errors: FieldErrors) {
     const errMsg = errors[name]?.message;
