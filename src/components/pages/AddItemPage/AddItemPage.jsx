@@ -1,29 +1,61 @@
 import styled from 'styled-components';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import InputField from '../../UI/InputField';
 import ImageUpload from '../../UI/ImageUpload';
 import TagInput from '../../UI/Taginput';
 import useFormatNumber from '../../../hooks/useFormatNumber';
+import { postProduct } from '../../../api/api';
 import { ColorTypes } from '../../../styles/theme';
 
 function AddItemPage() {
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [price, handlePriceChange] = useFormatNumber('');
   const [tags, setTags] = useState([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const isValid = name.trim() && description.trim() && price.trim() && tags.length > 0;
+  const isValid = name.trim() && description.trim() && price.replace(/,/g, '').length > 0 && tags.length > 0;
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!isValid || isSubmitting) return;
+
+    setIsSubmitting(true);
+
+    try {
+      const productData = {
+        name: name.trim(),
+        description: description.trim(),
+        price: parseInt(price.replace(/,/g, '')),
+        tags: tags,
+      };
+
+      const response = await postProduct(productData);
+      console.log('상품 등록 성공:', response);
+
+      navigate('/items');
+    } catch (error) {
+      console.error('상품 등록 실패:', error);
+      alert('상품 등록에 실패했습니다. 다시 시도해주세요.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <StyledContainer>
       <StyledHeaderSection>
         <h3>상품 등록하기</h3>
         <StyledButton
-          type="submit"
-          disabled={isValid}
+          type="button"
+          disabled={!isValid || isSubmitting}
+          onClick={handleSubmit}
         >
-          등록
+          {isSubmitting ? '등록 중...' : '등록'}
         </StyledButton>
       </StyledHeaderSection>
 
@@ -91,10 +123,16 @@ const StyledHeaderSection = styled.div`
 const StyledButton = styled.button`
   width: 74px;
   height: 42px;
-  background-color: ${({ theme }) => theme.colors[ColorTypes.SECONDARY_GRAY_400]};
+  background-color: ${({ theme, disabled }) =>
+    disabled ? theme.colors[ColorTypes.SECONDARY_GRAY_400] : theme.colors[ColorTypes.PRIMARY_100]};
 
   &:disabled {
-    background-color: ${({ theme }) => theme.colors[ColorTypes.PRIMARY_100]};
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  &:not(:disabled):hover {
+    background-color: ${({ theme }) => theme.colors[ColorTypes.PRIMARY_200]};
   }
 `;
 

@@ -24,9 +24,35 @@ export const getProductDetail = async (productId) => {
   }
 };
 
+export const postProduct = async (product) => {
+  try {
+    const token = localStorage.getItem('token');
+    const res = await axios.post(`${baseURL}/products`, product, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    });
+    return res.data;
+  } catch (error) {
+    console.log('상품 등록 api 호출 실패 :', error.message);
+    throw error;
+  }
+};
+
 export const postComment = async (productId, content) => {
   try {
-    const res = await axios.post(`${baseURL}/products/${productId}/comments`, { content: content });
+    const token = localStorage.getItem('token');
+    const res = await axios.post(
+      `${baseURL}/products/${productId}/comments`,
+      { content: content },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
     return res.data;
   } catch (error) {
     console.log('상품 댓글 등록 api 호출 실패 :', error.message);
