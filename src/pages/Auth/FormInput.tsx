@@ -3,9 +3,12 @@ import {
   useFormContext,
   useFormState,
   type FieldErrors,
+  type FieldValues,
+  type Path,
 } from 'react-hook-form';
 import clsx from 'clsx';
 
+//레지스터 등록용
 const VALID_RULES = {
   'user-email': {
     required: '이메일을 입력해주세요',
@@ -34,13 +37,14 @@ interface Props {
   name: keyof typeof VALID_RULES;
   type: string;
   id: string;
-  validatePwCheck?: (value: string) => boolean | string;
+  validatePwCheck?: (value: string) => string;
 }
 
-function FormInput(props: Props) {
+function FormInput<T extends FieldValues>(props: Props) {
+  //호출부에 직접 타입 안 넣어줘도 프로바이더에서 알아서 찾아오나본데...??
   const { placeholder, name, type, id, validatePwCheck } = props;
   const { register } = useFormContext();
-  const { errors } = useFormState({ name }); //여기서 name으로 따로 골라와야 개별로 감지하는듯...?
+  const { errors } = useFormState<T>({ name: name as Path<T> }); //여기서 name으로 따로 골라와야 개별로 감지
 
   function getErrorMessage(errors: FieldErrors) {
     const errMsg = errors[name]?.message;
@@ -56,7 +60,7 @@ function FormInput(props: Props) {
           ...VALID_RULES[name],
           validate: validatePwCheck || undefined, //프롭에 validatePwCheck 없으면 undefined로
         })}
-        className={clsx({ [styles.inputErrorBorder]: errors[name] })}
+        className={clsx({ [styles.inputErrorBorder]: getErrorMessage(errors) })}
         type={type}
         id={id}
         name={name}

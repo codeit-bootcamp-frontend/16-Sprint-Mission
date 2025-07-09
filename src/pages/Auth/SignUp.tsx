@@ -8,9 +8,8 @@ import PasswordCheckField from './PasswordCheckField';
 import PasswordField from './PasswordField';
 import styles from './styles/Auth.module.css';
 import SubmitButton from './SubmitButton';
-import type { FormValues } from './Login';
 
-export interface SignUpValues extends FormValues {
+export interface SignUpValues {
   'user-email': string;
   'user-password': string;
   'user-password-check': string;

@@ -7,11 +7,7 @@ import PasswordField from './PasswordField';
 import styles from './styles/Auth.module.css';
 import SubmitButton from './SubmitButton';
 
-export interface FormValues {
-  [key: string]: string;
-}
-
-export interface LoginValues extends FormValues {
+export interface LoginValues {
   'user-email': string;
   'user-password': string;
 }
@@ -21,7 +17,7 @@ function Login() {
   const methods = useForm<LoginValues>({ mode: 'all' }); //change,blur될 때 유효성 평가해줘
 
   const onSubmit: SubmitHandler<LoginValues> = (data) => {
-    //data는 FormValues타입 /RHF의 SubmitHandler는 e를 못 받는다
+    //data는 RHF의 FormValues타입. RHF의 SubmitHandler는 e를 못 받는다
     sessionStorage.setItem('loggedIn', data['user-email']);
     toItemsNavigation('/items');
   };

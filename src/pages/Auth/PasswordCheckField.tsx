@@ -11,8 +11,8 @@ function PasswordCheckField() {
     setPasswordCheckToggle(!passwordCheckToggle);
   }
 
-  function validatePwCheck(value : string) {
-    if (value === passwordValue) return true;
+  function validatePwCheck(value: string) {
+    if (value === passwordValue) return '';
     else return '비밀번호가 일치하지 않습니다.';
   }
 
