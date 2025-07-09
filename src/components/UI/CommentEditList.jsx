@@ -5,8 +5,18 @@ import kebab from '../../assets/images/icons/ic_kebab.svg';
 import { FontTypes, ColorTypes } from '../../styles/theme';
 import { applyFontStyles } from '../../styles/mixins';
 
-function CommentEditList() {
+function CommentEditList({ onEditClick, commentId, onDeleteClick }) {
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleEdit = () => {
+    onEditClick(commentId);
+    setIsOpen(false);
+  };
+
+  const handleDelete = () => {
+    onDeleteClick(commentId);
+    setIsOpen(false);
+  };
 
   return (
     <StyledContainer>
@@ -19,8 +29,8 @@ function CommentEditList() {
 
       {isOpen && (
         <StyledEditList>
-          <StyledEditItem>수정하기</StyledEditItem>
-          <StyledEditItem>삭제하기</StyledEditItem>
+          <StyledEditItem onClick={handleEdit}>수정하기</StyledEditItem>
+          <StyledEditItem onClick={handleDelete}>삭제하기</StyledEditItem>
         </StyledEditList>
       )}
     </StyledContainer>
@@ -64,6 +74,7 @@ const StyledEditList = styled.ul`
 
 const StyledEditItem = styled.li`
   display: flex;
+  cursor: pointer;
 
   ${applyFontStyles(FontTypes.REGULAR16, ColorTypes.SECONDARY_GRAY_500)}
 `;

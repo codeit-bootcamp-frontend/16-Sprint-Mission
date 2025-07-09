@@ -24,6 +24,16 @@ export const getProductDetail = async (productId) => {
   }
 };
 
+export const postComment = async (productId, content) => {
+  try {
+    const res = await axios.post(`${baseURL}/products/${productId}/comments`, { content: content });
+    return res.data;
+  } catch (error) {
+    console.log('상품 댓글 등록 api 호출 실패 :', error.message);
+    throw error;
+  }
+};
+
 export const getComments = async (productId, limit = 10, cursor = null) => {
   try {
     const res = await axios.get(`${baseURL}/products/${productId}/comments`, {
@@ -45,6 +55,16 @@ export const patchComment = async (commentId, content) => {
     return res.data;
   } catch (error) {
     console.log('상품 댓글 수정 api 호출 실패 :', error.message);
+    throw error;
+  }
+};
+
+export const deleteComment = async (commentId) => {
+  try {
+    const res = await axios.delete(`${baseURL}/comments/${commentId}`);
+    return res.data;
+  } catch (error) {
+    console.log('상품 댓글 삭제 api 호출 실패 :', error.message);
     throw error;
   }
 };
