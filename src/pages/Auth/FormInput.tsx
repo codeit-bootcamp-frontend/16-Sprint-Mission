@@ -3,8 +3,7 @@ import {
   useFormContext,
   useFormState,
   type FieldErrors,
-  type FieldValues,
-  type Path,
+  type UseFormReturn,
 } from 'react-hook-form';
 import clsx from 'clsx';
 
@@ -40,11 +39,11 @@ interface Props {
   validatePwCheck?: (value: string) => string;
 }
 
-function FormInput<T extends FieldValues>(props: Props) {
-  //호출부에 직접 타입 안 넣어줘도 프로바이더에서 알아서 찾아오나본데...??
+function FormInput(props: Props) {
   const { placeholder, name, type, id, validatePwCheck } = props;
-  const { register } = useFormContext();
-  const { errors } = useFormState<T>({ name: name as Path<T> }); //여기서 name으로 따로 골라와야 개별로 감지
+  const methods = useFormContext();
+  type inferredT = typeof methods extends UseFormReturn<infer U> ? U : never;
+  const { errors } = useFormState<inferredT>({ name }); //여기서 name으로 따로 골라와야 개별로 감지
 
   function getErrorMessage(errors: FieldErrors) {
     const errMsg = errors[name]?.message;
@@ -56,7 +55,7 @@ function FormInput<T extends FieldValues>(props: Props) {
   return (
     <>
       <input
-        {...register(name, {
+        {...methods.register(name, {
           ...VALID_RULES[name],
           validate: validatePwCheck || undefined, //프롭에 validatePwCheck 없으면 undefined로
         })}
