@@ -1,4 +1,4 @@
-const BASE_URL = "https://panda-market-api.vercel.app";
+const BASE_URL = import.meta.env.VITE_TEST_DATA;
 
 /**
  * @param {string} endpoint - 요청할 API 경로

@@ -1,3 +1,7 @@
+import { useEffect, useState } from "react";
+import { getAllProducts } from "../api/allProducts";
+import { getBestProducts } from "../api/bestProducts";
+
 import BestProducts from "./BestProducts";
 import AllProducts from "./AllProducts";
 import styled from "styled-components";
@@ -15,7 +19,21 @@ const CommonCss_Style = styled.div`
   // }
 `;
 
-function Products({ allProducts, bestProducts }) {
+function Products() {
+  const [allProducts, setAllProducts] = useState([]);
+  const [bestProducts, setbestProducts] = useState([]);
+
+  useEffect(() => {
+    getAllProducts()
+      .then((data) => setAllProducts(data))
+      .catch((err) => console.error(err));
+  }, []);
+
+  useEffect(() => {
+    getBestProducts()
+      .then((data) => setbestProducts(data))
+      .catch((err) => console.error(err));
+  }, []);
   return (
     <CommonCss_Style>
       <BestProducts products={bestProducts} />

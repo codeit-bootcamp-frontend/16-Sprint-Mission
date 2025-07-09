@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import { Bold16, Medium14 } from "../style/Font";
+import { useScreenSize } from "../hooks/useScreenSize";
 
 const BestProducts_Style = styled.div`
   display: grid;
@@ -40,19 +41,19 @@ const ProductImage = styled.img`
 `;
 
 function BestProducts({ products }) {
-  const [imgCount, setImgCount] = useState(1);
+  const IMG_COUNT = {
+    desktop: 4,
+    tablet: 2,
+    mobile: 1,
+  };
 
-  useEffect(() => {
-    function updateImgCount() {
-      const width = window.innerWidth;
-      if (width >= 1200) setImgCount(4);
-      else if (width >= 768) setImgCount(2);
-      else setImgCount(1);
-    }
-    updateImgCount();
-    window.addEventListener("resize", updateImgCount);
-    return () => window.removeEventListener("resize", updateImgCount);
-  }, []);
+  const { isDesktop, isTablet } = useScreenSize();
+
+  const imgCount = isDesktop
+    ? IMG_COUNT.desktop
+    : isTablet
+    ? IMG_COUNT.tablet
+    : IMG_COUNT.mobile;
 
   return (
     <section>

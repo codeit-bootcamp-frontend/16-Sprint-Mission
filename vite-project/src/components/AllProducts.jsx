@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import AllProducts_navbar from "./AllProducts_navbar";
 import styled from "styled-components";
 import { Bold16, Medium14 } from "../style/Font";
+import { useScreenSize } from "../hooks/useScreenSize";
 
 const AllProducts_style = styled.div`
   display: grid;
@@ -73,22 +74,22 @@ const PageNumber = styled.span`
 `;
 
 function AllProducts({ products }) {
-  const [imgCount, setImgCount] = useState(2);
-
   const [sortValue, setSortValue] = useState("recent");
   const [searchKeyword, setSearchKeyword] = useState("");
 
-  useEffect(() => {
-    function updateImgCount() {
-      const width = window.innerWidth;
-      if (width >= 1200) setImgCount(10);
-      else if (width >= 768) setImgCount(6);
-      else setImgCount(4);
-    }
-    updateImgCount();
-    window.addEventListener("resize", updateImgCount);
-    return () => window.removeEventListener("resize", updateImgCount);
-  }, []);
+  const IMG_COUNT = {
+    desktop: 10,
+    tablet: 6,
+    mobile: 4,
+  };
+
+  const { isDesktop, isTablet } = useScreenSize();
+
+  const imgCount = isDesktop
+    ? IMG_COUNT.desktop
+    : isTablet
+    ? IMG_COUNT.tablet
+    : IMG_COUNT.mobile;
 
   const sortProducts = [...products].sort((a, b) => {
     if (sortValue === "recent") {
