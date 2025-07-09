@@ -1,28 +1,32 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
+import { ThemeContext, ThemeProvider } from 'styled-components';
+
+import AuthProvider from './context/AuthProvider';
+import AppLayout from './layouts/AppLayout';
+import ItemsPage from './pages/ItemsPage';
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
-import SignUpPage from './pages/SignUpPage';
-import AppLayout from './layouts/AppLayout';
+import SignupPage from './pages/SignupPage';
 import GlobalStyle from './styles/global';
 import theme from './styles/theme';
 
 const App = () => {
   return (
-    <>
-      <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
+      <AuthProvider>
         <GlobalStyle />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<AppLayout />}>
               <Route index element={<LandingPage />} />
+              <Route path="/items" element={<ItemsPage />} />
             </Route>
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/signup" element={<SignupPage />} />
           </Routes>
         </BrowserRouter>
-      </ThemeProvider>
-    </>
+      </AuthProvider>
+    </ThemeProvider>
   );
 };
 

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import Button from './Button';
 
 const StyledLoginButton = styled(Button)`
@@ -11,7 +12,7 @@ const LoginButton = ({ children }) => {
   return (
     <StyledLoginButton
       link={'/login'}
-      aria-lable={'로그인 버튼'}
+      aria-label={'로그인 버튼'}
       type={'square'}
     >
       {children}

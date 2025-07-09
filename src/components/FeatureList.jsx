@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import FeatureDescription from './FeatureDescription';
 import { FEATURES_DATA as featureList } from '../data/featureData';
 

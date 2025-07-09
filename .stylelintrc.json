@@ -1,0 +1,9 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "rules": {
+    "indentation": 2,
+    "color-named": "never",
+    "declaration-block-single-line-max-declarations": 1,
+    "max-empty-lines": 1
+  }
+}

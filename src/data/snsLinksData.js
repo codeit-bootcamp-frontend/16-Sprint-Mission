@@ -1,7 +1,7 @@
 import icFacebook from '../assets/icon/ic_facebook.png';
+import icInstagram from '../assets/icon/ic_instagram.png';
 import icTwitter from '../assets/icon/ic_twitter.png';
 import icYoutube from '../assets/icon/ic_youtube.png';
-import icInstagram from '../assets/icon/ic_instagram.png';
 
 export const SNS_LINKS = [
   {

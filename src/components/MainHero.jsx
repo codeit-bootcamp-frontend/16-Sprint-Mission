@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+
 import LinkToItemsButton from './LinkToItemsButton';
-import mainHeroImg from '../assets/img_home_top.png';
+import mainHeroImg from '../assets/Img_home_top.png';
 
 const MainHeroWrapper = styled.div`
   width: 100%;

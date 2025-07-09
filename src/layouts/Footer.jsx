@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+
 import { SNS_LINKS as snsLinks } from '../data/snsLinksData';
 
 const FooterWrapper = styled.div`

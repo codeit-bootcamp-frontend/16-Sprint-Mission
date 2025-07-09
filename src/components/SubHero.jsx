@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import subHeroImg from '../assets/img_home_bottom.png';
 
 const SubHeroWrapper = styled.div`

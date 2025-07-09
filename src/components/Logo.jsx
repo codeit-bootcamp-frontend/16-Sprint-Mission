@@ -1,11 +1,13 @@
-import styled from 'styled-components';
-import logoTypo from '../assets/logo/logo_typo.svg';
-import logo from '../assets/logo/logo_sm.svg';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+import logo from '../assets/logo/logo_sm.svg';
+import logoTypo from '../assets/logo/logo_typo.svg';
 
 const StyledLogo = styled.img`
   aspect-ratio: 2/1;
   width: 100px;
+  vertical-align: bottom;
 
   @media (min-width: 768px) {
     aspect-ratio: 3/1;

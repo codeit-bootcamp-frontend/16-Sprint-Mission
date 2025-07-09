@@ -1,9 +1,11 @@
-import styled from 'styled-components';
-import logo from '../assets/logo/logo_lg.svg';
 import { Link } from 'react-router-dom';
-import Button from '../components/Button';
+import styled from 'styled-components';
+
 import googleLoginImg from '../assets/icon/ic_google_login.png';
 import kakaoLoginImg from '../assets/icon/ic_kakao_login.png';
+import logo from '../assets/logo/logo_lg.svg';
+import Button from '../components/Button';
+import { useAuth } from '../context/AuthProvider';
 
 const LoginFormWrapper = styled.div`
   display: flex;
@@ -84,12 +86,13 @@ const OAuthLoginImg = styled.img`
 `;
 
 const LoginPage = () => {
+  const { login } = useAuth();
   return (
     <LoginFormWrapper>
       <Link to={'/'}>
         <LogoImg width={200} src={logo} alt="판다마켓 로고 이미지" />
       </Link>
-      <form>
+      <form action={login}>
         <InputWrapper>
           <StyledLabel htmlFor="email">이메일</StyledLabel>
           <StyledInput
