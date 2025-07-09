@@ -1,5 +1,6 @@
 import { useFormState } from 'react-hook-form';
 import styles from './styles/SubmitButton.module.css';
+import clsx from 'clsx';
 
 interface Props {
   children: React.ReactNode;
@@ -11,7 +12,10 @@ export default function SubmitButton({ children }: Props) {
   return (
     <button
       type="submit"
-      className={`${styles.authBtn} ${!isValid ? styles.inActivateBtn : styles.activateBtn}`}
+      className={clsx(styles.authBtn, {
+        [styles.inActivateBtn]: !isValid,
+        [styles.activateBtn]: isValid,
+      })}
     >
       {children}
     </button>

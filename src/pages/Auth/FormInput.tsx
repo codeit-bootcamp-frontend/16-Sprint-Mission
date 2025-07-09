@@ -4,8 +4,9 @@ import {
   useFormState,
   type FieldErrors,
 } from 'react-hook-form';
+import clsx from 'clsx';
 
-const validRuleObj = {
+const VALID_RULES = {
   'user-email': {
     required: '이메일을 입력해주세요',
     pattern: {
@@ -30,7 +31,7 @@ const validRuleObj = {
 
 interface Props {
   placeholder: string;
-  name: keyof typeof validRuleObj;
+  name: keyof typeof VALID_RULES;
   type: string;
   id: string;
   validatePwCheck?: (value: string) => boolean | string;
@@ -52,10 +53,10 @@ function FormInput(props: Props) {
     <>
       <input
         {...register(name, {
-          ...validRuleObj[name],
+          ...VALID_RULES[name],
           validate: validatePwCheck || undefined, //프롭에 validatePwCheck 없으면 undefined로
         })}
-        className={errors[name] && styles.inputErrorBorder}
+        className={clsx({ [styles.inputErrorBorder]: errors[name] })}
         type={type}
         id={id}
         name={name}
