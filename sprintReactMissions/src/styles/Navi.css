@@ -74,3 +74,9 @@
     margin-left: 32px;
   }
 }
+
+/* 더 높은 선택자로 선택해서 기본 스타일보다 우위에 놓고자 .menu-section 추가 */
+.menu-section .nav-link.highlight {
+  color: #3692ff; /* 페이지가 중고마켓일시  */
+  font-weight: bold;
+}
