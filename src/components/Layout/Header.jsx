@@ -3,11 +3,13 @@ import styled from 'styled-components';
 
 import { FontTypes, ColorTypes } from '../../styles/theme';
 import { applyFontStyles } from '../../styles/mixins';
+import { useAuth } from '../../context/AuthContext';
 import logo from '../../assets/images/logo/logo.svg';
 import textLogo from '../../assets/images/logo/textlogo.svg';
 import profile from '../../assets/images/icons/ic_profile.png';
 
 function Header() {
+  const { isAuthenticated, logout } = useAuth();
   const location = useLocation();
   const isMarketActive = location.pathname === '/items' || location.pathname === '/additem';
 
@@ -45,12 +47,24 @@ function Header() {
         </nav>
       </StyledHeaderLeft>
 
-      <Link to="/login">
-        <img
-          src={profile}
-          alt="로그인"
-        />
-      </Link>
+      {isAuthenticated ? (
+        <StyledLogoutButtonContainer>
+          <StyledLogoutButton onClick={logout}>로그아웃</StyledLogoutButton>
+          <Link to="/mypage">
+            <img
+              src={profile}
+              alt="마이페이지"
+            />
+          </Link>
+        </StyledLogoutButtonContainer>
+      ) : (
+        <Link to="/login">
+          <img
+            src={profile}
+            alt="로그인"
+          />
+        </Link>
+      )}
     </StyledHeaderContainer>
   );
 }
@@ -120,4 +134,17 @@ const StyledImglogo = styled.img`
   @media (max-width: 768px) {
     display: none;
   }
+`;
+
+const StyledLogoutButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+`;
+
+const StyledLogoutButton = styled.button`
+  padding: 10px 20px;
+  border-radius: 40px;
+  background-color: ${({ theme }) => theme.colors[ColorTypes.PRIMARY_100]};
+  ${applyFontStyles(FontTypes.SEMIBOLD14, ColorTypes.SECONDARY_WHITE)};
 `;

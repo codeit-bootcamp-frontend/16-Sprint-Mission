@@ -1,17 +1,21 @@
-import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+
+import { applyFontStyles } from '../../styles/mixins';
+import { ColorTypes, FontTypes } from '../../styles/theme';
+import InputField from '../UI/InputField';
+import useFormValidation from '../../hooks/useFormValidation';
+import { postLogin } from '../../api/api';
+import { useAuth } from '../../context/AuthContext';
+
 import logo from '../../assets/images/logo/logo.svg';
 import google from '../../assets/images/icons/ic_google.png';
 import kakao from '../../assets/images/icons/ic_kakao.png';
-import InputField from '../UI/InputField';
-import { applyFontStyles } from '../../styles/mixins';
-import { ColorTypes, FontTypes } from '../../styles/theme';
-import useFormValidation from '../../hooks/useFormValidation';
-import { postLogin } from '../../api/api';
 
 function LoginPage() {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { errors, setErrors, validate, validateField } = useFormValidation('login');
@@ -25,6 +29,7 @@ function LoginPage() {
     try {
       const res = await postLogin(email, password);
       localStorage.setItem('token', res.accessToken);
+      login(res.accessToken);
       navigate('/');
     } catch (error) {
       console.error('로그인 실패:', error);

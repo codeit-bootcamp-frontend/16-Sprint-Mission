@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import { applyFontStyles } from '../../../styles/mixins';
 import { ColorTypes, FontTypes } from '../../../styles/theme';
@@ -6,26 +7,33 @@ import heart from '../../../assets/images/icons/ic_heart.svg';
 
 function ItemCard({ item }) {
   return (
-    <StyledItemCardContainer>
-      <StyledItemImage
-        src={item?.images[0]}
-        alt={item?.name}
-      />
-      <StyledItemName>{item?.name}</StyledItemName>
-      <StyledItemPrice>{item?.price.toLocaleString()}원</StyledItemPrice>
-
-      <StyledLikeCount>
-        <StyledLikeIcon
-          src={heart}
-          alt="좋아요"
+    <StyledLink to={`/items/${item.id}`}>
+      <StyledItemCardContainer>
+        <StyledItemImage
+          src={item?.images[0]}
+          alt={item?.name}
         />
-        <StyledItemLikes>{item?.favoriteCount.toLocaleString()}</StyledItemLikes>
-      </StyledLikeCount>
-    </StyledItemCardContainer>
+        <StyledItemName>{item?.name}</StyledItemName>
+        <StyledItemPrice>{item?.price.toLocaleString()}원</StyledItemPrice>
+
+        <StyledLikeCount>
+          <StyledLikeIcon
+            src={heart}
+            alt="좋아요"
+          />
+          <StyledItemLikes>{item?.favoriteCount.toLocaleString()}</StyledItemLikes>
+        </StyledLikeCount>
+      </StyledItemCardContainer>
+    </StyledLink>
   );
 }
 
 export default ItemCard;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+`;
 
 const StyledItemCardContainer = styled.div`
   display: flex;
