@@ -39,7 +39,7 @@ function ItemImagesUpload() {
   }, [previewUrl]);
 
   return (
-    <>
+    <div className="image-upload-wrapper">
       <label className="image-upload-box">
         <span>
           ＋ <br />
@@ -52,30 +52,18 @@ function ItemImagesUpload() {
           ref={fileInputRef}
         />
       </label>
-      {previewUrl ? (
+
+      {previewUrl && (
         <div className="image-preview">
           <img src={previewUrl} alt="미리보기 이미지" />
           <button className="remove-btn" onClick={handleRemoveImage}>
             ×
           </button>
         </div>
-      ) : (
-        <label className="image-upload-box">
-          <span>
-            ＋<br />
-            이미지 등록
-          </span>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleImagesUpload}
-            ref={fileInputRef}
-          />
-        </label>
       )}
 
       {error && <p className="error-message">{error}</p>}
-    </>
+    </div>
   );
 }
 

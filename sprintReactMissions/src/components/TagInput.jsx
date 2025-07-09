@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/taginput.css";
 
 export default function TagInput({ tags, setTags, maxTags = 5 }) {
   const addTag = (e) => {
@@ -18,12 +19,21 @@ export default function TagInput({ tags, setTags, maxTags = 5 }) {
 
   return (
     <div className="tag-input-wrapper">
-      <input type="text" placeholder="태그를 입력해주세요" onKeyDown={addTag} />
+      <input
+        className="form-input"
+        type="text"
+        placeholder="태그를 입력해주세요"
+        onKeyDown={addTag}
+      />
       <ul className="tag-list">
         {tags.map((tag) => (
           <li key={tag} className="tag-chip">
             #{tag}
-            <button type="button" onClick={() => removeTag(tag)}>
+            <button
+              type="button"
+              className="tag-remove-btn"
+              onClick={() => removeTag(tag)}
+            >
               ×
             </button>
           </li>

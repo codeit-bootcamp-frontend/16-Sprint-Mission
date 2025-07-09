@@ -1,8 +1,15 @@
-.image-upload-box {
-  width: 282px;
-  height: 282px;
+.image-upload-wrapper {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.image-upload-box,
+.image-preview {
+  width: 168px;
+  height: 168px;
   border: 1px dashed #d1d5db;
-  border-radius: 10px;
+  border-radius: 12px;
   background-color: #f9fafb;
   display: flex;
   justify-content: center;
@@ -24,19 +31,11 @@
   line-height: 1.5;
 }
 
-.image-preview {
-  position: relative;
-  width: 282px;
-  height: 282px;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
 .image-preview img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
 .remove-btn {
@@ -61,4 +60,18 @@
   margin-top: 8px;
   color: red;
   font-size: 0.85rem;
+}
+
+/* 데스크탑 반응형 (1024px 이상일 때) */
+@media (min-width: 1024px) {
+  .image-upload-box,
+  .image-preview {
+    width: 282px;
+    height: 282px;
+    border-radius: 10px;
+  }
+
+  .image-preview img {
+    border-radius: 10px;
+  }
 }
