@@ -1,11 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { BREAKPOINTS } from "@/constants/responsive";
+import { COLORS } from "@/styles/colors";
+import { FONT_SIZES } from "@/styles/fontSizes";
 
 const BannerStyle = css`
   min-height: 540px;
-  background: var(--background-blue);
-  color: var(--gray700);
+  background: ${COLORS.background.blue};
+  color: ${COLORS.gray[700]};
   text-align: center;
 
   .banner-container {
@@ -17,11 +19,11 @@ const BannerStyle = css`
   }
 
   .banner-hero {
-    background: var(--background-blue-light);
+    background: ${COLORS.background.lightBlue};
   }
 
   .banner-title {
-    font-size: var(--banner-font-size);
+    /* font-size: var(--banner-font-size); */
     margin-bottom: 18px;
     word-break: keep-all;
 
@@ -50,7 +52,7 @@ const BannerStyle = css`
   .banner-info .btn-lg {
     display: block;
     width: 100%;
-    font-size: var(--banner-btn-font-size);
+    font-size: ${FONT_SIZES[18]};
     line-height: 24px;
     max-width: 356px;
   }
@@ -69,10 +71,6 @@ const BannerStyle = css`
   }
 
   @media (min-width: ${BREAKPOINTS.tablet}px) {
-    :root {
-      --banner-btn-font-size: 20px;
-    }
-
     .banner {
       height: 926px;
     }
@@ -82,6 +80,7 @@ const BannerStyle = css`
 
     .banner-info .btn-lg {
       line-height: 32px;
+      font-size: ${FONT_SIZES[20]};
     }
   }
 
@@ -119,8 +118,8 @@ const BannerStyle = css`
   }
 
   @supports (font-size: clamp(1rem, 2vw, 3rem)) {
-    :root {
-      --banner-font-size: clamp(32px, 5vw, 40px);
+    .banner-title {
+      font-size: clamp(32px, 5vw, 40px);
     }
   }
 `;
