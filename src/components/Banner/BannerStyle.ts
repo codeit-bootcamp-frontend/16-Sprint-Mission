@@ -23,7 +23,6 @@ const BannerStyle = css`
   }
 
   .banner-title {
-    /* font-size: var(--banner-font-size); */
     margin-bottom: 18px;
     word-break: keep-all;
 

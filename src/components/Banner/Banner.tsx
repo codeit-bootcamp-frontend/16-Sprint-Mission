@@ -4,6 +4,63 @@ import { useNavigate } from "react-router-dom";
 import Button from "@/components/ui/Button";
 import BannerStyle from "./BannerStyle";
 
+interface BannerInfoProps {
+  align: string;
+  children: ReactNode;
+}
+
+const BannerInfo = ({ children, align }: BannerInfoProps) => {
+  return <div className="banner-info">{children}</div>;
+};
+
+interface BannerButtonProps {
+  linkTo: string;
+  children: ReactNode;
+  ariaLabel?: string;
+}
+
+const BannerButton = ({
+  linkTo,
+  children = "구경하러 가기",
+  ariaLabel,
+}: BannerButtonProps) => {
+  const navigate = useNavigate();
+
+  return (
+    <Button
+      onClick={() => navigate(linkTo)}
+      aria-label={ariaLabel}
+      variant="bannerPrimary"
+      size="lg"
+    >
+      {children}
+    </Button>
+  );
+};
+
+interface BannerImageProps {
+  imgSrc: string;
+  imgAlt: string;
+  lazyLoading?: boolean;
+  align?: string;
+}
+
+const BannerImage = ({
+  imgSrc,
+  imgAlt,
+  lazyLoading,
+  align,
+}: BannerImageProps) => {
+  return (
+    <img
+      className="banner-img"
+      loading={lazyLoading ? "lazy" : "eager"}
+      src={imgSrc}
+      alt={imgAlt}
+    />
+  );
+};
+
 interface BannerProps {
   title: string | ReactNode;
   imgSrc: string;
@@ -11,6 +68,8 @@ interface BannerProps {
   linkTo?: string;
   ariaLabel?: string;
   lazyLoading?: boolean;
+  infoAlign?: string;
+  imgAlign?: string;
 }
 
 const Banner = ({
@@ -20,34 +79,33 @@ const Banner = ({
   imgAlt,
   ariaLabel,
   lazyLoading,
+  infoAlign = "left",
+  imgAlign = "right",
 }: BannerProps) => {
-  const navigate = useNavigate();
-
   return (
-    <div css={BannerStyle} aria-label={ariaLabel}>
+    <div css={BannerStyle}>
       <div className="banner-container">
-        <div className="banner-info">
+        <BannerInfo align={infoAlign}>
           <h2 className="banner-title">{title}</h2>
           {linkTo && (
-            <Button
-              onClick={() => navigate(linkTo)}
-              aria-label="상품 페이지로 이동"
-              variant="bannerPrimary"
-              size="lg"
-            >
+            <BannerButton linkTo={linkTo} ariaLabel={ariaLabel}>
               구경하러 가기
-            </Button>
+            </BannerButton>
           )}
-        </div>
-        <img
-          className="banner-img"
-          loading={lazyLoading ? "lazy" : "eager"}
-          src={imgSrc}
-          alt={imgAlt}
+        </BannerInfo>
+        <BannerImage
+          imgSrc={imgSrc}
+          imgAlt={imgAlt}
+          lazyLoading={lazyLoading}
+          align={imgAlign}
         />
       </div>
     </div>
   );
 };
+
+Banner.Info = BannerInfo;
+Banner.Button = BannerButton;
+Banner.Image = BannerImage;
 
 export default Banner;
