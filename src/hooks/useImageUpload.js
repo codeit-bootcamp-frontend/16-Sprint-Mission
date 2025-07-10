@@ -4,14 +4,21 @@ const INIT_VALID = {
   isValid: null,
   msg: "",
 };
-const ONE_MB = 1024 * 1024; // 1MB
+const CONSTANTS = {
+  ONE_MB: 1024 * 1024, // 1MB
+  DEFAULT_MAX_SIZE_MB: 5,
+  ERROR_MESSAGES: {
+    MAX_SIZE: (size) => `* 업로드 가능한 최대 용량은 ${size}MB입니다.`,
+    MAX_LENGTH: (count) => `* 이미지 등록은 최대 ${count}개까지 가능합니다.`,
+  },
+};
 
 const checkValidMaxSize = (currentSize, maxSize) => {
-  const convertSize = maxSize / ONE_MB;
+  const convertSize = maxSize / CONSTANTS.ONE_MB;
   if (currentSize > maxSize) {
     return {
       isValid: false,
-      msg: `* 업로드 가능한 최대 용량은 ${convertSize}MB입니다.`,
+      msg: CONSTANTS.ERROR_MESSAGES.MAX_SIZE(convertSize),
     };
   }
 
@@ -22,7 +29,7 @@ const checkValidMaxLength = (currentLength, maxLength) => {
   if (currentLength > maxLength) {
     return {
       isValid: false,
-      msg: `* 이미지 등록은 최대 ${maxLength}개까지 가능합니다.`,
+      msg: CONSTANTS.ERROR_MESSAGES.MAX_LENGTH(maxLength),
     };
   }
 
@@ -31,12 +38,12 @@ const checkValidMaxLength = (currentLength, maxLength) => {
 
 const useImageUpload = ({
   maxLength = null,
-  maxSizeMB = 5, // MB 단위
+  maxSizeMB = CONSTANTS.DEFAULT_MAX_SIZE_MB, // MB 단위
 }) => {
   const fileRef = useRef();
   const [uploadImgs, setUploadImgs] = useState([]);
   const [imgValid, setImgValid] = useState(INIT_VALID);
-  const maxFileSize = ONE_MB * maxSizeMB;
+  const maxFileSize = CONSTANTS.ONE_MB * maxSizeMB;
 
   const handleUploadImg = (e) => {
     if (!e.target.files.length) return;
@@ -64,6 +71,7 @@ const useImageUpload = ({
       }
     }
 
+    // 추가된 파일에 대해 개수/용량 검증 완료 후, api 붙이기
     setUploadImgs((prev) => [...prev, ...files]);
     setImgValid({ isValid: true, msg: "" });
   };

@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import routes from "./routes";
 import "./styles/style.scss";
+import ToastContainer from "./components/Toast/ToastContainer";
 
 function App() {
   const router = createBrowserRouter(routes, {
@@ -9,7 +10,10 @@ function App() {
     },
   });
   return (
-    <RouterProvider router={router} future={{ v7_startTransition: true }} />
+    <>
+      <RouterProvider router={router} future={{ v7_startTransition: true }} />
+      <ToastContainer />
+    </>
   );
 }
 
