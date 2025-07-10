@@ -13,17 +13,28 @@
 }
 
 html {
-  font-size: var(--font-base); /* 기본 글자 크기 */
+  font-size: var(--font-base);
+  /* 기본 글자 크기 */
 }
 
 body {
   font-family: var(--font-family);
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }

@@ -1,0 +1,43 @@
+.inquiryCommentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.inquiryCommentHeader {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inquiryCommentFooter {
+  display: flex;
+  gap: 12px;
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-button);
+  line-height: var(--line-height-comfortable);
+}
+
+.profileGroup {
+  display: flex;
+  gap: 8px;
+}
+
+.inquiryWriter {
+  color: var(--color-gray-600);
+}
+
+.inquiryUpdatedAt {
+  color: var(--color-gray-400);
+}
+
+.dropDownMenu {
+  cursor: pointer;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.dropDownMenu:hover {
+  color: var(--color-blue-300);
+}
