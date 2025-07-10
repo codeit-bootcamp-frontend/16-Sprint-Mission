@@ -70,7 +70,7 @@ export function useValidate() {
         value: validationStates.values[name] || '',
         error: validationStates.errors[name] || false,
         errorMessage: validationStates.errorMessages[name] || '',
-        isValid: validationStates.isValid[name] || false, //초기에만 false로 주기
+        isValid: validationStates.isValid[name] || false,
       };
     },
     [validationStates],
@@ -80,9 +80,11 @@ export function useValidate() {
 }
 
 //  그냥 바깥에 빼는게 나을 것 같음
-export function checkAllValid(...args: ValidationStates[]) {
-  return args.every((item) => item.isValid);
+export function checkAllValid(...args: ValidationStates[]) { //checkAllValid(getFieldState('user-email'),...)
+  return args.every((item) => Object.values(item.isValid)[0]);
+  //emailState={isValid:{'user-email':true}}
 }
+
 
 const validRuleObj = {
   'user-email': {
