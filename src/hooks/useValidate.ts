@@ -6,23 +6,18 @@ import { useCallback, useReducer } from 'react';
   너무 파일 변경 사항이 없는 것 같아서 이 파일도 수정해봤습니다.
 */
 
+type InputName = keyof typeof validRuleObj;
+
 interface ValidationStates {
-  values: { [key: string]: string };
-  errors: { [key: string]: boolean };
-  errorMessages: { [key: string]: string };
-  isValid: { [key: string]: boolean };
+  values: { [key in InputName]?: string };
+  errors: { [key in InputName]?: boolean };
+  errorMessages: { [key in InputName]?: string };
+  isValid: { [key in InputName]?: boolean };
 }
 
 interface Action {
   type: 'set_validationState';
-  payload: { name: string; value: string };
-}
-
-interface validRules {
-  [key: string]: {
-    isValid: (value: string, pwValue?: string) => boolean;
-    getErrorMessage: (value: string) => string;
-  };
+  payload: { name: InputName; value: string };
 }
 
 const initialValidationStates: ValidationStates = {
@@ -39,7 +34,10 @@ function validationReducer(state: ValidationStates, action: Action) {
     case 'set_validationState': {
       const { name, value } = action.payload;
       const validator = validRuleObj[name];
-      const isValid = validator.isValid(value, state.values['user-password']);//인자 두개 받는 경우는 passwordCheck밖에 없으니
+      const isValid = validator.isValid(
+        value,
+        state.values['user-password'] || '',
+      ); //인자 두개 받는 경우는 passwordCheck밖에 없으니
       const errMsg = isValid ? '' : validator.getErrorMessage(value);
 
       return {
@@ -61,13 +59,13 @@ export function useValidate() {
     initialValidationStates,
   );
 
-  const validate = useCallback((name: string, value: string) => {
+  const validate = useCallback((name: InputName, value: string) => {
     //name: 추가할 인풋 이름
     dispatch({ type: 'set_validationState', payload: { name, value } });
   }, []);
 
   const getFieldState = useCallback(
-    (name: string) => {
+    (name: InputName) => {
       return {
         value: validationStates.values[name] || '',
         error: validationStates.errors[name] || false,
@@ -86,27 +84,27 @@ export function checkAllValid(...args: ValidationStates[]) {
   return args.every((item) => item.isValid);
 }
 
-const validRuleObj: validRules = {
+const validRuleObj = {
   'user-email': {
-    isValid(value) {
+    isValid(value: string) {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
     },
-    getErrorMessage(value) {
+    getErrorMessage(value: string) {
       return value ? '잘못된 이메일입니다.' : '이메일을 입력해주세요';
     },
   },
   'user-password': {
-    isValid(value) {
+    isValid(value: string) {
       return value.length >= 8;
     },
-    getErrorMessage(value) {
+    getErrorMessage(value: string) {
       return value.length == 0
         ? '비밀번호를 입력해주세요.'
         : '비밀번호를 8자 이상 입력해주세요.';
     },
   },
   'user-name': {
-    isValid(value) {
+    isValid(value: string) {
       return Boolean(value);
     },
     getErrorMessage() {
@@ -114,7 +112,7 @@ const validRuleObj: validRules = {
     },
   },
   'user-password-check': {
-    isValid(value, pwValue) {
+    isValid(value: string, pwValue: string) {
       return pwValue === value && value.length !== 0;
     },
     getErrorMessage() {
