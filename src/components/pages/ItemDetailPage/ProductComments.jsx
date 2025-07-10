@@ -19,15 +19,13 @@ function ProductComments() {
   const { productId } = useParams();
   const [isNoComment, setIsNoComment] = useState(true);
   const [comment, setComment] = useState('');
-  const [comments, setComments] = useState([]);
-  const [nextCursor, setNextCursor] = useState(null);
   const [editCommentId, setEditCommentId] = useState(null);
   const [editContent, setEditContent] = useState('');
 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
   const [pageSize] = useState(3);
-  const [allComments, setAllComments] = useState([]);
+  const [comments, setComments] = useState([]);
   const [displayedComments, setDisplayedComments] = useState([]);
 
   const submitComment = async (content) => {
@@ -44,7 +42,7 @@ function ProductComments() {
     try {
       const data = await getComments(productId, 100, null);
       setIsNoComment(data.list.length === 0);
-      setAllComments(data.list);
+      setComments(data.list);
       setTotalCount(data.list.length);
     } catch (error) {
       console.error('댓글 목록 가져오기 실패:', error);
@@ -54,14 +52,13 @@ function ProductComments() {
   const updateDisplayedComments = (page) => {
     const startIndex = (page - 1) * pageSize;
     const endIndex = startIndex + pageSize;
-    const pageComments = allComments.slice(startIndex, endIndex);
+    const pageComments = comments.slice(startIndex, endIndex);
     setDisplayedComments(pageComments);
   };
 
   const editComment = async (commentId, content) => {
     try {
-      const data = await patchComment(commentId, content);
-      console.log(data);
+      await patchComment(commentId, content);
     } catch (error) {
       console.error('댓글 수정 실패:', error);
     }
@@ -69,8 +66,7 @@ function ProductComments() {
 
   const removeComment = async (commentId) => {
     try {
-      const data = await deleteComment(commentId);
-      console.log(data);
+      await deleteComment(commentId);
     } catch (error) {
       console.error('댓글 삭제 실패:', error);
     }
@@ -83,7 +79,7 @@ function ProductComments() {
 
   useEffect(() => {
     updateDisplayedComments(currentPage);
-  }, [currentPage, allComments]);
+  }, [currentPage, comments]);
 
   const handlePostComment = (content) => {
     if (!content.trim()) {
@@ -111,8 +107,8 @@ function ProductComments() {
       await editComment(commentId, content);
       setEditCommentId(null);
       setEditContent('');
-      setComments((prevComments) =>
-        prevComments.map((comment) => (comment.id === commentId ? { ...comment, content: content } : comment))
+      setComments((prev) =>
+        prev.map((comment) => (comment.id === commentId ? { ...comment, content: content } : comment))
       );
     } catch (error) {
       console.error('댓글 수정 실패:', error);
@@ -232,7 +228,7 @@ function ProductComments() {
           {totalPages > 1 && (
             <StyledPagination style={{ marginTop: '24px' }}>
               <StyledCircle
-                onClick={() => setCurrentPage(currentPage - 1)}
+                onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}
                 $disabled={currentPage <= 1}
               >
                 <img
@@ -250,7 +246,7 @@ function ProductComments() {
                 </StyledCircle>
               ))}
               <StyledCircle
-                onClick={() => setCurrentPage(currentPage + 1)}
+                onClick={() => currentPage < totalPages && setCurrentPage(currentPage + 1)}
                 $disabled={currentPage >= totalPages}
               >
                 <img
