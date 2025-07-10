@@ -10,6 +10,26 @@ const TOAST_DEFAULT = {
   GAP: 10,
 };
 
+const Toast = ({ id, message, delay = TOAST_DEFAULT.DELAY, order }) => {
+  const deleteToast = useToastStore((state) => state.deleteToast);
+
+  useEffect(() => {
+    const TIMER = setTimeout(() => {
+      deleteToast(id);
+    }, delay + TOAST_DEFAULT.DURATION);
+
+    return () => {
+      clearTimeout(TIMER);
+    };
+  }, [id, delay, deleteToast]);
+
+  return (
+    <ToastStyled order={order} delay={delay}>
+      {message}
+    </ToastStyled>
+  );
+};
+
 const ToastShow = keyframes`
     0% {
       transform: translateY(40px);
@@ -47,25 +67,5 @@ const ToastStyled = styled.div`
       ${({ delay }) => delay}ms;
   transition: all ${TOAST_DEFAULT.DURATION * 0.7}ms ease;
 `;
-
-const Toast = ({ id, message, delay = TOAST_DEFAULT.DELAY, order }) => {
-  const deleteToast = useToastStore((state) => state.deleteToast);
-
-  useEffect(() => {
-    const TIMER = setTimeout(() => {
-      deleteToast(id);
-    }, delay + TOAST_DEFAULT.DURATION);
-
-    return () => {
-      clearTimeout(TIMER);
-    };
-  }, [id, delay, deleteToast]);
-
-  return (
-    <ToastStyled order={order} delay={delay}>
-      {message}
-    </ToastStyled>
-  );
-};
 
 export default Toast;

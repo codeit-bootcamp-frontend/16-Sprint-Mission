@@ -4,19 +4,6 @@ import Toast from "./Toast";
 import { useToastStore } from "../../store/toastStore";
 import styled from "@emotion/styled/macro";
 
-const ToastContainerStyled = styled.div`
-  display: flex;
-  justify-content: center;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 0;
-  padding-bottom: 60px;
-  pointer-events: none;
-  z-index: 9999;
-`;
-
 const ToastContainer = () => {
   const toasts = useToastStore((state) => state.toasts);
 
@@ -35,5 +22,18 @@ const ToastContainer = () => {
     document.body
   );
 };
+
+const ToastContainerStyled = styled.div`
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  padding-bottom: 60px;
+  pointer-events: none;
+  z-index: 9999;
+`;
 
 export default ToastContainer;

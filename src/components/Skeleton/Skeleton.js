@@ -1,6 +1,10 @@
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled/macro";
 
+const Skeleton = ({ width, height, circle }) => {
+  return <SkeletonStyled width={width} height={height} circle={circle} />;
+};
+
 const SkeletonAnimation = keyframes`
     0% {
       background-position: 100% 0%;
@@ -18,9 +22,5 @@ const SkeletonStyled = styled.div`
   border-radius: ${({ circle }) => (circle ? "50%" : "0")};
   animation: ${SkeletonAnimation} 1.5s infinite linear;
 `;
-
-const Skeleton = ({ width, height, circle }) => {
-  return <SkeletonStyled width={width} height={height} circle={circle} />;
-};
 
 export default Skeleton;
