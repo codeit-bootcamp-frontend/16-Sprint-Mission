@@ -1,9 +1,11 @@
+@import "tailwindcss";
+
 * {
   margin: 0;
   padding: 0;
   border: 0;
   font: inherit;
-  vertical-align: baseline;
+  vertical-align: bottom;
   box-sizing: border-box;
   text-decoration: none;
 }

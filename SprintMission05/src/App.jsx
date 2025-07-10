@@ -7,16 +7,7 @@ import Privacy from "./pages/Privacy";
 import FAQ from "./pages/FAQ";
 import NotFound from "./pages/NotFound";
 import Items from "./pages/Items";
-
-const GlobalStyle = createGlobalStyle`
-  * {
-    box-sizing: border-box;
-  }
-
-  body {
-    font-family: 'Noto Sans KR', sans-serif;
-  }
-`;
+import AddItem from "./pages/AddItem";
 
 function App() {
   return (
@@ -26,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/items" element={<Items />} />
+          <Route path="/additem" element={<AddItem />} />
           <Route path="/login" element={<Login />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/faq" element={<FAQ />} />
@@ -37,3 +29,17 @@ function App() {
 }
 
 export default App;
+
+const GlobalStyle = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+    a {
+    color: inherit;
+    text-decoration: none;
+  }
+  }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+`;
