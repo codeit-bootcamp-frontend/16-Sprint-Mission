@@ -1,0 +1,44 @@
+@import 'tailwindcss';
+
+/* @font-face {
+  font-family: Pretendard;
+  src: url('/fonts/PretendardVariable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+} */
+
+@font-face {
+  font-family: Pretendard;
+  src: url('/fonts/PretendardVariable.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ROKAF-Sans';
+  src: url('/fonts/ROKAF_Sans_Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-pretendard: 'Pretendard', 'sans-serif';
+  --font-rokaf: 'ROKAF-Sans', 'sans-serif';
+  --color-brand-blue: #3182f6;
+  --color-primary-100: #3692ff;
+  --color-primary-200: #1967d6;
+  --color-primary-300: #1251aa;
+  --color-gray-100: #f9fafb;
+  --color-gray-200: #f3f4f6;
+  --color-gray-300: #e5e7eb;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #fb5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  --color-error: #f74747;
+}
