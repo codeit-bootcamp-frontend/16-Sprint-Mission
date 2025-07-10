@@ -39,7 +39,7 @@ function validationReducer(state: ValidationStates, action: Action) {
     case 'set_validationState': {
       const { name, value } = action.payload;
       const validator = validRuleObj[name];
-      const isValid = validator.isValid(value, state.values['user-password']);
+      const isValid = validator.isValid(value, state.values['user-password']);//인자 두개 받는 경우는 passwordCheck밖에 없으니
       const errMsg = isValid ? '' : validator.getErrorMessage(value);
 
       return {
@@ -81,7 +81,6 @@ export function useValidate() {
   return { getFieldState, validate };
 }
 
-//useCallback으로 해도 어차피 isValid변할 때마다 다시 만들거면
 //  그냥 바깥에 빼는게 나을 것 같음
 export function checkAllValid(...args: ValidationStates[]) {
   return args.every((item) => item.isValid);
