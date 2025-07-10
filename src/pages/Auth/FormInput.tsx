@@ -43,7 +43,7 @@ function FormInput(props: Props) {
   const { placeholder, name, type, id, validatePwCheck } = props;
   const methods = useFormContext();
   type InferredT = typeof methods extends UseFormReturn<infer U> ? U : never;
-  //원래 useFormContext<T> 이런 식으로 프로바이더 내려줄 때 지정한 타입이 여기에 들어가는 거 같은데
+  //원래 useFormContext<T> 이런 식으로 프로바이더 내려줄 때 지정한 타입이 들어가야 하는 거 같은데
   //그러면 name을 프롭으로 받을 때 무조건 Path<T>가 되어야 하더라구요...
   //그럼 Props<T>로 받아야 Path<T>로 설정해줄 수 있는데 
   //이러면 이 컴포넌트 호출 할 때마다 <T>를 또 붙여줘야하니까
