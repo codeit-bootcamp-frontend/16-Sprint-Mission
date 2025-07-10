@@ -83,15 +83,11 @@ const Banner = ({
   imgAlign = "right",
 }: BannerProps) => {
   return (
-    <div css={BannerStyle}>
+    <div css={BannerStyle} aria-label={ariaLabel}>
       <div className="banner-container">
         <BannerInfo align={infoAlign}>
           <h2 className="banner-title">{title}</h2>
-          {linkTo && (
-            <BannerButton linkTo={linkTo} ariaLabel={ariaLabel}>
-              구경하러 가기
-            </BannerButton>
-          )}
+          {linkTo && <BannerButton linkTo={linkTo}>구경하러 가기</BannerButton>}
         </BannerInfo>
         <BannerImage
           imgSrc={imgSrc}
