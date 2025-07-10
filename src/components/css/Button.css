@@ -1,12 +1,13 @@
 .btn {
+  display: flex;
+  justify-content: center;
   background-color: var(--color-primary-100);
   text-decoration: none;
   color: var(--color-secondary-100);
   padding: 12px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-weight: 600;
+  gap: 8px;
+  transition: background-color 0.2s;
 }
 
 .btn-register {
@@ -16,15 +17,29 @@
   padding: 8px 23px;
 }
 
+.btn-return {
+  border-radius: var(--border-radius-xl);
+  height: 48px;
+  font-size: var(--font-size-sm);
+  padding: 11px 40px;
+}
+
+.btn-cancel {
+  background: transparent;
+  height: 48px;
+  font-size: var(--font-size-xs);
+  color: var(--color-secondary-500);
+}
+
 .btn-small {
   border-radius: var(--border-radius-sm);
-  min-width: 128px;
+  min-width: 106px;
   height: 48px;
   font-size: var(--font-size-xs);
 }
 
 .btn-large {
-  border-radius: var(--border-radius-lg);
+  border-radius: var(--border-radius-xl);
   width: 240px;
   height: 48px;
   font-size: var(--font-size-sm);
@@ -37,4 +52,8 @@
 
 .btn:disabled {
   background-color: var(--color-secondary-400);
+}
+
+.btn:not(.btn-cancel):not(:disabled):hover {
+  background-color: var(--color-primary-200);
 }

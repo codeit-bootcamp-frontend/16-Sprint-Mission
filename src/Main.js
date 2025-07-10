@@ -5,13 +5,15 @@ import "./css/base/variables.css";
 import "./css/base/common.css";
 import ItemsPage from "./pages/ItemsPage";
 import ItemRegisterPage from "./pages/ItemRegisterPage";
+import ItemDetailPage from "./pages/ItemDetailPage";
 
-function Main() {
+const Main = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="items">
+            <Route path=":id" element={<ItemDetailPage />}></Route>
             <Route index element={<ItemsPage />}></Route>
           </Route>
           <Route path="additem" element={<ItemRegisterPage />}></Route>
@@ -19,6 +21,6 @@ function Main() {
       </Routes>
     </BrowserRouter>
   );
-}
+};
 
 export default Main;

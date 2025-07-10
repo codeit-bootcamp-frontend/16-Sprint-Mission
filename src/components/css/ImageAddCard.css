@@ -8,9 +8,9 @@
   max-width: 282px;
   aspect-ratio: 1 / 1;
   border-radius: 12px;
-  background-color: #f3f4f6;
+  background-color: var(--color-secondary-100);
 }
 
 .add__card__text {
-  color: #9ca3af;
+  color: var(--color-secondary-400);
 }

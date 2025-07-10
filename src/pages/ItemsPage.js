@@ -5,11 +5,11 @@ import { getFavoriteItems, getAllItems } from "../api/Items.js";
 import Card from "../components/Card";
 import SearchInput from "../components/SearchInput.js";
 import Button from "../components/Button.js";
-import Dropdown from "../components/Dropdown.js";
 import Pagination from "../components/Pagination.js";
 import usePagination from "../hooks/usePagination.js";
+import SortDropdown from "../components/SortDropdown.js";
 
-function ItemListPage() {
+const ItemListPage = () => {
   const navigate = useNavigate();
 
   const [orderBy, setOrderBy] = useState({
@@ -86,6 +86,11 @@ function ItemListPage() {
       setOrderBy(order);
       setPaginationCurrentPage(1);
     }
+    onCloseDropdown();
+  };
+
+  const onCloseDropdown = () => {
+    setShowDropdown(false);
   };
 
   const onKeywordChange = (e) => {
@@ -132,8 +137,14 @@ function ItemListPage() {
 
   const allPageSize = devicePageSize[deviceType]["all"];
 
+  // 상품 등록페이지로 이동
   const handleOnClickRegister = () => {
     navigate("/additem");
+  };
+
+  // 상품 상세페이지로 이동
+  const onClickListItem = (id) => {
+    navigate(`${id}`);
   };
 
   useEffect(() => {
@@ -178,7 +189,7 @@ function ItemListPage() {
             </div>
             <ul className="items__container__best__list">
               {bestItems?.map((item, index) => (
-                <li key={index}>
+                <li key={index} onClick={() => onClickListItem(item.id)}>
                   <Card data={item} />
                 </li>
               ))}
@@ -203,10 +214,11 @@ function ItemListPage() {
               >
                 상품 등록하기
               </Button>
-              <Dropdown
+              <SortDropdown
                 className="items__container__dropdown"
                 onClickDropdown={onClickDropdown}
                 onClickDropdownItem={onClickDropdownItem}
+                onCloseDropdown={onCloseDropdown}
                 dropdownList={dropdownList}
                 showDropdown={showDropdown}
                 value={orderBy}
@@ -214,7 +226,7 @@ function ItemListPage() {
             </div>
             <ul className="items__container__all__list">
               {allItems?.map((item, index) => (
-                <li key={index}>
+                <li key={index} onClick={() => onClickListItem(item.id)}>
                   <Card data={item} />
                 </li>
               ))}
@@ -233,6 +245,6 @@ function ItemListPage() {
       </main>
     </div>
   );
-}
+};
 
 export default ItemListPage;

@@ -31,5 +31,6 @@
   /* Border Radius */
   --border-radius-sm: 8px;
   --border-radius-md: 12px;
-  --border-radius-lg: 40px;
+  --border-radius-lg: 35px;
+  --border-radius-xl: 40px;
 }

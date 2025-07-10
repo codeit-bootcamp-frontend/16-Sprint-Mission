@@ -1,0 +1,9 @@
+.dropdown__list__more {
+  width: 139px;
+  min-height: 92px;
+}
+
+.dropdown__list__more > li {
+  color: var(--color-secondary-500);
+  height: 46px;
+}

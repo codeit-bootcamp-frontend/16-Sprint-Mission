@@ -1,0 +1,33 @@
+.heart__btn {
+  background-color: transparent;
+  border: 1px solid var(--color-secondary-200);
+  text-decoration: none;
+  color: var(--color-secondary-100);
+  padding: 8px 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  gap: 4px;
+  transition: background-color 0.2s;
+}
+
+.heart__btn-small {
+  border-radius: var(--border-radius-sm);
+  height: 48px;
+  font-size: var(--font-size-xs);
+}
+
+.heart__btn-large {
+  border-radius: var(--border-radius-lg);
+  height: 48px;
+  font-size: var(--font-size-sm);
+}
+
+.heart__btn__text {
+  color: var(--color-secondary-500);
+}
+
+.heart__btn:not(:disabled):hover {
+  background-color: var(--color-secondary-50);
+}

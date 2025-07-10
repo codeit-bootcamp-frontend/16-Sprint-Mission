@@ -3,6 +3,7 @@ import deleteIcon from "../img/delete.svg";
 
 const ImagePreviewCard = ({ onClickDelete = () => {}, imageUrl }) => {
   return (
+    /* style 적용 변경 */
     <div
       className="preview__card"
       onClick={onClickDelete}

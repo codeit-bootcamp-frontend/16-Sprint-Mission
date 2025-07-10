@@ -21,5 +21,5 @@
 
 .input__message--error {
   margin-top: 16px;
-  color: #f74747;
+  color: var(--color-error);
 }
