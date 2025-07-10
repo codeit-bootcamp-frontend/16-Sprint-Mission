@@ -10,13 +10,7 @@ const ToastContainer = () => {
   return createPortal(
     <ToastContainerStyled>
       {toasts.map((toast, idx) => (
-        <Toast
-          key={toast.id}
-          id={toast.id}
-          message={toast.message}
-          delay={toast.delay}
-          order={toasts.length - idx}
-        />
+        <Toast key={toast.id} order={toasts.length - idx} {...toast} />
       ))}
     </ToastContainerStyled>,
     document.body

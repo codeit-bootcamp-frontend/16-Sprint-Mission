@@ -4,27 +4,25 @@ import styled from "@emotion/styled/macro";
 import { keyframes } from "@emotion/react";
 
 const TOAST_DEFAULT = {
-  DELAY: 5000, //ms
-  DURATION: 500, //ms
   HEIGHT: 36,
   GAP: 10,
 };
 
-const Toast = ({ id, message, delay = TOAST_DEFAULT.DELAY, order }) => {
+const Toast = ({ id, message, delay, order, duration }) => {
   const deleteToast = useToastStore((state) => state.deleteToast);
 
   useEffect(() => {
     const TIMER = setTimeout(() => {
       deleteToast(id);
-    }, delay + TOAST_DEFAULT.DURATION);
+    }, delay + duration);
 
     return () => {
       clearTimeout(TIMER);
     };
-  }, [id, delay, deleteToast]);
+  }, [id, delay, duration, deleteToast]);
 
   return (
-    <ToastStyled order={order} delay={delay}>
+    <ToastStyled order={order} delay={delay} duration={duration}>
       {message}
     </ToastStyled>
   );
@@ -62,10 +60,10 @@ const ToastStyled = styled.div`
   color: #fff;
   background: #252525;
   border-radius: 5px;
-  animation: ${ToastShow} ${TOAST_DEFAULT.DURATION}ms ease forwards,
-    ${ToastHide} ${TOAST_DEFAULT.DURATION}ms ease forwards
+  animation: ${ToastShow} ${({ duration }) => duration}ms ease forwards,
+    ${ToastHide} ${({ duration }) => duration}ms ease forwards
       ${({ delay }) => delay}ms;
-  transition: all ${TOAST_DEFAULT.DURATION * 0.7}ms ease;
+  transition: all ${({ duration }) => duration * 0.7}ms ease;
 `;
 
 export default Toast;
