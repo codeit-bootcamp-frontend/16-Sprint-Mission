@@ -1,14 +1,19 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+
 import { getComments, postComment, patchComment, deleteComment } from '../../../api/api';
 import { applyFontStyles } from '../../../styles/mixins';
 import { FontTypes, ColorTypes } from '../../../styles/theme';
 import { applyFlexColumn } from '../../../styles/mixins';
 import useFormatTime from '../../../hooks/useFormatTime';
+import { StyledPagination, StyledCircle } from '../MarketPage/AllProducts';
+
 import profile from '../../../assets/images/icons/ic_profile.png';
 import CommentEditList from '../../UI/CommentEditList';
 import noComment from '../../../assets/images/icons/ic_nocomment.png';
+import left from '../../../assets/images/icons/arrow_left.svg';
+import right from '../../../assets/images/icons/arrow_right.svg';
 
 function ProductComments() {
   const { productId } = useParams();
@@ -19,28 +24,38 @@ function ProductComments() {
   const [editCommentId, setEditCommentId] = useState(null);
   const [editContent, setEditContent] = useState('');
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalCount, setTotalCount] = useState(0);
+  const [pageSize] = useState(3);
+  const [allComments, setAllComments] = useState([]);
+  const [displayedComments, setDisplayedComments] = useState([]);
+
   const submitComment = async (content) => {
     try {
       const data = await postComment(productId, content);
-      console.log(data);
+      setComments((prev) => [data, ...prev]);
+      setComment('');
     } catch (error) {
       console.error('댓글 등록 실패:', error);
     }
   };
 
-  const fetchComments = async (isInitial = false) => {
+  const fetchAllComments = async () => {
     try {
-      const data = await getComments(productId, 3, isInitial ? null : nextCursor);
+      const data = await getComments(productId, 100, null);
       setIsNoComment(data.list.length === 0);
-      if (isInitial) {
-        setComments(data.list);
-      } else {
-        setComments((prev) => [...prev, ...data.list]);
-      }
-      setNextCursor(data.nextCursor);
+      setAllComments(data.list);
+      setTotalCount(data.list.length);
     } catch (error) {
       console.error('댓글 목록 가져오기 실패:', error);
     }
+  };
+
+  const updateDisplayedComments = (page) => {
+    const startIndex = (page - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    const pageComments = allComments.slice(startIndex, endIndex);
+    setDisplayedComments(pageComments);
   };
 
   const editComment = async (commentId, content) => {
@@ -62,13 +77,22 @@ function ProductComments() {
   };
 
   useEffect(() => {
-    setNextCursor(null);
-    fetchComments(true);
+    setCurrentPage(1);
+    fetchAllComments();
   }, [productId]);
 
+  useEffect(() => {
+    updateDisplayedComments(currentPage);
+  }, [currentPage, allComments]);
+
   const handlePostComment = (content) => {
+    if (!content.trim()) {
+      alert('댓글을 입력해주세요.');
+      return;
+    }
     submitComment(content);
-    setComments((prevComments) => [...prevComments, { id: 'new', content: content }]);
+    setCurrentPage(1);
+    fetchAllComments();
   };
 
   const handleEditClick = (commentId) => {
@@ -97,8 +121,20 @@ function ProductComments() {
 
   const handleDeleteClick = (commentId) => {
     removeComment(commentId);
-    setComments((prevComments) => prevComments.filter((comment) => comment.id !== commentId));
+    setComments((prev) => prev.filter((comment) => comment.id !== commentId));
   };
+
+  const totalPages = Math.ceil(totalCount / pageSize);
+  const visiblePageCount = 5;
+  const safeCurrentPage = Math.max(currentPage, 1);
+  const currentGroup = Math.floor((safeCurrentPage - 1) / visiblePageCount);
+  const startPage = currentGroup * visiblePageCount + 1;
+  const endPage = Math.min(startPage + visiblePageCount - 1, totalPages);
+
+  const pageNumbers = [];
+  for (let i = startPage; i <= endPage; i++) {
+    pageNumbers.push(i);
+  }
 
   return (
     <StyledCommentContainer>
@@ -107,9 +143,16 @@ function ProductComments() {
         <textarea
           rows={5}
           placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
         />
         <StyledButtonWrapper>
-          <StyledButton onClick={() => handlePostComment(comment)}>등록</StyledButton>
+          <StyledButton
+            onClick={() => handlePostComment(comment)}
+            disabled={!comment.trim()}
+          >
+            등록
+          </StyledButton>
         </StyledButtonWrapper>
       </StyledCommentInput>
 
@@ -123,12 +166,13 @@ function ProductComments() {
         </StyledNoCommentContainer>
       ) : (
         <StyledCommentList>
-          {comments?.map((comment) => {
+          {displayedComments?.map((comment) => {
             const time = useFormatTime(comment?.createdAt || '');
             return editCommentId === comment.id ? (
               <StyledEditCommentWrapper key={comment?.id}>
                 <StyledEditComment>
                   <textarea
+                    rows={5}
                     value={editContent}
                     onChange={(e) => setEditContent(e.target.value)}
                   />
@@ -185,6 +229,37 @@ function ProductComments() {
               </StyledCommentWrapper>
             );
           })}
+          {totalPages > 1 && (
+            <StyledPagination style={{ marginTop: '24px' }}>
+              <StyledCircle
+                onClick={() => setCurrentPage(currentPage - 1)}
+                $disabled={currentPage <= 1}
+              >
+                <img
+                  src={left}
+                  alt="이전"
+                />
+              </StyledCircle>
+              {pageNumbers.map((pageNum) => (
+                <StyledCircle
+                  key={pageNum}
+                  onClick={() => setCurrentPage(pageNum)}
+                  $isActive={pageNum === currentPage}
+                >
+                  {pageNum}
+                </StyledCircle>
+              ))}
+              <StyledCircle
+                onClick={() => setCurrentPage(currentPage + 1)}
+                $disabled={currentPage >= totalPages}
+              >
+                <img
+                  src={right}
+                  alt="다음"
+                />
+              </StyledCircle>
+            </StyledPagination>
+          )}
         </StyledCommentList>
       )}
     </StyledCommentContainer>
@@ -239,7 +314,11 @@ const StyledButton = styled.button`
   width: 74px;
   height: 42px;
   padding: 12px 23px;
-  background-color: ${({ theme }) => theme.colors[ColorTypes.SECONDARY_GRAY_400]};
+  background-color: ${({ theme }) => theme.colors[ColorTypes.PRIMARY_100]};
+
+  &:disabled {
+    background-color: ${({ theme }) => theme.colors[ColorTypes.SECONDARY_GRAY_400]};
+  }
 `;
 
 const StyledCommentList = styled.div`

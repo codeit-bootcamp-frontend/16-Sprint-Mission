@@ -194,14 +194,14 @@ const StyledItemCardContainer = styled.div`
   }
 `;
 
-const StyledPagination = styled.div`
+export const StyledPagination = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
 `;
 
-const StyledCircle = styled.div`
+export const StyledCircle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;

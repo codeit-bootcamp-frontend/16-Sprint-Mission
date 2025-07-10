@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import ProductInfo from './ProductInfo';
 import ProductComments from './ProductComments';
@@ -13,13 +14,15 @@ function ItemDetailPage() {
       <ProductInfo />
       <ProductComments />
       <StyledButtonWrapper>
-        <StyledButton>
-          <StyledButtonText>목록으로 돌아가기</StyledButtonText>
-          <img
-            src={back}
-            alt="back"
-          />
-        </StyledButton>
+        <Link to="/items">
+          <StyledButton>
+            <StyledButtonText>목록으로 돌아가기</StyledButtonText>
+            <img
+              src={back}
+              alt="back"
+            />
+          </StyledButton>
+        </Link>
       </StyledButtonWrapper>
     </StyledItemDetailPage>
   );
