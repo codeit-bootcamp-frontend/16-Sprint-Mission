@@ -6,46 +6,59 @@ import { useCallback, useReducer } from 'react';
   너무 파일 변경 사항이 없는 것 같아서 이 파일도 수정해봤습니다.
 */
 
-type InputName = keyof typeof validRuleObj;
+type FieldName =
+  | 'user-email'
+  | 'user-password'
+  | 'user-name'
+  | 'user-password-check';
 
-interface ValidationStates {
-  values: { [key in InputName]?: string };
-  errors: { [key in InputName]?: boolean };
-  errorMessages: { [key in InputName]?: string };
-  isValid: { [key in InputName]?: boolean };
+interface FieldState {
+  value: string;
+  error: boolean;
+  errorMessage: string;
+  isValid: boolean;
 }
+
+type FormState = Record<FieldName, FieldState>;
 
 interface Action {
-  type: 'set_validationState';
-  payload: { name: InputName; value: string };
+  type: 'UPDATE_FIELD';
+  payload: { name: FieldName; value: string };
 }
 
-const initialValidationStates: ValidationStates = {
-  //앞으로 해당 인풋들 다 여기에 한번에 저장 키:밸류로
-  values: {},
-  errors: {},
-  errorMessages: {},
-  isValid: {},
+function createInitialFieldState(): FieldState {
+  return {
+    value: '',
+    error: false,
+    errorMessage: '',
+    isValid: false,
+  };
+}
+
+const initialState: FormState = {
+  'user-email': createInitialFieldState(),
+  'user-password': createInitialFieldState(),
+  'user-name': createInitialFieldState(),
+  'user-password-check': createInitialFieldState(),
 };
 
-function validationReducer(state: ValidationStates, action: Action) {
+function validationReducer(state: FormState, action: Action) {
   //state는 validationStates
   switch (action.type) {
-    case 'set_validationState': {
+    case 'UPDATE_FIELD': {
       const { name, value } = action.payload;
       const validator = validRuleObj[name];
-      const isValid = validator.isValid(
-        value,
-        state.values['user-password'] || '',
-      ); //인자 두개 받는 경우는 passwordCheck밖에 없으니
+      const isValid = validator.isValid(value, state['user-password'].value); //인자 두개 받는 경우는 passwordCheck밖에 없으니
       const errMsg = isValid ? '' : validator.getErrorMessage(value);
 
       return {
-        //여기서 새로 만들어서 set해주기
-        values: { ...state.values, [name]: value },
-        errors: { ...state.errors, [name]: !isValid },
-        errorMessages: { ...state.errorMessages, [name]: errMsg },
-        isValid: { ...state.isValid, [name]: isValid },
+        ...state,
+        [name]: {
+          value,
+          error: !isValid,
+          errorMessage: errMsg,
+          isValid: isValid,
+        },
       };
     }
     default:
@@ -56,22 +69,17 @@ function validationReducer(state: ValidationStates, action: Action) {
 export function useValidate() {
   const [validationStates, dispatch] = useReducer(
     validationReducer,
-    initialValidationStates,
+    initialState,
   );
 
-  const validate = useCallback((name: InputName, value: string) => {
+  const validate = useCallback((name: FieldName, value: string) => {
     //name: 추가할 인풋 이름
-    dispatch({ type: 'set_validationState', payload: { name, value } });
+    dispatch({ type: 'UPDATE_FIELD', payload: { name, value } });
   }, []);
 
   const getFieldState = useCallback(
-    (name: InputName) => {
-      return {
-        value: validationStates.values[name] || '',
-        error: validationStates.errors[name] || false,
-        errorMessage: validationStates.errorMessages[name] || '',
-        isValid: validationStates.isValid[name] || false,
-      };
+    (name: FieldName) => {
+      return validationStates[name];
     },
     [validationStates],
   );
@@ -80,7 +88,7 @@ export function useValidate() {
 }
 
 //  그냥 바깥에 빼는게 나을 것 같음
-export function checkAllValid(...args: ValidationStates[]) {
+export function checkAllValid(...args: FieldState[]) {
   // 기존에 checkAllValid(getFieldState('user-email'),...)처럼 호출
   return args.every((item) => item.isValid);
   //emailState={...,isValid:true}
