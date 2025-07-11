@@ -1,11 +1,9 @@
 import { useState } from 'react';
-import { useWatch } from 'react-hook-form';
 import FormInput from './FormInput';
 import styles from './styles/Auth.module.css';
 
 function PasswordCheckField() {
   const [passwordCheckToggle, setPasswordCheckToggle] = useState(false);
-  // const passwordValue = useWatch({ name: 'user-password' });
 
   function handlePwCheckToggle() {
     setPasswordCheckToggle(!passwordCheckToggle);
@@ -15,7 +13,6 @@ function PasswordCheckField() {
     <div className={styles.containerRelative}>
       <label htmlFor="user-password">비밀번호 확인</label>
       <FormInput
-        // validatePwCheck={validatePwCheck}
         id="user-password-check"
         type={passwordCheckToggle ? 'text' : 'password'}
         name="user-password-check"
