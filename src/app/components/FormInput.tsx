@@ -1,4 +1,4 @@
-import { FormEvent } from "react";
+import { DetailedHTMLProps, FormEvent, FormHTMLAttributes } from "react";
 import Input from "./Input";
 import CustomButton from "./CustomButton";
 
@@ -9,13 +9,23 @@ interface InputConfig {
   placeholder: string;
 }
 
-interface FormInputProps {
+interface FormInputProps
+  extends DetailedHTMLProps<
+    FormHTMLAttributes<HTMLFormElement>,
+    HTMLFormElement
+  > {
   inputs: InputConfig[];
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  errors?: Record<string, string>;
   containerStyle?: string;
 }
 
-export default function FormInput({ inputs, handleSubmit, containerStyle }: FormInputProps) {
+export default function FormInput({
+  inputs,
+  handleSubmit,
+  errors,
+  containerStyle,
+}: FormInputProps) {
   return (
     <form onSubmit={handleSubmit} className={`${containerStyle}`}>
       {inputs.map((input) => (
@@ -24,6 +34,7 @@ export default function FormInput({ inputs, handleSubmit, containerStyle }: Form
           type={input.type}
           name={input.name}
           placeholder={input.placeholder}
+          error={errors?.[input.name]}
         />
       ))}
       <CustomButton

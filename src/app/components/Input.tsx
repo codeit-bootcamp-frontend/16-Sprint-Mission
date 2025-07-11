@@ -2,9 +2,10 @@ interface InputProps {
   type: string;
   name: string;
   placeholder: string;
+  error?: string;
 }
 
-export default function Input({ type, name, placeholder }: InputProps) {
+export default function Input({ type, name, placeholder, error }: InputProps) {
   return (
     <div className="relative w-full h-14 mt-6">
       <div className="absolute inset-[1px] rounded-3xl bg-[#f5f8fc] border border-black z-10"></div>
@@ -15,6 +16,11 @@ export default function Input({ type, name, placeholder }: InputProps) {
         placeholder={placeholder}
         className="absolute inset-0 px-6 py-[15px] bg-transparent z-20 text-slate-800 placeholder-slate-500 font-normal focus:outline-none"
       />
+      {error && (
+        <p className="text-red-500 text-sm mt-1 absolute top-full left-0">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

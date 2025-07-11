@@ -2,6 +2,7 @@ import { MouseEventHandler } from "react";
 import Icon from "./Icon";
 
 type HoverColor = "violet" | "rose" | "lime";
+
 const colorMap: Record<HoverColor, string> = {
   violet: "group-hover:bg-violet-600",
   rose: "group-hover:bg-rose-500",
