@@ -82,8 +82,8 @@ export function useValidate() {
 //  그냥 바깥에 빼는게 나을 것 같음
 export function checkAllValid(...args: ValidationStates[]) {
   // 기존에 checkAllValid(getFieldState('user-email'),...)처럼 호출
-  return args.every((item) => Object.values(item.isValid)[0]);
-  //emailState={isValid:{'user-email':true}}
+  return args.every((item) => item.isValid);
+  //emailState={...,isValid:true}
 }
 
 const validRuleObj = {
