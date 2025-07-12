@@ -8,6 +8,7 @@ import loginUser from "@/services/post/loginUser";
 import InputField from "../ui/Form/InputField";
 import PasswordField from "../ui/Form/PasswordField";
 import useAuthForm from "@/hooks/useAuthForm";
+import { renderButtonTextByState } from "@/utils/renderButtonText";
 
 const LoginForm = () => {
   const {
@@ -67,7 +68,7 @@ const LoginForm = () => {
           size="lg"
           onClick={handleSubmit}
         >
-          {isSubmitting ? "로그인중..." : "로그인"}
+          {renderButtonTextByState(isSubmitting, "로그인")}
         </Button>
 
         {submitError && <p>{`${submitError}`}</p>}

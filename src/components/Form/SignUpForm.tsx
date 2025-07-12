@@ -8,6 +8,7 @@ import PasswordField from "@/components/ui/Form/PasswordField";
 import FormStyle from "./FormStyle";
 import useAuthForm from "@/hooks/useAuthForm";
 import createUser from "@/services/post/createUser";
+import { renderButtonTextByState } from "@/utils/renderButtonText";
 
 const SignUpForm = () => {
   const {
@@ -85,7 +86,7 @@ const SignUpForm = () => {
           disabled={!isFormValid}
           onClick={handleSubmit}
         >
-          {isSubmitting ? "회원가입중..." : "회원가입"}
+          {renderButtonTextByState(isSubmitting, "회원가입")}
         </Button>
 
         {submitError && <p>{`${submitError}`}</p>}
