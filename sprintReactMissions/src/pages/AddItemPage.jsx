@@ -4,6 +4,7 @@ import SubmissionButton from "../components/SubmissionButton";
 import ItemImagesUpload from "../components/ItemImagesUpload";
 import TagInput from "../components/TagInput";
 import "../styles/additempage.css";
+import FormField from "../components/FormField";
 
 function AddItemPage() {
   const [name, setName] = useState("");
@@ -27,35 +28,32 @@ function AddItemPage() {
           <ItemImagesUpload />
         </div>
 
-        <div className="form-group">
-          <label className="form-label">상품명</label>
+        <FormField label="상품명">
           <input
             className="form-input"
             placeholder="상품명을 입력해주세요"
             value={name}
             onChange={(e) => setName(e.target.value)}
-          ></input>
-        </div>
+          />
+        </FormField>
 
-        <div className="form-group">
-          <label className="form-label">상품 소개</label>
+        <FormField label="상품 소개">
           <input
             className="form-big-input"
             placeholder="상품 소개를 입력해주세요"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-          ></input>
-        </div>
+          />
+        </FormField>
 
-        <div className="form-group">
-          <label className="form-label">판매가격</label>
+        <FormField label="판매가격">
           <input
             className="form-input"
             placeholder="판매가격을 입력해주세요"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
-          ></input>
-        </div>
+          />
+        </FormField>
 
         <div className="form-group">
           <label className="form-label">태그</label>

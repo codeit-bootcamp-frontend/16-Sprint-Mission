@@ -2,7 +2,9 @@
 import React from "react";
 import ItemCard from "./ItemCard";
 
-function AllItemCard({ items = [], limit = 10 }) {
+const Default_Limit = 10; // 기본 limit 값
+
+function AllItemCard({ items = [], limit = Default_Limit }) {
   return (
     <section className="item-card-container">
       {items.slice(0, limit).map((item) => (

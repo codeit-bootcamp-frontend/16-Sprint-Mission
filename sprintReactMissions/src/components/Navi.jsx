@@ -1,5 +1,5 @@
 // 상단 네비게이션바
-import { Link, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import "../styles/Navi.css";
 
 const Navi = () => {
@@ -10,19 +10,21 @@ const Navi = () => {
   return (
     <nav className="navi">
       <div className="logo-section">
-        <Link to="/">
+        <NavLink to="/">
           <img src="src/assets/Logo.png" alt="Logo" className="logo" />
-        </Link>
+        </NavLink>
         <div className="menu-section">
-          <Link to="/free-board" className="nav-link">
+          <NavLink to="/free-board" className="nav-link">
             자유게시판
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="/additem"
-            className={`nav-link ${isAddItemPage ? "highlight" : ""}`}
+            className={({ isActive }) =>
+              `nav-link ${isActive ? "highlight" : ""}`
+            }
           >
             중고마켓
-          </Link>
+          </NavLink>
         </div>
       </div>
       <div className="profile-section">

@@ -45,17 +45,25 @@
 .tag-remove-btn {
   background: #e5e7eb;
   border: none;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
+  border-radius: 12px;
+  width: 22px;
+  height: 24px;
   font-size: 0.9rem;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   color: #6b7280;
+  padding: 0;
+  line-height: 1;
+  font-weight: bold;
+  transition: background 0.2s ease;
 }
 
 .tag-remove-btn:hover {
   background: #d1d5db;
+}
+
+.tag-x-icon {
+  pointer-events: none;
 }

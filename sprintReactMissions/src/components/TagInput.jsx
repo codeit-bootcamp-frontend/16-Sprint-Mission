@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/taginput.css";
+import IconX from "./XIcon";
 
 export default function TagInput({ tags, setTags, maxTags = 5 }) {
   const addTag = (e) => {
@@ -34,7 +35,7 @@ export default function TagInput({ tags, setTags, maxTags = 5 }) {
               className="tag-remove-btn"
               onClick={() => removeTag(tag)}
             >
-              ×
+              <IconX />
             </button>
           </li>
         ))}

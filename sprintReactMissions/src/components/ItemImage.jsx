@@ -3,7 +3,7 @@ import React from "react";
 import fallbackImage from "../assets/fallback.png";
 
 function ItemImage({ src, alt }) {
-  const validSrc = src && src.trim() !== "" ? src : fallbackImage;
+  const validSrc = src?.trim() || fallbackImage;
 
   return (
     <img

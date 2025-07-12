@@ -12,7 +12,7 @@ function BestItemCard({ limit = 4 }) {
       .get("/products", {
         params: {
           page: 1,
-          pageSize: 100,
+          pageSize: 10,
           orderBy: "favorite",
         },
       })
