@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/react */
 import { useMemo, useState } from "react";
 import Input from "../../components/Input/Input";
 import styles from "./AddItemPage.module.scss";
@@ -8,6 +9,8 @@ import ImageUpload from "../../components/ImageUpload/ImageUpload";
 import useTagUpdate from "../../hooks/useTagUpdate";
 import useRequiredValidation from "../../hooks/useRequiredValidation";
 import { formatPrice } from "../../utils/formatters";
+import Button from "../../components/Button/Button";
+import { css } from "@emotion/react";
 
 const IMG_MAX_LIMIT = 1;
 
@@ -46,12 +49,14 @@ const AddItemPage = () => {
         <form className={styles.addItemPage__form} onSubmit={handleSubmit}>
           <div className={styles.form__header}>
             <h2 className={styles.form__title}>상품 등록하기</h2>
-            <button
-              className={`btn ${styles.form__submitBtn}`}
+            <Button
               disabled={!isAllValid}
+              css={css`
+                min-width: 74px;
+              `}
             >
               등록
-            </button>
+            </Button>
           </div>
           {/* 상품 이미지 */}
           <div className={styles.form__item}>
