@@ -15,7 +15,7 @@ const NanumSquareR = localFont({
 const NanumSquareB = localFont({
   src: "./ui/font/NanumSquareB.woff2",
   display: "swap",
-  weight: "700 800",
+  weight: "600 700 800",
   variable: "--font-nanumsquareB",
 });
 
@@ -39,7 +39,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       className={`${NanumSquareR.variable} ${NanumSquareB.variable} ${NanumSquareEB.variable}`}
     >
       <body className={NanumSquareR.className}>
-        <SVGSprites/>
+        <SVGSprites />
         {children}
       </body>
     </html>

@@ -17,7 +17,11 @@ export default function Input({ type, name, placeholder, error }: InputProps) {
         className="absolute inset-0 px-6 py-[15px] bg-transparent z-20 text-slate-800 placeholder-slate-500 font-normal focus:outline-none"
       />
       {error && (
-        <p className="text-red-500 text-sm mt-1 absolute top-full left-0">
+        <p
+          className="absolute top-16 left-5 font-nanumsquareB text-rose-500 font-semibold text-sm 
+        md:font-nanumsquareB md:text-base md:font-bold 
+        lg:font-nanumsquareB lg:text-base lg:font-bold"
+        >
           {error}
         </p>
       )}

@@ -3,6 +3,12 @@
 @layer theme, base, components, utilities;
 @theme{
   /*
+  * FONT
+  */
+  --font-nanumsquareB: --font-nanumsquareB
+  --font-nanumsquareEB: --font-nanumsquareEB
+
+  /*
   * BREAKPOINT
   */
   --breakpoint-*: initial;

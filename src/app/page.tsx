@@ -42,6 +42,7 @@ const HomePage = () => {
           newErrors[key] = messages.join(" ");
         }
       }
+
       // ❌ 실패할 경우 에러 메세지 추가
       setErrors(newErrors);
       return;
