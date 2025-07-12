@@ -40,10 +40,6 @@ interface Props<T> {
 function FormInput<T extends FieldValues>(props: Props<T>) {
   const { placeholder, name, type, id } = props;
   const methods = useFormContext<T>();
-  // type InferredT = typeof methods extends UseFormReturn<infer U> ? U : never;
-  //InferredT를 통해 useFormState에 인자로 들어가는 name이 유효한 타입인지 (Path<T>에 해당하는지) 정확히 판단하기 위해 사용
-  //=> 조드 스키마 넣으면서 VALID_RULES가 사라졌으니
-  // 굳이 VALID_RULES의 키와 useForm<T>안에 오는 T의 프로퍼티들의 타입을 맞출 필요x=> 그냥 Path<T>바로 쓰기
   const { errors } = useFormState({ name }); //여기서 name으로 따로 골라와야 개별로 감지
 
   function getErrorMessage(errors: FieldErrors) {
