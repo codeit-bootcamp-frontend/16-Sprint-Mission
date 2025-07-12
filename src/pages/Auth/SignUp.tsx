@@ -8,19 +8,20 @@ import PasswordCheckField from './PasswordCheckField';
 import PasswordField from './PasswordField';
 import styles from './styles/Auth.module.css';
 import SubmitButton from './SubmitButton';
+import { FormDataSchema } from './FormInput';
+import type z from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-export interface SignUpValues {
-  'user-email': string;
-  'user-password': string;
-  'user-password-check': string;
-  'user-name': string;
-}
+type SignUpFormData = z.infer<typeof FormDataSchema>;
 
 function SignUp() {
   const toLoginNavigate = useNavigate();
-  const methods = useForm<SignUpValues>({ mode: 'all' });
+  const methods = useForm<SignUpFormData>({
+    resolver: zodResolver(FormDataSchema),
+    mode: 'all',
+  });
 
-  const onSubmit: SubmitHandler<SignUpValues> = () => {
+  const onSubmit: SubmitHandler<SignUpFormData> = () => {
     toLoginNavigate('/Login');
   };
 
