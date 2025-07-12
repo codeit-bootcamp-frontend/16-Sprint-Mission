@@ -29,7 +29,7 @@ export const defaultInput = (height: number = 56) => css`
   padding: 0 24px;
   font-size: 16px;
   font-weight: 400;
-  color: var.$gray800;
-  background: var.$gray100;
+  color: var(--gray800);
+  background: var(--gray100);
   border-radius: 12px;
 `;
