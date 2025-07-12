@@ -3,6 +3,7 @@
     "target": "ES6",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react",
     "module": "ESNext",
     "rootDir": "./",
     "moduleResolution": "node",
@@ -18,7 +19,8 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noFallthroughCasesInSwitch": true,
-    "skipLibCheck": true /* 이 옵션은 외부 라이브러리(타입 정의 파일)에 대한 타입 체크를 건너뛸지 여부를 설정한다. true로 설정하면 TypeScript 컴파일러는 외부 라이브러리의 타입을 체크하지 않는다*/
+    "skipLibCheck": true /* 이 옵션은 외부 라이브러리(타입 정의 파일)에 대한 타입 체크를 건너뛸지 여부를 설정한다. true로 설정하면 TypeScript 컴파일러는 외부 라이브러리의 타입을 체크하지 않는다*/,
+    "types": ["@emotion/react/types/css-prop"]
   },
   "include": ["src"],
   "exclude": ["node_modules"]
