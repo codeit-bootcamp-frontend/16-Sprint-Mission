@@ -101,8 +101,9 @@ const AddItemPage = () => {
               name={"desc"}
               id={"desc"}
               value={prdDesc}
-              onChange={setPrdDesc}
+              onChange={(e) => setPrdDesc(e.target.value)}
               placeholder={"상품 소개를 입력해주세요"}
+              height={282}
             />
           </div>
           {/* 판매가격 */}
