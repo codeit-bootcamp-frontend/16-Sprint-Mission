@@ -39,7 +39,7 @@ interface Props<T> {
 
 function FormInput<T extends FieldValues>(props: Props<T>) {
   const { placeholder, name, type, id } = props;
-  const methods = useFormContext<T>();
+  const methods = useFormContext();
   const { errors } = useFormState({ name }); //여기서 name으로 따로 골라와야 개별로 감지
 
   function getErrorMessage(errors: FieldErrors) {
