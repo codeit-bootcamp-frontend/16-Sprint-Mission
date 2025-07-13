@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+}
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+:root {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  cursor: default;
+  overflow-wrap: break-word;
+}
+body {
+  font-family: sans-serif;
+  overflow-x: hidden;
+}
+html,
+body {
+  height: 100%;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+}
+button {
+  background: none;
+  cursor: pointer;
+  line-height: 1;
+}
+button:disabled {
+  cursor: default;
+  pointer-events: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+input {
+  border: none;
+}
+li {
+  list-style: none;
+}

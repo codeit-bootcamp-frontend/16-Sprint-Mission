@@ -5,6 +5,9 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    boxShadow: {
+      button: "4px 4px 0 0 #0F172A",
+    },
     extend: {
       colors: {
         primary: {
@@ -12,18 +15,19 @@ module.exports = {
           100: "#EDE9FE",
         },
         gray: {
+          50: "#F9FAFB",
           100: "#F1F5F9",
           200: "#E2E8F0",
-          300: "#E2E8F0",
+          300: "#CBD5E1",
           400: "#94A3B8",
           500: "#64748B",
           800: "#1E293B",
           900: "#0F172A",
         },
-        rose: {
+        danger: {
           DEFAULT: "#F43F5E",
         },
-        lime: {
+        success: {
           DEFAULT: "#BEF264",
         },
         amber: {

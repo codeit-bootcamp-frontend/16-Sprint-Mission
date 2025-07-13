@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "@/styles/reset.css";
 import "@/styles/globals.css";
 import Header from "@/components/Header";
 
@@ -14,9 +15,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body>
+      <body className="bg-gray-50">
         <Header />
-        {children}
+        <div className="my-6 md:w-full lg:w-[1200px] lg:mx-auto">
+          {children}
+        </div>
       </body>
     </html>
   );
