@@ -17,3 +17,9 @@ export interface ItemListProps {
   variant?: "todo" | "done";
   onClick?: ({}: Item) => void;
 }
+
+export interface ItemListBaseProps extends ItemListProps {
+  badgeTxt: string;
+  emptyImg: string;
+  emptyMsg: string | ReactNode;
+}
