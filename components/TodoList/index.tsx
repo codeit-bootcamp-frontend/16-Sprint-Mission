@@ -1,21 +1,10 @@
 import Image from "next/image";
 import Badge from "@/components/Badge";
 import ListItem from "@/components/ListItem";
+import { Item, ItemListProps } from "@/types/todo";
 
-interface Todo {
-  id: string;
-  name: string;
-  isCompleted: boolean;
-  memo?: string;
-  imageUrl?: string;
-}
-interface TodoListProps {
-  items: Todo[] | undefined;
-  onDone: () => void;
-}
-
-const TodoList = ({ items, onDone }: TodoListProps) => {
-  const handleDone = async (todo: Todo) => {
+const TodoList = ({ items, onDone }: ItemListProps) => {
+  const handleDone = async (todo: Item) => {
     const updatedTodo = {
       name: todo.name,
       memo: todo.memo || "",

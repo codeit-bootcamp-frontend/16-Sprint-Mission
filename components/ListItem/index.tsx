@@ -1,16 +1,6 @@
 import * as styles from "./ListItemStyle";
 import Image from "next/image";
-interface Item {
-  id: string;
-  name: string;
-  isCompleted: boolean;
-}
-
-interface ItemProps {
-  item: Item;
-  variant?: "todo" | "done";
-  onClick: (item: { id: string; name: string; isCompleted: boolean }) => void;
-}
+import { ItemProps } from "@/types/todo";
 
 const ListItem = ({ item, variant, onClick }: ItemProps) => {
   if (variant === "todo") return <List.Todo item={item} onClick={onClick} />;

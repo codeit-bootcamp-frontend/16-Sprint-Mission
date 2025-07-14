@@ -1,23 +1,12 @@
 import Image from "next/image";
 import Badge from "@/components/Badge";
 import ListItem from "@/components/ListItem";
+import { Item, ItemListProps } from "@/types/todo";
 
-interface Todo {
-  id: string;
-  name: string;
-  isCompleted: boolean;
-  memo?: string;
-  imageUrl?: string;
-}
-interface DoneListProps {
-  items: Todo[];
-  onDone: () => void;
-}
-
-const DoneList = ({ items, onDone }: DoneListProps) => {
+const DoneList = ({ items, onDone }: ItemListProps) => {
   const isEmpty = !items || items.length === 0;
 
-  const cancelDone = async (todo: Todo) => {
+  const cancelDone = async (todo: Item) => {
     const updatedTodo = {
       name: todo.name,
       memo: todo.memo || "",

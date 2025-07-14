@@ -4,16 +4,11 @@ import { useEffect, useState } from "react";
 import AddTodoForm from "@/components/AddTodoForm";
 import TodoList from "@/components/TodoList";
 import DoneList from "@/components/DoneList";
-
-interface Todo {
-  id: string;
-  name: string;
-  isCompleted: boolean;
-}
+import { Item } from "@/types/todo";
 
 export default function Home() {
-  const [todos, setTodos] = useState<Todo[]>([]);
-  const [dones, setDones] = useState<Todo[]>([]);
+  const [todos, setTodos] = useState<Item[]>([]);
+  const [dones, setDones] = useState<Item[]>([]);
 
   const fetchTodos = async () => {
     const res = await fetch(
@@ -21,8 +16,8 @@ export default function Home() {
     );
     const results = await res.json();
 
-    const unCompleted = results.filter((data: Todo) => !data.isCompleted);
-    const completed = results.filter((data: Todo) => data.isCompleted);
+    const unCompleted = results.filter((data: Item) => !data.isCompleted);
+    const completed = results.filter((data: Item) => data.isCompleted);
 
     setTodos(unCompleted);
     setDones(completed);
