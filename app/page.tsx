@@ -5,15 +5,14 @@ import AddTodoForm from "@/components/AddTodoForm";
 import TodoList from "@/components/TodoList";
 import DoneList from "@/components/DoneList";
 import { Item } from "@/types/todo";
+import { BASE_URL, TENANT_ID } from "@/constants/constants";
 
 export default function Home() {
   const [todos, setTodos] = useState<Item[]>([]);
   const [dones, setDones] = useState<Item[]>([]);
 
   const fetchTodos = async () => {
-    const res = await fetch(
-      `https://assignment-todolist-api.vercel.app/api/sdsample/items/?page=1&pageSize=10`
-    );
+    const res = await fetch(`${BASE_URL}/${TENANT_ID}/items`);
     const results = await res.json();
 
     const unCompleted = results.filter((data: Item) => !data.isCompleted);

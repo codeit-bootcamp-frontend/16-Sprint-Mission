@@ -2,6 +2,7 @@ import Image from "next/image";
 import Badge from "@/components/Badge";
 import ListItem from "@/components/ListItem";
 import { Item, ItemListProps } from "@/types/todo";
+import { BASE_URL, TENANT_ID } from "@/constants/constants";
 
 const DoneList = ({ items, onDone }: ItemListProps) => {
   const isEmpty = !items || items.length === 0;
@@ -14,16 +15,13 @@ const DoneList = ({ items, onDone }: ItemListProps) => {
       isCompleted: false, // 완료 취소
     };
 
-    const res = await fetch(
-      `https://assignment-todolist-api.vercel.app/api/sdsample/items/${todo.id}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedTodo),
-      }
-    );
+    const res = await fetch(`${BASE_URL}/${TENANT_ID}/items/${todo.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedTodo),
+    });
 
     if (!res.ok) {
       console.error("완료 처리 실패:", await res.text());
