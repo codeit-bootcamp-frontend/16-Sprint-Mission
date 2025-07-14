@@ -34,7 +34,7 @@ export default function Home() {
 
   return (
     <>
-      <AddTodoForm />
+      <AddTodoForm onAddTodo={fetchTodos} />
       <div className="flex gap-6 mt-10">
         <TodoList todos={todos} onDone={fetchTodos} />
         <DoneList dones={dones} />

@@ -1,13 +1,41 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import Image from "next/image";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
 import FormControl from "@/components/FormControl";
 
-const AddTodoForm = () => {
+interface AddTodoFormProps {
+  onAddTodo: () => void;
+}
+
+const AddTodoForm = ({ onAddTodo }: AddTodoFormProps) => {
   const [value, setValue] = useState("");
 
-  const handleSubmit = () => {};
+  const newTodo = {
+    name: value,
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+
+    const res = await fetch(
+      "https://assignment-todolist-api.vercel.app/api/sdsample/items",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newTodo),
+      }
+    );
+
+    if (!res.ok) {
+      console.error("todo 추가 실패:", await res.text());
+    }
+
+    onAddTodo();
+    setValue("");
+  };
 
   return (
     <form onSubmit={handleSubmit}>
