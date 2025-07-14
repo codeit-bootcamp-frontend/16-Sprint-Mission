@@ -39,6 +39,9 @@ module.exports = {
           300: "#FCD34D",
           800: "#92400E",
         },
+        yellow: {
+          100: "#FEFCE8",
+        },
       },
       fontFamily: {
         nanumSquare: ["var(--font-nanumSquare)"],
