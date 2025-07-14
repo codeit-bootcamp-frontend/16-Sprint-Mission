@@ -42,11 +42,13 @@ const TodoList = ({ todos, onDone }: TodoListProps) => {
     onDone();
   };
 
+  const isEmpty = !todos || todos.length === 0;
+
   return (
     <div className="w-full">
       <Badge text="TO DO" variant="todo" />
 
-      {!todos && <ListEmpty />}
+      {isEmpty && <ListEmpty />}
       {todos && (
         <ul>
           {todos.map((todo) => (

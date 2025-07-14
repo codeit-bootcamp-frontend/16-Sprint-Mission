@@ -12,11 +12,13 @@ interface DoneListProps {
 }
 
 const DoneList = ({ dones }: DoneListProps) => {
+  const isEmpty = !dones || dones.length === 0;
+
   return (
     <div className="w-full">
       <Badge text="DONE" variant="done" />
 
-      {!dones && <ListEmpty />}
+      {isEmpty && <ListEmpty />}
       {dones && (
         <ul>
           {dones.map((done) => (
