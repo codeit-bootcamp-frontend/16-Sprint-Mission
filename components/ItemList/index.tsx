@@ -1,15 +1,9 @@
-import Image from "next/image";
 import Badge from "@/components/Badge";
 import ListItem from "@/components/ListItem";
-import { Item, ItemListProps } from "@/types/todo";
+import { Item, ItemListProps, ItemListBaseProps } from "@/types/todo";
 import { TENANT_ID } from "@/constants/constants";
 import axios from "@/lib/axios";
-
-interface ItemListBaseProps extends ItemListProps {
-  badgeTxt: string;
-  emptyImg: string;
-  emptyMsg: string;
-}
+import EmptyList from "./EmptyList";
 
 const ItemListBase = ({
   items,
@@ -46,6 +40,8 @@ const ItemListBase = ({
 
   const isEmpty = !items || items.length === 0;
 
+  const ListItemByVariant = variant === "todo" ? ListItem.Todo : ListItem.Done;
+
   return (
     <div className="w-full">
       <Badge text={badgeTxt} variant={variant} />
@@ -55,10 +51,9 @@ const ItemListBase = ({
       {!isEmpty && (
         <ul>
           {items.map((item) => (
-            <ListItem
+            <ListItemByVariant
               key={`${variant}-${item.id}`}
               item={item}
-              variant={variant}
               onClick={handleClick}
             />
           ))}
@@ -76,9 +71,13 @@ const ItemList = {
         variant="todo"
         badgeTxt="TO DO"
         emptyImg="/images/todo-empty.png"
-        emptyMsg="할 일이 없어요.
-        \n
-        TODO를 새롭게 추가해주세요!"
+        emptyMsg={
+          <>
+            할 일이 없어요.
+            <br />
+            TODO를 새롭게 추가해주세요!
+          </>
+        }
         onClick={onClick}
       />
     );
@@ -90,9 +89,13 @@ const ItemList = {
         variant="done"
         badgeTxt="DONE"
         emptyImg="/images/done-empty.png"
-        emptyMsg="아직 다 한 일이 없어요.
-        \n
-        해야 할 일을 체크해보세요!"
+        emptyMsg={
+          <>
+            아직 다 한 일이 없어요.
+            <br />
+            해야 할 일을 체크해보세요!
+          </>
+        }
         onClick={onClick}
       />
     );
@@ -100,15 +103,3 @@ const ItemList = {
 };
 
 export default ItemList;
-
-const EmptyList = ({
-  emptyImg,
-  emptyMsg,
-}: Pick<ItemListBaseProps, "emptyImg" | "emptyMsg">) => {
-  return (
-    <div className="flex flex-col items-center justify-center">
-      <Image src={emptyImg} alt="비어 있는 리스트" width="240" height="240" />
-      <p className="text-gray-400 text-base text-center">{emptyMsg}</p>
-    </div>
-  );
-};
