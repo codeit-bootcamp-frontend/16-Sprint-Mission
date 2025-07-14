@@ -2,6 +2,7 @@ import "./globals.css";
 import { ReactNode } from "react";
 import localFont from "next/font/local";
 import SVGSprites from "./components/SVGSprites";
+import ReactQueryProvider from "./utils/reqctQueryProvider";
 
 // NanumSquare Regular
 const NanumSquareR = localFont({
@@ -40,7 +41,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     >
       <body className={NanumSquareR.className}>
         <SVGSprites />
-        {children}
+        <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>
     </html>
   );

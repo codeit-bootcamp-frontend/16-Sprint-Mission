@@ -2,9 +2,12 @@
 
 import { FormEvent, useState } from "react";
 import * as z from "zod/v4";
-import FormInput from "./components/FormInput";
 import Navbar from "./components/Navbar";
+import FormInput from "./components/FormInput";
+import TodoList from "./components/TodoList";
 import { todoSchema } from "./schemas/todo";
+import { addTodo } from "./api/post/addTodo";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 // input값들 설정하는 배열의 타입
 const inputs = [
@@ -17,7 +20,16 @@ const inputs = [
 ];
 
 const HomePage = () => {
+  const queryClient = useQueryClient();
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  // 뮤테이션 정의: 성공 시 ["todos"] 쿼리들 refetch
+  const addTodoMutation = useMutation<void, Error, string>({
+    mutationFn: (name: string) => addTodo(name),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["todos"] });
+    },
+  });
 
   // submit했을 때 함수
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -50,8 +62,13 @@ const HomePage = () => {
 
     // ✅ 성공한 경우 에러 초기화
     setErrors({});
+
     // 유효성 검사 통과할 시 입력값들 제출
-    console.log("검증된 데이터:", validation.data);
+    // addTodo(validation.data.todo);
+    addTodoMutation.mutate(validation.data.todo);
+
+    // 제출 성공 시
+    e.currentTarget.reset();
   };
 
   return (
@@ -64,6 +81,15 @@ const HomePage = () => {
           containerStyle="flex gap-4"
           errors={errors}
         />
+        <section
+          className="flex flex-col justify-between pt-10 gap-6
+        md:flex-row
+        lg:flex-row
+        "
+        >
+          <TodoList isDone={false} />
+          <TodoList isDone={true} />
+        </section>
       </main>
     </>
   );
