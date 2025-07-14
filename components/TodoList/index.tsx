@@ -5,8 +5,12 @@ import { Item, ItemListProps } from "@/types/todo";
 import { TENANT_ID } from "@/constants/constants";
 import axios from "@/lib/axios";
 
-const TodoList = ({ items, onDone }: ItemListProps) => {
+const TodoList = ({ items, onChange }: ItemListProps) => {
   const handleDone = async (todo: Item) => {
+    // 화면 먼저 업데이트
+    onChange?.({ ...todo, isCompleted: true });
+
+    // 서버 요청
     const updatedTodo = {
       name: todo.name,
       memo: todo.memo || "",
@@ -15,8 +19,6 @@ const TodoList = ({ items, onDone }: ItemListProps) => {
     };
 
     await axios.patch(`/${TENANT_ID}/items/${todo.id}`, updatedTodo);
-
-    onDone();
   };
 
   const isEmpty = !items || items.length === 0;

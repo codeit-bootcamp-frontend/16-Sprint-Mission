@@ -14,5 +14,5 @@ export interface ItemProps {
 
 export interface ItemListProps {
   items: Item[] | undefined;
-  onDone: () => void;
+  onChange?: ({}: Item) => void;
 }

@@ -12,6 +12,16 @@ export default function Home() {
   const [todos, setTodos] = useState<Item[]>([]);
   const [dones, setDones] = useState<Item[]>([]);
 
+  const moveToDone = (todo: Item) => {
+    setTodos((prev) => prev.filter((item) => item.id !== todo.id));
+    setDones((prev) => [todo, ...prev]);
+  };
+
+  const cancelDone = (todo: Item) => {
+    setDones((prev) => prev.filter((item) => item.id !== todo.id));
+    setTodos((prev) => [todo, ...prev]);
+  };
+
   const fetchTodos = async () => {
     const res = await axios.get(`${BASE_URL}/${TENANT_ID}/items`);
     const results = res.data;
@@ -31,8 +41,8 @@ export default function Home() {
     <>
       <AddTodoForm onAddTodo={fetchTodos} />
       <div className="flex gap-6 mt-10">
-        <TodoList items={todos} onDone={fetchTodos} />
-        <DoneList items={dones} onDone={fetchTodos} />
+        <TodoList items={todos} onChange={moveToDone} />
+        <DoneList items={dones} onChange={cancelDone} />
       </div>
     </>
   );
