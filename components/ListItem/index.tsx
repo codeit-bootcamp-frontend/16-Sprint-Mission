@@ -2,41 +2,37 @@ import * as styles from "./ListItemStyle";
 import Image from "next/image";
 import { ItemProps } from "@/types/todo";
 
-const ListItem = ({ item, variant, onClick }: ItemProps) => {
-  if (variant === "todo") return <List.Todo item={item} onClick={onClick} />;
-  if (variant === "done") return <List.Done item={item} onClick={onClick} />;
-};
+const ListItemBase = ({ item, variant = "todo", onClick }: ItemProps) => {
+  const itemStyle = styles[`${variant}ItemStyle`];
+  const bulletStyle = styles[`${variant}BulletStyle`];
 
-export default ListItem;
-
-const List = {
-  Todo: ({ item, onClick }: ItemProps) => (
+  return (
     <li
-      className={`${styles.itemBaseStyle} ${styles.todoItemStyle}`}
+      className={`${styles.itemBaseStyle} ${itemStyle}`}
       onClick={() => onClick(item)}
     >
-      <span
-        className={`${styles.itemBulletBaseStyle} ${styles.todoBulletStyle}`}
-      ></span>
-      {item.name}
-    </li>
-  ),
-  Done: ({ item, onClick }: ItemProps) => (
-    <li
-      className={`${styles.itemBaseStyle} ${styles.doneItemStyle}`}
-      onClick={() => onClick(item)}
-    >
-      <span
-        className={`${styles.itemBulletBaseStyle} ${styles.doneBulletStyle}`}
-      >
-        <Image
-          src="/images/ico-check-wt.svg"
-          alt="완료된 할 일"
-          width="20"
-          height="20"
-        />
+      <span className={`${styles.itemBulletBaseStyle} ${bulletStyle}`}>
+        {variant === "done" && (
+          <Image
+            src="/images/ico-check-wt.svg"
+            alt="완료된 할 일"
+            width="20"
+            height="20"
+          />
+        )}
       </span>
       {item.name}
     </li>
+  );
+};
+
+const ListItem = {
+  Todo: ({ item, onClick }: ItemProps) => (
+    <ListItemBase item={item} variant="todo" onClick={onClick} />
+  ),
+  Done: ({ item, onClick }: ItemProps) => (
+    <ListItemBase item={item} variant="done" onClick={onClick} />
   ),
 };
+
+export default ListItem;
