@@ -1,44 +1,45 @@
-import Image from "next/image";
 import { ReactNode } from "react";
 
 interface ButtonProps {
   type?: "submit" | "reset" | "button" | undefined;
-  variant: string;
-  children?: ReactNode;
+  variant: "primary" | "success" | "danger";
+  children: ReactNode;
   disabled?: boolean;
 }
 
+const baseButtonStyle =
+  "w-[164px] h-[52px] flex items-center justify-center text-base font-bold rounded-3xl border-2 border-black shadow-button";
+
 const Button = ({ type, variant, children, disabled }: ButtonProps) => {
-  const baseButtonStyle =
-    "w-[164px] h-[52px] flex items-center justify-center text-base font-bold rounded-3xl border-2 border-black shadow-button";
+  if (!disabled) {
+    if (variant === "primary") return <PrimaryButton>{children}</PrimaryButton>;
+    if (variant === "danger") return <DangerButton>{children}</DangerButton>;
+  } else
+    return (
+      <button
+        type={type}
+        disabled={disabled}
+        className={`${baseButtonStyle} text-gray-900`}
+      >
+        {children}
+      </button>
+    );
+};
 
-  // 배경색 조건 분기
-  let bgColor = "";
-  if (disabled) {
-    bgColor = "bg-gray-200";
-  } else if (variant === "primary") {
-    bgColor = "bg-primary";
-  } else if (variant === "danger") {
-    bgColor = "bg-danger";
-  }
+export default Button;
 
-  // 텍스트 색상 조건 분기
-  let textColor = "";
-  if (disabled) {
-    textColor = "text-gray-900";
-  } else if (variant === "primary" || variant === "danger") {
-    textColor = "text-white";
-  } else {
-    textColor = "text-gray-900";
-  }
-
-  const classNames = `${baseButtonStyle} ${bgColor} ${textColor}`;
-
+const PrimaryButton = ({ children }: { children: ReactNode }) => {
   return (
-    <button type={type} disabled={disabled} className={classNames}>
+    <button className={`${baseButtonStyle} bg-primary text-white`}>
       {children}
     </button>
   );
 };
 
-export default Button;
+const DangerButton = ({ children }: { children: ReactNode }) => {
+  return (
+    <button className={`${baseButtonStyle} bg-danger text-white`}>
+      {children}
+    </button>
+  );
+};
