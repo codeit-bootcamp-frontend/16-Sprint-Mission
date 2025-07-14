@@ -1,6 +1,24 @@
-import styled from "styled-components";
-import searchIcon from "../assets/searchIcon.png";
-import { debounce } from "lodash";
+import { debounce } from 'lodash';
+import styled from 'styled-components';
+
+import searchIcon from '../assets/searchIcon.png';
+
+function SearchInput({ handlerSearchItems }) {
+  const onSearchItems = debounce(e => {
+    handlerSearchItems(e.target.value);
+  }, 500);
+  return (
+    <SearchInputWrapper>
+      <SearchInputLabel />
+      <SearchInputStyled
+        placeholder='검색할 상품을 입력해주세요'
+        type='text'
+        onChange={e => onSearchItems(e)}
+      />
+    </SearchInputWrapper>
+  );
+}
+
 const SearchInputWrapper = styled.div`
   position: relative;
   width: calc(100% - 42px);
@@ -41,20 +59,4 @@ const SearchInputLabel = styled.label`
   transform: translateY(-50%);
   left: 10px;
 `;
-
-function SearchInput({ handlerSearchItems }) {
-  const onSearchItems = debounce((e) => {
-    handlerSearchItems(e.target.value);
-  }, 500);
-  return (
-    <SearchInputWrapper>
-      <SearchInputLabel />
-      <SearchInputStyled
-        placeholder="검색할 상품을 입력해주세요"
-        type="text"
-        onChange={(e) => onSearchItems(e)}
-      />
-    </SearchInputWrapper>
-  );
-}
 export default SearchInput;

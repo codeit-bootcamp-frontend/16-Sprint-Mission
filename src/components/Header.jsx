@@ -1,8 +1,34 @@
-import styled from "styled-components";
-import logoImg from "../assets/logo.png";
-import moLogoImg from "../assets/mo_logo.png";
-import profileImg from "../assets/profileIcon.png";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+import logoImg from '../assets/logo.png';
+import moLogoImg from '../assets/mo_logo.png';
+import profileImg from '../assets/profileIcon.png';
+
+function Navigation() {
+  return (
+    <NavWrap>
+      <Logo>
+        <a href='/'>
+          <picture>
+            <source media='(max-width: 768px)' srcSet={moLogoImg} />
+            <source media='(min-width: 767px)' srcSet={logoImg} />
+            <img src={moLogoImg} alt='판다마켓' aria-hidden='true' />
+          </picture>
+        </a>
+      </Logo>
+      <Nav>
+        <Link to='/freeboard'>자유게시판</Link>
+        <Link to='/items'>중고마켓</Link>
+      </Nav>
+      <Profile>
+        <a href='#'>
+          <img src={profileImg} alt='프로필가기' />
+        </a>
+      </Profile>
+    </NavWrap>
+  );
+}
 
 const NavWrap = styled.div`
   display: flex;
@@ -35,7 +61,7 @@ const Logo = styled.div`
   img {
     width: 100%;
   }
-  @media all and (min-width:768px){
+  @media screen and (min-width:768px){
     width: 153px;
   }
 }  
@@ -48,29 +74,4 @@ const Profile = styled.div`
     width: 100%;
   l}
 `;
-
-function Navigation() {
-  return (
-    <NavWrap>
-      <Logo>
-        <a href="/">
-          <picture>
-            <source media="(max-width: 768px)" srcSet={moLogoImg} />
-            <source media="(min-width: 767px)" srcSet={logoImg} />
-            <img src={moLogoImg} alt="판다마켓" aria-hidden="true" />
-          </picture>
-        </a>
-      </Logo>
-      <Nav>
-        <Link to="/freeboard">자유게시판</Link>
-        <Link to="/items">중고마켓</Link>
-      </Nav>
-      <Profile>
-        <a href="#">
-          <img src={profileImg} alt="프로필가기" />
-        </a>
-      </Profile>
-    </NavWrap>
-  );
-}
 export default Navigation;

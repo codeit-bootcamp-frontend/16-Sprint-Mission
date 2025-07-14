@@ -1,8 +1,53 @@
-import { useState } from "react";
-import MoSelectIcon from "../assets/MOsortIcon.png";
-import PcSelectIcon from "../assets/PCsortIcon.png";
-import styled from "styled-components";
+import { useState } from 'react';
 
+import styled from 'styled-components';
+
+import MoSelectIcon from '../assets/MOsortIcon.png';
+import PcSelectIcon from '../assets/PCsortIcon.png';
+
+function CustomSortSelect({ value, setOrder }) {
+  // 정렬 옵션 정의
+  const [isOpen, setIsOpen] = useState(false);
+  // 현재 선택된 옵션의 label을 찾기
+  const option = [
+    { value: 'recent', label: '최신순' },
+    { value: 'favorite', label: '좋아요순' },
+  ];
+
+  const selectedOption = option.find(opt => opt.value === value)?.label;
+  // 옵션 클릭 시 처리
+  const handleOptionClick = value => {
+    setOrder(value);
+    setIsOpen(false);
+  };
+
+  // 드롭다운 열고 닫기 토글
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <CustomSelectWrapper onClick={toggleDropdown}>
+      {selectedOption}
+      <CurrentSelectionDisplay>
+        {isOpen && (
+          <OptionList>
+            {option.map((el, idx) => (
+              <OptionItem
+                key={idx}
+                className={el.value === value ? 'selected' : ''}
+                onClick={() => handleOptionClick(el.value)}
+              >
+                {el.label}
+              </OptionItem>
+            ))}
+          </OptionList>
+        )}
+      </CurrentSelectionDisplay>
+      {/* 옵션 리스트: isOpen 상태에 따라 조건부 렌더링 */}
+    </CustomSelectWrapper>
+  );
+}
 // 1. 전체 커스텀 셀렉트 컨테이너
 const CustomSelectWrapper = styled.div`
   position: relative;
@@ -17,7 +62,7 @@ const CustomSelectWrapper = styled.div`
   cursor: pointer;
   font-size:0;
 
-  @media all and (min-width:768px){
+  @media screen and (min-width:768px){
     width: 130px; 
     font-size: 16px;
     text-align: left;
@@ -57,48 +102,5 @@ const OptionItem = styled.li`
     font-weight: 600;
   }
 `;
-
-function CustomSortSelect({ value, setOrder }) {
-  // 정렬 옵션 정의
-  const [isOpen, setIsOpen] = useState(false);
-  // 현재 선택된 옵션의 label을 찾기
-  const option = [
-    { value: "recent", label: "최신순" },
-    { value: "favorite", label: "좋아요순" },
-  ];
-
-  const selectedOption = option.find((opt) => opt.value === value)?.label;
-  // 옵션 클릭 시 처리
-  const handleOptionClick = (value) => {
-    setOrder(value);
-    setIsOpen(false);
-  };
-
-  // 드롭다운 열고 닫기 토글
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
-  return (
-    <CustomSelectWrapper onClick={toggleDropdown}>
-      {selectedOption}
-      <CurrentSelectionDisplay>
-        {isOpen && (
-          <OptionList>
-            {option.map((el) => (
-              <OptionItem
-                className={el.value === value ? "selected" : ""}
-                onClick={() => handleOptionClick(el.value)}
-              >
-                {el.label}
-              </OptionItem>
-            ))}
-          </OptionList>
-        )}
-      </CurrentSelectionDisplay>
-      {/* 옵션 리스트: isOpen 상태에 따라 조건부 렌더링 */}
-    </CustomSelectWrapper>
-  );
-}
 
 export default CustomSortSelect;
