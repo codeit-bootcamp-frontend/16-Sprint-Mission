@@ -8,14 +8,13 @@ interface Todo {
   isCompleted: boolean;
   memo?: string;
   imageUrl?: string;
-  tenantId?: string;
 }
 interface TodoListProps {
-  todos: Todo[] | undefined;
+  items: Todo[] | undefined;
   onDone: () => void;
 }
 
-const TodoList = ({ todos, onDone }: TodoListProps) => {
+const TodoList = ({ items, onDone }: TodoListProps) => {
   const handleDone = async (todo: Todo) => {
     const updatedTodo = {
       name: todo.name,
@@ -42,16 +41,16 @@ const TodoList = ({ todos, onDone }: TodoListProps) => {
     onDone();
   };
 
-  const isEmpty = !todos || todos.length === 0;
+  const isEmpty = !items || items.length === 0;
 
   return (
     <div className="w-full">
       <Badge text="TO DO" variant="todo" />
 
       {isEmpty && <ListEmpty />}
-      {todos && (
+      {items && (
         <ul>
-          {todos.map((todo) => (
+          {items.map((todo) => (
             <ListItem
               key={todo.id}
               item={todo}

@@ -6,23 +6,57 @@ interface Todo {
   id: string;
   name: string;
   isCompleted: boolean;
+  memo?: string;
+  imageUrl?: string;
 }
 interface DoneListProps {
-  dones: Todo[];
+  items: Todo[];
+  onDone: () => void;
 }
 
-const DoneList = ({ dones }: DoneListProps) => {
-  const isEmpty = !dones || dones.length === 0;
+const DoneList = ({ items, onDone }: DoneListProps) => {
+  const isEmpty = !items || items.length === 0;
+
+  const cancelDone = async (todo: Todo) => {
+    const updatedTodo = {
+      name: todo.name,
+      memo: todo.memo || "",
+      imageUrl: todo.imageUrl || "",
+      isCompleted: false, // 완료 취소
+    };
+
+    const res = await fetch(
+      `https://assignment-todolist-api.vercel.app/api/sdsample/items/${todo.id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedTodo),
+      }
+    );
+
+    if (!res.ok) {
+      console.error("완료 처리 실패:", await res.text());
+    }
+
+    onDone();
+  };
 
   return (
     <div className="w-full">
       <Badge text="DONE" variant="done" />
 
       {isEmpty && <ListEmpty />}
-      {dones && (
+      {items && (
         <ul>
-          {dones.map((done) => (
-            <ListItem key={done.id} item={done} variant="done" />
+          {items.map((done) => (
+            <ListItem
+              key={done.id}
+              item={done}
+              variant="done"
+              onClick={cancelDone}
+            />
           ))}
         </ul>
       )}

@@ -9,12 +9,12 @@ interface Item {
 interface ItemProps {
   item: Item;
   variant?: "todo" | "done";
-  onClick?: (item: { id: string; name: string; isCompleted: boolean }) => void;
+  onClick: (item: { id: string; name: string; isCompleted: boolean }) => void;
 }
 
 const ListItem = ({ item, variant, onClick }: ItemProps) => {
   if (variant === "todo") return <List.Todo item={item} onClick={onClick} />;
-  if (variant === "done") return <List.Done item={item} />;
+  if (variant === "done") return <List.Done item={item} onClick={onClick} />;
 };
 
 export default ListItem;
@@ -23,7 +23,7 @@ const List = {
   Todo: ({ item, onClick }: ItemProps) => (
     <li
       className={`${styles.itemBaseStyle} ${styles.todoItemStyle}`}
-      onClick={() => onClick?.(item)}
+      onClick={() => onClick(item)}
     >
       <span
         className={`${styles.itemBulletBaseStyle} ${styles.todoBulletStyle}`}
@@ -31,8 +31,11 @@ const List = {
       {item.name}
     </li>
   ),
-  Done: ({ item }: ItemProps) => (
-    <li className={`${styles.itemBaseStyle} ${styles.doneItemStyle}`}>
+  Done: ({ item, onClick }: ItemProps) => (
+    <li
+      className={`${styles.itemBaseStyle} ${styles.doneItemStyle}`}
+      onClick={() => onClick(item)}
+    >
       <span
         className={`${styles.itemBulletBaseStyle} ${styles.doneBulletStyle}`}
       >
