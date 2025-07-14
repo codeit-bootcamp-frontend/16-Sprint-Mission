@@ -1,24 +1,49 @@
-interface Todo {
+import * as styles from "./ListItemStyle";
+import Image from "next/image";
+interface Item {
   id: string;
   name: string;
   isCompleted: boolean;
 }
 
-interface TodoProps {
-  todo: Todo;
-  onClick?: (todo: { id: string; name: string; isCompleted: boolean }) => void;
+interface ItemProps {
+  item: Item;
+  variant?: "todo" | "done";
+  onClick?: (item: { id: string; name: string; isCompleted: boolean }) => void;
 }
 
-const ListItem = ({ todo, onClick }: TodoProps) => {
-  return (
-    <li
-      className="flex items-center w-full mt-4 bg-white border-2 border-gray-900 px-[12px] py-2 text-base text-gray-800 rounded-full cursor-pointer"
-      onClick={() => onClick?.(todo)}
-    >
-      <span className="inline-block w-8 h-8 mr-4 rounded-full border-2 border-gray-900 bg-yellow-100"></span>
-      {todo.name}
-    </li>
-  );
+const ListItem = ({ item, variant, onClick }: ItemProps) => {
+  if (variant === "todo") return <List.Todo item={item} onClick={onClick} />;
+  if (variant === "done") return <List.Done item={item} />;
 };
 
 export default ListItem;
+
+const List = {
+  Todo: ({ item, onClick }: ItemProps) => (
+    <li
+      className={`${styles.itemBaseStyle} ${styles.todoItemStyle}`}
+      onClick={() => onClick?.(item)}
+    >
+      <span
+        className={`${styles.itemBulletBaseStyle} ${styles.todoBulletStyle}`}
+      ></span>
+      {item.name}
+    </li>
+  ),
+  Done: ({ item }: ItemProps) => (
+    <li className={`${styles.itemBaseStyle} ${styles.doneItemStyle}`}>
+      <span
+        className={`${styles.itemBulletBaseStyle} ${styles.doneBulletStyle}`}
+      >
+        <Image
+          src="/images/ico-check-wt.svg"
+          alt="완료된 할 일"
+          width="20"
+          height="20"
+        />
+      </span>
+      {item.name}
+    </li>
+  ),
+};

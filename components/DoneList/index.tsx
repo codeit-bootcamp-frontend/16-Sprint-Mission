@@ -20,7 +20,7 @@ const DoneList = ({ dones }: DoneListProps) => {
       {dones && (
         <ul>
           {dones.map((done) => (
-            <ListItem key={done.id} todo={done} />
+            <ListItem key={done.id} item={done} variant="done" />
           ))}
         </ul>
       )}

@@ -50,7 +50,12 @@ const TodoList = ({ todos, onDone }: TodoListProps) => {
       {todos && (
         <ul>
           {todos.map((todo) => (
-            <ListItem key={todo.id} todo={todo} onClick={handleDone} />
+            <ListItem
+              key={todo.id}
+              item={todo}
+              variant="todo"
+              onClick={handleDone}
+            />
           ))}
         </ul>
       )}
