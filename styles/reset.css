@@ -44,8 +44,6 @@ button {
 button:disabled {
   cursor: default;
   pointer-events: none;
-  background-color: #e2e8f0;
-  color: #0f172a;
 }
 a {
   text-decoration: none;
