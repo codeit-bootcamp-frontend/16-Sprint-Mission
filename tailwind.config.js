@@ -29,11 +29,15 @@ module.exports = {
           DEFAULT: "#F43F5E",
           dark: "#E7000B",
         },
-        success: {
+        lime: {
           DEFAULT: "#BEF264",
         },
+        green: {
+          DEFAULT: "#15803D",
+        },
         amber: {
-          DEFAULT: "#92400E",
+          300: "#FCD34D",
+          800: "#92400E",
         },
       },
       fontFamily: {
