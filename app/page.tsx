@@ -6,14 +6,15 @@ import TodoList from "@/components/TodoList";
 import DoneList from "@/components/DoneList";
 import { Item } from "@/types/todo";
 import { BASE_URL, TENANT_ID } from "@/constants/constants";
+import axios from "@/lib/axios";
 
 export default function Home() {
   const [todos, setTodos] = useState<Item[]>([]);
   const [dones, setDones] = useState<Item[]>([]);
 
   const fetchTodos = async () => {
-    const res = await fetch(`${BASE_URL}/${TENANT_ID}/items`);
-    const results = await res.json();
+    const res = await axios.get(`${BASE_URL}/${TENANT_ID}/items`);
+    const results = res.data;
 
     const unCompleted = results.filter((data: Item) => !data.isCompleted);
     const completed = results.filter((data: Item) => data.isCompleted);

@@ -2,7 +2,8 @@ import Image from "next/image";
 import Badge from "@/components/Badge";
 import ListItem from "@/components/ListItem";
 import { Item, ItemListProps } from "@/types/todo";
-import { BASE_URL, TENANT_ID } from "@/constants/constants";
+import { TENANT_ID } from "@/constants/constants";
+import axios from "@/lib/axios";
 
 const TodoList = ({ items, onDone }: ItemListProps) => {
   const handleDone = async (todo: Item) => {
@@ -13,17 +14,7 @@ const TodoList = ({ items, onDone }: ItemListProps) => {
       isCompleted: true, // 완료 처리
     };
 
-    const res = await fetch(`${BASE_URL}/${TENANT_ID}/items/${todo.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedTodo),
-    });
-
-    if (!res.ok) {
-      console.error("완료 처리 실패:", await res.text());
-    }
+    await axios.patch(`/${TENANT_ID}/items/${todo.id}`, updatedTodo);
 
     onDone();
   };
