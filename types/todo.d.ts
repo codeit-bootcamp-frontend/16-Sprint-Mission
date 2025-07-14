@@ -1,5 +1,5 @@
 export interface Item {
-  id: string;
+  id?: string;
   name: string;
   isCompleted: boolean;
   memo?: string;
@@ -14,5 +14,6 @@ export interface ItemProps {
 
 export interface ItemListProps {
   items: Item[] | undefined;
-  onChange?: ({}: Item) => void;
+  variant?: "todo" | "done";
+  onClick?: ({}: Item) => void;
 }
