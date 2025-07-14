@@ -34,6 +34,9 @@ module.exports = {
           DEFAULT: "#92400E",
         },
       },
+      fontFamily: {
+        nanumSquare: ["var(--font-nanumSquare)"],
+      },
       fontSize: {
         base: "16px",
         lg: "18px",
