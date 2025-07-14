@@ -12,6 +12,7 @@ module.exports = {
       colors: {
         primary: {
           DEFAULT: "#7C3AED",
+          dark: "#6500C3",
           100: "#EDE9FE",
         },
         gray: {
@@ -26,6 +27,7 @@ module.exports = {
         },
         danger: {
           DEFAULT: "#F43F5E",
+          dark: "#E7000B",
         },
         success: {
           DEFAULT: "#BEF264",
