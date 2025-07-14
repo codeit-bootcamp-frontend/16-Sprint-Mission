@@ -1,6 +1,6 @@
 export const addTodo = async (name: string): Promise<void> => {
   const res = await fetch(
-    "https://assignment-todolist-api.vercel.app/api/jinsunkim/items",
+    "https://assignment-todolist-api.vercel.app/api/jinsun/items",
     {
       method: "POST",
       body: JSON.stringify({ name }),

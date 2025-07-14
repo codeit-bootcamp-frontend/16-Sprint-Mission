@@ -1,3 +1,5 @@
+"use client";
+
 import { DetailedHTMLProps, FormEvent, FormHTMLAttributes } from "react";
 import Input from "./Input";
 import CustomButton from "./CustomButton";

@@ -10,7 +10,7 @@ export const patchItem = async (
   data: PatchItemPayload
 ): Promise<void> => {
   const res = await fetch(
-    `https://assignment-todolist-api.vercel.app/api/jinsunkim/items/${itemId}`,
+    `https://assignment-todolist-api.vercel.app/api/jinsun/items/${itemId}`,
     {
       method: "PATCH",
       headers: {

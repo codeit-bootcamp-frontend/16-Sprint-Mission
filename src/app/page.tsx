@@ -7,7 +7,7 @@ import FormInput from "./components/FormInput";
 import TodoList from "./components/TodoList";
 import { todoSchema } from "./schemas/todo";
 import { addTodo } from "./api/post/addTodo";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 // input값들 설정하는 배열의 타입
 const inputs = [
@@ -23,11 +23,11 @@ const HomePage = () => {
   const queryClient = useQueryClient();
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  // 뮤테이션 정의: 성공 시 ["todos"] 쿼리들 refetch
+  // 뮤테이션 정의: 투두 입력해서 api(post) 성공 시 ["todos"] 쿼리들 refetch
   const addTodoMutation = useMutation<void, Error, string>({
     mutationFn: (name: string) => addTodo(name),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["todos"] });
+      queryClient.invalidateQueries({ queryKey: ["todos", false] });
     },
   });
 
@@ -64,7 +64,6 @@ const HomePage = () => {
     setErrors({});
 
     // 유효성 검사 통과할 시 입력값들 제출
-    // addTodo(validation.data.todo);
     addTodoMutation.mutate(validation.data.todo);
 
     // 제출 성공 시
