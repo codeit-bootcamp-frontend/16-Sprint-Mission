@@ -1,7 +1,7 @@
 import "./globals.css";
 import { ReactNode } from "react";
 import localFont from "next/font/local";
-import SVGSprites from "./components/SVGSprites";
+import SVGSprites from "./components/layout/SVGSprites";
 import ReactQueryProvider from "./utils/reqctQueryProvider";
 
 // NanumSquare Regular

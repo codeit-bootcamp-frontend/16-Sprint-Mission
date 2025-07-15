@@ -1,22 +1,16 @@
 "use client";
 
 import { DetailedHTMLProps, FormEvent, FormHTMLAttributes } from "react";
-import Input from "./Input";
 import CustomButton from "./CustomButton";
-
-interface InputConfig {
-  id: number;
-  type: string;
-  name: string;
-  placeholder: string;
-}
+import { FormInputConfig } from "../../types/form";
+import Input from "./Input";
 
 interface FormInputProps
   extends DetailedHTMLProps<
     FormHTMLAttributes<HTMLFormElement>,
     HTMLFormElement
   > {
-  inputs: InputConfig[];
+  inputs: FormInputConfig[];
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
   errors?: Record<string, string>;
   containerStyle?: string;

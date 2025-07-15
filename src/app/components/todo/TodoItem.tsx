@@ -1,14 +1,9 @@
 import { MouseEvent } from "react";
-import Icon from "./Icon";
-
-interface TodoItem {
-  id: number;
-  name: string;
-  isCompleted: boolean;
-}
+import Icon from "../common/Icon";
+import { Todo } from "../../types/todo";
 
 interface TodoItemProps {
-  item: TodoItem;
+  item: Todo;
   onToggle: (
     e: MouseEvent<HTMLButtonElement>,
     id: number,
@@ -38,7 +33,9 @@ export default function TodoItem({ item, onToggle, disabled }: TodoItemProps) {
       >
         <div
           className={`w-8 h-8 flex items-center justify-center rounded-full ${
-            item.isCompleted ? "bg-violet-500 border-0" : "bg-yellow-50 border-2"
+            item.isCompleted
+              ? "bg-violet-500 border-0"
+              : "bg-yellow-50 border-2"
           }`}
         >
           {item.isCompleted && (

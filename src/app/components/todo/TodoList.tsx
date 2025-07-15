@@ -1,35 +1,18 @@
-// 최적화된 TodoList.tsx
 import Image from "next/image";
 import TodoTitle from "@/app/ui/image/img-todo.png";
 import DoneTitle from "@/app/ui/image/img-done.png";
 import EmptyTodoList from "@/app/ui/image/empty-todo.png";
 import EmptyDoneList from "@/app/ui/image/empty-done.png";
-import { getTodos } from "../api/get/getTodos";
 import TodoItems from "./TodoItems";
-import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
-
-type Todo = {
-  id: number;
-  name: string;
-  isCompleted: boolean;
-};
+import { useTodos } from "@/app/hooks/useTodos";
 
 interface Props {
   isDone: boolean;
 }
 
 export default function TodoList({ isDone }: Props) {
-  const {
-    data: todos = [],
-    isLoading,
-    error,
-  } = useQuery<Todo[], Error>({
-    queryKey: ["todos"],
-    queryFn: getTodos,
-    staleTime: 5 * 60 * 1000, // 5분간 캐시 유지
-    gcTime: 10 * 60 * 1000, // 10분간 메모리에 유지
-  });
+  const { data: todos = [], isLoading, error } = useTodos();
 
   // 필터링을 useMemo로 최적화
   const filtered = useMemo(() => {

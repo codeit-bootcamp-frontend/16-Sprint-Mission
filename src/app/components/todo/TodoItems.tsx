@@ -1,17 +1,11 @@
-// 최적화된 TodoItems.tsx
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { patchItem } from "../api/patch/patchTodo";
 import { MouseEvent, useCallback } from "react";
 import TodoItem from "./TodoItem";
-
-interface TodoItem {
-  id: number;
-  name: string;
-  isCompleted: boolean;
-}
+import { Todo } from "../../types/todo";
+import { patchItem } from "../../api/todos";
 
 interface InputProps {
-  dataList: TodoItem[];
+  dataList: Todo[];
 }
 
 export default function TodoItems({ dataList }: InputProps) {
@@ -19,13 +13,13 @@ export default function TodoItems({ dataList }: InputProps) {
 
   // 뮤테이션 컨텍스트 타입 정의
   type MutationContext = {
-    previousTodos?: TodoItem[];
+    previousTodos?: Todo[];
   };
 
   const toggleMutation = useMutation<
     void,
     Error,
-    Pick<TodoItem, "id" | "isCompleted">,
+    Pick<Todo, "id" | "isCompleted">,
     MutationContext
   >({
     mutationFn: ({ id, isCompleted }) => patchItem(id, { isCompleted }),
@@ -33,9 +27,9 @@ export default function TodoItems({ dataList }: InputProps) {
       // 낙관적 업데이트
       await queryClient.cancelQueries({ queryKey: ["todos"] });
 
-      const previousTodos = queryClient.getQueryData<TodoItem[]>(["todos"]);
+      const previousTodos = queryClient.getQueryData<Todo[]>(["todos"]);
 
-      queryClient.setQueryData<TodoItem[]>(["todos"], (old) => {
+      queryClient.setQueryData<Todo[]>(["todos"], (old) => {
         if (!old) return [];
         return old.map((todo) =>
           todo.id === id ? { ...todo, isCompleted } : todo
