@@ -11,7 +11,7 @@ const Comment = ({ data }) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
 
-  const onClickDropdown = () => {
+  const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
 
@@ -20,7 +20,7 @@ const Comment = ({ data }) => {
     { name: "삭제하기", value: "delete" },
   ];
 
-  const onClickDropdownItem = (item) => {
+  const handleDropdownItemClick = (item) => {
     // 동작 실행 후 닫기
     switch (item.value) {
       case "edit":
@@ -52,8 +52,8 @@ const Comment = ({ data }) => {
         <div className="comment__content">
           <span>{content}</span>
           <MoreDropdown
-            onClickDropdown={onClickDropdown}
-            onClickDropdownItem={onClickDropdownItem}
+            onToggleDropdown={toggleDropdown}
+            onDropdownItemClick={handleDropdownItemClick}
             onCloseDropdown={onCloseDropdown}
             dropdownList={dropdownList}
             showDropdown={showDropdown}

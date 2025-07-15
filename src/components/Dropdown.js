@@ -7,8 +7,8 @@ const DropdownContext = createContext();
 const Dropdown = ({
   children,
   className = "",
-  onClickDropdown,
-  onClickDropdownItem,
+  onToggleDropdown,
+  onDropdownItemClick,
   onCloseDropdown = () => {},
   dropdownList,
   showDropdown,
@@ -31,8 +31,8 @@ const Dropdown = ({
     <DropdownContext.Provider
       value={{
         className,
-        onClickDropdown,
-        onClickDropdownItem,
+        onToggleDropdown,
+        onDropdownItemClick,
         onCloseDropdown,
         dropdownList,
         showDropdown,
@@ -47,9 +47,9 @@ const Dropdown = ({
 };
 
 const Button = () => {
-  const { value, onClickDropdown } = useContext(DropdownContext);
+  const { value, onToggleDropdown } = useContext(DropdownContext);
   return (
-    <div className="dropdown__button" onClick={onClickDropdown}>
+    <div className="dropdown__button" onClick={onToggleDropdown}>
       <span className="dropdown__text">{value.name}</span>
       <img
         src={arrowDownIcon}
@@ -62,7 +62,7 @@ const Button = () => {
 };
 
 const List = ({ listClassName = "" }) => {
-  const { showDropdown, dropdownList, onClickDropdownItem } =
+  const { showDropdown, dropdownList, onDropdownItemClick } =
     useContext(DropdownContext);
   if (!showDropdown) return null;
   return (
@@ -70,7 +70,7 @@ const List = ({ listClassName = "" }) => {
       {dropdownList?.map((item, index) => (
         <li
           key={`${item.value}-${index}`}
-          onClick={() => onClickDropdownItem(item)}
+          onClick={() => onDropdownItemClick(item)}
         >
           {item.name}
         </li>

@@ -77,11 +77,11 @@ const ItemListPage = () => {
     }
   };
 
-  const onClickDropdown = () => {
+  const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
 
-  const onClickDropdownItem = (order) => {
+  const handleDropdownItemClick = (order) => {
     if (order.value !== orderBy.value) {
       setOrderBy(order);
       setPaginationCurrentPage(1);
@@ -216,8 +216,8 @@ const ItemListPage = () => {
               </Button>
               <SortDropdown
                 className="items__container__dropdown"
-                onClickDropdown={onClickDropdown}
-                onClickDropdownItem={onClickDropdownItem}
+                onToggleDropdown={toggleDropdown}
+                onDropdownItemClick={handleDropdownItemClick}
                 onCloseDropdown={onCloseDropdown}
                 dropdownList={dropdownList}
                 showDropdown={showDropdown}

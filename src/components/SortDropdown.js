@@ -2,8 +2,8 @@ import Dropdown from "./Dropdown";
 
 const SortDropdown = ({
   className,
-  onClickDropdown,
-  onClickDropdownItem,
+  onToggleDropdown,
+  onDropdownItemClick,
   onCloseDropdown,
   dropdownList,
   showDropdown,
@@ -12,8 +12,8 @@ const SortDropdown = ({
   return (
     <Dropdown
       className={className}
-      onClickDropdown={onClickDropdown}
-      onClickDropdownItem={onClickDropdownItem}
+      onToggleDropdown={onToggleDropdown}
+      onDropdownItemClick={onDropdownItemClick}
       onCloseDropdown={onCloseDropdown}
       dropdownList={dropdownList}
       showDropdown={showDropdown}
