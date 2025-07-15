@@ -1,7 +1,8 @@
 import "./css/Dropdown.css";
 import sortIcon from "../img/sort.svg";
 import arrowDownIcon from "../img/arrow_down.svg";
-import { createContext, useContext, useRef, useEffect } from "react";
+import { createContext, useContext, useRef } from "react";
+import useClickOutside from "../hooks/useClickOutside";
 const DropdownContext = createContext();
 
 const Dropdown = ({
@@ -15,17 +16,7 @@ const Dropdown = ({
   value,
 }) => {
   const dropdownRef = useRef(null);
-
-  // 외부 클릭 시 드롭다운 닫기
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        onCloseDropdown();
-      }
-    };
-    window.addEventListener("click", handleClickOutside);
-    return () => window.removeEventListener("click", handleClickOutside);
-  }, [onCloseDropdown]);
+  useClickOutside(dropdownRef, onCloseDropdown);
 
   return (
     <DropdownContext.Provider
