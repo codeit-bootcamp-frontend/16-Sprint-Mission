@@ -1,13 +1,22 @@
 import "./css/Button.css";
 import backIcon from "../img/back.svg";
+import { ReactNode } from "react";
+
+interface ButtonProps {
+  className?: string;
+  type?: "register" | "return" | "cancel" | "small" | "large";
+  disabled?: boolean;
+  children?: ReactNode;
+  onClick?: () => void;
+}
 
 const Button = ({
-  className,
-  type,
-  disabled,
+  className = "",
+  type = "small",
+  disabled = false,
   children,
   onClick = () => {},
-}) => {
+}: ButtonProps) => {
   const btnStyleClass = {
     register: "btn-register",
     return: "btn-return",

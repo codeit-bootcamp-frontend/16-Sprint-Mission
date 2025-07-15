@@ -1,13 +1,13 @@
 import "./css/ItemListPage.css";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getFavoriteItems, getAllItems } from "../api/Items.js";
+import { getFavoriteItems, getAllItems } from "../api/Items";
 import Card from "../components/Card";
-import SearchInput from "../components/SearchInput.js";
-import Button from "../components/Button.js";
-import Pagination from "../components/Pagination.js";
-import usePagination from "../hooks/usePagination.js";
-import SortDropdown from "../components/SortDropdown.js";
+import SearchInput from "../components/SearchInput";
+import Button from "../components/Button";
+import Pagination from "../components/Pagination";
+import usePagination from "../hooks/usePagination";
+import SortDropdown from "../components/SortDropdown";
 
 const ItemListPage = () => {
   const navigate = useNavigate();
