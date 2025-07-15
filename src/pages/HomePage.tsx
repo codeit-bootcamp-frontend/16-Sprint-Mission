@@ -1,12 +1,18 @@
 import "./css/HomePage.css";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
+import mainBannerImg from "../img/Img_home_top.png";
+import featureBannerImg1 from "../img/Img_home_01.png";
+import featureBannerImg2 from "../img/Img_home_02.png";
+import featureBannerImg3 from "../img/Img_home_03.png";
+import promotionBannerImg from "../img/Img_home_promotion.png";
 
 const HomePage = () => {
   const navigate = useNavigate();
   const onClickVisit = () => {
     navigate("/items");
   };
+
   return (
     <main>
       {/* 상단 배너*/}
@@ -23,7 +29,7 @@ const HomePage = () => {
             </Button>
           </div>
           <img
-            src="img/Img_home_top.png"
+            src={mainBannerImg}
             alt="판다마켓 메인배너 이미지"
             className="banner__content__img"
           />
@@ -35,7 +41,7 @@ const HomePage = () => {
         {/* 1 */}
         <div className="feature__content">
           <img
-            src="img/Img_home_01.png"
+            src={featureBannerImg1}
             className="feature__content__img"
             alt="물품을 구경하는 판다 이미지"
           />
@@ -69,7 +75,7 @@ const HomePage = () => {
             </span>
           </div>
           <img
-            src="img/Img_home_02.png"
+            src={featureBannerImg2}
             className="feature__content__img"
             alt="상품 검색 이미지"
           />
@@ -77,7 +83,7 @@ const HomePage = () => {
         {/* 3 */}
         <div className="feature__content">
           <img
-            src="img/Img_home_03.png"
+            src={featureBannerImg3}
             className="feature__content__img"
             alt="상품 등록 이미지"
           />
@@ -106,7 +112,7 @@ const HomePage = () => {
             판다마켓 중고 거래
           </span>
           <img
-            src="img/Img_home_promotion.png"
+            src={promotionBannerImg}
             alt="판다마켓 하단 프로모션 배너"
             className="promotion__banner__content__img"
             loading="lazy"

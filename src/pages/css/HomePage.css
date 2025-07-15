@@ -283,12 +283,6 @@ header {
 
 /* 태블릿 사이즈 이상에서 반응형 */
 @media screen and (min-width: 768px) {
-  /* .btn-large {
-    min-width: 357px;
-    height: 56px;
-    font-size: var(--font-size-lg);
-  } */
-
   /* 첫번째 배너 br 태그 기능 없애기 */
   .banner__content br {
     display: inline-block;
