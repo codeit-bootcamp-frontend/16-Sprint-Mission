@@ -2,7 +2,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { patchItem } from "../api/patch/patchTodo";
 import { MouseEvent, useCallback } from "react";
-import Icon from "./Icon";
+import TodoItem from "./TodoItem";
 
 interface TodoItem {
   id: number;
@@ -66,43 +66,15 @@ export default function TodoItems({ dataList }: InputProps) {
   );
 
   return (
-    <ul className="flex flex-col gap-4">
-      {dataList.map((data) => (
-        <li key={data.id} className="list-none">
-          <button
-            className={`flex items-center gap-4 pl-3 py-[9px] max-w-[588px] w-full h-[50px] border-2 border-slate-900 text-slate-800 rounded-[27px] text-left cursor-pointer transition-colors group 
-              ${
-                data.isCompleted
-                  ? "hover:bg-gray-50 bg-violet-50"
-                  : "hover:bg-violet-50 bg-gray-50"
-              }
-              `}
-            onClick={(e) => handleToggle(e, data.id, data.isCompleted)}
-            disabled={toggleMutation.isPending}
-          >
-            <div
-              className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                data.isCompleted
-                  ? "bg-violet-600 border-0"
-                  : "bg-yellow-50 border-2"
-              }`}
-            >
-              {data.isCompleted && (
-                <Icon id="check" className="text-yellow-50 w-5" />
-              )}
-            </div>
-            <span
-              className={`transition-all ${
-                data.isCompleted
-                  ? "line-through group-hover:decoration-transparent"
-                  : "group-hover:line-through"
-              }`}
-            >
-              {data.name}
-            </span>
-          </button>
-        </li>
+    <div className="flex flex-col gap-4">
+      {dataList.map((item) => (
+        <TodoItem
+          key={item.id}
+          item={item}
+          onToggle={handleToggle}
+          disabled={toggleMutation.isPending}
+        />
       ))}
-    </ul>
+    </div>
   );
 }

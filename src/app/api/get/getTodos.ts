@@ -6,7 +6,7 @@ type Todo = {
 
 export const getTodos = async (): Promise<Todo[]> => {
   const res = await fetch(
-    "https://assignment-todolist-api.vercel.app/api/jinsun/items?page=1&pageSize=20"
+    "https://assignment-todolist-api.vercel.app/api/jinsun/items?page=1&pageSize=100"
   );
   const json = await res.json();
   console.log("✅ 응답 구조 확인:", json);

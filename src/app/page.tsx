@@ -101,7 +101,7 @@ const HomePage = () => {
   return (
     <>
       <Navbar />
-      <main className="px-4 md:px-6 lg:px-[360px]">
+      <main className="px-4 pb-4 md:px-6 lg:px-[360px]">
         <FormInput
           inputs={inputs}
           handleSubmit={handleSubmit}
