@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { MouseEvent, useCallback } from "react";
 import TodoItem from "./TodoItem";
-import { Todo } from "../../types/todo";
+import { MutationContext, Todo } from "../../types/todo";
 import { patchItem } from "../../api/todos";
 
 interface InputProps {
@@ -10,11 +10,6 @@ interface InputProps {
 
 export default function TodoItems({ dataList }: InputProps) {
   const queryClient = useQueryClient();
-
-  // 뮤테이션 컨텍스트 타입 정의
-  type MutationContext = {
-    previousTodos?: Todo[];
-  };
 
   const toggleMutation = useMutation<
     void,
