@@ -1,0 +1,1 @@
+export const TENANT_ID = "jinsunkimdev"

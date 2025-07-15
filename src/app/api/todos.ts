@@ -1,9 +1,10 @@
+import { TENANT_ID } from "../constants/todo";
 import { Todo } from "../types/todo";
 import { PatchItemPayload } from "./types";
 
 export const getTodos = async (): Promise<Todo[]> => {
   const res = await fetch(
-    "https://assignment-todolist-api.vercel.app/api/jinsun/items?page=1&pageSize=30"
+    `https://assignment-todolist-api.vercel.app/api/${TENANT_ID}/items?page=1&pageSize=30`
   );
   const json = await res.json();
   return json ?? [];
@@ -14,7 +15,7 @@ export const patchItem = async (
   data: PatchItemPayload
 ): Promise<void> => {
   const res = await fetch(
-    `https://assignment-todolist-api.vercel.app/api/jinsun/items/${itemId}`,
+    `https://assignment-todolist-api.vercel.app/api/${TENANT_ID}/items/${itemId}`,
     {
       method: "PATCH",
       headers: {
@@ -32,7 +33,7 @@ export const patchItem = async (
 
 export const addTodo = async (name: string): Promise<void> => {
   const res = await fetch(
-    "https://assignment-todolist-api.vercel.app/api/jinsun/items",
+    `https://assignment-todolist-api.vercel.app/api/${TENANT_ID}/items`,
     {
       method: "POST",
       body: JSON.stringify({ name }),
