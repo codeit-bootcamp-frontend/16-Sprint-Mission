@@ -27,7 +27,7 @@ const SVGSprites = () => {
           strokeLinecap="round"
           strokeLinejoin="round"
           stroke="currentColor"
-          strokeWidth="3"
+          strokeWidth="4"
           d="m4.5 12.75 6 6 9-13.5"
         />
       </symbol>

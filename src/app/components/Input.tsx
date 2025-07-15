@@ -14,6 +14,7 @@ export default function Input({ type, name, placeholder, error }: InputProps) {
         type={type}
         name={name}
         placeholder={placeholder}
+        autoComplete="off"
         className="absolute inset-0 px-6 py-[15px] bg-transparent z-20 text-slate-800 placeholder-slate-500 font-normal focus:outline-none"
       />
       {error && (

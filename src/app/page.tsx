@@ -1,15 +1,14 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useCallback } from "react";
 import * as z from "zod/v4";
 import Navbar from "./components/Navbar";
 import FormInput from "./components/FormInput";
 import TodoList from "./components/TodoList";
 import { todoSchema } from "./schemas/todo";
 import { addTodo } from "./api/post/addTodo";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-// input값들 설정하는 배열의 타입
 const inputs = [
   {
     id: 1,
@@ -23,52 +22,81 @@ const HomePage = () => {
   const queryClient = useQueryClient();
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  // 뮤테이션 정의: 투두 입력해서 api(post) 성공 시 ["todos"] 쿼리들 refetch
-  const addTodoMutation = useMutation<void, Error, string>({
+  // Todo 타입 정의
+  type Todo = {
+    id: number;
+    name: string;
+    isCompleted: boolean;
+  };
+
+  // 뮤테이션 컨텍스트 타입 정의
+  type MutationContext = {
+    previousTodos?: Todo[];
+  };
+
+  const addTodoMutation = useMutation<void, Error, string, MutationContext>({
     mutationFn: (name: string) => addTodo(name),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["todos", false] });
+    onMutate: async (newTodo): Promise<MutationContext> => {
+      // 낙관적 업데이트
+      await queryClient.cancelQueries({ queryKey: ["todos"] });
+
+      const previousTodos = queryClient.getQueryData<Todo[]>(["todos"]);
+
+      queryClient.setQueryData<Todo[]>(["todos"], (old) => {
+        if (!old) return [];
+        return [
+          ...old,
+          {
+            id: Date.now(), // 임시 ID
+            name: newTodo,
+            isCompleted: false,
+          },
+        ];
+      });
+
+      return { previousTodos };
+    },
+    onError: (err, variables, context) => {
+      // 에러 발생 시 이전 상태로 롤백
+      if (context?.previousTodos) {
+        queryClient.setQueryData(["todos"], context.previousTodos);
+      }
+    },
+    onSettled: () => {
+      // 최종적으로 서버 데이터와 동기화
+      queryClient.invalidateQueries({ queryKey: ["todos"] });
     },
   });
 
-  // submit했을 때 함수
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = useCallback(
+    (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
 
-    // formData객체 생성해서 내부 input입력값들 모두 비제어로 접근
-    const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
+      const formData = new FormData(e.currentTarget);
+      const data = Object.fromEntries(formData.entries());
 
-    // zod용 schema로 유효성 검사
-    const validation = todoSchema.safeParse(data);
+      const validation = todoSchema.safeParse(data);
 
-    // zod로 유효성 검사 실패 시에 에러 내용 및 return
-    if (!validation.success) {
-      const flattened = z.flattenError(validation.error);
-      const newErrors: Record<string, string> = {};
-
-      for (const key in flattened.fieldErrors) {
-        const messages =
-          flattened.fieldErrors[key as keyof typeof flattened.fieldErrors];
-        if (messages && messages.length > 0) {
-          newErrors[key] = messages.join(" ");
+      if (!validation.success) {
+        const flattened = z.flattenError(validation.error);
+        const newErrors: Record<string, string> = {};
+        for (const key in flattened.fieldErrors) {
+          const messages =
+            flattened.fieldErrors[key as keyof typeof flattened.fieldErrors];
+          if (messages && messages.length > 0) {
+            newErrors[key] = messages.join(" ");
+          }
         }
+        setErrors(newErrors);
+        return;
       }
 
-      // ❌ 실패할 경우 에러 메세지 추가
-      setErrors(newErrors);
-      return;
-    }
-
-    // ✅ 성공한 경우 에러 초기화
-    setErrors({});
-
-    // 유효성 검사 통과할 시 입력값들 제출
-    addTodoMutation.mutate(validation.data.todo);
-
-    // 제출 성공 시
-    e.currentTarget.reset();
-  };
+      setErrors({});
+      addTodoMutation.mutate(validation.data.todo);
+      e.currentTarget.reset();
+    },
+    [addTodoMutation]
+  );
 
   return (
     <>
@@ -80,12 +108,7 @@ const HomePage = () => {
           containerStyle="flex gap-4"
           errors={errors}
         />
-        <section
-          className="flex flex-col justify-between pt-10 gap-6
-        md:flex-row
-        lg:flex-row
-        "
-        >
+        <section className="flex flex-col justify-between pt-10 gap-6 md:flex-row lg:flex-row">
           <TodoList isDone={false} />
           <TodoList isDone={true} />
         </section>
