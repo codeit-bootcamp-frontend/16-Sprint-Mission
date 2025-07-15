@@ -1,0 +1,43 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 2rem;
+}
+
+.page-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: white;
+  transition: background-color 0.2s ease;
+}
+
+.page-button:hover {
+  background-color: #f3f4f6;
+}
+
+.page-button.active {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+.arrow-icon {
+  width: 12px;
+  height: 12px;
+  stroke: #4b5563;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.arrow-left {
+  transform: rotate(180deg);
+}

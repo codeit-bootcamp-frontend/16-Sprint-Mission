@@ -1,0 +1,77 @@
+.image-upload-wrapper {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.image-upload-box,
+.image-preview {
+  width: 168px;
+  height: 168px;
+  border: 1px dashed #d1d5db;
+  border-radius: 12px;
+  background-color: #f9fafb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 1rem;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.image-upload-box input[type="file"] {
+  display: none;
+}
+
+.image-upload-box span {
+  white-space: pre-line;
+  line-height: 1.5;
+}
+
+.image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.remove-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #ffffffaa;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  line-height: 0.9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #4b5563;
+}
+
+.error-message {
+  margin-top: 8px;
+  color: red;
+  font-size: 0.85rem;
+}
+
+/* 데스크탑 반응형 (1024px 이상일 때) */
+@media (min-width: 1024px) {
+  .image-upload-box,
+  .image-preview {
+    width: 282px;
+    height: 282px;
+    border-radius: 10px;
+  }
+
+  .image-preview img {
+    border-radius: 10px;
+  }
+}
