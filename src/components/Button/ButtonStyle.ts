@@ -77,6 +77,8 @@ export const ButtonStyle = styled.button<ButtonStyleProps>`
   ${(props) => ButtonBaseStyle(props)}
 `;
 
-export const LinkStyle = styled(Link)<ButtonStyleProps>`
+export const LinkStyle = styled(Link, {
+  shouldForwardProp: (prop) => prop !== "round",
+})<ButtonStyleProps>`
   ${(props) => ButtonBaseStyle(props)}
 `;
