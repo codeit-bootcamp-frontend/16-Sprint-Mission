@@ -1,13 +1,21 @@
 import { create } from "zustand";
 import { validateInput } from "../utils/formValidation";
-import { LoginState } from "../types/login";
+import { AuthState } from "../types/auth";
 
-const useLoginStore = create<LoginState>((set, get) => ({
+const useAuthStore = create<AuthState>((set, get) => ({
   email: {
     value: "",
     validInfo: { isValid: null, message: "" },
   },
   password: {
+    value: "",
+    validInfo: { isValid: null, message: "" },
+  },
+  passwordCheck: {
+    value: "",
+    validInfo: { isValid: null, message: "" },
+  },
+  nickname: {
     value: "",
     validInfo: { isValid: null, message: "" },
   },
@@ -27,6 +35,11 @@ const useLoginStore = create<LoginState>((set, get) => ({
       },
     }));
   },
+  resetFields: () =>
+    set({
+      email: { value: "", validInfo: { isValid: null, message: "" } },
+      password: { value: "", validInfo: { isValid: null, message: "" } },
+    }),
 }));
 
-export default useLoginStore;
+export default useAuthStore;

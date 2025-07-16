@@ -1,17 +1,19 @@
+import "./css/Auth.css";
+import "./css/LoginPage.css";
+import { Link } from "react-router-dom";
+import { FieldName } from "../types/field";
+import useAuthStore from "../stores/useAuthStore";
 import Button from "../components/Button";
 import Label from "../components/Label";
 import Textfield from "../components/Textfield";
 import logo from "../img/logo.png";
 import kakakoIcon from "../img/kakao.png";
 import googleIcon from "../img/google.png";
-import "./css/Auth.css";
-import "./css/LoginPage.css";
-import { Link } from "react-router-dom";
-import useLoginStore from "../stores/useLoginStore";
-import { FieldName } from "../types/field";
+import { useEffect } from "react";
 
 const LoginPage = () => {
-  const { email, password, setField, validateField } = useLoginStore();
+  const { email, password, setField, validateField, resetFields } =
+    useAuthStore();
 
   /* 유효성 체크 */
   const updateValidate = (name: string, value: string) => {
@@ -26,8 +28,12 @@ const LoginPage = () => {
   };
 
   const disableLoginButton = () => {
-    return !Boolean(email.validInfo.isValid && password.validInfo.isValid);
+    return !(email.validInfo.isValid && password.validInfo.isValid);
   };
+
+  useEffect(() => {
+    resetFields();
+  }, [resetFields]);
 
   return (
     <section className="form__container login__container">
