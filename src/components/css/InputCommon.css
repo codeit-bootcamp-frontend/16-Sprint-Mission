@@ -1,5 +1,8 @@
 .input__container {
   width: 100%;
+}
+
+.input__wrapper {
   position: relative;
 }
 

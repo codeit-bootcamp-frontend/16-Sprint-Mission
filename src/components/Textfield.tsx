@@ -45,22 +45,24 @@ const Textfield = ({
 
   return (
     <div className="input__container">
-      <input
-        onChange={(e) => onValueChange(e.target.name, e.target.value)}
-        className={`input textfield ${className}`}
-        {...rest}
-      />
-      {type === "password" && (
-        <img
-          src={showPassword ? passwordIconOn : passwordIconOff}
-          width="24px"
-          className="input__password__icon"
-          aria-label="비밀번호 표시"
-          aria-pressed="false"
-          role="button"
-          onClick={onTogglePassword}
+      <div className="input__wrapper">
+        <input
+          onChange={(e) => onValueChange(e.target.name, e.target.value)}
+          className={`input textfield ${className}`}
+          {...rest}
         />
-      )}
+        {type === "password" && (
+          <img
+            src={showPassword ? passwordIconOn : passwordIconOff}
+            width="24px"
+            className="input__password__icon"
+            aria-label="비밀번호 표시"
+            aria-pressed="false"
+            role="button"
+            onClick={onTogglePassword}
+          />
+        )}
+      </div>
       {showMessage && (
         <div className={`${statusMessageClass[String(isValid)]}`}>
           {message}
