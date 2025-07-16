@@ -23,8 +23,8 @@ const useAuthStore = create<AuthState>((set, get) => ({
     set((state) => ({
       [name]: { ...state[name], value },
     })),
-  validateField: (name, value) => {
-    const { isValid, message } = validateInput(name, value);
+  validateField: (name, ...values) => {
+    const { isValid, message } = validateInput(name, ...values);
     set((state) => ({
       [name]: {
         ...state[name],

@@ -23,15 +23,28 @@ const SignupPage = () => {
   } = useAuthStore();
 
   /* 유효성 체크 */
-  const updateValidate = (name: string, value: string) => {
-    validateField(name as FieldName, value);
+  const updateValidate = (
+    name: string,
+    value: string,
+    compareValue?: string
+  ) => {
+    if (compareValue) {
+      validateField(name as FieldName, value, compareValue);
+    } else {
+      validateField(name as FieldName, value);
+    }
   };
 
   /* 텍스트필드 데이터 세팅과 유효성 체크 */
   const onChangeTextfield = (name: string, value: string) => {
     let trimVal = value.trim();
     setField(name as FieldName, trimVal);
-    updateValidate(name, trimVal);
+
+    if (name === "passwordCheck") {
+      updateValidate(name, trimVal, password.value);
+    } else {
+      updateValidate(name, trimVal);
+    }
   };
 
   const disableSignupButton = () => {
