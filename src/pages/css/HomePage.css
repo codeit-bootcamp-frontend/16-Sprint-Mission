@@ -78,7 +78,7 @@ header {
 @media screen and (min-width: 1200px) {
   .banner__content__text {
     margin-bottom: 100px;
-    align-items: start;
+    align-items: flex-start;
     text-align: left;
   }
 }
