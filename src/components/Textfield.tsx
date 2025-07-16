@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from "react";
+import { InputHTMLAttributes, useState } from "react";
 import "./css/InputCommon.css";
 import "./css/Textfield.css";
 import passwordIconOff from "../img/btn_visibility_off.svg";
@@ -6,9 +6,7 @@ import passwordIconOn from "../img/btn_visibility_on.svg";
 
 /*
   [Textfield 필수 속성]
-  - value: 텍스트필드 값
-  - placeholder: 플레이스홀더 텍스트
-  - onChange: 컴포넌트 밖에서 텍스트필드 값을 변경하는 메소드 전달 필요
+  - onValueChange: 컴포넌트 밖에서 텍스트필드 값을 변경하는 메소드 전달 필요
   
   [Textfield 상태 속성]
   - isValid: 에러 상태 표시 => null(초기상태). true 값을 넘기면 메시지 출력
@@ -17,7 +15,7 @@ import passwordIconOn from "../img/btn_visibility_on.svg";
 
 interface TextfieldProps extends InputHTMLAttributes<HTMLInputElement> {
   onValueChange?: (name: string, value: string) => void;
-  isValid?: false | null;
+  isValid?: boolean | null;
   message?: string;
   className?: string;
   type?: string;
@@ -39,6 +37,11 @@ const Textfield = ({
   const hasMessage = !!message;
   const isInvalid = isValid === false;
   const showMessage = hasMessage && isInvalid;
+  const [showPassword, setShowPassword] = useState(false);
+
+  const onTogglePassword = () => {
+    setShowPassword((prev) => !prev);
+  };
 
   return (
     <div className="input__container">
@@ -49,12 +52,13 @@ const Textfield = ({
       />
       {type === "password" && (
         <img
-          src={passwordIconOff}
+          src={showPassword ? passwordIconOn : passwordIconOff}
           width="24px"
           className="input__password__icon"
           aria-label="비밀번호 표시"
           aria-pressed="false"
           role="button"
+          onClick={onTogglePassword}
         />
       )}
       {showMessage && (

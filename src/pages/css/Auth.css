@@ -33,13 +33,6 @@
 
 .form__container__logo {
   margin-bottom: 20px;
-  max-width: 198px;
-}
-
-@media screen and (min-width: 768px) {
-  .form__container__logo {
-    max-width: 396px;
-  }
 }
 
 .form_container__group {
