@@ -39,7 +39,7 @@ const TagInput = ({
         isValid={isValid}
         message={message}
         onKeyDown={onKeyDown}
-        onChange={onChangeVal}
+        onValueChange={onChangeVal}
         className="taginput__textfield"
       />
       <div className="taginput__list">

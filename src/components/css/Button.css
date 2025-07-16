@@ -9,6 +9,7 @@
   font-weight: 600;
   gap: 8px;
   transition: background-color 0.2s;
+  cursor: pointer;
 }
 
 .btn-register {

@@ -3,9 +3,12 @@ import textLogoIcon from "../img/logo_text.jpg";
 import logoIcon from "../img/logo.svg";
 import userIcon from "../img/user.svg";
 import "./css/Nav.css";
+import Button from "./Button";
+import { useState } from "react";
 
 const Nav = () => {
   const location = useLocation();
+  const [isLogin, setIsLogin] = useState(false);
 
   return (
     <header className="header">
@@ -46,15 +49,24 @@ const Nav = () => {
             </li>
           </ul>
         </div>
-        <div className="header__content__user">
-          <Link to="user">
-            <img
-              src={userIcon}
-              alt="사용자 아이콘"
-              className="header__content__user__icon"
-            />
-          </Link>
-        </div>
+        {isLogin && (
+          <div className="header__content__user">
+            <Link to="user">
+              <img
+                src={userIcon}
+                alt="사용자 아이콘"
+                className="header__content__user__icon"
+              />
+            </Link>
+          </div>
+        )}
+        {!isLogin && (
+          <div className="">
+            <Link to="login">
+              <Button>로그인</Button>
+            </Link>
+          </div>
+        )}
       </div>
     </header>
   );
