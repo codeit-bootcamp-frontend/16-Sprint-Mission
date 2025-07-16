@@ -33,7 +33,7 @@ const AddTodoForm = ({ onAddTodo }: AddTodoFormProps) => {
           placeholder="할 일을 입력해주세요"
           onChange={(e) => setValue(e.target.value)}
         />
-        <Button variant="primary" disabled={!value}>
+        <Button type="submit" variant="primary" disabled={!value}>
           <Image
             src={`images/ico-plus-${value ? "wt" : "bk"}.svg`}
             alt=""
