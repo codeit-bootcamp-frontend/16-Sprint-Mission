@@ -4,11 +4,10 @@ import logoIcon from "../img/logo.svg";
 import userIcon from "../img/user.svg";
 import "./css/Nav.css";
 import Button from "./Button";
-import { useState } from "react";
 
 const Nav = () => {
   const location = useLocation();
-  const [isLogin, setIsLogin] = useState(false);
+  const isLogin = false;
 
   return (
     <header className="header">
