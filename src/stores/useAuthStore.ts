@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { validateInput } from "../utils/formValidation";
 import { AuthState } from "../types/auth";
 
-const useAuthStore = create<AuthState>((set, get) => ({
+const useAuthStore = create<AuthState>((set) => ({
   email: {
     value: "",
     validInfo: { isValid: null, message: "" },
