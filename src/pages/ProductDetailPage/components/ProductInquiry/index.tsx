@@ -6,11 +6,11 @@ import {
   BackLinkRow,
 } from "@pages/ProductDetailPage/components/ProductInquiry/indexStyle";
 import { useParams } from "react-router-dom";
-import { getProductInquiries } from "data/api";
 import ProductInquiryList from "@pages/ProductDetailPage/components/ProductInquiry/ProductInquiryList";
 import { InquiryItemType } from "types/productType";
 import LinkButton from "@components/Button/LinkButton";
 import ProductInquiryForm from "@pages/ProductDetailPage/components/ProductInquiry/ProductInquiryForm";
+import { getProductInquiries } from "@data/api";
 
 const ProductInquiry = () => {
   const { productId } = useParams();
