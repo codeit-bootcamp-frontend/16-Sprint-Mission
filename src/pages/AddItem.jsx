@@ -202,7 +202,6 @@ const Label = styled(Title)`
   margin-bottom: 16px;
 `;
 const Input = styled.input`
-  min-width: 344px;
   height: 56px;
   padding-left: 24px;
   border-radius: 12px;
@@ -212,7 +211,6 @@ const Input = styled.input`
   }
 `;
 const Textarea = styled.textarea`
-  min-width: 344px;
   height: 282px;
   padding: 16px 24px;
   border-radius: 12px;
@@ -237,6 +235,7 @@ const FileLabel = styled.label`
   justify-content: center;
   align-items: center;
   font-size: 0;
+  flex-shrink: 0;
   &:hover {
     background-color: rgb(233, 233, 233);
   }
@@ -272,7 +271,7 @@ const TagList = styled.div`
 `;
 const WarningText = styled.span`
   color: #f74747;
-  font-size: 16px;
+  font-size: 12px;
 `;
 
 export default AddItem;
