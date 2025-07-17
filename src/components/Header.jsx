@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 import logoImg from '../assets/logo.png';
@@ -6,6 +6,7 @@ import moLogoImg from '../assets/mo_logo.png';
 import profileImg from '../assets/profileIcon.png';
 
 function Navigation() {
+  const location = useLocation();
   return (
     <NavWrap>
       <Logo>
@@ -18,8 +19,10 @@ function Navigation() {
         </a>
       </Logo>
       <Nav>
-        <Link to='/freeboard'>자유게시판</Link>
-        <Link to='/items'>중고마켓</Link>
+        <StyledLink to='/freeboard'>자유게시판</StyledLink>
+        <StyledLink to='/items' $isActive={location.pathname === '/addItem'}>
+          중고마켓
+        </StyledLink>
       </Nav>
       <Profile>
         <a href='#'>
@@ -38,16 +41,6 @@ const NavWrap = styled.div`
   width: 100%;
   padding: 0 16px;
   border-bottom: 1px solid #dfdfdf;
-  a {
-    text-decoration: none;
-    color: #4b5563;
-    font-weight: 600;
-    font-size: 16px;
-    flex-shrink: 0;
-    img {
-      vertical-align: middle;
-    }
-  }
 `;
 const Nav = styled.div`
   display: flex;
@@ -73,5 +66,15 @@ const Profile = styled.div`
   img {
     width: 100%;
   l}
+`;
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: ${props => (props.$isActive ? '#3692ff' : '#4b5563')};
+  font-weight: 600;
+  font-size: 16px;
+  flex-shrink: 0;
+  img {
+    vertical-align: middle;
+  }
 `;
 export default Navigation;

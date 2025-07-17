@@ -108,7 +108,7 @@ section {
   display: block;
 }
 body {
-  font-family: "Pretendard", sans-serif;
+  font-family: 'Pretendard', sans-serif;
   line-height: 1;
 }
 ol,
@@ -123,7 +123,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
+  content: '';
   content: none;
 }
 table {
