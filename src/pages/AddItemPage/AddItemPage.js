@@ -11,6 +11,7 @@ import useRequiredValidation from "../../hooks/useRequiredValidation";
 import { formatPrice } from "../../utils/formatters";
 import Button from "../../components/Button/Button";
 import { css } from "@emotion/react";
+import TagItem from "../../components/TagItem/TagItem";
 
 const IMG_MAX_LIMIT = 1;
 
@@ -140,16 +141,14 @@ const AddItemPage = () => {
             {tagList && (
               <div className={styles.form__tagArea}>
                 {tagList.map((tag, id) => (
-                  <button
-                    type="button"
-                    className={styles.tagArea__tagItem}
-                    key={id}
+                  <TagItem
+                    // type="button"
                     onClick={() => {
                       handleDeleteTag(id);
                     }}
                   >
                     {tag}
-                  </button>
+                  </TagItem>
                 ))}
               </div>
             )}
