@@ -1,13 +1,13 @@
 import { css } from "@emotion/react";
 import { ReactComponent as HearIcon } from "@assets/images/icons/ic_heart.svg";
-import { ProductItemType } from "types/productType";
+import { ProductItemDetailType } from "types/productType";
 import styled from "@emotion/styled/macro";
 import { mq } from "@styles/mixins";
 import { ButtonHTMLAttributes } from "react";
 import { theme } from "@styles/theme";
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> &
-  Pick<ProductItemType, "favoriteCount" | "isFavorite">;
+  Pick<ProductItemDetailType, "favoriteCount" | "isFavorite">;
 
 const FavoriteButton = ({ favoriteCount, isFavorite, ...props }: Props) => {
   return (

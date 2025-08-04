@@ -3,7 +3,7 @@ import DetailDropdown from "@pages/ProductDetailPage/components/DetailDropdown/D
 import ProductInfoItem from "@pages/ProductDetailPage/components/ProductInfo/ProductInfoItem";
 import UserProfile from "@pages/ProductDetailPage/components/UserProfile/UserProfile";
 import { formatDate, formatPrice } from "@utils/formatters";
-import { ProductItemType } from "types/productType";
+import { ProductItemDetailType } from "types/productType";
 import TagList from "@pages/ProductDetailPage/components/ProductInfo/TagList";
 import FavoriteButton from "@pages/ProductDetailPage/components/ProductInfo/FavoriteButton";
 import styled from "@emotion/styled/macro";
@@ -11,7 +11,7 @@ import { mq } from "@styles/mixins";
 import { css } from "@emotion/react";
 
 interface Props {
-  productInfo: ProductItemType;
+  productInfo: ProductItemDetailType;
 }
 
 const ProductInfoContent = ({ productInfo }: Props) => {

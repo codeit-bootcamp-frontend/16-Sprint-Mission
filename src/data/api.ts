@@ -1,12 +1,22 @@
-import { InquiryItemType, ProductItemType } from "types/productType";
+import {
+  InquiryListType,
+  ProductItemDetailType,
+  ProductListType,
+} from "types/productType";
 
 const BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
+interface ProductQueryProps {
+  page: number;
+  pageSize: number;
+  orderBy: "recent" | "favorite";
+}
 
 export const getData = async ({
   page = 1,
   pageSize = 10,
   orderBy = "recent",
-}) => {
+}: ProductQueryProps): Promise<ProductListType> => {
   const query = `page=${page}&pageSize=${pageSize}&orderBy=${orderBy}`;
   const res = await fetch(`${BASE_URL}/products?${query}`);
 
@@ -20,7 +30,7 @@ export const getData = async ({
 
 export const getProductInfo = async (
   productId: number
-): Promise<ProductItemType> => {
+): Promise<ProductItemDetailType> => {
   const res = await fetch(`${BASE_URL}/products/${productId}`);
 
   if (!res.ok) {
@@ -33,7 +43,7 @@ export const getProductInfo = async (
 
 export const getProductInquiries = async (
   productId: number
-): Promise<{ nextCursor: number; list: InquiryItemType[] }> => {
+): Promise<InquiryListType> => {
   const res = await fetch(
     `${BASE_URL}/products/${productId}/comments?limit=10`
   );

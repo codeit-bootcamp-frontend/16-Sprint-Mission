@@ -1,4 +1,21 @@
 export interface ProductItemType {
+  createdAt: string;
+  favoriteCount: number;
+  ownerNickname: string;
+  ownerId: number;
+  images: string[];
+  tags: string[];
+  price: number;
+  description: string;
+  name: string;
+  id: number;
+}
+export interface ProductListType {
+  totalCount: number;
+  list: ProductItemType[];
+}
+
+export interface ProductItemDetailType {
   id: number;
   name: string;
   description: string;
@@ -11,6 +28,11 @@ export interface ProductItemType {
   updatedAt: string;
   ownerNickname: string;
   isFavorite: boolean;
+}
+
+export interface InquiryListType {
+  nextCursor: number;
+  list: InquiryItemType[];
 }
 
 export interface InquiryItemType {
