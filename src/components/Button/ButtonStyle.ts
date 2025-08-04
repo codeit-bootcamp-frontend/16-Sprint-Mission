@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 import { theme } from "@styles/theme";
 
 export interface ButtonStyleProps {
-  color?: keyof typeof ButtonColors;
+  variant?: keyof typeof ButtonStyles;
   size?: keyof typeof ButtonSize;
   round?: boolean;
 }
 
-export const ButtonColors = {
+export const ButtonStyles = {
   primary: css`
     color: #fff;
     background-color: ${theme.btn.primary};
@@ -70,7 +70,7 @@ export const ButtonBaseStyle = (props: ButtonStyleProps) => css`
   cursor: pointer;
 
   ${props.size ? ButtonSize[props.size] : ButtonSize["sm"]};
-  ${props.color ? ButtonColors[props.color] : ButtonColors["primary"]};
+  ${props.variant ? ButtonStyles[props.variant] : ButtonStyles["primary"]};
   border-radius: ${props.round ? "40px" : "8px"};
 `;
 

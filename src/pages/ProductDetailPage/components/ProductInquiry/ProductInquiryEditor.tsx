@@ -43,7 +43,7 @@ const InquiryEditor = ({
         <InquiryUserProfile writer={writer} updatedAt={updatedAt} size="sm" />
         <div className="edit_btns">
           <Button
-            color="custom"
+            variant="custom"
             onClick={disableEditMode}
             css={CancelButtonCustom}
           >
