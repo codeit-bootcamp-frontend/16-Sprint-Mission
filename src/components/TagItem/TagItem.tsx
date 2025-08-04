@@ -8,15 +8,20 @@ interface TagItemBase {
   children: ReactNode;
 }
 
-type TextProps = HTMLAttributes<HTMLSpanElement> &
-  TagItemBase & {
-    type: "text";
-  };
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
-  TagItemBase & {
-    type: "button";
-    onClick: () => void;
-  };
+interface TextProps
+  extends Omit<HTMLAttributes<HTMLSpanElement>, "children">,
+    TagItemBase {
+  type: "text";
+}
+interface ButtonProps
+  extends Omit<
+      ButtonHTMLAttributes<HTMLButtonElement>,
+      "onClick" | "type" | "children"
+    >,
+    TagItemBase {
+  type: "button";
+  onClick: () => void;
+}
 
 type TagItemProps = TextProps | ButtonProps;
 
