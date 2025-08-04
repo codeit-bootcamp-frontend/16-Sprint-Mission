@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import { theme } from "@styles/theme";
 
 const BREAKPOINTS = {
   tablet: 1199,
@@ -29,7 +30,7 @@ export const defaultInput = (height: number = 56) => css`
   padding: 0 24px;
   font-size: 16px;
   font-weight: 400;
-  color: var(--gray800);
-  background: var(--gray100);
+  color: ${theme.colors.gray800};
+  background: ${theme.colors.gray100};
   border-radius: 12px;
 `;

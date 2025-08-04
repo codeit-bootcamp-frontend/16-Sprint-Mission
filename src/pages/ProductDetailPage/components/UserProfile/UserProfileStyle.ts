@@ -59,12 +59,12 @@ export const UserProfileBox = styled.div<{ size?: keyof typeof thumbnailSize }>`
 
   .username {
     display: block;
-    color: var(--gray600);
+    color: ${({ theme }) => theme.colors.gray600};
   }
 
   .date {
     display: block;
     ${({ size }) => size && DateMarginTop[size]}
-    color: var(--gray400);
+    color: ${({ theme }) => theme.colors.gray400};
   }
 `;

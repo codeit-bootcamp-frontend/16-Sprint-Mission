@@ -62,7 +62,7 @@ const InfoHeader = styled.div`
   position: relative;
 
   margin-bottom: 24px;
-  border-bottom: 1px solid var(--gray200);
+  border-bottom: 1px solid ${({ theme }) => theme.colors.gray200};
   padding-bottom: 16px;
 
   ${mq["tablet"]} {
@@ -73,7 +73,7 @@ const InfoHeader = styled.div`
     margin-bottom: 16px;
     font-size: 24px;
     font-weight: 600;
-    color: var(--gray800);
+    color: ${({ theme }) => theme.colors.gray800};
     line-height: 1.3;
 
     ${mq["tablet"]} {
@@ -90,7 +90,7 @@ const InfoHeader = styled.div`
     display: block;
     font-size: 40px;
     font-weight: 600;
-    color: var(--gray800);
+    color: ${({ theme }) => theme.colors.gray800};
     line-height: 1.2;
 
     ${mq["tablet"]} {
@@ -125,7 +125,7 @@ const PostInfo = styled.div`
       width: 1px;
       height: 34px;
       transform: translateY(-50%);
-      background: var(--gray200);
+      background: ${({ theme }) => theme.colors.gray200};
       content: "";
     }
   }

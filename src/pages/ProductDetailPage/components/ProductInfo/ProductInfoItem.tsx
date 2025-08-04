@@ -1,5 +1,6 @@
 import styled from "@emotion/styled/macro";
 import { mq } from "@styles/mixins";
+import { theme } from "@styles/theme";
 import { ReactNode } from "react";
 
 interface Props {
@@ -22,7 +23,7 @@ const InfoItem = styled.div`
   .subject {
     margin-bottom: 16px;
     font-weight: 600;
-    color: var(--gray600);
+    color: ${theme.colors.gray600};
 
     ${mq["tablet"]} {
       margin-bottom: 8px;
@@ -31,7 +32,7 @@ const InfoItem = styled.div`
   }
 
   .desc {
-    color: var(--gray600);
+    color: ${theme.colors.gray600};
     white-space: pre-line;
   }
 `;

@@ -2,6 +2,7 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled/macro";
 import { mq } from "../../styles/mixins";
 import { Link } from "react-router-dom";
+import { theme } from "@styles/theme";
 
 export interface ButtonStyleProps {
   color?: keyof typeof ButtonColors;
@@ -12,24 +13,24 @@ export interface ButtonStyleProps {
 export const ButtonColors = {
   primary: css`
     color: #fff;
-    background-color: var(--btn-primary);
+    background-color: ${theme.btn.primary};
 
     &:hover {
-      background-color: var(--btn-primary-hover);
+      background-color: ${theme.btn.hover};
     }
 
     &:active {
-      background-color: var(--btn-primary-click);
+      background-color: ${theme.btn.click};
     }
 
     &:disabled {
-      background-color: var(--btn-disabled);
+      background-color: ${theme.btn.disabled};
     }
   `,
   white: css`
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
-    background-color: var(--white);
+    border: 1px solid ${theme.colors.primaryColor};
+    color: ${theme.colors.primaryColor};
+    background-color: ${theme.colors.white};
   `,
   custom: css``,
 };

@@ -4,6 +4,7 @@ import { ProductItemType } from "types/productType";
 import styled from "@emotion/styled/macro";
 import { mq } from "@styles/mixins";
 import { ButtonHTMLAttributes } from "react";
+import { theme } from "@styles/theme";
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> &
   Pick<ProductItemType, "favoriteCount" | "isFavorite">;
@@ -22,18 +23,18 @@ const activeHeartStyle = css`
 `;
 
 const inactiveHeartStyle = css`
-  stroke: var(--gray500);
+  stroke: ${theme.colors.gray500};
   fill: transparent;
 `;
 
 const HeartButton = styled.button<{ isFavorite?: boolean }>`
   display: flex;
   align-items: center;
-  border: 1px solid var(--gray200);
+  border: 1px solid ${({ theme }) => theme.colors.gray200};
   padding: 4px 12px;
   gap: 4px;
   font-weight: 500;
-  color: var(--gray500);
+  color: ${({ theme }) => theme.colors.gray500};
   border-radius: 35px;
 
   path {

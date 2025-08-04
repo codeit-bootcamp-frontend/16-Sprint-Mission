@@ -1,6 +1,6 @@
-import { css } from "@emotion/react";
+import { css, Theme } from "@emotion/react";
 
-export const resetStyles = css`
+export const resetStyles = (theme: Theme) => css`
   * {
     margin: 0;
     padding: 0;
@@ -12,8 +12,8 @@ export const resetStyles = css`
 
   html,
   body {
-    font-family: "Pretendard Variable", Pretendard, sans-serif;
-    color: #374151;
+    font-family: ${theme.font.family};
+    color: ${theme.colors.gray700};
     font-size: 16px;
     line-height: 1.4;
   }
@@ -40,7 +40,7 @@ export const resetStyles = css`
     outline: none;
 
     &::placeholder {
-      color: var(--gray400);
+      color: ${theme.colors.gray400};
     }
   }
 

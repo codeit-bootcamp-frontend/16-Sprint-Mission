@@ -42,12 +42,12 @@ const ProductInquiryForm = ({ onSubmitForm }: BaseProps) => {
 
 export const InquiryFormTitle = styled.h3`
   margin-bottom: 9px;
-  color: var(--gray900);
+  color: ${({ theme }) => theme.colors.gray900};
 
   ${mq["mobile"]} {
     margin-bottom: 16px;
     font-weight: 600;
-    color: var(--gray800);
+    color: ${({ theme }) => theme.colors.gray800};
   }
 `;
 

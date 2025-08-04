@@ -28,7 +28,7 @@ export const InquiryListStyle = styled.ul`
     position: relative;
 
     margin-bottom: 24px;
-    border-bottom: 1px solid var(--gray300);
+    border-bottom: 1px solid ${({ theme }) => theme.colors.gray300};
     padding-bottom: 12px;
 
     ${mq["mobile"]} {
@@ -37,7 +37,7 @@ export const InquiryListStyle = styled.ul`
 
     .inquiry_text {
       font-size: 14px;
-      color: var(--gray800);
+      color: ${({ theme }) => theme.colors.gray800};
     }
 
     .inquiry_meta {

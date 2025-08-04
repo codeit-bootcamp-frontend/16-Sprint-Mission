@@ -1,6 +1,7 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled/macro";
 import DeleteIcon from "@assets/images/icons/ic_delete.svg";
+import { theme } from "@styles/theme";
 
 const TagItemBaseStyle = css`
   display: inline-flex;
@@ -8,8 +9,8 @@ const TagItemBaseStyle = css`
   height: 36px;
   padding: 5px 16px;
   font-size: 16px;
-  color: var(--gray800);
-  background: var(--gray100);
+  color: ${theme.colors.gray800};
+  background: ${theme.colors.gray100};
   border-radius: 26px;
 
   &::before {

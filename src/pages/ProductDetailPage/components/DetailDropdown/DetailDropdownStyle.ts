@@ -1,9 +1,10 @@
 import { css } from "@emotion/react";
 import { mq } from "@styles/mixins";
+import { theme } from "@styles/theme";
 
 export const DropdownListStyle = css`
   width: 139px;
-  border: 1px solid var(--gray300);
+  border: 1px solid ${theme.colors.gray300};
   background: #fff;
   border-radius: 8px;
   z-index: 1;
@@ -17,11 +18,11 @@ export const DropdownListStyle = css`
 export const DropdownItemStyle = css`
   width: 100%;
   padding: 12px 0 8px;
-  color: var(--gray500);
+  color: ${theme.colors.gray500};
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: var(--gray100);
+    background-color: ${theme.colors.gray100};
   }
 
   ${mq["mobile"]} {
