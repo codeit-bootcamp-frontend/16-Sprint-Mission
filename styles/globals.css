@@ -33,10 +33,6 @@
     @apply bg-primary-100 line-through;
   }
 
-  .item-skeleton {
-    @apply w-full h-[52px] border-2 border-gray-200 px-[12px] py-2 rounded-full animate-pulse;
-  }
-
   /* bullet */
   .bullet-base {
     @apply inline-block w-8 h-8 mr-4 rounded-full flex-shrink-0;
@@ -63,7 +59,16 @@
     @apply bg-green text-amber-300;
   }
 
+  /* skeleton */
+  .item-skeleton {
+    @apply w-full h-[52px] bg-gray-200 rounded-full animate-pulse;
+  }
+
   .badge-skeleton {
     @apply w-[102px] h-[34px] animate-pulse;
+  }
+
+  .input-search-skeleton {
+    @apply w-full h-[52px] bg-gray-200 rounded-3xl animate-pulse;
   }
 }
