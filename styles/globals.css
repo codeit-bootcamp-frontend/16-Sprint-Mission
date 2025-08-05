@@ -33,6 +33,10 @@
     @apply bg-primary-100 line-through;
   }
 
+  .item-skeleton {
+    @apply w-full h-[52px] border-2 border-gray-200 px-[12px] py-2 rounded-full animate-pulse;
+  }
+
   /* bullet */
   .bullet-base {
     @apply inline-block w-8 h-8 mr-4 rounded-full flex-shrink-0;
@@ -44,5 +48,22 @@
 
   .bullet-done {
     @apply flex items-center justify-center bg-primary;
+  }
+
+  /* badge */
+  .badge-base {
+    @apply text-lg px-[28px] py-2 rounded-3xl bg-gray-200 text-gray-900;
+  }
+
+  .badge-todo {
+    @apply bg-lime text-green;
+  }
+
+  .badge-done {
+    @apply bg-green text-amber-300;
+  }
+
+  .badge-skeleton {
+    @apply w-[102px] h-[34px] animate-pulse;
   }
 }
