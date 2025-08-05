@@ -3,7 +3,7 @@ import ListItem from "@/components/ListItem";
 import { Item, ItemListProps, ItemListBaseProps } from "@/types/todo";
 import EmptyList from "./EmptyList";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
-import updateTodo from "../Todos/updateTodo";
+import { updateTodo } from "@/lib/api";
 
 const ItemListBase = ({
   items,

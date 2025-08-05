@@ -5,7 +5,7 @@ import TodoForm from "@/components/Todos/TodoForm";
 import ItemList from "@/components/ItemList";
 import { Item } from "@/types/todo";
 import { useQueryClient, useQuery } from "@tanstack/react-query";
-import getTodos from "./getTodos";
+import { getTodos } from "@/lib/api";
 
 interface TodoClientProps {
   initialItems: Item[];

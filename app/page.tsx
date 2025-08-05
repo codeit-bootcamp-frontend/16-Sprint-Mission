@@ -1,5 +1,5 @@
 import TodoClient from "@/components/Todos/TodoClient";
-import getTodos from "@/components/Todos/getTodos";
+import { getTodos } from "@/lib/api";
 import { Suspense } from "react";
 import TodoLoading from "@/components/Todos/TodoLoading";
 
