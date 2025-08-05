@@ -1,17 +1,22 @@
-import * as styles from "./ListItemStyle";
 import Image from "next/image";
 import { ItemProps } from "@/types/todo";
+import clsx from "clsx";
 
 const ListItemBase = ({ item, variant = "todo", onClick }: ItemProps) => {
-  const itemStyle = styles[`${variant}ItemStyle`];
-  const bulletStyle = styles[`${variant}BulletStyle`];
-
   return (
     <li
-      className={`${styles.itemBaseStyle} ${itemStyle}`}
+      className={clsx("item-base", {
+        "item-todo": variant === "todo",
+        "item-done": variant === "done",
+      })}
       onClick={() => onClick(item)}
     >
-      <span className={`${styles.itemBulletBaseStyle} ${bulletStyle}`}>
+      <span
+        className={clsx("bullet-base", {
+          "bullet-todo": variant === "todo",
+          "bullet-done": variant === "done",
+        })}
+      >
         {variant === "done" && (
           <Image
             src="/images/ico-check-wt.svg"
