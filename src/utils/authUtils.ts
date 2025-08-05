@@ -54,7 +54,7 @@ export function checkValidPasswordConfirm(value: string, password: string) {
 }
 
 // 인풋 유효성 검사 결과에 따라 클래스명 전달
-export function getAuthValidClassName(isValid: boolean) {
+export function getAuthValidClassName(isValid: boolean | null) {
   if (isValid === null) return "";
 
   return isValid ? "isPass" : "isError";
