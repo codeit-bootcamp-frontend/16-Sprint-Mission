@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { FocusEvent, MouseEvent, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { checkValidEmail, checkValidPassword } from "../../utils/authUtils";
 import getLogo from "../../utils/getLogo";
@@ -8,8 +8,9 @@ import "../../styles/auth.scss";
 import styles from "./LoginPage.module.scss";
 import AuthFormInput from "../../components/AuthFormInput/AuthFormInput";
 import { getIsAllValid } from "../../utils/getIsAllValid";
+import { ValidResultType } from "types/authType";
 
-const INIT_VALID = {
+const INIT_VALID: ValidResultType = {
   isValid: null,
   msg: "",
 };
@@ -22,7 +23,7 @@ const LoginPage = () => {
   const [validUserPassword, setValidUserPassword] = useState(INIT_VALID);
   const [isAllValid, setIsAllValid] = useState(false);
 
-  const getUserValidation = (name, value) => {
+  const getUserValidation = (name: string, value: string) => {
     let validEmail = validUserEmail;
     let validPassword = validUserPassword;
 
@@ -44,7 +45,7 @@ const LoginPage = () => {
     };
   };
 
-  const handleFocusOut = (e) => {
+  const handleFocusOut = (e: FocusEvent<HTMLFormElement>) => {
     const { name, value } = e.target;
 
     // 인풋 검증
@@ -53,7 +54,7 @@ const LoginPage = () => {
     setValidUserPassword(() => validPassword);
   };
 
-  const handleClickSubmit = (e) => {
+  const handleClickSubmit = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     nav("/");
   };

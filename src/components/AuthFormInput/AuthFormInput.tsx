@@ -1,7 +1,18 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { getAuthValidClassName } from "../../utils/authUtils";
 import PasswordInput from "../PasswordInput/PasswordInput";
 import Input from "../Input/Input";
+import { ValidResultType } from "types/authType";
+
+interface Props {
+  label: string;
+  type: string;
+  name: string;
+  value: string;
+  onChange: Dispatch<SetStateAction<string>>;
+  placeholder: string;
+  validInfo: ValidResultType;
+}
 
 const AuthFormInput = ({
   label,
@@ -11,7 +22,7 @@ const AuthFormInput = ({
   onChange,
   placeholder,
   validInfo,
-}) => {
+}: Props) => {
   const hasError = validInfo.isValid === false;
 
   return (

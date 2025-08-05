@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 
-const AuthGuide = ({ guideTxt, linkTxt, linkUrl }) => {
+interface Props {
+  guideTxt: string;
+  linkTxt: string;
+  linkUrl: string;
+}
+
+const AuthGuide = ({ guideTxt, linkTxt, linkUrl }: Props) => {
   return (
     <div className="auth-guide">
       <p className="auth-guide__txt">{guideTxt}</p>
