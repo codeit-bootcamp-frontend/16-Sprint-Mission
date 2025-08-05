@@ -25,3 +25,5 @@ export interface ItemListBaseProps extends ItemListProps {
 }
 
 export type UpdateItem = Omit<Item, "id">;
+
+export type newItem = Omit<Item, "id", "isCompleted">;

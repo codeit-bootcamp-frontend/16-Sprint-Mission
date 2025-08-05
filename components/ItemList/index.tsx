@@ -55,7 +55,6 @@ const ItemListBase = ({
   const handleClick = async (item: Item) => {
     const isCompleted = variant === "todo";
 
-    // api 요청 데이터
     const bodyData = {
       name: item.name,
       memo: item.memo || "",
