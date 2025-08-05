@@ -7,7 +7,7 @@ import { TENANT_ID } from "@/constants/constants";
 import axios from "@/lib/axios";
 
 interface TodoFormProps {
-  onAddTodo: () => void;
+  onAddTodo?: () => void;
 }
 
 const TodoForm = ({ onAddTodo }: TodoFormProps) => {
@@ -20,7 +20,7 @@ const TodoForm = ({ onAddTodo }: TodoFormProps) => {
 
     await axios.post(`/${TENANT_ID}/items`, newTodo);
 
-    onAddTodo();
+    onAddTodo?.();
     setValue("");
   };
 

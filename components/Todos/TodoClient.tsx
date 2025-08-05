@@ -1,40 +1,39 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect } from "react";
 import TodoForm from "@/components/Todos/TodoForm";
 import ItemList from "@/components/ItemList";
 import { Item } from "@/types/todo";
-import { BASE_URL, TENANT_ID } from "@/constants/constants";
-import axios from "@/lib/axios";
+import { useQueryClient, useQuery } from "@tanstack/react-query";
+import getTodos from "./getTodos";
 
 interface TodoClientProps {
   initialItems: Item[];
 }
 
 const TodoClient = ({ initialItems }: TodoClientProps) => {
-  const [items, setItems] = useState<Item[]>(initialItems);
+  const queryClient = useQueryClient();
 
-  const handleChange = (updatedItem: Item) => {
-    setItems((prev) =>
-      prev.map((item) => (item.id === updatedItem.id ? updatedItem : item))
-    );
-  };
+  useEffect(() => {
+    queryClient.setQueryData(["todos"], initialItems);
+  }, [queryClient, initialItems]);
 
-  const fetchTodos = async () => {
-    const res = await axios.get(`${BASE_URL}/${TENANT_ID}/items`);
-    const results = res.data;
-    setItems(results);
-  };
+  const { data: items = [] } = useQuery({
+    queryKey: ["todos"],
+    queryFn: getTodos,
+    initialData: initialItems,
+    staleTime: Infinity,
+  });
 
   const todos = items.filter((i) => !i.isCompleted);
   const dones = items.filter((i) => i.isCompleted);
 
   return (
     <>
-      <TodoForm onAddTodo={fetchTodos} />
+      <TodoForm />
       <div className="flex gap-6 mt-10">
-        <ItemList.Todo items={todos} onClick={handleChange} />
-        <ItemList.Done items={dones} onClick={handleChange} />
+        <ItemList.Todo items={todos} />
+        <ItemList.Done items={dones} />
       </div>
     </>
   );

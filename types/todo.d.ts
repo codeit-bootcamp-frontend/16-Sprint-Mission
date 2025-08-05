@@ -23,3 +23,5 @@ export interface ItemListBaseProps extends ItemListProps {
   emptyImg: string;
   emptyMsg: string | ReactNode;
 }
+
+export type UpdateItem = Omit<Item, "id">;

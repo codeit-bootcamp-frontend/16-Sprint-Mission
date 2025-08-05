@@ -1,9 +1,9 @@
 import Badge from "@/components/Badge";
 import ListItem from "@/components/ListItem";
 import { Item, ItemListProps, ItemListBaseProps } from "@/types/todo";
-import { TENANT_ID } from "@/constants/constants";
-import axios from "@/lib/axios";
 import EmptyList from "./EmptyList";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
+import updateTodo from "../Todos/updateTodo";
 
 const ItemListBase = ({
   items,
@@ -11,17 +11,47 @@ const ItemListBase = ({
   badgeTxt,
   emptyImg,
   emptyMsg,
-  onClick,
 }: ItemListBaseProps) => {
+  const queryClient = useQueryClient();
+
+  const { mutate: updateStatus } = useMutation({
+    mutationFn: updateTodo,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["todos"] }); // 데이터 실시간 동기화를 위해 patch후 get 요청 처리 (patch 실패 시 정상적인 롤백 처리 위함)
+    },
+    onMutate: async ({ itemId, bodyData }) => {
+      // 현재 진행 중인 쿼리가 있다면 취소
+      await queryClient.cancelQueries({ queryKey: ["todos"] });
+
+      // 롤백용 이전 쿼리 데이터 저장
+      const prevItems = queryClient.getQueryData<Item[]>(["todos"]);
+
+      // 캐시 업데이트
+      if (prevItems) {
+        queryClient.setQueryData<Item[]>(["todos"], (oldItems) => {
+          if (!oldItems) return [];
+
+          return oldItems?.map((item) =>
+            item.id === itemId
+              ? { ...item, isCompleted: bodyData.isCompleted }
+              : item
+          );
+        });
+      }
+
+      // 에러 발생 시 이전 데이터 리턴 (onError에서 context로 사용)
+      return { prevItems };
+    },
+    onError: (err, { itemId, bodyData }, context) => {
+      if (context?.prevItems) {
+        queryClient.setQueryData(["todos"], context.prevItems);
+      }
+      alert("투두 업데이트에 실패했습니다.");
+    },
+  });
+
   const handleClick = async (item: Item) => {
     const isCompleted = variant === "todo";
-
-    // 화면 업데이트 데이터
-    const updatedItem = {
-      id: item.id,
-      name: item.name,
-      isCompleted,
-    };
 
     // api 요청 데이터
     const bodyData = {
@@ -31,23 +61,17 @@ const ItemListBase = ({
       isCompleted,
     };
 
-    // 화면 먼저 업데이트
-    onClick?.(updatedItem);
-
     // 서버 요청
-    await axios.patch(`/${TENANT_ID}/items/${item.id}`, bodyData);
+    updateStatus({ itemId: item.id, bodyData });
   };
 
   const isEmpty = !items || items.length === 0;
-
   const ListItemByVariant = variant === "todo" ? ListItem.Todo : ListItem.Done;
 
   return (
     <div className="w-full">
       <Badge text={badgeTxt} variant={variant} />
-
       {isEmpty && <EmptyList emptyImg={emptyImg} emptyMsg={emptyMsg} />}
-
       {!isEmpty && (
         <ul>
           {items.map((item) => (

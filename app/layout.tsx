@@ -3,6 +3,7 @@ import "@/styles/reset.css";
 import "@/styles/globals.css";
 import Header from "@/components/Header";
 import nanumSquare from "@/assets/fonts/NanumSquare/nanumSquare";
+import QueryProvider from "./providers/QueryProvider";
 
 export const metadata: Metadata = {
   title: "간편한 투두리스트 - Do it",
@@ -19,7 +20,7 @@ export default function RootLayout({
       <body className={`${nanumSquare.className} bg-gray-50`}>
         <Header />
         <div className="my-6 md:w-full lg:w-[1200px] lg:mx-auto">
-          {children}
+          <QueryProvider>{children}</QueryProvider>
         </div>
       </body>
     </html>
