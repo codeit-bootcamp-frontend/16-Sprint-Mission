@@ -2,7 +2,6 @@ import "./css/Auth.css";
 import "./css/SignupPage.css";
 import { Link } from "react-router-dom";
 import { FieldName } from "../types/field";
-import useAuthStore from "../stores/useAuthStore";
 import logo from "../img/logo.png";
 import Label from "../components/Label";
 import Textfield from "../components/Textfield";
@@ -10,6 +9,7 @@ import Button from "../components/Button";
 import kakakoIcon from "../img/kakao.png";
 import googleIcon from "../img/google.png";
 import { useEffect } from "react";
+import useSignupStore from "../stores/useSignupStore";
 
 const SignupPage = () => {
   const {
@@ -20,7 +20,7 @@ const SignupPage = () => {
     setField,
     validateField,
     resetFields,
-  } = useAuthStore();
+  } = useSignupStore();
 
   /* 유효성 체크 */
   const updateValidate = (
@@ -47,18 +47,16 @@ const SignupPage = () => {
     }
   };
 
-  const disableSignupButton = () => {
-    return !(
-      email.validInfo.isValid &&
-      password.validInfo.isValid &&
-      passwordCheck.validInfo.isValid &&
-      nickname.validInfo.isValid
-    );
-  };
+  const isSingupFormValid =
+    email.validInfo.isValid &&
+    password.validInfo.isValid &&
+    passwordCheck.validInfo.isValid &&
+    nickname.validInfo.isValid;
 
   useEffect(() => {
     resetFields();
-  }, [resetFields]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <section className="form__container signup__container">
@@ -84,7 +82,7 @@ const SignupPage = () => {
             type="email"
             placeholder="입력"
             autoComplete="email"
-            onValueChange={onChangeTextfield}
+            onChange={(e) => onChangeTextfield(e.target.name, e.target.value)}
           />
         </div>
 
@@ -98,7 +96,7 @@ const SignupPage = () => {
             name="nickname"
             type="text"
             placeholder="입력"
-            onValueChange={onChangeTextfield}
+            onChange={(e) => onChangeTextfield(e.target.name, e.target.value)}
           />
         </div>
 
@@ -113,7 +111,7 @@ const SignupPage = () => {
             type="password"
             placeholder="비밀번호를 입력해주세요"
             autoComplete="off"
-            onValueChange={onChangeTextfield}
+            onChange={(e) => onChangeTextfield(e.target.name, e.target.value)}
           />
         </div>
 
@@ -128,11 +126,11 @@ const SignupPage = () => {
             type="password"
             placeholder="비밀번호를 입력해주세요"
             autoComplete="off"
-            onValueChange={onChangeTextfield}
+            onChange={(e) => onChangeTextfield(e.target.name, e.target.value)}
           />
         </div>
 
-        <Button disabled={disableSignupButton()}>회원가입</Button>
+        <Button disabled={!isSingupFormValid}>회원가입</Button>
         <div className="form__container__banner">
           간편 로그인하기
           <div className="form__container__banner__icon">

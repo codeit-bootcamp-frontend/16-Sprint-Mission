@@ -48,7 +48,7 @@ const Nav = () => {
             </li>
           </ul>
         </div>
-        {isLogin && (
+        {isLogin ? (
           <div className="header__content__user">
             <Link to="user">
               <img
@@ -58,8 +58,7 @@ const Nav = () => {
               />
             </Link>
           </div>
-        )}
-        {!isLogin && (
+        ) : (
           <div className="">
             <Link to="login">
               <Button>로그인</Button>

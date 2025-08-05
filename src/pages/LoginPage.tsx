@@ -1,8 +1,6 @@
 import "./css/Auth.css";
 import "./css/LoginPage.css";
 import { Link } from "react-router-dom";
-import { FieldName } from "../types/field";
-import useAuthStore from "../stores/useAuthStore";
 import Button from "../components/Button";
 import Label from "../components/Label";
 import Textfield from "../components/Textfield";
@@ -10,30 +8,32 @@ import logo from "../img/logo.png";
 import kakakoIcon from "../img/kakao.png";
 import googleIcon from "../img/google.png";
 import { useEffect } from "react";
+import useLoginStore from "../stores/useLoginStore";
+import { LoginFieldName } from "../types/field";
 
 const LoginPage = () => {
   const { email, password, setField, validateField, resetFields } =
-    useAuthStore();
+    useLoginStore();
 
   /* 유효성 체크 */
   const updateValidate = (name: string, value: string) => {
-    validateField(name as FieldName, value);
+    validateField(name as LoginFieldName, value);
   };
 
   /* 텍스트필드 데이터 세팅과 유효성 체크 */
   const onChangeTextfield = (name: string, value: string) => {
     let trimVal = value.trim();
-    setField(name as FieldName, trimVal);
+    setField(name as LoginFieldName, trimVal);
     updateValidate(name, trimVal);
   };
 
-  const disableLoginButton = () => {
-    return !(email.validInfo.isValid && password.validInfo.isValid);
-  };
+  const isLoginFormValid =
+    email.validInfo.isValid && password.validInfo.isValid;
 
   useEffect(() => {
     resetFields();
-  }, [resetFields]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <section className="form__container login__container">
@@ -59,7 +59,7 @@ const LoginPage = () => {
             type="email"
             placeholder="입력"
             autoComplete="email"
-            onValueChange={onChangeTextfield}
+            onChange={(e) => onChangeTextfield(e.target.name, e.target.value)}
           />
         </div>
 
@@ -74,11 +74,11 @@ const LoginPage = () => {
             type="password"
             placeholder="비밀번호를 입력해주세요"
             autoComplete="off"
-            onValueChange={onChangeTextfield}
+            onChange={(e) => onChangeTextfield(e.target.name, e.target.value)}
           />
         </div>
 
-        <Button disabled={disableLoginButton()}>로그인</Button>
+        <Button disabled={!isLoginFormValid}>로그인</Button>
         <div className="form__container__banner">
           간편 로그인하기
           <div className="form__container__banner__icon">

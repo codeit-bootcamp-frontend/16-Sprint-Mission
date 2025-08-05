@@ -202,7 +202,9 @@ const ItemDetailPage = () => {
 
 "
                   className="detail__textarea"
-                  onChange={onChangeComment}
+                  onChange={(e) =>
+                    onChangeComment(e.target.name, e.target.value)
+                  }
                 />
               </div>
               <Button
