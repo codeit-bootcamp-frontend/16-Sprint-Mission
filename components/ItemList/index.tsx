@@ -16,6 +16,8 @@ const ItemListBase = ({
 
   const { mutate: updateStatus } = useMutation({
     mutationFn: updateTodo,
+    retry: 1,
+    retryDelay: 0.3,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["todos"] }); // 데이터 실시간 동기화를 위해 patch후 get 요청 처리 (patch 실패 시 정상적인 롤백 처리 위함)
     },
