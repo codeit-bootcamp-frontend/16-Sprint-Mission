@@ -1,5 +1,5 @@
 // 닉네임 검사
-export function checkValidNickname(value) {
+export function checkValidNickname(value: string) {
   // 빈값 확인
   if (!value.trim().length)
     return { isValid: false, msg: "닉네임을 입력해주세요." };
@@ -9,7 +9,7 @@ export function checkValidNickname(value) {
 }
 
 // 이메일 검사
-export function checkValidEmail(value) {
+export function checkValidEmail(value: string) {
   // 빈값 확인
   if (!value.trim().length)
     return { isValid: false, msg: "이메일을 입력해주세요." };
@@ -25,7 +25,7 @@ export function checkValidEmail(value) {
 }
 
 // 비밀번호 검사
-export function checkValidPassword(value) {
+export function checkValidPassword(value: string) {
   // 빈값 확인
   if (!value.trim().length)
     return { isValid: false, msg: "비밀번호를 입력해주세요." };
@@ -40,7 +40,7 @@ export function checkValidPassword(value) {
 }
 
 // 비밀번호 확인 검사
-export function checkValidPasswordConfirm(value, password) {
+export function checkValidPasswordConfirm(value: string, password: string) {
   // 빈값 확인
   if (!value.trim().length)
     return { isValid: false, msg: "비밀번호를 입력해주세요." };
@@ -54,7 +54,7 @@ export function checkValidPasswordConfirm(value, password) {
 }
 
 // 인풋 유효성 검사 결과에 따라 클래스명 전달
-export function getAuthValidClassName(isValid) {
+export function getAuthValidClassName(isValid: boolean) {
   if (isValid === null) return "";
 
   return isValid ? "isPass" : "isError";

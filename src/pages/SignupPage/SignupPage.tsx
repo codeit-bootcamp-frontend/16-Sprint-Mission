@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { FocusEvent, MouseEvent, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   checkValidEmail,
@@ -13,6 +13,7 @@ import "../../styles/auth.scss";
 import styles from "./SignupPage.module.scss";
 import AuthFormInput from "../../components/AuthFormInput/AuthFormInput";
 import { getIsAllValid } from "../../utils/getIsAllValid";
+import { ValidResultType } from "types/authType";
 
 const INIT_VALID = {
   isValid: null,
@@ -25,19 +26,22 @@ const SignupPage = () => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [userPasswordConfirm, setUserPasswordConfirm] = useState("");
-  const [validUserNickname, setValidUserNickname] = useState(INIT_VALID);
-  const [validUserEmail, setValidUserEmail] = useState(INIT_VALID);
-  const [validUserPassword, setValidUserPassword] = useState(INIT_VALID);
+  const [validUserNickname, setValidUserNickname] =
+    useState<ValidResultType>(INIT_VALID);
+  const [validUserEmail, setValidUserEmail] =
+    useState<ValidResultType>(INIT_VALID);
+  const [validUserPassword, setValidUserPassword] =
+    useState<ValidResultType>(INIT_VALID);
   const [validUserPasswordConfirm, setValidUserPasswordConfirm] =
-    useState(INIT_VALID);
+    useState<ValidResultType>(INIT_VALID);
   const [isAllValid, setIsAllValid] = useState(false);
 
   // 비밀번호 확인 필드 함수 재정의
-  const redefinePasswordConfirm = (value) => {
+  const redefinePasswordConfirm = (value: string) => {
     return checkValidPasswordConfirm(value, userPassword);
   };
 
-  const getUserValidation = (name, value) => {
+  const getUserValidation = (name: string, value: string) => {
     let validNickname = validUserNickname;
     let validEmail = validUserEmail;
     let validPassword = validUserPassword;
@@ -76,7 +80,7 @@ const SignupPage = () => {
     };
   };
 
-  const handleFocusOut = (e) => {
+  const handleFocusOut = (e: FocusEvent<HTMLFormElement>) => {
     const { name, value } = e.target;
 
     // 인풋 검증
@@ -89,7 +93,7 @@ const SignupPage = () => {
     setValidUserPasswordConfirm(() => validPasswordConfirm);
   };
 
-  const handleClickSubmit = (e) => {
+  const handleClickSubmit = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     nav("/login");
   };
