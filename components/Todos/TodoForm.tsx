@@ -6,11 +6,11 @@ import FormControl from "@/components/FormControl";
 import { TENANT_ID } from "@/constants/constants";
 import axios from "@/lib/axios";
 
-interface AddTodoFormProps {
+interface TodoFormProps {
   onAddTodo: () => void;
 }
 
-const AddTodoForm = ({ onAddTodo }: AddTodoFormProps) => {
+const TodoForm = ({ onAddTodo }: TodoFormProps) => {
   const [value, setValue] = useState("");
 
   const handleSubmit = async (e: FormEvent) => {
@@ -48,4 +48,4 @@ const AddTodoForm = ({ onAddTodo }: AddTodoFormProps) => {
   );
 };
 
-export default AddTodoForm;
+export default TodoForm;
