@@ -1,6 +1,9 @@
+/** @jsxImportSource @emotion/react */
 import { forwardRef, InputHTMLAttributes } from "react";
 import usePasswordToggle from "../../hooks/usePasswordToggle";
-import styles from "./PasswordInput.module.scss";
+import { css } from "@emotion/react";
+import { InputStyle } from "@styles/formStyles";
+import styled from "@emotion/styled/macro";
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   placeholder?: string;
@@ -15,18 +18,18 @@ const PasswordInput = forwardRef<HTMLInputElement, Props>(
     const { type, ...otherProps } = props;
 
     return (
-      <div className={styles["password-box"]}>
-        <input
+      <PasswordBox>
+        <InputStyle
           ref={ref}
           type={toggle ? "text" : "password"}
-          placeholder={placeholder}
-          className={`${styles["password-input"]} ${className}`}
+          css={css`
+            padding-right: 60px;
+          `}
           {...otherProps}
         />
         {isToggle && (
-          <button
+          <PasswordToggleBtn
             type="button"
-            className={styles["password__toggle-btn"]}
             aria-label="비밀번호 표시"
             aria-pressed={toggle}
             onClick={handleClickToggle}
@@ -37,11 +40,23 @@ const PasswordInput = forwardRef<HTMLInputElement, Props>(
               height="24"
               alt="비밀번호 보기 아이콘"
             />
-          </button>
+          </PasswordToggleBtn>
         )}
-      </div>
+      </PasswordBox>
     );
   }
 );
+
+const PasswordBox = styled.div`
+  position: relative;
+`;
+
+const PasswordToggleBtn = styled.button`
+  position: absolute;
+  top: 0;
+  right: 12px;
+  height: 100%;
+  padding: 0 12px;
+`;
 
 export default PasswordInput;

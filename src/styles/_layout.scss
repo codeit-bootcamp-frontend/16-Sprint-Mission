@@ -7,13 +7,6 @@
   margin: 0 auto;
 }
 
-#wrap {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background: #fcfcfc;
-}
-
 // header
 #header {
   position: sticky;
@@ -100,10 +93,6 @@
       width: 128px;
     }
   }
-}
-// container
-#container {
-  flex: 1;
 }
 
 // footer

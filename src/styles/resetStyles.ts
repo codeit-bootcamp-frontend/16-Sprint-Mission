@@ -49,4 +49,16 @@ export const resetStyles = (theme: Theme) => css`
     border: none;
     cursor: pointer;
   }
+
+  #wrap {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #fcfcfc;
+  }
+
+  // container
+  #container {
+    flex: 1;
+  }
 `;

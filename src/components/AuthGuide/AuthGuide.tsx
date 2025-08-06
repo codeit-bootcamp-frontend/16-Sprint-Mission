@@ -1,3 +1,5 @@
+import styled from "@emotion/styled/macro";
+import { theme } from "@styles/theme";
 import { Link } from "react-router-dom";
 
 interface Props {
@@ -8,17 +10,30 @@ interface Props {
 
 const AuthGuide = ({ guideTxt, linkTxt, linkUrl }: Props) => {
   return (
-    <div className="auth-guide">
-      <p className="auth-guide__txt">{guideTxt}</p>
-      <Link
-        to={linkUrl}
-        aria-label={`${linkTxt} 페이지로 이동`}
-        className="auth-guide__link"
-      >
+    <AuthGuideBox>
+      <p>{guideTxt}</p>
+      <AuthGuideLink to={linkUrl} aria-label={`${linkTxt} 페이지로 이동`}>
         {linkTxt}
-      </Link>
-    </div>
+      </AuthGuideLink>
+    </AuthGuideBox>
   );
 };
+
+const AuthGuideBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  gap: 5px;
+`;
+
+const AuthGuideLink = styled(Link)`
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+  color: ${theme.colors.primaryColor};
+`;
 
 export default AuthGuide;

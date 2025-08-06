@@ -1,12 +1,16 @@
+/** @jsxImportSource @emotion/react */
 import { Link } from "react-router-dom";
 import { getAuthValidStateClassName } from "../../utils/authUtils";
 import getLogo from "../../utils/getLogo";
 import AuthSns from "../../components/AuthSns/AuthSns";
 import AuthGuide from "../../components/AuthGuide/AuthGuide";
-import "../../styles/auth.scss";
-import styles from "./LoginPage.module.scss";
 import AuthFormInput from "../../components/AuthFormInput/AuthFormInput";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { css } from "@emotion/react";
+import { AuthContainer, AuthForm, AuthLogoImage } from "@styles/formStyles";
+import Button from "@components/Button/Button";
+import styled from "@emotion/styled/macro";
+import { mq } from "@styles/mixins";
 
 interface FormDataType {
   email: string;
@@ -25,11 +29,11 @@ const LoginPage = () => {
   };
 
   return (
-    <div id="wrap" className={styles.loginPage}>
-      <div className="auth-container">
-        <h1 className="logo">
+    <LoginPageStyle id="wrap">
+      <AuthContainer>
+        <h1>
           <Link to="/" aria-label="판다마켓 홈으로 이동">
-            <img
+            <AuthLogoImage
               width="396"
               height="132"
               src={getLogo("lg")}
@@ -37,10 +41,7 @@ const LoginPage = () => {
             />
           </Link>
         </h1>
-        <form
-          className="auth-form"
-          onSubmit={handleSubmit(handleSubmitFormData)}
-        >
+        <AuthForm onSubmit={handleSubmit(handleSubmitFormData)}>
           {/* 이메일 */}
           <AuthFormInput
             label="이메일"
@@ -55,10 +56,12 @@ const LoginPage = () => {
               },
             })}
             errorMsg={errors.email?.message}
-            className={getAuthValidStateClassName(
-              touchedFields.email,
-              errors.email?.message
-            )}
+            css={css`
+              ${getAuthValidStateClassName(
+                touchedFields.email,
+                errors.email?.message
+              )}
+            `}
           />
 
           {/* 비밀번호 */}
@@ -74,25 +77,46 @@ const LoginPage = () => {
               },
             })}
             errorMsg={errors.password?.message}
-            className={getAuthValidStateClassName(
-              touchedFields.password,
-              errors.password?.message
-            )}
+            css={css`
+              ${getAuthValidStateClassName(
+                touchedFields.password,
+                errors.password?.message
+              )}
+            `}
           />
 
-          <button disabled={!isValid} className="btn lg auth-form__submit-btn">
+          <Button
+            size="lg"
+            round
+            disabled={!isValid}
+            css={css`
+              width: 100%;
+            `}
+          >
             로그인
-          </button>
-        </form>
+          </Button>
+        </AuthForm>
         <AuthSns />
         <AuthGuide
           guideTxt="판다마켓이 처음이신가요?"
           linkTxt="회원가입"
           linkUrl="/signup"
         />
-      </div>
-    </div>
+      </AuthContainer>
+    </LoginPageStyle>
   );
 };
+
+const LoginPageStyle = styled.div`
+  padding: 231px 0;
+
+  ${mq["tablet"]} {
+    padding: 190px 0;
+  }
+
+  ${mq["mobile"]} {
+    padding: 80px 0;
+  }
+`;
 
 export default LoginPage;

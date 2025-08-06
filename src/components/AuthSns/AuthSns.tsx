@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import snsGoogle from "../../assets/images/icons/ic_sns_google.svg";
 import snsKakao from "../../assets/images/icons/ic_sns_kakao.svg";
+import styled from "@emotion/styled/macro";
 
 const AuthSns = () => {
   return (
-    <div className="auth-sns">
-      <h2 className="auth-sns__label">간편 로그인하기</h2>
-      <ul className="auth-sns__list">
+    <AuthSnsBox>
+      <AuthSnsLabel>간편 로그인하기</AuthSnsLabel>
+      <AuthSnsList>
         <li>
           <Link
             to="https://www.google.com/"
@@ -23,9 +24,31 @@ const AuthSns = () => {
             <img src={snsKakao} alt="카카오톡 아이콘" width="44" height="44" />
           </Link>
         </li>
-      </ul>
-    </div>
+      </AuthSnsList>
+    </AuthSnsBox>
   );
 };
+
+const AuthSnsBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+  padding: 16px 23px;
+  background-color: #e6f2ff;
+  border-radius: 8px;
+`;
+
+const AuthSnsLabel = styled.h2`
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+`;
+
+const AuthSnsList = styled.ul`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+`;
 
 export default AuthSns;

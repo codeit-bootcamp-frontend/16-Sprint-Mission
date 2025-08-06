@@ -1,6 +1,11 @@
 import PasswordInput from "../PasswordInput/PasswordInput";
 import Input from "../Input/Input";
 import { forwardRef, InputHTMLAttributes } from "react";
+import {
+  AuthFormItem,
+  AuthFormLabel,
+  AuthFormErrorMsg,
+} from "@styles/formStyles";
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
@@ -10,16 +15,17 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 const AuthFormInput = forwardRef<HTMLInputElement, Props>(
   ({ label, errorMsg, ...props }, ref) => {
     return (
-      <div className="auth-form__item">
-        <label className="auth-form__label">{label}</label>
+      <AuthFormItem>
+        <AuthFormLabel>{label}</AuthFormLabel>
         {props.type === "password" ? (
           <PasswordInput ref={ref} {...props} />
         ) : (
           <Input ref={ref} {...props} />
         )}
-        {errorMsg && <p className="auth-form__error-msg">{errorMsg}</p>}
-      </div>
+        {errorMsg && <AuthFormErrorMsg>{errorMsg}</AuthFormErrorMsg>}
+      </AuthFormItem>
     );
   }
 );
+
 export default AuthFormInput;

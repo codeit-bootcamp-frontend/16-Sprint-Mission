@@ -1,3 +1,5 @@
+import { theme } from "@styles/theme";
+
 // 닉네임 검사
 export function checkValidNickname(value: string) {
   // 빈값 확인
@@ -54,22 +56,17 @@ export function checkValidPasswordConfirm(value: string, password: string) {
 }
 
 // 인풋 유효성 검사 결과에 따라 클래스명 전달
-export function getAuthValidClassName(isValid: boolean | null) {
-  if (isValid === null) return "";
-
-  return isValid ? "isPass" : "isError";
-}
-
 export function getAuthValidStateClassName(
   touchedFields: boolean | undefined,
   errorMessage: string | undefined
 ) {
   const isBeforeTouch = !touchedFields;
-
-  // default
-  if (isBeforeTouch) return "";
+  if (isBeforeTouch) return null;
 
   const isValidError = !!errorMessage;
+  const borderColor = isValidError
+    ? theme.colors.error
+    : theme.colors.primaryColor;
 
-  return isValidError ? "isError" : "isPass";
+  return { border: `1px solid ${borderColor}` };
 }
