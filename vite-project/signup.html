@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<head>
+    <title>회원가입페이지</title>
+    <meta charset="UTF-8">
+    <link href="./css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="./css/common.css" rel="stylesheet" type="text/css" />
+    <link href="./css/login-signup.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <article>
+        <section>
+            <div class="signup-container">
+                <div class="signup-img-box">
+                    <a href="/" aria-label="홈으로 이동">
+                        <img class="signup-img" src="./images/main-page/logo.png" alt="logo">
+                    </a>
+                </div>
+                <div class="signup-email-box">
+                    <h4>이메일</h4>
+                    <input type="email" placeholder="codeit@gmail.com" class="signup-email-input SignupInput" required>
+                    <h4 class="error-msg" style="color: red; display: none; font-size: 12px;">이메일을 입력해주세요.</h4>
+                </div>
+                <div class="signup-nickname-box">
+                    <h4>닉네임</h4>
+                    <input type="name" placeholder="판다" class="signup-nickname-input SignupInput" required>
+                    <h4 class="error-msg" style="color: red; display: none; font-size: 12px;">닉네임을 입력해주세요.</h4>
+                </div>
+                <div class="signup-password-box">
+                    <h4>비밀번호</h4>
+                    <input type="password" class="signup-password-input SignupInput" required>
+                    <h4 class="error-msg" style="color: red; display: none; font-size: 12px;">비밀번호를 입력해주세요.</h4>
+                </div>
+                <div class="signup-ckpassword-box">
+                    <h4>비밀번호 확인</h4>
+                    <input type="password" class="signup-ckpassword-input SignupInput" required>
+                    <h4 class="error-msg" style="color: red; display: none; font-size: 12px;">비밀번호가 일치하지 않습니다.</h4>
+                </div>
+                <div class="signup-button-box">
+                    <button id="signupBtn" class="signup-button" onclick="location.href='login.html'"  disabled style="cursor: default;">
+                        회원가입
+                    </button>
+                </div>
+                <div class="signup-ezlogin-box">
+                    <div class="signup-ezlogin">
+                        <h4>간편 로그인하기</h4>
+                    </div>
+                    <div class="signup-ezlogin-logos">
+                        <a href="https://www.google.com" aria-label="구글로 이동" rel="noopener">
+                            <img class="logo" src="./images/main-page/google-logo.png" alt="">
+                        </a>
+                        <a href="https://www.kakaorp.com/page/" aria-label="카카오로 이동" rel="noopener">
+                            <img class="logo" src="./images/main-page/kakao-logo.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="signup-footer">
+                    <h5>
+                        판다마켓이 처음이신가요?
+                        <a href="login.html">로그인</a>
+                    </h5>
+                </div>
+            </div>
+        </section>
+    </article>
+
+    <script src="script/login-signup.js"></script>
+</body>
+
+</html>

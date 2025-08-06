@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+    <title>로그인페이지</title>
+    <meta charset="UTF-8">
+    <link href="./css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="./css/common.css" rel="stylesheet" type="text/css" />
+    <link href="./css/login-signup.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+    <article>
+        <section>
+            <div class="login-container">
+                <div class="login-img-box">
+                    <a href="/" aria-label="홈으로 이동">
+                        <img class="login-img" src="./images/main-page/logo.png" alt="logo">
+                    </a>
+                </div>
+                <div class="login-email-box">
+                    <h4>이메일</h4>
+                    <input type="email" placeholder="codeit@gmail.com" class="login-email-input LoginInput" required>
+                    <h4 class="error-msg" style="color: red; display: none; font-size: 12px;">이메일을 입력해주세요.</h4>
+                </div>
+                <div class="login-password-box">
+                    <h4>비밀번호</h4>
+                    <input type="password" class="login-password-input LoginInput" required>
+                    <h4 class="error-msg" style="color: red; display: none; font-size: 12px;">비밀번호를 입력해주세요.</h4>
+                </div>
+                <div class="login-button-box">
+                    <button id="loginBtn" class="login-button" onclick="location.href='items.html'"  disabled style="cursor: default;">
+                        로그인
+                    </button>
+                </div>
+                <div class="login-ezlogin-box">
+                    <div class="login-ezlogin">
+                        <h4>간편 로그인하기</h4>
+                    </div>
+                    <div class="login-ezlogin-logos">
+                        <a href="https://www.google.com" aria-label="구글로 이동" rel="noopener">
+                            <img class="logo" src="./images/main-page/google-logo.png" alt="">
+                        </a>
+                        <a href="https://www.kakaorp.com/page/" aria-label="카카오로 이동" rel="noopener">
+                            <img class="logo" src="./images/main-page/kakao-logo.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="login-footer">
+                    <h5>
+                        판다마켓이 처음이신가요?
+                        <a href="signup.html">회원가입</a>
+                    </h5>
+                </div>
+            </div>
+        </section>
+    </article>
+
+
+    <script src="script/login-signup.js"></script>
+</body>
+
+</html>
