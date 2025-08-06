@@ -16,6 +16,20 @@ export const getTodos = async (): Promise<Item[]> => {
   }
 };
 
+export const getTodo = async (itemId: string): Promise<Item> => {
+  try {
+    const res = await fetch(`${BASE_URL}/${TENANT_ID}/items/${itemId}`);
+
+    if (!res.ok) {
+      throw new Error("투두 아이템 가져오기에 실패했습니다.");
+    }
+
+    return res.json();
+  } catch (err) {
+    throw err;
+  }
+};
+
 export const addTodo = async (name: string) => {
   const newTodo = { name };
 
