@@ -22,7 +22,7 @@
 
   /* item list */
   .item-base {
-    @apply flex items-center w-full mt-4 border-2 border-gray-900 px-[12px] py-2 text-base text-gray-800 rounded-full cursor-pointer;
+    @apply flex items-center w-full mt-4 border-2 border-gray-900 px-[12px] py-2 text-base text-gray-800 rounded-full;
   }
 
   .item-todo {
@@ -39,7 +39,7 @@
   }
 
   .bullet-todo {
-    @apply border-2 border-gray-900 bg-yellow-100;
+    @apply border-2 border-gray-900 bg-yellow-100 hover:bg-lime transition-colors after:content-checkWhiteIcon after:inline-block after:mt-1;
   }
 
   .bullet-done {

@@ -51,6 +51,9 @@ module.exports = {
         lg: "18px",
         xl: "20px",
       },
+      content: {
+        checkWhiteIcon: "url(../public/images/ico-check-wt.svg)",
+      },
     },
   },
   screen: {

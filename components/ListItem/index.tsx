@@ -9,13 +9,13 @@ const ListItemBase = ({ item, variant = "todo", onClick }: ItemProps) => {
         "item-todo": variant === "todo",
         "item-done": variant === "done",
       })}
-      onClick={() => onClick(item)}
     >
-      <span
+      <button
         className={clsx("bullet-base", {
           "bullet-todo": variant === "todo",
           "bullet-done": variant === "done",
         })}
+        onClick={() => onClick(item)}
       >
         {variant === "done" && (
           <Image
@@ -25,7 +25,7 @@ const ListItemBase = ({ item, variant = "todo", onClick }: ItemProps) => {
             height="20"
           />
         )}
-      </span>
+      </button>
       {item.name}
     </li>
   );
