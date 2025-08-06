@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled/macro";
+import { theme } from "@styles/theme";
 
 export const UserProfileGap = {
   sm: css`
@@ -59,12 +60,12 @@ export const UserProfileBox = styled.div<{ size?: keyof typeof thumbnailSize }>`
 
   .username {
     display: block;
-    color: ${({ theme }) => theme.colors.gray600};
+    color: ${theme.colors.gray600};
   }
 
   .date {
     display: block;
     ${({ size }) => size && DateMarginTop[size]}
-    color: ${({ theme }) => theme.colors.gray400};
+    color: ${theme.colors.gray400};
   }
 `;

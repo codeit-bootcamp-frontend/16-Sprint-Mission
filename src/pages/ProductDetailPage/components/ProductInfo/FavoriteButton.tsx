@@ -30,11 +30,11 @@ const inactiveHeartStyle = css`
 const HeartButton = styled.button<{ isFavorite?: boolean }>`
   display: flex;
   align-items: center;
-  border: 1px solid ${({ theme }) => theme.colors.gray200};
+  border: 1px solid ${theme.colors.gray200};
   padding: 4px 12px;
   gap: 4px;
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.gray500};
+  color: ${theme.colors.gray500};
   border-radius: 35px;
 
   path {

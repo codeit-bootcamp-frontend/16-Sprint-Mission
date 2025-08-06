@@ -1,6 +1,7 @@
 import styled from "@emotion/styled/macro";
 import ProductInquiryItem from "@pages/ProductDetailPage/components/ProductInquiry/ProductInquiryItem";
 import { mq } from "@styles/mixins";
+import { theme } from "@styles/theme";
 import { InquiryItemType } from "types/productType";
 
 interface Props {
@@ -28,7 +29,7 @@ export const InquiryListStyle = styled.ul`
     position: relative;
 
     margin-bottom: 24px;
-    border-bottom: 1px solid ${({ theme }) => theme.colors.gray300};
+    border-bottom: 1px solid ${theme.colors.gray300};
     padding-bottom: 12px;
 
     ${mq["mobile"]} {
@@ -37,7 +38,7 @@ export const InquiryListStyle = styled.ul`
 
     .inquiry_text {
       font-size: 14px;
-      color: ${({ theme }) => theme.colors.gray800};
+      color: ${theme.colors.gray800};
     }
 
     .inquiry_meta {
