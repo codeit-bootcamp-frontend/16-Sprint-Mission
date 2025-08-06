@@ -44,7 +44,7 @@ const ItemListBase = ({
       // 에러 발생 시 이전 데이터 리턴 (onError에서 context로 사용)
       return { prevItems };
     },
-    onError: (err, { itemId, bodyData }, context) => {
+    onError: (_err, _data, context) => {
       if (context?.prevItems) {
         queryClient.setQueryData(["todos"], context.prevItems);
       }
