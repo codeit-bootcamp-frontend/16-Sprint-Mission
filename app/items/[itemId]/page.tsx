@@ -7,7 +7,9 @@ interface ItemDetailPageProps {
 }
 
 const ItemDetailPage = async ({ params }: ItemDetailPageProps) => {
-  const data = await getTodo(params.itemId);
+  const resolvedParams = await params;
+  const { itemId } = resolvedParams;
+  const data = await getTodo(itemId);
 
   return (
     <section className="mt-10">
