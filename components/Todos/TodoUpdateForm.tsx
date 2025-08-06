@@ -3,6 +3,7 @@
 import BulletButton from "@/components/Button/BulletButton";
 import { FormEvent, useState } from "react";
 import { UpdateItem } from "@/types/todo";
+import ImageUploader from "../ImageUploader";
 
 const TodoUpdateForm = ({ initialData }: { initialData: UpdateItem }) => {
   const [data, setData] = useState(initialData);
@@ -16,10 +17,14 @@ const TodoUpdateForm = ({ initialData }: { initialData: UpdateItem }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2 className="item-base flex justify-center rounded-3xl cursor-default">
+      <div className="item-base flex justify-center mb-6 rounded-3xl cursor-default">
         <BulletButton variant={variant} />
-        <strong className="underline underline-offset-4">{data.name}</strong>
-      </h2>
+        <h2 className="text-base font-bold underline underline-offset-4">
+          {data.name}
+        </h2>
+      </div>
+
+      <ImageUploader />
     </form>
   );
 };
