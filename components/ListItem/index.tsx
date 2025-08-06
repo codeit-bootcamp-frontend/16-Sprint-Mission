@@ -1,3 +1,4 @@
+import { MouseEvent } from "react";
 import Image from "next/image";
 import { ItemProps } from "@/types/todo";
 import clsx from "clsx";
@@ -8,7 +9,7 @@ const ListItemBase = ({
   onBulletClick,
   onListClick,
 }: ItemProps) => {
-  const handleBulletClick = (e: MouseEvent) => {
+  const handleBulletClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     onBulletClick(item);
   };
