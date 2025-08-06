@@ -20,6 +20,18 @@
     @apply bg-gray-200 text-gray-900;
   }
 
+  .btn-upload-base {
+    @apply absolute right-4 bottom-4 flex items-center justify-center w-16 h-16 rounded-full transition-colors z-10;
+  }
+
+  .btn-upload {
+    @apply bg-gray-200 text-gray-500 group-hover:bg-primary;
+  }
+
+  .btn-edit {
+    @apply border-2 border-gray-900 bg-gray-900/[.5];
+  }
+
   /* item list */
   .item-base {
     @apply flex items-center w-full mt-4 border-2 border-gray-900 px-[12px] py-2 text-base text-gray-800 rounded-full cursor-pointer transition-colors;

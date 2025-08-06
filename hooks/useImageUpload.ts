@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { TENANT_ID } from "@/constants/constants";
-import axios from "axios";
+import axios from "@/lib/axios";
 
 const useImageUpload = () => {
   return useMutation({
