@@ -1,25 +1,99 @@
-import logo from './logo.svg';
-import './App.css';
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
+
+import { BREAK_POINT } from "./style/BreakPoints";
+
+import Header from "./components/Header";
+import BestProductsItems from "./components/BestProducts";
+import ProductsList from "./components/ProductsList";
+import { getBestProducts, getProducts } from "./API/api";
+import { useEffect, useState } from "react";
+import GlobalStyle from "./style/GlobalStyle";
+import Buttons from "./components/Buttons";
+import useViewportWidth from "./hooks/useViewportWidth";
 
 function App() {
+  const [products, setProducts] = useState([]);
+  const [bestProducts, setBestProducts] = useState([]);
+  const [bestPageSize, setBestPageSize] = useState(1);
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(4);
+  const [orderBy, setOrderBy] = useState("recent");
+  const [keyword, setKeyword] = useState("");
+  const [totalCount, setTotalCount] = useState();
+  const width = useViewportWidth();
+
+  useEffect(() => {
+    if (width < BREAK_POINT.md) {
+      setBestPageSize(1);
+      setPageSize(4);
+    } else if (width < BREAK_POINT.lg) {
+      setBestPageSize(2);
+      setPageSize(6);
+    } else {
+      setBestPageSize(4);
+      setPageSize(10);
+    }
+  }, [width]);
+
+  useEffect(() => {
+    //베스트 상품 fetch 함수
+    async function fetchBestProducts() {
+      try {
+        const result = await getBestProducts();
+        setBestProducts(result.list);
+      } catch (error) {
+        console.error("베스트 상품 불러오기 실패", error);
+      }
+    }
+
+    fetchBestProducts();
+  }, []);
+
+  useEffect(() => {
+    //전체상품 fetch 함수
+    async function fetchProducts() {
+      const result = await getProducts({ page, pageSize, orderBy, keyword });
+      if (!result) return;
+      setProducts(result.list);
+      setTotalCount(result.totalCount);
+    }
+
+    fetchProducts();
+  }, [page, pageSize, orderBy, keyword]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyle />
+      <Header />
+      <section css={mainSection}>
+        <BestProductsItems
+          bestProducts={bestProducts}
+          bestPageSize={bestPageSize}
+        />
+        <ProductsList
+          products={products}
+          setOrderBy={setOrderBy}
+          setKeyword={setKeyword}
+        />
+      </section>
+      <Buttons
+        page={page}
+        pageSize={pageSize}
+        setPage={setPage}
+        totalCount={totalCount}
+      />
+    </>
   );
 }
 
 export default App;
+
+const mainSection = css`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 16px;
+  margin: 0 auto;
+  gap: 24px;
+`;
