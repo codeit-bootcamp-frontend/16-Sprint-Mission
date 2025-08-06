@@ -1,68 +1,28 @@
-import { FocusEvent, MouseEvent, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { checkValidEmail, checkValidPassword } from "../../utils/authUtils";
+import { Link } from "react-router-dom";
+import { getAuthValidStateClassName } from "../../utils/authUtils";
 import getLogo from "../../utils/getLogo";
 import AuthSns from "../../components/AuthSns/AuthSns";
 import AuthGuide from "../../components/AuthGuide/AuthGuide";
 import "../../styles/auth.scss";
 import styles from "./LoginPage.module.scss";
 import AuthFormInput from "../../components/AuthFormInput/AuthFormInput";
-import { getIsAllValid } from "../../utils/getIsAllValid";
-import { ValidResultType } from "types/authType";
+import { SubmitHandler, useForm } from "react-hook-form";
 
-const INIT_VALID: ValidResultType = {
-  isValid: null,
-  msg: "",
-};
+interface FormDataType {
+  email: string;
+  password: string;
+}
 
 const LoginPage = () => {
-  const nav = useNavigate();
-  const [userEmail, setUserEmail] = useState("");
-  const [userPassword, setUserPassword] = useState("");
-  const [validUserEmail, setValidUserEmail] = useState(INIT_VALID);
-  const [validUserPassword, setValidUserPassword] = useState(INIT_VALID);
-  const [isAllValid, setIsAllValid] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid, touchedFields },
+  } = useForm<FormDataType>({ mode: "onBlur" });
 
-  const getUserValidation = (name: string, value: string) => {
-    let validEmail = validUserEmail;
-    let validPassword = validUserPassword;
-
-    switch (name) {
-      case "email": {
-        validEmail = checkValidEmail(value);
-        break;
-      }
-      case "password": {
-        validPassword = checkValidPassword(value);
-        break;
-      }
-      // no default
-    }
-
-    return {
-      validEmail,
-      validPassword,
-    };
+  const handleSubmitFormData: SubmitHandler<FormDataType> = (data) => {
+    console.log(data);
   };
-
-  const handleFocusOut = (e: FocusEvent<HTMLFormElement>) => {
-    const { name, value } = e.target;
-
-    // 인풋 검증
-    const { validEmail, validPassword } = getUserValidation(name, value);
-    setValidUserEmail(() => validEmail);
-    setValidUserPassword(() => validPassword);
-  };
-
-  const handleClickSubmit = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    nav("/");
-  };
-
-  useEffect(() => {
-    // 버튼 활성화 여부
-    setIsAllValid(getIsAllValid([validUserEmail, validUserPassword]));
-  }, [validUserEmail, validUserPassword]);
 
   return (
     <div id="wrap" className={styles.loginPage}>
@@ -77,34 +37,50 @@ const LoginPage = () => {
             />
           </Link>
         </h1>
-        <form className="auth-form" onBlur={handleFocusOut}>
+        <form
+          className="auth-form"
+          onSubmit={handleSubmit(handleSubmitFormData)}
+        >
           {/* 이메일 */}
           <AuthFormInput
             label="이메일"
             type="email"
-            name="email"
-            value={userEmail}
-            onChange={setUserEmail}
             placeholder="이메일을 입력해주세요."
-            validInfo={validUserEmail}
+            {...register("email", {
+              required: "이메일을 입력해주세요.",
+              pattern: {
+                value:
+                  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/,
+                message: "잘못된 이메일 형식입니다.",
+              },
+            })}
+            errorMsg={errors.email?.message}
+            className={getAuthValidStateClassName(
+              touchedFields.email,
+              errors.email?.message
+            )}
           />
 
           {/* 비밀번호 */}
           <AuthFormInput
             label="비밀번호"
             type="password"
-            name="password"
-            value={userPassword}
-            onChange={setUserPassword}
             placeholder="비밀번호를 입력해주세요."
-            validInfo={validUserPassword}
+            {...register("password", {
+              required: "비밀번호를 입력해주세요.",
+              pattern: {
+                value: /^[0-9a-zA-Z]{8}/,
+                message: "비밀번호를 8자 이상 입력해주세요.",
+              },
+            })}
+            errorMsg={errors.password?.message}
+            className={getAuthValidStateClassName(
+              touchedFields.password,
+              errors.password?.message
+            )}
           />
 
-          <button
-            disabled={!isAllValid}
-            className="btn lg auth-form__submit-btn"
-            onClick={handleClickSubmit}
-          >
+          <button disabled={!isValid} className="btn lg auth-form__submit-btn">
             로그인
           </button>
         </form>

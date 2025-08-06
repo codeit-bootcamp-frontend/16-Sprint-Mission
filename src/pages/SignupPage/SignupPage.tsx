@@ -1,119 +1,41 @@
-import { FocusEvent, MouseEvent, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import {
-  checkValidEmail,
-  checkValidNickname,
-  checkValidPassword,
-  checkValidPasswordConfirm,
-} from "../../utils/authUtils";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { getAuthValidStateClassName } from "../../utils/authUtils";
 import getLogo from "../../utils/getLogo";
 import AuthSns from "../../components/AuthSns/AuthSns";
 import AuthGuide from "../../components/AuthGuide/AuthGuide";
 import "../../styles/auth.scss";
 import styles from "./SignupPage.module.scss";
 import AuthFormInput from "../../components/AuthFormInput/AuthFormInput";
-import { getIsAllValid } from "../../utils/getIsAllValid";
-import { ValidResultType } from "types/authType";
+import { SubmitHandler, useForm } from "react-hook-form";
 
-const INIT_VALID = {
-  isValid: null,
-  msg: "",
-};
+interface FormDataType {
+  email: string;
+  nickname: string;
+  password: string;
+  passwordConfirm: string;
+}
 
 const SignupPage = () => {
-  const nav = useNavigate();
-  const [userNickname, setUserNickname] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [userPassword, setUserPassword] = useState("");
-  const [userPasswordConfirm, setUserPasswordConfirm] = useState("");
-  const [validUserNickname, setValidUserNickname] =
-    useState<ValidResultType>(INIT_VALID);
-  const [validUserEmail, setValidUserEmail] =
-    useState<ValidResultType>(INIT_VALID);
-  const [validUserPassword, setValidUserPassword] =
-    useState<ValidResultType>(INIT_VALID);
-  const [validUserPasswordConfirm, setValidUserPasswordConfirm] =
-    useState<ValidResultType>(INIT_VALID);
-  const [isAllValid, setIsAllValid] = useState(false);
+  const {
+    register,
+    watch,
+    handleSubmit,
+    trigger,
+    formState: { errors, isValid, touchedFields, dirtyFields },
+  } = useForm<FormDataType>({ mode: "onBlur" });
 
-  // 비밀번호 확인 필드 함수 재정의
-  const redefinePasswordConfirm = (value: string) => {
-    return checkValidPasswordConfirm(value, userPassword);
+  const password = watch("password");
+
+  const handleSubmitFormData: SubmitHandler<FormDataType> = (data) => {
+    console.log(data);
   };
 
-  const getUserValidation = (name: string, value: string) => {
-    let validNickname = validUserNickname;
-    let validEmail = validUserEmail;
-    let validPassword = validUserPassword;
-    let validPasswordConfirm = validUserPasswordConfirm;
-
-    switch (name) {
-      case "nickname": {
-        validNickname = checkValidNickname(value);
-        break;
-      }
-      case "email": {
-        validEmail = checkValidEmail(value);
-        break;
-      }
-      case "password": {
-        validPassword = checkValidPassword(value);
-
-        // 비밀번호 확인 필드에 값이 있는 상태에서 비밀번호 필드를 바꾸면 양쪽 모두 검사
-        if (userPasswordConfirm.length) {
-          validPasswordConfirm = redefinePasswordConfirm(userPasswordConfirm);
-        }
-        break;
-      }
-      case "passwordConfirm": {
-        validPasswordConfirm = redefinePasswordConfirm(value);
-        break;
-      }
-      // no default
-    }
-
-    return {
-      validNickname,
-      validEmail,
-      validPassword,
-      validPasswordConfirm,
-    };
-  };
-
-  const handleFocusOut = (e: FocusEvent<HTMLFormElement>) => {
-    const { name, value } = e.target;
-
-    // 인풋 검증
-    const { validNickname, validEmail, validPassword, validPasswordConfirm } =
-      getUserValidation(name, value);
-
-    setValidUserNickname(() => validNickname);
-    setValidUserEmail(() => validEmail);
-    setValidUserPassword(() => validPassword);
-    setValidUserPasswordConfirm(() => validPasswordConfirm);
-  };
-
-  const handleClickSubmit = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    nav("/login");
-  };
-
+  // 비밀번호 확인 유효성 통과 후, 비밀번호 필드 수정시 비밀번호 확인 재유효성 검사
+  // register의 onChange는 값이 비동기로 나중에 변경된 값이 적용되는건지 잘 되지 않음.
   useEffect(() => {
-    // 버튼 활성화 여부
-    setIsAllValid(
-      getIsAllValid([
-        validUserNickname,
-        validUserEmail,
-        validUserPassword,
-        validUserPasswordConfirm,
-      ])
-    );
-  }, [
-    validUserNickname,
-    validUserEmail,
-    validUserPassword,
-    validUserPasswordConfirm,
-  ]);
+    if (dirtyFields.passwordConfirm) trigger("passwordConfirm");
+  }, [password, dirtyFields.passwordConfirm, trigger]);
 
   return (
     <div id="wrap" className={styles.signupPage}>
@@ -128,56 +50,84 @@ const SignupPage = () => {
             />
           </Link>
         </h1>
-        <form className="auth-form" onBlur={handleFocusOut}>
+        <form
+          className="auth-form"
+          onSubmit={handleSubmit(handleSubmitFormData)}
+        >
           {/* 이메일 */}
           <AuthFormInput
             label="이메일"
             type="email"
-            name="email"
-            value={userEmail}
-            onChange={setUserEmail}
             placeholder="이메일을 입력해주세요."
-            validInfo={validUserEmail}
+            {...register("email", {
+              required: "이메일을 입력해주세요.",
+              pattern: {
+                value:
+                  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/,
+                message: "잘못된 이메일 형식입니다.",
+              },
+            })}
+            errorMsg={errors.email?.message}
+            className={getAuthValidStateClassName(
+              touchedFields.email,
+              errors.email?.message
+            )}
           />
 
           {/* 닉네임 */}
           <AuthFormInput
             label="닉네임"
             type="text"
-            name="nickname"
-            value={userNickname}
-            onChange={setUserNickname}
             placeholder="닉네임을 입력해주세요."
-            validInfo={validUserNickname}
+            {...register("nickname", {
+              required: "닉네임을 입력해주세요.",
+            })}
+            errorMsg={errors.nickname?.message}
+            className={getAuthValidStateClassName(
+              touchedFields.nickname,
+              errors.nickname?.message
+            )}
           />
 
           {/* 비밀번호 */}
           <AuthFormInput
             label="비밀번호"
             type="password"
-            name="password"
-            value={userPassword}
-            onChange={setUserPassword}
             placeholder="비밀번호를 입력해주세요."
-            validInfo={validUserPassword}
+            {...register("password", {
+              required: "비밀번호를 입력해주세요.",
+              pattern: {
+                value: /^[0-9a-zA-Z]{8}/,
+                message: "비밀번호를 8자 이상 입력해주세요.",
+              },
+            })}
+            errorMsg={errors.password?.message}
+            className={getAuthValidStateClassName(
+              touchedFields.password,
+              errors.password?.message
+            )}
           />
 
           {/* 비밀번호 확인 */}
           <AuthFormInput
             label="비밀번호 확인"
             type="password"
-            name="passwordConfirm"
-            value={userPasswordConfirm}
-            onChange={setUserPasswordConfirm}
             placeholder="비밀번호를 다시 한 번 입력해주세요."
-            validInfo={validUserPasswordConfirm}
+            {...register("passwordConfirm", {
+              required: "비밀번호를 입력해주세요.",
+              validate: (value) => {
+                if (value !== password) return "비밀번호가 일치하지 않습니다.";
+                return true;
+              },
+            })}
+            errorMsg={errors.passwordConfirm?.message}
+            className={getAuthValidStateClassName(
+              touchedFields.passwordConfirm,
+              errors.passwordConfirm?.message
+            )}
           />
 
-          <button
-            disabled={!isAllValid}
-            className="btn lg auth-form__submit-btn"
-            onClick={handleClickSubmit}
-          >
+          <button disabled={!isValid} className="btn lg auth-form__submit-btn">
             회원가입
           </button>
         </form>

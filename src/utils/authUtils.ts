@@ -59,3 +59,17 @@ export function getAuthValidClassName(isValid: boolean | null) {
 
   return isValid ? "isPass" : "isError";
 }
+
+export function getAuthValidStateClassName(
+  touchedFields: boolean | undefined,
+  errorMessage: string | undefined
+) {
+  const isBeforeTouch = !touchedFields;
+
+  // default
+  if (isBeforeTouch) return "";
+
+  const isValidError = !!errorMessage;
+
+  return isValidError ? "isError" : "isPass";
+}
