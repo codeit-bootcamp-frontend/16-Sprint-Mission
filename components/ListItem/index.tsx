@@ -1,17 +1,19 @@
 import { MouseEvent } from "react";
 import Image from "next/image";
-import { ItemProps } from "@/types/todo";
+import { ItemProps, Item } from "@/types/todo";
 import clsx from "clsx";
+import { useRouter } from "next/navigation";
 
-const ListItemBase = ({
-  item,
-  variant = "todo",
-  onBulletClick,
-  onListClick,
-}: ItemProps) => {
+const ListItemBase = ({ item, variant = "todo", onBulletClick }: ItemProps) => {
+  const router = useRouter();
+
   const handleBulletClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     onBulletClick(item);
+  };
+
+  const handleListClick = (item: Item) => {
+    router.push(`/items/${item.id}`);
   };
 
   return (
@@ -20,7 +22,7 @@ const ListItemBase = ({
         "item-todo": variant === "todo",
         "item-done": variant === "done",
       })}
-      onClick={onListClick}
+      onClick={() => handleListClick(item)}
     >
       <button
         className={clsx("bullet-base", {
@@ -44,21 +46,11 @@ const ListItemBase = ({
 };
 
 const ListItem = {
-  Todo: ({ item, onBulletClick, onListClick }: ItemProps) => (
-    <ListItemBase
-      item={item}
-      variant="todo"
-      onBulletClick={onBulletClick}
-      onListClick={onListClick}
-    />
+  Todo: ({ item, onBulletClick }: ItemProps) => (
+    <ListItemBase item={item} variant="todo" onBulletClick={onBulletClick} />
   ),
-  Done: ({ item, onBulletClick, onListClick }: ItemProps) => (
-    <ListItemBase
-      item={item}
-      variant="done"
-      onBulletClick={onBulletClick}
-      onListClick={onListClick}
-    />
+  Done: ({ item, onBulletClick }: ItemProps) => (
+    <ListItemBase item={item} variant="done" onBulletClick={onBulletClick} />
   ),
 };
 

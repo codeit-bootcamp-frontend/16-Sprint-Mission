@@ -66,10 +66,6 @@ const ItemListBase = ({
     updateStatus({ itemId: item.id, bodyData });
   };
 
-  const handleModify = () => {
-    console.log("test");
-  };
-
   const isEmpty = !items || items.length === 0;
   const ListItemByVariant = variant === "todo" ? ListItem.Todo : ListItem.Done;
 
@@ -84,7 +80,6 @@ const ItemListBase = ({
               key={`${variant}-${item.id}`}
               item={item}
               onBulletClick={handleClick}
-              onListClick={handleModify}
             />
           ))}
         </ul>

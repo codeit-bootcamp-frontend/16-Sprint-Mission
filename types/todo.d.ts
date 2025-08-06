@@ -10,7 +10,7 @@ export interface ItemProps {
   item: Item;
   variant?: "todo" | "done";
   onBulletClick: (item: Item) => void;
-  onListClick: () => void;
+  onListClick?: (item: Item) => void;
 }
 
 export interface ItemListProps {
