@@ -1,7 +1,7 @@
 import TodoClient from "@/components/Todos/TodoClient";
 import { getTodos } from "@/lib/api";
 import { Suspense } from "react";
-import TodoLoading from "@/components/Todos/TodoLoading";
+import TodoLoading from "@/components/Loader/TodoLoading";
 
 const Home = async () => {
   const initialItems = await getTodos();
