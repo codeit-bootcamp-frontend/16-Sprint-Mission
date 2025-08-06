@@ -1,8 +1,37 @@
-import styled from "styled-components";
-import logoImg from "../assets/logo.png";
-import moLogoImg from "../assets/mo_logo.png";
-import profileImg from "../assets/profileIcon.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from 'react-router-dom';
+import styled from 'styled-components';
+
+import logoImg from '../assets/logo.png';
+import moLogoImg from '../assets/mo_logo.png';
+import profileImg from '../assets/profileIcon.png';
+
+function Navigation() {
+  const location = useLocation();
+  return (
+    <NavWrap>
+      <Logo>
+        <a href='/'>
+          <picture>
+            <source media='(max-width: 768px)' srcSet={moLogoImg} />
+            <source media='(min-width: 767px)' srcSet={logoImg} />
+            <img src={moLogoImg} alt='판다마켓' aria-hidden='true' />
+          </picture>
+        </a>
+      </Logo>
+      <Nav>
+        <StyledLink to='/freeboard'>자유게시판</StyledLink>
+        <StyledLink to='/items' $isActive={location.pathname === '/addItem'}>
+          중고마켓
+        </StyledLink>
+      </Nav>
+      <Profile>
+        <a href='#'>
+          <img src={profileImg} alt='프로필가기' />
+        </a>
+      </Profile>
+    </NavWrap>
+  );
+}
 
 const NavWrap = styled.div`
   display: flex;
@@ -12,16 +41,6 @@ const NavWrap = styled.div`
   width: 100%;
   padding: 0 16px;
   border-bottom: 1px solid #dfdfdf;
-  a {
-    text-decoration: none;
-    color: #4b5563;
-    font-weight: 600;
-    font-size: 16px;
-    flex-shrink: 0;
-    img {
-      vertical-align: middle;
-    }
-  }
 `;
 const Nav = styled.div`
   display: flex;
@@ -35,7 +54,7 @@ const Logo = styled.div`
   img {
     width: 100%;
   }
-  @media all and (min-width:768px){
+  @media screen and (min-width:768px){
     width: 153px;
   }
 }  
@@ -48,29 +67,14 @@ const Profile = styled.div`
     width: 100%;
   l}
 `;
-
-function Navigation() {
-  return (
-    <NavWrap>
-      <Logo>
-        <a href="/">
-          <picture>
-            <source media="(max-width: 768px)" srcSet={moLogoImg} />
-            <source media="(min-width: 767px)" srcSet={logoImg} />
-            <img src={moLogoImg} alt="판다마켓" aria-hidden="true" />
-          </picture>
-        </a>
-      </Logo>
-      <Nav>
-        <Link to="/freeboard">자유게시판</Link>
-        <Link to="/items">중고마켓</Link>
-      </Nav>
-      <Profile>
-        <a href="#">
-          <img src={profileImg} alt="프로필가기" />
-        </a>
-      </Profile>
-    </NavWrap>
-  );
-}
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: ${props => (props.$isActive ? '#3692ff' : '#4b5563')};
+  font-weight: 600;
+  font-size: 16px;
+  flex-shrink: 0;
+  img {
+    vertical-align: middle;
+  }
+`;
 export default Navigation;

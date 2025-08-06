@@ -1,10 +1,83 @@
-import { useEffect, useState } from "react";
-import styled from "styled-components";
-import Arrow from "../assets/arrowIcon.png";
-const PagetnationWrapper = styled.div`
+import { useMemo } from 'react';
+
+import styled from 'styled-components';
+
+import Arrow from '../assets/arrowIcon.png';
+
+function Pagination({
+  totalItemCount,
+  setCurrentPage,
+  currentPage,
+  SHOWITEMSLENGTH,
+}) {
+  const ITEMS_PER_GROUP = 5;
+
+  // 총 페이지 수 계산
+  const totalPages = Math.ceil(totalItemCount / SHOWITEMSLENGTH);
+
+  // 현재 페이지 그룹 계산 (1~5=0, 6~10=1 ...)
+  const currentGroupIndex = Math.floor((currentPage - 1) / ITEMS_PER_GROUP);
+
+  // 현재 그룹의 페이지들만 계산
+  const currentGroupPages = useMemo(() => {
+    const startPage = currentGroupIndex * ITEMS_PER_GROUP + 1;
+    const endPage = Math.min(startPage + ITEMS_PER_GROUP - 1, totalPages);
+
+    return Array.from(
+      { length: endPage - startPage + 1 },
+      (_, i) => startPage + i,
+    );
+  }, [currentGroupIndex, totalPages]);
+
+  const handlePrevGroup = e => {
+    e.preventDefault();
+    if (currentGroupIndex > 0) {
+      const prevGroupStartPage = (currentGroupIndex - 1) * ITEMS_PER_GROUP + 1;
+      setCurrentPage(prevGroupStartPage); // 직접 호출
+    }
+  };
+  const handleNextGroup = e => {
+    e.preventDefault();
+    const maxGroupIndex = Math.floor((totalPages - 1) / ITEMS_PER_GROUP);
+    if (currentGroupIndex < maxGroupIndex) {
+      const nextGroupStartPage = (currentGroupIndex + 1) * ITEMS_PER_GROUP + 1;
+      setCurrentPage(nextGroupStartPage); // 직접 호출
+    }
+  };
+  // 개별 버튼 클릭
+  const handlePageClick = e => {
+    setCurrentPage(Number(e.target.value));
+  };
+  return (
+    <PaginationWrapper>
+      <PrevBtn disabled={currentGroupIndex === 0} onClick={handlePrevGroup} />
+
+      {currentGroupPages.map(pageNum => (
+        <Btn
+          key={pageNum}
+          value={pageNum}
+          onClick={handlePageClick}
+          className={pageNum === currentPage ? 'on' : ''}
+        >
+          {pageNum}
+        </Btn>
+      ))}
+
+      <NextBtn
+        disabled={
+          currentGroupIndex >= Math.floor((totalPages - 1) / ITEMS_PER_GROUP)
+        }
+        onClick={handleNextGroup}
+      />
+    </PaginationWrapper>
+  );
+}
+
+const PaginationWrapper = styled.div`
   display: flex;
   justify-content: center;
   gap: 4px;
+  margin-top: 40px;
 `;
 const Btn = styled.button`
   border-radius: 50%;
@@ -35,85 +108,4 @@ const NextBtn = styled(Btn)`
   background-position: center;
   transform: rotate(180deg);
 `;
-function Pagetnation({
-  totalCount,
-  currentPageSetter,
-  currentPage,
-  SHOWITEMSLENGTH,
-}) {
-  const [pageGroup, setPageGroup] = useState([]);
-  const [pageGroupIndex, setPageGroupIndex] = useState(0);
-  const [pendingPage, setPendingPage] = useState(null); //중간 저장용
-
-  useEffect(() => {
-    if (pendingPage !== null) {
-      currentPageSetter(pendingPage);
-    }
-  }, [pendingPage, currentPageSetter]);
-
-  useEffect(() => {
-    const sliceArrayByLimit = (totalPage) => {
-      const totalPageArray = Array(totalPage)
-        .fill()
-        .map((_, idx) => idx + 1);
-
-      const result = Array(Math.ceil(totalPage / 5))
-        .fill()
-        .map(() => totalPageArray.splice(0, 5));
-
-      return result;
-    };
-    const pageOfItems = Math.ceil(totalCount / SHOWITEMSLENGTH);
-    const createGroup = sliceArrayByLimit(pageOfItems);
-    setPageGroup(createGroup);
-    setPageGroupIndex(0);
-  }, [totalCount, SHOWITEMSLENGTH]);
-  const handlePrevBtn = (e) => {
-    e.preventDefault();
-    setPageGroupIndex((prev) => {
-      const prevIdx = prev - 1;
-      if (prevIdx >= 0) {
-        const prevPage = pageGroup[prevIdx][0];
-        setPendingPage(prevPage);
-        return prevIdx;
-      }
-      return prev;
-    });
-  };
-  const handlenextBtn = (e) => {
-    e.preventDefault();
-    setPageGroupIndex((prev) => {
-      const nextIdx = prev + 1;
-      if (nextIdx < pageGroup.length) {
-        const nextPage = pageGroup[nextIdx][0];
-        setPendingPage(nextPage);
-        return nextIdx;
-      }
-      return prev;
-    });
-  };
-  const handleCurrentPage = (e) => {
-    currentPageSetter(Number(e.target.value));
-  };
-  return (
-    <PagetnationWrapper>
-      <PrevBtn disabled={!pageGroupIndex} onClick={handlePrevBtn} />
-
-      {pageGroup[pageGroupIndex]?.map((el, idx) => (
-        <Btn
-          onClick={handleCurrentPage}
-          value={el}
-          key={idx}
-          className={el === currentPage ? "on" : ""}
-        >
-          {el}
-        </Btn>
-      ))}
-      <NextBtn
-        disabled={pageGroupIndex === pageGroup.length - 1}
-        onClick={handlenextBtn}
-      />
-    </PagetnationWrapper>
-  );
-}
-export default Pagetnation;
+export default Pagination;
