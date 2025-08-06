@@ -2,20 +2,31 @@ import Image from "next/image";
 import { ItemProps } from "@/types/todo";
 import clsx from "clsx";
 
-const ListItemBase = ({ item, variant = "todo", onClick }: ItemProps) => {
+const ListItemBase = ({
+  item,
+  variant = "todo",
+  onBulletClick,
+  onListClick,
+}: ItemProps) => {
+  const handleBulletClick = (e: MouseEvent) => {
+    e.stopPropagation();
+    onBulletClick(item);
+  };
+
   return (
     <li
       className={clsx("item-base", {
         "item-todo": variant === "todo",
         "item-done": variant === "done",
       })}
+      onClick={onListClick}
     >
       <button
         className={clsx("bullet-base", {
           "bullet-todo": variant === "todo",
           "bullet-done": variant === "done",
         })}
-        onClick={() => onClick(item)}
+        onClick={handleBulletClick}
       >
         {variant === "done" && (
           <Image
@@ -32,11 +43,21 @@ const ListItemBase = ({ item, variant = "todo", onClick }: ItemProps) => {
 };
 
 const ListItem = {
-  Todo: ({ item, onClick }: ItemProps) => (
-    <ListItemBase item={item} variant="todo" onClick={onClick} />
+  Todo: ({ item, onBulletClick, onListClick }: ItemProps) => (
+    <ListItemBase
+      item={item}
+      variant="todo"
+      onBulletClick={onBulletClick}
+      onListClick={onListClick}
+    />
   ),
-  Done: ({ item, onClick }: ItemProps) => (
-    <ListItemBase item={item} variant="done" onClick={onClick} />
+  Done: ({ item, onBulletClick, onListClick }: ItemProps) => (
+    <ListItemBase
+      item={item}
+      variant="done"
+      onBulletClick={onBulletClick}
+      onListClick={onListClick}
+    />
   ),
 };
 
