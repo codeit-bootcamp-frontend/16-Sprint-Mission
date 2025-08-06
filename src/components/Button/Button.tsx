@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes, ReactNode } from "react";
 import { ButtonStyle, ButtonStyleProps } from "./ButtonStyle";
 
 interface ButtonProps
-  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "color" | "children">,
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
     ButtonStyleProps {
   children: ReactNode;
 }
