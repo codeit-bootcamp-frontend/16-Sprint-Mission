@@ -15,20 +15,21 @@ function ImageUpload() {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    const preview = URL.createObjectURL(file);
-    setPreviewUrl(preview);
+    if (file) {
+      const preview = URL.createObjectURL(file);
+      setPreviewUrl(preview);
 
-    if (previewUrl) {
-      setError('*이미지 등록은 최대 1개까지 가능합니다.');
+      if (previewUrl) {
+        setError('*이미지 등록은 최대 1개까지 가능합니다.');
+      }
       e.target.value = '';
       return;
     }
-
-    setError('');
   };
 
   const handleImageRemove = () => {
     setPreviewUrl(null);
+    setError('');
   };
 
   useEffect(() => {
@@ -40,19 +41,19 @@ function ImageUpload() {
   }, [previewUrl]);
 
   return (
-    <Container>
+    <StyledContainer>
       <label>상품 이미지</label>
 
-      <Wrapper>
-        <StInput
+      <StyledWrapper>
+        <StyledInput
           type="file"
           placeholder="이미지를 추가해주세요"
           accept="image/*"
           id="file-input"
           onChange={handleImageUpload}
         />
-        <ImageWrapper>
-          <StLabel htmlFor="file-input">
+        <StyledImageWrapper>
+          <StyledLabel htmlFor="file-input">
             <img
               src={PlusIcon}
               alt="plus"
@@ -60,50 +61,50 @@ function ImageUpload() {
               height={28}
             />
             이미지 등록
-          </StLabel>
-        </ImageWrapper>
+          </StyledLabel>
+        </StyledImageWrapper>
 
         {previewUrl && (
-          <PreviewImage>
-            <StXIcon
+          <StyledPreviewImage>
+            <StyledXIcon
               src={XIcon}
               alt="x"
               width={20}
               height={20}
               onClick={handleImageRemove}
             />
-            <StImage
+            <StyledImage
               src={previewUrl}
               alt="샘플이미지"
             />
-          </PreviewImage>
+          </StyledPreviewImage>
         )}
-      </Wrapper>
+      </StyledWrapper>
 
-      {error && <ErrorMessage>{error}</ErrorMessage>}
-    </Container>
+      {error && <StyledErrorMessage>{error}</StyledErrorMessage>}
+    </StyledContainer>
   );
 }
 
 export default ImageUpload;
 
-const Container = styled.div`
+const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
 `;
 
-const Wrapper = styled.div`
+const StyledWrapper = styled.div`
   position: relative;
   display: flex;
   gap: 24px;
 `;
 
-const ImageWrapper = styled.div`
+const StyledImageWrapper = styled.div`
   display: flex;
 `;
 
-const StInput = styled.input`
+const StyledInput = styled.input`
   position: absolute;
   opacity: 0;
   width: 0;
@@ -111,7 +112,7 @@ const StInput = styled.input`
   overflow: hidden;
 `;
 
-const StLabel = styled.label`
+const StyledLabel = styled.label`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,22 +132,22 @@ const StLabel = styled.label`
   }
 `;
 
-const PreviewImage = styled.div`
+const StyledPreviewImage = styled.div`
   position: relative;
 `;
 
-const StImage = styled.img`
+const StyledImage = styled.img`
   width: 168px;
   height: 168px;
   border-radius: 12px;
 `;
 
-const StXIcon = styled.img`
+const StyledXIcon = styled.img`
   position: absolute;
   top: 14px;
   right: 13px;
 `;
 
-const ErrorMessage = styled.span`
+const StyledErrorMessage = styled.span`
   ${applyFontStyles(FontTypes.REGULAR16, ColorTypes.ERROR)}
 `;

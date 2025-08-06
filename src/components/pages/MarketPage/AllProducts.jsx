@@ -75,73 +75,73 @@ function AllProducts() {
   }
 
   return (
-    <AllProductsContainer>
+    <StyledAllProductsContainer>
       {isTablet ? (
         <>
-          <HeaderContainer>
+          <StyledHeaderContainer>
             <div>전체 상품</div>
-            <HeaderWrapper>
+            <StyledHeaderWrapper>
               <SearchBar onSearch={setKeyword} />
               <AddItemButton />
               <DropdownList onChange={(value) => setOrderBy(value)} />
-            </HeaderWrapper>
-          </HeaderContainer>
+            </StyledHeaderWrapper>
+          </StyledHeaderContainer>
         </>
       ) : (
         <>
-          <HeaderContainer>
-            <HeaderWrapper>
+          <StyledHeaderContainer>
+            <StyledHeaderWrapper>
               <div>전체 상품</div>
               <AddItemButton />
-            </HeaderWrapper>
+            </StyledHeaderWrapper>
 
-            <SecondHeaderWrapper>
+            <StyledSecondHeaderWrapper>
               <SearchBar onSearch={setKeyword} />
               <DropdownList onChange={(value) => setOrderBy(value)} />
-            </SecondHeaderWrapper>
-          </HeaderContainer>
+            </StyledSecondHeaderWrapper>
+          </StyledHeaderContainer>
         </>
       )}
 
-      <ItemCardContainer>
+      <StyledItemCardContainer>
         {items?.map((item) => (
           <ItemCard
             key={item.id}
             item={item}
           />
         ))}
-      </ItemCardContainer>
+      </StyledItemCardContainer>
 
-      <Pagination>
-        <Circle onClick={() => setCurrentPage(currentPage - 1)}>
+      <StyledPagination>
+        <StyledCircle onClick={() => setCurrentPage(currentPage - 1)}>
           <img
             src={left}
             alt="이전"
           />
-        </Circle>
+        </StyledCircle>
         {pageNumbers.map((pageNum) => (
-          <Circle
+          <StyledCircle
             key={pageNum}
             onClick={() => setCurrentPage(pageNum)}
             $isActive={pageNum === currentPage}
           >
             {pageNum}
-          </Circle>
+          </StyledCircle>
         ))}
-        <Circle onClick={() => setCurrentPage(currentPage + 1)}>
+        <StyledCircle onClick={() => setCurrentPage(currentPage + 1)}>
           <img
             src={right}
             alt="다음"
           />
-        </Circle>
-      </Pagination>
-    </AllProductsContainer>
+        </StyledCircle>
+      </StyledPagination>
+    </StyledAllProductsContainer>
   );
 }
 
 export default AllProducts;
 
-const AllProductsContainer = styled.div`
+const StyledAllProductsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -149,7 +149,7 @@ const AllProductsContainer = styled.div`
   margin-bottom: 40px;
 `;
 
-const HeaderContainer = styled.div`
+const StyledHeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -161,7 +161,7 @@ const HeaderContainer = styled.div`
   }
 `;
 
-const HeaderWrapper = styled.div`
+const StyledHeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 
@@ -173,14 +173,14 @@ const HeaderWrapper = styled.div`
   }
 `;
 
-const SecondHeaderWrapper = styled.div`
+const StyledSecondHeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 14px;
 `;
 
-const ItemCardContainer = styled.div`
+const StyledItemCardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 32px 8px;
@@ -194,14 +194,14 @@ const ItemCardContainer = styled.div`
   }
 `;
 
-const Pagination = styled.div`
+export const StyledPagination = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
 `;
 
-const Circle = styled.div`
+export const StyledCircle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;

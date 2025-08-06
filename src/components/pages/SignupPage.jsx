@@ -1,35 +1,32 @@
-import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import styled from 'styled-components';
-
-import { applyFontStyles } from '../../styles/mixins';
-import { ColorTypes, FontTypes } from '../../styles/theme';
-import InputField from '../UI/InputField';
-import useFormValidation from '../../hooks/useFormValidation';
-import { postLogin } from '../../api/api';
-import { useAuth } from '../../context/AuthContext';
-
 import logo from '../../assets/images/logo/logo.svg';
 import google from '../../assets/images/icons/ic_google.png';
 import kakao from '../../assets/images/icons/ic_kakao.png';
+import InputField from '../UI/InputField';
+import { applyFontStyles } from '../../styles/mixins';
+import { ColorTypes, FontTypes } from '../../styles/theme';
+import useFormValidation from '../../hooks/useFormValidation';
+import { postSignup } from '../../api/api';
 
-function LoginPage() {
+function SignupPage() {
   const navigate = useNavigate();
-  const { login } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { errors, setErrors, validate, validateField } = useFormValidation('login');
+  const [nickname, setNickname] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const { errors, setErrors, validate, validateField } = useFormValidation('signup');
 
-  const handleLogin = async (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
-    const validationResult = validate({ email, password });
+    const validationResult = validate({ email, password, nickname, confirmPassword });
     setErrors(validationResult);
     if (Object.keys(validationResult).length > 0) return;
 
     try {
-      const res = await postLogin(email, password);
+      const res = await postSignup(email, password, nickname, confirmPassword);
       localStorage.setItem('token', res.accessToken);
-      login(res.accessToken);
       navigate('/');
     } catch (error) {
       console.error('로그인 실패:', error);
@@ -41,7 +38,16 @@ function LoginPage() {
     setEmail(value);
     setErrors((prev) => ({
       ...prev,
-      email: validateField('email', value, { email: value, password }, 'login'),
+      email: validateField('email', value, { email: value, password, nickname, confirmPassword }, 'signup'),
+    }));
+  };
+
+  const handleNicknameChange = (e) => {
+    const value = e.target.value;
+    setNickname(value);
+    setErrors((prev) => ({
+      ...prev,
+      nickname: validateField('nickname', value, { email, password, nickname: value, confirmPassword }, 'signup'),
     }));
   };
 
@@ -50,7 +56,21 @@ function LoginPage() {
     setPassword(value);
     setErrors((prev) => ({
       ...prev,
-      password: validateField('password', value, { email, password: value }, 'login'),
+      password: validateField('password', value, { email, password: value, nickname, confirmPassword }, 'signup'),
+    }));
+  };
+
+  const handleConfirmPasswordChange = (e) => {
+    const value = e.target.value;
+    setConfirmPassword(value);
+    setErrors((prev) => ({
+      ...prev,
+      confirmPassword: validateField(
+        'confirmPassword',
+        value,
+        { email, password, nickname, confirmPassword: value },
+        'signup'
+      ),
     }));
   };
 
@@ -58,7 +78,15 @@ function LoginPage() {
     const value = e.target.value;
     setErrors((prev) => ({
       ...prev,
-      email: validateField('email', value, { email: value, password }, 'login'),
+      email: validateField('email', value, { email: value, password, nickname, confirmPassword }, 'signup'),
+    }));
+  };
+
+  const handleNicknameBlur = (e) => {
+    const value = e.target.value;
+    setErrors((prev) => ({
+      ...prev,
+      nickname: validateField('nickname', value, { email, password, nickname: value, confirmPassword }, 'signup'),
     }));
   };
 
@@ -66,12 +94,25 @@ function LoginPage() {
     const value = e.target.value;
     setErrors((prev) => ({
       ...prev,
-      password: validateField('password', value, { email, password: value }, 'login'),
+      password: validateField('password', value, { email, password: value, nickname, confirmPassword }, 'signup'),
+    }));
+  };
+
+  const handleConfirmPasswordBlur = (e) => {
+    const value = e.target.value;
+    setErrors((prev) => ({
+      ...prev,
+      confirmPassword: validateField(
+        'confirmPassword',
+        value,
+        { email, password, nickname, confirmPassword: value },
+        'signup'
+      ),
     }));
   };
 
   const hasError = Object.values(errors).some((v) => !!v);
-  const isFilled = email && password;
+  const isFilled = email && password && nickname && confirmPassword;
   const disabled = hasError || !isFilled;
 
   return (
@@ -80,7 +121,7 @@ function LoginPage() {
         src={logo}
         alt="logo"
       />
-      <StyledForm onSubmit={handleLogin}>
+      <StyledForm onSubmit={handleSignup}>
         <InputField
           label="이메일"
           type="email"
@@ -92,6 +133,16 @@ function LoginPage() {
           error={errors.email}
         />
         <InputField
+          label="닉네임"
+          type="text"
+          placeholder="닉네임을 입력해주세요"
+          isTextArea={false}
+          value={nickname}
+          onChange={handleNicknameChange}
+          onBlur={handleNicknameBlur}
+          error={errors.nickname}
+        />
+        <InputField
           label="비밀번호"
           type="password"
           placeholder="비밀번호를 입력해주세요"
@@ -101,11 +152,21 @@ function LoginPage() {
           onBlur={handlePasswordBlur}
           error={errors.password}
         />
+        <InputField
+          label="비밀번호 확인"
+          type="password"
+          placeholder="비밀번호를 다시 입력해주세요"
+          isTextArea={false}
+          value={confirmPassword}
+          onChange={handleConfirmPasswordChange}
+          onBlur={handleConfirmPasswordBlur}
+          error={errors.confirmPassword}
+        />
         <StyledButton
           type="submit"
           disabled={disabled}
         >
-          로그인
+          회원가입
         </StyledButton>
       </StyledForm>
       <StyledSnsLogin>
@@ -141,7 +202,7 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default SignupPage;
 
 const StyledContainer = styled.div`
   display: flex;

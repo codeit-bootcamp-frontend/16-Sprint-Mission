@@ -26,10 +26,10 @@ function TagInput({ tags, setTags }) {
   };
 
   return (
-    <Container>
+    <StyledContainer>
       <label htmlFor="tag">태그</label>
 
-      <Wrapper>
+      <StyledWrapper>
         <input
           id="tag"
           type="text"
@@ -39,9 +39,9 @@ function TagInput({ tags, setTags }) {
           onChange={(e) => setInputValue(e.target.value)}
         />
 
-        <TagList>
+        <StyledTagList>
           {tags.map((tag) => (
-            <TagWrapper key={tag}>
+            <StyledTagWrapper key={tag}>
               <span>{tag}</span>
               <img
                 src={XIcon}
@@ -50,36 +50,36 @@ function TagInput({ tags, setTags }) {
                 height={24}
                 onClick={() => handleTagRemove(tag)}
               />
-            </TagWrapper>
+            </StyledTagWrapper>
           ))}
-        </TagList>
-      </Wrapper>
-    </Container>
+        </StyledTagList>
+      </StyledWrapper>
+    </StyledContainer>
   );
 }
 
 export default TagInput;
 
-const Container = styled.div`
+const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
 `;
 
-const Wrapper = styled.div`
+const StyledWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 14px;
 `;
 
-const TagList = styled.div`
+export const StyledTagList = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 `;
 
-const TagWrapper = styled.div`
+export const StyledTagWrapper = styled.div`
   display: flex;
   justify-content: center;
   gap: 10px;
