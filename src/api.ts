@@ -1,5 +1,8 @@
-import axios, { type AxiosRequestConfig } from "axios";
-import { type IProduct } from "./pages/ItemDetailsPage/ItemDetailsPage";
+import axios from "axios";
+import {
+  type IComments,
+  type IProduct,
+} from "./pages/ItemDetailsPage/ItemDetailsPage";
 
 interface APIResponse<T> {
   status: number;
@@ -49,7 +52,7 @@ export const getProducts = async <T>({
 
 export const getProductById = async <IProduct>(
   productId: number
-): Promise<APIResponse<IProduct>> => {
+): Promise<IProduct> => {
   try {
     const response = await instance.get(`/products/${productId}`);
 
@@ -64,7 +67,7 @@ export const getComments = async <T>({
   productId,
   limit,
   cursor = 0,
-}: ICommentsQuery): Promise<APIResponse<T>> => {
+}: ICommentsQuery): Promise<IComments> => {
   try {
     const response = await instance.get(`/products/${productId}/comments`, {
       params: {

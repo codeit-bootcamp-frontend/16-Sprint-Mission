@@ -1,3 +1,40 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-primary: #3692ff;
+  --color-primary-dark: #1967d6;
+  --color-primary-darker: #1251aa;
+  --color-selected: #2f80ed;
+  --color-disabled: #9ca3af;
+  --color-background-light: #fcfcfc;
+  --color-background-blue: #cfe5ff;
+  --color-background-dark: #111827;
+  --color-text-light: #e5e7eb;
+  --color-text-grey100: #f9fafb;
+  --color-text-grey300: #d1d5db;
+  --color-text-grey400: #9ca3af;
+  --color-text-grey500: #6b7280;
+  --color-text-grey600: #4b5563;
+  --color-text-grey700: #374151;
+  --color-text-grey800: #1f2937;
+  --color-input: #f3f4f6;
+  --color-white: #ffffff;
+  --color-text-login: #1f2937;
+  --color-error-red: #f74747;
+  --color-border-grey: #dfdfdf;
+
+  /* Typography */
+  --font-primary: "Pretendard-Regular", sans-serif;
+  --font-secondary: "ROKAF SANS", sans-serif;
+
+  /* Space */
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+}
+
 @font-face {
   font-family: "Pretendard-Regular";
   src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
@@ -45,6 +82,7 @@
 
   /* Fonts */
   --font-weight-bold: 700;
+  --font-weight-semibold: 500;
   --font-weight-regular: 400;
 
   /* Z-index */
@@ -61,14 +99,4 @@ body {
   line-height: 1.5;
   font-family: var(--font-primary);
   word-break: keep-all;
-}
-
-button {
-  padding-inline: 0;
-  padding-block: 0;
-}
-
-a {
-  color: unset;
-  text-decoration: none;
 }
