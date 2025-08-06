@@ -1,6 +1,7 @@
 .btn {
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: var(--color-primary-100);
   text-decoration: none;
   color: var(--color-secondary-100);
@@ -8,6 +9,7 @@
   font-weight: 600;
   gap: 8px;
   transition: background-color 0.2s;
+  cursor: pointer;
 }
 
 .btn-register {

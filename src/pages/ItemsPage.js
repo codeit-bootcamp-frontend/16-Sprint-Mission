@@ -1,13 +1,13 @@
 import "./css/ItemListPage.css";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getFavoriteItems, getAllItems } from "../api/Items.js";
+import { getFavoriteItems, getAllItems } from "../api/Items";
 import Card from "../components/Card";
-import SearchInput from "../components/SearchInput.js";
-import Button from "../components/Button.js";
-import Pagination from "../components/Pagination.js";
-import usePagination from "../hooks/usePagination.js";
-import SortDropdown from "../components/SortDropdown.js";
+import SearchInput from "../components/SearchInput";
+import Button from "../components/Button";
+import Pagination from "../components/Pagination";
+import usePagination from "../hooks/usePagination";
+import SortDropdown from "../components/SortDropdown";
 
 const ItemListPage = () => {
   const navigate = useNavigate();
@@ -77,11 +77,11 @@ const ItemListPage = () => {
     }
   };
 
-  const onClickDropdown = () => {
+  const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
 
-  const onClickDropdownItem = (order) => {
+  const handleDropdownItemClick = (order) => {
     if (order.value !== orderBy.value) {
       setOrderBy(order);
       setPaginationCurrentPage(1);
@@ -216,8 +216,8 @@ const ItemListPage = () => {
               </Button>
               <SortDropdown
                 className="items__container__dropdown"
-                onClickDropdown={onClickDropdown}
-                onClickDropdownItem={onClickDropdownItem}
+                onToggleDropdown={toggleDropdown}
+                onDropdownItemClick={handleDropdownItemClick}
                 onCloseDropdown={onCloseDropdown}
                 dropdownList={dropdownList}
                 showDropdown={showDropdown}

@@ -4,8 +4,8 @@ import moreIcon from "../img/more.svg";
 
 const MoreDropdown = ({
   className,
-  onClickDropdown,
-  onClickDropdownItem,
+  onToggleDropdown,
+  onDropdownItemClick,
   onCloseDropdown,
   dropdownList,
   showDropdown,
@@ -14,8 +14,8 @@ const MoreDropdown = ({
   return (
     <Dropdown
       className={className}
-      onClickDropdown={onClickDropdown}
-      onClickDropdownItem={onClickDropdownItem}
+      onToggleDropdown={onToggleDropdown}
+      onDropdownItemClick={onDropdownItemClick}
       onCloseDropdown={onCloseDropdown}
       dropdownList={dropdownList}
       showDropdown={showDropdown}
@@ -24,7 +24,7 @@ const MoreDropdown = ({
       <img
         src={moreIcon}
         alt="드롭다운 더보기 아이콘"
-        onClick={onClickDropdown}
+        onClick={onToggleDropdown}
       />
       <Dropdown.List listClassName={"dropdown__list__more"} />
     </Dropdown>

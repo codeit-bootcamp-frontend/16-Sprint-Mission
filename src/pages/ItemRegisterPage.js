@@ -167,7 +167,9 @@ const ItemRegisterPage = () => {
                 message={formState.title.validInfo.message}
                 isValid={formState.title.validInfo.isValid}
                 placeholder="상품명을 입력해주세요"
-                onChange={onChangeTextfield}
+                onChange={(e) =>
+                  onChangeTextfield(e.target.name, e.target.value)
+                }
               />
             </div>
 
@@ -179,7 +181,9 @@ const ItemRegisterPage = () => {
                 message={formState.content.validInfo.message}
                 isValid={formState.content.validInfo.isValid}
                 placeholder="상품 소개를 입력해주세요"
-                onChange={onChangeTextfield}
+                onChange={(e) =>
+                  onChangeTextfield(e.target.name, e.target.value)
+                }
               />
             </div>
 
@@ -193,7 +197,7 @@ const ItemRegisterPage = () => {
                 message={formState.price.validInfo.message}
                 isValid={formState.price.validInfo.isValid}
                 placeholder="판매 가격을 입력해주세요"
-                onChange={onPriceChange}
+                onChange={(e) => onPriceChange(e.target.name, e.target.value)}
               />
             </div>
 

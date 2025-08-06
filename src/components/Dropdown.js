@@ -1,38 +1,29 @@
 import "./css/Dropdown.css";
 import sortIcon from "../img/sort.svg";
 import arrowDownIcon from "../img/arrow_down.svg";
-import { createContext, useContext, useRef, useEffect } from "react";
+import { createContext, useContext, useRef } from "react";
+import useClickOutside from "../hooks/useClickOutside";
 const DropdownContext = createContext();
 
 const Dropdown = ({
   children,
   className = "",
-  onClickDropdown,
-  onClickDropdownItem,
+  onToggleDropdown,
+  onDropdownItemClick,
   onCloseDropdown = () => {},
   dropdownList,
   showDropdown,
   value,
 }) => {
   const dropdownRef = useRef(null);
-
-  // 외부 클릭 시 드롭다운 닫기
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        onCloseDropdown();
-      }
-    };
-    window.addEventListener("click", handleClickOutside);
-    return () => window.removeEventListener("click", handleClickOutside);
-  }, [onCloseDropdown]);
+  useClickOutside(dropdownRef, onCloseDropdown);
 
   return (
     <DropdownContext.Provider
       value={{
         className,
-        onClickDropdown,
-        onClickDropdownItem,
+        onToggleDropdown,
+        onDropdownItemClick,
         onCloseDropdown,
         dropdownList,
         showDropdown,
@@ -47,9 +38,9 @@ const Dropdown = ({
 };
 
 const Button = () => {
-  const { value, onClickDropdown } = useContext(DropdownContext);
+  const { value, onToggleDropdown } = useContext(DropdownContext);
   return (
-    <div className="dropdown__button" onClick={onClickDropdown}>
+    <div className="dropdown__button" onClick={onToggleDropdown}>
       <span className="dropdown__text">{value.name}</span>
       <img
         src={arrowDownIcon}
@@ -62,7 +53,7 @@ const Button = () => {
 };
 
 const List = ({ listClassName = "" }) => {
-  const { showDropdown, dropdownList, onClickDropdownItem } =
+  const { showDropdown, dropdownList, onDropdownItemClick } =
     useContext(DropdownContext);
   if (!showDropdown) return null;
   return (
@@ -70,7 +61,7 @@ const List = ({ listClassName = "" }) => {
       {dropdownList?.map((item, index) => (
         <li
           key={`${item.value}-${index}`}
-          onClick={() => onClickDropdownItem(item)}
+          onClick={() => onDropdownItemClick(item)}
         >
           {item.name}
         </li>

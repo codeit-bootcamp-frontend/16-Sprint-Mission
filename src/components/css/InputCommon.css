@@ -2,6 +2,10 @@
   width: 100%;
 }
 
+.input__wrapper {
+  position: relative;
+}
+
 .input {
   width: 100%;
   font-family: "Pretendard Variable";
