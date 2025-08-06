@@ -8,6 +8,8 @@ const FooterStyle = css`
   .footer-container {
     display: flex;
     justify-content: space-between;
+    max-width: var(--container-width);
+    margin: 0 auto;
     padding: var(--footer-padding);
     flex-wrap: wrap;
     gap: 24px;
