@@ -7,7 +7,7 @@ import HeaderAuth from './HeaderAuth';
 import Navigations from './Navigations';
 
 function Header() {
-  const [isLoggedIn] = useState(sessionStorage.getItem('loggedIn'));
+  const [isLoggedIn] = useState(!!sessionStorage.getItem('loggedIn'));
 
   return (
     <>

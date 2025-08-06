@@ -1,6 +1,6 @@
 import logo from '@assets/images/logo-title.png';
 import SocialLogin from '@components/SocialLogin';
-import { FormProvider, useForm } from 'react-hook-form';
+import { FormProvider, useForm, type SubmitHandler } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import EmailField from './EmailField';
 import NameField from './NameField';
@@ -8,18 +8,22 @@ import PasswordCheckField from './PasswordCheckField';
 import PasswordField from './PasswordField';
 import styles from './styles/Auth.module.css';
 import SubmitButton from './SubmitButton';
+import { FormDataSchema } from './FormInput';
+import type z from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+
+type SignUpFormData = z.infer<typeof FormDataSchema>;
 
 function SignUp() {
   const toLoginNavigate = useNavigate();
-  const methods = useForm({ mode: 'all' });
+  const methods = useForm<SignUpFormData>({
+    resolver: zodResolver(FormDataSchema),
+    mode: 'all',
+  });
 
-  function onSubmit(e) {
-    if (!methods.isValid) {
-      toLoginNavigate('/Login');
-    } else {
-      e.preventDefault();
-    }
-  }
+  const onSubmit: SubmitHandler<SignUpFormData> = () => {
+    toLoginNavigate('/Login');
+  };
 
   return (
     <main className={styles.signUp}>
