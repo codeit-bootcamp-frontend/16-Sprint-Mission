@@ -4,7 +4,11 @@ import nanumSquare from "@/assets/fonts/NanumSquare/nanumSquare";
 import { useEffect, useRef, useMemo } from "react";
 import debounce from "@/lib/debounce";
 
-const MemoContainer = () => {
+interface MemoProps {
+  onChange: (v: string) => void;
+}
+
+const MemoContainer = ({ onChange }: MemoProps) => {
   const memoRef = useRef<HTMLTextAreaElement>(null);
 
   const getTextarea = (callback: (el: HTMLTextAreaElement) => void) => {
@@ -13,12 +17,16 @@ const MemoContainer = () => {
     callback(el);
   };
 
-  const handleHeight = useMemo(
+  const handleChange = useMemo(
     () =>
       debounce(() => {
         getTextarea((el) => {
+          // 높이값 조절
           el.style.height = "auto";
           el.style.height = `${el.scrollHeight}px`;
+
+          // 값 전달
+          onChange?.(el.value);
         });
       }, 100),
     []
@@ -36,9 +44,9 @@ const MemoContainer = () => {
     });
 
     return () => {
-      handleHeight.cancel();
+      handleChange.cancel();
     };
-  }, [handleHeight]);
+  }, [handleChange]);
 
   return (
     <div
@@ -55,8 +63,8 @@ const MemoContainer = () => {
           rows={1}
           spellCheck={false}
           style={{ resize: "none" }}
-          onInput={handleHeight}
-          className="bg-transparent w-[50%] max-h-[220px] -mt-10 text-center"
+          onInput={handleChange}
+          className="bg-transparent w-[50%] max-h-[220px] -mt-10 text-center outline-none"
         ></textarea>
       </div>
     </div>

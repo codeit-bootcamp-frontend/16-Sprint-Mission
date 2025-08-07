@@ -9,7 +9,12 @@ import useImageUpload from "@/hooks/useImageUpload";
 import LoadingSpinner from "@/components/Loader/LoadingSpinner";
 import clsx from "clsx";
 
-const ImageUploader = ({ className }: { className: string }) => {
+interface ImageUploaderProps {
+  className: string;
+  onUploaded: (v: string) => void;
+}
+
+const ImageUploader = ({ className, onUploaded }: ImageUploaderProps) => {
   const fileRef = useRef<HTMLInputElement>(null);
   const [preview, setPreview] = useState<File | null>(null);
   const { mutate: uploadImage, isPending } = useImageUpload();
@@ -27,6 +32,9 @@ const ImageUploader = ({ className }: { className: string }) => {
     setPreview(file);
 
     uploadImage(file, {
+      onSuccess: (url) => {
+        onUploaded(url);
+      },
       onError: () => {
         alert("이미지 업로드에 실패했습니다.");
       },
