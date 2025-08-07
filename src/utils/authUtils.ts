@@ -68,5 +68,5 @@ export function getAuthValidStateClassName(
     ? theme.colors.error
     : theme.colors.primaryColor;
 
-  return { border: `1px solid ${borderColor}` };
+  return `border: 1px solid ${borderColor}`;
 }

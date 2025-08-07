@@ -1,5 +1,4 @@
 /** @jsxImportSource @emotion/react */
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getAuthValidStateClassName } from "../../utils/authUtils";
 import getLogo from "../../utils/getLogo";
@@ -23,23 +22,15 @@ interface FormDataType {
 const SignupPage = () => {
   const {
     register,
-    watch,
     handleSubmit,
     trigger,
-    formState: { errors, isValid, touchedFields, dirtyFields },
+    getValues,
+    formState: { errors, isValid, touchedFields },
   } = useForm<FormDataType>({ mode: "onBlur" });
-
-  const password = watch("password");
 
   const handleSubmitFormData: SubmitHandler<FormDataType> = (data) => {
     console.log(data);
   };
-
-  // 비밀번호 확인 유효성 통과 후, 비밀번호 필드 수정시 비밀번호 확인 재유효성 검사
-  // register의 onChange는 값이 비동기로 나중에 변경된 값이 적용되는건지 잘 되지 않음.
-  useEffect(() => {
-    if (dirtyFields.passwordConfirm) trigger("passwordConfirm");
-  }, [password, dirtyFields.passwordConfirm, trigger]);
 
   return (
     <SignupPageStyle id="wrap">
@@ -95,6 +86,9 @@ const SignupPage = () => {
           />
 
           {/* 비밀번호 */}
+          {/* 최초 렌더링시에는 입력할 때 리렌더링이 발생하지 않음. */}
+          {/* watch 때문에 불필요한 리렌더링 발생 :: watch는 실시간으로 값을 추적하기 때문에 리렌더링이 발생할 수밖에 없는거 같다. 웬만해선 안쓰는게 좋을 듯... */}
+          {/* getValues는 리렌더링이 발생하지 않고, 실시간으로 값을 추적하지는 못하지만, 실행될 시점에 저장되어 있는 값을 가져옴. */}
           <AuthFormInput
             label="비밀번호"
             type="password"
@@ -102,8 +96,13 @@ const SignupPage = () => {
             {...register("password", {
               required: "비밀번호를 입력해주세요.",
               pattern: {
-                value: /^[0-9a-zA-Z]{8}/,
+                value: /^[0-9a-zA-Z]{8,}$/,
                 message: "비밀번호를 8자 이상 입력해주세요.",
+              },
+              onBlur: () => {
+                // validate를 사용했으나, 간헐적으로 무한루프가 일어날 때가 있어서, onBlur로 변경.
+                const passwordConfirm = getValues("passwordConfirm");
+                if (passwordConfirm) trigger("passwordConfirm");
               },
             })}
             errorMsg={errors.password?.message}
@@ -123,6 +122,7 @@ const SignupPage = () => {
             {...register("passwordConfirm", {
               required: "비밀번호를 입력해주세요.",
               validate: (value) => {
+                const password = getValues("password");
                 if (value !== password) return "비밀번호가 일치하지 않습니다.";
                 return true;
               },
