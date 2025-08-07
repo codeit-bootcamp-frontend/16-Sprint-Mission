@@ -83,4 +83,19 @@
   .input-search-skeleton {
     @apply w-full h-[52px] bg-gray-200 rounded-3xl animate-pulse;
   }
+
+  /* custom bg */
+  .bg-custom-stripe {
+    background-image: linear-gradient(
+      0deg,
+      #fef3c7 2.94%,
+      #fefce8 2.94%,
+      #fefce8 50%,
+      #fef3c7 50%,
+      #fef3c7 52.94%,
+      #fefce8 52.94%,
+      #fefce8 100%
+    );
+    background-size: 68px 68px;
+  }
 }

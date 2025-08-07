@@ -9,7 +9,7 @@ import useImageUpload from "@/hooks/useImageUpload";
 import LoadingSpinner from "@/components/Loader/LoadingSpinner";
 import clsx from "clsx";
 
-const ImageUploader = () => {
+const ImageUploader = ({ className }: { className: string }) => {
   const fileRef = useRef<HTMLInputElement>(null);
   const [preview, setPreview] = useState<File | null>(null);
   const { mutate: uploadImage, isPending } = useImageUpload();
@@ -34,7 +34,9 @@ const ImageUploader = () => {
   };
 
   return (
-    <div className="relative flex items-center justify-center w-[384px] h-[310px] rounded-3xl border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-primary-100 hover:border-primary transition-colors overflow-hidden">
+    <div
+      className={`relative flex items-center justify-center w-[384px] h-[310px] rounded-3xl border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-primary-100 hover:border-primary transition-colors overflow-hidden ${className}`}
+    >
       <input
         ref={fileRef}
         type="file"

@@ -4,6 +4,7 @@ import BulletButton from "@/components/Button/BulletButton";
 import { FormEvent, useState } from "react";
 import { UpdateItem } from "@/types/todo";
 import ImageUploader from "../ImageUploader";
+import MemoContainer from "../MemoContainer";
 
 const TodoUpdateForm = ({ initialData }: { initialData: UpdateItem }) => {
   const [data, setData] = useState(initialData);
@@ -24,7 +25,10 @@ const TodoUpdateForm = ({ initialData }: { initialData: UpdateItem }) => {
         </h2>
       </div>
 
-      <ImageUploader />
+      <div className="flex gap-6">
+        <ImageUploader className="shrink-0" />
+        <MemoContainer />
+      </div>
     </form>
   );
 };
