@@ -1,7 +1,8 @@
 "use client";
 
 import nanumSquare from "@/assets/fonts/NanumSquare/nanumSquare";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useMemo } from "react";
+import debounce from "@/lib/debounce";
 
 const MemoContainer = () => {
   const memoRef = useRef<HTMLTextAreaElement>(null);
@@ -12,13 +13,16 @@ const MemoContainer = () => {
     callback(el);
   };
 
-  const handleHeight = () => {
-    // 디바운싱 처리 필요
-    getTextarea((el) => {
-      el.style.height = "auto";
-      el.style.height = `${el.scrollHeight}px`;
-    });
-  };
+  const handleHeight = useMemo(
+    () =>
+      debounce(() => {
+        getTextarea((el) => {
+          el.style.height = "auto";
+          el.style.height = `${el.scrollHeight}px`;
+        });
+      }, 100),
+    []
+  );
 
   const focusTextarea = () => {
     getTextarea((el) => {
@@ -30,7 +34,11 @@ const MemoContainer = () => {
     getTextarea((el) => {
       if (el.value.length === 0) el.focus();
     });
-  }, []);
+
+    return () => {
+      handleHeight.cancel();
+    };
+  }, [handleHeight]);
 
   return (
     <div
