@@ -3,6 +3,8 @@ import logoMd from "../assets/images/common/logo_md.svg";
 import logoSm from "../assets/images/common/logo_sm.svg";
 import logoSx from "../assets/images/common/logo_sx.svg";
 
+type SizeType = keyof typeof logoSize;
+
 const logoSize = {
   lg: logoLg,
   md: logoMd,
@@ -10,6 +12,6 @@ const logoSize = {
   sx: logoSx,
 };
 
-const getLogo = (size) => logoSize[size];
+const getLogo = (size: SizeType): string => logoSize[size];
 
 export default getLogo;

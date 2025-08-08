@@ -1,10 +1,8 @@
-import { css } from "@emotion/react";
+import { css, Theme } from "@emotion/react";
 import { resetStyles } from "./resetStyles";
 import { fontStyles } from "./fontStyles";
-import { variablesStyles } from "./variablesStyles";
 
-export const globalStyle = css`
-  ${variablesStyles}
+export const globalStyle = (theme: Theme) => css`
   ${fontStyles}
-  ${resetStyles}
+  ${resetStyles(theme)}
 `;

@@ -4,19 +4,15 @@ import {
 } from "@components/TagItem/TagItemStyle";
 import { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
 
-interface TagItemBase {
+interface TextProps extends HTMLAttributes<HTMLSpanElement> {
+  type: "text";
   children: ReactNode;
 }
-
-type TextProps = HTMLAttributes<HTMLSpanElement> &
-  TagItemBase & {
-    type: "text";
-  };
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
-  TagItemBase & {
-    type: "button";
-    onClick: () => void;
-  };
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  type: "button";
+  onClick: () => void;
+  children: ReactNode;
+}
 
 type TagItemProps = TextProps | ButtonProps;
 

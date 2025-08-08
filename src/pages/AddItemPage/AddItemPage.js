@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import Input from "../../components/Input/Input";
 import styles from "./AddItemPage.module.scss";
 import TextArea from "../../components/TextArea/TextArea";
@@ -94,7 +94,7 @@ const AddItemPage = () => {
               type={"text"}
               name={"title"}
               value={prdName}
-              onChange={setPrdName}
+              onChange={(e) => setPrdName(e.target.value)}
               placeholder={"상품명을 입력해주세요"}
             />
           </div>
@@ -121,7 +121,7 @@ const AddItemPage = () => {
               type={"tel"}
               name={"price"}
               value={prdPrice}
-              onChange={handleChangePrice}
+              onChange={(e) => handleChangePrice(e.target.value)}
               placeholder={"판매 가격을 입력해주세요"}
             />
           </div>
@@ -134,7 +134,7 @@ const AddItemPage = () => {
               type={"text"}
               name={"tag"}
               value={tagInput}
-              onChange={setTagInput}
+              onChange={(e) => setTagInput(e.target.value)}
               placeholder={"태그를 입력해주세요"}
               onKeyDown={handleAddTag}
             />
@@ -142,7 +142,8 @@ const AddItemPage = () => {
               <div className={styles.form__tagArea}>
                 {tagList.map((tag, id) => (
                   <TagItem
-                    // type="button"
+                    type="button"
+                    key={`${tag}_${id}`}
                     onClick={() => {
                       handleDeleteTag(id);
                     }}

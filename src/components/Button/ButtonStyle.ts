@@ -2,34 +2,35 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled/macro";
 import { mq } from "../../styles/mixins";
 import { Link } from "react-router-dom";
+import { theme } from "@styles/theme";
 
 export interface ButtonStyleProps {
-  color?: keyof typeof ButtonColors;
+  variant?: keyof typeof ButtonStyles;
   size?: keyof typeof ButtonSize;
   round?: boolean;
 }
 
-export const ButtonColors = {
+export const ButtonStyles = {
   primary: css`
     color: #fff;
-    background-color: var(--btn-primary);
+    background-color: ${theme.btn.primary};
 
     &:hover {
-      background-color: var(--btn-primary-hover);
+      background-color: ${theme.btn.hover};
     }
 
     &:active {
-      background-color: var(--btn-primary-click);
+      background-color: ${theme.btn.click};
     }
 
     &:disabled {
-      background-color: var(--btn-disabled);
+      background-color: ${theme.btn.disabled};
     }
   `,
   white: css`
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
-    background-color: var(--white);
+    border: 1px solid ${theme.colors.primaryColor};
+    color: ${theme.colors.primaryColor};
+    background-color: ${theme.colors.white};
   `,
   custom: css``,
 };
@@ -69,7 +70,7 @@ export const ButtonBaseStyle = (props: ButtonStyleProps) => css`
   cursor: pointer;
 
   ${props.size ? ButtonSize[props.size] : ButtonSize["sm"]};
-  ${props.color ? ButtonColors[props.color] : ButtonColors["primary"]};
+  ${props.variant ? ButtonStyles[props.variant] : ButtonStyles["primary"]};
   border-radius: ${props.round ? "40px" : "8px"};
 `;
 

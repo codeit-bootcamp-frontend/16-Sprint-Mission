@@ -4,6 +4,7 @@ import TextArea from "@components/TextArea/TextArea";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled/macro";
 import { mq } from "@styles/mixins";
+import { theme } from "@styles/theme";
 import { FormEvent, FormHTMLAttributes, useState } from "react";
 
 type BaseProps = FormHTMLAttributes<HTMLFormElement> & {
@@ -42,12 +43,12 @@ const ProductInquiryForm = ({ onSubmitForm }: BaseProps) => {
 
 export const InquiryFormTitle = styled.h3`
   margin-bottom: 9px;
-  color: var(--gray900);
+  color: ${theme.colors.gray900};
 
   ${mq["mobile"]} {
     margin-bottom: 16px;
     font-weight: 600;
-    color: var(--gray800);
+    color: ${theme.colors.gray800};
   }
 `;
 

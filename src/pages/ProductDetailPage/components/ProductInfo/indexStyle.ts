@@ -1,12 +1,13 @@
 import styled from "@emotion/styled/macro";
-import { mq } from "../../../../styles/mixins";
+import { mq } from "@styles/mixins";
+import { theme } from "@styles/theme";
 
 export const DetailInfoBox = styled.div`
   display: flex;
   align-items: flex-start;
   gap: 24px;
   margin-bottom: 40px;
-  border-bottom: 1px solid var(--gray200);
+  border-bottom: 1px solid ${theme.colors.gray200};
   padding-bottom: 40px;
 
   ${mq["tablet"]} {

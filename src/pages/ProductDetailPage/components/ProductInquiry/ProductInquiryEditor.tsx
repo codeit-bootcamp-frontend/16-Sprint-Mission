@@ -3,6 +3,7 @@ import Button from "@components/Button/Button";
 import TextArea from "@components/TextArea/TextArea";
 import { css } from "@emotion/react";
 import InquiryUserProfile from "@pages/ProductDetailPage/components/ProductInquiry/InquiryUserProfile";
+import { theme } from "@styles/theme";
 import { ChangeEvent, useState } from "react";
 import { InquiryItemType } from "types/productType";
 
@@ -42,7 +43,7 @@ const InquiryEditor = ({
         <InquiryUserProfile writer={writer} updatedAt={updatedAt} size="sm" />
         <div className="edit_btns">
           <Button
-            color="custom"
+            variant="custom"
             onClick={disableEditMode}
             css={CancelButtonCustom}
           >
@@ -61,7 +62,7 @@ const CancelButtonCustom = css`
   width: 68px;
   height: 47px;
   font-weight: 600;
-  color: var(--gray500);
+  color: ${theme.colors.gray500};
   background: none;
 `;
 

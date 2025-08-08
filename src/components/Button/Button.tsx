@@ -1,14 +1,11 @@
 import { ButtonHTMLAttributes, ReactNode } from "react";
 import { ButtonStyle, ButtonStyleProps } from "./ButtonStyle";
 
-interface BaseButtonProps {
-  onClick?: () => void;
+interface ButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
+    ButtonStyleProps {
   children: ReactNode;
 }
-
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
-  BaseButtonProps &
-  ButtonStyleProps;
 
 const Button = ({ onClick, children, ...props }: ButtonProps) => {
   return (

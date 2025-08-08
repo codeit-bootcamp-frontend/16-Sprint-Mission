@@ -6,13 +6,15 @@ import {
 } from "@pages/ProductDetailPage/components/ProductInfo/indexStyle";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { ProductItemType } from "types/productType";
+import { ProductItemDetailType } from "types/productType";
 import ProductInfoContent from "@pages/ProductDetailPage/components/ProductInfo/ProductInfoContent";
 import { getProductInfo } from "@data/api";
 
 const ProductInfo = () => {
   const { productId } = useParams();
-  const [productInfo, setProductInfo] = useState<ProductItemType | null>(null);
+  const [productInfo, setProductInfo] = useState<ProductItemDetailType | null>(
+    null
+  );
 
   useEffect(() => {
     const getProduct = async () => {
