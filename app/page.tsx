@@ -1,7 +1,18 @@
-export default function Home() {
+import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
+
+import TodoList from '@/components/TodoList';
+
+import { getItemList } from './api/todo';
+
+export default async function Page() {
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery({ queryKey: ['todos'], queryFn: getItemList });
+
   return (
-    <main className='flex min-h-screen items-center justify-center bg-blue-100'>
-      <h1 className='text-4xl font-bold text-blue-800'>메인페이지입니다.</h1>
-    </main>
+    <>
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <TodoList />
+      </HydrationBoundary>
+    </>
   );
 }
