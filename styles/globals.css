@@ -2,10 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .shadow-none {
+    box-shadow: none;
+  }
+}
+
 @layer components {
   /* button */
   .btn-base {
-    @apply w-[164px] h-[52px] flex items-center justify-center text-base font-bold rounded-3xl border-2 border-gray-900 shadow-button duration-150;
+    @apply w-[164px] h-[52px] flex items-center justify-center text-base font-bold rounded-3xl border-2 border-gray-900 shadow-button duration-150 active:shadow-none active:translate-x-1 active:translate-y-1;
   }
 
   .btn-primary {
@@ -14,6 +20,10 @@
 
   .btn-danger {
     @apply bg-danger text-white hover:bg-danger-dark;
+  }
+
+  .btn-success {
+    @apply bg-lime-300 text-gray-900 hover:bg-lime-400;
   }
 
   .btn-disabled {
