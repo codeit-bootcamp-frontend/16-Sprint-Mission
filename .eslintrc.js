@@ -53,6 +53,7 @@ module.exports = {
     'react/prop-types': 'off',
     'react-hooks/rules-of-hooks': 'error',
     'react/react-in-jsx-scope': 'off',
+    'import/no-named-as-default': 'off',
     'import/order': [
       'error',
       {

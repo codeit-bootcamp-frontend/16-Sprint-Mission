@@ -3,15 +3,15 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { FormProvider, useForm } from 'react-hook-form';
-import z from 'zod';
+import { z } from 'zod';
 
+import { addItem, getItemList, updateItem } from '@/app/api/todo';
 import Badge from '@/components/Badge';
 import Button from '@/components/Button';
 import CheckListItem from '@/components/CheckListItem';
 import FormInput from '@/components/FormInput';
 import { todoSchema } from '@/lib/schemas';
 import { Item, ItemDetail } from '@/types/TodoTypes';
-import { addItem, getItemList, updateItem } from 'app/api/todo';
 
 import EmptyContent from './EmptyContent';
 
@@ -36,7 +36,7 @@ const TodoList = () => {
   type TodoData = z.infer<typeof TodoSchema>;
   const methods = useForm<TodoData>({
     resolver: zodResolver(TodoSchema),
-    mode: 'all',
+    mode: 'onSubmit',
     defaultValues: {
       name: '',
     },

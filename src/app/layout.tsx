@@ -1,4 +1,4 @@
-import './globals.css';
+import '@/app/globals.css';
 import Gnb from '@/components/Gnb';
 import QueryProvider from '@/components/QueryProvider';
 
