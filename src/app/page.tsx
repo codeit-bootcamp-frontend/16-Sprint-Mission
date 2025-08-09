@@ -1,7 +1,7 @@
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 
 import { getItemList } from '@/app/api/todo';
-import TodoList from '@/components/TodoList';
+import TodoPage from '@/components/TodoPage';
 
 export default async function Page() {
   const queryClient = new QueryClient();
@@ -10,7 +10,7 @@ export default async function Page() {
   return (
     <>
       <HydrationBoundary state={dehydrate(queryClient)}>
-        <TodoList />
+        <TodoPage />
       </HydrationBoundary>
     </>
   );
