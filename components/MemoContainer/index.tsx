@@ -64,7 +64,7 @@ const MemoContainer = ({ onChange }: MemoProps) => {
           spellCheck={false}
           style={{ resize: "none" }}
           onInput={handleChange}
-          className="bg-transparent w-[50%] max-h-[220px] -mt-10 text-center outline-none"
+          className="bg-transparent w-[95%] max-h-[220px] -mt-10 text-center outline-none"
         ></textarea>
       </div>
     </div>
