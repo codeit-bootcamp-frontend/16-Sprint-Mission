@@ -7,12 +7,20 @@ const useTodo = () => {
   const queryClient = useQueryClient();
   const TODO_QUERY_KEY = ['todos'];
 
-  const { data: listData = [] } = useQuery<Item[]>({
+  const {
+    data: listData = [],
+    isLoading,
+    isFetching,
+  } = useQuery<Item[]>({
     queryKey: TODO_QUERY_KEY,
     queryFn: getItemList,
     staleTime: 0,
     refetchOnMount: 'always',
+    placeholderData: [],
   });
+
+  const todoItems = listData.filter((item) => !item.isCompleted);
+  const doneItems = listData.filter((item) => item.isCompleted);
 
   const addTodoMutation = useMutation({
     mutationFn: addItem,
@@ -90,7 +98,15 @@ const useTodo = () => {
     },
   });
 
-  return { addTodoMutation, updateTodoMutation, listData };
+  return {
+    addTodoMutation,
+    updateTodoMutation,
+    listData,
+    isLoading,
+    isFetching,
+    todoItems,
+    doneItems,
+  };
 };
 
 export default useTodo;

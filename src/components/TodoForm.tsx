@@ -2,10 +2,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { FormProvider, useForm } from 'react-hook-form';
 import z from 'zod';
 
+import Button from '@/components/Button';
+import FormInput from '@/components/FormInput';
 import { todoSchema } from '@/lib/schemas';
-
-import Button from './Button';
-import FormInput from './FormInput';
 
 const TodoSchema = z.object({
   name: todoSchema,
