@@ -47,10 +47,17 @@
   --text-lg--line-height: 20px;
   --text-xl: 20px;
   --text-xl--line-height: 23px;
+
+  /* shadow */
+  --shadow-custom: 4px 3.5px 0 0 rgba(15, 23, 42, 1);
 }
 
 @layer base {
   body {
     color: var(--color-slate800);
+  }
+
+  button {
+    cursor: pointer;
   }
 }
