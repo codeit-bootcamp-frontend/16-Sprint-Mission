@@ -1,3 +1,11 @@
+import TodoAddForm from "@/features/todo/components/TodoAddForm";
+import TodoListArea from "@/features/todo/components/TodoListArea";
+
 export default function Home() {
-  return <div className="text-background bg-foreground">하이</div>;
+  return (
+    <div className="pt-6">
+      <TodoAddForm />
+      <TodoListArea />
+    </div>
+  );
 }
