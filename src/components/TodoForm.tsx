@@ -19,7 +19,7 @@ interface TodoFormProps {
 const TodoForm = ({ onSubmit }: TodoFormProps) => {
   const methods = useForm<TodoData>({
     resolver: zodResolver(TodoSchema),
-    mode: 'onSubmit',
+    mode: 'onChange',
     defaultValues: {
       name: '',
     },
