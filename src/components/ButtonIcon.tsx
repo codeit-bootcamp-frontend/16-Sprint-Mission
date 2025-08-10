@@ -3,20 +3,19 @@ import DeleteIcon from "/public/images/DeleteIcon.svg";
 import CheckIcon from "/public/images/CheckIcon.svg";
 
 const ICONS_TYPE = {
-  plus: PlusIcon,
+  add: PlusIcon,
   delete: DeleteIcon,
-  check: CheckIcon,
+  edit: CheckIcon,
 };
 
 interface Props {
   type: keyof typeof ICONS_TYPE;
-  className?: string;
 }
 
-const ButtonIcon = ({ type, className }: Props) => {
+const ButtonIcon = ({ type }: Props) => {
   const Icon = ICONS_TYPE[type];
 
-  return <Icon width={16} height={16} className={className} />;
+  return <Icon width={16} height={16} />;
 };
 
 export default ButtonIcon;

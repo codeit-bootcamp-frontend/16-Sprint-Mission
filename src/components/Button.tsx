@@ -1,5 +1,6 @@
 "use client";
 
+import ButtonIcon from "@/components/ButtonIcon";
 import { ButtonHTMLAttributes, ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -29,6 +30,7 @@ const Button = ({ variant, children, className, ...props }: Props) => {
       className={twMerge(defaultStyle, disabledStyle, variantStyle, className)}
       {...props}
     >
+      {variant && <ButtonIcon type={variant} />}
       {children}
     </button>
   );
