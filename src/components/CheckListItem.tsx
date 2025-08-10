@@ -38,7 +38,7 @@ const CheckListItem = ({ name, checked, className, onClick }: CheckListItemProps
       onClick={onClick}
     >
       <Checkbox />
-      {name}
+      <span className='truncate'>{name}</span>
     </div>
   );
 };
