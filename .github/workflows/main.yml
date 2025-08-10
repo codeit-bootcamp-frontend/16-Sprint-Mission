@@ -1,14 +1,16 @@
 name: summerdev-sprint-mission
 
-env:
-  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 on: push
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
     steps:
       - uses: actions/checkout@v3
 
@@ -26,11 +28,11 @@ jobs:
       - name: Install Vercel CLI
         run: npm install -g vercel@latest
 
-      - name: Pull Vercel Enviroment Information
+      - name: Pull Vercel environment variables (production)
         run: vercel pull --yes --environment=production --token=$VERCEL_TOKEN
 
-      - name: Build Project
+      - name: Build project with Vercel
         run: vercel build --prod --token=$VERCEL_TOKEN
 
-      - name: Deploy Project Artifacts to Vercel
-        run: vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
+      - name: Deploy to Vercel production
+        run: vercel deploy --prebuilt --prod --yes --token=$VERCEL_TOKEN
