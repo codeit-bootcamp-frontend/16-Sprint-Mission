@@ -54,9 +54,6 @@ const useTodo = () => {
         queryClient.setQueryData(TODO_QUERY_KEY, context.previousTodos);
       }
     },
-    onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: TODO_QUERY_KEY, exact: true });
-    },
   });
 
   const updateTodoMutation = useMutation({
