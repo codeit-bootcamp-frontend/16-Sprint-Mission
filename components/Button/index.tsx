@@ -6,9 +6,16 @@ interface ButtonProps {
   variant: "primary" | "success" | "danger";
   children: ReactNode;
   disabled?: boolean;
+  onClick?: () => void;
 }
 
-const Button = ({ type, variant, children, disabled }: ButtonProps) => {
+const Button = ({
+  type,
+  variant,
+  children,
+  disabled,
+  onClick,
+}: ButtonProps) => {
   return (
     <button
       type={type}
@@ -19,6 +26,7 @@ const Button = ({ type, variant, children, disabled }: ButtonProps) => {
         "btn-danger": variant === "danger" && !disabled,
         "btn-disabled": disabled,
       })}
+      onClick={onClick}
     >
       {children}
     </button>

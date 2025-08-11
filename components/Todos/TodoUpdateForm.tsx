@@ -9,7 +9,8 @@ import Button from "@/components/Button";
 import ChkIcon from "@/assets/images/ico-check.svg";
 import DeleteIcon from "@/assets/images/ico-x.svg";
 import { QueryClient, useMutation } from "@tanstack/react-query";
-import { updateTodo } from "@/lib/api";
+import { updateTodo, deleteTodo } from "@/lib/api";
+import { useRouter } from "next/navigation";
 
 const TodoUpdateForm = ({ initialData }: { initialData: Item }) => {
   const [data, setData] = useState(initialData);
@@ -24,7 +25,9 @@ const TodoUpdateForm = ({ initialData }: { initialData: Item }) => {
 
   const queryClient = new QueryClient();
 
-  const { mutate: updateStatus, isPending } = useMutation({
+  const router = useRouter();
+
+  const { mutate: updateStatus, isPending: isUpdatePending } = useMutation({
     mutationFn: updateTodo,
     retry: 1,
     retryDelay: 0.3,
@@ -59,6 +62,20 @@ const TodoUpdateForm = ({ initialData }: { initialData: Item }) => {
     },
   });
 
+  const { mutate: deleteStatus, isPending: isDeletePending } = useMutation({
+    mutationFn: deleteTodo,
+    retry: 1,
+    retryDelay: 0.3,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["todos"] });
+      alert("삭제에 성공했습니다.");
+      router.push("/");
+    },
+    onError: (err, _data, _context) => {
+      alert(err);
+    },
+  });
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
@@ -70,6 +87,11 @@ const TodoUpdateForm = ({ initialData }: { initialData: Item }) => {
     };
 
     updateStatus({ itemId: data.id, bodyData });
+  };
+
+  const handleDelete = () => {
+    if (!data.id) return;
+    deleteStatus(data.id);
   };
 
   useEffect(() => {
@@ -111,15 +133,15 @@ const TodoUpdateForm = ({ initialData }: { initialData: Item }) => {
       <div className="flex gap-4 mt-6 self-end">
         <Button
           variant="success"
-          disabled={!isUpdated || isPending}
+          disabled={!isUpdated || isUpdatePending}
           type="submit"
         >
           <ChkIcon className="w-4 h-4 mr-1" />{" "}
-          {isPending ? "수정중..." : "수정 완료"}
+          {isUpdatePending ? "수정중..." : "수정 완료"}
         </Button>
-        <Button variant="danger">
+        <Button type="button" variant="danger" onClick={handleDelete}>
           <DeleteIcon className="w-4 h-4 mr-1" />
-          삭제하기
+          {isDeletePending ? "삭제중..." : "삭제하기"}
         </Button>
       </div>
     </form>

@@ -61,8 +61,6 @@ export const updateTodo = async ({
   itemId,
   bodyData,
 }: UpdateTodoProps): Promise<UpdateItem> => {
-  console.log(bodyData);
-
   try {
     const res = await fetch(`${BASE_URL}/${TENANT_ID}/items/${itemId}`, {
       method: "PATCH",
@@ -74,6 +72,22 @@ export const updateTodo = async ({
 
     if (!res.ok) {
       throw new Error("투두 업데이트에 실패했습니다.");
+    }
+
+    return res.json();
+  } catch (err) {
+    throw err;
+  }
+};
+
+export const deleteTodo = async (itemId: string) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${TENANT_ID}/items/${itemId}`, {
+      method: "DELETE",
+    });
+
+    if (!res.ok) {
+      throw new Error("투두 삭제에 실패했습니다.");
     }
 
     return res.json();
