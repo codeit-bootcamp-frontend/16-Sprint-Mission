@@ -46,6 +46,7 @@ interface Props {
   name: string;
   isCompleted: boolean;
   variant?: "default" | "detail";
+  onUpdate: (id: number) => void;
 }
 
 const CheckItem = ({
@@ -53,12 +54,16 @@ const CheckItem = ({
   id,
   isCompleted = false,
   variant = "default",
+  onUpdate,
 }: Props) => {
   const [checked, setChecked] = useState(isCompleted);
   const isDefault = variant === "default";
   const matchId = `${name}_${id}`;
 
-  const handleChange = () => setChecked(!checked);
+  const handleChange = () => {
+    setChecked(!checked);
+    onUpdate(id);
+  };
 
   return (
     <div className={`${StyleCheckWrapBase} ${StylecheckWrap[variant]} group`}>

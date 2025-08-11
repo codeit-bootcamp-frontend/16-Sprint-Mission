@@ -1,45 +1,33 @@
+"use client";
+
 import Empty from "@/components/Empty";
 import TodoList from "@/features/todo/components/TodoList";
 import { TodoItemType } from "@/types/todoTypes";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
-const mockDataTodo: TodoItemType[] = [
-  {
-    id: 1,
-    name: "맥주 마시기",
-    isCompleted: false,
-  },
-  {
-    id: 2,
-    name: "아침 운동하기",
-    isCompleted: false,
-  },
-  {
-    id: 3,
-    name: "인공눈물 넣기",
-    isCompleted: false,
-  },
-];
+interface Props {
+  data: TodoItemType[];
+  onUpdate?: (id: number) => void;
+}
 
-const mockDataDone: TodoItemType[] = [
-  {
-    id: 4,
-    name: "아침밥 먹기",
-    isCompleted: true,
-  },
-  {
-    id: 5,
-    name: "점심에 산책하기",
-    isCompleted: true,
-  },
-  {
-    id: 6,
-    name: "8시 티켓팅",
-    isCompleted: true,
-  },
-];
+const TodoListArea = ({ data }: Props) => {
+  const [todoAll, setTodoAll] = useState(data);
 
-const TodoListArea = () => {
+  const todoData = todoAll.filter((item) => !item.isCompleted);
+  const doneData = todoAll.filter((item) => item.isCompleted);
+
+  const handleUpdateTodo = (id: number) =>
+    setTodoAll((prevTodoAll) => {
+      return prevTodoAll.map((todo) =>
+        todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
+      );
+    });
+
+  useEffect(() => {
+    setTodoAll(data);
+  }, [data]);
+
   return (
     <div className="flex gap-6 mt-10">
       <div className="grow-1">
@@ -49,7 +37,7 @@ const TodoListArea = () => {
           height={36}
           alt="TO DO title"
         />
-        {mockDataTodo.length === 0 ? (
+        {todoData.length === 0 ? (
           <Empty
             src="/images/TodoEmptyIcon.svg"
             width={240}
@@ -60,7 +48,7 @@ const TodoListArea = () => {
             TODO를 새롭게 추가해주세요!
           </Empty>
         ) : (
-          <TodoList dataList={mockDataTodo} />
+          <TodoList dataList={todoData} onUpdate={handleUpdateTodo} />
         )}
       </div>
 
@@ -71,7 +59,7 @@ const TodoListArea = () => {
           height={36}
           alt="Done title"
         />
-        {mockDataDone.length === 0 ? (
+        {doneData.length === 0 ? (
           <Empty
             src="/images/DoneEmptyIcon.svg"
             width={240}
@@ -82,7 +70,7 @@ const TodoListArea = () => {
             해야 할 일을 체크해보세요!
           </Empty>
         ) : (
-          <TodoList dataList={mockDataDone} />
+          <TodoList dataList={doneData} onUpdate={handleUpdateTodo} />
         )}
       </div>
     </div>
