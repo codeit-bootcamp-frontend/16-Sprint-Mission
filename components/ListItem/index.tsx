@@ -1,8 +1,8 @@
 import { MouseEvent } from "react";
-import Image from "next/image";
 import { ItemProps, Item } from "@/types/todo";
 import clsx from "clsx";
 import { useRouter } from "next/navigation";
+import BulletButton from "@/components/Button/BulletButton";
 
 const ListItemBase = ({ item, variant = "todo", onBulletClick }: ItemProps) => {
   const router = useRouter();
@@ -24,22 +24,10 @@ const ListItemBase = ({ item, variant = "todo", onBulletClick }: ItemProps) => {
       })}
       onClick={() => handleListClick(item)}
     >
-      <button
-        className={clsx("bullet-base", {
-          "bullet-todo": variant === "todo",
-          "bullet-done": variant === "done",
-        })}
+      <BulletButton
+        variant={variant}
         onClick={handleBulletClick}
-      >
-        {variant === "done" && (
-          <Image
-            src="/images/ico-check-wt.svg"
-            alt="완료된 할 일"
-            width="20"
-            height="20"
-          />
-        )}
-      </button>
+      ></BulletButton>
       {item.name}
     </li>
   );
