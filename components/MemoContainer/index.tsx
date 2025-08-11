@@ -30,7 +30,7 @@ const MemoContainer = ({ initialData, onChange }: MemoProps) => {
           onChange?.(el.value);
         });
       }, 100),
-    []
+    [onChange]
   );
 
   const focusTextarea = () => {

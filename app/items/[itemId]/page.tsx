@@ -2,13 +2,11 @@ import TodoUpdateForm from "@/components/Todos/TodoUpdateForm";
 import { getTodo } from "@/lib/api";
 
 interface ItemDetailPageProps {
-  params: { itemId: string };
-  variant: string;
+  params: Promise<{ itemId: string }>;
 }
 
 const ItemDetailPage = async ({ params }: ItemDetailPageProps) => {
-  const resolvedParams = await params;
-  const { itemId } = resolvedParams;
+  const { itemId } = await params;
   const data = await getTodo(itemId);
 
   return (

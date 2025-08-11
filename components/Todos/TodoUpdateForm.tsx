@@ -72,7 +72,7 @@ const TodoUpdateForm = ({ initialData }: { initialData: Item }) => {
       alert("삭제에 성공했습니다.");
       router.push("/");
     },
-    onError: (err, _data, _context) => {
+    onError: (err) => {
       alert(err);
     },
   });
