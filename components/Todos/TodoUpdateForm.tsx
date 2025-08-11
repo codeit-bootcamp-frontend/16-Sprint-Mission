@@ -19,7 +19,7 @@ const TodoUpdateForm = ({ initialData }: { initialData: Item }) => {
   const [image, setImage] = useState<string | undefined>(data.imageUrl);
   const [memo, setMemo] = useState(data.memo);
   const [isCompleted, setIsCompleted] = useState(data.isCompleted);
-  const variant = data.isCompleted ? "done" : "todo";
+  const variant = isCompleted ? "done" : "todo";
 
   const [isUpdated, setIsUpdated] = useState(false);
 
@@ -107,7 +107,11 @@ const TodoUpdateForm = ({ initialData }: { initialData: Item }) => {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col">
       <div className="item-base flex justify-center mb-6 rounded-3xl cursor-default">
-        <BulletButton variant={variant} type="button" />
+        <BulletButton
+          variant={variant}
+          type="button"
+          onClick={() => setIsCompleted((prev) => !prev)}
+        />
         <h2 className="py-2 text-base font-extrabold underline underline-offset-4">
           <input
             name="name"

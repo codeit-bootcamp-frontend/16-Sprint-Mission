@@ -3,11 +3,16 @@
 import clsx from "clsx";
 
 interface BulletButtonProps {
-  variant: string;
+  variant?: string;
+  type?: "submit" | "button";
   onClick?: () => void;
 }
 
-const BulletButton = ({ variant, onClick }: BulletButtonProps) => {
+const BulletButton = ({
+  variant,
+  type = "button",
+  onClick,
+}: BulletButtonProps) => {
   return (
     <button
       className={clsx("bullet-base", {
@@ -15,6 +20,7 @@ const BulletButton = ({ variant, onClick }: BulletButtonProps) => {
         "bullet-done": variant === "done",
       })}
       onClick={onClick}
+      type={type}
     ></button>
   );
 };
