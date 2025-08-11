@@ -1,3 +1,5 @@
+"use client";
+
 import TodoList from "@/features/todo/components/TodoList";
 import { TodoItemType } from "@/types/todoTypes";
 import Image from "next/image";

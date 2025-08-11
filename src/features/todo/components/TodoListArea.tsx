@@ -3,8 +3,9 @@
 import DoneEmpty from "@/features/todo/components/DoneEmpty";
 import TodoContent from "@/features/todo/components/TodoContent";
 import TodoEmpty from "@/features/todo/components/TodoEmpty";
+import { updateTodoItem } from "@/features/todo/services/todoApi";
 import { TodoItemType } from "@/types/todoTypes";
-import { useEffect, useState } from "react";
+import { startTransition, useEffect, useOptimistic, useState } from "react";
 
 interface Props {
   data: TodoItemType[];
@@ -13,24 +14,50 @@ interface Props {
 
 const TodoListArea = ({ data }: Props) => {
   const [todoAll, setTodoAll] = useState(data);
+  const [optimisticState, toggleOptimisticState] = useOptimistic<
+    TodoItemType[],
+    number
+  >(todoAll, (currentState, id) => {
+    return currentState.map((todo) =>
+      todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
+    );
+  });
 
-  const todoData = todoAll.filter((item) => !item.isCompleted);
-  const doneData = todoAll.filter((item) => item.isCompleted);
+  const handleUpdateCheck = (id: number) => {
+    startTransition(async () => {
+      // 낙관적 업데이트
+      toggleOptimisticState(id);
 
-  const handleUpdateTodo = (id: number) =>
-    setTodoAll((prevTodoAll) => {
-      return prevTodoAll.map((todo) =>
-        todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
-      );
+      const targetCheck = todoAll.find((todo) => todo.id === id)?.isCompleted;
+      const updateData = { isCompleted: !targetCheck };
+
+      const prevTodoAll = todoAll;
+
+      try {
+        setTodoAll((prevTodoAll) =>
+          prevTodoAll.map((todo) =>
+            todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
+          )
+        );
+        await updateTodoItem(id, updateData);
+      } catch (error) {
+        console.error(error);
+
+        setTodoAll(prevTodoAll);
+      }
     });
+  };
 
   useEffect(() => {
     setTodoAll(data);
   }, [data]);
 
+  const todoData = optimisticState.filter((item) => !item.isCompleted);
+  const doneData = optimisticState.filter((item) => item.isCompleted);
+
   return (
     <div className="flex gap-6 mt-10">
-      <div className="grow-1">
+      <div className="grow-1 shrink-1 basis-0">
         <TodoContent
           titleSrc="/images/TodoTitle.svg"
           titleWidth={101}
@@ -38,11 +65,11 @@ const TodoListArea = ({ data }: Props) => {
           titleAlt="TO DO title"
           dataList={todoData}
           EmptyComponent={TodoEmpty}
-          onUpdate={handleUpdateTodo}
+          onUpdate={handleUpdateCheck}
         />
       </div>
 
-      <div className="grow-1">
+      <div className="grow-1 shrink-1 basis-0">
         <TodoContent
           titleSrc="/images/DoneTitle.svg"
           titleWidth={97}
@@ -50,7 +77,7 @@ const TodoListArea = ({ data }: Props) => {
           titleAlt="Done title"
           dataList={doneData}
           EmptyComponent={DoneEmpty}
-          onUpdate={handleUpdateTodo}
+          onUpdate={handleUpdateCheck}
         />
       </div>
     </div>
