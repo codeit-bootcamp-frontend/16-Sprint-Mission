@@ -5,10 +5,11 @@ import { useEffect, useRef, useMemo } from "react";
 import debounce from "@/lib/debounce";
 
 interface MemoProps {
+  initialData?: string;
   onChange: (v: string) => void;
 }
 
-const MemoContainer = ({ onChange }: MemoProps) => {
+const MemoContainer = ({ initialData, onChange }: MemoProps) => {
   const memoRef = useRef<HTMLTextAreaElement>(null);
 
   const getTextarea = (callback: (el: HTMLTextAreaElement) => void) => {
@@ -60,6 +61,7 @@ const MemoContainer = ({ onChange }: MemoProps) => {
         <textarea
           ref={memoRef}
           name="textarea"
+          defaultValue={initialData ?? ""}
           rows={1}
           spellCheck={false}
           style={{ resize: "none" }}

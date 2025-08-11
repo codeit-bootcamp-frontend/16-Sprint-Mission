@@ -2,34 +2,74 @@
 
 import BulletButton from "@/components/Button/BulletButton";
 import { FormEvent, useEffect, useState } from "react";
-import { UpdateItem } from "@/types/todo";
+import { Item } from "@/types/todo";
 import ImageUploader from "@/components/ImageUploader";
 import MemoContainer from "@/components/MemoContainer";
 import Button from "@/components/Button";
 import ChkIcon from "@/assets/images/ico-check.svg";
 import DeleteIcon from "@/assets/images/ico-x.svg";
+import { QueryClient, useMutation } from "@tanstack/react-query";
+import { updateTodo } from "@/lib/api";
 
-const TodoUpdateForm = ({ initialData: data }: { initialData: UpdateItem }) => {
+const TodoUpdateForm = ({ initialData }: { initialData: Item }) => {
+  const [data, setData] = useState(initialData);
+
   const [name, setName] = useState(data.name);
   const [image, setImage] = useState<string | undefined>(data.imageUrl);
   const [memo, setMemo] = useState(data.memo);
   const [isCompleted, setIsCompleted] = useState(data.isCompleted);
-  const [isUpdated, setIsUpdated] = useState(false);
   const variant = data.isCompleted ? "done" : "todo";
+
+  const [isUpdated, setIsUpdated] = useState(false);
+
+  const queryClient = new QueryClient();
+
+  const { mutate: updateStatus, isPending } = useMutation({
+    mutationFn: updateTodo,
+    retry: 1,
+    retryDelay: 0.3,
+    onMutate: async ({ itemId, bodyData }) => {
+      await queryClient.cancelQueries({ queryKey: ["todos"] });
+
+      const prevItems = queryClient.getQueryData<Item[]>(["todos"]);
+      if (prevItems) {
+        queryClient.setQueryData<Item[]>(["todos"], (oldItems) => {
+          if (!oldItems) return;
+
+          return oldItems.map((item) =>
+            item.id === itemId ? { ...bodyData } : item
+          );
+        });
+      }
+
+      return { prevItems };
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["todos"] });
+      alert("수정 성공!");
+
+      // 수정 성공 시 최신 데이터로 업데이트해서 '수정하기' 버튼 비활성화
+      setData({ name, imageUrl: image, memo, isCompleted, id: data.id });
+    },
+    onError: (_err, _data, context) => {
+      if (context?.prevItems) {
+        queryClient.setQueryData(["todos"], context.prevItems);
+      }
+      alert("투두 업데이트에 실패했습니다.");
+    },
+  });
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    const payload = {
+    const bodyData = {
       name,
       imageUrl: image,
       memo,
       isCompleted,
     };
 
-    console.log(payload);
-
-    // patch item...
+    updateStatus({ itemId: data.id, bodyData });
   };
 
   useEffect(() => {
@@ -60,13 +100,22 @@ const TodoUpdateForm = ({ initialData: data }: { initialData: UpdateItem }) => {
       </div>
 
       <div className="flex gap-6">
-        <ImageUploader className="shrink-0" onUploaded={(v) => setImage(v)} />
-        <MemoContainer onChange={(v) => setMemo(v)} />
+        <ImageUploader
+          initialData={data.imageUrl}
+          className="shrink-0"
+          onUploaded={(v) => setImage(v)}
+        />
+        <MemoContainer initialData={data.memo} onChange={(v) => setMemo(v)} />
       </div>
 
       <div className="flex gap-4 mt-6 self-end">
-        <Button variant="success" disabled={!isUpdated} type="submit">
-          <ChkIcon className="w-4 h-4 mr-1" /> 수정 완료
+        <Button
+          variant="success"
+          disabled={!isUpdated || isPending}
+          type="submit"
+        >
+          <ChkIcon className="w-4 h-4 mr-1" />{" "}
+          {isPending ? "수정중..." : "수정 완료"}
         </Button>
         <Button variant="danger">
           <DeleteIcon className="w-4 h-4 mr-1" />
