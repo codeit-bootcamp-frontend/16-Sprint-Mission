@@ -39,7 +39,7 @@
   }
 
   .btn-edit {
-    @apply border-2 border-gray-900 bg-gray-900/[.5];
+    @apply border-2 border-gray-900 bg-gray-900/[.5] group-hover:bg-primary-100 group-hover:border-primary;
   }
 
   /* item list */

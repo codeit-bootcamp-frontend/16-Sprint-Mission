@@ -93,7 +93,7 @@ const ImageUploader = ({
           ) : !preview ? (
             <PlusIcon className="group-hover:text-white" />
           ) : (
-            <EditIcon className="text-white" />
+            <EditIcon className="group-hover:text-primary text-white" />
           )}
         </span>
       </button>
