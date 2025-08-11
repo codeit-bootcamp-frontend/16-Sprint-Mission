@@ -53,6 +53,7 @@ const TodoUpdateForm = ({ initialData }: { initialData: Item }) => {
 
       // 수정 성공 시 최신 데이터로 업데이트해서 '수정하기' 버튼 비활성화
       setData({ name, imageUrl: image, memo, isCompleted });
+      router.push("/");
     },
     onError: (err, _data, context) => {
       if (context?.prevItems) {
