@@ -1,4 +1,9 @@
-import { TodoItemType, UpdateTodoData } from "@/types/todoTypes";
+import {
+  PatchTodoResponse,
+  PostTodoResponse,
+  TodoItemType,
+  UpdateTodoData,
+} from "@/types/todoTypes";
 
 const API_URL = process.env.NEXT_PUBLIC_SERVER_API_URL;
 const API_END_POINT = process.env.NEXT_PUBLIC_SERVER_COMMON_END_POINT;
@@ -14,7 +19,7 @@ export async function getTodoList(): Promise<TodoItemType[]> {
   return data;
 }
 
-export async function createTodoItem(name: string) {
+export async function createTodoItem(name: string): Promise<PostTodoResponse> {
   const res = await fetch(`${BASE_URL}/items`, {
     method: "POST",
     headers: {
@@ -30,7 +35,10 @@ export async function createTodoItem(name: string) {
   return data;
 }
 
-export async function updateTodoItem(id: number, updateData: UpdateTodoData) {
+export async function updateTodoItem(
+  id: number,
+  updateData: UpdateTodoData
+): Promise<PatchTodoResponse> {
   const res = await fetch(`${BASE_URL}/items/${id}`, {
     method: "PATCH",
     headers: {
