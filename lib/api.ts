@@ -61,6 +61,8 @@ export const updateTodo = async ({
   itemId,
   bodyData,
 }: UpdateTodoProps): Promise<UpdateItem> => {
+  console.log(bodyData);
+
   try {
     const res = await fetch(`${BASE_URL}/${TENANT_ID}/items/${itemId}`, {
       method: "PATCH",
@@ -76,7 +78,6 @@ export const updateTodo = async ({
 
     return res.json();
   } catch (err) {
-    console.error(err);
     throw err;
   }
 };

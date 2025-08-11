@@ -49,13 +49,13 @@ const TodoUpdateForm = ({ initialData }: { initialData: Item }) => {
       alert("수정 성공!");
 
       // 수정 성공 시 최신 데이터로 업데이트해서 '수정하기' 버튼 비활성화
-      setData({ name, imageUrl: image, memo, isCompleted, id: data.id });
+      setData({ name, imageUrl: image, memo, isCompleted });
     },
-    onError: (_err, _data, context) => {
+    onError: (err, _data, context) => {
       if (context?.prevItems) {
         queryClient.setQueryData(["todos"], context.prevItems);
       }
-      alert("투두 업데이트에 실패했습니다.");
+      alert(err);
     },
   });
 

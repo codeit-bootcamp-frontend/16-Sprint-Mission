@@ -10,13 +10,20 @@ import LoadingSpinner from "@/components/Loader/LoadingSpinner";
 import clsx from "clsx";
 
 interface ImageUploaderProps {
+  initialData?: string;
   className: string;
   onUploaded: (v: string) => void;
 }
 
-const ImageUploader = ({ className, onUploaded }: ImageUploaderProps) => {
+const ImageUploader = ({
+  initialData,
+  className,
+  onUploaded,
+}: ImageUploaderProps) => {
   const fileRef = useRef<HTMLInputElement>(null);
-  const [preview, setPreview] = useState<File | null>(null);
+  const [preview, setPreview] = useState<File | string | null | undefined>(
+    initialData
+  );
   const { mutate: uploadImage, isPending } = useImageUpload();
 
   const handleClick = () => {
@@ -32,8 +39,8 @@ const ImageUploader = ({ className, onUploaded }: ImageUploaderProps) => {
     setPreview(file);
 
     uploadImage(file, {
-      onSuccess: (url) => {
-        onUploaded(url);
+      onSuccess: (image) => {
+        onUploaded(image.url);
       },
       onError: () => {
         alert("이미지 업로드에 실패했습니다.");
@@ -54,7 +61,13 @@ const ImageUploader = ({ className, onUploaded }: ImageUploaderProps) => {
 
       {preview && (
         <Image
-          src={URL.createObjectURL(preview)}
+          src={
+            typeof preview === "string"
+              ? preview
+              : preview
+              ? URL.createObjectURL(preview)
+              : ""
+          }
           alt="이미지 미리보기"
           width={384}
           height={310}
@@ -63,6 +76,7 @@ const ImageUploader = ({ className, onUploaded }: ImageUploaderProps) => {
       )}
 
       <button
+        type="button"
         onClick={handleClick}
         disabled={isPending}
         className="group relative flex items-center justify-center w-full h-full"
