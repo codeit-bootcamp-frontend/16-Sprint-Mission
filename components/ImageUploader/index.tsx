@@ -39,6 +39,7 @@ const ImageUploader = ({
 
     const filename = file.name.split(".").slice(0, -1).join(".");
     const engOnlyRegex = /^[a-zA-Z0-9_\-]+$/;
+
     if (!engOnlyRegex.test(filename)) {
       alert("파일 이름은 영어로만 이루어져야 합니다.");
       e.target.value = "";
@@ -46,6 +47,7 @@ const ImageUploader = ({
     }
 
     const MAX_SIZE = 5 * 1024 * 1024;
+
     if (file.size > MAX_SIZE) {
       alert("파일 크기는 5MB 이하여야 합니다.");
       e.target.value = "";
