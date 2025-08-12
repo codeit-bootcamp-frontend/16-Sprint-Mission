@@ -2,8 +2,6 @@ import localFont from "next/font/local";
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
-import { Suspense } from "react";
-import LoadingArea from "@/components/LoadingArea";
 
 const nanumsquare = localFont({
   src: [
@@ -41,9 +39,7 @@ export default function RootLayout({
     <html lang="ko">
       <body className={`${nanumsquare.className} bg-gray-50`}>
         <Header />
-        <div className="max-w-[1200px] mx-auto">
-          <Suspense fallback={<LoadingArea />}>{children}</Suspense>
-        </div>
+        <div className="max-w-[1200px] mx-auto">{children}</div>
       </body>
     </html>
   );
