@@ -1,0 +1,56 @@
+import { useState } from "react";
+import Input from "@/components/ui/Input";
+import { InputFieldProps } from "@/types/form";
+import IconButton from "@/components/ui/Button/IconButton";
+import eyeImg from "@/assets/images/ic_visibility_on.svg";
+import eyeCloseImg from "@/assets/images/ic_visibility_off.svg";
+
+const PasswordField = ({
+  label,
+  inputId,
+  name,
+  placeholder,
+  onBlur,
+  fieldError,
+}: InputFieldProps) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  return (
+    <div className="flex flex-col">
+      <label className="form-label" htmlFor="userPassword">
+        {label}
+      </label>
+      <div className="input-hint-wrap">
+        <div className="visible-wrap">
+          <Input
+            className="form-input"
+            type={isVisible ? "text" : "password"}
+            id={inputId}
+            name={name}
+            autoComplete="current-password"
+            placeholder={placeholder}
+            required
+            onBlur={onBlur}
+            isError={fieldError}
+          />
+          <IconButton
+            type="button"
+            className="btn-password-visible"
+            id="passwordVisibleBtn"
+            title="비밀번호 표시/숨김"
+            aria-label="비밀번호 표시/숨김"
+            aria-pressed="false"
+            imgSrc={isVisible ? eyeImg : eyeCloseImg}
+            width={24}
+            height={24}
+            hasBgColor={false}
+            onClick={() => setIsVisible((prev) => !prev)}
+          />
+        </div>
+        <span className="form-input-hint">{fieldError}</span>
+      </div>
+    </div>
+  );
+};
+
+export default PasswordField;

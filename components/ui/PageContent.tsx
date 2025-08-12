@@ -10,7 +10,7 @@ const PageContent = ({ children, className }: PageContentType) => {
     <section
       className={`${
         className ?? ""
-      } w-full my-auto p-4 md:p-6 wide:w-[12.5rem] wide:mx-6 wide:my-auto wide:pt-2 wide:pb-16`}
+      } w-full my-auto p-4 sm:p-6 lg:w-[12.5rem] lg:mx-6 lg:my-auto lg:pt-2 lg:pb-16`}
     >
       {children}
     </section>

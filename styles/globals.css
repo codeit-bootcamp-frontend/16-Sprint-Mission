@@ -2,10 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-.nav-link {
-  @apply px-2 py-[14px] md:px-[20px] text-base md:text-lg font-bold text-gray-600;
-}
+@layer components {
+  /* nav */
+  .nav-link {
+    @apply px-2 py-[14px] md:px-[20px] text-base md:text-lg font-bold text-gray-600;
+  }
 
-.nav-link.active {
-  @apply text-primary;
+  .nav-link.active {
+    @apply text-primary;
+  }
+
+  /* input */
+  .input {
+    @apply w-full text-base px-[14px] py-5 bg-gray-200 rounded-xl border border-transparent placeholder-gray-400;
+  }
+
+  .input-error {
+    @apply border-red-500;
+  }
+
+  /* button */
+  .btn-base {
+    @apply inline-flex items-center justify-center gap-[6px] transition-colors hover:bg-gray-300;
+  }
+
+  .btn-sm {
+    @apply px-6 py-3 text-base rounded-md;
+  }
+
+  .btn-lg {
+    @apply p-3 text-lg font-semibold rounded-lg leading-8;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white;
+  }
+
+  .btn-outlined {
+    @apply bg-white border border-gray-300 text-gray-500 hover:border-primary;
+  }
+  /*
+  .btn-btm-primary {
+    @apply bg-primary text-white px-10 py-3 text-lg gap-2;
+  } */
+
+  .icon-btn {
+    @apply flex items-center justify-center w-5 aspect-square bg-transparent;
+  }
 }
