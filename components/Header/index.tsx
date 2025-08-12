@@ -1,10 +1,7 @@
-// import { Link, useNavigate } from "react-router-dom";
-// import Button from "@/components/ui/Button";
-// import useAuth from "@/hooks/useAuth";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Avatar from "@/components/ui/Avatar";
+import Avatar from "@/components/Avatar";
 import Nav from "@/components/Nav";
 
 const Header = () => {
