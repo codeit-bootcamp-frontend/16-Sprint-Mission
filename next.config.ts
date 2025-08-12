@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
         pathname: "**",
       },
     ],
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 60 * 60 * 24 * 30, // 30일
+    deviceSizes: [320, 640, 768, 960, 1280],
+    imageSizes: [24, 48, 72, 300, 600],
   },
   webpack(config) {
     config.module.rules.push({
