@@ -1,38 +1,32 @@
 "use client";
 
+import { ChangeEvent, useActionState, useEffect, useState } from "react";
+
+import { createTodoItemAction } from "@/app/actions";
 import Button from "@/components/Button";
-import { createTodoItem } from "@/features/todo/services/todoApi";
-import { useRouter } from "next/navigation";
-import { ChangeEvent, FormEvent, useRef, useState } from "react";
 
 const TodoAddForm = () => {
+  const [state, formAction, isPending] = useActionState(
+    createTodoItemAction,
+    null
+  );
   const [todoText, setTodoText] = useState("");
-  const loadingRef = useRef<boolean>(false);
-  const router = useRouter();
-  const isValid = !(todoText.trim().length > 0) || loadingRef.current;
+  const isValid = todoText.trim().length === 0 || isPending;
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
     setTodoText(e.target.value);
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (loadingRef.current) return; // 중복 요청 방지
-    try {
-      loadingRef.current = true;
-      await createTodoItem(todoText.trim());
-      router.refresh(); // 서버컴포넌트 새로고침
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setTodoText(""); // input 초기화
-      loadingRef.current = false;
+  useEffect(() => {
+    if (state) {
+      setTodoText("");
     }
-  };
+  }, [state]);
 
   return (
-    <form className="flex gap-5" onSubmit={handleSubmit}>
+    <form className="flex gap-5" action={formAction}>
       <input
         type="text"
+        name="name"
         value={todoText}
         onChange={handleChange}
         placeholder="할 일을 입력해주세요"
