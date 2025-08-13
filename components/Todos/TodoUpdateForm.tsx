@@ -12,7 +12,12 @@ import { QueryClient, useMutation } from "@tanstack/react-query";
 import { updateTodo, deleteTodo } from "@/lib/api";
 import { useRouter } from "next/navigation";
 
-const TodoUpdateForm = ({ initialData }: { initialData: Item }) => {
+interface Props {
+  initialData: Item;
+  blurImageUrl: string | undefined;
+}
+
+const TodoUpdateForm = ({ initialData, blurImageUrl }: Props) => {
   const [data, setData] = useState(initialData);
 
   const [name, setName] = useState(data.name);
@@ -131,6 +136,7 @@ const TodoUpdateForm = ({ initialData }: { initialData: Item }) => {
           initialData={data.imageUrl}
           className="shrink-0"
           onUploaded={(v) => setImage(v)}
+          blurImageUrl={blurImageUrl}
         />
         <MemoContainer initialData={data.memo} onChange={(v) => setMemo(v)} />
       </div>

@@ -12,12 +12,14 @@ import clsx from "clsx";
 interface ImageUploaderProps {
   initialData?: string;
   className: string;
+  blurImageUrl?: string | undefined;
   onUploaded: (v: string) => void;
 }
 
 const ImageUploader = ({
   initialData,
   className,
+  blurImageUrl,
   onUploaded,
 }: ImageUploaderProps) => {
   const fileRef = useRef<HTMLInputElement>(null);
@@ -90,6 +92,8 @@ const ImageUploader = ({
           width={384}
           height={310}
           className="absolute object-cover z-[1] w-full h-full pointer-events-none"
+          blurDataURL={blurImageUrl}
+          placeholder={blurImageUrl ? "blur" : "empty"}
         />
       )}
 
