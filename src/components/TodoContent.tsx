@@ -32,13 +32,13 @@ const TodoContent = () => {
         <TodoForm onSubmit={handleOnClickAdd} />
 
         <section className='flex pt-10 gap-6'>
-          <div className='flex flex-col w-1/2 items-center'>
+          <div className='flex flex-col w-1/2 min-w-0 items-start'>
             <Badge mode='todo' className='self-start'>
               TO DO
             </Badge>
             <TodoList items={todoItems} mode='todo' onClick={onClickCheckListItem} />
           </div>
-          <div className='flex flex-col w-1/2 items-center'>
+          <div className='flex flex-col w-1/2 min-w-0 items-start'>
             <Badge mode='done' className='self-start'>
               DONE
             </Badge>
