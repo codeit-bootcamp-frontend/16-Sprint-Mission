@@ -1,4 +1,4 @@
-import LoadingArea from "@/components/LoadingArea";
+import { LoadingArea } from "@/components/Loading";
 
 const loading = () => {
   return <LoadingArea />;
