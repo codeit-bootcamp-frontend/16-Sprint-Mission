@@ -10,7 +10,9 @@ const API_END_POINT = process.env.NEXT_PUBLIC_SERVER_COMMON_END_POINT;
 const BASE_URL = `${API_URL}${API_END_POINT}`;
 
 export async function getTodoList(): Promise<TodoItemType[]> {
-  const res = await fetch(`${BASE_URL}/items`);
+  const res = await fetch(`${BASE_URL}/items`, {
+    next: { tags: ["todoList"] },
+  });
 
   if (!res.ok) throw new Error(res.statusText);
 
