@@ -35,16 +35,12 @@
   }
 
   .btn-primary {
-    @apply bg-primary text-white;
+    @apply bg-primary text-white hover:bg-primary-hover active:bg-primary-click;
   }
 
   .btn-outlined {
     @apply bg-white border border-gray-300 text-gray-500 hover:border-primary;
   }
-  /*
-  .btn-btm-primary {
-    @apply bg-primary text-white px-10 py-3 text-lg gap-2;
-  } */
 
   .icon-btn {
     @apply flex items-center justify-center w-5 aspect-square bg-transparent;

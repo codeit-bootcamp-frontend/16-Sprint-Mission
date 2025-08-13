@@ -15,11 +15,12 @@ const Button = ({
   return (
     <button
       type={type}
-      className={clsx("btn-base", {
+      className={clsx(`btn-base ${className}`, {
         "btn-sm": size === "sm",
         "btn-lg": size === "lg",
         "btn-primary": variant === "primary",
         "btn-outlined": variant === "outlined",
+        "rounded-full": shape === "round",
       })}
       style={props.style}
       disabled={disabled}
