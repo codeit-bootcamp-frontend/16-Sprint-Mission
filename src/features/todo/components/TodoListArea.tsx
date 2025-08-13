@@ -1,11 +1,12 @@
 "use client";
 
-import DoneEmpty from "@/features/todo/components/DoneEmpty";
+import { startTransition, useEffect, useOptimistic, useState } from "react";
+
+import DoneEmpty from "@/app/_components/Empty/DoneEmpty";
+import TodoEmpty from "@/app/_components/Empty/TodoEmpty";
 import TodoContent from "@/features/todo/components/TodoContent";
-import TodoEmpty from "@/features/todo/components/TodoEmpty";
 import { updateTodoItem } from "@/features/todo/services/todoApi";
 import { TodoItemType } from "@/types/todoTypes";
-import { startTransition, useEffect, useOptimistic, useState } from "react";
 
 interface Props {
   data: TodoItemType[];
