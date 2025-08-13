@@ -1,6 +1,5 @@
 import {
-  PatchTodoResponse,
-  PostTodoResponse,
+  TodoResponseType,
   TodoItemType,
   UpdateTodoData,
 } from "@/types/todoTypes";
@@ -21,7 +20,7 @@ export async function getTodoList(): Promise<TodoItemType[]> {
   return data;
 }
 
-export async function createTodoItem(name: string): Promise<PostTodoResponse> {
+export async function createTodoItem(name: string): Promise<TodoResponseType> {
   const res = await fetch(`${BASE_URL}/items`, {
     method: "POST",
     headers: {
@@ -40,7 +39,7 @@ export async function createTodoItem(name: string): Promise<PostTodoResponse> {
 export async function updateTodoItem(
   id: number,
   updateData: UpdateTodoData
-): Promise<PatchTodoResponse> {
+): Promise<TodoResponseType> {
   const res = await fetch(`${BASE_URL}/items/${id}`, {
     method: "PATCH",
     headers: {
