@@ -23,7 +23,10 @@ const TodoList = ({ items, mode = 'todo', onClick }: TodoListProps) => {
           />
         ))
       ) : (
-        <EmptyContent mode={mode} className='pt-16'></EmptyContent>
+        <EmptyContent
+          mode={mode}
+          className='pt-16 w-full flex-1 flex items-center justify-center'
+        ></EmptyContent>
       )}
     </div>
   );

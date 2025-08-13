@@ -14,9 +14,8 @@ const useTodo = () => {
   } = useQuery<Item[]>({
     queryKey: TODO_QUERY_KEY,
     queryFn: getItemList,
-    staleTime: 0,
-    refetchOnMount: 'always',
-    placeholderData: [],
+    staleTime: 10000,
+    refetchOnMount: false,
   });
 
   const todoItems = listData.filter((item) => !item.isCompleted);
@@ -25,8 +24,6 @@ const useTodo = () => {
   const addTodoMutation = useMutation({
     mutationFn: addItem,
     onMutate: async (newItem) => {
-      await queryClient.cancelQueries({ queryKey: TODO_QUERY_KEY, exact: true });
-
       const previousTodos = queryClient.getQueryData<Item[]>(TODO_QUERY_KEY);
 
       const optimisticItem: Item = {
@@ -41,7 +38,7 @@ const useTodo = () => {
 
       return { previousTodos, optimisticItem };
     },
-    onSuccess: (response, variables, context) => {
+    onSuccess: (response, _, context) => {
       queryClient.setQueryData<Item[]>(TODO_QUERY_KEY, (todoList) =>
         todoList
           ? todoList.map((todo) => (todo.id === context.optimisticItem.id ? response : todo))
@@ -64,7 +61,6 @@ const useTodo = () => {
       return await updateItem(updatedTodo.id, { isCompleted: updatedTodo.isCompleted });
     },
     onMutate: async (updatedTodo: Item) => {
-      await queryClient.cancelQueries({ queryKey: TODO_QUERY_KEY, exact: true });
       const previousTodos = queryClient.getQueryData<Item[]>(TODO_QUERY_KEY);
 
       queryClient.setQueryData<Item[]>(TODO_QUERY_KEY, (todoList) => {
@@ -98,7 +94,6 @@ const useTodo = () => {
   return {
     addTodoMutation,
     updateTodoMutation,
-    listData,
     isLoading,
     isFetching,
     todoItems,
