@@ -1,0 +1,122 @@
+"use client";
+
+import { ChangeEvent, useRef, useState } from "react";
+import ImgIcon from "@/assets/images/ico-img.svg";
+import PlusIcon from "@/assets/images/ico-plus.svg";
+import EditIcon from "@/assets/images/ico-edit.svg";
+import Image from "next/image";
+import clsx from "clsx";
+import useImageUpload from "@/hooks/useImageUpload";
+import LoadingSpinner from "@/components/Loader/LoadingSpinner";
+import getImageSrc from "@/lib/getImageSrc";
+
+interface ImageUploaderProps {
+  initialData?: string;
+  className: string;
+  blurImageUrl?: string | undefined;
+  onUploaded: (v: string) => void;
+}
+
+const ImageUploader = ({
+  initialData,
+  className,
+  blurImageUrl,
+  onUploaded,
+}: ImageUploaderProps) => {
+  const fileRef = useRef<HTMLInputElement>(null);
+  const [preview, setPreview] = useState<File | string | null | undefined>(
+    initialData
+  );
+  const { mutate: uploadImage, isPending } = useImageUpload();
+
+  const handleClick = () => {
+    if (!fileRef.current) return;
+    fileRef.current.click();
+  };
+
+  const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files) return;
+
+    const file = files[0];
+
+    const filename = file.name.split(".").slice(0, -1).join(".");
+    const engOnlyRegex = /^[a-zA-Z0-9_\-]+$/;
+
+    if (!engOnlyRegex.test(filename)) {
+      alert("파일 이름은 영어로만 이루어져야 합니다.");
+      e.target.value = "";
+      return;
+    }
+
+    const MAX_SIZE = 5 * 1024 * 1024;
+
+    if (file.size > MAX_SIZE) {
+      alert("파일 크기는 5MB 이하여야 합니다.");
+      e.target.value = "";
+      return;
+    }
+
+    setPreview(file);
+
+    uploadImage(file, {
+      onSuccess: (image) => {
+        onUploaded(image.url);
+      },
+      onError: () => {
+        alert("이미지 업로드에 실패했습니다.");
+      },
+    });
+  };
+
+  return (
+    <div
+      className={`relative flex items-center justify-center w-[384px] h-[310px] rounded-3xl border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-primary-100 hover:border-primary transition-colors overflow-hidden ${className}`}
+    >
+      <input
+        ref={fileRef}
+        type="file"
+        className="hidden"
+        onChange={handleFileChange}
+      />
+
+      {preview && (
+        <Image
+          src={getImageSrc(preview)}
+          alt="이미지 미리보기"
+          width={384}
+          height={310}
+          className="absolute object-cover z-[1] w-full h-full pointer-events-none"
+          blurDataURL={blurImageUrl}
+          placeholder={blurImageUrl ? "blur" : "empty"}
+          unoptimized={preview.toString().endsWith(".gif")}
+        />
+      )}
+
+      <button
+        type="button"
+        onClick={handleClick}
+        disabled={isPending}
+        className="group relative flex items-center justify-center w-full h-full"
+      >
+        <ImgIcon className="w-16 h-16 text-gray-200 group-hover:text-white z-0" />
+        <span
+          className={clsx("btn-upload-base", {
+            "btn-upload": !preview,
+            "btn-edit": preview,
+          })}
+        >
+          {isPending ? (
+            <LoadingSpinner />
+          ) : !preview ? (
+            <PlusIcon className="group-hover:text-white" />
+          ) : (
+            <EditIcon className="group-hover:text-primary text-white" />
+          )}
+        </span>
+      </button>
+    </div>
+  );
+};
+
+export default ImageUploader;

@@ -79,7 +79,7 @@ const ItemListBase = ({
             <ListItemByVariant
               key={`${variant}-${item.id}`}
               item={item}
-              onClick={handleClick}
+              onBulletClick={handleClick}
             />
           ))}
         </ul>
@@ -89,7 +89,7 @@ const ItemListBase = ({
 };
 
 const ItemList = {
-  Todo: ({ items, onClick }: ItemListProps) => {
+  Todo: ({ items }: ItemListProps) => {
     return (
       <ItemListBase
         items={items}
@@ -103,11 +103,10 @@ const ItemList = {
             TODO를 새롭게 추가해주세요!
           </>
         }
-        onClick={onClick}
       />
     );
   },
-  Done: ({ items, onClick }: ItemListProps) => {
+  Done: ({ items }: ItemListProps) => {
     return (
       <ItemListBase
         items={items}
@@ -121,7 +120,6 @@ const ItemList = {
             해야 할 일을 체크해보세요!
           </>
         }
-        onClick={onClick}
       />
     );
   },

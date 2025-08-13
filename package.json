@@ -10,14 +10,17 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.84.1",
+    "@tanstack/react-query-devtools": "^5.84.2",
     "axios": "^1.10.0",
     "clsx": "^2.1.1",
     "next": "15.3.5",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "sharp": "^0.34.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@svgr/webpack": "^8.1.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

@@ -2,10 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .shadow-none {
+    box-shadow: none;
+  }
+}
+
 @layer components {
   /* button */
   .btn-base {
-    @apply w-[164px] h-[52px] flex items-center justify-center text-base font-bold rounded-3xl border-2 border-gray-900 shadow-button duration-150;
+    @apply w-[164px] h-[52px] flex items-center justify-center text-base font-bold rounded-3xl border-2 border-gray-900 shadow-button duration-150 active:shadow-none active:translate-x-1 active:translate-y-1 transition-colors;
   }
 
   .btn-primary {
@@ -16,21 +22,37 @@
     @apply bg-danger text-white hover:bg-danger-dark;
   }
 
+  .btn-success {
+    @apply bg-lime-300 text-gray-900 hover:bg-lime-400;
+  }
+
   .btn-disabled {
     @apply bg-gray-200 text-gray-900;
   }
 
+  .btn-upload-base {
+    @apply absolute right-4 bottom-4 flex items-center justify-center w-16 h-16 rounded-full transition-colors z-10;
+  }
+
+  .btn-upload {
+    @apply bg-gray-200 text-gray-500 group-hover:bg-primary;
+  }
+
+  .btn-edit {
+    @apply border-2 border-gray-900 bg-gray-900/[.5] group-hover:bg-primary-100 group-hover:border-primary;
+  }
+
   /* item list */
   .item-base {
-    @apply flex items-center w-full mt-4 border-2 border-gray-900 px-[12px] py-2 text-base text-gray-800 rounded-full cursor-pointer;
+    @apply flex items-center w-full mt-4 border-2 border-gray-900 px-[12px] py-2 text-base text-gray-800 rounded-full cursor-pointer transition-colors;
   }
 
   .item-todo {
-    @apply bg-white;
+    @apply bg-white hover:bg-lime;
   }
 
   .item-done {
-    @apply bg-primary-100 line-through;
+    @apply bg-primary-100 line-through hover:bg-primary hover:text-white;
   }
 
   /* bullet */
@@ -39,11 +61,11 @@
   }
 
   .bullet-todo {
-    @apply border-2 border-gray-900 bg-yellow-100;
+    @apply border-2 border-gray-900 bg-yellow-100 hover:bg-green transition-colors after:content-checkWhiteIcon after:inline-block after:mt-1;
   }
 
   .bullet-done {
-    @apply flex items-center justify-center bg-primary;
+    @apply flex items-center justify-center bg-primary hover:bg-primary-dark;
   }
 
   /* badge */
@@ -70,5 +92,20 @@
 
   .input-search-skeleton {
     @apply w-full h-[52px] bg-gray-200 rounded-3xl animate-pulse;
+  }
+
+  /* custom bg */
+  .bg-custom-stripe {
+    background-image: linear-gradient(
+      0deg,
+      #fef3c7 2.94%,
+      #fefce8 2.94%,
+      #fefce8 50%,
+      #fef3c7 50%,
+      #fef3c7 52.94%,
+      #fefce8 52.94%,
+      #fefce8 100%
+    );
+    background-size: 68px 68px;
   }
 }

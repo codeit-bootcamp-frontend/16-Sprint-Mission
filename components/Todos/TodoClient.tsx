@@ -1,27 +1,14 @@
 "use client";
 
-import { useEffect } from "react";
 import TodoForm from "@/components/Todos/TodoForm";
 import ItemList from "@/components/ItemList";
-import { Item } from "@/types/todo";
-import { useQueryClient, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { getTodos } from "@/lib/api";
 
-interface TodoClientProps {
-  initialItems: Item[];
-}
-
-const TodoClient = ({ initialItems }: TodoClientProps) => {
-  const queryClient = useQueryClient();
-
-  useEffect(() => {
-    queryClient.setQueryData(["todos"], initialItems);
-  }, [queryClient, initialItems]);
-
+const TodoClient = () => {
   const { data: items = [] } = useQuery({
     queryKey: ["todos"],
     queryFn: getTodos,
-    initialData: initialItems,
     staleTime: Infinity,
   });
 
