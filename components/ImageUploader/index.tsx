@@ -89,6 +89,7 @@ const ImageUploader = ({
           className="absolute object-cover z-[1] w-full h-full pointer-events-none"
           blurDataURL={blurImageUrl}
           placeholder={blurImageUrl ? "blur" : "empty"}
+          unoptimized={preview.toString().endsWith(".gif")}
         />
       )}
 
