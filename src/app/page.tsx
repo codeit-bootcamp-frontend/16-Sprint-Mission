@@ -5,8 +5,6 @@ import { getTodoList } from "@/features/todo/services/todoApi";
 export default async function Home() {
   const data = await getTodoList();
 
-  console.log("page render");
-
   return (
     <div className="pt-6">
       <TodoAddForm />
