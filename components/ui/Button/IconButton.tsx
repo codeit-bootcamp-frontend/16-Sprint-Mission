@@ -1,4 +1,4 @@
-import { MouseEvent } from "react";
+import { MouseEvent, ComponentType } from "react";
 import clsx from "clsx";
 
 interface IconButtonStyleProps {
@@ -11,7 +11,7 @@ interface IconButtonStyleProps {
 
 interface IconButtonProps extends IconButtonStyleProps {
   type?: "button" | "submit" | "reset" | undefined;
-  imgSrc: string;
+  icon: ComponentType<{ className?: string }>;
   imgAlt?: string;
   onClick: (e: MouseEvent<HTMLButtonElement>) => void;
   className?: string;
@@ -21,25 +21,25 @@ interface IconButtonProps extends IconButtonStyleProps {
 
 const IconButton = ({
   type = "button",
-  imgSrc,
-  imgAlt,
+  icon: Icon,
   radius = "rounded",
   width,
   height,
   hasBgColor = false,
+  className,
   onClick,
 }: IconButtonProps) => {
   return (
     <button
       type={type}
-      className={clsx("icon-btn", {
+      className={clsx(`icon-btn ${className ?? ""}`, {
         "rounded-full": radius === "full",
         "rounded-lg": radius === "rounded",
         "bg-gray-400": hasBgColor,
       })}
       onClick={onClick}
     >
-      <img src={imgSrc} alt={imgAlt} width={width} height={height} />
+      <Icon className={`w-[${width}px] h-[${height}px]`} />
     </button>
   );
 };

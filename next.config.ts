@@ -8,6 +8,13 @@ const nextConfig: NextConfig = {
       { source: "/signup", destination: "/auth/signup" },
     ];
   },
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ["@svgr/webpack"],
+    });
+    return config;
+  },
 };
 
 module.exports = nextConfig;
