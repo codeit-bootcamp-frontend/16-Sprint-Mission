@@ -9,10 +9,15 @@ interface HydrationWrapperProps {
 
 const HydrationWrapper = async ({ prefetchQueries, children }: HydrationWrapperProps) => {
   const queryClient = new QueryClient();
+
   await Promise.all(
-    prefetchQueries.map(({ queryKey, queryFn }) =>
-      queryClient.prefetchQuery({ queryKey, queryFn }),
-    ),
+    prefetchQueries.map(async ({ queryKey, queryFn }) => {
+      const result = await queryFn();
+      return queryClient.prefetchQuery({
+        queryKey,
+        queryFn: async () => result, // 이미 가져온 데이터 재사용
+      });
+    }),
   );
 
   return <HydrationBoundary state={dehydrate(queryClient)}>{children}</HydrationBoundary>;
