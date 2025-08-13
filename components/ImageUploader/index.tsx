@@ -5,9 +5,10 @@ import ImgIcon from "@/assets/images/ico-img.svg";
 import PlusIcon from "@/assets/images/ico-plus.svg";
 import EditIcon from "@/assets/images/ico-edit.svg";
 import Image from "next/image";
+import clsx from "clsx";
 import useImageUpload from "@/hooks/useImageUpload";
 import LoadingSpinner from "@/components/Loader/LoadingSpinner";
-import clsx from "clsx";
+import getImageSrc from "@/lib/getImageSrc";
 
 interface ImageUploaderProps {
   initialData?: string;
@@ -81,13 +82,7 @@ const ImageUploader = ({
 
       {preview && (
         <Image
-          src={
-            typeof preview === "string"
-              ? preview
-              : preview
-              ? URL.createObjectURL(preview)
-              : ""
-          }
+          src={getImageSrc(preview)}
           alt="이미지 미리보기"
           width={384}
           height={310}
