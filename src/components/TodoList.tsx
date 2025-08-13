@@ -20,6 +20,7 @@ const TodoList = ({ items, mode = 'todo', onClick }: TodoListProps) => {
             key={item.id}
             onClick={() => onClick?.(item)}
             className={`${mode === 'done' ? 'line-through' : ''}`}
+            disabled={typeof item.id === 'string' && item.id.startsWith('temp')}
           />
         ))
       ) : (

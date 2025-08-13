@@ -1,5 +1,7 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+
 import Badge from '@/components/Badge';
 import LoadingOverlay from '@/components/LoadingOverlay';
 import TodoForm from '@/components/TodoForm';
@@ -8,6 +10,7 @@ import useTodo from '@/hooks/useTodo';
 import { Item } from '@/types/TodoTypes';
 
 const TodoContent = () => {
+  const [initialLoading, setInitialLoading] = useState(true);
   const { addTodoMutation, updateTodoMutation, isFetching, todoItems, doneItems } = useTodo();
 
   const handleOnClickAdd = (formData, reset) => {
@@ -24,7 +27,13 @@ const TodoContent = () => {
     }
   };
 
-  if (isFetching) return <LoadingOverlay />;
+  useEffect(() => {
+    if (!isFetching) {
+      setInitialLoading(false);
+    }
+  }, [isFetching]);
+
+  if (initialLoading) return <LoadingOverlay />;
 
   return (
     <>
@@ -38,7 +47,7 @@ const TodoContent = () => {
             </Badge>
             <TodoList items={todoItems} mode='todo' onClick={onClickCheckListItem} />
           </div>
-          <div className='flex flex-col w-1/2 min-w-0 items-start'>
+          <div className='flex flex-col w-1/2 min-w-0items-start'>
             <Badge mode='done' className='self-start'>
               DONE
             </Badge>
