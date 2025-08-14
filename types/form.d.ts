@@ -16,3 +16,8 @@ export interface LoginFormValues {
   email: string;
   password: string;
 }
+
+export interface SignUpValues extends LoginFormValues {
+  nickname: string;
+  passwordCheck: string;
+}
