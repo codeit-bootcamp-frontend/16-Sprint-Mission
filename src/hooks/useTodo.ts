@@ -72,7 +72,9 @@ const useTodo = () => {
 
       queryClient.setQueryData<Item[]>(TODO_QUERY_KEY, (todoList) => {
         if (!todoList) return [];
-        return todoList.map((todo) => (todo.id === updatedTodo.id ? updatedTodo : todo));
+        return todoList.map((todo) =>
+          todo.id === updatedTodo.id ? { ...todo, ...updatedTodo } : todo,
+        );
       });
 
       return { previousTodos };
