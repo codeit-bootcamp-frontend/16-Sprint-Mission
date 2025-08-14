@@ -1,9 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import FacebookIcon from "../../../public/images/ic_facebook.svg";
-import InstagramIcon from "../../../public/images/ic_instagram.svg";
-import TwitterIcon from "../../../public/images/ic_twitter.svg";
-import YoutubeIcon from "../../../public/images/ic_youtube.svg";
 
 const Footer = () => {
   return (
@@ -34,7 +30,7 @@ const Footer = () => {
             rel="noopener noreferrer"
           >
             <Image
-              src={FacebookIcon}
+              src="/images/ic_facebook.svg"
               width={20}
               height={20}
               alt="페이스북 아이콘"
@@ -48,7 +44,7 @@ const Footer = () => {
             rel="noopener noreferrer"
           >
             <Image
-              src={TwitterIcon}
+              src="/images/ic_twitter.svg"
               alt="트위터 아이콘"
               width={20}
               height={20}
@@ -62,7 +58,7 @@ const Footer = () => {
             rel="noopener noreferrer"
           >
             <Image
-              src={YoutubeIcon}
+              src="/images/ic_youtube.svg"
               alt="유튜브 아이콘"
               width={20}
               height={20}
@@ -76,7 +72,7 @@ const Footer = () => {
             rel="noopener noreferrer"
           >
             <Image
-              src={InstagramIcon}
+              src="/images/ic_instagram.svg"
               alt="인스타그램 아이콘"
               width={20}
               height={20}

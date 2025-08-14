@@ -85,6 +85,7 @@ const Home = () => {
         ariaLabel="하단 배너"
         lazyLoading={true}
       />
+
       <Footer />
     </main>
   );
