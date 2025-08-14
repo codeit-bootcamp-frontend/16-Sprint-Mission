@@ -14,8 +14,7 @@ const useTodo = () => {
   } = useQuery<Item[]>({
     queryKey: TODO_QUERY_KEY,
     queryFn: getItemList,
-    staleTime: 1,
-    refetchOnMount: false,
+    refetchOnMount: 'always',
   });
 
   const todoItems = listData.filter((item) => !item.isCompleted);
