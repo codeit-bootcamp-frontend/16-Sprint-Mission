@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useForm, SubmitHandler } from "react-hook-form";
 import Button from "@/components/ui/Button";
 import InputField from "@/components/InputField";
 import PasswordField from "@/components/InputField/PasswordField";
@@ -9,14 +10,23 @@ import SocialLoginButton from "@/components/SocialLoginButton";
 import { renderButtonTextByState } from "@/utils/renderButtonTextByState";
 import googleIcon from "../../public/images/ic_google.png";
 import kakaoIcon from "../../public/images/ic_kakao.png";
+import { LoginFormValues } from "@/types/form";
 
 const LoginForm = () => {
-  const handleSubmit = () => {
-    console.log("test");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting, isValid },
+  } = useForm<LoginFormValues>({
+    mode: "onChange",
+  });
+
+  const onSubmit: SubmitHandler<LoginFormValues> = (data) => {
+    console.log(data);
   };
 
   return (
-    <form className="auth-form">
+    <form className="auth-form" onSubmit={handleSubmit(onSubmit)}>
       <Link href="/" aria-label="새로고침" className="auth-form-logo">
         <Image
           src="/images/logo.svg"
@@ -32,29 +42,43 @@ const LoginForm = () => {
           label="이메일"
           inputId="userEmail"
           type="email"
-          name="email"
           placeholder="이메일"
-          // onBlur={handleBlur}
-          // fieldError={fieldErrors.email}
+          required
+          {...register("email", {
+            required: "이메일을 입력해주세요.",
+            setValueAs: (v) => v.trim(),
+            pattern: {
+              value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+              message: "이메일 형식으로 작성해주세요.",
+            },
+          })}
+          error={errors.email?.message}
         />
+
         <PasswordField
           label="비밀번호"
           inputId="userPassword"
-          name="password"
           placeholder="비밀번호"
-          // onBlur={handleBlur}
-          // fieldError={fieldErrors.password}
+          {...register("password", {
+            required: "비밀번호를 입력해주세요.",
+            setValueAs: (v) => v.trim(),
+            minLength: {
+              value: 8,
+              message: "비밀번호를 8자 이상 입력해주세요.",
+            },
+          })}
+          error={errors.password?.message}
+          isLogin
         />
 
         <Button
           type="submit"
-          disabled={true}
+          disabled={!isValid}
           variant="primary"
           size="lg"
           shape="round"
-          onClick={handleSubmit}
         >
-          {/* {renderButtonTextByState(isSubmitting, "로그인")} */}로그인
+          {renderButtonTextByState(isSubmitting, "로그인")}
         </Button>
 
         {/* {submitError && <p>{`${submitError}`}</p>} */}

@@ -14,7 +14,7 @@
 
   /* input */
   .input {
-    @apply w-full text-base px-[14px] py-5 bg-gray-200 rounded-xl border border-transparent placeholder-gray-400;
+    @apply w-full text-base px-5 py-4 bg-gray-200 rounded-xl border border-transparent placeholder-gray-400;
   }
 
   .input-error {
@@ -40,6 +40,10 @@
 
   .btn-outlined {
     @apply bg-white border border-gray-300 text-gray-500 hover:border-primary;
+  }
+
+  .btn-disabled {
+    @apply pointer-events-none bg-gray-400 text-white cursor-default;
   }
 
   .icon-btn {

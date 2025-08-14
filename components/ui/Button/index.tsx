@@ -18,8 +18,9 @@ const Button = ({
       className={clsx(`btn-base ${className}`, {
         "btn-sm": size === "sm",
         "btn-lg": size === "lg",
-        "btn-primary": variant === "primary",
-        "btn-outlined": variant === "outlined",
+        "btn-primary": variant === "primary" && !disabled,
+        "btn-outlined": variant === "outlined" && !disabled,
+        "btn-disabled": disabled,
         "rounded-full": shape === "round",
       })}
       style={props.style}

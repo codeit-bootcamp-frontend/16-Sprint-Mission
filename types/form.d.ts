@@ -1,10 +1,18 @@
 export interface InputFieldProps {
-  label: string;
-  inputId?: string;
   type?: string;
-  name: string;
+  label?: string;
   placeholder: string;
+  inputId?: string;
+  inputRef?: Ref<HTMLInputElement>;
   required?: boolean;
-  onBlur?: (e: ChangeEvent<HTMLInputElement>) => void;
-  fieldError?: string;
+  error?: string;
+}
+
+export type PasswordFieldProps = Omit<InputFieldProps, "required"> & {
+  isLogin?: boolean;
+};
+
+export interface LoginFormValues {
+  email: string;
+  password: string;
 }
