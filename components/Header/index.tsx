@@ -5,9 +5,11 @@ import Avatar from "@/components/Avatar";
 import Nav from "@/components/Nav";
 import Button from "@/components/ui/Button";
 import { useRouter } from "next/navigation";
+import { useAuthStore } from "@/stores/authStore";
 
 const Header = () => {
   const router = useRouter();
+  const user = useAuthStore((state) => state.user);
 
   return (
     <header className="sticky left-0 top-0 h-[70px] px-4 md:px-6 lg:px-[12.5rem] z-10 bg-white flex border-b border-[#dfdfdf]">
@@ -32,14 +34,17 @@ const Header = () => {
         <Nav />
 
         <div className="ml-auto flex">
-          {/* <Avatar imgSrc="/images/avatar.png" /> */}
-          <Button
-            size="sm"
-            variant="primary"
-            onClick={() => router.push("/login")}
-          >
-            로그인
-          </Button>
+          {user ? (
+            <Avatar imgSrc="/images/avatar.png" />
+          ) : (
+            <Button
+              size="sm"
+              variant="primary"
+              onClick={() => router.push("/login")}
+            >
+              로그인
+            </Button>
+          )}
         </div>
       </div>
     </header>
