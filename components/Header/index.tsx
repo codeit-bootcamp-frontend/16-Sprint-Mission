@@ -16,6 +16,19 @@ const Header = () => {
     useShallow((state) => ({ user: state.user, clearUser: state.clearUser }))
   );
 
+  const logout = async () => {
+    try {
+      await fetch("/api/auth/logout", {
+        method: "POST",
+        credentials: "include",
+      });
+      clearUser();
+      setIsDropdownOpen(false);
+    } catch (err) {
+      alert(`로그아웃에 실패했습니다. ${err}`);
+    }
+  };
+
   return (
     <header className="sticky left-0 top-0 h-[70px] px-4 md:px-6 lg:px-[12.5rem] z-10 bg-white flex border-b border-[#dfdfdf]">
       <div className="flex items-center py-3 w-full">
@@ -48,14 +61,14 @@ const Header = () => {
             <Button
               size="sm"
               variant="primary"
-              onClick={() => router.push("/")}
+              onClick={() => router.push("/login")}
             >
               로그인
             </Button>
           )}
           <Dropdown
             items={["로그아웃"]}
-            onClick={clearUser}
+            onClick={logout}
             isDropdownOpen={isDropdownOpen}
           />
         </div>
