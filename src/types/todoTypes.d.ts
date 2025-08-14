@@ -11,7 +11,7 @@ export interface UpdateTodoData {
   isCompleted?: boolean;
 }
 
-interface TodoResponseBase {
+export interface TodoResponseType {
   id: number;
   tenantId: string;
   name: string;
@@ -19,7 +19,3 @@ interface TodoResponseBase {
   imageUrl: string | null;
   isCompleted: boolean;
 }
-
-export interface PostTodoResponse extends TodoResponseBase {}
-
-export interface PatchTodoResponse extends TodoResponseBase {}

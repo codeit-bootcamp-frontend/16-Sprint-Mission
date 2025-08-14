@@ -1,11 +1,12 @@
 "use client";
 
-import DoneEmpty from "@/features/todo/components/DoneEmpty";
+import { startTransition, useOptimistic, useRef } from "react";
+
+import DoneEmpty from "@/app/_components/Empty/DoneEmpty";
+import TodoEmpty from "@/app/_components/Empty/TodoEmpty";
 import TodoContent from "@/features/todo/components/TodoContent";
-import TodoEmpty from "@/features/todo/components/TodoEmpty";
 import { updateTodoItem } from "@/features/todo/services/todoApi";
 import { TodoItemType } from "@/types/todoTypes";
-import { startTransition, useEffect, useOptimistic, useState } from "react";
 
 interface Props {
   data: TodoItemType[];
@@ -13,11 +14,11 @@ interface Props {
 }
 
 const TodoListArea = ({ data }: Props) => {
-  const [todoAll, setTodoAll] = useState(data);
+  const initialDataRef = useRef<TodoItemType[]>(data);
   const [optimisticState, toggleOptimisticState] = useOptimistic<
     TodoItemType[],
     number
-  >(todoAll, (currentState, id) => {
+  >(initialDataRef.current, (currentState, id) => {
     return currentState.map((todo) =>
       todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
     );
@@ -28,29 +29,22 @@ const TodoListArea = ({ data }: Props) => {
       // 낙관적 업데이트
       toggleOptimisticState(id);
 
-      const targetCheck = todoAll.find((todo) => todo.id === id)?.isCompleted;
+      const targetCheck = optimisticState.find(
+        (todo) => todo.id === id
+      )?.isCompleted;
       const updateData = { isCompleted: !targetCheck };
 
-      const prevTodoAll = todoAll;
-
       try {
-        setTodoAll((prevTodoAll) =>
-          prevTodoAll.map((todo) =>
-            todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
-          )
-        );
         await updateTodoItem(id, updateData);
+        const updateTodo = initialDataRef.current.map((todo) =>
+          todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
+        );
+        initialDataRef.current = updateTodo;
       } catch (error) {
         console.error(error);
-
-        setTodoAll(prevTodoAll);
       }
     });
   };
-
-  useEffect(() => {
-    setTodoAll(data);
-  }, [data]);
 
   const todoData = optimisticState.filter((item) => !item.isCompleted);
   const doneData = optimisticState.filter((item) => item.isCompleted);
