@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Avatar from "@/components/Avatar";
 import Nav from "@/components/Nav";
 import Button from "@/components/ui/Button";
-import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/stores/authStore";
+import Dropdown from "@/components/ui/Dropdown";
+import { useShallow } from "zustand/shallow";
+import { useRouter } from "next/router";
 
 const Header = () => {
   const router = useRouter();
-  const user = useAuthStore((state) => state.user);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const { user, clearUser } = useAuthStore(
+    useShallow((state) => ({ user: state.user, clearUser: state.clearUser }))
+  );
 
   return (
     <header className="sticky left-0 top-0 h-[70px] px-4 md:px-6 lg:px-[12.5rem] z-10 bg-white flex border-b border-[#dfdfdf]">
@@ -33,18 +38,26 @@ const Header = () => {
 
         <Nav />
 
-        <div className="ml-auto flex">
+        <div className="relative ml-auto flex">
           {user ? (
-            <Avatar imgSrc="/images/avatar.png" />
+            <Avatar
+              imgSrc="/images/avatar.png"
+              onClick={() => setIsDropdownOpen((prev) => !prev)}
+            />
           ) : (
             <Button
               size="sm"
               variant="primary"
-              onClick={() => router.push("/login")}
+              onClick={() => router.push("/")}
             >
               로그인
             </Button>
           )}
+          <Dropdown
+            items={["로그아웃"]}
+            onClick={clearUser}
+            isDropdownOpen={isDropdownOpen}
+          />
         </div>
       </div>
     </header>
