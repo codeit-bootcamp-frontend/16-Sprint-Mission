@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
@@ -83,8 +81,6 @@ const LoginForm = () => {
         >
           {renderButtonTextByState(isSubmitting, "로그인")}
         </Button>
-
-        {/* {submitError && <p>{`${submitError}`}</p>} */}
 
         <div className="flex justify-between items-center my-2 md:my-0 py-4 px-6 rounded-xl bg-primary-light text-gray-800">
           <span className="text-gray-800">간편 로그인하기</span>
