@@ -1,43 +1,32 @@
+import axios from 'axios';
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET(request: NextRequest, context: { params: Promise<{ path: string[] }> }) {
-  const { path } = await context.params;
-  return handleApiRequest(request, path, 'GET');
-}
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-async function handleApiRequest(request: NextRequest, pathSegments: string[], method: string) {
+// 서버 사이드 여부
+// const isServer = typeof window === 'undefined';
+
+export async function GET(req: NextRequest) {
   try {
-    const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
+    // req.nextUrl.pathname에서 동적 path 추출
+    const pathArray = req.nextUrl.pathname.replace(/^\/api\//, '').split('/');
+    console.log('route 파일 적용');
+    // if (isServer) {
+    const targetURL = `${BASE_URL}/${pathArray.join('/')}`;
+    const response = await axios.get(targetURL, {
+      headers: { 'Content-Type': 'application/json' },
+    });
+    return NextResponse.json(response.data);
+    // }
 
-    const apiPath = pathSegments.join('/');
-    const targetURL = `${baseURL}/${apiPath}`;
-    console.log(targetURL);
-
-    const headers = {
-      'Content-Type': 'application/json',
-    };
-
-    let body: string | undefined;
-    if (method !== 'GET') {
-      body = await request.text();
+    // 클라이언트에서 호출되면 그대로 외부 API URL 전달 가능
+    // return NextResponse.json({ message: '클라이언트 호출용 응답' });
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      // 일반적인 Error 타입이면 message 사용 가능
+      return NextResponse.json({ error: error.message }, { status: 500 });
     }
-
-    const response = await fetch(targetURL, {
-      method,
-      headers,
-      body,
-    });
-
-    const data = await response.json();
-
-    return NextResponse.json(data, {
-      status: response.status,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-  } catch (error) {
-    console.error('API proxy error:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    // Error가 아닐 경우 fallback 처리
+    return NextResponse.json({ error: 'Unknown error' }, { status: 500 });
   }
 }

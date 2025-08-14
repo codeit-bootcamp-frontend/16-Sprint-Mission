@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+// 서버 사이드 여부
 const isServer = typeof window === 'undefined';
 
 const apiClient = axios.create({
@@ -8,7 +9,8 @@ const apiClient = axios.create({
   headers: { 'Content-Type': 'application/json' },
 });
 
-// 에러 처리 및 리프레쉬 토큰 추가 인터셉터
+// 에러 처리
+// if (isServer) {
 apiClient.interceptors.response.use(
   (res) => res.data,
   async (error) => {
@@ -16,5 +18,6 @@ apiClient.interceptors.response.use(
     console.log(status);
   },
 );
+// }
 
 export default apiClient;

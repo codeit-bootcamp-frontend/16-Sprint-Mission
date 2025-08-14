@@ -13,6 +13,7 @@ const HydrationWrapper = async ({ prefetchQueries, children }: HydrationWrapperP
   await Promise.all(
     prefetchQueries.map(async ({ queryKey, queryFn }) => {
       const result = await queryFn();
+      console.log('프리 패치', result);
       return queryClient.prefetchQuery({
         queryKey,
         queryFn: async () => result,
