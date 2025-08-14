@@ -13,11 +13,9 @@ import { SignUpValues } from "@/types/form";
 import { useMutation } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
-import { useAuthStore } from "@/stores/authStore";
 
 const LoginForm = () => {
   const router = useRouter();
-  const setUser = useAuthStore((state) => state.setUser);
   const {
     register,
     handleSubmit,
@@ -31,14 +29,10 @@ const LoginForm = () => {
 
   const { mutate: signUpMutation, isPending } = useMutation({
     mutationFn: async (data: SignUpValues) => {
-      const res = await axios.post("/api/auth/signup", data, {
-        withCredentials: true,
-      });
-      return res.data;
+      await axios.post("/api/auth/signup", data);
     },
-    onSuccess: (data) => {
-      setUser(data.user);
-      router.push("/");
+    onSuccess: () => {
+      router.push("/login");
     },
     onError: (err) => {
       if (err instanceof AxiosError) {
