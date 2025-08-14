@@ -17,7 +17,7 @@ const Input = ({ className, errorMessage, ...rest }: InputProps) => {
           className,
         )}
       />
-      <div className='text-sm text-red-600 pt-2.5 pl-6'>{errorMessage}</div>
+      <div className='absolute text-sm text-red-600 pt-2.5 pl-6'>{errorMessage}</div>
     </div>
   );
 };

@@ -28,10 +28,8 @@ async function handleApiRequest(request: NextRequest, pathSegments: string[], me
       body,
     });
 
-    // 응답 데이터 파싱
     const data = await response.json();
 
-    // 응답 반환
     return NextResponse.json(data, {
       status: response.status,
       headers: {

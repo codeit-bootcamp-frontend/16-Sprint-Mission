@@ -6,18 +6,15 @@ interface BadgeProps {
   className?: string;
 }
 
+const BASE_CLASS = 'font-accent rounded-[1.68rem] px-6 pt-1.5 pb-0.5 text-lg' as const;
+
+const MODE_CLASS = {
+  todo: 'bg-lime-300 text-green-700',
+  done: 'bg-green-700 text-amber-300',
+} as const;
+
 const Badge = ({ mode = 'todo', children, className }: BadgeProps) => {
-  const baseClass = 'font-accent rounded-[1.68rem] px-6 pt-1.5 pb-0.5 text-lg';
-
-  const getModeClass = (): string => {
-    const modeClass: Record<string, string> = {
-      todo: 'bg-lime-300 text-green-700',
-      done: 'bg-green-700 text-amber-300',
-    };
-    return modeClass[mode];
-  };
-
-  return <div className={clsx(baseClass, getModeClass(), className)}>{children}</div>;
+  return <div className={clsx(BASE_CLASS, MODE_CLASS[mode], className)}>{children}</div>;
 };
 
 export default Badge;

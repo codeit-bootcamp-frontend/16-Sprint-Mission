@@ -15,7 +15,7 @@ const HydrationWrapper = async ({ prefetchQueries, children }: HydrationWrapperP
       const result = await queryFn();
       return queryClient.prefetchQuery({
         queryKey,
-        queryFn: async () => result, // 이미 가져온 데이터 재사용
+        queryFn: async () => result,
       });
     }),
   );

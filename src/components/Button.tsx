@@ -14,6 +14,14 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
 }
 
+const BASE_CLASS =
+  'flex items-center text-base font-bold rounded-[1.68rem] border-2 border-slate-900 shadow-offset' as const;
+
+const SIZE_CLASS = {
+  small: 'p-4',
+  large: 'min-w-41 gap-1 py-3.5 px-10',
+} as const;
+
 const Button = ({
   disabled,
   mode = 'add',
@@ -22,33 +30,21 @@ const Button = ({
   className,
   ...rest
 }: ButtonProps) => {
-  const baseClass =
-    'flex items-center text-base font-bold rounded-[1.68rem] border-2 border-slate-900 shadow-offset';
-
-  const getSizeClass = (): string => {
-    const sizeClass: Record<string, string> = {
-      small: 'p-4',
-      large: 'min-w-41 gap-1 py-3.5 px-10',
-    };
-
-    return sizeClass[size];
-  };
-
-  const getModeClass = (): string => {
-    const modeClass: Record<string, string> = {
-      add: `${disabled ? 'bg-slate-200 text-slate-900' : 'bg-violet-600 text-white'} border-slate-900`,
-      delete: 'bg-rose-500 text-white border-slate-900',
-      edit: `${disabled ? 'bg-slate-200' : 'bg-lime-300'} text-slate-900 border-slate-900`,
-    };
-
-    return modeClass[mode];
-  };
-
   return (
     <button
       {...rest}
       disabled={disabled}
-      className={clsx(baseClass, getSizeClass(), getModeClass(), className)}
+      className={clsx(
+        BASE_CLASS,
+        SIZE_CLASS[size],
+        {
+          'bg-slate-200 text-slate-900': (mode === 'add' || mode === 'edit') && disabled,
+          'bg-violet-600 text-white': mode === 'add' && !disabled,
+          'bg-rose-500 text-white': mode === 'delete',
+          'bg-lime-300 text-slate-900': mode === 'edit' && !disabled,
+        },
+        className,
+      )}
     >
       {mode === 'add' && (
         <Plus
