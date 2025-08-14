@@ -19,5 +19,5 @@ export interface LoginFormValues {
 
 export interface SignUpValues extends LoginFormValues {
   nickname: string;
-  passwordCheck: string;
+  passwordConfirmation: string;
 }

@@ -8,7 +8,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const reqBody = { ...req.body };
-  const endpoint = "/auth/signIn";
+  const endpoint = "/auth/signUp";
 
   try {
     const data = await handleAuthPostRequest({ endpoint, reqBody, req, res });

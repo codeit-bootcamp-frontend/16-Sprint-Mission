@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import axios, { AxiosError } from "axios";
 import { useForm } from "react-hook-form";
 import Button from "@/components/ui/Button";
 import InputField from "@/components/InputField";
@@ -9,21 +10,47 @@ import { renderButtonTextByState } from "@/utils/renderButtonTextByState";
 import googleIcon from "../../public/images/ic_google.png";
 import kakaoIcon from "../../public/images/ic_kakao.png";
 import { LoginFormValues } from "@/types/form";
-import useLogin from "@/hooks/useLogin";
+import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
+import { useAuthStore } from "@/stores/authStore";
 
 const LoginForm = () => {
+  const setUser = useAuthStore((state) => state.setUser);
+  const router = useRouter();
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting, isValid },
+    formState: { errors, isValid },
+    setError,
   } = useForm<LoginFormValues>({
     mode: "onChange",
   });
 
-  const loginMutation = useLogin();
+  const { mutate: loginMutation, isPending } = useMutation({
+    mutationFn: async (data: LoginFormValues) => {
+      const res = await axios.post("/api/auth/login", data, {
+        withCredentials: true,
+      });
+      return res.data;
+    },
+    onSuccess: (data) => {
+      setUser(data.user);
+      router.push("/");
+    },
+    onError: (err) => {
+      if (err instanceof AxiosError) {
+        alert(
+          err.response?.data?.message ||
+            "로그인에 실패했습니다. 이메일과 비밀번호를 확인해주세요."
+        );
+      } else {
+        alert("알 수 없는 에러가 발생했습니다.");
+      }
+    },
+  });
 
   const onSubmit = (data: LoginFormValues) => {
-    loginMutation.mutate(data);
+    loginMutation(data);
   };
 
   return (
@@ -79,7 +106,7 @@ const LoginForm = () => {
           size="lg"
           shape="round"
         >
-          {renderButtonTextByState(isSubmitting, "로그인")}
+          {renderButtonTextByState(isPending, "로그인")}
         </Button>
 
         <div className="flex justify-between items-center my-2 md:my-0 py-4 px-6 rounded-xl bg-primary-light text-gray-800">

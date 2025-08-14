@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Button from "@/components/ui/Button";
 import InputField from "@/components/InputField";
@@ -9,32 +10,67 @@ import { renderButtonTextByState } from "@/utils/renderButtonTextByState";
 import googleIcon from "../../public/images/ic_google.png";
 import kakaoIcon from "../../public/images/ic_kakao.png";
 import { SignUpValues } from "@/types/form";
-import { useEffect } from "react";
+import { useMutation } from "@tanstack/react-query";
+import axios, { AxiosError } from "axios";
+import { useRouter } from "next/navigation";
+import { useAuthStore } from "@/stores/authStore";
 
 const LoginForm = () => {
+  const router = useRouter();
+  const setUser = useAuthStore((state) => state.setUser);
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting, isValid },
+    formState: { errors, isValid },
     watch,
     trigger,
+    setError,
   } = useForm<SignUpValues>({
     mode: "onChange",
   });
 
-  // const signUpMutation = useLogin();
+  const { mutate: signUpMutation, isPending } = useMutation({
+    mutationFn: async (data: SignUpValues) => {
+      const res = await axios.post("/api/auth/signup", data, {
+        withCredentials: true,
+      });
+      return res.data;
+    },
+    onSuccess: (data) => {
+      setUser(data.user);
+      router.push("/");
+    },
+    onError: (err) => {
+      if (err instanceof AxiosError) {
+        if (err.response?.status === 400) {
+          setError("email", {
+            message:
+              err.response?.data?.message || "이미 사용중인 이메일입니다.",
+          });
+        }
+      } else {
+        alert("알 수 없는 에러가 발생했습니다.");
+      }
+    },
+  });
 
   const onSubmit = (data: SignUpValues) => {
-    // signUpMutation.mutate(data);
-    console.log(data);
+    const payload = {
+      email: data.email,
+      nickname: data.nickname,
+      password: data.password,
+      passwordConfirmation: data.passwordConfirmation,
+    };
+    signUpMutation(payload);
   };
 
   const password = watch("password");
-  const passwordCheck = watch("passwordCheck");
+  const passwordConfirmation = watch("passwordConfirmation");
 
   useEffect(() => {
-    if (password && passwordCheck.length >= 8) trigger("passwordCheck");
-  }, [password, passwordCheck]);
+    if (password && passwordConfirmation.length >= 8)
+      trigger("passwordConfirmation");
+  }, [password, passwordConfirmation]);
 
   return (
     <form className="auth-form" onSubmit={handleSubmit(onSubmit)}>
@@ -96,9 +132,9 @@ const LoginForm = () => {
 
         <PasswordField
           label="비밀번호 확인"
-          inputId="userPasswordCheck"
+          inputId="userpasswordConfirmation"
           placeholder="비밀번호를 다시 한 번 입력해주세요"
-          {...register("passwordCheck", {
+          {...register("passwordConfirmation", {
             required: "비밀번호 확인을 입력해주세요.",
             setValueAs: (v) => v.trim(),
             minLength: {
@@ -113,7 +149,7 @@ const LoginForm = () => {
               }
             },
           })}
-          error={errors.passwordCheck?.message}
+          error={errors.passwordConfirmation?.message}
         />
 
         <Button
@@ -123,7 +159,7 @@ const LoginForm = () => {
           size="lg"
           shape="round"
         >
-          {renderButtonTextByState(isSubmitting, "회원가입")}
+          {renderButtonTextByState(isPending, "회원가입")}
         </Button>
 
         <div className="flex justify-between items-center my-2 md:my-0 py-4 px-6 rounded-xl bg-primary-light text-gray-800">
