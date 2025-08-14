@@ -47,7 +47,7 @@ const TodoContent = () => {
             </Badge>
             <TodoList items={todoItems} mode='todo' onClick={onClickCheckListItem} />
           </div>
-          <div className='flex flex-col w-1/2 min-w-0items-start'>
+          <div className='flex flex-col w-1/2 min-w-0 items-start'>
             <Badge mode='done' className='self-start'>
               DONE
             </Badge>
