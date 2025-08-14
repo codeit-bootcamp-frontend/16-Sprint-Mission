@@ -10,7 +10,6 @@ const apiClient = axios.create({
 });
 
 // 에러 처리
-// if (isServer) {
 apiClient.interceptors.response.use(
   (res) => res.data,
   async (error) => {
@@ -18,6 +17,5 @@ apiClient.interceptors.response.use(
     console.log(status);
   },
 );
-// }
 
 export default apiClient;
