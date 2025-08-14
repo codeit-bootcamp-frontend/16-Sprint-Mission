@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useForm, SubmitHandler } from "react-hook-form";
+import axios, { AxiosError } from "axios";
 import Button from "@/components/ui/Button";
 import InputField from "@/components/InputField";
 import PasswordField from "@/components/InputField/PasswordField";
@@ -11,8 +12,11 @@ import { renderButtonTextByState } from "@/utils/renderButtonTextByState";
 import googleIcon from "../../public/images/ic_google.png";
 import kakaoIcon from "../../public/images/ic_kakao.png";
 import { LoginFormValues } from "@/types/form";
+import { useAuthStore } from "@/stores/authStore";
+import apiClient from "@/utils/api";
 
 const LoginForm = () => {
+  const setUser = useAuthStore((state) => state.setUser);
   const {
     register,
     handleSubmit,
@@ -21,8 +25,21 @@ const LoginForm = () => {
     mode: "onChange",
   });
 
-  const onSubmit: SubmitHandler<LoginFormValues> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<LoginFormValues> = async (data) => {
+    try {
+      const res = await axios.post("/api/auth/login", data, {
+        withCredentials: true,
+      });
+      console.log(res.data.user);
+      setUser(res.data.user);
+      console.log("store:", useAuthStore.getState().user);
+    } catch (err) {
+      if (err instanceof AxiosError) {
+        alert(err.response?.data?.message);
+      } else {
+        alert("알 수 없는 에러가 발생했습니다.");
+      }
+    }
   };
 
   return (

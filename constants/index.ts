@@ -3,3 +3,5 @@ export const BREAKPOINTS = {
   md: 768,
   lg: 1280,
 };
+
+export const apiUrl = process.env.NEXT_PUBLIC_API_URL!;
