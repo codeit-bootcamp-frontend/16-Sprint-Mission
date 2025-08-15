@@ -33,8 +33,8 @@ const CheckListItem = ({ name, checked, className, disabled, onClick }: CheckLis
   return (
     <div
       className={clsx(
-        'w-full bg-white border-2 border-slate-900 rounded-[1.68rem] px-3 py-2.25 flex gap-4 items-center cursor-pointer',
-        disabled && 'opacity-50 cursor-not-allowed',
+        'w-full bg-white border-2 border-slate-900 rounded-[1.68rem] px-3 py-2.25 flex gap-4 items-center',
+        disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer',
         className,
       )}
       onClick={onClick}

@@ -24,7 +24,6 @@ async function handleRequest(req: NextRequest, method: 'GET' | 'POST' | 'PUT' | 
     }
 
     const response = await axios(config);
-
     return NextResponse.json(response.data, { status: response.status });
   } catch (error: unknown) {
     if (isAxiosError(error)) {
