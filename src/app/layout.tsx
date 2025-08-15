@@ -1,5 +1,4 @@
 import '@/app/globals.css';
-
 import Script from 'next/script';
 
 import Gnb from '@/components/Gnb';
