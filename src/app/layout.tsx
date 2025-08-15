@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 
-const nanumsquare = localFont({
+export const nanumsquare = localFont({
   src: [
     {
       path: "../../public/fonts/NanumSquareR.woff",
