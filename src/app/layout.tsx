@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 import Header from "@/components/Header";
+import QueryProvider from "@/app/_components/QueryProvider";
 
 export const nanumsquare = localFont({
   src: [
@@ -40,8 +41,10 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={`${nanumsquare.className} bg-gray-50`}>
-        <Header />
-        <div className="max-w-[1200px] mx-auto">{children}</div>
+        <QueryProvider>
+          <Header />
+          <div className="max-w-[1200px] mx-auto">{children}</div>
+        </QueryProvider>
       </body>
     </html>
   );
