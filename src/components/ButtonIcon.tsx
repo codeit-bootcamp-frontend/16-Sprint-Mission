@@ -1,6 +1,6 @@
-import PlusIcon from "/public/images/PlusIcon.svg";
-import DeleteIcon from "/public/images/DeleteIcon.svg";
-import CheckIcon from "/public/images/CheckIcon.svg";
+import PlusIcon from "@/assets/icons/PlusIcon.svg";
+import DeleteIcon from "@/assets/icons/DeleteIcon.svg";
+import CheckIcon from "@/assets/icons/CheckIcon.svg";
 
 const ICONS_TYPE = {
   add: PlusIcon,
