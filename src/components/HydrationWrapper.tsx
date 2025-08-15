@@ -12,15 +12,15 @@ const HydrationWrapper = async ({ prefetchQueries, children }: HydrationWrapperP
 
   await Promise.all(
     prefetchQueries.map(async ({ queryKey, queryFn }) => {
-      const result = await queryFn();
-      console.log(result);
-      return queryClient.prefetchQuery({
-        queryKey,
-        queryFn: async () => result,
-      });
+      try {
+        const result = await queryFn();
+        return queryClient.prefetchQuery({ queryKey, queryFn: async () => result });
+      } catch (err) {
+        console.error('prefetchQuery 실패:', queryKey, err);
+        queryClient.setQueryData(queryKey, null);
+      }
     }),
   );
-
   return <HydrationBoundary state={dehydrate(queryClient)}>{children}</HydrationBoundary>;
 };
 
