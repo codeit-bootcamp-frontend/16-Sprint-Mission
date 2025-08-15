@@ -5,16 +5,14 @@ import { startTransition, useOptimistic, useRef } from "react";
 import DoneEmpty from "@/app/_components/Empty/DoneEmpty";
 import TodoEmpty from "@/app/_components/Empty/TodoEmpty";
 import TodoContent from "@/features/todo/components/TodoContent";
-import { updateTodoItem } from "@/features/todo/services/todoApi";
+import { getTodoList, updateTodoItem } from "@/features/todo/services/todoApi";
 import { TodoItemType } from "@/types/todoTypes";
+import { useQuery } from "@tanstack/react-query";
 
-interface Props {
-  data: TodoItemType[];
-  onUpdate?: (id: number) => void;
-}
+const TodoListArea = () => {
+  const { data } = useQuery({ queryKey: ["todos"], queryFn: getTodoList });
 
-const TodoListArea = ({ data }: Props) => {
-  const initialDataRef = useRef<TodoItemType[]>(data);
+  const initialDataRef = useRef<TodoItemType[]>(data || []);
   const [optimisticState, toggleOptimisticState] = useOptimistic<
     TodoItemType[],
     number

@@ -6,13 +6,17 @@ import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 
 export default async function Home() {
   const queryClient = getQueryClient();
-  const data = await getTodoList();
+
+  await queryClient.fetchQuery({
+    queryKey: ["todos"],
+    queryFn: getTodoList,
+  });
 
   return (
     <div className="pt-6">
       <TodoAddForm />
       <HydrationBoundary state={dehydrate(queryClient)}>
-        <TodoListArea data={data} />
+        <TodoListArea />
       </HydrationBoundary>
     </div>
   );
