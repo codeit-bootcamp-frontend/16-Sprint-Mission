@@ -1,18 +1,49 @@
 import CheckItem from "@/components/CheckItem";
+import { updateTodoItem } from "@/features/todo/services/todoApi";
 import { TodoItemType } from "@/types/todoTypes";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-interface Props extends TodoItemType {
-  onUpdate: (id: number) => void;
-}
+const TodoItem = ({ name, id, isCompleted }: TodoItemType) => {
+  const queryClient = useQueryClient();
 
-const TodoItem = ({ name, id, isCompleted, onUpdate }: Props) => {
+  const checkMutation = useMutation({
+    mutationFn: async (id: number) => {
+      await updateTodoItem(id, { isCompleted: !isCompleted });
+    },
+    onMutate: async (id: number) => {
+      await queryClient.cancelQueries({ queryKey: ["todos"] });
+
+      const prevTodos: TodoItemType[] | undefined = queryClient.getQueryData([
+        "todos",
+      ]);
+
+      queryClient.setQueryData(["todos"], (prevTodos: TodoItemType[]) => {
+        return prevTodos.map((todo) =>
+          todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
+        );
+      });
+
+      return { prevTodos };
+    },
+    onError: (err, id, context) => {
+      queryClient.setQueryData(["todos"], context?.prevTodos);
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["todos"] });
+    },
+  });
+
+  const handleUpdateCheck = (id: number) => {
+    checkMutation.mutate(id);
+  };
+
   return (
     <li className="mt-4">
       <CheckItem
         name={name}
         id={id}
         isCompleted={isCompleted}
-        onUpdate={onUpdate}
+        onUpdate={handleUpdateCheck}
       />
     </li>
   );
