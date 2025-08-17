@@ -16,9 +16,7 @@ const TodoItem = ({ name, id, isCompleted }: TodoItemType) => {
     onMutate: async (id: number) => {
       await queryClient.cancelQueries({ queryKey: QUERY_KEY_TODOLIST });
 
-      const prevTodos: TodoItemType[] | undefined = queryClient.getQueryData([
-        "todos",
-      ]);
+      const prevTodos = queryClient.getQueryData<TodoItemType[]>(["todos"]);
 
       queryClient.setQueryData(
         QUERY_KEY_TODOLIST,
@@ -35,6 +33,7 @@ const TodoItem = ({ name, id, isCompleted }: TodoItemType) => {
       queryClient.setQueryData(QUERY_KEY_TODOLIST, context?.prevTodos);
     },
     onSettled: () => {
+      if (!(queryClient.isMutating() === 1)) return;
       queryClient.invalidateQueries({ queryKey: QUERY_KEY_TODOLIST });
     },
   });
