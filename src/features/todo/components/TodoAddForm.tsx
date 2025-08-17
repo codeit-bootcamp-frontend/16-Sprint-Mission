@@ -21,9 +21,7 @@ const TodoAddForm = () => {
     onMutate: async (name: string) => {
       await queryClient.cancelQueries({ queryKey: QUERY_KEY_TODOLIST });
 
-      const prevTodos: TodoItemType[] | undefined = queryClient.getQueryData([
-        "todos",
-      ]);
+      const prevTodos = queryClient.getQueryData<TodoItemType[]>(["todos"]);
 
       const newTodos: TodoItemType = {
         id: 9999, // 임시 id 값 설정
