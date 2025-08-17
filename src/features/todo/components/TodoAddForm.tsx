@@ -3,53 +3,17 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 
 import Button from "@/components/Button";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createTodoItem } from "@/features/todo/services/todoApi";
-import { TodoItemType } from "@/types/todoTypes";
-import { todoQueries } from "@/features/todo/services/todoQuery";
-
-const QUERY_KEY_TODOLIST = todoQueries.list();
+import useCreateTodo from "@/hooks/useCreateTodo";
 
 const TodoAddForm = () => {
   const [todoText, setTodoText] = useState("");
-  const queryClient = useQueryClient();
 
-  const todoAddMutation = useMutation({
-    mutationFn: async (name: string) => {
-      await createTodoItem(name);
-    },
-    onMutate: async (name: string) => {
-      await queryClient.cancelQueries({ queryKey: QUERY_KEY_TODOLIST });
-
-      const prevTodos = queryClient.getQueryData<TodoItemType[]>(["todos"]);
-
-      const newTodos: TodoItemType = {
-        id: 9999, // 임시 id 값 설정
-        name: name,
-        isCompleted: false,
-      };
-
-      queryClient.setQueryData(QUERY_KEY_TODOLIST, (todos: TodoItemType[]) => [
-        newTodos,
-        ...todos,
-      ]);
-
-      return { prevTodos };
-    },
-    onError: (d, e, context) => {
-      queryClient.setQueryData(QUERY_KEY_TODOLIST, context?.prevTodos);
-      // 토스트 생성 안내 띄워주기
-    },
-    onSettled: () => {
-      // id 프로퍼티 값 갱신
-      queryClient.invalidateQueries({ queryKey: QUERY_KEY_TODOLIST });
-    },
-  });
-  const isValid = todoText.trim().length === 0 || todoAddMutation.isPending;
+  const { mutate, isPending } = useCreateTodo();
+  const isValid = todoText.trim().length === 0 || isPending;
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    todoAddMutation.mutate(todoText);
+    mutate(todoText);
     setTodoText("");
   };
 
