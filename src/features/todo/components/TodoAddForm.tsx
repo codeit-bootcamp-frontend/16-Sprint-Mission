@@ -6,6 +6,9 @@ import Button from "@/components/Button";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createTodoItem } from "@/features/todo/services/todoApi";
 import { TodoItemType } from "@/types/todoTypes";
+import { todoQueries } from "@/features/todo/services/todoQuery";
+
+const QUERY_KEY_TODOLIST = todoQueries.list();
 
 const TodoAddForm = () => {
   const [todoText, setTodoText] = useState("");
@@ -16,7 +19,7 @@ const TodoAddForm = () => {
       await createTodoItem(name);
     },
     onMutate: async (name: string) => {
-      await queryClient.cancelQueries({ queryKey: ["todos"] });
+      await queryClient.cancelQueries({ queryKey: QUERY_KEY_TODOLIST });
 
       const prevTodos: TodoItemType[] | undefined = queryClient.getQueryData([
         "todos",
@@ -28,7 +31,7 @@ const TodoAddForm = () => {
         isCompleted: false,
       };
 
-      queryClient.setQueryData(["todos"], (todos: TodoItemType[]) => [
+      queryClient.setQueryData(QUERY_KEY_TODOLIST, (todos: TodoItemType[]) => [
         newTodos,
         ...todos,
       ]);
@@ -36,12 +39,12 @@ const TodoAddForm = () => {
       return { prevTodos };
     },
     onError: (d, e, context) => {
-      queryClient.setQueryData(["todos"], context?.prevTodos);
+      queryClient.setQueryData(QUERY_KEY_TODOLIST, context?.prevTodos);
       // 토스트 생성 안내 띄워주기
     },
     onSettled: () => {
       // id 프로퍼티 값 갱신
-      queryClient.invalidateQueries({ queryKey: ["todos"] });
+      queryClient.invalidateQueries({ queryKey: QUERY_KEY_TODOLIST });
     },
   });
   const isValid = todoText.trim().length === 0 || todoAddMutation.isPending;

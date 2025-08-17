@@ -1,7 +1,10 @@
 import CheckItem from "@/components/CheckItem";
 import { updateTodoItem } from "@/features/todo/services/todoApi";
+import { todoQueries } from "@/features/todo/services/todoQuery";
 import { TodoItemType } from "@/types/todoTypes";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+
+const QUERY_KEY_TODOLIST = todoQueries.list();
 
 const TodoItem = ({ name, id, isCompleted }: TodoItemType) => {
   const queryClient = useQueryClient();
@@ -11,25 +14,28 @@ const TodoItem = ({ name, id, isCompleted }: TodoItemType) => {
       await updateTodoItem(id, { isCompleted: !isCompleted });
     },
     onMutate: async (id: number) => {
-      await queryClient.cancelQueries({ queryKey: ["todos"] });
+      await queryClient.cancelQueries({ queryKey: QUERY_KEY_TODOLIST });
 
       const prevTodos: TodoItemType[] | undefined = queryClient.getQueryData([
         "todos",
       ]);
 
-      queryClient.setQueryData(["todos"], (prevTodos: TodoItemType[]) => {
-        return prevTodos.map((todo) =>
-          todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
-        );
-      });
+      queryClient.setQueryData(
+        QUERY_KEY_TODOLIST,
+        (prevTodos: TodoItemType[]) => {
+          return prevTodos.map((todo) =>
+            todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
+          );
+        }
+      );
 
       return { prevTodos };
     },
     onError: (err, id, context) => {
-      queryClient.setQueryData(["todos"], context?.prevTodos);
+      queryClient.setQueryData(QUERY_KEY_TODOLIST, context?.prevTodos);
     },
     onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: ["todos"] });
+      queryClient.invalidateQueries({ queryKey: QUERY_KEY_TODOLIST });
     },
   });
 

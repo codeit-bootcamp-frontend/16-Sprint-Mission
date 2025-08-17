@@ -3,11 +3,11 @@
 import DoneEmpty from "@/app/_components/Empty/DoneEmpty";
 import TodoEmpty from "@/app/_components/Empty/TodoEmpty";
 import TodoContent from "@/features/todo/components/TodoContent";
-import { getTodoList } from "@/features/todo/services/todoApi";
+import { todoQueries } from "@/features/todo/services/todoQuery";
 import { useQuery } from "@tanstack/react-query";
 
 const TodoListArea = () => {
-  const { data } = useQuery({ queryKey: ["todos"], queryFn: getTodoList });
+  const { data } = useQuery(todoQueries.listOptions());
 
   if (!data) return <div>로딩중...</div>;
 
