@@ -12,54 +12,56 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
-const eslintConfig = [...compat.extends("next/core-web-vitals", "next/typescript"), {
-  plugins: {
-    import: pluginImport,
-  },
-  rules: {
-    // 쓰이지 않는 변수 검사
-    "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": [
-      "warn",
-      { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
-    ],
+const eslintConfig = [
+  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    plugins: ["import"],
+    rules: {
+      // 쓰이지 않는 변수 검사
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+      ],
 
-    // import order 검사
-    "import/order": [
-      "error",
-      {
-        groups: [
-          "builtin", // Node.js 내장 모듈
-          "external", // 외부 라이브러리
-          "internal", // 프로젝트 내부 alias
-          ["parent", "sibling", "index"], // 상대 경로
-          "object", // (거의 없음)
-          "type", // 타입 임포트
-        ],
-        pathGroups: [
-          {
-            pattern: "next/**",
-            group: "external",
-            position: "before",
+      // import order 검사
+      "import/order": [
+        "error",
+        {
+          groups: [
+            "builtin", // Node.js 내장 모듈
+            "external", // 외부 라이브러리
+            "internal", // 프로젝트 내부 alias
+            ["parent", "sibling", "index"], // 상대 경로
+            "object", // (거의 없음)
+            "type", // 타입 임포트
+          ],
+          pathGroups: [
+            {
+              pattern: "next/**",
+              group: "external",
+              position: "before",
+            },
+            {
+              pattern: "@/**",
+              group: "internal",
+            },
+            {
+              pattern: "@src/**",
+              group: "internal",
+            },
+          ],
+          pathGroupsExcludedImportTypes: ["type"],
+          "newlines-between": "always",
+          alphabetize: {
+            order: "asc",
+            caseInsensitive: true,
           },
-          {
-            pattern: "@/**",
-            group: "internal",
-          },
-          {
-            pattern: "@src/**",
-            group: "internal",
-          },
-        ],
-        pathGroupsExcludedImportTypes: ["type"],
-        "newlines-between": "always",
-        alphabetize: {
-          order: "asc",
-          caseInsensitive: true,
         },
-      },
-    ],
+      ],
+    },
   },
-}, ...storybook.configs["flat/recommended"]];
+  ...storybook.configs["flat/recommended"],
+];
 
 export default eslintConfig;
