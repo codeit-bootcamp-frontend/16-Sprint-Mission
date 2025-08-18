@@ -7,7 +7,7 @@ import Header from "@/components/Header";
 import QueryProvider from "@/app/_components/QueryProvider";
 import ToastContainer from "@/components/Toast/ToastContainer";
 
-export const nanumsquare = localFont({
+const nanumsquare = localFont({
   src: [
     {
       path: "../../public/fonts/NanumSquareR.woff",
