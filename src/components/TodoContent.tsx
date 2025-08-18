@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react';
 
+import { useRouter } from 'next/navigation';
+
 import Badge from '@/components/Badge';
 import LoadingOverlay from '@/components/LoadingOverlay';
 import TodoForm from '@/components/TodoForm';
@@ -10,6 +12,7 @@ import useTodo from '@/hooks/useTodo';
 import { Item } from '@/types/TodoTypes';
 
 const TodoContent = () => {
+  const router = useRouter();
   const [initialLoading, setInitialLoading] = useState(true);
   const { addTodoMutation, updateTodoMutation, isFetching, todoItems, doneItems } = useTodo();
 
@@ -21,10 +24,14 @@ const TodoContent = () => {
     });
   };
 
-  const onClickCheckListItem = (item: Item) => {
+  const onCheckItem = (item: Item) => {
     if (typeof item.id === 'number') {
       updateTodoMutation.mutate({ ...item, isCompleted: !item.isCompleted });
     }
+  };
+
+  const onClickItem = (item: Item) => {
+    router.push(`/items/${item.id}`);
   };
 
   useEffect(() => {
@@ -45,13 +52,13 @@ const TodoContent = () => {
             <Badge mode='todo' className='self-start'>
               TO DO
             </Badge>
-            <TodoList items={todoItems} mode='todo' onClick={onClickCheckListItem} />
+            <TodoList items={todoItems} mode='todo' onCheck={onCheckItem} onClick={onClickItem} />
           </div>
           <div className='flex flex-col w-1/2 min-w-0 items-start'>
             <Badge mode='done' className='self-start'>
               DONE
             </Badge>
-            <TodoList items={doneItems} mode='done' onClick={onClickCheckListItem} />
+            <TodoList items={doneItems} mode='done' onCheck={onCheckItem} onClick={onClickItem} />
           </div>
         </section>
       </div>

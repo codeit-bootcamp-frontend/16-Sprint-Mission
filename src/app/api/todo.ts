@@ -4,6 +4,7 @@ import {
   Item,
   ItemDetail,
   UpdateItemRequest,
+  UploadImageResponse,
 } from '@/types/TodoTypes';
 
 import apiClient from './apiClient';
@@ -26,4 +27,15 @@ export const updateItem = (itemId: number, data: UpdateItemRequest): Promise<Ite
 
 export const deleteItem = (itemId: number): Promise<DeleteItemResponse> => {
   return apiClient.delete(`${process.env.NEXT_PUBLIC_TENANT_ID}/items/${itemId}`);
+};
+
+export const uploadImage = (file: File): Promise<UploadImageResponse> => {
+  const formData = new FormData();
+  formData.append('image', file);
+
+  return apiClient.post(`${process.env.NEXT_PUBLIC_TENANT_ID}/items`, formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
 };

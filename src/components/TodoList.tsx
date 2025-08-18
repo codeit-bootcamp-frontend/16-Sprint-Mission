@@ -6,10 +6,11 @@ import EmptyContent from './EmptyContent';
 interface TodoListProps {
   items: Item[];
   mode?: 'todo' | 'done';
+  onCheck?: (item: Item) => void;
   onClick?: (item: Item) => void;
 }
 
-const TodoList = ({ items, mode = 'todo', onClick }: TodoListProps) => {
+const TodoList = ({ items, mode = 'todo', onCheck, onClick }: TodoListProps) => {
   return (
     <div className='flex flex-col gap-4 pt-4 w-full'>
       {items.length ? (
@@ -18,6 +19,7 @@ const TodoList = ({ items, mode = 'todo', onClick }: TodoListProps) => {
             name={item.name}
             checked={item.isCompleted}
             key={item.id}
+            onCheck={() => onCheck?.(item)}
             onClick={() => onClick?.(item)}
             className={`${mode === 'done' ? 'line-through' : ''}`}
             disabled={typeof item.id === 'string' && item.id.startsWith('temp')}

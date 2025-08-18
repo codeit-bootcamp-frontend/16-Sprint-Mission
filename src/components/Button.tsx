@@ -53,8 +53,8 @@ const Button = ({
           className={`${disabled ? 'stroke-slate-900' : 'stroke-white'}`}
         />
       )}
-      {mode === 'delete' && <X className='stroke-slate-900' />}
-      {mode === 'edit' && <Check className='stroke-slate-900' />}
+      {mode === 'delete' && <X width={16} height={16} className='stroke-white' />}
+      {mode === 'edit' && <Check width={16} height={16} className='stroke-slate-900' />}
       {children}
     </button>
   );

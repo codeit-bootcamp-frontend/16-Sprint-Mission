@@ -24,3 +24,7 @@ export interface UpdateItemRequest {
 export interface AddItemRequest {
   name: string;
 }
+
+export interface UploadImageResponse {
+  url: string;
+}
