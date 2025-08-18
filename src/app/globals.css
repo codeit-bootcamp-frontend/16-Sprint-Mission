@@ -1,0 +1,61 @@
+@import 'tailwindcss';
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+@font-face {
+  font-family: 'HS-Regular';
+  src: url('https://gcore.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/HS-Regular.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: 'NanumSquare';
+  --font-accent: 'HS-Regular';
+  --color-slate-900: #0f172a;
+  --color-slate-transparent-900: rgba(15, 23, 42, 0.5);
+  --color-slate-800: #1e293b;
+  --color-slate-500: #64748b;
+  --color-slate-400: #94a3b8;
+  --color-slate-300: #cbd5e1;
+  --color-slate-200: #e2e8f0;
+  --color-slate-100: #f1f5f9;
+  --color-violet-600: #7c3aed;
+  --color-violet-100: #ede9fe;
+  --color-rose-500: #f43f5e;
+  --color-lime-300: #bef264;
+  --color-amber-800: #92400e;
+  --color-green-700: #15803d;
+  --color-yellow-50: #fefce8;
+  --color-gray-50: #f9fafb;
+  --shadow-offset: 6px 6px 0px 0px rgba(15, 23, 42, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+}
+
+body {
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
