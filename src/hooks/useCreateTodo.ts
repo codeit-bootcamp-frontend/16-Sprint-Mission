@@ -1,5 +1,6 @@
 import { createTodoItem } from "@/features/todo/services/todoApi";
 import { todoQueries } from "@/features/todo/services/todoQuery";
+import { useToastStore } from "@/store/toastStore";
 import { TodoItemType } from "@/types/todoTypes";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -7,6 +8,8 @@ const QUERY_KEY_TODOLIST = todoQueries.list();
 
 const useCreateTodo = () => {
   const queryClient = useQueryClient();
+  const createToast = useToastStore((state) => state.createToast);
+
   return useMutation({
     mutationFn: async (name: string) => {
       await createTodoItem(name);
@@ -31,7 +34,10 @@ const useCreateTodo = () => {
     },
     onError: (d, e, context) => {
       queryClient.setQueryData(QUERY_KEY_TODOLIST, context?.prevTodos);
-      // 토스트 생성 안내 띄워주기
+      createToast({ message: "할 일 추가 실패!" });
+    },
+    onSuccess: () => {
+      createToast({ message: "할 일 추가 성공!" });
     },
     onSettled: () => {
       // id 프로퍼티 값 갱신

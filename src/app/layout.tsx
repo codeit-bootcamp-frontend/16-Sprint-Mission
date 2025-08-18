@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import QueryProvider from "@/app/_components/QueryProvider";
+import ToastContainer from "@/components/Toast/ToastContainer";
 
 export const nanumsquare = localFont({
   src: [
@@ -45,6 +46,7 @@ export default function RootLayout({
           <Header />
           <div className="max-w-[1200px] mx-auto">{children}</div>
         </QueryProvider>
+        <ToastContainer />
       </body>
     </html>
   );

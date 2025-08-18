@@ -1,5 +1,6 @@
 import { updateTodoItem } from "@/features/todo/services/todoApi";
 import { todoQueries } from "@/features/todo/services/todoQuery";
+import { useToastStore } from "@/store/toastStore";
 import { TodoItemType } from "@/types/todoTypes";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -7,6 +8,7 @@ const QUERY_KEY_TODOLIST = todoQueries.list();
 
 const useUpdateCheck = () => {
   const queryClient = useQueryClient();
+  const createToast = useToastStore((state) => state.createToast);
 
   return useMutation({
     mutationFn: async ({
@@ -33,7 +35,7 @@ const useUpdateCheck = () => {
     },
     onError: (err, variables, context) => {
       queryClient.setQueryData(QUERY_KEY_TODOLIST, context?.prevTodos);
-      // 토스트 생성 안내 띄워주기
+      createToast({ message: "다시 시도해주세요." });
     },
     onSettled: () => {
       if (!(queryClient.isMutating() === 1)) return;

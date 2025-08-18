@@ -1,4 +1,5 @@
 import { postImage } from "@/features/todo/services/todoApi";
+import { useToastStore } from "@/store/toastStore";
 import getRandomEngLetter from "@/utils/getRandomEngLetter";
 import { ChangeEvent, useState } from "react";
 
@@ -7,6 +8,7 @@ const MAX_SIZE = ONE_MB * 5; // 5MB
 
 const useUploadImage = () => {
   const [isUploading, setIsUploading] = useState(false);
+  const createToast = useToastStore((state) => state.createToast);
 
   const fetchImage = async (file: File) => {
     // 영문으로만 파일명 구성되도록 변경
@@ -26,6 +28,7 @@ const useUploadImage = () => {
       return url;
     } catch (error) {
       console.error(error);
+      createToast({ message: "이미지 업로드 실패. 다시 시도 해주세요." });
       throw error;
     } finally {
       setIsUploading(false);
