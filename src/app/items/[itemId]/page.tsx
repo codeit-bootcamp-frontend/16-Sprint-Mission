@@ -3,14 +3,11 @@ import ItemDetailContent from '@/app/components/ItemDetailContent';
 import HydrationWrapper from '@/components/HydrationWrapper';
 
 interface ItemPageProps {
-  params: {
-    itemId: string;
-  };
+  params: Promise<{ itemId: string }>;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }
-
 const ItemPage = async ({ params }: ItemPageProps) => {
   const { itemId } = await params;
-
   return (
     <HydrationWrapper
       prefetchQueries={[
