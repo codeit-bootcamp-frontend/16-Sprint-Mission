@@ -1,4 +1,4 @@
-import { getTodoList } from "@/features/todo/services/todoApi";
+import { getTodoDetail, getTodoList } from "@/features/todo/services/todoApi";
 import { queryOptions } from "@tanstack/react-query";
 
 export const todoQueries = {
@@ -8,5 +8,11 @@ export const todoQueries = {
     queryOptions({
       queryKey: [...todoQueries.list()],
       queryFn: getTodoList,
+    }),
+  detail: (itemId: string) => [...todoQueries.all(), "details", itemId],
+  detailOptions: (itemId: string) =>
+    queryOptions({
+      queryKey: [...todoQueries.detail(itemId)],
+      queryFn: () => getTodoDetail(itemId),
     }),
 };

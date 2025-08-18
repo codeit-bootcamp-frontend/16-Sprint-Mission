@@ -9,7 +9,7 @@ const TodoList = ({ dataList }: Props) => {
   return (
     <ul>
       {dataList.map((item) => (
-        <TodoItem key={`${item.name}_${item.id}`} {...item} />
+        <TodoItem key={`${item.name}_${item.id}`} item={item} />
       ))}
     </ul>
   );

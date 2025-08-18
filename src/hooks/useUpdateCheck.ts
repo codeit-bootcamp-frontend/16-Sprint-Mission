@@ -5,14 +5,20 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const QUERY_KEY_TODOLIST = todoQueries.list();
 
-const useUpdateCheck = (isCompleted: boolean) => {
+const useUpdateCheck = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async (id: number) => {
-      await updateTodoItem(id, { isCompleted: !isCompleted });
+    mutationFn: async ({
+      id,
+      isCompleted,
+    }: {
+      id: number;
+      isCompleted: boolean;
+    }) => {
+      await updateTodoItem(id, { isCompleted });
     },
-    onMutate: async (id: number) => {
+    onMutate: async ({ id }) => {
       await queryClient.cancelQueries({ queryKey: QUERY_KEY_TODOLIST });
 
       const prevTodos = queryClient.getQueryData<TodoItemType[]>(["todos"]);
@@ -25,7 +31,7 @@ const useUpdateCheck = (isCompleted: boolean) => {
 
       return { prevTodos };
     },
-    onError: (err, id, context) => {
+    onError: (err, variables, context) => {
       queryClient.setQueryData(QUERY_KEY_TODOLIST, context?.prevTodos);
       // 토스트 생성 안내 띄워주기
     },

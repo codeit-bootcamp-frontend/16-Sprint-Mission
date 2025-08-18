@@ -53,7 +53,7 @@ export async function updateTodoItem(
   return data;
 }
 
-export async function getTodoDetail(itemId: string) {
+export async function getTodoDetail(itemId: string): Promise<TodoResponseType> {
   const res = await fetch(`${BASE_URL}/items/${itemId}`);
 
   if (!res.ok) throw new Error(res.statusText);
@@ -63,7 +63,7 @@ export async function getTodoDetail(itemId: string) {
   return data;
 }
 
-export async function postImage(formData: FormData) {
+export async function postImage(formData: FormData): Promise<{ url: string }> {
   const res = await fetch(`${BASE_URL}/images/upload`, {
     method: "POST",
     body: formData,
