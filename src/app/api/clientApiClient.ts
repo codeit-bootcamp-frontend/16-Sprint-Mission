@@ -1,15 +1,12 @@
 import axios, { AxiosError } from 'axios';
 
-// 서버 사이드 여부
-const isServer = typeof window === 'undefined';
-
-const apiClient = axios.create({
-  baseURL: isServer ? `${process.env.NEXT_PUBLIC_ROOT_URL}/api` : process.env.NEXT_PUBLIC_BASE_URL,
+const clientApiClient = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
   timeout: 10_000,
   headers: { 'Content-Type': 'application/json' },
 });
 // 에러 처리
-apiClient.interceptors.response.use(
+clientApiClient.interceptors.response.use(
   (res) => res.data,
   async (error: AxiosError) => {
     if (!error.response) {
@@ -22,4 +19,4 @@ apiClient.interceptors.response.use(
   },
 );
 
-export default apiClient;
+export default clientApiClient;
