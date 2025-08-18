@@ -45,7 +45,6 @@ const ItemDetailContent = ({ itemId }: ItemDetailContentProps) => {
     retryDelay: 300,
     onSuccess: (response) => {
       const { url } = response;
-      console.log(url);
       setDetailData({ imageUrl: url });
       updateItemMutation.mutate();
     },
@@ -107,10 +106,21 @@ const ItemDetailContent = ({ itemId }: ItemDetailContentProps) => {
         <Memo />
       </div>
       <div className='flex w-full justify-center sm:justify-end gap-4 min-w-0'>
-        <Button mode='edit' size='full' disabled={disableEditButton} onClick={onClickEditDetail}>
+        <Button
+          mode='edit'
+          size='full'
+          className='max-w-[168px]'
+          disabled={disableEditButton}
+          onClick={onClickEditDetail}
+        >
           수정 완료
         </Button>
-        <Button mode='delete' size='full' onClick={() => deleteItemMutation.mutate()}>
+        <Button
+          mode='delete'
+          size='full'
+          className='max-w-[168px]'
+          onClick={() => deleteItemMutation.mutate()}
+        >
           삭제하기
         </Button>
       </div>

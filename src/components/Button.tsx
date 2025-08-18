@@ -20,7 +20,7 @@ const BASE_CLASS =
 const SIZE_CLASS = {
   small: 'p-4',
   large: 'min-w-41 gap-1 py-3.5 px-10',
-  full: 'max-w-[168px] w-full p-4',
+  full: 'w-full p-4',
 } as const;
 
 const Button = ({
