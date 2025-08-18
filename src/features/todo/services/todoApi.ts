@@ -63,6 +63,18 @@ export async function getTodoDetail(itemId: string): Promise<TodoResponseType> {
   return data;
 }
 
+export async function deleteTodoDetail(
+  itemId: number
+): Promise<{ message: string }> {
+  const res = await fetch(`${BASE_URL}/items/${itemId}`, { method: "DELETE" });
+
+  if (!res.ok) throw new Error(res.statusText);
+
+  const data = await res.json();
+
+  return data;
+}
+
 export async function postImage(formData: FormData): Promise<{ url: string }> {
   const res = await fetch(`${BASE_URL}/images/upload`, {
     method: "POST",

@@ -6,17 +6,21 @@ import { UpdateTodoData } from "@/types/todoTypes";
 import { Controller, useForm } from "react-hook-form";
 import TodoThumbnail from "@/features/todo/components/TodoThumbnail";
 import TodoMemo from "@/features/todo/components/TodoMemo";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { todoQueries } from "@/features/todo/services/todoQuery";
 import LoadingArea from "@/components/LoadingArea";
 import Link from "next/link";
 import useUpdateTodo from "@/hooks/useUpdateTodo";
+import useDeleteTodo from "@/hooks/useDeleteTodo";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 const TodoDetailArea = ({ itemId }: { itemId: string }) => {
   const { data, isLoading: isDataLoading } = useQuery(
     todoQueries.detailOptions(itemId)
   );
   const { mutate: updateMutate, isPending: isUpdatePending } = useUpdateTodo();
+  const { mutate: deleteMutation, isPending: isDeletePending } =
+    useDeleteTodo();
 
   if (isDataLoading) return <LoadingArea />;
 
@@ -57,6 +61,12 @@ const TodoDetailArea = ({ itemId }: { itemId: string }) => {
       )
     );
     updateMutate({ id, formValues: filterNullValue });
+  };
+
+  // 삭제하기
+  const handleDeleteTodo = () => {
+    if (isDeletePending) return;
+    deleteMutation(id);
   };
 
   return (
@@ -106,7 +116,10 @@ const TodoDetailArea = ({ itemId }: { itemId: string }) => {
         >
           수정 완료
         </Button>
-        <Button variant="delete">삭제하기</Button>
+        <Button variant="delete" onClick={handleDeleteTodo}>
+          삭제하기
+          {isDeletePending && <LoadingSpinner />}
+        </Button>
       </div>
     </form>
   );
