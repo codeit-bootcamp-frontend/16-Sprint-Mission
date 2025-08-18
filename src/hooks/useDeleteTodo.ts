@@ -14,7 +14,6 @@ const useDeleteTodo = () => {
   return useMutation({
     mutationFn: async (id: number) => await deleteTodoDetail(id),
     onSuccess: () => {
-      console.log("success");
       queryClient.invalidateQueries({ queryKey: QUERY_KEY_TODO_LIST });
       createToast({ message: "삭제 성공!" });
       router.push("/");
