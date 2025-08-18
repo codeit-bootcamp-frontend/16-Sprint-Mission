@@ -62,3 +62,16 @@ export async function getTodoDetail(itemId: string) {
 
   return data;
 }
+
+export async function postImage(formData: FormData) {
+  const res = await fetch(`${BASE_URL}/images/upload`, {
+    method: "POST",
+    body: formData,
+  });
+
+  if (!res.ok) throw new Error(res.statusText);
+
+  const data = await res.json();
+
+  return data;
+}
