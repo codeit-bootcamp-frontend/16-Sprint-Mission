@@ -9,10 +9,10 @@ import TodoMemo from "@/features/todo/components/TodoMemo";
 import { useQuery } from "@tanstack/react-query";
 import { todoQueries } from "@/features/todo/services/todoQuery";
 import LoadingArea from "@/components/LoadingArea";
-import Link from "next/link";
 import useUpdateTodo from "@/hooks/useUpdateTodo";
 import useDeleteTodo from "@/hooks/useDeleteTodo";
 import LoadingSpinner from "@/components/LoadingSpinner";
+import DataEmpty from "@/app/items/[itemId]/_components/Empty/DataEmpty";
 
 const TodoDetailArea = ({ itemId }: { itemId: string }) => {
   const { data, isLoading: isDataLoading } = useQuery(
@@ -23,19 +23,7 @@ const TodoDetailArea = ({ itemId }: { itemId: string }) => {
     useDeleteTodo();
 
   if (isDataLoading) return <LoadingArea />;
-
-  if (!data)
-    return (
-      <div className="text-center">
-        <p className="text-[18px] font-bold">데이터가 없습니다.</p>
-        <Link
-          href="/"
-          className="inline-block mt-3 px-3 py-2 text-[17px] text-white bg-violet600 rounded-sm"
-        >
-          목록으로 돌아가기
-        </Link>
-      </div>
-    );
+  if (!data) return <DataEmpty />;
 
   const { id, imageUrl, isCompleted, memo, name } = data;
   const {
