@@ -15,3 +15,17 @@ export const Add: Story = {
     children: "추가하기",
   },
 };
+
+export const Delete: Story = {
+  args: {
+    variant: "add",
+    children: "추가하기",
+  },
+};
+
+export const Edit: Story = {
+  args: {
+    variant: "add",
+    children: "추가하기",
+  },
+};
