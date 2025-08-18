@@ -13,7 +13,7 @@ import Memo from '@/components/Memo';
 import { useItemStore } from '@/store/itemStore';
 import { UploadImageResponse } from '@/types/TodoTypes';
 
-import { getItem, updateItem, uploadImage } from '../api/todo';
+import { deleteItem, getItem, updateItem, uploadImage } from '../api/todo';
 
 interface ItemDetailContentProps {
   itemId: number;
@@ -54,12 +54,29 @@ const ItemDetailContent = ({ itemId }: ItemDetailContentProps) => {
     },
   });
 
+  const deleteItemMutation = useMutation({
+    mutationFn: () => deleteItem(itemId),
+    retry: 1,
+    retryDelay: 300,
+    onSuccess: () => {
+      setDetailData({ name: '', memo: '', imageUrl: '', isCompleted: false });
+      router.push('/');
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+
   const { detailData, setDetailData } = useItemStore();
 
   const [file, setFile] = useState<File | null>(null);
 
   const disableEditButton =
-    !detailData.name || (detailData.name === data?.name && detailData.memo === data?.memo && !file);
+    !detailData.name ||
+    (detailData.isCompleted === data?.isCompleted &&
+      detailData.name === data?.name &&
+      detailData.memo === data?.memo &&
+      !file);
 
   const onUploadFile = (fileData: File) => {
     setFile(fileData);
@@ -93,7 +110,7 @@ const ItemDetailContent = ({ itemId }: ItemDetailContentProps) => {
         <Button mode='edit' size='full' disabled={disableEditButton} onClick={onClickEditDetail}>
           수정 완료
         </Button>
-        <Button mode='delete' size='full'>
+        <Button mode='delete' size='full' onClick={() => deleteItemMutation.mutate()}>
           삭제하기
         </Button>
       </div>

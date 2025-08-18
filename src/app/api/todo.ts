@@ -15,7 +15,7 @@ export const addItem = (data: AddItemRequest): Promise<ItemDetail> => {
 };
 
 export const getItemList = (): Promise<Item[]> => {
-  return clientApiClient.get(`${process.env.NEXT_PUBLIC_TENANT_ID}/items`, {});
+  return clientApiClient.get(`${process.env.NEXT_PUBLIC_TENANT_ID}/items`);
 };
 
 export const getItemListServer = () => {
