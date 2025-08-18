@@ -2,6 +2,9 @@
 const path = require('path');
 
 const nextConfig = {
+  images: {
+    domains: ['sprint-fe-project.s3.ap-northeast-2.amazonaws.com'],
+  },
   reactStrictMode: true,
   webpack: (config) => {
     // alias 추가

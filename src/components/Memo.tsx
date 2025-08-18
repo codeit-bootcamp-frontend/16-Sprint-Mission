@@ -12,7 +12,7 @@ const Memo = () => {
   };
 
   return (
-    <div className='relative w-full max-w-[588px] aspect-[588/311]'>
+    <div className='relative w-full max-w-[384px] sm:max-w-[588px] h-[311px]'>
       <Image
         src={MemoImage}
         alt={'메모 배경'}
@@ -20,7 +20,7 @@ const Memo = () => {
         className='object-cover rounded-3xl'
         sizes='(max-width: 696px) 100vw, 696px'
       />
-      <div className='absolute inset-0 z-10 flex flex-col gap-4 items-center justify-center'>
+      <div className='p-4 absolute inset-0 z-10 flex flex-col gap-4 items-center justify-center'>
         <div className='font-extrabold text-amber-800'>Memo</div>
         <TextArea
           value={detailData.memo ?? ''}

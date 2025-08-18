@@ -3,14 +3,12 @@ import { create } from 'zustand';
 import { ItemDetail } from '@/types/TodoTypes';
 
 interface ItemStore {
-  detailData: ItemDetail;
-  setDetailData: (data: Partial<ItemDetail>) => void;
+  detailData: Omit<ItemDetail, 'id' | 'tenantId'>;
+  setDetailData: (data: Partial<Omit<ItemDetail, 'id' | 'tenantId'>>) => void;
 }
 
 export const useItemStore = create<ItemStore>((set) => ({
   detailData: {
-    id: 0,
-    tenantId: '',
     name: '',
     memo: '',
     imageUrl: '',

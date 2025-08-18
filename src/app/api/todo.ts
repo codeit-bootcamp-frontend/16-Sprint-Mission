@@ -38,7 +38,7 @@ export const uploadImage = (file: File): Promise<UploadImageResponse> => {
   const formData = new FormData();
   formData.append('image', file);
 
-  return apiClient.post(`${process.env.NEXT_PUBLIC_TENANT_ID}/items`, formData, {
+  return clientApiClient.post(`${process.env.NEXT_PUBLIC_TENANT_ID}/images/upload`, formData, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
