@@ -1,16 +1,10 @@
 import { ReactNode } from "react";
-import { StaticImageData } from "next/image";
 import Button from "@/components/ui/Button";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { ImageType } from "@/types/image";
 
-export interface BannerImageProps {
-  imgSrc: string | StaticImageData;
-  imgAlt: string;
-  loading?: "lazy" | "eager";
-}
-
-interface BannerProps extends BannerImageProps {
+interface BannerProps extends ImageType {
   title: string | ReactNode;
   linkTo?: string;
   ariaLabel?: string;
