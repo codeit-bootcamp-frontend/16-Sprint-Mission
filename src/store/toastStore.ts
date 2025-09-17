@@ -11,13 +11,13 @@ interface CreateToastType {
 }
 
 interface ToastStoreType {
-  toasts: ToastType[];
+  toast: ToastType | null;
   createToast: (toast: CreateToastType) => void;
-  deleteToast: (id: string) => void;
+  deleteToast: () => void;
 }
 
 export const useToastStore = create<ToastStoreType>((set) => ({
-  toasts: [],
+  toast: null,
   createToast: (toast) => {
     const id = uuidv4();
     const newToast: ToastType = {
@@ -25,13 +25,13 @@ export const useToastStore = create<ToastStoreType>((set) => ({
       id,
     };
 
-    set((state) => ({
-      toasts: [...state.toasts, newToast],
+    set(() => ({
+      toast: newToast,
     }));
   },
-  deleteToast: (id) => {
-    set((state) => ({
-      toasts: state.toasts.filter((toast) => toast.id !== id),
+  deleteToast: () => {
+    set(() => ({
+      toast: null,
     }));
   },
 }));
