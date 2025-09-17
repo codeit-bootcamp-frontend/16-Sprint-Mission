@@ -4,13 +4,16 @@ import Button from "@/components/ui/Button";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-interface BannerProps {
-  title: string | ReactNode;
+export interface BannerImageProps {
   imgSrc: string | StaticImageData;
   imgAlt: string;
+  loading?: "lazy" | "eager";
+}
+
+interface BannerProps extends BannerImageProps {
+  title: string | ReactNode;
   linkTo?: string;
   ariaLabel?: string;
-  loading?: "lazy" | "eager";
 }
 
 const Banner = ({
