@@ -16,9 +16,9 @@ interface SignInProps {
 }
 
 const useSignIn = ({ user, accessToken, refreshToken }: SignInProps) => {
-  const setUser = useAuthStore((state) => state.setUser);
-
+  const setUser = useAuthStore.getState().setUser;
   setUser(user);
+
   localStorage.setItem("accessToken", accessToken);
   localStorage.setItem("refreshToken", refreshToken);
 };
