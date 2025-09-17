@@ -10,52 +10,61 @@ import { renderButtonTextByState } from "@/utils/renderButtonTextByState";
 import googleIcon from "../../public/images/ic_google.png";
 import kakaoIcon from "../../public/images/ic_kakao.png";
 import { SignUpValues } from "@/types/form";
-import { useMutation } from "@tanstack/react-query";
-import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
+import { useAuthStore } from "@/stores/authStore";
 
 const LoginForm = () => {
-  const router = useRouter();
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors, isValid, isSubmitting },
     watch,
     trigger,
     setError,
   } = useForm<SignUpValues>({
     mode: "onChange",
   });
+  const setUser = useAuthStore((state) => state.setUser);
+  const router = useRouter();
 
-  const { mutate: signUpMutation, isPending } = useMutation({
-    mutationFn: async (data: SignUpValues) => {
-      await axios.post("/api/auth/signup", data);
-    },
-    onSuccess: () => {
-      router.push("/login");
-    },
-    onError: (err) => {
-      if (err instanceof AxiosError) {
-        if (err.response?.status === 400) {
-          setError("email", {
-            message:
-              err.response?.data?.message || "이미 사용중인 이메일입니다.",
-          });
-        }
-      } else {
-        alert("알 수 없는 에러가 발생했습니다.");
-      }
-    },
-  });
-
-  const onSubmit = (data: SignUpValues) => {
+  const onSubmit = async (data: SignUpValues) => {
     const payload = {
       email: data.email,
       nickname: data.nickname,
       password: data.password,
       passwordConfirmation: data.passwordConfirmation,
     };
-    signUpMutation(payload);
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/signUp`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!res.ok) {
+      if (res.status === 400) {
+        setError("email", {
+          type: "manual",
+          message: "이미 사용중인 이메일입니다.",
+        });
+      }
+
+      if (res.status === 500) {
+        setError("email", {
+          type: "manual",
+          message: "회원가입에 실패했습니다. 다시 시도해 주세요.",
+        });
+      }
+    }
+
+    // 회원가입 성공
+    const { user, accessToken, refreshToken } = await res.json();
+    setUser(user);
+    localStorage.setItem("accessToken", accessToken);
+    localStorage.setItem("refreshToken", refreshToken);
+    router.push("/");
   };
 
   const password = watch("password");
@@ -153,7 +162,7 @@ const LoginForm = () => {
           size="lg"
           shape="round"
         >
-          {renderButtonTextByState(isPending, "회원가입")}
+          {renderButtonTextByState(isSubmitting, "회원가입")}
         </Button>
 
         <div className="flex justify-between items-center my-2 md:my-0 py-4 px-6 rounded-xl bg-primary-light text-gray-800">
