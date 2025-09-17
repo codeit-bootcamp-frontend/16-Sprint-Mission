@@ -37,8 +37,8 @@ const useUpdateCheck = () => {
       queryClient.setQueryData(QUERY_KEY_TODOLIST, context?.prevTodos);
       createToast({ message: "다시 시도해주세요." });
     },
-    onSettled: () => {
-      if (!(queryClient.isMutating() === 1)) return;
+    onSettled: async () => {
+      await queryClient.cancelQueries({ queryKey: QUERY_KEY_TODOLIST });
       queryClient.invalidateQueries({ queryKey: QUERY_KEY_TODOLIST });
     },
   });
