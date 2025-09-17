@@ -19,6 +19,7 @@ const Home = () => {
         imgAlt="팬더가 파란 장바구니를 메고 마을 가운데에 서있는 일러스트"
         ariaLabel="상단 배너"
         linkTo="/products"
+        loading="eager"
       />
 
       <div className="pt-6 px-4 pb-[84px] md:px-6 md:pb-[56px] lg:py-[138px] lg:px-6">
@@ -83,7 +84,6 @@ const Home = () => {
         imgSrc={HomeBottomImg}
         imgAlt="팬더 두 마리가 파란 장바구니를 메고 서로 상품 후기를 주고받는 일러스트"
         ariaLabel="하단 배너"
-        lazyLoading={true}
       />
 
       <Footer />

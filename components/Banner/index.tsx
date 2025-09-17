@@ -10,7 +10,7 @@ interface BannerProps {
   imgAlt: string;
   linkTo?: string;
   ariaLabel?: string;
-  lazyLoading?: boolean;
+  loading?: "lazy" | "eager";
 }
 
 const Banner = ({
@@ -19,7 +19,7 @@ const Banner = ({
   imgSrc,
   imgAlt,
   ariaLabel,
-  lazyLoading,
+  loading = "lazy",
 }: BannerProps) => {
   const router = useRouter();
 
@@ -48,7 +48,7 @@ const Banner = ({
         </div>
         <Image
           className="w-full max-w-[744px] my-0 mx-auto"
-          loading={lazyLoading ? "lazy" : "eager"}
+          loading={loading}
           src={imgSrc}
           alt={imgAlt}
           width={746}
