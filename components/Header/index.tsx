@@ -6,15 +6,13 @@ import Nav from "@/components/Nav";
 import Button from "@/components/ui/Button";
 import { useAuthStore } from "@/stores/authStore";
 import Dropdown from "@/components/ui/Dropdown";
-import { useShallow } from "zustand/shallow";
 import { useRouter } from "next/router";
 
 const Header = () => {
   const router = useRouter();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const { user, clearUser } = useAuthStore(
-    useShallow((state) => ({ user: state.user, clearUser: state.clearUser }))
-  );
+  const user = useAuthStore((state) => state.user);
+  const clearUser = useAuthStore((state) => state.clearUser);
 
   const logout = async () => {
     try {

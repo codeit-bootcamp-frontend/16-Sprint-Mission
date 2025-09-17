@@ -13,6 +13,7 @@ import kakaoIcon from "../../public/images/ic_kakao.png";
 import { LoginFormValues } from "@/types/form";
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/stores/authStore";
+import useSignIn from "@/hooks/useSignIn";
 
 const LoginForm = () => {
   const {
@@ -54,9 +55,7 @@ const LoginForm = () => {
 
     // 로그인 성공
     const { user, accessToken, refreshToken } = await res.json();
-    setUser(user);
-    localStorage.setItem("accessToken", accessToken);
-    localStorage.setItem("refreshToken", refreshToken);
+    useSignIn({ user, accessToken, refreshToken });
     router.push("/");
   };
 
