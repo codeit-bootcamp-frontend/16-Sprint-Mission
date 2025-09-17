@@ -1,16 +1,15 @@
 import { ReactNode } from "react";
 import SignUpForm from "@/components/Form/SignUpForm";
+import AuthLayout from "@/components/layouts/AuthLayout";
 
 const SignUpPage = () => {
   return (
-    <section className="py-[80px]">
-      <div className="flex items-center justify-center">
-        <SignUpForm />
-      </div>
-    </section>
+    <div className="flex items-center justify-center">
+      <SignUpForm />
+    </div>
   );
 };
 
-SignUpPage.getLayout = (page: ReactNode) => <>{page}</>;
+SignUpPage.getLayout = (page: ReactNode) => <AuthLayout>{page}</AuthLayout>;
 
 export default SignUpPage;
