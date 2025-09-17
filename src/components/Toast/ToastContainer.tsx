@@ -1,18 +1,10 @@
 "use client";
 import Toast from "@/components/Toast/Toast";
 import { useToastStore } from "@/store/toastStore";
-import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
 const ToastContainer = () => {
-  const [isClient, setIsClient] = useState(false);
   const toasts = useToastStore((state) => state.toasts);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  if (!isClient) return;
 
   const portalTarget = document.body;
 
