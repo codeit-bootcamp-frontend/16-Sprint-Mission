@@ -5,6 +5,6 @@ declare module "*.svg";
 
 declare var process: {
   env: {
-    REACT_APP_API_URL?: string;
+    NEXT_PUBLIC_API_URL: string;
   };
 };
