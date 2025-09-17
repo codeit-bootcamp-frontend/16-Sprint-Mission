@@ -1,6 +1,4 @@
-/** @jsxImportSource @emotion/react */
-import MainPageStyle from "./MainPageStyle.ts";
-import Footer from "@/components/ui/Footer";
+import Footer from "@/components/ui/Layout/Footer.jsx";
 import HomeTopImg from "@/assets/images/Img_home_top.png";
 import HomeBottomImg from "@/assets/images/Img_home_bottom.png";
 import HomeImg1 from "@/assets/images/Img_home_01.png";
@@ -9,18 +7,19 @@ import HomeImg2 from "@/assets/images/Img_home_02.png";
 import HomeImg2Small from "@/assets/images/Img_home_02_sm.png";
 import HomeImg3 from "@/assets/images/Img_home_03.png";
 import HomeImg3Small from "@/assets/images/Img_home_03_sm.png";
-import Banner from "@/components/Banner/Banner.tsx";
-import MainSection from "@/components/Section/MainSection.tsx";
+import Banner from "@/components/Banner";
+import MainSection from "@/components/Section/MainSection";
 
 const MainPage = () => {
   return (
-    <main css={MainPageStyle}>
+    <main className="bg-white">
       <Banner
         title="일상의 모든 물건을 거래해 보세요"
         imgSrc={HomeTopImg}
         imgAlt="팬더가 파란 장바구니를 메고 마을 가운데에 서있는 일러스트"
         ariaLabel="상단 배너"
         linkTo="/products"
+        loading="eager"
       />
 
       <div className="sections">
@@ -36,6 +35,7 @@ const MainPage = () => {
             </>
           }
           imgSrc={HomeImg1}
+          imgAlt="판다가 인기 상품을 보고 있는 이미지"
           imgMobileSrc={HomeImg1Small}
         />
 
@@ -52,6 +52,7 @@ const MainPage = () => {
             </>
           }
           imgSrc={HomeImg2}
+          imgAlt="돋보기로 상품을 확대하는 이미지"
           imgMobileSrc={HomeImg2Small}
         />
 
@@ -67,6 +68,7 @@ const MainPage = () => {
             </>
           }
           imgSrc={HomeImg3}
+          imgAlt="다양한 상품을 등록하는 이미지"
           imgMobileSrc={HomeImg3Small}
         />
       </div>
@@ -82,7 +84,6 @@ const MainPage = () => {
         imgSrc={HomeBottomImg}
         imgAlt="팬더 두 마리가 파란 장바구니를 메고 서로 상품 후기를 주고받는 일러스트"
         ariaLabel="하단 배너"
-        lazyLoading={true}
       />
       <Footer />
     </main>
