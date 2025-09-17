@@ -1,12 +1,8 @@
-/** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
-
-interface SocialLoginButtonProps {
+import { ImageType } from "@/types/image";
+interface SocialLoginButtonProps extends ImageType {
   href: string;
   title?: string;
   ariaLabel?: string;
-  imgSrc: string;
-  imgAlt: string;
 }
 
 const SocialLoginButton = ({
@@ -21,7 +17,7 @@ const SocialLoginButton = ({
       href={href}
       title={title}
       aria-label={ariaLabel}
-      css={SocialLoginButtonStyle}
+      className="rounded-full"
     >
       <img src={imgSrc} alt={imgAlt} width="40" height="40" />
     </a>
@@ -29,7 +25,3 @@ const SocialLoginButton = ({
 };
 
 export default SocialLoginButton;
-
-const SocialLoginButtonStyle = css`
-  border-radius: 50%;
-`;
