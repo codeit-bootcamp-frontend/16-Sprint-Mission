@@ -18,10 +18,6 @@ const Header = () => {
 
   const logout = async () => {
     try {
-      await fetch("/api/auth/logout", {
-        method: "POST",
-        credentials: "include",
-      });
       clearUser();
       setIsDropdownOpen(false);
     } catch (err) {

@@ -1,6 +1,7 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import axios, { AxiosError } from "axios";
 import { useForm } from "react-hook-form";
 import Button from "@/components/ui/Button";
 import InputField from "@/components/InputField";
@@ -10,47 +11,53 @@ import { renderButtonTextByState } from "@/utils/renderButtonTextByState";
 import googleIcon from "../../public/images/ic_google.png";
 import kakaoIcon from "../../public/images/ic_kakao.png";
 import { LoginFormValues } from "@/types/form";
-import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/stores/authStore";
 
 const LoginForm = () => {
-  const setUser = useAuthStore((state) => state.setUser);
-  const router = useRouter();
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors, isValid, isSubmitting },
     setError,
   } = useForm<LoginFormValues>({
     mode: "onChange",
   });
+  const setUser = useAuthStore((state) => state.setUser);
+  const router = useRouter();
 
-  const { mutate: loginMutation, isPending } = useMutation({
-    mutationFn: async (data: LoginFormValues) => {
-      const res = await axios.post("/api/auth/login", data, {
-        withCredentials: true,
-      });
-      return res.data;
-    },
-    onSuccess: (data) => {
-      setUser(data.user);
-      router.push("/");
-    },
-    onError: (err) => {
-      if (err instanceof AxiosError) {
-        alert(
-          err.response?.data?.message ||
-            "로그인에 실패했습니다. 이메일과 비밀번호를 확인해주세요."
-        );
-      } else {
-        alert("알 수 없는 에러가 발생했습니다.");
+  const onSubmit = async (data: LoginFormValues) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/signIn`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!res.ok) {
+      if (res.status === 400) {
+        setError("password", {
+          type: "manual",
+          message: "이메일 또는 비밀번호가 올바르지 않습니다.",
+        });
+        return;
       }
-    },
-  });
 
-  const onSubmit = (data: LoginFormValues) => {
-    loginMutation(data);
+      if (res.status === 500) {
+        setError("password", {
+          type: "manual",
+          message: "로그인에 실패했습니다. 다시 시도해 주세요.",
+        });
+      }
+    }
+
+    // 로그인 성공
+    const { user, accessToken, refreshToken } = await res.json();
+    setUser(user);
+    localStorage.setItem("accessToken", accessToken);
+    localStorage.setItem("refreshToken", refreshToken);
+    router.push("/");
   };
 
   return (
@@ -106,7 +113,7 @@ const LoginForm = () => {
           size="lg"
           shape="round"
         >
-          {renderButtonTextByState(isPending, "로그인")}
+          {renderButtonTextByState(isSubmitting, "로그인")}
         </Button>
 
         <div className="flex justify-between items-center my-2 md:my-0 py-4 px-6 rounded-xl bg-primary-light text-gray-800">

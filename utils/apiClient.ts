@@ -44,10 +44,6 @@ apiClient.interceptors.response.use(
         return apiClient(originalReq);
       } catch (err) {
         // 액세스 토큰 재발급 실패: 토큰 삭제 + 로그아웃
-        await fetch("/api/auth/logout", {
-          method: "POST",
-          credentials: "include",
-        });
         clearUser();
 
         return Promise.reject(error);
