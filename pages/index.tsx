@@ -1,16 +1,16 @@
-import Footer from "@/components/ui/Layout/Footer.jsx";
-import HomeTopImg from "@/assets/images/Img_home_top.png";
-import HomeBottomImg from "@/assets/images/Img_home_bottom.png";
-import HomeImg1 from "@/assets/images/Img_home_01.png";
-import HomeImg1Small from "@/assets/images/Img_home_01_sm.png";
-import HomeImg2 from "@/assets/images/Img_home_02.png";
-import HomeImg2Small from "@/assets/images/Img_home_02_sm.png";
-import HomeImg3 from "@/assets/images/Img_home_03.png";
-import HomeImg3Small from "@/assets/images/Img_home_03_sm.png";
+import HomeTopImg from "../public/images/Img_home_top.png";
+import HomeBottomImg from "../public/images/Img_home_bottom.png";
+import HomeImg1 from "../public/images/Img_home_01.png";
+import HomeImg1Small from "../public/images/Img_home_01_mb.png";
+import HomeImg2 from "../public/images/Img_home_02.png";
+import HomeImg2Small from "../public/images/Img_home_02_mb.png";
+import HomeImg3 from "../public/images/Img_home_03.png";
+import HomeImg3Small from "../public/images/Img_home_03_mb.png";
 import Banner from "@/components/Banner";
 import MainSection from "@/components/Section/MainSection";
+import Footer from "@/components/ui/Layout/Footer";
 
-const MainPage = () => {
+const Home = () => {
   return (
     <main className="bg-white">
       <Banner
@@ -22,7 +22,7 @@ const MainPage = () => {
         loading="eager"
       />
 
-      <div className="sections">
+      <div className="pt-6 px-4 pb-[84px] md:px-6 md:pb-[56px] lg:py-[138px] lg:px-6">
         <MainSection
           title="인기 상품을 확인해 보세요"
           label="Hot item"
@@ -35,8 +35,8 @@ const MainPage = () => {
             </>
           }
           imgSrc={HomeImg1}
-          imgAlt="판다가 인기 상품을 보고 있는 이미지"
           imgMobileSrc={HomeImg1Small}
+          imgAlt=""
         />
 
         <MainSection
@@ -52,8 +52,8 @@ const MainPage = () => {
             </>
           }
           imgSrc={HomeImg2}
-          imgAlt="돋보기로 상품을 확대하는 이미지"
           imgMobileSrc={HomeImg2Small}
+          imgAlt=""
         />
 
         <MainSection
@@ -68,8 +68,8 @@ const MainPage = () => {
             </>
           }
           imgSrc={HomeImg3}
-          imgAlt="다양한 상품을 등록하는 이미지"
           imgMobileSrc={HomeImg3Small}
+          imgAlt=""
         />
       </div>
 
@@ -85,9 +85,10 @@ const MainPage = () => {
         imgAlt="팬더 두 마리가 파란 장바구니를 메고 서로 상품 후기를 주고받는 일러스트"
         ariaLabel="하단 배너"
       />
+
       <Footer />
     </main>
   );
 };
 
-export default MainPage;
+export default Home;

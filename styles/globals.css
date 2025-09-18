@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* nav */
+  .nav-link {
+    @apply px-2 py-[14px] md:px-[20px] text-base md:text-lg font-bold text-gray-600;
+  }
+
+  .nav-link.active {
+    @apply text-primary;
+  }
+
+  /* input */
+  .input {
+    @apply w-full text-base px-5 py-4 bg-gray-200 rounded-xl border border-transparent placeholder-gray-400;
+  }
+
+  .input-error {
+    @apply border-red-500;
+  }
+
+  /* button */
+  .btn-base {
+    @apply inline-flex items-center justify-center gap-[6px] transition-colors hover:bg-gray-300;
+  }
+
+  .btn-sm {
+    @apply px-6 py-3 text-base rounded-md;
+  }
+
+  .btn-lg {
+    @apply p-3 text-lg font-semibold rounded-lg leading-8;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-hover active:bg-primary-click;
+  }
+
+  .btn-outlined {
+    @apply bg-white border border-gray-300 text-gray-500 hover:border-primary;
+  }
+
+  .btn-disabled {
+    @apply pointer-events-none bg-gray-400 text-white cursor-default;
+  }
+
+  .icon-btn {
+    @apply flex items-center justify-center aspect-square bg-transparent;
+  }
+
+  /* form */
+  .form-label {
+    @apply text-sm md:text-lg font-bold text-gray-800 mb-2 md:mb-4;
+  }
+
+  .form-controls {
+    @apply flex flex-col w-full gap-6;
+  }
+
+  .form-footer {
+    @apply flex justify-center gap-1 text-sm font-medium text-gray-800;
+  }
+
+  .form-footer-link {
+    @apply underline underline-offset-4 text-primary text-sm;
+  }
+
+  /* form - auth */
+  .auth-form {
+    @apply flex flex-col justify-center items-center w-full max-w-[400px] px-4 md:px-0 lg:max-w-[640px];
+  }
+
+  .auth-form-logo {
+    @apply flex justify-center w-full mb-10;
+  }
+
+  .auth-form-logo img {
+    @apply max-w-[198px] md:max-w-[396px];
+  }
+}

@@ -1,8 +1,12 @@
-import { ImageType } from "@/types/image";
-interface SocialLoginButtonProps extends ImageType {
+import Image from "next/image";
+import { StaticImageData } from "next/image";
+
+interface SocialLoginButtonProps {
   href: string;
   title?: string;
   ariaLabel?: string;
+  imgSrc: StaticImageData;
+  imgAlt: string;
 }
 
 const SocialLoginButton = ({
@@ -19,7 +23,7 @@ const SocialLoginButton = ({
       aria-label={ariaLabel}
       className="rounded-full"
     >
-      <img src={imgSrc} alt={imgAlt} width="40" height="40" />
+      <Image src={imgSrc} alt={imgAlt} width="40" height="40" />
     </a>
   );
 };
