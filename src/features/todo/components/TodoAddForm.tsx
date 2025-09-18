@@ -1,29 +1,28 @@
 "use client";
 
-import { ChangeEvent, useActionState, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
-import { createTodoItemAction } from "@/app/actions";
 import Button from "@/components/Button";
+import useCreateTodo from "@/hooks/useCreateTodo";
 
 const TodoAddForm = () => {
-  const [state, formAction, isPending] = useActionState(
-    createTodoItemAction,
-    null
-  );
   const [todoText, setTodoText] = useState("");
+
+  const { mutate, isPending } = useCreateTodo();
   const isValid = todoText.trim().length === 0 || isPending;
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
-    setTodoText(e.target.value);
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    mutate(todoText);
+    setTodoText("");
+  };
 
-  useEffect(() => {
-    if (state) {
-      setTodoText("");
-    }
-  }, [state]);
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setTodoText(e.target.value);
+  };
 
   return (
-    <form className="flex gap-5" action={formAction}>
+    <form className="flex gap-5" onSubmit={handleSubmit}>
       <input
         type="text"
         name="name"

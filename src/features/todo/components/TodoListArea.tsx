@@ -1,53 +1,18 @@
 "use client";
 
-import { startTransition, useOptimistic, useRef } from "react";
-
 import DoneEmpty from "@/app/_components/Empty/DoneEmpty";
 import TodoEmpty from "@/app/_components/Empty/TodoEmpty";
 import TodoContent from "@/features/todo/components/TodoContent";
-import { updateTodoItem } from "@/features/todo/services/todoApi";
-import { TodoItemType } from "@/types/todoTypes";
+import { todoQueries } from "@/features/todo/services/todoQuery";
+import { useQuery } from "@tanstack/react-query";
 
-interface Props {
-  data: TodoItemType[];
-  onUpdate?: (id: number) => void;
-}
+const TodoListArea = () => {
+  const { data } = useQuery(todoQueries.listOptions());
 
-const TodoListArea = ({ data }: Props) => {
-  const initialDataRef = useRef<TodoItemType[]>(data);
-  const [optimisticState, toggleOptimisticState] = useOptimistic<
-    TodoItemType[],
-    number
-  >(initialDataRef.current, (currentState, id) => {
-    return currentState.map((todo) =>
-      todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
-    );
-  });
+  if (!data) return <div>로딩중...</div>;
 
-  const handleUpdateCheck = (id: number) => {
-    startTransition(async () => {
-      // 낙관적 업데이트
-      toggleOptimisticState(id);
-
-      const targetCheck = optimisticState.find(
-        (todo) => todo.id === id
-      )?.isCompleted;
-      const updateData = { isCompleted: !targetCheck };
-
-      try {
-        await updateTodoItem(id, updateData);
-        const updateTodo = initialDataRef.current.map((todo) =>
-          todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
-        );
-        initialDataRef.current = updateTodo;
-      } catch (error) {
-        console.error(error);
-      }
-    });
-  };
-
-  const todoData = optimisticState.filter((item) => !item.isCompleted);
-  const doneData = optimisticState.filter((item) => item.isCompleted);
+  const todoData = data.filter((item) => !item.isCompleted);
+  const doneData = data.filter((item) => item.isCompleted);
 
   return (
     <div className="flex gap-6 mt-10">
@@ -59,7 +24,6 @@ const TodoListArea = ({ data }: Props) => {
           titleAlt="TO DO title"
           dataList={todoData}
           EmptyComponent={TodoEmpty}
-          onUpdate={handleUpdateCheck}
         />
       </div>
 
@@ -71,7 +35,6 @@ const TodoListArea = ({ data }: Props) => {
           titleAlt="Done title"
           dataList={doneData}
           EmptyComponent={DoneEmpty}
-          onUpdate={handleUpdateCheck}
         />
       </div>
     </div>

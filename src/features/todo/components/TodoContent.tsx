@@ -12,7 +12,6 @@ interface Props {
   titleAlt: string;
   dataList: TodoItemType[];
   EmptyComponent: ComponentType;
-  onUpdate: (id: number) => void;
 }
 
 const TodoContent = ({
@@ -22,7 +21,6 @@ const TodoContent = ({
   titleAlt,
   dataList,
   EmptyComponent,
-  onUpdate,
 }: Props) => {
   const isEmpty = dataList.length === 0;
 
@@ -34,11 +32,7 @@ const TodoContent = ({
         height={titleHeight}
         alt={titleAlt}
       />
-      {isEmpty ? (
-        <EmptyComponent />
-      ) : (
-        <TodoList dataList={dataList} onUpdate={onUpdate} />
-      )}
+      {isEmpty ? <EmptyComponent /> : <TodoList dataList={dataList} />}
     </div>
   );
 };

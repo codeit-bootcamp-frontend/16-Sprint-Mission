@@ -9,9 +9,7 @@ const API_END_POINT = process.env.NEXT_PUBLIC_SERVER_COMMON_END_POINT;
 const BASE_URL = `${API_URL}${API_END_POINT}`;
 
 export async function getTodoList(): Promise<TodoItemType[]> {
-  const res = await fetch(`${BASE_URL}/items`, {
-    next: { tags: ["todoList"] },
-  });
+  const res = await fetch(`${BASE_URL}/items`);
 
   if (!res.ok) throw new Error(res.statusText);
 
@@ -46,6 +44,41 @@ export async function updateTodoItem(
       "Content-Type": "application/json",
     },
     body: JSON.stringify(updateData),
+  });
+
+  if (!res.ok) throw new Error(res.statusText);
+
+  const data = await res.json();
+
+  return data;
+}
+
+export async function getTodoDetail(itemId: string): Promise<TodoResponseType> {
+  const res = await fetch(`${BASE_URL}/items/${itemId}`);
+
+  if (!res.ok) throw new Error(res.statusText);
+
+  const data = await res.json();
+
+  return data;
+}
+
+export async function deleteTodoDetail(
+  itemId: number
+): Promise<{ message: string }> {
+  const res = await fetch(`${BASE_URL}/items/${itemId}`, { method: "DELETE" });
+
+  if (!res.ok) throw new Error(res.statusText);
+
+  const data = await res.json();
+
+  return data;
+}
+
+export async function postImage(formData: FormData): Promise<{ url: string }> {
+  const res = await fetch(`${BASE_URL}/images/upload`, {
+    method: "POST",
+    body: formData,
   });
 
   if (!res.ok) throw new Error(res.statusText);

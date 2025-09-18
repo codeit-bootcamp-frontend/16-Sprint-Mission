@@ -1,72 +1,44 @@
 "use client";
 
-import Link from "next/link";
-import { useState } from "react";
-
-const StyleCheckWrapBase =
-  "flex items-center border-2 border-slate900 bg-white has-checked:bg-violet100";
+import clsx from "clsx";
+import { ReactNode, useState } from "react";
 
 const StylecheckWrap = {
-  default: "rounded-[27px] px-[10px] py-[7px]",
-  detail: "justify-center rounded-[24px] py-[14px]",
-};
-
-const StyleCheckInner = "inline-flex items-center gap-4";
-
-const StyleCheckIcon =
-  "block w-8 h-8 border-2 border-slate900 bg-yellow-50 rounded-full cursor-pointer group-has-checked:border-violet600 group-has-checked:bg-violet600 group-has-checked:bg-[url(/images/CheckboxIcon.svg)] group-has-checked:bg-no-repeat group-has-checked:bg-center";
-
-interface SubProps {
-  id: string;
-  name: string;
-}
-
-const DetailCheckItem = ({ id, name }: SubProps) => {
-  return (
-    <label htmlFor={id} className={`${StyleCheckInner} cursor-pointer`}>
-      <span className={StyleCheckIcon} />
-      <span className="text-xl font-bold underline">{name}</span>
-    </label>
-  );
-};
-
-const DefaultCheckItem = ({ id, name }: SubProps) => {
-  return (
-    <div className={StyleCheckInner}>
-      <label htmlFor={id} className={StyleCheckIcon} />
-      <Link href="/" className={"text-base group-has-checked:line-through"}>
-        {name}
-      </Link>
-    </div>
-  );
+  default: "flex itemx-center rounded-[27px] px-[10px] py-[7px]",
+  detail: "rounded-[24px] p-[14px] text-center text-[0px] overflow-hidden",
 };
 
 interface Props {
   id: number;
-  name: string;
-  isCompleted: boolean;
+  initValue: boolean;
+  onChange: (value: boolean) => void;
   variant?: "default" | "detail";
-  onUpdate: (id: number) => void;
+  children: ReactNode;
 }
 
 const CheckItem = ({
-  name,
   id,
-  isCompleted = false,
+  onChange,
+  initValue,
   variant = "default",
-  onUpdate,
+  children,
 }: Props) => {
-  const [checked, setChecked] = useState(isCompleted);
-  const isDefault = variant === "default";
-  const matchId = `${name}_${id}`;
+  const [checked, setChecked] = useState(initValue);
+  const matchId = `todo_${id}`;
 
   const handleChange = () => {
-    setChecked(!checked);
-    onUpdate(id);
+    const nextCheck = !checked;
+    setChecked(nextCheck);
+    onChange(nextCheck);
   };
 
   return (
-    <div className={`${StyleCheckWrapBase} ${StylecheckWrap[variant]} group`}>
+    <div
+      className={clsx(
+        "border-2 border-slate900 bg-white has-checked:bg-violet100 group overflow-hidden",
+        StylecheckWrap[variant]
+      )}
+    >
       <input
         id={matchId}
         type="checkbox"
@@ -74,11 +46,21 @@ const CheckItem = ({
         checked={checked}
         onChange={handleChange}
       />
-      {isDefault ? (
-        <DefaultCheckItem id={matchId} name={name} />
-      ) : (
-        <DetailCheckItem id={matchId} name={name} />
-      )}
+
+      <div
+        className={clsx(
+          "inline-flex items-center gap-4",
+          variant === "detail"
+            ? "max-w-full overflow-hidden justify-center"
+            : null
+        )}
+      >
+        <label
+          htmlFor={matchId}
+          className="block w-8 h-8 border-2 border-slate900 bg-yellow-50 rounded-full cursor-pointer group-has-checked:border-violet600 group-has-checked:bg-violet600 group-has-checked:bg-[url(/images/CheckboxIcon.svg)] group-has-checked:bg-no-repeat group-has-checked:bg-center shrink-0 grow-0 basis-auto"
+        />
+        {children}
+      </div>
     </div>
   );
 };
