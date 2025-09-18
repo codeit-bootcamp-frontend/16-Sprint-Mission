@@ -5,7 +5,6 @@ const clientApiClient = axios.create({
   timeout: 10_000,
   headers: { 'Content-Type': 'application/json' },
 });
-
 // 에러 처리
 clientApiClient.interceptors.response.use(
   (res) => res.data,

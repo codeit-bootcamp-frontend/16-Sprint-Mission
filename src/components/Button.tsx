@@ -9,17 +9,18 @@ import X from '@/assets/icons/x.svg';
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
   mode?: 'add' | 'delete' | 'edit';
-  size?: 'small' | 'large';
+  size?: 'small' | 'large' | 'full';
   children?: React.ReactNode;
   className?: string;
 }
 
 const BASE_CLASS =
-  'flex items-center text-base font-bold rounded-[1.68rem] border-2 border-slate-900 shadow-offset' as const;
+  'flex items-center justify-center text-base font-bold rounded-[1.68rem] border-2 border-slate-900 shadow-offset' as const;
 
 const SIZE_CLASS = {
   small: 'p-4',
   large: 'min-w-41 gap-1 py-3.5 px-10',
+  full: 'w-full p-4',
 } as const;
 
 const Button = ({
@@ -53,8 +54,8 @@ const Button = ({
           className={`${disabled ? 'stroke-slate-900' : 'stroke-white'}`}
         />
       )}
-      {mode === 'delete' && <X className='stroke-slate-900' />}
-      {mode === 'edit' && <Check className='stroke-slate-900' />}
+      {mode === 'delete' && <X width={16} height={16} className='stroke-white' />}
+      {mode === 'edit' && <Check width={16} height={16} className='stroke-slate-900' />}
       {children}
     </button>
   );
